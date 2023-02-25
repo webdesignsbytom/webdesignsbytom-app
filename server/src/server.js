@@ -24,6 +24,10 @@ const URL = process.env.URL || 'http://localhost:'
 // Connect server to display this file from http://localhost:4000
 app.use('/', express.static(path.join(__dirname, '..', 'public')));
 
+// app.get('/', (req, res) => {
+//     res.sendFile('index.html', {root: path.join(__dirname, '..', 'public')});
+// })
+
 // For all unknown requests 404 page returns
 app.all('*', (req, res) => {
     res.status(404)
