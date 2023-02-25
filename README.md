@@ -15,9 +15,7 @@ New design for portfolio site including new features for private sales.
 
 ## General info
 
-This is the client repository for WeVot app. You can find the server repository [here](https://github.com/ning905/Wevot-server).
-
-This project is built for the Boolean Course as the final personal project.
+A new design for my website as a professional portfolio. Coupled with an attempt to sell freelance work through a sale page. 
 
 ## Technologies
 
@@ -25,7 +23,7 @@ App developed with:
 
 Frontend: React, JavaScript, Tailwind, Axios, validator
 
-Backend: Express, Prisma, JavaScript, 
+Backend: Express, Prisma, JavaScript
 
 ## Run this project locally
 
