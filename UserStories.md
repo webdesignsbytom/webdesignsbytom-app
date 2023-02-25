@@ -1,5 +1,5 @@
 # User Stories
 
-1. I want user to sign up, require confirmation email <input style='align-items: center;' type='checkbox'>
+1. I want a user to sign up and be required to confirm email.
 2. 
 
