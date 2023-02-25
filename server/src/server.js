@@ -23,6 +23,13 @@ app.use(express.static('public'))
 const PORT = process.env.PORT || 4000;
 const URL = process.env.URL || 'http://localhost:'
 
+// Tell express to use your routers here
+// const userRouter = require('./routes/usersEX');
+const userRouter = require('./routes/users');
+
+app.use('/users', userRouter);
+app.use('/', userRouter);
+
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root: path.join(__dirname, '..', 'public')});
 })
@@ -38,12 +45,6 @@ app.all('*', (req, res) => {
         res.type('txt').send('404 Not Found')
     }
 })
-
-// Tell express to use your routers here
-const userRouter = require('./routes/users');
-
-// app.use('/users', userRouter);
-// app.use('/', userRouter);
 
 // Start our API server
 app.listen(PORT, () => {
