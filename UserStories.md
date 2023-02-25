@@ -1,7 +1,9 @@
 # User Stories
+
 <div class="highlight">
 I want a user to sign up and be required to confirm email. 
 </div>
+
 
 <SCRIPT LANGUAGE="JavaScript">
 // get the list of all highlight code blocks
@@ -15,4 +17,5 @@ highlights.forEach(div => {
   copy.addEventListener("click", handleCopyClick)
   // append the copy button to each code block
   div.append(copy)
-})t>
+})
+</script>
