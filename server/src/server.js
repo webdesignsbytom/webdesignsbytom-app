@@ -28,7 +28,7 @@ const URL = process.env.URL || 'http://localhost:'
 const userRouter = require('./routes/users');
 
 app.use('/users', userRouter);
-app.use('/', userRouter);
+// app.use('/', userRouter);
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root: path.join(__dirname, '..', 'public')});
