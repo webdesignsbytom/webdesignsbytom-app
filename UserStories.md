@@ -1,17 +1,18 @@
 # User Stories
-
-1. I want a user to sign up and be required to confirm email.
-2. 
+<div class="highlight">
+I want a user to sign up and be required to confirm email. 
+</div>
 
 <SCRIPT LANGUAGE="JavaScript">
-function copyit(theField) {
-	var selectedText = document.selection;
-	if (selectedText.type == 'Text') {
-		var newRange = selectedText.createRange();
-		theField.focus();
-		theField.value = newRange.text;
-	} else {
-		alert('select a text in the page and then press this button');
-	}
-}
-</script>
+// get the list of all highlight code blocks
+const highlights = document.querySelectorAll("div.highlight")
+
+highlights.forEach(div => {
+  // create the copy button
+  const copy = document.createElement("button")
+  copy.innerHTML = "Copy"
+  // add the event listener to each click
+  copy.addEventListener("click", handleCopyClick)
+  // append the copy button to each code block
+  div.append(copy)
+})t>
