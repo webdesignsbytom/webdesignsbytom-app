@@ -2,9 +2,9 @@
   "name": "webdesignsbytom",
   "version": "1.0.0",
   "description": "server to control user functions and store web date for www.webdesignsbytom.com",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/server.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
