@@ -1,6 +1,7 @@
 {
   "name": "webdesignsbytom",
   "version": "1.0.1",
+  "type": "module",
   "description": "server to control user functions and store web date for www.webdesignsbytom.com",
   "main": "src/server.js",
   "scripts": {

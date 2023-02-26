@@ -1,9 +1,7 @@
-const { Prisma } = require('@prisma/client');
-const prisma = require('../utils/prisma');
-const jwt = require('jsonwebtoken');
-const { findAllUsers } = require('../domain/users');
+import jwt from 'jsonwebtoken'
+import { findAllUsers } from '../domain/users.js'
 
-const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res) => {
   console.log('getting all users...');
 
   try {
@@ -23,7 +21,8 @@ const getAllUsers = async (req, res) => {
       });
     }
 
-    // myEmitter.emit('get-all-users')
+    // myEmitter.emit('get-all-users', 'tom')
+    console.log('xx');
 
     return res.status(201).json({
       message: `Found ${foundUsers.length} users`,
@@ -40,7 +39,3 @@ const getAllUsers = async (req, res) => {
     });
   }
 };
-
-module.exports = {
-    getAllUsers
-}

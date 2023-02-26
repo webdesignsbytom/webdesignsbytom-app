@@ -1,4 +1,4 @@
-const prisma = require('../utils/prisma');
+import dbClient from '../utils/prisma.js';
 // Response strings
 import { RESPONSE_MESSAGES } from '../utils/responses.js';
 
@@ -12,7 +12,7 @@ export const createErrorEvent = async (errorEvent) => {
     userId = errorEvent.user.id;
   }
 
-  await prisma.event.create({
+  await dbClient.event.create({
     data: {
       type: 'ERROR',
       topic: errorEvent.topic,
