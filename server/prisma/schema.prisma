@@ -8,6 +8,7 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
+// USERS
 enum Role {
   USER
   ADMIN
@@ -25,13 +26,13 @@ model User {
   updatedAt      DateTime? @updatedAt
 }
 
+// EVENTS
 enum EventType {
   ERROR
   USER
   ADMIN
   VISITOR
 }
-
 model Event {
   id           Int       @id @default(autoincrement())
   type         EventType
