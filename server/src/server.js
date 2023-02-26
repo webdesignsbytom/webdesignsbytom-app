@@ -28,7 +28,7 @@ app.use('/users', userRouter);
 // app.use('/', userRouter);
 
 app.get('/', (req, res) => {
-    res.sendFile('index.html', {root: path.join(__dirname, '..', 'public')});
+    res.sendFile('index.html', {root: path.join(__dirname, '..', 'public', 'views')});
     console.log('req', req.url);
 })
 
@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 app.all('*', (req, res) => {
     res.status(404)
     if (req.accepts('html')) {
-        res.sendFile(path.join(__dirname, '..', 'public', 'error404.html'))
+        res.sendFile(path.join(__dirname, '..', 'public', 'views', 'error404.html'))
     } else if (req.accepts('json')) {
         res.json({ message: '404 Not Found' })
     } else {
