@@ -1,6 +1,9 @@
 import dbClient from '../utils/dbClient.js'
-import { myEmitter } from '../users.js'
 import { CreateEventError } from '../errors.js'
+
+export const getAllUsersEvent = async (user) => {
+  console.log('user:', user);
+}
 
 export const createRegisterEvent = async (user) => {
   let type = 'USER'
@@ -25,28 +28,28 @@ export const createRegisterEvent = async (user) => {
   }
 }
 
-export const createUpdateEmailEvent = async (user, oldEmail) => {
-  let type = 'USER'
-  if (user.role === 'ADMIN') {
-    type = 'ADMIN'
-  }
+// export const createUpdateEmailEvent = async (user, oldEmail) => {
+//   let type = 'USER'
+//   if (user.role === 'ADMIN') {
+//     type = 'ADMIN'
+//   }
 
-  try {
-    await dbClient.event.create({
-      data: {
-        type: type,
-        topic: 'update-email-address',
-        content: `from ${oldEmail} to ${user.email}`,
-        receivedById: user.id,
-        createdAt: user.updatedAt
-      }
-    })
-  } catch (err) {
-    const error = new CreateEventError(user, 'update-email')
-    myEmitter.emit('error', error)
-    throw err
-  }
-}
+//   try {
+//     await dbClient.event.create({
+//       data: {
+//         type: type,
+//         topic: 'update-email-address',
+//         content: `from ${oldEmail} to ${user.email}`,
+//         receivedById: user.id,
+//         createdAt: user.updatedAt
+//       }
+//     })
+//   } catch (err) {
+//     const error = new CreateEventError(user, 'update-email')
+//     myEmitter.emit('error', error)
+//     throw err
+//   }
+// }
 
 // VERIFICATION
 // export const createUpdateActivateEvent = async (user) => {
@@ -77,21 +80,21 @@ export const createUpdateEmailEvent = async (user, oldEmail) => {
 //   }
 // }
 
-export const createUpdateRoleEvent = async (assignee, oldRole, assigner) => {
-  try {
-    await dbClient.event.create({
-      data: {
-        type: 'ADMIN',
-        topic: 'update-role',
-        content: `from ${oldRole} to ${assignee.role}`,
-        createdById: assigner.id,
-        receivedById: assignee.id,
-        createdAt: assignee.updatedAt
-      }
-    })
-  } catch (err) {
-    const error = new CreateEventError(assigner, 'update-role')
-    myEmitter.emit('error', error)
-    throw err
-  }
-}
+// export const createUpdateRoleEvent = async (assignee, oldRole, assigner) => {
+//   try {
+//     await dbClient.event.create({
+//       data: {
+//         type: 'ADMIN',
+//         topic: 'update-role',
+//         content: `from ${oldRole} to ${assignee.role}`,
+//         createdById: assigner.id,
+//         receivedById: assignee.id,
+//         createdAt: assignee.updatedAt
+//       }
+//     })
+//   } catch (err) {
+//     const error = new CreateEventError(assigner, 'update-role')
+//     myEmitter.emit('error', error)
+//     throw err
+//   }
+// }

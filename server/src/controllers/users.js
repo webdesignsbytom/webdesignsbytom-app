@@ -1,7 +1,6 @@
 const { Prisma } = require('@prisma/client');
 const prisma = require('../utils/prisma');
 const jwt = require('jsonwebtoken');
-
 const { findAllUsers } = require('../domain/users');
 
 const getAllUsers = async (req, res) => {
@@ -23,6 +22,8 @@ const getAllUsers = async (req, res) => {
         message: `Database is currently empty and no users were found`,
       });
     }
+
+    // myEmitter.emit('get-all-users')
 
     return res.status(201).json({
       message: `Found ${foundUsers.length} users`,

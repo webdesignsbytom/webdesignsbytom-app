@@ -5,6 +5,9 @@ import {
   createUpdateRoleEvent,
 } from './utils/userUtils.js';
 
+// Get all users
+myEmitter.on('get-all-users', (user) => getAllUsersEvent(user = 'bobby d'))
+
 // New User
 myEmitter.on('register', (user) => createRegisterEvent(user));
 

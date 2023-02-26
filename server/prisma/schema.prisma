@@ -22,3 +22,23 @@ model User {
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
+
+enum EventType {
+  ERROR
+  USER
+  ADMIN
+  VISITOR
+}
+
+model Event {
+  id           Int       @id @default(autoincrement())
+  type         EventType
+  topic        String?
+  content      String?
+  // createdBy    User?     @relation("createdEvents", fields: [createdById], references: [id], onDelete: Cascade)
+  // createdById  Int?
+  // receivedBy   User?     @relation("receivedEvents", fields: [receivedById], references: [id], onDelete: Cascade)
+  // receivedById Int?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
+}

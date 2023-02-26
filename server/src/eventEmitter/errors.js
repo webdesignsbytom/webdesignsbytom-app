@@ -1,7 +1,9 @@
 const prisma = require('../utils/prisma');
+// Response strings
+import { RESPONSE_MESSAGES } from '../utils/responses.js';
 
 // Listen for error
-myEmitter.on('error', (error) => createErrorEvent(error))
+myEmitter.on('error', (error) => createErrorEvent(error));
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
@@ -29,34 +31,27 @@ class ErrorEventBase {
 }
 
 export class BadRequestEvent extends ErrorEventBase {
-  constructor(user, topic, message = 'Incorrect request syntax') {
+  constructor(user, topic) {
     super(user, topic);
     this.code = 400;
-    this.message = message;
+    this.message = RESPONSE_MESSAGES.BadRequestEvent;
   }
 }
 
 export class NoValidationEvent {
-  constructor(
-    message = 'Unable to verify user',
-    topic = 'validate-authentication'
-  ) {
+  constructor(topic = 'validate-authentication') {
     this.user = null;
     this.topic = topic;
     this.code = 401;
-    this.message = message;
+    this.message = RESPONSE_MESSAGES.NoValidationEvent;
   }
 }
 
 export class NoPermissionEvent extends ErrorEventBase {
-  constructor(
-    user,
-    topic,
-    message = 'You are not authorized to perform this action'
-  ) {
+  constructor(user, topic) {
     super(user, topic);
     this.code = 403;
-    this.message = message;
+    this.message = RESPONSE_MESSAGES.NoPermissionEvent;
   }
 }
 
@@ -64,15 +59,15 @@ export class NotFoundEvent extends ErrorEventBase {
   constructor(user, topic, target) {
     super(user, topic);
     this.code = 404;
-    this.message = `The ${target} with the provided id does not exist`;
+    this.message = `${target}` + RESPONSE_MESSAGES.NotFoundEvent;
   }
 }
 
 export class ConfictEvent extends ErrorEventBase {
-  constructor(user, topic, message = 'Request conflicts with data on server') {
+  constructor(user, topic) {
     super(user, topic);
     this.code = 409;
-    this.message = message;
+    this.message = RESPONSE_MESSAGES.ConfictEvent;
   }
 }
 
@@ -80,20 +75,20 @@ export class DeactivatedUserEvent extends ErrorEventBase {
   constructor(user, topic) {
     super(user, topic);
     this.code = 400;
-    this.message = 'The target user account has been deactivated';
+    this.message = RESPONSE_MESSAGES.DeactivatedUserEvent;
   }
 }
 
 export class ServerErrorEvent extends ErrorEventBase {
-  constructor(user, topic, message = 'Internal Server Error') {
+  constructor(user, topic) {
     super(user, topic);
     this.code = 500;
-    this.message = message;
+    this.message = RESPONSE_MESSAGES.ServerErrorEvent;
   }
 }
 
 export class CreateEventError extends ServerErrorEvent {
-  constructor(user, topic, message = 'Failed to create an event') {
+  constructor(user, topic, message = RESPONSE_MESSAGES.CreateEventError) {
     super(user, topic, message);
   }
 }
