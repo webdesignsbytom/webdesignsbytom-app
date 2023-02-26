@@ -1,23 +1,14 @@
-import dbClient from '../utils/prisma.js';
+import dbClient from '../../utils/dbClient.js';
 // Response strings
-import { RESPONSE_MESSAGES } from '../utils/responses.js';
-
-// Listen for error
-myEmitter.on('error', (error) => createErrorEvent(error));
+import { RESPONSE_MESSAGES } from '../../utils/responses.js';
+import { myEmitterErrors } from '../errorEvents.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
-  let userId;
-  if (errorEvent.user) {
-    userId = errorEvent.user.id;
-  }
-
   await dbClient.event.create({
     data: {
       type: 'ERROR',
-      topic: errorEvent.topic,
-      content: `${errorEvent.code} ${errorEvent.message}`,
-      receivedById: userId,
+      topic: errorEvent.topic
     },
   });
 };

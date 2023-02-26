@@ -1,12 +1,12 @@
-// Load our .env file
 import 'dotenv/config'
 import express from 'express';
-import { join } from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
-
-// Tell express to use your routers here
-import userRouter from './routes/users.js';
+// Path
+import { join } from 'path';
+import * as url from 'url';
+// Import routers
+import userRouter from './routes/users.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -19,14 +19,16 @@ app.use(express.urlencoded({ extended: true }))
 
 // Set the port and URl
 const PORT = process.env.PORT || 4000;
-const URL = process.env.URL || `http://localhost:`
+const HTTP_URL = process.env.HTTP_URL || `http://localhost:`
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
-app.use('/users', userRouter);
+app.use('/users', userRouter)
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', {root: join(__dirname, '..', 'public', 'views')});
-    console.log('req', req.url);
 })
 
 // For all unknown requests 404 page returns
@@ -43,5 +45,5 @@ app.all('*', (req, res) => {
 
 // Start our API server
 app.listen(PORT, () => {
-    console.log(`\nServer is running on ${URL}${PORT} \n This no longer consumes souls\n`);
+    console.log(`\nServer is running on ${HTTP_URL}${PORT} \n This no longer consumes souls\n`);
 });

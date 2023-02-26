@@ -1,3 +1,3 @@
-import dbClient from '../utils/prisma.js';
+import dbClient from '../utils/dbClient.js';
 
-export const findAllUsers = () => dbClient.user.findMany({});
+export const findAllUsers = () => dbClient.user.findMany({})
