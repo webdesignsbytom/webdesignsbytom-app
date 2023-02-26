@@ -15,6 +15,7 @@ export function sendDataResponse(res, statusCode, payload) {
   })
 }
 
+// Sends e.g. 201 found user
 export function sendMessageResponse(res, statusCode, message) {
   return res.status(statusCode).json({
     status: STATUS_MESSAGES[statusCode],

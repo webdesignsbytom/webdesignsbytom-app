@@ -1,6 +1,6 @@
 import dbClient from '../utils/dbClient.js'
-import { myEmitter } from './index.js'
-import { CreateEventError } from './errors.js'
+import { myEmitter } from '../users.js'
+import { CreateEventError } from '../errors.js'
 
 export const createRegisterEvent = async (user) => {
   let type = 'USER'
