@@ -5,10 +5,17 @@ import { myEmitterErrors } from '../errorEvents.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
+  let userId = 1
+  if (errorEvent.user) {
+    userId = errorEvent.user.id
+  }
+
   await dbClient.event.create({
     data: {
       type: 'ERROR',
-      topic: errorEvent.topic
+      topic: errorEvent.topic,
+      content: `${errorEvent.code} ${errorEvent.message}`,
+      receivedById: userId
     },
   });
 };
@@ -50,7 +57,7 @@ export class NotFoundEvent extends ErrorEventBase {
   constructor(user, topic, target) {
     super(user, topic);
     this.code = 404;
-    this.message = `${target}` + RESPONSE_MESSAGES.NotFoundEvent;
+    this.message = `${target} ` + RESPONSE_MESSAGES.NotFoundEvent;
   }
 }
 

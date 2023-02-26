@@ -5,50 +5,42 @@ import { myEmitterErrors } from '../event/errorEvents.js'
 import { findAllUsers } from '../domain/users.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js'
-import { NotFoundEvent } from '../event/utils/errorUtils.js';
+import { NotFoundEvent, ServerErrorEvent } from '../event/utils/errorUtils.js';
 
 
 export const getAllUsers = async (req, res) => {
   console.log('getting all users...');
 
   try {
+    //
     const foundUsers = await findAllUsers();
 
-    if (!foundUsers) {
-      myEmitterErrors.emit('error')
-      return res.status(404).json({
-        status: `404 Not Found`,
-        message: `No users were found`,
-        code: `404`,
-      });
-    }
-
-    if (foundUsers.length === 2) {
+    // Find all users
+    if (foundUsers) {
       const notFound = new NotFoundEvent(
-        'Bastards',
-        'They got throught the walls'
+        req.user,
+        'Not found event',
+        'User database'
       )
       myEmitterErrors.emit('error', notFound)
-      return res.status(403).json({
-        message: `Database is currently empty and no users were found`,
-      });
+      return sendMessageResponse(res, notFound.code, notFound.message)
     }
 
     // Connect to eventEmitter
     myEmitterUsers.emit('get-all-users');
-
-    return res.status(201).json({
-      message: `Found ${foundUsers.length} users`,
-      code: `201`,
-      data: foundUsers,
-    });
+    return sendDataResponse(res, 200, { users: foundUsers })
     //
   } catch (error) {
-    //
-    return res.status(500).json({
-      code: `500`,
-      error: error.message,
-      message: `Internal server error: ${error.message}, code: 500`,
-    });
+    // Create error instance
+    const serverError = new ServerErrorEvent(
+      req.user,
+      `get all users`
+    )
+
+    // Store error as event
+    myEmitterErrors.emit('error', serverError)
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message)
+    throw err
   }
 };
