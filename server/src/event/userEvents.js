@@ -3,6 +3,7 @@ import {
   createGetAllEvent,
   createRegisterEvent,
   createVerifyEvent,
+  createNewVerifyEvent
 } from './utils/userUtils.js';
 
 export const myEmitterUsers = myEmitter;
@@ -15,4 +16,7 @@ myEmitterUsers.on('register', async (user) => {
 
 myEmitterUsers.on('verified', async (user) => {
   createVerifyEvent(user);
+});
+myEmitterUsers.on('resend-verification', async (user) => {
+  createNewVerifyEvent(user);
 });

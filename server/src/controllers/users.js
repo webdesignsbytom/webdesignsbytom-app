@@ -212,6 +212,8 @@ export const  resendVerificationEmail = async (req, res) => {
 
     await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString)
 
+    myEmitterUsers.emit('resend-verification', foundUser);
+
     return sendMessageResponse(res, 201, 'Verification email resent')
   } catch (err) {
     // Create error instance
