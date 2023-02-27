@@ -4,9 +4,9 @@ import { RESPONSE_MESSAGES } from '../../utils/responses.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
-  let userId = '0ec71d53-aded-452a-834f-3f0ce2d28c83'
+  let userId;
   if (errorEvent.user) {
-    userId = errorEvent.user.id
+    userId = errorEvent.user.id;
   }
 
   await dbClient.event.create({
@@ -14,7 +14,7 @@ export const createErrorEvent = async (errorEvent) => {
       type: 'ERROR',
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message}`,
-      receivedById: userId
+      receivedById: userId || null,
     },
   });
 };
@@ -60,6 +60,14 @@ export class NotFoundEvent extends ErrorEventBase {
   }
 }
 
+export class MissingFieldEvent extends ErrorEventBase {
+  constructor(user, topic) {
+    super(user, topic);
+    this.code = 404;
+    this.message = RESPONSE_MESSAGES.MissingFieldEvent;
+  }
+}
+
 export class ConfictEvent extends ErrorEventBase {
   constructor(user, topic) {
     super(user, topic);
@@ -79,6 +87,14 @@ export class DeactivatedUserEvent extends ErrorEventBase {
 export class ServerErrorEvent extends ErrorEventBase {
   constructor(user, topic) {
     super(user, topic);
+    this.code = 500;
+    this.message = RESPONSE_MESSAGES.ServerErrorEvent;
+  }
+}
+
+export class RegistrationServerErrorEvent extends ErrorEventBase {
+  constructor(topic) {
+    super(topic);
     this.code = 500;
     this.message = RESPONSE_MESSAGES.ServerErrorEvent;
   }

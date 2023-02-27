@@ -19,6 +19,7 @@ export const RESPONSE_MESSAGES = {
   NoPermissionEvent: 'You are not authorized to perform this action',
   NoValidationEvent: 'Unable to verify user',
   BadRequestEvent: 'Incorrect request syntax',
+  MissingFieldEvent: 'Missing fields in body',
 };
 
 // Data responses

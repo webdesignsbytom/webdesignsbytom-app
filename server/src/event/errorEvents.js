@@ -4,6 +4,6 @@ import { createErrorEvent } from './utils/errorUtils.js'
 export const myEmitterErrors = myEmitter
 
 myEmitterErrors.on('error', async (error) => {
-  console.log('ERRRRRROR EVEENEENNET');
+  console.log('ERROR EVENT');
   createErrorEvent(error)
 });

@@ -16,14 +16,26 @@ enum Role {
 }
 
 model User {
-  id             String    @id @default(uuid())
-  email          String    @unique
+  id             String            @id @default(uuid())
+  email          String            @unique
   password       String
-  role           Role      @default(USER)
-  createdEvents  Event[]   @relation("createdEvents")
-  receivedEvents Event[]   @relation("receivedEvents")
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime? @updatedAt
+  role           Role              @default(USER)
+  createdEvents  Event[]           @relation("createdEvents")
+  receivedEvents Event[]           @relation("receivedEvents")
+  isVerified     Boolean           @default(false)
+  verifications  UserVerification?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime?         @updatedAt
+}
+
+model UserVerification {
+  id           String    @id @default(uuid())
+  uniqueString String    @unique
+  userId       String    @unique
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt    DateTime
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
 }
 
 // EVENTS
