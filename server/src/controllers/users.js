@@ -12,17 +12,19 @@ export const getAllUsers = async (req, res) => {
   console.log('getting all users...');
 
   try {
-    //
+    // Find all users
     const foundUsers = await findAllUsers();
 
-    // Find all users
-    if (foundUsers) {
+    // If no found users
+    if (!foundUsers) {
+      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
         'User database'
       )
       myEmitterErrors.emit('error', notFound)
+      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message)
     }
 
@@ -31,12 +33,12 @@ export const getAllUsers = async (req, res) => {
     return sendDataResponse(res, 200, { users: foundUsers })
     //
   } catch (error) {
+
     // Create error instance
     const serverError = new ServerErrorEvent(
       req.user,
       `get all users`
     )
-
     // Store error as event
     myEmitterErrors.emit('error', serverError)
     // Send error to client

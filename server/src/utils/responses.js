@@ -21,7 +21,7 @@ export const RESPONSE_MESSAGES = {
   BadRequestEvent: 'Incorrect request syntax',
 };
 
-
+// Data responses
 export function sendDataResponse(res, statusCode, payload) {
   return res.status(statusCode).json({
     status: STATUS_MESSAGES[statusCode],
@@ -29,7 +29,7 @@ export function sendDataResponse(res, statusCode, payload) {
   });
 }
 
-// Sends e.g. 201 found user
+// Error responses
 export function sendMessageResponse(res, statusCode, message) {
   return res.status(statusCode).json({
     status: STATUS_MESSAGES[statusCode],

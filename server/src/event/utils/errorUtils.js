@@ -4,7 +4,7 @@ import { RESPONSE_MESSAGES } from '../../utils/responses.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
-  let userId = 1
+  let userId = '0ec71d53-aded-452a-834f-3f0ce2d28c83'
   if (errorEvent.user) {
     userId = errorEvent.user.id
   }

@@ -16,7 +16,7 @@ enum Role {
 }
 
 model User {
-  id             Int       @id @default(autoincrement())
+  id             String    @id @default(uuid())
   email          String    @unique
   password       String
   role           Role      @default(USER)
@@ -33,15 +33,16 @@ enum EventType {
   ADMIN
   VISITOR
 }
+
 model Event {
   id           Int       @id @default(autoincrement())
   type         EventType
   topic        String?
   content      String?
   createdBy    User?     @relation("createdEvents", fields: [createdById], references: [id], onDelete: Cascade)
-  createdById  Int?
+  createdById  String?
   receivedBy   User?     @relation("receivedEvents", fields: [receivedById], references: [id], onDelete: Cascade)
-  receivedById Int?
+  receivedById String?
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
 }

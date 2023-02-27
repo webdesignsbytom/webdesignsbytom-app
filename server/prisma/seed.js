@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt'
 import dbClient from '../src/utils/dbClient.js';
+import { v4 as uuid } from 'uuid'
+
 
 async function seed() {
   const password = await bcrypt.hash('123', 8)
