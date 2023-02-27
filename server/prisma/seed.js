@@ -1,7 +1,5 @@
 import bcrypt from 'bcrypt'
 import dbClient from '../src/utils/dbClient.js';
-import { v4 as uuid } from 'uuid'
-
 
 async function seed() {
   const password = await bcrypt.hash('123', 8)
@@ -10,6 +8,7 @@ async function seed() {
     data: {
       email: 'maxpower@email.com',
       password,
+      isVerified: true
     },
   });
 
@@ -18,6 +17,7 @@ async function seed() {
       email: 'admin@admin.com',
       password,
       role: 'ADMIN',
+      isVerified: true
     }
   })
 }

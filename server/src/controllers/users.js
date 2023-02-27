@@ -45,11 +45,9 @@ export const getAllUsers = async (req, res) => {
     return sendDataResponse(res, 200, { users: foundUsers });
     //
   } catch (err) {
-    // Create error instance
+    // 
     const serverError = new ServerErrorEvent(req.user, `Get all users`);
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
@@ -81,38 +79,29 @@ export const registerNewUser = async (req, res) => {
 
     myEmitterUsers.emit('register', createdUser);
 
+    // Create unique string for verify URL
     const uniqueString = uuid() + createdUser.id;
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
-    console.log('uniqueString', uniqueString);
-
-    console.log('hashedString', hashedString);
 
     await createVerificationInDB(createdUser.id, hashedString);
-    console.log(
-      'link',
-      `http://localhost:4000/verify/${createdUser.id}/${uniqueString}`
-    );
-    console.log('id', createdUser.id);
     await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
 
     return sendDataResponse(res, 201, { createdUser });
+    //
   } catch (err) {
-    // Create error instance
+    //
     const serverError = new RegistrationServerErrorEvent(
       `Register Server error`
     );
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
 };
 
 export const verifyUser = async (req, res) => {
-  console.log('AAAAAAAAAAAA');
   const { userId, uniqueString } = req.params;
-  console.log('stuff', userId, uniqueString);
+
   try {
     // check if the verification record exists
     const foundVerification = await findVerification(userId)
@@ -133,10 +122,7 @@ export const verifyUser = async (req, res) => {
       return sendMessageResponse(res, 401, 'Link has expired. Please sign up again.')
     }
 
-    // Returns true
     const isValidString = await bcrypt.compare(uniqueString, foundVerification.uniqueString)
-    console.log('IS VALID', isValidString);
-
     if (!isValidString) {
       return sendMessageResponse(res, 401, 'Invalid verification details passed. Check your inbox.')
     }
@@ -147,7 +133,6 @@ export const verifyUser = async (req, res) => {
     })
 
     delete updatedUser.password
-    console.log('updated user', updatedUser);
 
     const token = createAccessToken(updatedUser.id, updatedUser.email);
 
@@ -156,7 +141,6 @@ export const verifyUser = async (req, res) => {
     await dbClient.userVerification.delete({ where: { userId } })
 
     myEmitterUsers.emit('verified', updatedUser);
-
   } catch (err) {
     // Create error instance
     const serverError = new RegistrationServerErrorEvent(

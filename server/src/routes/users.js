@@ -3,7 +3,7 @@ import { getAllUsers, registerNewUser, verifyUser } from '../controllers/users.j
 
 const router = Router();
 
-router.get('/', getAllUsers);
+router.get('/users', getAllUsers);
 router.post('/register', registerNewUser);
 router.get('/verify/:userId/:uniqueString', verifyUser)
 
