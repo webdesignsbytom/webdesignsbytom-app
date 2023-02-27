@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "country" SET DEFAULT '',
+ALTER COLUMN "firstName" SET DEFAULT '',
+ALTER COLUMN "lastName" SET DEFAULT '';

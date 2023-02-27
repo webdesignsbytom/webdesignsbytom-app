@@ -19,6 +19,9 @@ model User {
   id             String            @id @default(uuid())
   email          String            @unique
   password       String
+  firstName      String            @default("")
+  lastName       String            @default("")
+  country        String            @default("")
   role           Role              @default(USER)
   createdEvents  Event[]           @relation("createdEvents")
   receivedEvents Event[]           @relation("receivedEvents")
@@ -51,6 +54,7 @@ model Event {
   id           Int       @id @default(autoincrement())
   type         EventType
   topic        String?
+  code         Int?
   content      String?
   createdBy    User?     @relation("createdEvents", fields: [createdById], references: [id], onDelete: Cascade)
   createdById  String?
