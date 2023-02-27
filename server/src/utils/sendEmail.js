@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
+import { VERIFICATION_URL } from './config.js';
+
 
 const transporter = nodemailer.createTransport({
   pool: true,
@@ -14,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendVerificationEmail(id, email, uniqueString) {
-  const clientUrl = 'http://localhost:4000';
+  const clientUrl = VERIFICATION_URL;
   console.log('client url: ' + clientUrl);
 
   const mailOptions = {
