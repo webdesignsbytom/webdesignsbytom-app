@@ -87,6 +87,7 @@ async function seed() {
       desc: 'Users can fill in details',
       mainImage:
         'https://www.f-cdn.com/assets/main/en/assets/illustrations/portfolio/browse-portfolios.svg',
+        price: 100
     },
   });
 }
