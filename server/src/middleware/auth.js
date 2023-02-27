@@ -84,14 +84,14 @@ export const validateAuthentication = async (req, res, next) => {
   }
   if (isTokenValid.name === 'TokenExpiredError') {
     const error = new NoValidationEvent('Token has expired')
-    myEmitter.emit('error', error)
+    myEmitterErrors.emit('error', error)
     return sendMessageResponse(res, error.code, {
       authorization: error.message
     })
   }
   if (isTokenValid.name) {
     const error = new NoValidationEvent('Invalid access token')
-    myEmitter.emit('error', error)
+    myEmitterErrors.emit('error', error)
     return sendMessageResponse(res, error.code, {
       authorization: error.message
     })
