@@ -3,7 +3,7 @@ import { createGetAllEvent, createRegisterEvent, createVerifyEvent } from './uti
 
 export const myEmitterUsers = myEmitter;
 
-myEmitterUsers.on('get-all-users', async () => createGetAllEvent());
+myEmitterUsers.on('get-all-users', async (user) => createGetAllEvent(user));
 
 myEmitterUsers.on('register', async (user) => {
   createRegisterEvent(user);

@@ -41,7 +41,7 @@ export const getAllUsers = async (req, res) => {
     }
 
     // Connect to eventEmitter
-    myEmitterUsers.emit('get-all-users');
+    myEmitterUsers.emit('get-all-users', req.user);
     return sendDataResponse(res, 200, { users: foundUsers });
     //
   } catch (err) {

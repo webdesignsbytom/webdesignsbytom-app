@@ -7,6 +7,7 @@ import { join } from 'path';
 import * as url from 'url';
 // Import routers
 import userRouter from './routes/users.js';
+import authRouter from './routes/auth.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -26,7 +27,8 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
 app.use('/users', userRouter);
-app.use('/', userRouter);
+app.use('/', authRouter)
+
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', {

@@ -1,6 +1,6 @@
 # User Stories
 
-1. I want a user to sign up and be required to confirm email.
+1. I want a user to sign up and be required to confirm email. - completed
 2. I want a forgotten password reset page and not an email link.
 3. I want users to have a basic profile.
 4. I want an index page that is a variety of hero sections being swapped over.
@@ -10,12 +10,3 @@
 8. I want to log all user events - create, delete, save design.
 9. I want to log all visitor to the site.
 10. I want to log all visitors to the sales page.
-11. 
-
-Username:	verify@webdesignsbytom.com
-Password:	Use the email account’s password.
-Incoming Server:	mail.webdesignsbytom.com
-IMAP Port: 993 POP3 Port: 995
-Outgoing Server:	mail.webdesignsbytom.com
-SMTP Port: 465
-IMAP, POP3, and SMTP require authentication.
