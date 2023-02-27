@@ -106,6 +106,14 @@ export class ServerErrorEvent extends ErrorEventBase {
   }
 }
 
+export class ServerConflictError extends ErrorEventBase {
+  constructor(user, topic) {
+    super(user, topic);
+    this.code = 500;
+    this.message = RESPONSE_MESSAGES.ServerErrorEvent;
+  }
+}
+
 export class RegistrationServerErrorEvent extends ErrorEventBase {
   constructor(topic) {
     super(topic);

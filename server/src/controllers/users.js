@@ -21,6 +21,7 @@ import {
   ServerErrorEvent,
   MissingFieldEvent,
   RegistrationServerErrorEvent,
+  ServerConflictError
 } from '../event/utils/errorUtils.js';
 // Time
 import { v4 as uuid } from 'uuid';
@@ -173,3 +174,54 @@ export const verifyUser = async (req, res) => {
     throw err;
   }
 };
+
+export const  resendVerificationEmail = async (req, res) => {
+  const { email } = req.params
+  console.log('email', email);
+
+  if (!email) {
+    const err = new BadRequestError('Missing user identifier')
+    return sendMessageResponse(res, err.code, err.message)
+  }
+
+  try {
+
+    const foundUser = await dbClient.user.findUnique({ where: { email } })
+    console.log('found user', foundUser);
+    if (!foundUser) {
+      const notFound = new NotFoundError('user', 'email')
+      return sendMessageResponse(res, notFound.code, notFound.message)
+    }
+
+    const foundVerification = await dbClient.userVerification.findUnique({
+      where: { userId: foundUser.id },
+    })
+    console.log('foundVerificia', foundVerification);
+    if (!foundVerification) {
+      const err = new ServerConflictError(
+        "Account record doesn't exist or has been verified already. Please sign up or log in."
+      )
+      return sendMessageResponse(res, err.code, err.message)
+    }
+
+    await dbClient.userVerification.delete({ where: { userId: foundUser.id } })
+
+    const uniqueString = uuid() + foundUser.id
+    const hashedString = await bcrypt.hash(uniqueString, hashRate)
+    await createVerificationInDB(foundUser.id, hashedString)
+
+    await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString)
+
+    return sendMessageResponse(res, 201, 'Verification email resent')
+  } catch (err) {
+    // Create error instance
+    const serverError = new RegistrationServerErrorEvent(
+      `Verify New User Server error`
+    );
+    // Store error as event
+    myEmitterErrors.emit('error', serverError);
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+}
