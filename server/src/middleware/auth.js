@@ -30,6 +30,26 @@ export async function validateAdminRole(req, res, next) {
   next()
 }
 
+export async function validateDeveloperRole(req, res, next) {
+  if (!req.user) {
+    const error = new NoValidationEvent(
+      'Unable to verify user',
+      'perform-developer-action'
+    )
+    myEmitterErrors.emit('error', error)
+    return sendMessageResponse(res, error.code, error.message)
+  }
+
+  if (req.user.role !== 'DEVELOPER') {
+    const noPermission = new NoPermissionEvent(req.user, 'perform-developer-action')
+    myEmitterErrors.emit('error', noPermission)
+    return sendDataResponse(res, noPermission.code, {
+      authorization: noPermission.message
+    })
+  }
+  next()
+}
+
 export const validateAuthentication = async (req, res, next) => {
   const header = req.header('authorization');
 

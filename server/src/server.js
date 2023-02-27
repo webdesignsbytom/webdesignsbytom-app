@@ -7,6 +7,7 @@ import { join } from 'path';
 import * as url from 'url';
 // Import routers
 import userRouter from './routes/users.js';
+import eventRouter from './routes/events.js';
 import authRouter from './routes/auth.js'
 
 const app = express();
@@ -27,6 +28,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
 app.use('/users', userRouter);
+app.use('/events', eventRouter);
 app.use('/', authRouter)
 
 

@@ -20,6 +20,15 @@ async function seed() {
       isVerified: true
     }
   })
+
+  const devUser = await dbClient.user.create({
+    data: {
+      email: 'dev@dev.com',
+      password,
+      role: 'DEVELOPER',
+      isVerified: true
+    }
+  })
 }
 
 seed().catch(async (error) => {
