@@ -4,6 +4,7 @@ import { RESPONSE_MESSAGES } from '../../utils/responses.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
+  console.log('TTTTT', errorEvent);
   let userId;
   if (errorEvent.user) {
     userId = errorEvent.user.id;
@@ -15,6 +16,19 @@ export const createErrorEvent = async (errorEvent) => {
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message}`,
       receivedById: userId || null,
+    },
+  });
+};
+
+export const createLoginErrorEvent = async (errorEvent) => {
+  console.log('SSSS', errorEvent.user);
+  let userEmail = errorEvent.user
+
+  await dbClient.event.create({
+    data: {
+      type: 'ERROR',
+      topic: errorEvent.topic,
+      content: `${errorEvent.code} ${errorEvent.message} ${userEmail}`,
     },
   });
 };
@@ -95,6 +109,13 @@ export class ServerErrorEvent extends ErrorEventBase {
 export class RegistrationServerErrorEvent extends ErrorEventBase {
   constructor(topic) {
     super(topic);
+    this.code = 500;
+    this.message = RESPONSE_MESSAGES.ServerErrorEvent;
+  }
+}
+export class LoginServerErrorEvent extends ErrorEventBase {
+  constructor(user,topic) {
+    super(user, topic);
     this.code = 500;
     this.message = RESPONSE_MESSAGES.ServerErrorEvent;
   }

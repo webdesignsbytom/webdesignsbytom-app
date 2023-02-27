@@ -23,6 +23,7 @@ import { v4 as uuid } from 'uuid';
 const hashRate = 8;
 
 export const getAllUsers = async (req, res) => {
+  console.log('AAAA', req.user);
   try {
     // Find all users
     const foundUsers = await findAllUsers();
