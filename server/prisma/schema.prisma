@@ -63,3 +63,20 @@ model Event {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
 }
+
+// Components
+enum ComponentType {
+  BASIC
+  SHOP
+  FULLSTACK
+}
+
+model Component {
+  id        Int       @id @default(autoincrement())
+  type      ComponentType
+  name      String
+  desc      String
+  mainImage String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}

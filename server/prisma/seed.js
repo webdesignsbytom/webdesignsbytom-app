@@ -79,6 +79,16 @@ async function seed() {
       content: '201 test content',
     },
   });
+
+  const componentOne = await dbClient.component.create({
+    data: {
+      type: 'BASIC',
+      name: 'Contact Form',
+      desc: 'Users can fill in details',
+      mainImage:
+        'https://www.f-cdn.com/assets/main/en/assets/illustrations/portfolio/browse-portfolios.svg',
+    },
+  });
 }
 
 seed().catch(async (error) => {
