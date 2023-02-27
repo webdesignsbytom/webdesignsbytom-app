@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 // Components
-import { createVerificationInDB } from './utils.js'
+import { createVerificationInDB } from './utils.js';
 // Emitters
 import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
@@ -15,14 +15,12 @@ import {
   MissingFieldEvent,
   RegistrationServerErrorEvent,
 } from '../event/utils/errorUtils.js';
-// Time 
-import { v4 as uuid } from 'uuid'
+// Time
+import { v4 as uuid } from 'uuid';
 // Password hash
 const hashRate = 8;
 
-
 export const getAllUsers = async (req, res) => {
-
   try {
     // Find all users
     const foundUsers = await findAllUsers();
@@ -82,14 +80,19 @@ export const registerNewUser = async (req, res) => {
 
     myEmitterUsers.emit('register', createdUser);
 
-    const uniqueString = uuid() + createdUser.id
+    const uniqueString = uuid() + createdUser.id;
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
     console.log('uniqueString', uniqueString);
 
     console.log('hashedString', hashedString);
 
-    await createVerificationInDB(createdUser.id, hashedString)
-    await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
+    await createVerificationInDB(createdUser.id, hashedString);
+    console.log(
+      'link',
+      `http://localhost:4000/verify/${createdUser.id}/${uniqueString}`
+    );
+    console.log('id', createdUser.id);
+    // await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
 
     return sendDataResponse(res, 201, { token, createdUser });
   } catch (err) {
@@ -106,6 +109,7 @@ export const registerNewUser = async (req, res) => {
 };
 
 export const verifyUser = async (req, res) => {
-  console.log('verify', req.params);
   console.log('AAAAAAAAAAAA');
-}
+  const { userId, uniqueString } = req.params;
+  console.log('stuff', userId, uniqueString);
+};
