@@ -10,4 +10,5 @@
 8. I want to log all user events - create, delete, save design.
 9. I want to log all visitor to the site.
 10. I want to log all visitors to the sales page.
-11. I want
+11. I want users to use a random colour pallet picker in the design page
+12. 
