@@ -8,6 +8,7 @@ import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
 import { findAllUsers, findUserByEmail, createUser, findVerification } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
+import { sendVerificationEmail } from '../utils/sendEmail.js'
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -92,7 +93,7 @@ export const registerNewUser = async (req, res) => {
       `http://localhost:4000/verify/${createdUser.id}/${uniqueString}`
     );
     console.log('id', createdUser.id);
-    // await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
+    await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
 
     return sendDataResponse(res, 201, { createdUser });
   } catch (err) {
