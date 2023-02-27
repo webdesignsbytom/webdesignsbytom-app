@@ -1,5 +1,9 @@
 import { myEmitter } from '../utils/eventEmitter.js';
-import { createGetAllEvent, createRegisterEvent, createVerifyEvent } from './utils/userUtils.js';
+import {
+  createGetAllEvent,
+  createRegisterEvent,
+  createVerifyEvent,
+} from './utils/userUtils.js';
 
 export const myEmitterUsers = myEmitter;
 

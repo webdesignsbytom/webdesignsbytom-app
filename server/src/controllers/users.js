@@ -6,9 +6,14 @@ import { createVerificationInDB } from './utils.js';
 // Emitters
 import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
-import { findAllUsers, findUserByEmail, createUser, findVerification } from '../domain/users.js';
+import {
+  findAllUsers,
+  findUserByEmail,
+  createUser,
+  findVerification,
+} from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
-import { sendVerificationEmail } from '../utils/sendEmail.js'
+import { sendVerificationEmail } from '../utils/sendEmail.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -45,7 +50,7 @@ export const getAllUsers = async (req, res) => {
     return sendDataResponse(res, 200, { users: foundUsers });
     //
   } catch (err) {
-    // 
+    //
     const serverError = new ServerErrorEvent(req.user, `Get all users`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -84,7 +89,11 @@ export const registerNewUser = async (req, res) => {
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
 
     await createVerificationInDB(createdUser.id, hashedString);
-    await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
+    await sendVerificationEmail(
+      createdUser.id,
+      createdUser.email,
+      uniqueString
+    );
 
     return sendDataResponse(res, 201, { createdUser });
     //
@@ -104,7 +113,7 @@ export const verifyUser = async (req, res) => {
 
   try {
     // check if the verification record exists
-    const foundVerification = await findVerification(userId)
+    const foundVerification = await findVerification(userId);
     console.log('found', foundVerification);
 
     if (!foundVerification) {
@@ -112,33 +121,44 @@ export const verifyUser = async (req, res) => {
         res,
         404,
         "Account record doesn't exist or has been verified already. Please sign up or log in."
-      )
+      );
     }
 
-    const { expiresAt } = foundVerification
+    const { expiresAt } = foundVerification;
     if (expiresAt < Date.now()) {
-      await dbClient.userVerification.delete({ where: { userId } })
-      await dbClient.user.delete({ where: { userId } })
-      return sendMessageResponse(res, 401, 'Link has expired. Please sign up again.')
+      await dbClient.userVerification.delete({ where: { userId } });
+      await dbClient.user.delete({ where: { userId } });
+      return sendMessageResponse(
+        res,
+        401,
+        'Link has expired. Please sign up again.'
+      );
     }
 
-    const isValidString = await bcrypt.compare(uniqueString, foundVerification.uniqueString)
+    const isValidString = await bcrypt.compare(
+      uniqueString,
+      foundVerification.uniqueString
+    );
     if (!isValidString) {
-      return sendMessageResponse(res, 401, 'Invalid verification details passed. Check your inbox.')
+      return sendMessageResponse(
+        res,
+        401,
+        'Invalid verification details passed. Check your inbox.'
+      );
     }
 
     const updatedUser = await dbClient.user.update({
       where: { id: userId },
       data: { isVerified: true },
-    })
+    });
 
-    delete updatedUser.password
+    delete updatedUser.password;
 
     const token = createAccessToken(updatedUser.id, updatedUser.email);
 
-    sendDataResponse(res, 200, { token, user: updatedUser })
+    sendDataResponse(res, 200, { token, user: updatedUser });
 
-    await dbClient.userVerification.delete({ where: { userId } })
+    await dbClient.userVerification.delete({ where: { userId } });
 
     myEmitterUsers.emit('verified', updatedUser);
   } catch (err) {

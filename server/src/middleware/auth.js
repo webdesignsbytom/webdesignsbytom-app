@@ -11,7 +11,6 @@ import { NoPermissionEvent, NoValidationEvent } from '../event/utils/errorUtils.
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 
 export async function validateAdminRole(req, res, next) {
-  console.log('req.user', req.user);
   if (!req.user) {
     const error = new NoValidationEvent(
       'Unable to verify user',
