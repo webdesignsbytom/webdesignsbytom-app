@@ -15,3 +15,10 @@ export const createUser = (email, password, role) =>
       role: role,
     },
   });
+
+export const findVerification = (userId) =>
+  dbClient.userVerification.findUnique({ 
+    where: { 
+      userId: userId 
+    } 
+  });

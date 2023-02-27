@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import dbClient from '../utils/dbClient.js';
 // Components
 import { createVerificationInDB } from './utils.js';
 // Emitters
 import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
-import { findAllUsers, findUserByEmail, createUser } from '../domain/users.js';
+import { findAllUsers, findUserByEmail, createUser, findVerification } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -76,7 +77,6 @@ export const registerNewUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
     const createdUser = await createUser(lowerCaseEmail, hashedPassword, role);
-    const token = createAccessToken(createdUser.id, createdUser.email);
 
     myEmitterUsers.emit('register', createdUser);
 
@@ -94,7 +94,7 @@ export const registerNewUser = async (req, res) => {
     console.log('id', createdUser.id);
     // await sendVerificationEmail(createdUser.id, createdUser.email, uniqueString)
 
-    return sendDataResponse(res, 201, { token, createdUser });
+    return sendDataResponse(res, 201, { createdUser });
   } catch (err) {
     // Create error instance
     const serverError = new RegistrationServerErrorEvent(
@@ -112,4 +112,57 @@ export const verifyUser = async (req, res) => {
   console.log('AAAAAAAAAAAA');
   const { userId, uniqueString } = req.params;
   console.log('stuff', userId, uniqueString);
+  try {
+    // check if the verification record exists
+    const foundVerification = await findVerification(userId)
+    console.log('found', foundVerification);
+
+    if (!foundVerification) {
+      return sendMessageResponse(
+        res,
+        404,
+        "Account record doesn't exist or has been verified already. Please sign up or log in."
+      )
+    }
+
+    const { expiresAt } = foundVerification
+    if (expiresAt < Date.now()) {
+      await dbClient.userVerification.delete({ where: { userId } })
+      await dbClient.user.delete({ where: { userId } })
+      return sendMessageResponse(res, 401, 'Link has expired. Please sign up again.')
+    }
+
+    // Returns true
+    const isValidString = await bcrypt.compare(uniqueString, foundVerification.uniqueString)
+    console.log('IS VALID', isValidString);
+
+    if (!isValidString) {
+      return sendMessageResponse(res, 401, 'Invalid verification details passed. Check your inbox.')
+    }
+
+    const updatedUser = await dbClient.user.update({
+      where: { id: userId },
+      data: { isVerified: true },
+    })
+
+    delete updatedUser.password
+    console.log('updated user', updatedUser);
+
+    const token = createAccessToken(updatedUser.id, updatedUser.email);
+
+    sendDataResponse(res, 200, { token, user: updatedUser })
+    
+    await dbClient.userVerification.delete({ where: { userId } })
+
+  } catch (err) {
+    // Create error instance
+    const serverError = new RegistrationServerErrorEvent(
+      `Verify New User Server error`
+    );
+    // Store error as event
+    myEmitterErrors.emit('error', serverError);
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
 };
