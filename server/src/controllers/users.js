@@ -1,46 +1,48 @@
-const { Prisma } = require('@prisma/client');
-const prisma = require('../utils/prisma');
-const jwt = require('jsonwebtoken');
-const { findAllUsers } = require('../domain/users');
+import jwt from 'jsonwebtoken';
+// Emitters
+import { myEmitterUsers } from '../event/userEvents.js'
+import { myEmitterErrors } from '../event/errorEvents.js'
+import { findAllUsers } from '../domain/users.js';
+// Response messages
+import { sendDataResponse, sendMessageResponse } from '../utils/responses.js'
+import { NotFoundEvent, ServerErrorEvent } from '../event/utils/errorUtils.js';
 
-const getAllUsers = async (req, res) => {
+
+export const getAllUsers = async (req, res) => {
   console.log('getting all users...');
 
   try {
+    // Find all users
     const foundUsers = await findAllUsers();
 
+    // If no found users
     if (!foundUsers) {
-      return res.status(404).json({
-        status: `404 Not Found`,
-        message: `No users were found`,
-        code: `404`,
-      });
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'User database'
+      )
+      myEmitterErrors.emit('error', notFound)
+      // Send response
+      return sendMessageResponse(res, notFound.code, notFound.message)
     }
 
-    if (foundUsers.length === 0) {
-      return res.status(403).json({
-        message: `Database is currently empty and no users were found`,
-      });
-    }
-
-    // myEmitter.emit('get-all-users')
-
-    return res.status(201).json({
-      message: `Found ${foundUsers.length} users`,
-      code: `201`,
-      data: foundUsers,
-    });
+    // Connect to eventEmitter
+    myEmitterUsers.emit('get-all-users');
+    return sendDataResponse(res, 200, { users: foundUsers })
     //
   } catch (error) {
-    //
-    return res.status(500).json({
-      code: `500`,
-      error: error.message,
-      message: `Internal server error: ${error.message}, code: 500`,
-    });
+
+    // Create error instance
+    const serverError = new ServerErrorEvent(
+      req.user,
+      `get all users`
+    )
+    // Store error as event
+    myEmitterErrors.emit('error', serverError)
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message)
+    throw err
   }
 };
-
-module.exports = {
-    getAllUsers
-}

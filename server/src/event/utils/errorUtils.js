@@ -1,23 +1,20 @@
-const prisma = require('../utils/prisma');
+import dbClient from '../../utils/dbClient.js';
 // Response strings
-import { RESPONSE_MESSAGES } from '../utils/responses.js';
-
-// Listen for error
-myEmitter.on('error', (error) => createErrorEvent(error));
+import { RESPONSE_MESSAGES } from '../../utils/responses.js';
 
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
-  let userId;
+  let userId = '0ec71d53-aded-452a-834f-3f0ce2d28c83'
   if (errorEvent.user) {
-    userId = errorEvent.user.id;
+    userId = errorEvent.user.id
   }
 
-  await prisma.event.create({
+  await dbClient.event.create({
     data: {
       type: 'ERROR',
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message}`,
-      receivedById: userId,
+      receivedById: userId
     },
   });
 };
@@ -59,7 +56,7 @@ export class NotFoundEvent extends ErrorEventBase {
   constructor(user, topic, target) {
     super(user, topic);
     this.code = 404;
-    this.message = `${target}` + RESPONSE_MESSAGES.NotFoundEvent;
+    this.message = `${target} ` + RESPONSE_MESSAGES.NotFoundEvent;
   }
 }
 

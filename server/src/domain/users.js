@@ -1,10 +1,3 @@
-const { Prisma } = require('@prisma/client');
-const prisma = require('../utils/prisma');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import dbClient from '../utils/dbClient.js';
 
-const findAllUsers = () => prisma.user.findMany({});
-
-module.exports = {
-    findAllUsers
-}
+export const findAllUsers = () => dbClient.user.findMany({})
