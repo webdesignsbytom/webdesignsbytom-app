@@ -151,8 +151,10 @@ export const verifyUser = async (req, res) => {
     const token = createAccessToken(updatedUser.id, updatedUser.email);
 
     sendDataResponse(res, 200, { token, user: updatedUser })
-    
+
     await dbClient.userVerification.delete({ where: { userId } })
+
+    myEmitterUsers.emit('verified', updatedUser);
 
   } catch (err) {
     // Create error instance

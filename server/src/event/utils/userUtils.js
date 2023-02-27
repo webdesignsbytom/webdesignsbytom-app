@@ -25,15 +25,42 @@ export const createRegisterEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'register',
+        topic: 'Register',
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'register');
+    const error = new CreateEventError(user, 'Register');
     myEmitterErrors.emit('error', error);
     throw err;
   }
 };
+
+export const createVerifyEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'Verify',
+        content: user.role,
+        receivedById: user.id,
+        createdAt: user.createdAt,
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Verify');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+}
+
