@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendVerificationEmail(id, email, uniqueString) {
-  const clientUrl = process.env.HTTP_URL;
+  const clientUrl = 'http://localhost:4000';
   console.log('client url: ' + clientUrl);
 
   const mailOptions = {
@@ -22,10 +22,10 @@ export async function sendVerificationEmail(id, email, uniqueString) {
     to: email,
     subject: 'Please verify Your Email',
     html: `<p>Please verify your email address to complete the signup and login into your account.</p><p>This link <b>expires in 6 hours</b>.</p><p>Press <a href=${
-      clientUrl + '/signup/verify/' + id + '/' + uniqueString
+      clientUrl + '/verify/' + id + '/' + uniqueString
     }>here</a> to proceed.</p>`,
   };
-  console.log('url: ', clientUrl + '/signup/verify/' + id + '/' + uniqueString);
+  console.log('url: ', clientUrl + '/verify/' + id + '/' + uniqueString);
   try {
     transporter.sendMail(mailOptions);
   } catch (err) {
