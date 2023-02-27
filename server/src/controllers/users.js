@@ -23,7 +23,6 @@ import { v4 as uuid } from 'uuid';
 const hashRate = 8;
 
 export const getAllUsers = async (req, res) => {
-  console.log('AAAA', req.user);
   try {
     // Find all users
     const foundUsers = await findAllUsers();
@@ -42,7 +41,7 @@ export const getAllUsers = async (req, res) => {
     }
 
     // Connect to eventEmitter
-    myEmitterUsers.emit('get-all-users');
+    myEmitterUsers.emit('get-all-users', req.user);
     return sendDataResponse(res, 200, { users: foundUsers });
     //
   } catch (err) {

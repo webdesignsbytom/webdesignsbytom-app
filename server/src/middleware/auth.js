@@ -10,6 +10,27 @@ import { NoPermissionEvent, NoValidationEvent } from '../event/utils/errorUtils.
 // Responses 
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 
+export async function validateAdminRole(req, res, next) {
+  console.log('req.user', req.user);
+  if (!req.user) {
+    const error = new NoValidationEvent(
+      'Unable to verify user',
+      'perform-admin-action'
+    )
+    myEmitterErrors.emit('error', error)
+    return sendMessageResponse(res, error.code, error.message)
+  }
+
+  if (req.user.role !== 'ADMIN' || req.user.role !== 'DEVELOPER') {
+    const noPermission = new NoPermissionEvent(req.user, 'perform-admin-action')
+    myEmitterErrors.emit('error', noPermission)
+    return sendDataResponse(res, noPermission.code, {
+      authorization: noPermission.message
+    })
+  }
+  next()
+}
+
 export const validateAuthentication = async (req, res, next) => {
   const header = req.header('authorization');
 

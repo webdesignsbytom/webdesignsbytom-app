@@ -4,11 +4,11 @@ import {
   registerNewUser,
   verifyUser,
 } from '../controllers/users.js';
-import { validateAuthentication } from '../middleware/auth.js';
+import { validateAuthentication, validateAdminRole } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', validateAuthentication, getAllUsers);
+router.get('/', validateAuthentication, validateAdminRole, getAllUsers);
 router.post('/register', registerNewUser);
 router.get('/verify/:userId/:uniqueString', verifyUser);
 

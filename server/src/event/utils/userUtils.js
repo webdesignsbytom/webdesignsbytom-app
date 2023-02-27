@@ -3,13 +3,21 @@ import dbClient from '../../utils/dbClient.js';
 import { myEmitterErrors } from '../errorEvents.js';
 import { CreateEventError } from './errorUtils.js';
 
-export const createGetAllEvent = async () => {
-  await dbClient.event.create({
-    data: {
-      type: 'USER',
-      topic: 'Get all users',
-    },
-  });
+export const createGetAllEvent = async (user) => {
+  try {
+    await dbClient.event.create({
+      data: {
+        type: 'ADMIN',
+        topic: 'Get all users',
+        content: `Success ${user.email}`,
+        createdById: user.id,
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Get all users');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
 };
 
 export const createRegisterEvent = async (user) => {
@@ -62,5 +70,4 @@ export const createVerifyEvent = async (user) => {
     myEmitterErrors.emit('error', error);
     throw err;
   }
-}
-
+};
