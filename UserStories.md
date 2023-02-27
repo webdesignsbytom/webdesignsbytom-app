@@ -12,3 +12,10 @@
 10. I want to log all visitors to the sales page.
 11. 
 
+Username:	verify@webdesignsbytom.com
+Password:	Use the email account’s password.
+Incoming Server:	mail.webdesignsbytom.com
+IMAP Port: 993 POP3 Port: 995
+Outgoing Server:	mail.webdesignsbytom.com
+SMTP Port: 465
+IMAP, POP3, and SMTP require authentication.
