@@ -2,7 +2,6 @@ import 'dotenv/config';
 import nodemailer from 'nodemailer';
 import { VERIFICATION_URL } from './config.js';
 
-
 const transporter = nodemailer.createTransport({
   pool: true,
   host: 'mail.webdesignsbytom.com',
@@ -31,9 +30,9 @@ export async function sendVerificationEmail(id, email, uniqueString) {
         <body style='height: 100vh;'>
           <div style='background-color: lightblue;'>
             <h1>Thank you for signing up with webdesignsbytom</h1>
-            <h2>${clientUrl + '/verify/' + id + '/' + uniqueString}</h2>
+            <h2>${clientUrl + 'users/verify/' + id + '/' + uniqueString}</h2>
             <p>Please verify your email address to complete the signup and login into your account.</p><p>This link <b>expires in 6 hours</b>.</p><p>Press <a href=${
-              clientUrl + '/verify/' + id + '/' + uniqueString
+              clientUrl + 'users/verify/' + id + '/' + uniqueString
             }>here</a> to proceed.</p>
           </div>
         </body>

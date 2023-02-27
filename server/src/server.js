@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set the port and URl
 const PORT = process.env.PORT || 4000;
-const HTTP_URL = process.env.HTTP_URL || `http://localhost:`;
+const HTTP_URL = process.env.HTTP_URL || 'https://webdesignsbytom-app.vercel.app';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
