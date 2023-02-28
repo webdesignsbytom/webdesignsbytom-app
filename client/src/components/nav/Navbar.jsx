@@ -6,7 +6,6 @@ const links = [
   { url: '/', title: 'Hero' },
   { url: '/design', title: 'Design' },
   { url: '/portfolio', title: 'Portfolio' },
-  { url: '/account', title: 'Account' },
   { url: '/login', title: 'Login' },
   { url: '/register', title: 'Register' },
 ];
