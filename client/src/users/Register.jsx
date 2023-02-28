@@ -6,6 +6,7 @@ import { registerDataTemplate } from './utils';
 
 function Register() {
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   console.log('register', registerForm);
 
   const handleChange = (event) => {
@@ -20,7 +21,7 @@ function Register() {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log('xxx');
-  }
+  };
   return (
     <>
       <div className='bg-white dark:bg-black h-screen'>
@@ -102,14 +103,42 @@ function Register() {
                     </div>
 
                     {/* <!-- Country input --> */}
-                    <div className='mb-6'>
+                    <div className='mb-4'>
+                      <select
+                        id='countries'
+                        className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 border-gray-300 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+                      >
+                        <option>Country</option>
+                        <option value='US'>United States</option>
+                        <option value='CA'>Canada</option>
+                        <option value='FR'>France</option>
+                        <option value='DE'>Germany</option>
+                      </select>
+                    </div>
+
+                    <div className='flex h-auto mb-2'>
                       <input
-                        type='text'
-                        name='country'
-                        className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
-                        placeholder='Country'
-                        onChange={handleChange}
+                        type='checkbox'
+                        className='form-check-input border-solid appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
+                        id='agreedToTerms'
+                        checked={agreedToTerms}
+                        onChange={() => {
+                          setAgreedToTerms(!agreedToTerms);
+                        }}
                       />
+                      <label
+                        htmlFor='link-checkbox'
+                        className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 align-top'
+                      >
+                        I agree with the{' '}
+                        <Link
+                          to='/terms-and-conditions'
+                          className='text-blue-600 dark:text-blue-500 hover:underline'
+                        >
+                          terms and conditions
+                        </Link>
+                        .
+                      </label>
                     </div>
 
                     {/* <!-- Submit button --> */}

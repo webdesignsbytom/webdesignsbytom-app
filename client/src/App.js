@@ -8,6 +8,7 @@ import DeveloperPanel from './pages/dev/DeveloperPanel';
 import Login from './users/Login';
 import Register from './users/Register';
 import ResetPassword from './pages/auth/ResetPassword';
+import UserAgreement from './pages/auth/UserAgreement';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
       <Route path='/reset-password' element={<ResetPassword />} />
+
+      {/* Util Routes */}
+      <Route path='/terms-and-conditions' element={<UserAgreement />} />
 
     </Routes>
     </>

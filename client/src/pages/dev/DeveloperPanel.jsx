@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // Axios
-import client from '../../utils/client';
+import client from '../../users/utils/client';
 
 function DeveloperPanel() {
   const [eventLog, setEventLog] = useState([]);
