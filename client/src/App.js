@@ -1,9 +1,34 @@
+import { Routes, Route } from 'react-router-dom' 
+
 import axios, {isCancel, AxiosError} from 'axios';
+// Pages
+import HeroPage from './pages/hero/HeroPage';
+import PortfolioHome from './pages/portfolio/PortfolioHome';
+import SalesHome from './pages/sales/SalesHome';
+import AdminPanel from './pages/admin/AdminPanel';
+import DeveloperPanel from './pages/dev/DeveloperPanel';
+import Login from './users/Login';
+import Register from './users/Register';
+import ResetPassword from './pages/auth/ResetPassword';
 
 function App() {
   return (
     <>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+    <Routes>
+      <Route path='/' element={<HeroPage />} />
+      <Route path='/portfolio' element={<PortfolioHome />} />
+      <Route path='/developer' element={<SalesHome />} />
+
+      {/* Secure routes */}
+      <Route path='/admin' element={<AdminPanel />} />
+      <Route path='/development' element={<DeveloperPanel />} />
+
+      {/* User Routes */}
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/reset-password' element={<ResetPassword />} />
+
+    </Routes>
     </>
   );
 }
