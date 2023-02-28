@@ -60,12 +60,12 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const registerNewUser = async (req, res) => {
-  const { email, password, role, firstName, lastName, country } = req.body;
+  const { email, password, role, firstName, lastName, country, agreedToTerms } = req.body;
   const lowerCaseEmail = email.toLowerCase();
   //
   try {
     //
-    if (!lowerCaseEmail || !password || !firstName || !lastName || !country ) {
+    if (!lowerCaseEmail || !password || !firstName || !lastName || !country || !agreedToTerms ) {
       //
       const missingField = new MissingFieldEvent(
         null,
@@ -81,12 +81,13 @@ export const registerNewUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
-    const createdUser = await createUser(lowerCaseEmail, hashedPassword, role, firstName, lastName, country);
+    const createdUser = await createUser(lowerCaseEmail, hashedPassword, role, firstName, lastName, country, agreedToTerms);
 
     myEmitterUsers.emit('register', createdUser);
 
     // Create unique string for verify URL
     const uniqueString = uuid() + createdUser.id;
+    console.log('unique string', uniqueString);
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
 
     await createVerificationInDB(createdUser.id, hashedString);

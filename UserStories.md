@@ -11,4 +11,5 @@
 9. I want to log all visitor to the site.
 10. I want to log all visitors to the sales page.
 11. I want users to use a random colour pallet picker in the design page
-12. 
+12. I want users to access all features except for saving and payments without confirming account.
+13. I want a pop up saying confirm account if unconfirmed and an additional button on account page with resend button.

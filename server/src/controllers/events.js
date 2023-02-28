@@ -17,7 +17,6 @@ export const getAllEvents = async (req, res) => {
   try {
     // Find all events
     const foundEvents = await findAllEvents();
-    console.log('found events:', foundEvents);
 
     // If no found events
     if (!foundEvents) {

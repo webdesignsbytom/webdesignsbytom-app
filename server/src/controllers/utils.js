@@ -1,7 +1,6 @@
 import dbClient from '../utils/dbClient.js'
 
 export async function createVerificationInDB(userId, uniqueString) {
-    console.log('creating verification');
     try {
       const newVerification = await dbClient.userVerification.create({
         data: {

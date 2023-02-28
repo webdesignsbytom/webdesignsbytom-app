@@ -9,7 +9,7 @@ function CountrySelect({ handleChange }) {
         onChange={handleChange}
         className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 border-gray-300 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
       >
-        <option value='United Kingdom'>United Kingdom</option>
+        <option defaultValue='United Kingdom'>United Kingdom</option>
         <option value='United States'>United States</option>
         <option value='Afghanistan'>Afghanistan</option>
         <option value='Åland Islands'>Åland Islands</option>

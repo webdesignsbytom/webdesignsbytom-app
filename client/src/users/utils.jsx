@@ -4,7 +4,8 @@ export const registerDataTemplate = {
     confirmPassword: '',
     firstName: '',
     lastName: '',
-    country: ''
+    country: 'United Kingdom',
+    agreedToTerms: false,
 }
 
 export const loginDataTemplate = {

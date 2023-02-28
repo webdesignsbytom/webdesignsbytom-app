@@ -27,6 +27,7 @@ model User {
   receivedEvents Event[]           @relation("receivedEvents")
   isVerified     Boolean           @default(false)
   verifications  UserVerification?
+  agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
 }
@@ -78,7 +79,7 @@ model Component {
   name      String        @default("")
   desc      String        @default("")
   mainImage String        @default("")
-  price     Int           
+  price     Int
   createdAt DateTime      @default(now())
   updatedAt DateTime?     @updatedAt
 }

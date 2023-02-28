@@ -19,6 +19,14 @@ function Register() {
 
   console.log('register', registerForm);
 
+  const checkHandler = (event) => {
+    setAgreedToTerms(!agreedToTerms)
+    setRegisterForm({
+      ...registerForm,
+      agreedToTerms: !agreedToTerms
+    })
+  }
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -37,13 +45,16 @@ function Register() {
       alert('Passwords do not match');
       return;
     }
-
+    
+    if (agreedToTerms !== true) {
+      return <p>Please check to agree to terms and conditons</p>
+    }
     const userData = registerForm;
 
     client
       .post('/users/register', userData, false)
       .then((res) => {
-        setSuccessRegisterUser(res.data);
+        setSuccessRegisterUser(res.data.data.createdUser.email);
         console.log('data', res.data);
       })
       .then(() => login())
@@ -140,12 +151,12 @@ function Register() {
                     <div className='flex h-auto mb-2'>
                       <input
                         type='checkbox'
+                        name='agreedToTerms'
                         className='form-check-input border-solid appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
                         id='agreedToTerms'
                         checked={agreedToTerms}
-                        onChange={() => {
-                          setAgreedToTerms(!agreedToTerms);
-                        }}
+                        value={agreedToTerms}
+                        onChange={checkHandler}
                       />
                       <label
                         htmlFor='link-checkbox'
@@ -163,16 +174,20 @@ function Register() {
                     </div>
 
                     {/* <!-- Submit button --> */}
-                    <div className='mb-2'>
-                      <button
-                        type='submit'
-                        className='inline-block px-7 py-3 bg-main-colour text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-med hover:shadow-lg focus:bg-eco-green-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-dark active:shadow-lg transition duration-150 ease-in-out w-full'
-                        data-mdb-ripple='true'
-                        data-mdb-ripple-color='light'
-                      >
-                        Register
-                      </button>
-                    </div>
+                    {successRegisterUser ? (
+                      <p>{successRegisterUser}</p>
+                    ) : (
+                      <div className='mb-2'>
+                        <button
+                          type='submit'
+                          className='inline-block px-7 py-3 bg-main-colour text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-med hover:shadow-lg focus:bg-eco-green-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+                          data-mdb-ripple='true'
+                          data-mdb-ripple-color='light'
+                        >
+                          Register
+                        </button>
+                      </div>
+                    )}
                     <div className='mb-6 text-center'>
                       <Link to='/login'>
                         <p>Already a member? Click here to login</p>

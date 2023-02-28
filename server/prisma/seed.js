@@ -12,6 +12,7 @@ async function seed() {
       firstName: 'Max',
       lastName: 'Power',
       country: 'UK',
+      agreedToTerms: true
     },
   });
 
@@ -24,6 +25,7 @@ async function seed() {
       firstName: 'Craig',
       lastName: 'Peloton',
       country: 'USA',
+      agreedToTerms: true
     },
   });
 
@@ -36,6 +38,7 @@ async function seed() {
       firstName: 'Tom',
       lastName: 'Hats',
       country: 'UK',
+      agreedToTerms: true
     },
   });
 
