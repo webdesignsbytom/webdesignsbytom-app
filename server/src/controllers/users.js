@@ -197,12 +197,16 @@ export const  resendVerificationEmail = async (req, res) => {
     const foundVerification = await dbClient.userVerification.findUnique({
       where: { userId: foundUser.id },
     })
-    console.log('foundVerificia', foundVerification);
+
+    console.log('foundVerificion', foundVerification);
     if (!foundVerification) {
-      const err = new ServerConflictError(
-        "Account record doesn't exist or has been verified already. Please sign up or log in."
+      const serverError = new ServerConflictError(
+        email,
+        "Account verification record doesn't exist or has been verified already."
       )
-      return sendMessageResponse(res, err.code, err.message)
+      console.log('Error');
+      myEmitterErrors.emit('verification-not-found', serverError)
+      return sendMessageResponse(res, serverError.code, serverError.message)
     }
 
     await dbClient.userVerification.delete({ where: { userId: foundUser.id } })

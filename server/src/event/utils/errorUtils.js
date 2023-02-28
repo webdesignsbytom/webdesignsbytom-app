@@ -33,6 +33,18 @@ export const createLoginErrorEvent = async (errorEvent) => {
   });
 };
 
+export const createResendVerifyErrorEvent = async (errorEvent) => {
+  let userEmail = errorEvent.user
+
+  await dbClient.event.create({
+    data: {
+      type: 'ERROR',
+      topic: errorEvent.topic,
+      content: `${errorEvent.code} ${errorEvent.message} ${userEmail}`,
+    },
+  });
+}
+
 // Error event types
 class ErrorEventBase {
   constructor(user, topic) {
