@@ -60,12 +60,12 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const registerNewUser = async (req, res) => {
-  const { email, password, role } = req.body;
+  const { email, password, role, firstName, lastName, country } = req.body;
   const lowerCaseEmail = email.toLowerCase();
   //
   try {
     //
-    if (!lowerCaseEmail || !password) {
+    if (!lowerCaseEmail || !password || !firstName || !lastName || !country ) {
       //
       const missingField = new MissingFieldEvent(
         null,
@@ -81,7 +81,7 @@ export const registerNewUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
-    const createdUser = await createUser(lowerCaseEmail, hashedPassword, role);
+    const createdUser = await createUser(lowerCaseEmail, hashedPassword, role, firstName, lastName, country);
 
     myEmitterUsers.emit('register', createdUser);
 

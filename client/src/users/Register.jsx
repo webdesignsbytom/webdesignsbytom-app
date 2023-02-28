@@ -134,7 +134,9 @@ function Register() {
                     {/* <!-- Country input --> */}
                     <div className='mb-4'>
                       <select
-                        id='countries'
+                        id='country'
+                        name='country'
+                        onChange={handleChange}
                         className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 border-gray-300 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
                       >
                         <option>Country</option>

@@ -7,12 +7,15 @@ export const findUserByEmail = (email) =>
     where: { email: email },
   });
 
-export const createUser = (email, password, role) =>
+export const createUser = (email, password, role, firstName, lastName, country) =>
   dbClient.user.create({
     data: {
       email: email,
       password: password,
       role: role,
+      firstName: firstName,
+      lastName: lastName,
+      country: country
     },
   });
 
