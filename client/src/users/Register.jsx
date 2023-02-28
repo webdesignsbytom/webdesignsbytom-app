@@ -8,9 +8,9 @@ function Register() {
         <div className='h-screen grid lg:pt-4'>
           <Navbar />
           <article className='hidden lg:block text-main-colour text-center text-6xl font-extrabold'>
-            <h1>myecoapp</h1>
+            <h1>webdesignsbytom</h1>
             <div className='font-extrabold text-4xl text-center py-4 md:pb-6'>
-              <h1 className='my-4'>REGISTER</h1>
+              <h2 className='my-4'>REGISTER</h2>
             </div>
           </article>
           <section className='dark:bg-black grid justify-center'>

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom' 
+
 import axios, {isCancel, AxiosError} from 'axios';
 // Pages
 import HeroPage from './pages/hero/HeroPage';
@@ -8,7 +9,7 @@ import AdminPanel from './pages/admin/AdminPanel';
 import DeveloperPanel from './pages/dev/DeveloperPanel';
 import Login from './users/Login';
 import Register from './users/Register';
-import ResetPassword from './pages/ResetPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 
 function App() {
   return (
