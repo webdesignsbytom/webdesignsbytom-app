@@ -119,6 +119,11 @@ export const verifyUser = async (req, res) => {
     console.log('found', foundVerification);
 
     if (!foundVerification) {
+      const missingVerification = new NotFoundEvent(
+        userId,
+        'Verification record not found'
+      );
+      myEmitterErrors.emit('error', missingVerification);
       return sendMessageResponse(
         res,
         404,
@@ -141,6 +146,7 @@ export const verifyUser = async (req, res) => {
       uniqueString,
       foundVerification.uniqueString
     );
+
     if (!isValidString) {
       return sendMessageResponse(
         res,
@@ -158,11 +164,11 @@ export const verifyUser = async (req, res) => {
 
     const token = createAccessToken(updatedUser.id, updatedUser.email);
 
-    sendDataResponse(res, 200, { token, user: updatedUser });
-
     await dbClient.userVerification.delete({ where: { userId } });
-
+    
+    sendDataResponse(res, 200, { token, user: updatedUser });
     myEmitterUsers.emit('verified', updatedUser);
+
   } catch (err) {
     // Create error instance
     const serverError = new RegistrationServerErrorEvent(

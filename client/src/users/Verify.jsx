@@ -17,11 +17,37 @@ function Verify() {
   console.log('uniqueString', uniqueString);
 
   useEffect(() => {
-    client.get(`/users/verify/${userId}/${uniqueString}`).then((res) => {
-      console.log('data', res.data);
-    });
+    let isFetched = false;
+
+    client
+      .get(`/users/verify/${userId}/${uniqueString}`)
+      .then((res) => {
+        console.log('data', res.data);
+        setPage({
+          status: res.data.status,
+          title: 'Account verified successfully',
+          email: res.data.user.email,
+        });
+      })
+      .catch((res) => {
+        if (!isFetched) {
+          const data = res.response.data;
+          setPage({
+            status: data.status,
+            title: 'An Error Occurred',
+            message: data.message,
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    return () => {
+      isFetched = true;
+    };
   }, [uniqueString, userId]);
-  
+
   return (
     <>
       <div>Verify</div>

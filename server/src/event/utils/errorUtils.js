@@ -5,45 +5,62 @@ import { RESPONSE_MESSAGES } from '../../utils/responses.js';
 // Error event creation
 export const createErrorEvent = async (errorEvent) => {
   console.log('TTTTT', errorEvent);
-  let userId;
-  if (errorEvent.user) {
+  let userId = errorEvent.user;
+  if (errorEvent.user.id) {
     userId = errorEvent.user.id;
   }
 
+  let codeId;
+  if (errorEvent.code) {
+    codeId = errorEvent.code;
+  }
   await dbClient.event.create({
     data: {
       type: 'ERROR',
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message}`,
-      receivedById: userId || null,
+      receivedById: userId,
+      code: codeId,
     },
   });
 };
 
 export const createLoginErrorEvent = async (errorEvent) => {
   console.log('SSSS', errorEvent.user);
-  let userEmail = errorEvent.user
+  let userEmail = errorEvent.user;
+
+  let codeId;
+  if (errorEvent.code) {
+    codeId = errorEvent.code;
+  }
 
   await dbClient.event.create({
     data: {
       type: 'ERROR',
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message} ${userEmail}`,
+      code: codeId,
     },
   });
 };
 
 export const createResendVerifyErrorEvent = async (errorEvent) => {
-  let userEmail = errorEvent.user
+  let userEmail = errorEvent.user;
+
+  let codeId;
+  if (errorEvent.code) {
+    codeId = errorEvent.code;
+  }
 
   await dbClient.event.create({
     data: {
       type: 'ERROR',
       topic: errorEvent.topic,
       content: `${errorEvent.code} ${errorEvent.message} ${userEmail}`,
+      code: codeId,
     },
   });
-}
+};
 
 // Error event types
 class ErrorEventBase {
@@ -134,7 +151,7 @@ export class RegistrationServerErrorEvent extends ErrorEventBase {
   }
 }
 export class LoginServerErrorEvent extends ErrorEventBase {
-  constructor(user,topic) {
+  constructor(user, topic) {
     super(user, topic);
     this.code = 500;
     this.message = RESPONSE_MESSAGES.ServerErrorEvent;

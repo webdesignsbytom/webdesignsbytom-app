@@ -21,7 +21,7 @@ export async function sendVerificationEmail(id, email, uniqueString) {
   const mailOptions = {
     from: process.env.AUTH_EMAIL,
     to: email,
-    subject: 'Please verify Your Email',
+    subject: ' x Please verify Your Email',
     html: `
       <html>
         <head>
