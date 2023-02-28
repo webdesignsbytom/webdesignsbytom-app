@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/nav/Navbar';
 // Data
 import { registerDataTemplate } from './utils';
+import client from '../users/utils/client';
 
 function Register() {
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [successRegisterUser, setSuccessRegisterUser] = useState('');
+
+  let navigate = useNavigate();
+
+  const login = () => {
+    navigate('../login', { replace: true });
+  };
+
   console.log('register', registerForm);
 
   const handleChange = (event) => {
@@ -21,7 +30,27 @@ function Register() {
   const handleRegister = (event) => {
     event.preventDefault();
     console.log('xxx');
+    console.log('submitting');
+
+    if (registerForm.password !== registerForm.confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    const userData = registerForm;
+
+    client
+      .post('/users/register', userData, false)
+      .then((res) => {
+        setSuccessRegisterUser(res.data);
+        console.log('data', res.data);
+      })
+      .then(() => login())
+      .catch((err) => {
+        console.error(err);
+      });
   };
+
   return (
     <>
       <div className='bg-white dark:bg-black h-screen'>
