@@ -16,7 +16,7 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path='/' element={<HeroPage />} />
+      <Route path='/' index element={<HeroPage />} />
       <Route path='/portfolio' element={<PortfolioHome />} />
       <Route path='/developer' element={<SalesHome />} />
 
@@ -30,7 +30,6 @@ function App() {
       <Route path='/reset-password' element={<ResetPassword />} />
       <Route path='/account' element={<Account />} />
       <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
-
 
       {/* Util Routes */}
       <Route path='/terms-and-conditions' element={<UserAgreement />} />
