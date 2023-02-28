@@ -32,21 +32,21 @@ export const validUrl = (value) => {
 };
 
 
-export const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
+export const validUsername = (value) => {
+  if (value.length < 5 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
+        The username must be between 5 and 20 characters.
       </div>
     );
   }
 };
 
-export const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
+export const validPassword = (value) => {
+  if (value.length < 8 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
+        The password must be between 8 and 40 characters.
       </div>
     );
   }

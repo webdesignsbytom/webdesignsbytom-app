@@ -1,6 +1,4 @@
 import { Routes, Route } from 'react-router-dom' 
-
-import axios, {isCancel, AxiosError} from 'axios';
 // Pages
 import HeroPage from './pages/hero/HeroPage';
 import PortfolioHome from './pages/portfolio/PortfolioHome';
