@@ -345,8 +345,6 @@ export const sendPasswordReset = async (req, res) => {
 };
 
 export const resetPassword = async (req, res) => {
-  console.log('AAAA', req.params);
-  console.log('body', req.body);
   const { userId, uniqueString } = req.params;
   const { password, confirmPassword } = req.body;
 
@@ -362,7 +360,6 @@ export const resetPassword = async (req, res) => {
 
   try {
     const foundResetRequest = await findResetRequest(userId);
-    console.log('found', foundResetRequest);
 
     if (!foundResetRequest) {
       const missingRequest = new NotFoundEvent(
@@ -406,7 +403,6 @@ export const resetPassword = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, hashRate);
 
     const updatedUser = await resetUserPassword(foundUser.id, hashedPassword);
-    console.log('updated user', updatedUser);
 
     delete updatedUser.password;
 
@@ -427,12 +423,9 @@ export const resetPassword = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   const userId = req.params.id
-  console.log('userId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId)
-    console.log('foundUser', foundUser);
 
     // If no found users
     if (!foundUser) {

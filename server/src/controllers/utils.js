@@ -2,8 +2,6 @@ import dbClient from '../utils/dbClient.js';
 // Errors
 import { ServerErrorEvent } from '../event/utils/errorUtils.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
-// Messages
-import { sendMessageResponse } from '../utils/responses.js';
 
 export async function createVerificationInDB(userId, uniqueString) {
   try {
