@@ -71,6 +71,7 @@ export const createVerifyEvent = async (user) => {
     throw err;
   }
 };
+
 export const createNewVerifyEvent = async (user) => {
   let type = 'USER';
   if (user.role === 'ADMIN') {
@@ -92,6 +93,32 @@ export const createNewVerifyEvent = async (user) => {
     });
   } catch (err) {
     const error = new CreateEventError(user, 'Verify-resend');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+};
+
+export const createPasswordResetEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'Reset-password',
+        content: user.role,
+        receivedById: user.id,
+        createdAt: user.createdAt,
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Reset-password');
     myEmitterErrors.emit('error', error);
     throw err;
   }

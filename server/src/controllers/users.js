@@ -11,6 +11,9 @@ import {
   findUserByEmail,
   createUser,
   findVerification,
+  findResetRequest,
+  findUserById,
+  resetUserPassword
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
@@ -275,11 +278,12 @@ export const sendPasswordReset = async (req, res) => {
   const lowerCaseEmail = resetEmail.toLowerCase();
 
   try {
-
     const foundUser = await findUserByEmail(lowerCaseEmail);
 
     if (!foundUser) {
-      return sendDataResponse(res, 404, { email: 'Email not found in database' });
+      return sendDataResponse(res, 404, {
+        email: 'Email not found in database',
+      });
     }
     // Create unique string for verify URL
     const uniqueString = uuid() + foundUser.id;
@@ -288,6 +292,90 @@ export const sendPasswordReset = async (req, res) => {
 
     await createPasswordResetInDB(foundUser.id, hashedString);
     await sendResetPasswordEmail(foundUser.id, foundUser.email, uniqueString);
+  } catch (err) {
+    // Create error instance
+    const serverError = new ServerErrorEvent(
+      `Request password reset Server error`
+    );
+    // Store error as event
+    myEmitterErrors.emit('error', serverError);
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  console.log('AAAA', req.params);
+  console.log('body', req.body);
+  const { userId, uniqueString } = req.params;
+  const { password, confirmPassword } = req.body;
+
+  if (password !== confirmPassword) {
+    console.log('error');
+    const badRequest = new BadRequestEvent(
+      userId,
+      'Reset Password - New passwords do not match'
+    );
+    myEmitterErrors.emit('error', badRequest);
+    return sendMessageResponse(res, badRequest.code, badRequest.message);
+  }
+
+  try {
+
+    const foundResetRequest = await findResetRequest(userId);
+    console.log('found', foundResetRequest);
+
+    if (!foundResetRequest) {
+      const missingRequest = new NotFoundEvent(
+        userId,
+        'Verification record not found'
+      );
+      myEmitterErrors.emit('error', missingRequest);
+      return sendMessageResponse(
+        res,
+        404,
+        "Account record doesn't exist or has been reset already."
+      );
+    }
+
+    const { expiresAt } = foundResetRequest;
+    if (expiresAt < Date.now()) {
+      await dbClient.passwordReset.delete({ where: { userId } });
+      await dbClient.user.delete({ where: { userId } });
+      return sendMessageResponse(
+        res,
+        401,
+        'Link has expired. Please sign up again.'
+      );
+    }
+
+    const isValidString = await bcrypt.compare(
+      uniqueString,
+      foundResetRequest.uniqueString
+    );
+
+    if (!isValidString) {
+      return sendMessageResponse(
+        res,
+        401,
+        'Invalid reset password details passed. Check your inbox.'
+      );
+    }
+
+    const foundUser = await findUserById(userId)
+
+    const hashedPassword = await bcrypt.hash(password, hashRate);
+
+    const updatedUser = await resetUserPassword(foundUser.id, hashedPassword)
+    console.log('updated user', updatedUser);
+
+    delete updatedUser.password;
+
+    await dbClient.passwordReset.delete({ where: { userId } });
+
+    sendDataResponse(res, 200, { user: updatedUser });
+    myEmitterUsers.emit('password-reset', updatedUser);
 
   } catch (err) {
     // Create error instance

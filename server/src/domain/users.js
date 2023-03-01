@@ -7,7 +7,15 @@ export const findUserByEmail = (email) =>
     where: { email: email },
   });
 
-export const createUser = (email, password, role, firstName, lastName, country, agreedToTerms) =>
+export const createUser = (
+  email,
+  password,
+  role,
+  firstName,
+  lastName,
+  country,
+  agreedToTerms
+) =>
   dbClient.user.create({
     data: {
       email: email,
@@ -16,13 +24,37 @@ export const createUser = (email, password, role, firstName, lastName, country, 
       firstName: firstName,
       lastName: lastName,
       country: country,
-      agreedToTerms: agreedToTerms
+      agreedToTerms: agreedToTerms,
     },
   });
 
 export const findVerification = (userId) =>
-  dbClient.userVerification.findUnique({ 
-    where: { 
-      userId: userId 
-    } 
+  dbClient.userVerification.findUnique({
+    where: {
+      userId: userId,
+    },
   });
+
+export const findResetRequest = (userId) =>
+  dbClient.passwordReset.findUnique({
+    where: {
+      userId: userId,
+    },
+  });
+
+export const findUserById = (userId) => 
+  dbClient.user.findUnique({
+    where: {
+      id: userId
+    }
+  })
+
+export const resetUserPassword = (userId, password) =>
+  dbClient.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      password: password
+    }
+  })

@@ -4,7 +4,8 @@ import {
   registerNewUser,
   verifyUser,
   resendVerificationEmail,
-  sendPasswordReset
+  sendPasswordReset,
+  resetPassword
 } from '../controllers/users.js';
 import { validateAuthentication, validateAdminRole } from '../middleware/auth.js';
 
@@ -15,6 +16,7 @@ router.post('/register', registerNewUser);
 router.get('/verify/:userId/:uniqueString', verifyUser);
 router.post('/verify/resend-email/:email', resendVerificationEmail)
 router.post('/send-password-reset', sendPasswordReset);
+router.post('/reset-password/:userId/:uniqueString', resetPassword);
 
 
 export default router;
