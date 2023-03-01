@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Components
 import { Navbar } from '../components/nav/Navbar';
 // Data
 import { loginDataTemplate } from './utils';
+// Axios
+import client from './utils/client';
 
 function Login() {
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
   const [loginForm, setLoginForm] = useState(loginDataTemplate);
+  const [successLoginUser, setSuccessLoginUser] = useState('');
   console.log('login', loginForm);
+
+  let navigate = useNavigate();
+
+  const homePage = () => {
+    navigate('/account', { replace: true });
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,6 +31,17 @@ function Login() {
   const handleLogin = (event) => {
     event.preventDefault();
     console.log('xxx');
+
+    client
+      .post('/login', loginForm, false)
+      .then((res) => {
+        setSuccessLoginUser(res.data.status);
+        console.log('data', res.data.data);
+      })
+      .then(() => homePage())
+      .catch((err) => {
+        console.error(err);
+      });
   };
   return (
     <>
@@ -100,6 +120,8 @@ function Login() {
                         Forgot password?
                       </Link>
                     </div>
+
+                    {successLoginUser && <p>Success</p>}
 
                     {/* <!-- Submit button --> */}
                     <div className='mb-2'>
