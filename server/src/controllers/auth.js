@@ -35,6 +35,8 @@ export const login = async (req, res) => {
       })
     }
 
+    delete existingUser.password
+
     const token = createAccessToken(existingUser.id, existingUser.email)
     return sendDataResponse(res, 200, { token, existingUser })
 

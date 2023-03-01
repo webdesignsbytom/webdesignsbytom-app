@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Navbar } from '../../components/nav/Navbar';
 import FoundUser from '../../components/users/FoundUser';
 // Data
 import { sampleUserData } from '../../users/utils';
 // Axios
 import client from '../../users/utils/client';
+// Context
+import { UserContext } from '../../context/UserContext';
 
 function AdminPanel() {
+  const { user, setUser, token }  = useContext(UserContext)
   const [foundUser, setFoundUser] = useState(sampleUserData);
   const [userId, setUserId] = useState('');
+  console.log('Admin User', user);
   console.log('userId', userId);
   console.log('foundUser', foundUser);
+  console.log('token', token);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+// Context
+import { UserContext } from '../../context/UserContext';
+// Data
+import { sampleUserData } from '../../users/utils';
 const links = [
   { url: '/developer', title: 'Home' },
   { url: '/', title: 'Hero' },
@@ -13,18 +16,26 @@ const links = [
 ];
 
 function Navbar() {
+  const { setUser } = useContext(UserContext);
+
   // const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
 
   // const openNavbar = () => {
   //   setToggleNavigation(!toggleNavigation);
   // };
 
+  const signOut = (event) => {
+    event.preventDefault();
+
+    setUser(sampleUserData);
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
+  };
+
   return (
     <>
       <div className='flex flex-row h-min justify-between max-w-full px-8 bg-main-colour sm:flex hover:text-slate-50 items-center lg:mb-4'>
         {/* Left hand side of nav perminent */}
-        <Link to='/'>
-        </Link>
+        <Link to='/'></Link>
 
         {/* small screen menu */}
         <div className='flex flex-row md:hidden justify-end'>
@@ -57,6 +68,15 @@ function Navbar() {
                 </li>
               );
             })}
+            <li>
+              <Link
+                to='/'
+                onClick={signOut}
+                className='block px-4 py-2 text-white hover:text-main-colour-dark font-medium text-lg'
+              >
+                Sign Out
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

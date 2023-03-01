@@ -15,3 +15,27 @@ Unique constraint failed on the fields: (`userId`)
   clientVersion: '4.10.1',
   meta: { target: [ 'userId' ] },
   batchRequestIdx: undefined.
+
+
+
+TTTTT NoValidationEvent {
+  user: null,
+  topic: 'Invalid access token',
+  code: 401,
+  message: 'Unable to verify user'
+}
+GET /users/0c342fcd-4222-4641-bb48-b8bd842f27bf 401 5.365 ms - 69      
+file:///C:/Users/tom_b/Documents/code/portfolio-work/webdesignsbytom-app/server/src/event/utils/errorUtils.js:9
+  if (errorEvent.user.id) {
+                      ^
+
+TypeError: Cannot read properties of null (reading 'id')
+    at createErrorEvent (file:///C:/Users/tom_b/Documents/code/portfolio-work/webdesignsbytom-app/server/src/event/utils/errorUtils.js:9:23)  
+    at MyEventEmitter.<anonymous> (file:///C:/Users/tom_b/Documents/code/portfolio-work/webdesignsbytom-app/server/src/event/errorEvents.js:8:3)
+    at MyEventEmitter.emit (node:events:527:28)
+    at validateAuthentication (file:///C:/Users/tom_b/Documents/code/portfolio-work/webdesignsbytom-app/server/src/middleware/auth.js:94:21)  
+    at Layer.handle [as handle_request] (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\route.js:114:3)    at Layer.handle [as handle_request] (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\index.js:365:14)  

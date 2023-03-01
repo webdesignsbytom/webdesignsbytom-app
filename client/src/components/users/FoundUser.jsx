@@ -1,11 +1,28 @@
 import React from 'react';
+// Axios
+import client from '../../users/utils/client';
 
 function FoundUser({ foundUser }) {
-  const { firstName, lastName } = foundUser;
+  const { firstName, lastName, id } = foundUser;
 
   const editUserData = (row) => {
     console.log('row', row);
   };
+
+  const deleteUser = (event) => {
+    event.preventDefault();
+    console.log('event', event);
+
+    client
+      .delete(`/users/delete-user/${id}`)
+      .then((res) => {
+        console.log('res', res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   return (
     <>
       <article>
@@ -35,6 +52,10 @@ function FoundUser({ foundUser }) {
               })}
             </tbody>
           </table>
+        </section>
+
+        <section>
+            <button onClick={deleteUser}>Delete User</button>
         </section>
       </article>
     </>

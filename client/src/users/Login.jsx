@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
 import { Navbar } from '../components/nav/Navbar';
@@ -6,12 +6,16 @@ import { Navbar } from '../components/nav/Navbar';
 import { loginDataTemplate } from './utils';
 // Axios
 import client from './utils/client';
+// Context
+import { UserContext } from '../context/UserContext';
 
 function Login() {
+  const { user, setUser } = useContext(UserContext)
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
   const [loginForm, setLoginForm] = useState(loginDataTemplate);
   const [successLoginUser, setSuccessLoginUser] = useState('');
   console.log('login', loginForm);
+  console.log('Login User', user);
 
   let navigate = useNavigate();
 
@@ -36,7 +40,11 @@ function Login() {
       .post('/login', loginForm, false)
       .then((res) => {
         setSuccessLoginUser(res.data.status);
-        console.log('data', res.data.data);
+        console.log('data1', res.data);
+        console.log('data2', res.data.data);
+        localStorage.setItem(process.env.REACT_APP_USER_TOKEN,
+          res.data.data.token)
+        setUser(res.data.data.existingUser);
       })
       .then(() => homePage())
       .catch((err) => {

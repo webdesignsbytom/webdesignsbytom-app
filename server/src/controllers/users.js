@@ -423,11 +423,12 @@ export const resetPassword = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  const userId = req.params.id
-
+  console.log('req', req.params);
+  const userId = req.params.userId
+  console.log('userId', userId);
   try {
     const foundUser = await findUserById(userId)
-
+    console.log('foundUser', foundUser);
     // If no found users
     if (!foundUser) {
       // Create error instance
