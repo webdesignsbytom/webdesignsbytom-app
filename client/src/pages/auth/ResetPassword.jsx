@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // Axios
-import client from '../../users/utils/client';
-
+import client from '../../utils/client';
 function ResetPassword() {
   const [resetEmail, setResetEmail] = useState('');
   const [successResetPassword, setSuccessResetPassword] = useState({});

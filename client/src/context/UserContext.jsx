@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { sampleUserData } from '../users/utils';
+import { sampleUserData } from '../users/utils/utils';
 
 export const UserContext = React.createContext();
 

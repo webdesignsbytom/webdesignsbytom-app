@@ -1,6 +1,6 @@
 import React from 'react';
 // Axios
-import client from '../../users/utils/client';
+import client from '../../utils/client';
 
 function FoundUser({ foundUser }) {
   const { firstName, lastName, id } = foundUser;

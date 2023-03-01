@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 // Components
 import { Navbar } from '../components/nav/Navbar';
 // Data
-import { registerDataTemplate, registerFormResponses } from './utils';
+import { registerDataTemplate, registerFormResponses } from './utils/utils';
 // Axios
-import client from '../users/utils/client';
+import client from '../utils/client';
 // Select
 import CountrySelect from './utils/CountrySelect';
 // Validation

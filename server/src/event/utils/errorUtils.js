@@ -161,6 +161,7 @@ export class LoginServerErrorEvent extends ErrorEventBase {
 export class CreateEventError extends ServerErrorEvent {
   constructor(user, topic, message = RESPONSE_MESSAGES.CreateEventError) {
     super(user, topic, message);
+    this.code = 403;
   }
 }
 

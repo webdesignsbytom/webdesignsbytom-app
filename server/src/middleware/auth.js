@@ -3,7 +3,6 @@ import { JWT_SECRET } from '../utils/config.js'
 // Components
 import { findUserByEmail } from '../domain/users.js';
 // Emitters
-import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
 // Errors
 import { NoPermissionEvent, NoValidationEvent } from '../event/utils/errorUtils.js';

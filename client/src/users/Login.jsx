@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 // Components
 import { Navbar } from '../components/nav/Navbar';
 // Data
-import { loginDataTemplate } from './utils';
+import { loginDataTemplate } from './utils/utils';
 // Axios
-import client from './utils/client';
+import client from '../utils/client';
 // Context
 import { UserContext } from '../context/UserContext';
 
@@ -34,19 +34,18 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log('xxx');
 
     client
       .post('/login', loginForm, false)
       .then((res) => {
         setSuccessLoginUser(res.data.status);
         console.log('data1', res.data);
-        console.log('data2', res.data.data);
         localStorage.setItem(process.env.REACT_APP_USER_TOKEN,
           res.data.data.token)
         setUser(res.data.data.existingUser);
       })
       .then(() => homePage())
+
       .catch((err) => {
         console.error(err);
       });

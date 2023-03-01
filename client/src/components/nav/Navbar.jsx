@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Data
-import { sampleUserData } from '../../users/utils';
+import { sampleUserData } from '../../users/utils/utils';
 const links = [
   { url: '/developer', title: 'Home' },
   { url: '/', title: 'Hero' },
@@ -13,6 +13,7 @@ const links = [
   { url: '/register', title: 'Register' },
   { url: '/admin', title: 'Admin' },
   { url: '/development', title: 'Developer' },
+  { url: '/account', title: 'Account' },
 ];
 
 function Navbar() {

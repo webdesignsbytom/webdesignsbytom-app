@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Navbar } from '../../components/nav/Navbar';
 import FoundUser from '../../components/users/FoundUser';
 // Data
-import { sampleUserData } from '../../users/utils';
+import { sampleUserData } from '../../users/utils/utils';
 // Axios
-import client from '../../users/utils/client';
+import client from '../../utils/client';
 // Context
 import { UserContext } from '../../context/UserContext';
 

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // Axios
-import client from './utils/client';
-
+import client from '../utils/client';
 function Verify() {
   const { userId, uniqueString } = useParams();
   const [page, setPage] = useState({
