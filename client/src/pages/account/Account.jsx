@@ -9,12 +9,11 @@ function Account() {
   const { user } = useContext(UserContext)
   const [alert, setAlert] = useState(initAlert);
 
-  const email = 'tom_brockington@yahoo.co.uk';
   console.log('ACCOUNT user: ', user);
 
   function handleResend() {
     client
-      .post(`/users/verify/resend-email/${email}`)
+      .post(`/users/verify/resend-email/${user.email}`)
       .then((res) => {
         setAlert({ status: 'success', content: res.data.message });
         setTimeout(() => {

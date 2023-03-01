@@ -1,6 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+// Data
 import { sampleUserData } from '../users/utils/utils';
+import LoggedInUser from '../utils/LoggedInUser';
+// Axios
+import client from '../utils/client';
 
 export const UserContext = React.createContext();
 
@@ -13,7 +17,24 @@ const UserContextProvider = ({ children }) => {
   );
 
   console.log('Context User', user);
-  console.log('Context Token', token);
+
+  useEffect(() => {
+    const decodedUserData = LoggedInUser()
+
+    if (decodedUserData) {
+      const id = decodedUserData.id
+
+      client
+      .get(`/users/${id}`)
+      .then((res) => {
+        console.log('res', res.data);
+        setUser(res.data.data.user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }
+  }, [])
 
   return (
     <UserContext.Provider value={{ user, setUser, token, setToken }}>
