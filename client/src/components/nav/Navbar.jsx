@@ -8,6 +8,8 @@ const links = [
   { url: '/portfolio', title: 'Portfolio' },
   { url: '/login', title: 'Login' },
   { url: '/register', title: 'Register' },
+  { url: '/admin', title: 'Admin' },
+  { url: '/development', title: 'Developer' },
 ];
 
 function Navbar() {

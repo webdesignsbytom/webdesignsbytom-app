@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import client from '../../users/utils/client';
 import { useParams } from 'react-router-dom';
+import { Navbar } from '../../components/nav/Navbar';
 
 const initAlert = { status: '', content: '' };
 
@@ -27,6 +28,7 @@ function Account() {
   }
   return (
     <>
+    <Navbar />
       <div>Account</div>
       <p className='reminder'>
         Cant find the email?{' '}

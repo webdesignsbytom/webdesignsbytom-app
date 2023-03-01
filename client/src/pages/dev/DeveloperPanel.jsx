@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Navbar } from '../../components/nav/Navbar';
 // Axios
 import client from '../../users/utils/client';
 
@@ -20,6 +21,7 @@ function DeveloperPanel() {
   console.log('event log', eventLog);
   return (
     <>
+    <Navbar />
       <div>
         <h2>DeveloperPanel</h2>
         <div>

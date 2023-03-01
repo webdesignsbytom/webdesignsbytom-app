@@ -1,8 +1,11 @@
 import React from 'react'
+import { Navbar } from '../../components/nav/Navbar'
 
 function AdminPanel() {
   return (
-    <div>AdminPanel</div>
+    <div>
+      <Navbar />
+      AdminPanel</div>
   )
 }
 
