@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Navbar } from '../../components/nav/Navbar';
 
 function PortfolioHome() {
   return (
-    <div>PortfolioHome</div>
-  )
+    <div>
+      <Navbar />
+      PortfolioHome
+    </div>
+  );
 }
 
-export default PortfolioHome
+export default PortfolioHome;

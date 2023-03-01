@@ -12,6 +12,7 @@ import UserAgreement from './pages/auth/UserAgreement';
 import Account from './pages/account/Account';
 import Verify from './users/Verify';
 import EnterNewPassword from './pages/auth/EnterNewPassword';
+import Design from './pages/design/Design';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/reset-lost-password' element={<ResetPassword />} />
       <Route path='/account' element={<Account />} />
+      <Route path='/design' element={<Design />} />
 
       <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
       <Route path='users/reset-lost-password/:userId/:uniqueString' element={<EnterNewPassword />} />
