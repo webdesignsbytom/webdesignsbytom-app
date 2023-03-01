@@ -8,6 +8,12 @@ export const registerDataTemplate = {
     agreedToTerms: false,
 }
 
+export const registerFormResponses = {
+    passwordMatchError: false,
+    passwordLengthError: false,
+    agreedToTermsError: false,
+}
+
 export const loginDataTemplate = {
     email: '',
     password: ''

@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+// Components
 import { Navbar } from '../components/nav/Navbar';
 // Data
-import { registerDataTemplate } from './utils';
+import { registerDataTemplate, registerFormResponses } from './utils';
+// Axios
 import client from '../users/utils/client';
+// Select
 import CountrySelect from './utils/CountrySelect';
+// Validation
+import { validPassword } from './utils/Validation';
 
 function Register() {
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [successRegisterUser, setSuccessRegisterUser] = useState('');
+  const [formResponses, setFormResponses] = useState(registerFormResponses);
 
+  console.log('formResponses', formResponses);
   let navigate = useNavigate();
 
   const login = () => {
@@ -20,15 +27,27 @@ function Register() {
   console.log('register', registerForm);
 
   const checkHandler = (event) => {
-    setAgreedToTerms(!agreedToTerms)
+    setAgreedToTerms(!agreedToTerms);
     setRegisterForm({
       ...registerForm,
-      agreedToTerms: !agreedToTerms
-    })
-  }
+      agreedToTerms: !agreedToTerms,
+    });
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
+    if (registerForm.password.length > 8) {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: false,
+      });
+    } else {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+    }
 
     setRegisterForm({
       ...registerForm,
@@ -43,12 +62,40 @@ function Register() {
 
     if (registerForm.password !== registerForm.confirmPassword) {
       alert('Passwords do not match');
+      setFormResponses({
+        ...formResponses,
+        passwordMatchError: true,
+      });
       return;
     }
-    
-    if (agreedToTerms !== true) {
-      return <p>Please check to agree to terms and conditons</p>
+
+    const checkPassword = validPassword(registerForm.password);
+    console.log('checkPassword', checkPassword);
+
+    if (checkPassword === false) {
+      alert('Passwords too short');
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+      return;
     }
+
+    if (agreedToTerms !== true) {
+      alert('Please check to agree to terms and conditons');
+      setFormResponses({
+        ...formResponses,
+        agreedToTermsError: true,
+      });
+      return;
+    }
+
+    setFormResponses({
+      passwordMatchError: true,
+      passwordLengthError: true,
+      agreedToTermsError: true,
+    });
+
     const userData = registerForm;
 
     client
@@ -172,6 +219,14 @@ function Register() {
                         .
                       </label>
                     </div>
+
+                    {/* Hidden password missing links */}
+                    {formResponses.passwordLengthError && (
+                      <div>Password too short</div>
+                    )}
+                    {formResponses.passwordMatchError && (
+                      <div>Password doesnt match</div>
+                    )}
 
                     {/* <!-- Submit button --> */}
                     {successRegisterUser ? (
