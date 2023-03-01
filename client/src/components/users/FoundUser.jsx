@@ -1,8 +1,11 @@
 import React from 'react';
 
 function FoundUser({ foundUser }) {
-  console.log('xxx', foundUser);
   const { firstName, lastName } = foundUser;
+
+  const editUserData = (row) => {
+    console.log('row', row);
+  };
   return (
     <>
       <article>
@@ -11,19 +14,26 @@ function FoundUser({ foundUser }) {
         </h2>
         <section>
           <table>
-            <tr>
-              <th>Data Point</th>
-              <th>Result</th>
-            </tr>
-            {Object.entries(foundUser).map((row, index) => {
-                console.log('keys', row);
-              return (
-                <tr key={index}>
-                  <td>{row[0]}</td>
-                  <td>{row[1].toString()}</td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr>
+                <th>Data Point</th>
+                <th>Result</th>
+                <th>Edit Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(foundUser).map((row, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{row[0]}</td>
+                    <td>{row[1].toString()}</td>
+                    <td>
+                      <button onClick={() => editUserData(row)}><span className='text-blue-500'>Edit</span></button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </section>
       </article>
