@@ -4,8 +4,6 @@
 
 PrismaClientKnownRequestError:
 Invalid `prisma.passwordReset.create()` invocation:
-
-
 Unique constraint failed on the fields: (`userId`)
     at Kr.handleRequestError (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\@prisma\client\runtime\library.js:163:19499)
     at Kr.handleAndLogRequestError (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\@prisma\client\runtime\library.js:163:19031)
