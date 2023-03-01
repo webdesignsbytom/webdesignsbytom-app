@@ -94,7 +94,7 @@ function Login() {
                         </label>
                       </div>
                       <Link
-                        to='/reset-password'
+                        to='/reset-lost-password'
                         className='text-main-colour hover:text-main-colour-med focus:text-main-colour-med active:text-main-colour-dark duration-200 transition ease-in-out'
                       >
                         Forgot password?

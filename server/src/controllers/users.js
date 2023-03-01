@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import dbClient from '../utils/dbClient.js';
 // Components
-import { createVerificationInDB } from './utils.js';
+import { createVerificationInDB, createPasswordResetInDB } from './utils.js';
 // Emitters
 import { myEmitterUsers } from '../event/userEvents.js';
 import { myEmitterErrors } from '../event/errorEvents.js';
@@ -13,7 +13,10 @@ import {
   findVerification,
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
-import { sendVerificationEmail } from '../utils/sendEmail.js';
+import {
+  sendVerificationEmail,
+  sendResetPasswordEmail,
+} from '../utils/sendEmail.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -21,7 +24,8 @@ import {
   ServerErrorEvent,
   MissingFieldEvent,
   RegistrationServerErrorEvent,
-  ServerConflictError
+  ServerConflictError,
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
 // Time
 import { v4 as uuid } from 'uuid';
@@ -60,12 +64,20 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const registerNewUser = async (req, res) => {
-  const { email, password, role, firstName, lastName, country, agreedToTerms } = req.body;
+  const { email, password, role, firstName, lastName, country, agreedToTerms } =
+    req.body;
   const lowerCaseEmail = email.toLowerCase();
   //
   try {
     //
-    if (!lowerCaseEmail || !password || !firstName || !lastName || !country || !agreedToTerms ) {
+    if (
+      !lowerCaseEmail ||
+      !password ||
+      !firstName ||
+      !lastName ||
+      !country ||
+      !agreedToTerms
+    ) {
       //
       const missingField = new MissingFieldEvent(
         null,
@@ -81,7 +93,15 @@ export const registerNewUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
-    const createdUser = await createUser(lowerCaseEmail, hashedPassword, role, firstName, lastName, country, agreedToTerms);
+    const createdUser = await createUser(
+      lowerCaseEmail,
+      hashedPassword,
+      role,
+      firstName,
+      lastName,
+      country,
+      agreedToTerms
+    );
 
     myEmitterUsers.emit('register', createdUser);
 
@@ -165,10 +185,9 @@ export const verifyUser = async (req, res) => {
     const token = createAccessToken(updatedUser.id, updatedUser.email);
 
     await dbClient.userVerification.delete({ where: { userId } });
-    
+
     sendDataResponse(res, 200, { token, user: updatedUser });
     myEmitterUsers.emit('verified', updatedUser);
-
   } catch (err) {
     // Create error instance
     const serverError = new RegistrationServerErrorEvent(
@@ -182,50 +201,49 @@ export const verifyUser = async (req, res) => {
   }
 };
 
-export const  resendVerificationEmail = async (req, res) => {
-  const { email } = req.params
+export const resendVerificationEmail = async (req, res) => {
+  const { email } = req.params;
   console.log('email', email);
 
   if (!email) {
-    const err = new BadRequestError('Missing user identifier')
-    return sendMessageResponse(res, err.code, err.message)
+    const err = new BadRequestEvent('Missing user identifier');
+    return sendMessageResponse(res, err.code, err.message);
   }
 
   try {
-
-    const foundUser = await dbClient.user.findUnique({ where: { email } })
+    const foundUser = await dbClient.user.findUnique({ where: { email } });
     console.log('found user', foundUser);
     if (!foundUser) {
-      const notFound = new NotFoundError('user', 'email')
-      return sendMessageResponse(res, notFound.code, notFound.message)
+      const notFound = new NotFoundError('user', 'email');
+      return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     const foundVerification = await dbClient.userVerification.findUnique({
       where: { userId: foundUser.id },
-    })
+    });
 
     console.log('foundVerificion', foundVerification);
     if (!foundVerification) {
       const serverError = new ServerConflictError(
         email,
         "Account verification record doesn't exist or has been verified already."
-      )
+      );
       console.log('Error');
-      myEmitterErrors.emit('verification-not-found', serverError)
-      return sendMessageResponse(res, serverError.code, serverError.message)
+      myEmitterErrors.emit('verification-not-found', serverError);
+      return sendMessageResponse(res, serverError.code, serverError.message);
     }
 
-    await dbClient.userVerification.delete({ where: { userId: foundUser.id } })
+    await dbClient.userVerification.delete({ where: { userId: foundUser.id } });
 
-    const uniqueString = uuid() + foundUser.id
-    const hashedString = await bcrypt.hash(uniqueString, hashRate)
-    await createVerificationInDB(foundUser.id, hashedString)
+    const uniqueString = uuid() + foundUser.id;
+    const hashedString = await bcrypt.hash(uniqueString, hashRate);
+    await createVerificationInDB(foundUser.id, hashedString);
 
-    await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString)
+    await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString);
 
     myEmitterUsers.emit('resend-verification', foundUser);
 
-    return sendMessageResponse(res, 201, 'Verification email resent')
+    return sendMessageResponse(res, 201, 'Verification email resent');
   } catch (err) {
     // Create error instance
     const serverError = new RegistrationServerErrorEvent(
@@ -237,4 +255,47 @@ export const  resendVerificationEmail = async (req, res) => {
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
-}
+};
+
+export const sendPasswordReset = async (req, res) => {
+  const { resetEmail } = req.body;
+  console.log('res', res.data);
+  console.log('res', res.error);
+  console.log('reset');
+
+  if (!resetEmail) {
+    const badRequest = new BadRequestEvent(
+      null,
+      'Reset Password - Missing email'
+    );
+    myEmitterErrors.emit('error', badRequest);
+    return sendMessageResponse(res, badRequest.code, badRequest.message);
+  }
+
+  const lowerCaseEmail = resetEmail.toLowerCase();
+
+  try {
+
+    const foundUser = await findUserByEmail(lowerCaseEmail);
+
+    if (!foundUser) {
+      return sendDataResponse(res, 404, { email: 'Email not found in database' });
+    }
+    // Create unique string for verify URL
+    const uniqueString = uuid() + foundUser.id;
+    console.log('unique reset string', uniqueString);
+    const hashedString = await bcrypt.hash(uniqueString, hashRate);
+
+    await createPasswordResetInDB(foundUser.id, hashedString);
+    await sendResetPasswordEmail(foundUser.id, foundUser.email, uniqueString);
+
+  } catch (err) {
+    // Create error instance
+    const serverError = new ServerErrorEvent(`Verify New User Server error`);
+    // Store error as event
+    myEmitterErrors.emit('error', serverError);
+    // Send error to client
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};

@@ -14,12 +14,12 @@ function ResetPassword() {
       [name]: value,
     });
   };
-
+console.log('resetEmail', resetEmail);
   const handleReset = (event) => {
     event.preventDefault();
 
     client
-      .post('/users/send-password-reset', resetEmail, false)
+      .post(`/users/send-password-reset`, resetEmail, false)
       .then((res) => {
         setSuccessResetPassword(res.data);
         console.log('data', res.data);

@@ -11,6 +11,7 @@ import ResetPassword from './pages/auth/ResetPassword';
 import UserAgreement from './pages/auth/UserAgreement';
 import Account from './pages/account/Account';
 import Verify from './users/Verify';
+import EnterNewPassword from './pages/auth/EnterNewPassword';
 
 function App() {
   return (
@@ -27,9 +28,11 @@ function App() {
       {/* User Routes */}
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/reset-password' element={<ResetPassword />} />
+      <Route path='/reset-lost-password' element={<ResetPassword />} />
       <Route path='/account' element={<Account />} />
+
       <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
+      <Route path='users/reset-lost-password/:userId/:uniqueString' element={<EnterNewPassword />} />
 
       {/* Util Routes */}
       <Route path='/terms-and-conditions' element={<UserAgreement />} />

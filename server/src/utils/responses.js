@@ -18,7 +18,7 @@ export const RESPONSE_MESSAGES = {
   NotFoundEvent: 'was not found',
   NoPermissionEvent: 'You are not authorized to perform this action',
   NoValidationEvent: 'Unable to verify user',
-  BadRequestEvent: 'Incorrect request syntax',
+  BadRequestEvent: 'Incorrect request syntax or malformed request',
   MissingFieldEvent: 'Missing fields in body',
 };
 
