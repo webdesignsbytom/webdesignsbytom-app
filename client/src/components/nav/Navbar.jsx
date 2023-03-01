@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
+import { ToggleContext } from '../../context/ToggleContext';
 // Data
 import { sampleUserData } from '../../users/utils/utils';
+
 const links = [
   { url: '/developer', title: 'Home' },
   { url: '/', title: 'Hero' },
@@ -18,8 +20,6 @@ const links = [
 
 function Navbar() {
   const { setUser } = useContext(UserContext);
-
-  // const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
 
   // const openNavbar = () => {
   //   setToggleNavigation(!toggleNavigation);
