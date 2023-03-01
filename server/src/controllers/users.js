@@ -69,6 +69,7 @@ export const getAllUsers = async (req, res) => {
 
 export const getUserById = async (req, res) => {
   console.log('req', req.user);
+  console.log('req.params', req.params);
   const userId = req.params.id
   console.log('userId', userId);
 
@@ -85,7 +86,7 @@ export const getUserById = async (req, res) => {
         'Not found event',
         'Cant find user by ID'
       );
-      myEmitterErrors.emit('error', notFound);
+      // myEmitterErrors.emit('error', notFound);
       // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
