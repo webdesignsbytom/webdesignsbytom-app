@@ -20,8 +20,14 @@ export const loginDataTemplate = {
 }
 
 export const sampleUserData = {
+    id: '',
     email: '',
     firstName: '',
     lastName: '',
     country: '',
+    role: 'USER',
+    isVerified: false,
+    createdAt: '',
+    updatedAt: ''
+    
 }

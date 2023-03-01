@@ -13,7 +13,7 @@ import {
   findVerification,
   findResetRequest,
   findUserById,
-  resetUserPassword
+  resetUserPassword,
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
@@ -46,7 +46,7 @@ export const getAllUsers = async (req, res) => {
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
-        'User database'
+        'User database not found'
       );
       myEmitterErrors.emit('error', notFound);
       // Send response
@@ -60,6 +60,44 @@ export const getAllUsers = async (req, res) => {
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Get all users`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const getUserById = async (req, res) => {
+  console.log('req', req.user);
+  const userId = req.params.id
+  console.log('userId', userId);
+
+  try {
+    console.log('test');
+    const foundUser = await findUserById(userId)
+    console.log('foundUser', foundUser);
+
+    // If no found users
+    if (!foundUser) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find user by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      // Send response
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    delete foundUser.password;
+    delete foundUser.agreedToTerms
+
+    myEmitterUsers.emit('get-user-by-id', req.user);
+    return sendDataResponse(res, 200, { user: foundUser });
+
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Get user by ID`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
@@ -322,7 +360,6 @@ export const resetPassword = async (req, res) => {
   }
 
   try {
-
     const foundResetRequest = await findResetRequest(userId);
     console.log('found', foundResetRequest);
 
@@ -363,11 +400,11 @@ export const resetPassword = async (req, res) => {
       );
     }
 
-    const foundUser = await findUserById(userId)
+    const foundUser = await findUserById(userId);
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
 
-    const updatedUser = await resetUserPassword(foundUser.id, hashedPassword)
+    const updatedUser = await resetUserPassword(foundUser.id, hashedPassword);
     console.log('updated user', updatedUser);
 
     delete updatedUser.password;
@@ -376,7 +413,6 @@ export const resetPassword = async (req, res) => {
 
     sendDataResponse(res, 200, { user: updatedUser });
     myEmitterUsers.emit('password-reset', updatedUser);
-
   } catch (err) {
     // Create error instance
     const serverError = new ServerErrorEvent(`Verify New User Server error`);
