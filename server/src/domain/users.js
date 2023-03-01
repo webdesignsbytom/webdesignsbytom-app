@@ -58,3 +58,9 @@ export const resetUserPassword = (userId, password) =>
       password: password
     }
   })
+
+export const deleteUserById = (userId) => dbClient.user.delete({
+  where: {
+    id: userId
+  }
+})

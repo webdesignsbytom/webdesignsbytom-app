@@ -4,7 +4,8 @@ import {
   createRegisterEvent,
   createVerifyEvent,
   createNewVerifyEvent,
-  createPasswordResetEvent
+  createPasswordResetEvent,
+  createDeleteUserEvent
 } from './utils/userUtils.js';
 
 export const myEmitterUsers = myEmitter;
@@ -25,4 +26,8 @@ myEmitterUsers.on('resend-verification', async (user) => {
 
 myEmitterUsers.on('password-reset', async (user) => {
   createPasswordResetEvent(user);
+});
+
+myEmitterUsers.on('deleted-user', async (user) => {
+  createDeleteUserEvent(user);
 });

@@ -14,6 +14,7 @@ import {
   findResetRequest,
   findUserById,
   resetUserPassword,
+  deleteUserById
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
@@ -423,3 +424,38 @@ export const resetPassword = async (req, res) => {
     throw err;
   }
 };
+
+export const deleteUser = async (req, res) => {
+  const userId = req.params.id
+  console.log('userId', userId);
+
+  try {
+    console.log('test');
+    const foundUser = await findUserById(userId)
+    console.log('foundUser', foundUser);
+
+    // If no found users
+    if (!foundUser) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find user by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      // Send response
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    await deleteUserById(userId)
+    myEmitterUsers.emit('deleted-user', req.user);
+    return sendDataResponse(res, 200, { user: foundUser, message: `User ${foundUser.email} deleted` });
+
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Get user by ID`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+}
