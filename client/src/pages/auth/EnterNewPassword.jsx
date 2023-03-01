@@ -8,7 +8,7 @@ function EnterNewPassword() {
   const { userId, uniqueString } = useParams();
   console.log('userId', userId);
   console.log('uniqueString', uniqueString);
-  const [successPasswordReset, setSuccessPasswordReset] = useState({});
+  const [successPasswordReset, setSuccessPasswordReset] = useState('');
   const [newPassword, setNewPassword] = useState({
     password: '',
     confirmPassword: '',
@@ -17,7 +17,7 @@ function EnterNewPassword() {
     status: '',
     title: '',
     message: '',
-    username: '',
+    email: '',
   });
 
   const handleChange = (event) => {
@@ -34,25 +34,33 @@ function EnterNewPassword() {
     console.log('submit');
 
     if (newPassword.password !== newPassword.confirmPassword) {
-      return <p>Passwords do not match</p>
+      return <p>Passwords do not match</p>;
     }
 
-    client 
-    .post(`/users/reset-password/${userId}/${uniqueString}`, newPassword, false)
-    .then((res) => {
-      setSuccessPasswordReset(res.data);
-      console.log('data', res.data);
-    })
+    client
+      .post(
+        `/users/reset-password/${userId}/${uniqueString}`,
+        newPassword,
+        false
+      )
+      .then((res) => {
+        setSuccessPasswordReset(res.data.status);
+        console.log('data', res.data);
+        setPage({
+          status: res.data.status,
+          title: 'Password reset successfully',
+          email: res.data.data.user.email,
+        });
+      })
 
-    .catch((err) => {
-      console.error(err);
-    });
+      .catch((err) => {
+        console.error(err);
+      });
   };
   return (
     <>
       <div>EnterNewPassword</div>
       <form onSubmit={handleSubmit}>
-
         {/* <!-- Password input --> */}
         <div className='mb-6'>
           <input
@@ -87,6 +95,8 @@ function EnterNewPassword() {
           </button>
         </div>
       </form>
+
+      {successPasswordReset && <h3>SUCCESS {page.title}</h3>}
     </>
   );
 }
