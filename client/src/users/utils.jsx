@@ -18,3 +18,10 @@ export const loginDataTemplate = {
     email: '',
     password: ''
 }
+
+export const sampleUserData = {
+    email: '',
+    firstName: '',
+    lastName: '',
+    country: '',
+}

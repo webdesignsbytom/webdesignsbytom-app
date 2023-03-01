@@ -31,9 +31,10 @@ function DeveloperPanel() {
               <ul>
                 {eventLog?.map((event, index) => {
                   return (
-                    <li key={index} className='grid grid-cols-5 gap-6'>
+                    <li key={index} className='grid grid-cols-6 gap-6'>
                       <h6>{event.type}</h6>
                       <p>{event.topic}</p>
+                      <p>{event.code}</p>
                       <p>{event.createdById}</p>
                       <p>{event.recievedById}</p>
                       <p>{event.createdAt}</p>
