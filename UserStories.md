@@ -13,3 +13,4 @@
 11. I want users to use a random colour pallet picker in the design page
 12. I want users to access all features except for saving and payments without confirming account.
 13. I want a pop up saying confirm account if unconfirmed and an additional button on account page with resend button.
+14. I want contact form messages to be sent to db and displayed in admin panel
