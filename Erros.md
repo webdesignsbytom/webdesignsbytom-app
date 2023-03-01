@@ -14,5 +14,4 @@ Unique constraint failed on the fields: (`userId`)
   code: 'P2002',
   clientVersion: '4.10.1',
   meta: { target: [ 'userId' ] },
-  batchRequestIdx: undefined
-}
+  batchRequestIdx: undefined.
