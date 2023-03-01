@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '../../components/nav/Navbar';
+import FoundUser from '../../components/users/FoundUser';
 // Data
 import { sampleUserData } from '../../users/utils';
 // Axios
@@ -9,6 +10,7 @@ function AdminPanel() {
   const [foundUser, setFoundUser] = useState(sampleUserData);
   const [userId, setUserId] = useState('');
   console.log('userId', userId);
+  console.log('foundUser', foundUser);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -23,7 +25,7 @@ function AdminPanel() {
     event.preventDefault();
 
     client
-      .get(`/users/${userId}`)
+      .get(`/users/${userId.id}`)
       .then((res) => {
         console.log('res', res.data);
         setFoundUser(res.data.data.user);
@@ -63,7 +65,7 @@ function AdminPanel() {
         </form>
 
         {foundUser.email ? (
-          <div>{foundUser.email}</div>
+          <FoundUser foundUser={foundUser} />
         ) : (
           <p>Nothing to display</p>
         )}

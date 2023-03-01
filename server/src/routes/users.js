@@ -13,7 +13,7 @@ import { validateAuthentication, validateAdminRole } from '../middleware/auth.js
 
 const router = Router();
 
-router.get('/', validateAuthentication, validateAdminRole, getAllUsers);
+router.get('/', getAllUsers);
 router.post('/register', registerNewUser);
 router.get('/:id', getUserById);
 router.get('/verify/:userId/:uniqueString', verifyUser);
