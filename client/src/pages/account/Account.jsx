@@ -34,6 +34,18 @@ function Account() {
   const deleteProfile = (event) => {
     event.preventDefault();
     console.log('delete account');
+
+    event.preventDefault();
+    console.log('event', event);
+
+    client
+      .delete(`/users/delete-user/${user.id}`)
+      .then((res) => {
+        console.log('res', res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   return (
     <>
