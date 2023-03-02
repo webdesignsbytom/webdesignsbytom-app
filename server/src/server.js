@@ -9,6 +9,7 @@ import * as url from 'url';
 import userRouter from './routes/users.js';
 import eventRouter from './routes/events.js';
 import authRouter from './routes/auth.js'
+import notificationRouter from './routes/notifications.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -29,6 +30,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 // Start of actions
 app.use('/users', userRouter);
 app.use('/events', eventRouter);
+app.use('/notifications', notificationRouter);
 app.use('/', authRouter)
 
 
