@@ -19,6 +19,8 @@ import Developer from '../../img/developer.svg';
 import Search from '../../img/search.svg';
 import Notification from '../../img/notification.svg';
 import Notifications from '../notifications/Notifications';
+// Styles
+import '../../styles/keyframes.css'
 
 function Navbar() {
   const {
@@ -66,7 +68,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='mx-auto px-2 sm:px-6 lg:px-4 bg-green-400'>
+      <div className='mx-auto px-2 sm:px-6 lg:px-4 bg-green-400 max-h-screen overflow-scroll'>
         <div className='flex h-16 items-center justify-between px-4'>
           <div
             onClick={() => {
@@ -318,7 +320,7 @@ function Navbar() {
       )}
 
       {toggleNotifications && (
-        <div className='absolute h-0 transition ease-in-out duration-200 bg-green-700 w-full after:h-[calc(100%_-_4rem)] overflow-hidden md:hidden'>
+        <div className='absolute testClass'>
           <Notifications />
         </div>
       )}

@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height'
+      },
+      variants: {
+        height: ['responsive', 'hover', 'focus']
+    },
       colors: {
         'main-colour': '#4aad37',
         'colour-pale': '#99DF8A',
