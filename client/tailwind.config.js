@@ -17,6 +17,7 @@ module.exports = {
         'active-text': '#6b7280',
         'error-red': '',
         'success-green': '',
+        'event-red': '',
         'hyperlink-blue': '',
       },
     },

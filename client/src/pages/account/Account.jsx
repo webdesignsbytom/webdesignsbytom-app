@@ -30,6 +30,11 @@ function Account() {
         }, 5000);
       });
   }
+
+  const deleteProfile = (event) => {
+    event.preventDefault();
+    console.log('delete account');
+  }
   return (
     <>
       <Navbar />
@@ -48,7 +53,7 @@ function Account() {
         </h3>
       </article>
 
-      <UserCard />
+      <UserCard user={user} />
       <div>
         <h3>Confirm your email address</h3>
         <p className='reminder'>
@@ -58,6 +63,10 @@ function Account() {
           </span>
         </p>
       </div>
+
+      <section className='mx-2'>
+        <button onClick={deleteProfile} className='bg-red-700 p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-main-colour-med hover:shadow-lg focus:bg-main-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>Delete Profile</button>
+      </section>
     </>
   );
 }
