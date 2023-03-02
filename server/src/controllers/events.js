@@ -31,8 +31,7 @@ export const getAllEvents = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    // Connect to eventEmitter
-    // myEmitterEvents.emit('get-all-events', req.user);
+    myEmitterEvents.emit('get-all-events', req.user);
     return sendDataResponse(res, 200, { events: foundEvents });
     //
   } catch (err) {

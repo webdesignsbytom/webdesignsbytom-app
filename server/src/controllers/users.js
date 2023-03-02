@@ -52,11 +52,9 @@ export const getAllUsers = async (req, res) => {
         'User database not found'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    // Connect to eventEmitter
     myEmitterUsers.emit('get-all-users', req.user);
     return sendDataResponse(res, 200, { users: foundUsers });
     //
@@ -79,7 +77,6 @@ export const getUserById = async (req, res) => {
     console.log('test');
     const foundUser = await findUserById(userId)
     console.log('foundUser', foundUser);
-
     // If no found users
     if (!foundUser) {
       // Create error instance
@@ -88,8 +85,7 @@ export const getUserById = async (req, res) => {
         'Not found event',
         'Cant find user by ID'
       );
-      // myEmitterErrors.emit('error', notFound);
-      // Send response
+      myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -150,9 +146,7 @@ export const registerNewUser = async (req, res) => {
 
     myEmitterUsers.emit('register', createdUser);
 
-    // Create unique string for verify URL
     const uniqueString = uuid() + createdUser.id;
-    console.log('unique string', uniqueString);
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
 
     await createVerificationInDB(createdUser.id, hashedString);
@@ -238,9 +232,7 @@ export const verifyUser = async (req, res) => {
     const serverError = new RegistrationServerErrorEvent(
       `Verify New User Server error`
     );
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
@@ -248,7 +240,6 @@ export const verifyUser = async (req, res) => {
 
 export const resendVerificationEmail = async (req, res) => {
   const { email } = req.params;
-  console.log('email', email);
 
   if (!email) {
     const err = new BadRequestEvent('Missing user identifier');
@@ -257,7 +248,6 @@ export const resendVerificationEmail = async (req, res) => {
 
   try {
     const foundUser = await dbClient.user.findUnique({ where: { email } });
-    console.log('found user', foundUser);
     if (!foundUser) {
       const notFound = new NotFoundError('user', 'email');
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -294,9 +284,7 @@ export const resendVerificationEmail = async (req, res) => {
     const serverError = new RegistrationServerErrorEvent(
       `Verify New User Server error`
     );
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
@@ -304,9 +292,6 @@ export const resendVerificationEmail = async (req, res) => {
 
 export const sendPasswordReset = async (req, res) => {
   const { resetEmail } = req.body;
-  console.log('res', res.data);
-  console.log('res', res.error);
-  console.log('reset');
 
   if (!resetEmail) {
     const badRequest = new BadRequestEvent(
@@ -329,7 +314,6 @@ export const sendPasswordReset = async (req, res) => {
     }
     // Create unique string for verify URL
     const uniqueString = uuid() + foundUser.id;
-    console.log('unique reset string', uniqueString);
     const hashedString = await bcrypt.hash(uniqueString, hashRate);
 
     await createPasswordResetInDB(foundUser.id, hashedString);
@@ -339,9 +323,7 @@ export const sendPasswordReset = async (req, res) => {
     const serverError = new ServerErrorEvent(
       `Request password reset Server error`
     );
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
@@ -352,7 +334,6 @@ export const resetPassword = async (req, res) => {
   const { password, confirmPassword } = req.body;
 
   if (password !== confirmPassword) {
-    console.log('error');
     const badRequest = new BadRequestEvent(
       userId,
       'Reset Password - New passwords do not match'
@@ -416,21 +397,17 @@ export const resetPassword = async (req, res) => {
   } catch (err) {
     // Create error instance
     const serverError = new ServerErrorEvent(`Verify New User Server error`);
-    // Store error as event
     myEmitterErrors.emit('error', serverError);
-    // Send error to client
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
 };
 
 export const deleteUser = async (req, res) => {
-  console.log('Delete User req', req.params);
   const userId = req.params.userId
-  console.log('userId', userId);
+
   try {
     const foundUser = await findUserById(userId)
-    console.log('foundUser', foundUser);
     // If no found users
     if (!foundUser) {
       // Create error instance
