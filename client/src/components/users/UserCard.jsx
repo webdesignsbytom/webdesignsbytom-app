@@ -6,7 +6,13 @@ function UserCard({ user }) {
   return (
     <>
       <section className='mx-2 border-2 border-black border-solid rounded-md p-2'>
-        <div><img className='rounded-full h-12 w-12' src={profileImage} alt="Profile" /></div>
+        <div>
+          <img
+            className='rounded-full h-12 w-12'
+            src={profileImage}
+            alt='Profile'
+          />
+        </div>
         <article>
           <p>{email}</p>
           <p>{firstName}</p>
