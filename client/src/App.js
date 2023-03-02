@@ -15,6 +15,7 @@ import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
 import TestPage from './pages/test/TestPage';
 import Contact from './pages/contact/Contact';
+import Error404 from './pages/error/Error404';
 // Utils
 import {
   AuthenticateUser,
@@ -73,6 +74,7 @@ function App() {
         {/* Util Routes */}
         <Route path='/terms-and-conditions' element={<UserAgreement />} />
         <Route path='/test' element={<TestPage />} />
+        <Route path='*' element={<Error404 />} />
       </Routes>
     </>
   );
