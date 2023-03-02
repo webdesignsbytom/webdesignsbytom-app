@@ -37,6 +37,8 @@ import { v4 as uuid } from 'uuid';
 const hashRate = 8;
 
 export const getAllUsers = async (req, res) => {
+  console.log('req params', req.params);
+  console.log('req user' , req.user);
   try {
     // Find all users
     const foundUsers = await findAllUsers();
@@ -68,7 +70,7 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const getUserById = async (req, res) => {
-  console.log('req', req.user);
+  console.log('USer by ID req', req.user);
   console.log('req.params', req.params);
   const userId = req.params.id
   console.log('userId', userId);
@@ -423,7 +425,7 @@ export const resetPassword = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  console.log('req', req.params);
+  console.log('Delete User req', req.params);
   const userId = req.params.userId
   console.log('userId', userId);
   try {
