@@ -161,6 +161,14 @@ model Project {
   updatedAt   DateTime?   @updatedAt
 }
 
+model Design {
+  id           Int            @id @default(autoincrement())
+  name         String
+  colorPallete ColorPallete[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime?      @updatedAt
+}
+
 model UserStory {
   id        Int       @id @default(autoincrement())
   content   String
@@ -170,15 +178,17 @@ model UserStory {
   updatedAt DateTime? @updatedAt
 }
 
-model ColorPallet {
-  id          Int       @id @default(autoincrement())
-  bgMain      String    @default("")
-  bgAlt       String    @default("")
-  palletOne   String    @default("")
-  palletTwo   String    @default("")
-  palletThree String    @default("")
-  hover       String    @default("")
-  selected    String    @default("")
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime? @updatedAt
+model ColorPallete {
+  id           Int       @id @default(autoincrement())
+  bgMain       String    @default("")
+  bgAlt        String    @default("")
+  palleteOne   String    @default("")
+  palleteTwo   String    @default("")
+  palleteThree String    @default("")
+  hover        String    @default("")
+  selected     String    @default("")
+  designId     Int
+  design       Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
 }
