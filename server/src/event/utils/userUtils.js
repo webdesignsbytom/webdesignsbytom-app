@@ -155,4 +155,3 @@ export const createDeleteUserEvent = async (user) => {
     throw err;
   }
 };
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhkYTI3MWUwLTUyOTctNDU4MC04YWE2LTE0NzdlZmMwOGNiYSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNjc3NzExNTk1LCJleHAiOjE2Nzc3NTQ3OTV9.ji6dxrJeMcnqeKdPyivZ7FGsAVbmnPJUo_T1ADPRntk
