@@ -4,6 +4,7 @@ import {
   createNewProject,
   deleteProject,
   getProjectsFromUser,
+  getProjectById,
 } from '../controllers/projects.js';
 import {
   validateAuthentication,
@@ -13,7 +14,8 @@ import {
 const router = Router();
 
 router.get('/', getAllProjects);
-router.get('/:userId', getProjectsFromUser);
+router.get('/user-projects/:userId', getProjectsFromUser);
+router.get('/:projectId', getProjectById);
 router.post('/create', createNewProject);
 router.delete('/delete/:id', deleteProject);
 
