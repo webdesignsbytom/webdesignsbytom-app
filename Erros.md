@@ -3,8 +3,7 @@
 ## List
 
   1. P2002
-  2. Cant get user with dev and admin auth - set to just admin for now
-  3.  
+  2.  
 
 ## Need a way to detect this and return a event log
 

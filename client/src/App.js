@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom' 
+import { Routes, Route } from 'react-router-dom';
 // Pages
 import HeroPage from './pages/hero/HeroPage';
 import PortfolioHome from './pages/portfolio/PortfolioHome';
@@ -15,35 +15,65 @@ import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
 import TestPage from './pages/test/TestPage';
 import Contact from './pages/contact/Contact';
+// Utils
+import {
+  AuthenticateUser,
+  AuthenticateAdmin,
+  AuthenticateDeveloper,
+} from './utils/AuthenticateUser';
 
 function App() {
   return (
     <>
-    <Routes>
-      <Route path='/' index element={<HeroPage />} />
-      <Route path='/portfolio' element={<PortfolioHome />} />
-      <Route path='/developer' element={<SalesHome />} />
-      <Route path='/contact' element={<Contact />} />
+      <Routes>
+        <Route path='/' index element={<HeroPage />} />
+        <Route path='/portfolio' element={<PortfolioHome />} />
+        <Route path='/developer' element={<SalesHome />} />
+        <Route path='/contact' element={<Contact />} />
 
-      {/* Secure routes */}
-      <Route path='/admin' element={<AdminPanel />} />
-      <Route path='/development' element={<DeveloperPanel />} />
+        {/* Secure routes */}
+        <Route
+          path='/admin'
+          element={
+            <AuthenticateAdmin>
+              <AdminPanel />
+            </AuthenticateAdmin>
+          }
+        />
+        <Route
+          path='/development'
+          element={
+            <AuthenticateDeveloper>
+              <DeveloperPanel />
+            </AuthenticateDeveloper>
+          }
+        />
 
-      {/* User Routes */}
-      <Route path='/login' element={<Login />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/reset-lost-password' element={<ResetPassword />} />
-      <Route path='/account' element={<Account />} />
-      <Route path='/design' element={<Design />} />
+        {/* User Routes */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/reset-lost-password' element={<ResetPassword />} />
 
-      <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
-      <Route path='users/reset-lost-password/:userId/:uniqueString' element={<EnterNewPassword />} />
+        <Route
+          path='/account'
+          element={
+            <AuthenticateUser>
+              <Account />
+            </AuthenticateUser>
+          }
+        />
+        <Route path='/design' element={<Design />} />
 
-      {/* Util Routes */}
-      <Route path='/terms-and-conditions' element={<UserAgreement />} />
-      <Route path='/test' element={<TestPage />} />
+        <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
+        <Route
+          path='users/reset-lost-password/:userId/:uniqueString'
+          element={<EnterNewPassword />}
+        />
 
-    </Routes>
+        {/* Util Routes */}
+        <Route path='/terms-and-conditions' element={<UserAgreement />} />
+        <Route path='/test' element={<TestPage />} />
+      </Routes>
     </>
   );
 }
