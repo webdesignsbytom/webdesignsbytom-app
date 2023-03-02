@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Navbar from '../../components/nav/Navbar';
 // Axios
 import client from '../../utils/client';
 
@@ -58,6 +59,7 @@ function EnterNewPassword() {
   };
   return (
     <>
+      <Navbar />
       <div>EnterNewPassword</div>
       <form onSubmit={handleSubmit}>
         {/* <!-- Password input --> */}
