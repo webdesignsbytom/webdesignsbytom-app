@@ -32,6 +32,7 @@ model User {
   notifications  Notification[]
   projects       Project[]
   designs        Design[]
+  review         Review?
   agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
@@ -156,6 +157,7 @@ model Project {
   name        String
   pagesTotal  Int?
   domainName  String?
+  price       Int
   userStories UserStory[]
   startDate   DateTime    @default(now())
   createdAt   DateTime    @default(now())
@@ -194,4 +196,17 @@ model ColorPallete {
   design       Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
+}
+
+// User reviews
+
+model Review {
+  id        Int       @id @default(autoincrement())
+  value     Int
+  email     String    @unique
+  userId    String?   @unique
+  user      User?     @relation(fields: [userId], references: [id])
+  content   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
