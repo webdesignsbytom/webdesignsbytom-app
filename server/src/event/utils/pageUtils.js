@@ -11,10 +11,37 @@ export const createGetAllPagesEvent = async (user) => {
         topic: 'Get all pages',
         content: `Success`,
         createdById: user.id,
+        code: 200
       },
     });
   } catch (err) {
     const error = new CreateEventError(user, 'Get all pages');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+};
+
+export const createCreatePageEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'Create page',
+        createdById: user.id,
+        createdAt: user.createdAt,
+        code: 200
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Create page');
     myEmitterErrors.emit('error', error);
     throw err;
   }
