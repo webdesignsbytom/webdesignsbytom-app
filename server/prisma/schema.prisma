@@ -31,6 +31,7 @@ model User {
   passwordReset  PasswordReset?
   notifications  Notification[]
   projects       Project[]
+  designs        Design[]
   agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
@@ -165,6 +166,8 @@ model Design {
   id           Int            @id @default(autoincrement())
   name         String
   colorPallete ColorPallete[]
+  userId       String
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime       @default(now())
   updatedAt    DateTime?      @updatedAt
 }
