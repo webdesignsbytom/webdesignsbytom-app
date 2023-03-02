@@ -52,8 +52,8 @@ function Login() {
   };
   return (
     <>
-      <div className='bg-gray-300 dark:bg-black h-screen'>
-        <div className='h-screen grid'>
+      <div className='bg-white dark:bg-black'>
+        <div>
           {/* Navigation */}
           <Navbar />
           {/* Titles */}
