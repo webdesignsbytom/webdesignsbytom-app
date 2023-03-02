@@ -1,6 +1,6 @@
 # Webdesignsbytom
 
-This app is deployed at [https://cute-pudding-2b5aa1.netlify.app/](https://cute-pudding-2b5aa1.netlify.app/)
+This app is deployed at [https://640005ab462b1818f8a8a440--cute-pudding-2b5aa1.netlify.app/](https://640005ab462b1818f8a8a440--cute-pudding-2b5aa1.netlify.app/)
 
 New design for portfolio site including new features for private sales.
 
