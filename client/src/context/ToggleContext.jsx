@@ -5,9 +5,10 @@ export const ToggleContext = React.createContext()
 
 const ToggleContextProvider = ({ children }) => {
   const [toggleNavigation, setToggleNavigation] = useState(false)  
+  const [toggleNotifications, setToggleNotifications] = useState(false)  
 
     return (
-        <ToggleContext.Provider value={{ toggleNavigation, setToggleNavigation }}>
+        <ToggleContext.Provider value={{ toggleNavigation, setToggleNavigation, toggleNotifications, setToggleNotifications }}>
           {children}
         </ToggleContext.Provider> 
       );
