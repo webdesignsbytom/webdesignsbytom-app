@@ -9,6 +9,13 @@ export const findNotificationsByUserId = (userId) =>
         }
     })
 
+export const findNotificationById = (id) =>
+    dbClient.notification.findFirst({
+        where: {
+            id: id,
+        }
+    })
+
 export const createNewNotification = (type, content, userId) =>
     dbClient.notification.create({
         data: {
@@ -17,3 +24,19 @@ export const createNewNotification = (type, content, userId) =>
             userId: userId
         }
     })
+
+export const updateNotificationById = (id) =>
+    dbClient.notification.update({
+        where: {
+            id: id,
+        },
+        data: {
+            viewed: true,
+        }
+    })
+
+export const deleteNotificationById = (id) => dbClient.notification.delete({
+    where: {
+        id: id,
+    }
+})
