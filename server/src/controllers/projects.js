@@ -7,6 +7,7 @@ import {
   createProject,
   findProjectById,
   deleteProjectById,
+  findUserProjectsById
 } from '../domain/projects.js';
 import { findUserById } from '../domain/users.js';
 // Response messages
@@ -48,6 +49,41 @@ export const getAllProjects = async (req, res) => {
     throw err;
   }
 };
+
+export const getProjectsFromUser = async (req, res) => {
+  console.log('get user id project')
+  const userId = req.params.userId
+  console.log('useeId', userId)
+
+  try {
+    console.log('test');
+    const foundUser = await findUserById(userId);
+    console.log('foundUser', foundUser)
+    if (!foundUser) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find user by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+    const foundProjects = await findUserProjectsById(userId);
+    console.log('foundProjects', foundProjects);
+    // If no found users
+    
+
+    myEmitterProjects.emit('get-user-projects', req.user);
+    return sendDataResponse(res, 200, { user: foundProjects });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Get user projects by ID`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+}
 
 export const createNewProject = async (req, res) => {
   console.log('createNewProject');

@@ -3,6 +3,7 @@ import {
   createGetAllProjectsEvent,
   createCreateProjectEvent,
   createDeleteProjectEvent,
+  createGetUserProjectEvent,
 } from './utils/projectUtils.js';
 
 export const myEmitterProjects = myEmitter;
@@ -17,4 +18,8 @@ myEmitterProjects.on('create-project', async (user) =>
 
 myEmitterProjects.on('deleted-project', async (user) =>
   createDeleteProjectEvent(user)
+);
+
+myEmitterProjects.on('get-user-projects', async (user) =>
+  createGetUserProjectEvent(user)
 );

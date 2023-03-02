@@ -12,19 +12,24 @@ export const findProjectById = (id) =>
     where: { id: id },
   });
 
+export const findUserProjectsById = (id) =>
+  dbClient.project.findMany({
+    where: { userId: id },
+  });
+
 export const createProject = (type, name, userId, domainName) =>
   dbClient.project.create({
     data: {
       type: type,
       name: name,
       userId: userId,
-      domainName: domainName
-    }
-  })
+      domainName: domainName,
+    },
+  });
 
-export const deleteProjectById = (id) => 
+export const deleteProjectById = (id) =>
   dbClient.project.delete({
     where: {
       id: id,
-    }
-  })
+    },
+  });
