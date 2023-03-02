@@ -3,6 +3,9 @@ import client from '../../utils/client';
 import Navbar from '../../components/nav/Navbar';
 // Context
 import { UserContext } from '../../context/UserContext';
+// Components
+import UserCard from '../../components/users/UserCard'
+
 const initAlert = { status: '', content: '' };
 
 function Account() {
@@ -44,6 +47,8 @@ function Account() {
           {user.firstName} {user.lastName}
         </h3>
       </article>
+
+      <UserCard />
       <div>
         <h3>Confirm your email address</h3>
         <p className='reminder'>

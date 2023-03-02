@@ -1,12 +1,12 @@
-import { Navigate } from 'react-router-dom';
-import LoggedInUser from './LoggedInUser';
-import { UserContext } from '../context/UserContext';
 import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+// Context
+import { UserContext } from '../context/UserContext';
+// Utils
+import LoggedInUser from './LoggedInUser';
 
 export function AuthenticateUser({ children, redirectPath = '/' }) {
-    
-    console.log('AUUUUTH');
-    if (!LoggedInUser()) {
+        if (!LoggedInUser()) {
         return <Navigate to={redirectPath} replace />;
     } else {
         return <>{children}</>;
@@ -14,10 +14,8 @@ export function AuthenticateUser({ children, redirectPath = '/' }) {
 }
 
 export function AuthenticateAdmin({ children, redirectPath = '/' }) {
-    const { user }  = useContext(UserContext)
-    console.log('ADDDDMIN', user.role);
+    const { user } = useContext(UserContext)
     if (user.role !== 'ADMIN' && user.role !== 'DEVELOPER') {
-        console.log('BADADDDD');
         return <Navigate to={redirectPath} replace />;
     } else {
         return <>{children}</>;
@@ -25,10 +23,8 @@ export function AuthenticateAdmin({ children, redirectPath = '/' }) {
 }
 
 export function AuthenticateDeveloper({ children, redirectPath = '/' }) {
-    const { user }  = useContext(UserContext)
-    console.log('ADDDDMIN', user.role);
+    const { user } = useContext(UserContext)
     if (user.role !== 'DEVELOPER') {
-        console.log('BADADDDD');
         return <Navigate to={redirectPath} replace />;
     } else {
         return <>{children}</>;

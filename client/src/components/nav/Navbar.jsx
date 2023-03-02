@@ -25,7 +25,6 @@ function Navbar() {
   let navigate = useNavigate();
 
   const toggleNavbar = () => {
-    console.log('log');
     setToggleNavigation(!toggleNavigation);
   };
 
@@ -35,8 +34,8 @@ function Navbar() {
 
   const signOut = (event) => {
     event.preventDefault();
-    console.log('singout');
 
+    setToggleNavigation(false)
     setUser(sampleUserData);
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
 
@@ -45,8 +44,8 @@ function Navbar() {
 
   return (
     <>
-      <div className='mx-auto px-2 sm:px-6 lg:px-8 bg-green-400'>
-        <div className='flex h-16 items-center justify-between mx-4'>
+      <div className='mx-auto px-2 sm:px-6 lg:px-4 bg-green-400'>
+        <div className='flex h-16 items-center justify-between px-4'>
           <div
             onClick={navigateHome}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
@@ -82,11 +81,13 @@ function Navbar() {
                     Home
                   </Link>
                 </li>
-                <li>
-                  <Link to='/account' className='nav__link'>
-                    Account
-                  </Link>
-                </li>
+                {user.email && (
+                  <li>
+                    <Link to='/account' className='nav__link'>
+                      Account
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link to='/design' className='nav__link'>
                     Design
@@ -154,16 +155,18 @@ function Navbar() {
                 </div>
               </Link>
             </li>
-            <li className='phone__nav__li'>
-              <Link
-                to='/account'
-                className='phone__nav__link'
-                onClick={toggleNavbar}
-              >
-                <img src={Account} className='w-8' alt='account' />
-                <h3>Account</h3>
-              </Link>
-            </li>
+            {user.email && (
+              <li className='phone__nav__li'>
+                <Link
+                  to='/account'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Account} className='w-8' alt='account' />
+                  <h3>Account</h3>
+                </Link>
+              </li>
+            )}
             <li className='phone__nav__li'>
               <Link
                 to='/design'
@@ -253,7 +256,11 @@ function Navbar() {
             <li className='phone__nav__li'>
               <div className='flex'>
                 <img src={Search} className='w-8' alt='search' />
-                <input type='text' placeholder='Search...' className='w-full pl-2' />
+                <input
+                  type='text'
+                  placeholder='Search...'
+                  className='w-full pl-2'
+                />
               </div>
             </li>
           </ul>

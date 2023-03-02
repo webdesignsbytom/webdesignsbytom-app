@@ -5,7 +5,7 @@ function HeroPage() {
   return (
     <div>
       <Navbar />
-      <Link to='/account'>Account</Link>
+      Hero Page
     </div>
   )
 }
