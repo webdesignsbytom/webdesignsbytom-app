@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
   res.sendFile('index.html', {
     root: join(__dirname, '..', 'public', 'views'),
   });
+  console.log('res', res);
 });
 
 // For all unknown requests 404 page returns

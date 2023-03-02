@@ -1,5 +1,9 @@
 import 'dotenv/config';
 import nodemailer from 'nodemailer';
+import hbs from 'nodemailer-express-handlebars';
+import path from 'path'
+
+
 import { VERIFICATION_URL } from './config.js';
 
 const transporter = nodemailer.createTransport({
@@ -10,6 +14,18 @@ const transporter = nodemailer.createTransport({
   auth: {
     type: 'login',
     user: process.env.AUTH_EMAIL,
+    pass: process.env.VERIFY_PASS,
+  },
+});
+
+const resetTransporter = nodemailer.createTransport({
+  pool: true,
+  host: 'mail.webdesignsbytom.com',
+  port: 465,
+  secure: true, // use TLS
+  auth: {
+    type: 'login',
+    user: process.env.RESET_EMAIL,
     pass: process.env.VERIFY_PASS,
   },
 });
@@ -52,7 +68,7 @@ export async function sendResetPasswordEmail(id, email, uniqueString) {
   console.log('client url: ' + clientUrl);
 
   const mailOptions = {
-    from: process.env.AUTH_EMAIL,
+    from: process.env.RESET_EMAIL,
     to: email,
     subject: 'Password Reset',
     html: `
@@ -63,20 +79,65 @@ export async function sendResetPasswordEmail(id, email, uniqueString) {
         <body style='height: 100vh;'>
           <div style='background-color: lightblue;'>
             <h1>Reset password link</h1>
-            <h2>${clientUrl + '/users/reset-lost-password/' + id + '/' + uniqueString}</h2>
+            <h2>${
+              clientUrl +
+              '/users/reset-lost-password/' +
+              id +
+              '/' +
+              uniqueString
+            }</h2>
             <p>Please follow this link to reset your password</p><p>This link <b>expires in 6 hours</b>.</p><p>Press <a href=${
-              clientUrl + '/users/reset-lost-password/' + id + '/' + uniqueString
+              clientUrl +
+              '/users/reset-lost-password/' +
+              id +
+              '/' +
+              uniqueString
             }>here</a> to proceed.</p>
           </div>
         </body>
       </html>
     `,
   };
-  console.log('url: ', clientUrl + '/reset-lost-password/' + id + '/' + uniqueString);
+  console.log(
+    'url: ',
+    clientUrl + '/reset-lost-password/' + id + '/' + uniqueString
+  );
+  try {
+    resetTransporter.sendMail(mailOptions);
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function testEmail(email) {
+  console.log('email: ', email);
+  const clientUrl = process.env.VERIFICATION_URL;
+
+  // point to the template folder
+  const handlebarOptions = {
+    viewEngine: {
+      partialsDir: path.resolve('./src/views/'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./src/views/'),
+  };
+
+  transporter.use('compile', hbs(handlebarOptions));
+
+  var mailOptions = {
+    from: process.env.AUTH_EMAIL, // sender address
+    to: email, // list of receivers
+    subject: 'Welcome!',
+    template: 'email', // the name of the template file i.e email.handlebars
+    context: {
+      name: 'Adebola', // replace {{name}} with Adebola
+      company: 'My Company', // replace {{company}} with My Company
+    },
+  };
+
   try {
     transporter.sendMail(mailOptions);
   } catch (err) {
     throw err;
   }
 }
-

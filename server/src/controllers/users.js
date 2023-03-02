@@ -20,6 +20,7 @@ import { createAccessToken } from '../utils/tokens.js';
 import {
   sendVerificationEmail,
   sendResetPasswordEmail,
+  testEmail
 } from '../utils/sendEmail.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -35,6 +36,13 @@ import {
 import { v4 as uuid } from 'uuid';
 // Password hash
 const hashRate = 8;
+
+export const sendTestyEmail = async (req, res) => {
+  console.log('testin');
+  const { email } = req.params
+  console.log('email', email);
+  await testEmail(email)
+}
 
 export const getAllUsers = async (req, res) => {
   console.log('req params', req.params);
