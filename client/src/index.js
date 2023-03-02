@@ -7,13 +7,16 @@ import App from './App';
 import './styles/index.css';
 // Users
 import UserContextProvider from './context/UserContext';
+import ToggleContextProvider from './context/ToggleContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserContextProvider>
-        <App />
+        <ToggleContextProvider>
+          <App />
+        </ToggleContextProvider>
       </UserContextProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -13,6 +13,7 @@ import Account from './pages/account/Account';
 import Verify from './users/Verify';
 import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
+import TestPage from './pages/test/TestPage';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
 
       {/* Util Routes */}
       <Route path='/terms-and-conditions' element={<UserAgreement />} />
+      <Route path='/test' element={<TestPage />} />
 
     </Routes>
     </>

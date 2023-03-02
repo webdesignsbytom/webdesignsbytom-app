@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '../../components/nav/Navbar';
+import Navbar from '../../components/nav/Navbar';
 
 function PortfolioHome() {
   return (

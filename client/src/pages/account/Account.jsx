@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import client from '../../utils/client';
-import { Navbar } from '../../components/nav/Navbar';
+import Navbar from '../../components/nav/Navbar';
 // Context
 import { UserContext } from '../../context/UserContext';
 const initAlert = { status: '', content: '' };

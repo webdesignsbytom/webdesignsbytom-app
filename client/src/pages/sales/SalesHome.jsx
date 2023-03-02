@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar } from '../../components/nav/Navbar';
+// Components
+import Navbar from '../../components/nav/Navbar';
 
 function SalesHome() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import { Navbar } from '../components/nav/Navbar';
+import Navbar from '../components/nav/Navbar';
 // Data
 import { registerDataTemplate, registerFormResponses } from './utils/utils';
 // Axios

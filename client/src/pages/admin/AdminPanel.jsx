@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Navbar } from '../../components/nav/Navbar';
+// Components
+import Navbar  from '../../components/nav/Navbar';
 import FoundUser from '../../components/users/FoundUser';
 // Data
 import { sampleUserData } from '../../users/utils/utils';

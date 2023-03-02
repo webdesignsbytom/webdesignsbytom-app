@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar } from '../../components/nav/Navbar';
+// Components
+import Navbar from '../../components/nav/Navbar';
 // Axios
 import client from '../../utils/client';
+
 function DeveloperPanel() {
   const [eventLog, setEventLog] = useState([]);
 
