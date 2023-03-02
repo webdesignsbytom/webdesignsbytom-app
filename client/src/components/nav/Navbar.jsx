@@ -17,9 +17,16 @@ import Logout from '../../img/logout.svg';
 import Admin from '../../img/admin.svg';
 import Developer from '../../img/developer.svg';
 import Search from '../../img/search.svg';
+import Notification from '../../img/notification.svg';
+import Notifications from '../notifications/Notifications';
 
 function Navbar() {
-  const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
+  const {
+    toggleNavigation,
+    setToggleNavigation,
+    toggleNotifications,
+    setToggleNotifications,
+  } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
   console.log('Nav users: ', user);
   let navigate = useNavigate();
@@ -29,13 +36,28 @@ function Navbar() {
   };
 
   const navigateHome = () => {
-    navigate('/account', { replace: true });
+    navigate('/', { replace: true });
+  };
+
+  const displayNotifications = () => {
+    console.log('display');
+    setToggleNotifications(true);
+  };
+
+  const closeNotifications = () => {
+    console.log('display');
+    setToggleNotifications(false);
+  };
+
+  const closeNavbar = () => {
+    console.log('display');
+    setToggleNavigation(false);
   };
 
   const signOut = (event) => {
     event.preventDefault();
 
-    setToggleNavigation(false)
+    setToggleNavigation(false);
     setUser(sampleUserData);
     localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
 
@@ -47,14 +69,24 @@ function Navbar() {
       <div className='mx-auto px-2 sm:px-6 lg:px-4 bg-green-400'>
         <div className='flex h-16 items-center justify-between px-4'>
           <div
-            onClick={navigateHome}
+            onClick={() => {
+              navigateHome();
+              closeNotifications();
+              closeNavbar()
+            }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
             Logo
           </div>
           <section>
             {/* Phone nav bar */}
-            <nav onClick={toggleNavbar} className='md:hidden'>
+            <nav
+              onClick={() => {
+                toggleNavbar();
+                closeNotifications();
+              }}
+              className='md:hidden'
+            >
               <span className='cursor-pointer text-white hover:text-hover-grey'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -156,16 +188,34 @@ function Navbar() {
               </Link>
             </li>
             {user.email && (
-              <li className='phone__nav__li'>
-                <Link
-                  to='/account'
-                  className='phone__nav__link'
-                  onClick={toggleNavbar}
-                >
-                  <img src={Account} className='w-8' alt='account' />
-                  <h3>Account</h3>
-                </Link>
-              </li>
+              <>
+                <li className='phone__nav__li'>
+                  <Link
+                    to='/account'
+                    className='phone__nav__link'
+                    onClick={toggleNavbar}
+                  >
+                    <img src={Account} className='w-8' alt='account' />
+                    <h3>Account</h3>
+                  </Link>
+                </li>
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayNotifications();
+                    }}
+                  >
+                    <img
+                      src={Notification}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <h3>Notifications</h3>
+                  </Link>
+                </li>
+              </>
             )}
             <li className='phone__nav__li'>
               <Link
@@ -264,6 +314,12 @@ function Navbar() {
               </div>
             </li>
           </ul>
+        </div>
+      )}
+
+      {toggleNotifications && (
+        <div className='absolute h-0 transition ease-in-out duration-200 bg-green-700 w-full after:h-[calc(100%_-_4rem)] overflow-hidden md:hidden'>
+          <Notifications />
         </div>
       )}
     </>
