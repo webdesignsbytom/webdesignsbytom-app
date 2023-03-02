@@ -1,0 +1,15 @@
+.nav__link {
+  @apply transition ease-in-out duration-200 hover:text-red-500;
+}
+
+.phone__nav__li {
+  @apply bg-red-500 mx-2;
+}
+
+.phone__nav__link {
+  @apply flex font-bold text-white bg-red-500;
+}
+
+.calc__screen {
+    padding: env(safe-area-inset-bottom, 50px);
+}

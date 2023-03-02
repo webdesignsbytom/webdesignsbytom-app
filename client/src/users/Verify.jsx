@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Axios
 import client from '../utils/client';
 // Components
-import { Navbar } from '../components/nav/Navbar'
+import Navbar from '../components/nav/Navbar';
 function Verify() {
   const { userId, uniqueString } = useParams();
   const [page, setPage] = useState({
@@ -51,7 +51,7 @@ function Verify() {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div>Verify</div>
       <main className='submitted'>
         <div className='container'>

@@ -14,7 +14,10 @@ module.exports = {
         'transparent-black': 'rgba(0, 0, 0, 0.65)',
         'transparent-white': 'rgba(255, 255, 255, 0.65)',
         'hover-text': '#6b7280',
-        'active-text': '#6b7280'
+        'active-text': '#6b7280',
+        'error-red': '',
+        'success-green': '',
+        'hyperlink-blue': '',
       },
     },
   },

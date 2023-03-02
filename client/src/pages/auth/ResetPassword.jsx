@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../../components/nav/Navbar';
 // Axios
 import client from '../../utils/client';
 function ResetPassword() {
@@ -30,6 +31,7 @@ console.log('resetEmail', resetEmail);
 
   return (
     <>
+    <Navbar />
       <div>ResetPassword</div>
       <form onSubmit={handleReset}>
         {/* <!-- Email input --> */}

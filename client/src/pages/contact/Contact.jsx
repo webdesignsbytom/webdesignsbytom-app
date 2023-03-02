@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../../components/nav/Navbar'
 
-function UserAgreement() {
+function Contact() {
   return (
     <>
     <Navbar />
-    <div>UserAgreement</div>
+    <div>Contact</div>
     </>
   )
 }
 
-export default UserAgreement
+export default Contact

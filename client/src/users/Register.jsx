@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import { Navbar } from '../components/nav/Navbar';
+import Navbar from '../components/nav/Navbar';
 // Data
 import { registerDataTemplate, registerFormResponses } from './utils/utils';
 // Axios
@@ -112,8 +112,8 @@ function Register() {
 
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen'>
-        <div className='h-screen grid'>
+      <div className='bg-white dark:bg-black'>
+        <div>
           <Navbar />
           <article className='hidden lg:block text-main-colour text-center text-6xl font-extrabold'>
             <h1>webdesignsbytom</h1>

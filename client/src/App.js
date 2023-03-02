@@ -13,6 +13,8 @@ import Account from './pages/account/Account';
 import Verify from './users/Verify';
 import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
+import TestPage from './pages/test/TestPage';
+import Contact from './pages/contact/Contact';
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
       <Route path='/' index element={<HeroPage />} />
       <Route path='/portfolio' element={<PortfolioHome />} />
       <Route path='/developer' element={<SalesHome />} />
+      <Route path='/contact' element={<Contact />} />
 
       {/* Secure routes */}
       <Route path='/admin' element={<AdminPanel />} />
@@ -38,6 +41,7 @@ function App() {
 
       {/* Util Routes */}
       <Route path='/terms-and-conditions' element={<UserAgreement />} />
+      <Route path='/test' element={<TestPage />} />
 
     </Routes>
     </>

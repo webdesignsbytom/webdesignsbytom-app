@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import { Navbar } from '../components/nav/Navbar';
+import Navbar from '../components/nav/Navbar';
 // Data
 import { loginDataTemplate } from './utils/utils';
 // Axios
@@ -52,8 +52,8 @@ function Login() {
   };
   return (
     <>
-      <div className='bg-gray-300 dark:bg-black h-screen'>
-        <div className='h-screen grid'>
+      <div className='bg-white dark:bg-black'>
+        <div>
           {/* Navigation */}
           <Navbar />
           {/* Titles */}
