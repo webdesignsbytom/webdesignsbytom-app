@@ -55,7 +55,7 @@ export const getAllUsers = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    myEmitterUsers.emit('get-all-users', req.user);
+    // myEmitterUsers.emit('get-all-users', req.user);
     return sendDataResponse(res, 200, { users: foundUsers });
     //
   } catch (err) {
