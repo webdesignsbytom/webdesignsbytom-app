@@ -7,5 +7,5 @@
 }
 
 .phone__nav__link {
-    @apply flex font-bold text-white bg-red-500
+    @apply flex font-bold text-white bg-red-500 align-middle
 }
