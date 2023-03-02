@@ -14,13 +14,14 @@ import {
   findResetRequest,
   findUserById,
   resetUserPassword,
-  deleteUserById
+  deleteUserById,
+  updateUserById
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
   sendVerificationEmail,
   sendResetPasswordEmail,
-  testEmail
+  testEmail,
 } from '../utils/sendEmail.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -39,14 +40,14 @@ const hashRate = 8;
 
 export const sendTestyEmail = async (req, res) => {
   console.log('testin');
-  const { email } = req.params
+  const { email } = req.params;
   console.log('email', email);
-  await testEmail(email)
-}
+  await testEmail(email);
+};
 
 export const getAllUsers = async (req, res) => {
   console.log('req params', req.params);
-  console.log('req user' , req.user);
+  console.log('req user', req.user);
   try {
     // Find all users
     const foundUsers = await findAllUsers();
@@ -78,12 +79,12 @@ export const getAllUsers = async (req, res) => {
 export const getUserById = async (req, res) => {
   console.log('USer by ID req', req.user);
   console.log('req.params', req.params);
-  const userId = req.params.id
+  const userId = req.params.id;
   console.log('userId', userId);
 
   try {
     console.log('test');
-    const foundUser = await findUserById(userId)
+    const foundUser = await findUserById(userId);
     console.log('foundUser', foundUser);
     // If no found users
     if (!foundUser) {
@@ -98,11 +99,10 @@ export const getUserById = async (req, res) => {
     }
 
     delete foundUser.password;
-    delete foundUser.agreedToTerms
+    delete foundUser.agreedToTerms;
 
     myEmitterUsers.emit('get-user-by-id', req.user);
     return sendDataResponse(res, 200, { user: foundUser });
-
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Get user by ID`);
@@ -411,11 +411,48 @@ export const resetPassword = async (req, res) => {
   }
 };
 
-export const deleteUser = async (req, res) => {
-  const userId = req.params.userId
+export const updateUser = async (req, res) => {
+  console.log('update');
+  const userId = req.params.userId;
+  console.log('id', userId);
 
   try {
-    const foundUser = await findUserById(userId)
+    const foundUser = await findUserById(userId);
+    console.log('foundUser', foundUser);
+    // If no found users
+    if (!foundUser) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find user by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    const updatedUser = await updateUserById(userId)
+    console.log('updated user', updatedUser)
+
+    delete updatedUser.password;
+    delete updatedUser.agreedToTerms;
+
+    // myEmitterUsers.emit('update-user', req.user);
+    return sendDataResponse(res, 200, { user: updatedUser });
+  } catch (err) {
+    // Create error instance
+    const serverError = new ServerErrorEvent(`Verify New User Server error`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    const foundUser = await findUserById(userId);
     // If no found users
     if (!foundUser) {
       // Create error instance
@@ -429,10 +466,12 @@ export const deleteUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    await deleteUserById(userId)
+    await deleteUserById(userId);
     myEmitterUsers.emit('deleted-user', req.user);
-    return sendDataResponse(res, 200, { user: foundUser, message: `User ${foundUser.email} deleted` });
-
+    return sendDataResponse(res, 200, {
+      user: foundUser,
+      message: `User ${foundUser.email} deleted`,
+    });
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Get user by ID`);
@@ -440,4 +479,4 @@ export const deleteUser = async (req, res) => {
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
-}
+};

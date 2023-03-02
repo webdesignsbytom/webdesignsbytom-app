@@ -8,7 +8,8 @@ import {
   resetPassword,
   getUserById,
   deleteUser,
-  sendTestyEmail
+  sendTestyEmail,
+  updateUser
 } from '../controllers/users.js';
 import { validateAuthentication, validateAdminRole } from '../middleware/auth.js';
 
@@ -22,6 +23,7 @@ router.post('/verify/resend-email/:email', resendVerificationEmail)
 router.post('/test/:email', sendTestyEmail)
 router.post('/send-password-reset', sendPasswordReset);
 router.post('/reset-password/:userId/:uniqueString', resetPassword);
+router.put('/account/update/:userId', updateUser);
 router.delete('/delete-user/:userId', validateAuthentication, validateAdminRole, deleteUser);
 
 export default router;

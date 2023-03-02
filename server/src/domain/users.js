@@ -64,3 +64,12 @@ export const deleteUserById = (userId) => dbClient.user.delete({
     id: userId
   }
 })
+
+export const updateUserById = (userId) => dbClient.user.update({
+  where: {
+    id: userId
+  },
+  data: {
+    firstName: 'git'
+  }
+})
