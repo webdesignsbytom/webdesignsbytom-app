@@ -1,0 +1,7 @@
+.phone__nav__li {
+    @apply bg-red-500 mx-2
+}
+
+.phone__nav__link {
+    @apply flex font-bold text-white bg-red-500
+}

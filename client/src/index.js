@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 // Styles
 import './styles/index.css';
+import './styles/components.css'
 // Users
 import UserContextProvider from './context/UserContext';
 import ToggleContextProvider from './context/ToggleContext';
