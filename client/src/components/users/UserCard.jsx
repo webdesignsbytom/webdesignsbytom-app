@@ -2,11 +2,11 @@ import React from 'react';
 
 function UserCard({ user }) {
   console.log('XXX USER', user);
-  const { email, firstName, lastName, country } = user;
+  const { email, firstName, lastName, country, profileImage } = user;
   return (
     <>
       <section className='mx-2 border-2 border-black border-solid rounded-md p-2'>
-        <div>IMG</div>
+        <div><img className='rounded-full h-12 w-12' src={profileImage} alt="Profile" /></div>
         <article>
           <p>{email}</p>
           <p>{firstName}</p>
