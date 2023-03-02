@@ -73,6 +73,32 @@ export const createDeleteProjectEvent = async (user) => {
   }
 };
 
+export const createGetProjectByIdEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'get project',
+        createdById: user.id,
+        createdAt: user.createdAt,
+        code: 200
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'get project');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+};
+
 export const createGetUserProjectEvent = async (user) => {
   let type = 'USER';
   if (user.role === 'ADMIN') {
