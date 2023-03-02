@@ -144,65 +144,98 @@ function Navbar() {
       </div>
 
       {toggleNavigation && (
-        <div className='absolute bg-green-700 w-full h-screen overflow-hidden md:hidden'>
+        <div className='absolute bg-green-700 w-full h-[calc(100%_-_4rem)] overflow-hidden md:hidden'>
           <ul className='grid gap-2 mt-2'>
             <li className='phone__nav__li'>
-              <Link className='phone__nav__link' to='/' onClick={toggleNavbar} >
+              <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
                 <img src={Home} className='w-8' alt='home' />
-                <h3>Home</h3>
+                <div>
+                  <h3>Home</h3>
+                </div>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/account' className='phone__nav__link' onClick={toggleNavbar} >
+              <Link
+                to='/account'
+                className='phone__nav__link'
+                onClick={toggleNavbar}
+              >
                 <img src={Account} className='w-8' alt='account' />
                 <h3>Account</h3>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/design' className='phone__nav__link' onClick={toggleNavbar} >
+              <Link
+                to='/design'
+                className='phone__nav__link'
+                onClick={toggleNavbar}
+              >
                 <img src={Design} className='w-8' alt='design' />
                 <h3>Design</h3>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/contact' className='phone__nav__link' onClick={toggleNavbar} >
+              <Link
+                to='/contact'
+                className='phone__nav__link'
+                onClick={toggleNavbar}
+              >
                 <img src={Contact} className='w-8' alt='contact' />
                 <h3>Contact</h3>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/portfolio' className='phone__nav__link' onClick={toggleNavbar} >
+              <Link
+                to='/portfolio'
+                className='phone__nav__link'
+                onClick={toggleNavbar}
+              >
                 <img src={Portfolio} className='w-8' alt='portfolio' />
                 <h3>Portfolio</h3>
               </Link>
             </li>
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
-
-            <li className='phone__nav__li'>
-              <Link to='/admin' className='phone__nav__link' onClick={toggleNavbar} >
-                <img src={Admin} className='w-8' alt='admin' />
-                <h3>Admin</h3>
-              </Link>
-            </li>
+              <li className='phone__nav__li'>
+                <Link
+                  to='/admin'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Admin} className='w-8' alt='admin' />
+                  <h3>Admin</h3>
+                </Link>
+              </li>
             )}
             {user.role === 'DEVELOPER' && (
-            <li className='phone__nav__li'>
-              <Link to='/development' className='phone__nav__link' onClick={toggleNavbar} >
-                <img src={Developer} className='w-8' alt='development' />
-                <h3>Development</h3>
-              </Link>
-            </li>
+              <li className='phone__nav__li'>
+                <Link
+                  to='/development'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Developer} className='w-8' alt='development' />
+                  <h3>Development</h3>
+                </Link>
+              </li>
             )}
             {!user.email && (
               <>
                 <li className='phone__nav__li'>
-                  <Link to='/login' className='phone__nav__link' onClick={toggleNavbar} >
+                  <Link
+                    to='/login'
+                    className='phone__nav__link'
+                    onClick={toggleNavbar}
+                  >
                     <img src={Login} className='w-8' alt='login' />
                     <h3>Login</h3>
                   </Link>
                 </li>
                 <li className='phone__nav__li'>
-                  <Link to='/register' className='phone__nav__link' onClick={toggleNavbar} >
+                  <Link
+                    to='/register'
+                    className='phone__nav__link'
+                    onClick={toggleNavbar}
+                  >
                     <img src={Register} className='w-8' alt='register' />
                     <h3>Register</h3>
                   </Link>
@@ -211,7 +244,7 @@ function Navbar() {
             )}
             {user.email && (
               <li className='phone__nav__li'>
-                <Link onClick={signOut} className='phone__nav__link' >
+                <Link onClick={signOut} className='phone__nav__link'>
                   <img src={Logout} className='w-8' alt='logout' />
                   <h3>Log out</h3>
                 </Link>
@@ -220,7 +253,7 @@ function Navbar() {
             <li className='phone__nav__li'>
               <div className='flex'>
                 <img src={Search} className='w-8' alt='search' />
-                <input type='text' placeholder='Search...' className='w-full' />
+                <input type='text' placeholder='Search...' className='w-full pl-2' />
               </div>
             </li>
           </ul>
