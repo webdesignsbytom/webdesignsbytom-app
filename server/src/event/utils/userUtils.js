@@ -11,6 +11,7 @@ export const createGetAllEvent = async (user) => {
         topic: 'Get all users',
         content: `Success ${user.email}`,
         createdById: user.id,
+        code: 200
       },
     });
   } catch (err) {
@@ -37,6 +38,7 @@ export const createRegisterEvent = async (user) => {
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
+        code: 200
       },
     });
   } catch (err) {
@@ -63,6 +65,7 @@ export const createVerifyEvent = async (user) => {
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
+        code: 200
       },
     });
   } catch (err) {
@@ -89,6 +92,7 @@ export const createNewVerifyEvent = async (user) => {
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
+        code: 200
       },
     });
   } catch (err) {
@@ -115,6 +119,7 @@ export const createPasswordResetEvent = async (user) => {
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
+        code: 200
       },
     });
   } catch (err) {
@@ -141,6 +146,7 @@ export const createDeleteUserEvent = async (user) => {
         content: user.role,
         receivedById: user.id,
         createdAt: user.createdAt,
+        code: 200
       },
     });
   } catch (err) {
@@ -149,3 +155,4 @@ export const createDeleteUserEvent = async (user) => {
     throw err;
   }
 };
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhkYTI3MWUwLTUyOTctNDU4MC04YWE2LTE0NzdlZmMwOGNiYSIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwiaWF0IjoxNjc3NzExNTk1LCJleHAiOjE2Nzc3NTQ3OTV9.ji6dxrJeMcnqeKdPyivZ7FGsAVbmnPJUo_T1ADPRntk
