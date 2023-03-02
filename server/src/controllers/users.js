@@ -415,6 +415,9 @@ export const updateUser = async (req, res) => {
   console.log('update');
   const userId = req.params.userId;
   console.log('id', userId);
+  const { email, firstName } = req.body;
+  const body = req.body
+  console.log('body', body);
 
   try {
     const foundUser = await findUserById(userId);
@@ -431,7 +434,7 @@ export const updateUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    const updatedUser = await updateUserById(userId)
+    const updatedUser = await updateUserById(userId, email, firstName)
     console.log('updated user', updatedUser)
 
     delete updatedUser.password;

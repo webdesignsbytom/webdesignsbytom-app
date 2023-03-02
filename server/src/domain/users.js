@@ -65,11 +65,12 @@ export const deleteUserById = (userId) => dbClient.user.delete({
   }
 })
 
-export const updateUserById = (userId) => dbClient.user.update({
+export const updateUserById = (userId, email, firstName) => dbClient.user.update({
   where: {
     id: userId
   },
   data: {
-    firstName: 'git'
+    email: email,
+    firstName: firstName
   }
 })
