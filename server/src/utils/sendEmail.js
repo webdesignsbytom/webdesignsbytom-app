@@ -26,7 +26,7 @@ const resetTransporter = nodemailer.createTransport({
   auth: {
     type: 'login',
     user: process.env.RESET_EMAIL,
-    pass: process.env.VERIFY_PASS,
+    pass: process.env.RESET_PASS,
   },
 });
 
@@ -116,10 +116,10 @@ export async function testEmail(email) {
   // point to the template folder
   const handlebarOptions = {
     viewEngine: {
-      partialsDir: path.resolve('./src/views/'),
+      partialsDir: path.resolve('./public/views/'),
       defaultLayout: false,
     },
-    viewPath: path.resolve('./src/views/'),
+    viewPath: path.resolve('./public/views/'),
   };
 
   transporter.use('compile', hbs(handlebarOptions));
@@ -128,9 +128,9 @@ export async function testEmail(email) {
     from: process.env.AUTH_EMAIL, // sender address
     to: email, // list of receivers
     subject: 'Welcome!',
-    template: 'email', // the name of the template file i.e email.handlebars
+    template: 'email', 
     context: {
-      name: 'Adebola', // replace {{name}} with Adebola
+      name: 'Tom', // replace {{name}} with Adebola
       company: 'My Company', // replace {{company}} with My Company
     },
   };

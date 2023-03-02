@@ -27,3 +27,16 @@ body {
   height: 100vh;
   text-align: center;
 }
+
+div {
+  background-color: lightsalmon;
+  font-size: 5rem;
+}
+
+h2 {
+  color:blue
+}
+
+p {
+  color: red;
+}
