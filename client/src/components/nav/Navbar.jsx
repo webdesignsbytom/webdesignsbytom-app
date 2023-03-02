@@ -143,7 +143,7 @@ function Navbar() {
       </div>
 
       {toggleNavigation && (
-        <div className='absolute bg-green-700 w-full h-screen overflow-hidden'>
+        <div className='absolute bg-green-700 w-full h-screen overflow-hidden md:hidden'>
           <ul className='grid gap-2 mt-2'>
             <li className='phone__nav__li'>
               <Link className='phone__nav__link' to='/'>
