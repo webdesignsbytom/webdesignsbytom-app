@@ -16,6 +16,7 @@ import Register from '../../img/register.svg';
 import Logout from '../../img/logout.svg';
 import Admin from '../../img/admin.svg';
 import Developer from '../../img/developer.svg';
+import Search from '../../img/search.svg';
 
 function Navbar() {
   const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
@@ -100,7 +101,7 @@ function Navbar() {
                     Portfolio
                   </Link>
                 </li>
-                {(user.role === 'ADMIN' || user.role === 'DEVELOPER')  && (
+                {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
                   <li>
                     <Link to='/admin' className='nav__link'>
                       Admin
@@ -210,6 +211,12 @@ function Navbar() {
                 </Link>
               </li>
             )}
+            <li className='phone__nav__li'>
+              <div className='flex'>
+                <img src={Search} className='w-8' alt='search' />
+                <input type='text' placeholder='Search...' className='w-full' />
+              </div>
+            </li>
           </ul>
         </div>
       )}
