@@ -27,6 +27,7 @@ export const sampleUserData = {
     country: '',
     role: 'USER',
     isVerified: false,
+    profileImage: '',
     createdAt: '',
     updatedAt: ''
     
