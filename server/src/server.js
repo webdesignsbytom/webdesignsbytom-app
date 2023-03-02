@@ -12,6 +12,7 @@ import authRouter from './routes/auth.js'
 import notificationRouter from './routes/notifications.js'
 import componentRouter from './routes/components.js'
 import pageRouter from './routes/pages.js'
+import projectRouter from './routes/projects.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -34,6 +35,7 @@ app.use('/users', userRouter);
 app.use('/events', eventRouter);
 app.use('/notifications', notificationRouter);
 app.use('/components', componentRouter);
+app.use('/projects', projectRouter);
 app.use('/pages', pageRouter);
 app.use('/', authRouter)
 
