@@ -1,7 +1,6 @@
-// Emitters
 import { myEmitterErrors } from '../event/errorEvents.js';
-import { myEmitterEvents } from '../event/eventsLog.js';
-import { findAllEvents } from '../domain/events.js';
+import { myEmitterPages } from '../event/pageEvents.js';
+import { findAllPages } from '../domain/pages.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -11,18 +10,18 @@ import {
   RegistrationServerErrorEvent,
 } from '../event/utils/errorUtils.js';
 
-export const getAllEvents = async (req, res) => {
-  console.log('get all events');
+export const getAllPages = async (req, res) => {
+  console.log('get all pages');
   try {
-    // Find all events
-    const foundEvents = await findAllEvents();
+    // Find all pages
+    const foundPages = await findAllPages();
 
-    // If no found events
-    if (!foundEvents) {
+    // If no found pages
+    if (!foundPages) {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found events',
+        'Not found pages',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
@@ -30,8 +29,8 @@ export const getAllEvents = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    myEmitterEvents.emit('get-all-events', req.user);
-    return sendDataResponse(res, 200, { events: foundEvents });
+    // myEmitterPages.emit('get-all-pages', req.user);
+    return sendDataResponse(res, 200, { pages: foundPages });
     //
   } catch (err) {
     //

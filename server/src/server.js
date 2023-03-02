@@ -10,6 +10,8 @@ import userRouter from './routes/users.js';
 import eventRouter from './routes/events.js';
 import authRouter from './routes/auth.js'
 import notificationRouter from './routes/notifications.js'
+import componentRouter from './routes/components.js'
+import pageRouter from './routes/pages.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -31,6 +33,8 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 app.use('/users', userRouter);
 app.use('/events', eventRouter);
 app.use('/notifications', notificationRouter);
+app.use('/components', componentRouter);
+app.use('/pages', pageRouter);
 app.use('/', authRouter)
 
 

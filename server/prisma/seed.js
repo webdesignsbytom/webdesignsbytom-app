@@ -93,6 +93,43 @@ async function seed() {
         price: 100
     },
   });
+
+  const pageOne = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: 'Home Page',
+      desc: 'Everyone needs a home page',
+      price: 100
+    }
+  })
+
+  const pageTwo = await dbClient.page.create({
+    data: {
+      type: 'ADMIN',
+      name: 'Admin Page',
+      desc: 'Admin page with panel to manage stats and users',
+      price: 100
+    }
+  })
+
+  const pageThree = await dbClient.page.create({
+    data: {
+      type: 'DEVELOPER',
+      name: 'Developer Page',
+      desc: 'Developer page with panel to manage stats, errors and speeds',
+      price: 100
+    }
+  })
+
+  const pageFour = await dbClient.page.create({
+    data: {
+      type: 'SHOP',
+      name: 'Store Front',
+      desc: 'Display various items from your shop',
+      price: 100
+    }
+  })
+
 }
 
 seed().catch(async (error) => {

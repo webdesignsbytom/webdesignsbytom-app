@@ -29,6 +29,7 @@ model User {
   isVerified     Boolean           @default(false)
   verifications  UserVerification?
   passwordReset  PasswordReset?
+  notifications  Notification[]
   agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
@@ -52,6 +53,24 @@ model PasswordReset {
   expiresAt    DateTime
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
+}
+
+enum NotificationType {
+  PURCHASE
+  COMPLETION
+  MESSAGE
+  OFFER
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  type      NotificationType
+  content   String
+  userId    String           @unique
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  viewed    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime?        @updatedAt
 }
 
 // EVENTS
@@ -83,6 +102,8 @@ enum ComponentType {
   SHOP
   FULLSTACK
   PREMIUM
+  NAVIGATION
+  API
 }
 
 model Component {
@@ -94,4 +115,24 @@ model Component {
   price     Int
   createdAt DateTime      @default(now())
   updatedAt DateTime?     @updatedAt
+}
+
+enum PageType {
+  SHOP
+  BLOG
+  ADMIN
+  DEVELOPER
+  BASIC
+  PREMIUM
+  CANVAS
+}
+
+model Page {
+  id        Int       @id @default(autoincrement())
+  type      PageType
+  name      String    @default("")
+  desc      String    @default("")
+  price     Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }

@@ -1,7 +1,7 @@
 // Emitters
 import { myEmitterErrors } from '../event/errorEvents.js';
-import { myEmitterEvents } from '../event/eventsLog.js';
-import { findAllEvents } from '../domain/events.js';
+import { myEmitterComponents } from '../event/componentEvents.js';
+import { findAllComponents } from '../domain/components.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -11,18 +11,18 @@ import {
   RegistrationServerErrorEvent,
 } from '../event/utils/errorUtils.js';
 
-export const getAllEvents = async (req, res) => {
-  console.log('get all events');
+export const getAllComponents = async (req, res) => {
+  console.log('get all components');
   try {
-    // Find all events
-    const foundEvents = await findAllEvents();
+    // Find all components
+    const foundComponents = await findAllComponents();
 
-    // If no found events
-    if (!foundEvents) {
+    // If no found components
+    if (!foundComponents) {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found events',
+        'Not found components',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
@@ -30,8 +30,8 @@ export const getAllEvents = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    myEmitterEvents.emit('get-all-events', req.user);
-    return sendDataResponse(res, 200, { events: foundEvents });
+    // myEmitterComponents.emit('get-all-components', req.user);
+    return sendDataResponse(res, 200, { components: foundComponents });
     //
   } catch (err) {
     //
