@@ -46,3 +46,29 @@ export const createCreateComponentEvent = async (user) => {
     throw err;
   }
 };
+
+export const createDeleteComponentEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'Delete component',
+        createdById: user.id,
+        createdAt: user.createdAt,
+        code: 200
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Delete component');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+};

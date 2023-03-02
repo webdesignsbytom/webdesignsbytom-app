@@ -5,6 +5,8 @@ import {
   findAllComponents,
   findComponentByName,
   createComponent,
+  findComponentById,
+  deleteComponentById,
 } from '../domain/components.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -85,6 +87,42 @@ export const createNewComponent = async (req, res) => {
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new component`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const deleteComponent = async (req, res) => {
+  console.log('deleteComponent');
+  const id = Number(req.params.id);
+  console.log(id);
+
+  try {
+    const foundComponent = await findComponentById(id);
+    console.log('foundComponent', foundComponent);
+
+    if (!foundComponent) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found component',
+        'Event database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      // Send response
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    await deleteComponentById(id);
+    myEmitterComponents.emit('deleted-component', req.user);
+    return sendDataResponse(res, 200, {
+      component: foundComponent,
+      message: `Component ${foundComponent.name} deleted`,
+    });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Delete component`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;

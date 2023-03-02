@@ -46,3 +46,30 @@ export const createCreatePageEvent = async (user) => {
     throw err;
   }
 };
+
+
+export const createDeletePageEvent = async (user) => {
+  let type = 'USER';
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+
+  try {
+    await dbClient.event.create({
+      data: {
+        type: type,
+        topic: 'Delete page',
+        createdById: user.id,
+        createdAt: user.createdAt,
+        code: 200
+      },
+    });
+  } catch (err) {
+    const error = new CreateEventError(user, 'Delete page');
+    myEmitterErrors.emit('error', error);
+    throw err;
+  }
+};

@@ -1,6 +1,12 @@
 import { myEmitterErrors } from '../event/errorEvents.js';
 import { myEmitterPages } from '../event/pageEvents.js';
-import { findAllPages, findPageByName, createPage } from '../domain/pages.js';
+import {
+  findAllPages,
+  findPageByName,
+  createPage,
+  findPageById,
+  deletePageById,
+} from '../domain/pages.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
@@ -57,14 +63,14 @@ export const createNewPage = async (req, res) => {
     }
 
     const foundPage = await findPageByName(name);
-    console.log('found page', foundPage)
+    console.log('found page', foundPage);
 
     if (foundPage) {
       return sendDataResponse(res, 400, { page: 'Page name already exists' });
     }
 
-    const createdPage = await createPage(type, name, desc, price)
-    console.log('created page', createdPage)
+    const createdPage = await createPage(type, name, desc, price);
+    console.log('created page', createdPage);
 
     // myEmitterPages.emit('create-page', createdPage);
 
@@ -72,6 +78,42 @@ export const createNewPage = async (req, res) => {
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new page`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+export const deletePage = async (req, res) => {
+  console.log('deletePage');
+  const id = Number(req.params.id);
+  console.log(id);
+
+  try {
+    const foundPage = await findPageById(id);
+    console.log('foundPage', foundPage);
+
+    if (!foundPage) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found page',
+        'Event database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      // Send response
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    await deletePageById(id);
+    // myEmitterPages.emit('deleted-page', req.user);
+    return sendDataResponse(res, 200, {
+      page: foundPage,
+      message: `Page ${foundPage.name} deleted`,
+    });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Delete page`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;

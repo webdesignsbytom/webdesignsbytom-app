@@ -7,6 +7,11 @@ export const findPageByName = (name) =>
     where: { name: name },
   });
 
+  export const findPageById = (id) =>
+  dbClient.page.findFirst({
+    where: { id: id },
+  });
+
 export const createPage = (type, name, desc, price) =>
   dbClient.page.create({
     data: {
@@ -14,5 +19,12 @@ export const createPage = (type, name, desc, price) =>
         name: name,
         desc: desc,
         price: price
+    }
+  })
+
+  export const deletePageById = (id) => 
+  dbClient.page.delete({
+    where: {
+      id: id,
     }
   })
