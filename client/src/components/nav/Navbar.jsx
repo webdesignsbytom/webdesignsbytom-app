@@ -14,11 +14,13 @@ import Portfolio from '../../img/portfolio.svg';
 import Login from '../../img/login.svg';
 import Register from '../../img/register.svg';
 import Logout from '../../img/logout.svg';
+import Admin from '../../img/admin.svg';
+import Developer from '../../img/developer.svg';
 
 function Navbar() {
   const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
-  const { setUser } = useContext(UserContext);
-
+  const { user, setUser } = useContext(UserContext);
+  console.log('Nav users: ', user);
   let navigate = useNavigate();
 
   const openNavbar = () => {
@@ -74,34 +76,61 @@ function Navbar() {
             <nav className='hidden md:flex'>
               <ul className='flex gap-4'>
                 <li>
-                  <Link
-                    className='trasition ease-in-out duration-200 hover:text-red-500'
-                    to='/'
-                  >
+                  <Link className='nav__link' to='/'>
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to='/account'>Account</Link>
+                  <Link to='/account' className='nav__link'>
+                    Account
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/design'>Design</Link>
+                  <Link to='/design' className='nav__link'>
+                    Design
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/contact'>Contact</Link>
+                  <Link to='/contact' className='nav__link'>
+                    Contact
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/portfolio'>Portfolio</Link>
+                  <Link to='/portfolio' className='nav__link'>
+                    Portfolio
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/login'>Login</Link>
+                  <Link to='/admin' className='nav__link'>
+                    Admin
+                  </Link>
                 </li>
                 <li>
-                  <Link to='/register'>Register</Link>
+                  <Link to='/development' className='nav__link'>
+                    Development
+                  </Link>
                 </li>
-                <li>
-                  <Link onClick={signOut}>Sign out</Link>
-                </li>
+                {!user.email && (
+                  <>
+                    <li>
+                      <Link to='/login' className='nav__link'>
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to='/register' className='nav__link'>
+                        Register
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {user.email && (
+                  <li>
+                    <Link onClick={signOut} className='nav__link'>
+                      Sign out
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
           </section>
@@ -137,28 +166,46 @@ function Navbar() {
             </li>
             <li className='phone__nav__li'>
               <Link to='/portfolio' className='phone__nav__link'>
-              <img src={Portfolio} className='w-6' alt='portfolio' />
+                <img src={Portfolio} className='w-6' alt='portfolio' />
                 <h3>Portfolio</h3>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/login' className='phone__nav__link'>
-              <img src={Login} className='w-6' alt='login' />
-                <h3>Login</h3>
+              <Link to='/admin' className='phone__nav__link'>
+                <img src={Admin} className='w-6' alt='admin' />
+                <h3>Admin</h3>
               </Link>
             </li>
             <li className='phone__nav__li'>
-              <Link to='/register' className='phone__nav__link'>
-              <img src={Register} className='w-6' alt='register' />
-                <h3>Register</h3>
+              <Link to='/development' className='phone__nav__link'>
+                <img src={Developer} className='w-6' alt='development' />
+                <h3>Development</h3>
               </Link>
             </li>
-            <li className='phone__nav__li'>
-              <Link onClick={signOut} className='phone__nav__link'>
-              <img src={Logout} className='w-6' alt='logout' />
-                <h3>Log out</h3>
-              </Link>
-            </li>
+            {!user.email && (
+              <>
+                <li className='phone__nav__li'>
+                  <Link to='/login' className='phone__nav__link'>
+                    <img src={Login} className='w-6' alt='login' />
+                    <h3>Login</h3>
+                  </Link>
+                </li>
+                <li className='phone__nav__li'>
+                  <Link to='/register' className='phone__nav__link'>
+                    <img src={Register} className='w-6' alt='register' />
+                    <h3>Register</h3>
+                  </Link>
+                </li>
+              </>
+            )}
+            {user.email && (
+              <li className='phone__nav__li'>
+                <Link onClick={signOut} className='phone__nav__link'>
+                  <img src={Logout} className='w-6' alt='logout' />
+                  <h3>Log out</h3>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       )}

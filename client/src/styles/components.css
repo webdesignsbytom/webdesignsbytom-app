@@ -1,3 +1,7 @@
+.nav__link {
+    @apply transition ease-in-out duration-200 hover:text-red-500
+}
+
 .phone__nav__li {
     @apply bg-red-500 mx-2
 }
