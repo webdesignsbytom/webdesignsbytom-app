@@ -14,6 +14,7 @@ import componentRouter from './routes/components.js'
 import pageRouter from './routes/pages.js'
 import projectRouter from './routes/projects.js'
 import complaintRouter from './routes/complaints.js'
+import reviewRouter from './routes/reviews.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -38,6 +39,7 @@ app.use('/notifications', notificationRouter);
 app.use('/components', componentRouter);
 app.use('/projects', projectRouter);
 app.use('/complaints', complaintRouter);
+app.use('/reviews', reviewRouter);
 app.use('/pages', pageRouter);
 app.use('/', authRouter)
 
