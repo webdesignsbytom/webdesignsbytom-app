@@ -16,6 +16,7 @@ import projectRouter from './routes/projects.js'
 import complaintRouter from './routes/complaints.js'
 import reviewRouter from './routes/reviews.js'
 import paletteRouter from './routes/palettes.js'
+import designRouter from './routes/designs.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -41,6 +42,7 @@ app.use('/components', componentRouter);
 app.use('/projects', projectRouter);
 app.use('/complaints', complaintRouter);
 app.use('/reviews', reviewRouter);
+app.use('/designs', designRouter);
 app.use('/color-palette', paletteRouter);
 app.use('/pages', pageRouter);
 app.use('/', authRouter)
