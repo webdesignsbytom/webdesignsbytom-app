@@ -88,7 +88,7 @@ function Login() {
                         <input
                           type='text'
                           name='email'
-                          className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+                          className='standard__inputs'
                           placeholder='Email address'
                           onChange={handleChange}
                         />
@@ -99,7 +99,7 @@ function Login() {
                         <input
                           type='password'
                           name='password'
-                          className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+                          className='standard__inputs'
                           placeholder='Password'
                           onChange={handleChange}
                         />
@@ -137,7 +137,7 @@ function Login() {
                       <div className='mb-2'>
                         <button
                           type='submit'
-                          className='inline-block px-7 py-3 bg-main-colour text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-main-colour-med hover:shadow-lg focus:bg-main-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+                          className='submit__button'
                           data-mdb-ripple='true'
                           data-mdb-ripple-color='light'
                         >
@@ -147,7 +147,7 @@ function Login() {
 
                       <div className='mb-6 text-center'>
                         <Link to='/register'>
-                          <p>Not a member? Click here to register</p>
+                          <p>Not a member? Click <span>here</span> to register</p>
                         </Link>
                       </div>
                     </form>

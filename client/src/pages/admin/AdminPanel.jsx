@@ -61,7 +61,7 @@ function AdminPanel() {
           <div className='mb-2'>
             <button
               type='submit'
-              className='inline-block px-7 py-3 bg-main-colour text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-main-colour-med hover:shadow-lg focus:bg-main-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+              className='submit__button'
               data-mdb-ripple='true'
               data-mdb-ripple-color='light'
             >

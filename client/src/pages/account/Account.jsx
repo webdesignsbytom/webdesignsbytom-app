@@ -123,7 +123,7 @@ function Account() {
             <input
               type='text'
               name='email'
-              className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+              className='standard__inputs'
               placeholder='Email address'
               onChange={handleChange}
             />
@@ -134,7 +134,7 @@ function Account() {
             <input
               type='text'
               name='firstName'
-              className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+              className='standard__inputs'
               placeholder='First Name'
               onChange={handleChange}
             />
@@ -145,7 +145,7 @@ function Account() {
             <input
               type='text'
               name='lastName'
-              className='form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none'
+              className='standard__inputs'
               placeholder='Last Name'
               onChange={handleChange}
             />
@@ -158,7 +158,7 @@ function Account() {
 
           <div className='mb-6'>
             <button
-              className='bg-green-700 p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-main-colour-med hover:shadow-lg focus:bg-main-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+              className='submit__button'
             >
               Update Profile
             </button>
@@ -170,7 +170,7 @@ function Account() {
       <section className='mx-2'>
         <button
           onClick={deleteProfile}
-          className='bg-red-700 p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-main-colour-med hover:shadow-lg focus:bg-main-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-main-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+          className='delete__button'
         >
           Delete Profile
         </button>
