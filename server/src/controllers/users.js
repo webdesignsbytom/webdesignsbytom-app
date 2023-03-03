@@ -415,7 +415,7 @@ export const updateUser = async (req, res) => {
   console.log('update');
   const userId = req.params.userId;
   console.log('id', userId);
-  const { email, firstName } = req.body;
+  const { email, firstName, lastName, country } = req.body;
   const body = req.body
   console.log('body', body);
 
@@ -434,7 +434,7 @@ export const updateUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    const updatedUser = await updateUserById(userId, email, firstName)
+    const updatedUser = await updateUserById(userId, email, firstName, lastName, country)
     console.log('updated user', updatedUser)
 
     delete updatedUser.password;
