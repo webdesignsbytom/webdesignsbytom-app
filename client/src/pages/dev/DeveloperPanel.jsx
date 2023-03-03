@@ -1,22 +1,14 @@
 import React, { useEffect, useState } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
-// Axios
-import client from '../../utils/client';
+// Fetch
+import { getEventsLog } from '../../utils/Fetch';
 
 function DeveloperPanel() {
   const [eventLog, setEventLog] = useState([]);
 
   useEffect(() => {
-    client
-      .get(`/events`)
-      .then((res) => {
-        console.log('res', res.data);
-        setEventLog(res.data.data.events);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    getEventsLog(setEventLog)
   }, []);
 
   console.log('event log', eventLog);

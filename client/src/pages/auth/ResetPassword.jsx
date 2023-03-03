@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/nav/Navbar';
-// Axios
-import client from '../../utils/client';
+// Fetch
+import { postPasswordReset } from '../../utils/Fetch';
+
 function ResetPassword() {
   const [resetEmail, setResetEmail] = useState('');
   const [successResetPassword, setSuccessResetPassword] = useState({});
@@ -14,19 +15,13 @@ function ResetPassword() {
       [name]: value,
     });
   };
+
   console.log('resetEmail', resetEmail);
+
   const handleReset = (event) => {
     event.preventDefault();
 
-    client
-      .post(`/users/send-password-reset`, resetEmail, false)
-      .then((res) => {
-        setSuccessResetPassword(res.data);
-        console.log('data', res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    postPasswordReset(resetEmail, setSuccessResetPassword)
   };
 
   return (
@@ -57,6 +52,9 @@ function ResetPassword() {
           </button>
         </div>
       </form>
+      <div>
+        {successResetPassword && <p>Change successful</p>}
+      </div>
     </>
   );
 }

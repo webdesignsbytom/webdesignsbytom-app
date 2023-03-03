@@ -14,7 +14,7 @@ import { createAccessToken } from '../utils/tokens.js';
 export const login = async (req, res) => {
   const { email, password } = req.body;
   const lowerCaseEmail = email.toLowerCase();
-
+console.log(req.body)
 
   if (!lowerCaseEmail || !password) {
     return sendDataResponse(res, 400, {

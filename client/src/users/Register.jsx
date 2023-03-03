@@ -10,6 +10,7 @@ import client from '../utils/client';
 import CountrySelect from './utils/CountrySelect';
 // Validation
 import { validPassword } from './utils/Validation';
+import { postRegister } from '../utils/Fetch';
 
 function Register() {
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
@@ -92,15 +93,7 @@ function Register() {
 
     const userData = registerForm;
 
-    client
-      .post('/users/register', userData, false)
-      .then((res) => {
-        setSuccessRegisterUser(res.data.data.createdUser.email);
-      })
-      .then(() => login())
-      .catch((err) => {
-        console.error(err);
-      });
+    postRegister(userData, setSuccessRegisterUser, login)
   };
 
   return (

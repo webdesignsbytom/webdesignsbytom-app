@@ -22,33 +22,31 @@ async function seed() {
         type: 'BASIC',
         name: `Page ${i}`,
         desc: 'tom made a page',
-        price: 100
-      }
-    })
+        price: 100,
+      },
+    });
 
     const component = await dbClient.component.create({
       data: {
         type: 'BASIC',
         name: `Page ${i}`,
         desc: 'tom made a page',
-        price: 100
-      }
-    })
+        price: 100,
+      },
+    });
     const review = await dbClient.review.create({
       data: {
         email: `email${i}@gmail${i}.com`,
         value: 5,
-        content: 'Great'
-
-      }
-    })
+        content: 'Great',
+      },
+    });
     const complaint = await dbClient.complaint.create({
       data: {
         email: `email${i}@gmail${i}.com`,
-        content: 'Crap'
-      }
-    })
-
+        content: 'Crap',
+      },
+    });
   }
 
   const createdUser = await dbClient.user.create({
@@ -89,27 +87,30 @@ async function seed() {
     },
   });
 
-  const userNote = await dbClient.notification.create({
-    data: {
-      userId: createdUser.id,
-      type: 'MESSAGE',
-      content: 'message rest'
-    }
-  })
-  const adminNote = await dbClient.notification.create({
-    data: {
-      userId: adminUser.id,
-      type: 'MESSAGE',
-      content: 'message rest'
-    }
-  })
-  const devUserNote = await dbClient.notification.create({
-    data: {
-      userId: devUser.id,
-      type: 'MESSAGE',
-      content: 'message rest'
-    }
-  })
+  for (let i = 0; i <= 9; i++) {
+    const userNote = await dbClient.notification.create({
+      data: {
+        userId: createdUser.id,
+        type: 'MESSAGE',
+        content: 'message rest',
+      },
+    });
+    const adminNote = await dbClient.notification.create({
+      data: {
+        userId: adminUser.id,
+        type: 'MESSAGE',
+        content: 'message rest',
+      },
+    });
+    const devUserNote = await dbClient.notification.create({
+      data: {
+        userId: devUser.id,
+        type: 'MESSAGE',
+        content: 'message rest',
+      },
+    });
+  }
+
   const eventOne = await dbClient.event.create({
     data: {
       type: 'ERROR',

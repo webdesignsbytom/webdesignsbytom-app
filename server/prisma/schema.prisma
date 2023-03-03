@@ -70,7 +70,7 @@ model Notification {
   id        String           @id @default(uuid())
   type      NotificationType
   content   String
-  userId    String           @unique
+  userId    String           
   user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   viewed    Boolean          @default(false)
   createdAt DateTime         @default(now())

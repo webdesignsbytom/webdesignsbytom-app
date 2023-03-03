@@ -15,7 +15,7 @@ import {
   findUserById,
   resetUserPassword,
   deleteUserById,
-  updateUserById
+  updateUserById,
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
@@ -115,6 +115,7 @@ export const getUserById = async (req, res) => {
 export const registerNewUser = async (req, res) => {
   const { email, password, role, firstName, lastName, country, agreedToTerms } =
     req.body;
+    console.log('reg')
   const lowerCaseEmail = email.toLowerCase();
   //
   try {
@@ -163,7 +164,7 @@ export const registerNewUser = async (req, res) => {
       createdUser.email,
       uniqueString
     );
-
+    console.log('email verified');
     return sendDataResponse(res, 201, { createdUser });
     //
   } catch (err) {
@@ -283,9 +284,9 @@ export const resendVerificationEmail = async (req, res) => {
     await createVerificationInDB(foundUser.id, hashedString);
 
     await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString);
-
+    console.log('resend');
     myEmitterUsers.emit('resend-verification', foundUser);
-
+    console.log('emitter');
     return sendMessageResponse(res, 201, 'Verification email resent');
   } catch (err) {
     // Create error instance
@@ -416,7 +417,7 @@ export const updateUser = async (req, res) => {
   const userId = req.params.userId;
   console.log('id', userId);
   const { email, firstName, lastName, country } = req.body;
-  const body = req.body
+  const body = req.body;
   console.log('body', body);
 
   try {
@@ -434,8 +435,14 @@ export const updateUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    const updatedUser = await updateUserById(userId, email, firstName, lastName, country)
-    console.log('updated user', updatedUser)
+    const updatedUser = await updateUserById(
+      userId,
+      email,
+      firstName,
+      lastName,
+      country
+    );
+    console.log('updated user', updatedUser);
 
     delete updatedUser.password;
     delete updatedUser.agreedToTerms;

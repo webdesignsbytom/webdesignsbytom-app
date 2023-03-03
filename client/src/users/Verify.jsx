@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // Axios
-import client from '../utils/client';
+import { postVerifyEmail } from '../utils/Fetch';
 // Components
 import Navbar from '../components/nav/Navbar';
 
@@ -17,29 +17,8 @@ function Verify() {
   useEffect(() => {
     let isFetched = false;
 
-    client
-      .get(`/users/verify/${userId}/${uniqueString}`)
-      .then((res) => {
-        setPage({
-          status: res.data.status,
-          title: 'Account verified successfully',
-          email: res.data.user.email,
-        });
-      })
-      .catch((res) => {
-        if (!isFetched) {
-          const data = res.response.data;
-          setPage({
-            status: data.status,
-            title: 'An Error Occurred',
-            message: data.message,
-          });
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-
+    postVerifyEmail(userId, uniqueString, setPage, isFetched)
+    
     return () => {
       isFetched = true;
     };

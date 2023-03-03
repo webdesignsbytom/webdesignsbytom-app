@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import client from '../../utils/client';
-import Navbar from '../../components/nav/Navbar';
+import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
+import Navbar from '../../components/nav/Navbar';
 import UserCard from '../../components/users/UserCard';
 import CountrySelect from '../../users/utils/CountrySelect';
 import LoggedInUser from '../../utils/LoggedInUser';
 // Fetch
-import { setFormByUserId } from '../../utils/Fetch';
-import { deleteAccount } from '../../utils/Fetch';
-import { useNavigate } from 'react-router-dom';
+import { setFormByUserId, deleteAccount, postResendVerificationEmail } from '../../utils/Fetch';
 // Data
 import { sampleUserData } from '../../users/utils/utils';
 
@@ -22,27 +21,14 @@ function Account() {
   const [updateUserForm, setUpdateUserForm] = useState(user);
   console.log('updateUserForm', updateUserForm);
   let navigate = useNavigate();
-
+console.log('account user', user);
   useEffect(() => {
     const foundUser = LoggedInUser()
     setFormByUserId(foundUser.id, setUpdateUserForm)
   }, [])
 
   function handleResend() {
-    client
-      .post(`/users/verify/resend-email/${user.email}`)
-      .then((res) => {
-        setAlert({ status: 'success', content: res.data.message });
-        setTimeout(() => {
-          setAlert(initAlert);
-        }, 5000);
-      })
-      .catch((res) => {
-        setAlert({ status: 'error', content: res.response.data.message });
-        setTimeout(() => {
-          setAlert(initAlert);
-        }, 5000);
-      });
+    postResendVerificationEmail(user.email, setAlert, initAlert)
   }
 
   const deleteProfile = (event) => {

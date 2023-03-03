@@ -8,6 +8,7 @@ import { loginDataTemplate } from './utils/utils';
 import client from '../utils/client';
 // Context
 import { UserContext } from '../context/UserContext';
+import { postLogin } from '../utils/Fetch';
 
 function Login() {
   const { setUser } = useContext(UserContext);
@@ -32,23 +33,9 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-
-    client
-      .post('/login', loginForm, false)
-      .then((res) => {
-        setSuccessLoginUser(res.data.status);
-        localStorage.setItem(
-          process.env.REACT_APP_USER_TOKEN,
-          res.data.data.token
-        );
-        setUser(res.data.data.existingUser);
-      })
-      .then(() => homePage())
-
-      .catch((err) => {
-        console.error(err);
-      });
+    postLogin(loginForm, setSuccessLoginUser, setUser, homePage)
   };
+
   return (
     <>
       <div className='bg-white dark:bg-black '>
