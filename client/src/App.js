@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // Pages
 import HeroPage from './pages/hero/HeroPage';
@@ -29,6 +29,7 @@ import ConfirmPolicies from './components/cookies/ConfirmPolicies';
 import { UserContext } from './context/UserContext';
 
 function App() {
+
   const { toggleCookiePolicy } = useContext(UserContext)
   return (
     <>
