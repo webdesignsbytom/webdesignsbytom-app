@@ -21,7 +21,7 @@ function FoundUser({ foundUser }) {
       .catch((err) => {
         console.error(err);
       });
-  }
+  };
 
   return (
     <>
@@ -45,7 +45,9 @@ function FoundUser({ foundUser }) {
                     <td>{row[0]}</td>
                     <td>{row[1].toString()}</td>
                     <td>
-                      <button onClick={() => editUserData(row)}><span className='text-blue-500'>Edit</span></button>
+                      <button onClick={() => editUserData(row)}>
+                        <span className='text-blue-500'>Edit</span>
+                      </button>
                     </td>
                   </tr>
                 );
@@ -55,7 +57,7 @@ function FoundUser({ foundUser }) {
         </section>
 
         <section>
-            <button onClick={deleteUser}>Delete User</button>
+          <button onClick={deleteUser}>Delete User</button>
         </section>
       </article>
     </>

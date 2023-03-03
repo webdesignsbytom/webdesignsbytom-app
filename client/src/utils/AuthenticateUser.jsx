@@ -6,27 +6,27 @@ import { UserContext } from '../context/UserContext';
 import LoggedInUser from './LoggedInUser';
 
 export function AuthenticateUser({ children, redirectPath = '/' }) {
-        if (!LoggedInUser()) {
-        return <Navigate to={redirectPath} replace />;
-    } else {
-        return <>{children}</>;
-    }
+  if (!LoggedInUser()) {
+    return <Navigate to={redirectPath} replace />;
+  } else {
+    return <>{children}</>;
+  }
 }
 
 export function AuthenticateAdmin({ children, redirectPath = '/' }) {
-    const { user } = useContext(UserContext)
-    if (user.role !== 'ADMIN' && user.role !== 'DEVELOPER') {
-        return <Navigate to={redirectPath} replace />;
-    } else {
-        return <>{children}</>;
-    }
+  const { user } = useContext(UserContext);
+  if (user.role !== 'ADMIN' && user.role !== 'DEVELOPER') {
+    return <Navigate to={redirectPath} replace />;
+  } else {
+    return <>{children}</>;
+  }
 }
 
 export function AuthenticateDeveloper({ children, redirectPath = '/' }) {
-    const { user } = useContext(UserContext)
-    if (user.role !== 'DEVELOPER') {
-        return <Navigate to={redirectPath} replace />;
-    } else {
-        return <>{children}</>;
-    }
+  const { user } = useContext(UserContext);
+  if (user.role !== 'DEVELOPER') {
+    return <Navigate to={redirectPath} replace />;
+  } else {
+    return <>{children}</>;
+  }
 }

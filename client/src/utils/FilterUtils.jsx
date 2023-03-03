@@ -23,30 +23,30 @@ export const getEventByTypeOptions = [
 ];
 
 export const getProjectsByOptions = [
-    'Completed',
-    'In Progress',
-    'User ID',
-    'User Email',
-    'Month',
-    'Year'
-]
+  'Completed',
+  'In Progress',
+  'User ID',
+  'User Email',
+  'Month',
+  'Year',
+];
 
 export const getReviewsByOptions = [
-    'ID',
-    'User ID',
-    'User Email',
-    'Email',
-    'Month',
-    'Year',
-    'Day'
-]
+  'ID',
+  'User ID',
+  'User Email',
+  'Email',
+  'Month',
+  'Year',
+  'Day',
+];
 
 export const getComplaintsByOptions = [
-    'ID',
-    'User ID',
-    'User Email',
-    'Email',
-    'Month',
-    'Year',
-    'Day'
-]
+  'ID',
+  'User ID',
+  'User Email',
+  'Email',
+  'Month',
+  'Year',
+  'Day',
+];

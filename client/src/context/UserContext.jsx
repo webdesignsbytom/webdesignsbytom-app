@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 // Data
 import { sampleUserData } from '../users/utils/utils';
 import LoggedInUser from '../utils/LoggedInUser';
-// Axios
-import client from '../utils/client';
+// Fetch
+import { getUserById } from '../utils/Fetch';
 
 export const UserContext = React.createContext();
 
@@ -16,23 +16,12 @@ const UserContextProvider = ({ children }) => {
     localStorage.getItem(process.env.REACT_APP_USER_TOKEN) || ''
   );
 
-  console.log('Context User', user);
-
   useEffect(() => {
     const decodedUserData = LoggedInUser()
 
     if (decodedUserData) {
-      const id = decodedUserData.id
-
-      client
-      .get(`/users/${id}`)
-      .then((res) => {
-        console.log('res', res.data);
-        setUser(res.data.data.user);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      const userId = decodedUserData.id
+      getUserById(userId, setUser)
     }
   }, [])
 

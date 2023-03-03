@@ -20,7 +20,7 @@ import Search from '../../img/search.svg';
 import Notification from '../../img/notification.svg';
 import Notifications from '../notifications/Notifications';
 // Styles
-import '../../styles/keyframes.css'
+import '../../styles/keyframes.css';
 
 function Navbar() {
   const {
@@ -30,7 +30,7 @@ function Navbar() {
     setToggleNotifications,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
-  console.log('Nav users: ', user);
+
   let navigate = useNavigate();
 
   const toggleNavbar = () => {
@@ -42,17 +42,14 @@ function Navbar() {
   };
 
   const displayNotifications = () => {
-    console.log('display');
     setToggleNotifications(true);
   };
 
   const closeNotifications = () => {
-    console.log('display');
     setToggleNotifications(false);
   };
 
   const closeNavbar = () => {
-    console.log('display');
     setToggleNavigation(false);
   };
 
@@ -74,7 +71,7 @@ function Navbar() {
             onClick={() => {
               navigateHome();
               closeNotifications();
-              closeNavbar()
+              closeNavbar();
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >

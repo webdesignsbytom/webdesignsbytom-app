@@ -17,14 +17,11 @@ function Register() {
   const [successRegisterUser, setSuccessRegisterUser] = useState('');
   const [formResponses, setFormResponses] = useState(registerFormResponses);
 
-  console.log('formResponses', formResponses);
   let navigate = useNavigate();
 
   const login = () => {
     navigate('../login', { replace: true });
   };
-
-  console.log('register', registerForm);
 
   const checkHandler = (event) => {
     setAgreedToTerms(!agreedToTerms);
@@ -57,8 +54,6 @@ function Register() {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    console.log('xxx');
-    console.log('submitting');
 
     if (registerForm.password !== registerForm.confirmPassword) {
       alert('Passwords do not match');
@@ -70,7 +65,6 @@ function Register() {
     }
 
     const checkPassword = validPassword(registerForm.password);
-    console.log('checkPassword', checkPassword);
 
     if (checkPassword === false) {
       alert('Passwords too short');
@@ -102,7 +96,6 @@ function Register() {
       .post('/users/register', userData, false)
       .then((res) => {
         setSuccessRegisterUser(res.data.data.createdUser.email);
-        console.log('data', res.data);
       })
       .then(() => login())
       .catch((err) => {
@@ -245,7 +238,11 @@ function Register() {
                     )}
                     <div className='mb-6 text-center'>
                       <Link to='/login'>
-                        <p>Already a member? Click <span className='text-hyperlink-blue'>here</span> to login</p>
+                        <p>
+                          Already a member? Click{' '}
+                          <span className='text-hyperlink-blue'>here</span> to
+                          login
+                        </p>
                       </Link>
                     </div>
                   </form>

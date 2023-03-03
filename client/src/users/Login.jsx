@@ -10,12 +10,10 @@ import client from '../utils/client';
 import { UserContext } from '../context/UserContext';
 
 function Login() {
-  const { user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
   const [loginForm, setLoginForm] = useState(loginDataTemplate);
   const [successLoginUser, setSuccessLoginUser] = useState('');
-  console.log('login', loginForm);
-  console.log('Login User', user);
 
   let navigate = useNavigate();
 
@@ -39,7 +37,6 @@ function Login() {
       .post('/login', loginForm, false)
       .then((res) => {
         setSuccessLoginUser(res.data.status);
-        console.log('data1', res.data);
         localStorage.setItem(
           process.env.REACT_APP_USER_TOKEN,
           res.data.data.token
@@ -147,7 +144,11 @@ function Login() {
 
                       <div className='mb-6 text-center'>
                         <Link to='/register'>
-                          <p>Not a member? Click <span className='text-hyperlink-blue'>here</span> to register</p>
+                          <p>
+                            Not a member? Click{' '}
+                            <span className='text-hyperlink-blue'>here</span> to
+                            register
+                          </p>
                         </Link>
                       </div>
                     </form>

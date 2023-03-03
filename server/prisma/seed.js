@@ -4,6 +4,53 @@ import dbClient from '../src/utils/dbClient.js';
 async function seed() {
   const password = await bcrypt.hash('123', 8);
 
+  for (let i = 0; i <= 9; i++) {
+    const user = await dbClient.user.create({
+      data: {
+        email: `email${i}@gmail${i}.com`,
+        password,
+        isVerified: true,
+        firstName: `Max${i}`,
+        lastName: 'Power',
+        country: 'UK',
+        agreedToTerms: true,
+      },
+    });
+
+    const page = await dbClient.page.create({
+      data: {
+        type: 'BASIC',
+        name: `Page ${i}`,
+        desc: 'tom made a page',
+        price: 100
+      }
+    })
+
+    const component = await dbClient.component.create({
+      data: {
+        type: 'BASIC',
+        name: `Page ${i}`,
+        desc: 'tom made a page',
+        price: 100
+      }
+    })
+    const review = await dbClient.review.create({
+      data: {
+        email: `email${i}@gmail${i}.com`,
+        value: 5,
+        content: 'Great'
+
+      }
+    })
+    const complaint = await dbClient.complaint.create({
+      data: {
+        email: `email${i}@gmail${i}.com`,
+        content: 'Crap'
+      }
+    })
+
+  }
+
   const createdUser = await dbClient.user.create({
     data: {
       email: 'maxpower@email.com',
@@ -12,7 +59,7 @@ async function seed() {
       firstName: 'Max',
       lastName: 'Power',
       country: 'UK',
-      agreedToTerms: true
+      agreedToTerms: true,
     },
   });
 
@@ -25,7 +72,7 @@ async function seed() {
       firstName: 'Craig',
       lastName: 'Peloton',
       country: 'USA',
-      agreedToTerms: true
+      agreedToTerms: true,
     },
   });
 
@@ -38,10 +85,31 @@ async function seed() {
       firstName: 'Tom',
       lastName: 'Hats',
       country: 'UK',
-      agreedToTerms: true
+      agreedToTerms: true,
     },
   });
 
+  const userNote = await dbClient.notification.create({
+    data: {
+      userId: createdUser.id,
+      type: 'MESSAGE',
+      content: 'message rest'
+    }
+  })
+  const adminNote = await dbClient.notification.create({
+    data: {
+      userId: adminUser.id,
+      type: 'MESSAGE',
+      content: 'message rest'
+    }
+  })
+  const devUserNote = await dbClient.notification.create({
+    data: {
+      userId: devUser.id,
+      type: 'MESSAGE',
+      content: 'message rest'
+    }
+  })
   const eventOne = await dbClient.event.create({
     data: {
       type: 'ERROR',
@@ -90,7 +158,7 @@ async function seed() {
       desc: 'Users can fill in details',
       mainImage:
         'https://www.f-cdn.com/assets/main/en/assets/illustrations/portfolio/browse-portfolios.svg',
-        price: 100
+      price: 100,
     },
   });
 
@@ -99,37 +167,36 @@ async function seed() {
       type: 'BASIC',
       name: 'Home Page',
       desc: 'Everyone needs a home page',
-      price: 100
-    }
-  })
+      price: 100,
+    },
+  });
 
   const pageTwo = await dbClient.page.create({
     data: {
       type: 'ADMIN',
       name: 'Admin Page',
       desc: 'Admin page with panel to manage stats and users',
-      price: 100
-    }
-  })
+      price: 100,
+    },
+  });
 
   const pageThree = await dbClient.page.create({
     data: {
       type: 'DEVELOPER',
       name: 'Developer Page',
       desc: 'Developer page with panel to manage stats, errors and speeds',
-      price: 100
-    }
-  })
+      price: 100,
+    },
+  });
 
   const pageFour = await dbClient.page.create({
     data: {
       type: 'SHOP',
       name: 'Store Front',
       desc: 'Display various items from your shop',
-      price: 100
-    }
-  })
-
+      price: 100,
+    },
+  });
 }
 
 seed().catch(async (error) => {

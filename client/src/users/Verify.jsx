@@ -5,17 +5,14 @@ import { Link } from 'react-router-dom';
 import client from '../utils/client';
 // Components
 import Navbar from '../components/nav/Navbar';
+
 function Verify() {
   const { userId, uniqueString } = useParams();
   const [page, setPage] = useState({
     status: '',
     title: '',
     message: '',
-    username: '',
   });
-
-  console.log('userId', userId);
-  console.log('uniqueString', uniqueString);
 
   useEffect(() => {
     let isFetched = false;
@@ -23,7 +20,6 @@ function Verify() {
     client
       .get(`/users/verify/${userId}/${uniqueString}`)
       .then((res) => {
-        console.log('data', res.data);
         setPage({
           status: res.data.status,
           title: 'Account verified successfully',

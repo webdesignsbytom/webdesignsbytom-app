@@ -1,34 +1,33 @@
 export const registerDataTemplate = {
-    email: '',
-    password: '',
-    confirmPassword: '',
-    firstName: '',
-    lastName: '',
-    country: 'United Kingdom',
-    agreedToTerms: false,
-}
+  email: '',
+  password: '',
+  confirmPassword: '',
+  firstName: '',
+  lastName: '',
+  country: 'United Kingdom',
+  agreedToTerms: false,
+};
 
 export const registerFormResponses = {
-    passwordMatchError: false,
-    passwordLengthError: false,
-    agreedToTermsError: false,
-}
+  passwordMatchError: false,
+  passwordLengthError: false,
+  agreedToTermsError: false,
+};
 
 export const loginDataTemplate = {
-    email: '',
-    password: ''
-}
+  email: '',
+  password: '',
+};
 
 export const sampleUserData = {
-    id: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    country: '',
-    role: 'USER',
-    isVerified: false,
-    profileImage: '',
-    createdAt: '',
-    updatedAt: ''
-    
-}
+  id: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  country: '',
+  role: 'USER',
+  isVerified: false,
+  profileImage: '',
+  createdAt: '',
+  updatedAt: '',
+};

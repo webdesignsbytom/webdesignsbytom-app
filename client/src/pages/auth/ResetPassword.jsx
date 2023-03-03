@@ -14,7 +14,7 @@ function ResetPassword() {
       [name]: value,
     });
   };
-console.log('resetEmail', resetEmail);
+  console.log('resetEmail', resetEmail);
   const handleReset = (event) => {
     event.preventDefault();
 
@@ -31,7 +31,7 @@ console.log('resetEmail', resetEmail);
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div>ResetPassword</div>
       <form onSubmit={handleReset}>
         {/* <!-- Email input --> */}

@@ -6,8 +6,13 @@ import { UserContext } from '../../context/UserContext';
 // Components
 import UserCard from '../../components/users/UserCard';
 import CountrySelect from '../../users/utils/CountrySelect';
-import { getUserById } from '../../utils/Fetch';
 import LoggedInUser from '../../utils/LoggedInUser';
+// Fetch
+import { setFormByUserId } from '../../utils/Fetch';
+import { deleteAccount } from '../../utils/Fetch';
+import { useNavigate } from 'react-router-dom';
+// Data
+import { sampleUserData } from '../../users/utils/utils';
 
 const initAlert = { status: '', content: '' };
 
@@ -16,17 +21,11 @@ function Account() {
   const [alert, setAlert] = useState(initAlert);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   console.log('updateUserForm', updateUserForm);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const foundUser = LoggedInUser()
-    client
-      .get(`/users/${foundUser.id}`)
-      .then((res) => {
-        setUpdateUserForm(res.data.data.user);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    setFormByUserId(foundUser.id, setUpdateUserForm)
   }, [])
 
   function handleResend() {
@@ -53,14 +52,11 @@ function Account() {
     event.preventDefault();
     console.log('event', event);
 
-    client
-      .delete(`/users/delete-user/${user.id}`)
-      .then((res) => {
-        console.log('res', res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    deleteAccount(user.id)
+    setUser(sampleUserData);
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
+
+    navigate('/', { replace: true });
   };
 
   const handleChange = (event) => {
