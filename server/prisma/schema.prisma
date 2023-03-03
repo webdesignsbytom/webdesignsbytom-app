@@ -213,7 +213,6 @@ model Review {
 
 model Complaint {
   id        Int       @id @default(autoincrement())
-  value     Int
   email     String    @unique
   userId    String?   @unique
   user      User?     @relation(fields: [userId], references: [id])

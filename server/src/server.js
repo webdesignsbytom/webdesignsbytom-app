@@ -13,6 +13,7 @@ import notificationRouter from './routes/notifications.js'
 import componentRouter from './routes/components.js'
 import pageRouter from './routes/pages.js'
 import projectRouter from './routes/projects.js'
+import complaintRouter from './routes/complaints.js'
 
 const app = express();
 app.disable('x-powered-by');
@@ -36,6 +37,7 @@ app.use('/events', eventRouter);
 app.use('/notifications', notificationRouter);
 app.use('/components', componentRouter);
 app.use('/projects', projectRouter);
+app.use('/complaints', complaintRouter);
 app.use('/pages', pageRouter);
 app.use('/', authRouter)
 
