@@ -33,6 +33,7 @@ model User {
   projects       Project[]
   designs        Design[]
   review         Review?
+  complaints Complaint?
   agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
@@ -199,8 +200,18 @@ model ColorPallete {
 }
 
 // User reviews
-
 model Review {
+  id        Int       @id @default(autoincrement())
+  value     Int
+  email     String    @unique
+  userId    String?   @unique
+  user      User?     @relation(fields: [userId], references: [id])
+  content   String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Complaint {
   id        Int       @id @default(autoincrement())
   value     Int
   email     String    @unique
