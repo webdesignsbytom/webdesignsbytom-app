@@ -120,10 +120,10 @@ export const getReviewsFromUser = async (req, res) => {
 
 export const createNewReview = async (req, res) => {
   console.log('createNewReview');
-  const { email, userId, content } = req.body;
+  const { email, userId, value, content } = req.body;
   console.log(req.body);
   try {
-    if (!content) {
+    if (!content || !value) {
       //
       const missingField = new MissingFieldEvent(
         null,
@@ -137,7 +137,7 @@ export const createNewReview = async (req, res) => {
     const foundUser = await findUserById(userId);
     console.log('found user', foundUser);
 
-    const createdReview = await createReview(email, userId, content);
+    const createdReview = await createReview(email, userId, value, content);
     console.log('created review', createdReview);
 
     // myEmitterReviews.emit('create-review', createdReview);

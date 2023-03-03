@@ -135,6 +135,13 @@ export const createNewProject = async (req, res) => {
     }
     console.log('XXXX');
 
+    const foundProject = await findProjectByName(name);
+    console.log('found project', foundProject);
+
+    if (foundProject) {
+      return sendDataResponse(res, 400, { project: 'Project name already exists' });
+    }
+
     const foundUser = await findUserById(userId);
     console.log('found user', foundUser);
 

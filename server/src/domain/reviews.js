@@ -17,11 +17,12 @@ export const findUserReviewsById = (id) =>
     where: { userId: id },
   });
 
-export const createReview = (email, userId, content) =>
+export const createReview = (email, userId, value, content) =>
   dbClient.review.create({
     data: {
       email: email,
       userId: userId,
+      value: value,
       content: content
     },
   });

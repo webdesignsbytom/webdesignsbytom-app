@@ -6,6 +6,7 @@ import {
   createPage,
   findPageById,
   deletePageById,
+  findUserPagesById
 } from '../domain/pages.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -47,6 +48,39 @@ export const getAllPages = async (req, res) => {
   }
 };
 
+
+export const getPageById = async (req, res) => {
+  console.log('USer by ID req', req.user);
+  console.log('req.params', req.params);
+  const pageId = Number(req.params.pageId)
+
+  try {
+    console.log('test');
+    const foundPage = await findPageById(pageId);
+    console.log('foundPage', foundPage);
+    // If no found pages
+    if (!foundPage) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find page by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    // myEmitterPages.emit('get-page-by-id', req.user)
+    return sendDataResponse(res, 200, { page: foundPage });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Get page by ID`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
 export const createNewPage = async (req, res) => {
   console.log('createNewPage');
   const { type, name, desc, price } = req.body;
@@ -78,6 +112,44 @@ export const createNewPage = async (req, res) => {
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new page`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+
+export const getPagesFromUser = async (req, res) => {
+  console.log('get user id page');
+  const userId = req.params.userId;
+  console.log('useeId', userId);
+
+  try {
+    console.log('test');
+    const foundUser = await findUserById(userId);
+    console.log('foundUser', foundUser);
+    if (!foundUser) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant find user by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+    const foundPages = await findUserPagesById(userId);
+    console.log('foundPages', foundPages);
+    // If no found users
+
+    myEmitterPages.emit('get-user-pages', req.user);
+    return sendDataResponse(res, 200, { user: foundPages });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(
+      req.user,
+      `Get user pages by ID`
+    );
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;

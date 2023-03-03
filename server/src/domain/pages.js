@@ -12,6 +12,11 @@ export const findPageByName = (name) =>
     where: { id: id },
   });
 
+  export const findUserPagesById = (id) =>
+  dbClient.page.findMany({
+    where: { userId: id },
+  });
+
 export const createPage = (type, name, desc, price) =>
   dbClient.page.create({
     data: {
