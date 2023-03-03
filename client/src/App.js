@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // Pages
 import HeroPage from './pages/hero/HeroPage';
@@ -22,8 +23,13 @@ import {
   AuthenticateAdmin,
   AuthenticateDeveloper,
 } from './utils/AuthenticateUser';
+// Components
+import ConfirmPolicies from './components/cookies/ConfirmPolicies';
+// Context
+import { UserContext } from './context/UserContext';
 
 function App() {
+  const { toggleCookiePolicy } = useContext(UserContext)
   return (
     <>
       <Routes>
@@ -76,6 +82,8 @@ function App() {
         <Route path='/test' element={<TestPage />} />
         <Route path='*' element={<Error404 />} />
       </Routes>
+
+      {!toggleCookiePolicy && <ConfirmPolicies />}
     </>
   );
 }
