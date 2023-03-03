@@ -33,7 +33,7 @@ model User {
   projects       Project[]
   designs        Design[]
   review         Review?
-  complaints Complaint?
+  complaints     Complaint?
   agreedToTerms  Boolean           @default(false)
   createdAt      DateTime          @default(now())
   updatedAt      DateTime?         @updatedAt
@@ -168,7 +168,7 @@ model Project {
 model Design {
   id           Int            @id @default(autoincrement())
   name         String
-  colorPallete ColorPallete[]
+  colorPallete ColorPalette[]
   userId       String
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime       @default(now())
@@ -184,15 +184,15 @@ model UserStory {
   updatedAt DateTime? @updatedAt
 }
 
-model ColorPallete {
+model ColorPalette {
   id           Int       @id @default(autoincrement())
-  bgMain       String    @default("")
-  bgAlt        String    @default("")
-  palleteOne   String    @default("")
-  palleteTwo   String    @default("")
-  palleteThree String    @default("")
-  hover        String    @default("")
-  selected     String    @default("")
+  bgMain       String?   @default("")
+  bgAlt        String?   @default("")
+  paletteOne   String?   @default("")
+  paletteTwo   String?   @default("")
+  paletteThree String?   @default("")
+  hover        String?   @default("")
+  selected     String?   @default("")
   designId     Int
   design       Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
   createdAt    DateTime  @default(now())
