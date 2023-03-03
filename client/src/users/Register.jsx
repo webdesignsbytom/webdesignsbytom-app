@@ -212,7 +212,7 @@ function Register() {
                         I agree with the{' '}
                         <Link
                           to='/terms-and-conditions'
-                          className='text-blue-600 dark:text-blue-500 hover:underline'
+                          className='text-hyperlink-blue dark:text-hyperlink-blue hover:underline'
                         >
                           terms and conditions
                         </Link>
@@ -245,7 +245,7 @@ function Register() {
                     )}
                     <div className='mb-6 text-center'>
                       <Link to='/login'>
-                        <p>Already a member? Click here to login</p>
+                        <p>Already a member? Click <span className='text-hyperlink-blue'>here</span> to login</p>
                       </Link>
                     </div>
                   </form>

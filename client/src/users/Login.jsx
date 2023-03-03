@@ -147,7 +147,7 @@ function Login() {
 
                       <div className='mb-6 text-center'>
                         <Link to='/register'>
-                          <p>Not a member? Click <span>here</span> to register</p>
+                          <p>Not a member? Click <span className='text-hyperlink-blue'>here</span> to register</p>
                         </Link>
                       </div>
                     </form>

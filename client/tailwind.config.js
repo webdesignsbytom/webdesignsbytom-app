@@ -24,7 +24,7 @@ module.exports = {
         'error-red': '',
         'success-green': '',
         'event-red': '',
-        'hyperlink-blue': '',
+        'hyperlink-blue': '#2563eb',
       },
     },
   },
