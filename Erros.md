@@ -3,7 +3,7 @@
 ## List
 
   1. P2002
-  2.  
+  2.  https://stackoverflow.com/questions/45088006/nodejs-error-self-signed-certificate-in-certificate-chain
 
 ## Need a way to detect this and return a event log
 
