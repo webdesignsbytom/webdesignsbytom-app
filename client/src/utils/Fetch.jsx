@@ -43,11 +43,30 @@ export function deletePost(setPostResponse, postId) {
     .catch((err) => console.error('Unable to delete post', err.response));
 }
 
-export function getUserNotifications(setNotifications, userId) {
+// Notifications
+export function getUserNotifications(setAllNotifications, userId) {
   client
     .get(`/notifications/${userId}`)
     .then((res) => {
-      setNotifications(res.data.data.notifications);
+      setAllNotifications(res.data.data.notifications);
+    })
+    .catch((err) => console.error('Unable to delete post', err.response));
+}
+
+export function getSeenNotifications(setSeenNotifications, userId) {
+  client
+    .get(`/notifications/${userId}/true`)
+    .then((res) => {
+      setSeenNotifications(res.data.data.notifications);
+    })
+    .catch((err) => console.error('Unable to delete post', err.response));
+}
+
+export function getUnseenNotifications(setUnseenNotifications, userId) {
+  client
+    .get(`/notifications/${userId}/false`)
+    .then((res) => {
+      setUnseenNotifications(res.data.data.notifications);
     })
     .catch((err) => console.error('Unable to delete post', err.response));
 }

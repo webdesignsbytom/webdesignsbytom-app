@@ -7,7 +7,8 @@ import {
   findNotificationsByUserId,
   updateNotificationById,
   findNotificationById,
-  deleteNotificationById
+  deleteNotificationById,
+  findViewedNotifications,
 } from '../domain/notifications.js';
 // Response messages
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
@@ -17,6 +18,7 @@ import {
   MissingFieldEvent,
   RegistrationServerErrorEvent,
 } from '../event/utils/errorUtils.js';
+import { findUserById } from '../domain/users.js';
 
 export const getAllNotifications = async (req, res) => {
   console.log('get all notifications');
@@ -86,8 +88,48 @@ export const getNotificationsByUserId = async (req, res) => {
   }
 };
 
+export const getViewedNotificationsByUserId = async (req, res) => {
+  const userId = req.params.userId;
+
+  var bool = req.params.viewed;
+  var value = JSON.parse(bool);
+
+  try {
+    const foundUser = await findUserById(userId);
+
+    if (!foundUser) {
+      return sendDataResponse(res, 404, {
+        notification: 'User not found in database',
+      });
+    }
+
+    const foundNotifications = await findViewedNotifications(userId, value);
+
+    foundNotifications.forEach((note, index) => {
+      const date = note.createdAt.toLocaleString();
+      note.createdAt = date;
+    });
+
+    if (!foundNotifications) {
+      return sendDataResponse(res, 404, {
+        notification: 'User notifications not found in database',
+      });
+    }
+
+    myEmitterNotifications.emit('get-notifications-for-user', req.user);
+    return sendDataResponse(res, 200, { notifications: foundNotifications });
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(
+      req.user,
+      `Get viewed User notifications`
+    );
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
 export const createNotification = async (req, res) => {
-  console.log('create notification');
   const { type, content, userId } = req.body;
   console.log(type, content, userId);
 
@@ -107,7 +149,6 @@ export const createNotification = async (req, res) => {
       content,
       userId
     );
-    console.log('created notification', createdNotification);
 
     // myEmitterNotifications.emit('create-notification', createdNotification);
 
@@ -162,7 +203,7 @@ export const setNotificationToViewed = async (req, res) => {
 
 export const deleteNotification = async (req, res) => {
   console.log('deleteNotification');
-  const id = req.params.notificationId
+  const id = req.params.notificationId;
   console.log(id);
 
   try {

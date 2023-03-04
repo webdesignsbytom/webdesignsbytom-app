@@ -16,6 +16,15 @@ export const findNotificationById = (id) =>
         }
     })
 
+export const findViewedNotifications = (userId, value) =>
+    dbClient.notification.findMany({
+        where: {
+            userId: userId,
+            viewed: value
+        }
+    })
+
+
 export const createNewNotification = (type, content, userId) =>
     dbClient.notification.create({
         data: {

@@ -34,6 +34,7 @@ async function seed() {
         price: 100,
       },
     });
+
     const review = await dbClient.review.create({
       data: {
         email: `email${i}@gmail${i}.com`,
@@ -41,6 +42,7 @@ async function seed() {
         content: 'Great',
       },
     });
+
     const complaint = await dbClient.complaint.create({
       data: {
         email: `email${i}@gmail${i}.com`,
@@ -95,6 +97,7 @@ async function seed() {
         content: 'message rest',
       },
     });
+
     const adminNote = await dbClient.notification.create({
       data: {
         userId: adminUser.id,
@@ -102,11 +105,21 @@ async function seed() {
         content: 'message rest',
       },
     });
+
     const devUserNote = await dbClient.notification.create({
       data: {
         userId: devUser.id,
         type: 'MESSAGE',
-        content: 'message rest',
+        content: 'message rest unseen',
+      },
+    });
+
+    const devUserNoteSeen = await dbClient.notification.create({
+      data: {
+        userId: devUser.id,
+        type: 'MESSAGE',
+        content: 'message rest seen',
+        viewed: true
       },
     });
   }
