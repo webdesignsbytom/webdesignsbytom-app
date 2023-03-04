@@ -130,8 +130,10 @@ export async function testEmail(email) {
     subject: 'Welcome!',
     template: 'email', 
     context: {
+      title: 'Test Email',
       name: 'Tom', // replace {{name}} with Adebola
       company: 'My Company', // replace {{company}} with My Company
+      clientUrl: 'www.webdesignsbytom.com'
     },
   };
 

@@ -2,14 +2,35 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv='x-ua-compatible' content='ie=edge' />
-    <title>{{subject}}</title>
+    <title>{{title}}</title>
     <link rel='stylesheet' href='../styles/index.css' />
+    <style>
+      body {background-color: powderblue;} h1 {color: black;} p {color:
+      slategray;}
+    </style>
   </head>
-  <body>
-    <div class='test' style="background-color: aqua;">test
-      <div class="test2">test2</div>
-      <h2>Hello {{name}}! </h2>
+  <body style='height: 100vh;'>
+    <div class='test' style='background-color: aqua;'>test
+      <div class='test2'>test2</div>
+      <h1>Hello {{name}}! </h1>
       <p>We're glad to have you on board at {{company}}. </p>
+    </div>
+
+    <div style='background-color: lightblue;'>
+      <h1>Thank you for signing up with webdesignsbytom</h1>
+      <h2>${{clientUrl}} + '/users/verify/' + id + '/' + uniqueString</h2>
+      <p>Please verify your email address to complete the signup and login into
+        your account.</p>
+      <p>This link
+        <b>expires in 6 hours</b>.
+      </p>
+      <p>
+        Press
+        <a href='www.google.com'>
+          here
+        </a>
+        to proceed.
+      </p>
     </div>
   </body>
 </html>
