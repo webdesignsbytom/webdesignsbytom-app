@@ -3,34 +3,41 @@
     <meta charset='utf-8' />
     <meta http-equiv='x-ua-compatible' content='ie=edge' />
     <title>{{title}}</title>
-    <link rel='stylesheet' href='../styles/index.css' />
     <style>
-      body {background-color: powderblue;} h1 {color: black;} p {color:
-      slategray;}
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
     </style>
   </head>
-  <body style='height: 100vh;'>
-    <div class='test' style='background-color: aqua;'>test
-      <div class='test2'>test2</div>
-      <h1>Hello {{name}}! </h1>
-      <p>We're glad to have you on board at {{company}}. </p>
-    </div>
+  <body style='
+      height: 100vh; 
+      background-color: white;
+      height: 100vh;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;'>
+    <div>
+      <p>Dear <span style="font-style: italic;">{{firstName}},</span></p>
 
-    <div style='background-color: lightblue;'>
-      <h1>Thank you for signing up with webdesignsbytom</h1>
-      <h2>${{clientUrl}} + '/users/verify/' + id + '/' + uniqueString</h2>
-      <p>Please verify your email address to complete the signup and login into
-        your account.</p>
-      <p>This link
-        <b>expires in 6 hours</b>.
-      </p>
+      <h1>Thank you for signing up with webdesignsbytom!</h1>
+      <p>Please verify your email address to complete the signup process and login into your account.</p>
+      <p>This link<b>expires in 6 hours</b>.</p>
+
       <p>
         Press
-        <a href='www.google.com'>
-          here
-        </a>
+        <a href={{confirmationUrl}}>here</a>
         to proceed.
       </p>
+
+      <p>Or copy and paste this URL into your browser.</p>
+      <h3>{{confirmationUrl}}</h3>
     </div>
+
+    <footer>
+      <h2>www.webdesignsbytom.com</h2>
+      <p>Copyright &copy; <span id="copyright"></span></p>
+    </footer>
   </body>
+  <script>
+      let copy = document.getElementById('copyright')
+      const today = new Date();
+      copy.innerText = today.getFullYear()
+  </script>
 </html>

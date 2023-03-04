@@ -8,15 +8,15 @@ import * as url from 'url';
 // Import routers
 import userRouter from './routes/users.js';
 import eventRouter from './routes/events.js';
-import authRouter from './routes/auth.js'
-import notificationRouter from './routes/notifications.js'
-import componentRouter from './routes/components.js'
-import pageRouter from './routes/pages.js'
-import projectRouter from './routes/projects.js'
-import complaintRouter from './routes/complaints.js'
-import reviewRouter from './routes/reviews.js'
-import paletteRouter from './routes/palettes.js'
-import designRouter from './routes/designs.js'
+import authRouter from './routes/auth.js';
+import notificationRouter from './routes/notifications.js';
+import componentRouter from './routes/components.js';
+import pageRouter from './routes/pages.js';
+import projectRouter from './routes/projects.js';
+import complaintRouter from './routes/complaints.js';
+import reviewRouter from './routes/reviews.js';
+import paletteRouter from './routes/palettes.js';
+import designRouter from './routes/designs.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 const PORT = process.env.PORT || 4000;
 const HTTP_URL = process.env.HTTP_URL || 'https://webdesignsbytom-app.vercel.app';
 
-const __filename = url.fileURLToPath(import.meta.url);
+// Create path to HTML
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
@@ -45,21 +45,20 @@ app.use('/reviews', reviewRouter);
 app.use('/designs', designRouter);
 app.use('/color-palette', paletteRouter);
 app.use('/pages', pageRouter);
-app.use('/', authRouter)
+app.use('/', authRouter);
 
-
+// Server interface page
 app.get('/', (req, res) => {
   res.sendFile('index.html', {
     root: join(__dirname, '..', 'public', 'views'),
   });
-  console.log('res', res);
 });
 
 // For all unknown requests 404 page returns
 app.all('*', (req, res) => {
   res.status(404);
   if (req.accepts('html')) {
-    res.sendFile(join(__dirname, '..', 'public', 'views', 'error404.html'));
+    res.sendFile(join(__dirname, '..', 'public', 'views', '404.html'));
   } else if (req.accepts('json')) {
     res.json({ message: '404 Not Found' });
   } else {

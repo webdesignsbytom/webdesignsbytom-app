@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer';
 import hbs from 'nodemailer-express-handlebars';
 import path from 'path'
 
-
 import { VERIFICATION_URL } from './config.js';
 
 const transporter = nodemailer.createTransport({
@@ -131,9 +130,8 @@ export async function testEmail(email) {
     template: 'email', 
     context: {
       title: 'Test Email',
-      name: 'Tom', // replace {{name}} with Adebola
-      company: 'My Company', // replace {{company}} with My Company
-      clientUrl: 'www.webdesignsbytom.com'
+      firstName: 'Tom', 
+      confirmationUrl: 'www.webdesignsbytom.com'
     },
   };
 
