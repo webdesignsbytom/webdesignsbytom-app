@@ -175,8 +175,9 @@ function Navbar() {
         </div>
       </div>
 
+      {/* Phone navigatino */}
       {toggleNavigation && (
-        <div className='absolute bg-green-700 w-full h-[calc(100%_-_4rem)] overflow-hidden md:hidden'>
+        <div className='absolute bg-green-700 w-full h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
           <ul className='grid gap-2 mt-2'>
             <li className='phone__nav__li'>
               <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
@@ -317,7 +318,7 @@ function Navbar() {
       )}
 
       {toggleNotifications && (
-        <div className='absolute testClass'>
+        <div className='reveal__notifications'>
           <Notifications />
         </div>
       )}

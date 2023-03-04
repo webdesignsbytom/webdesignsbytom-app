@@ -4,17 +4,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/nav/Navbar';
 // Data
 import { loginDataTemplate } from './utils/utils';
-// Axios
-import client from '../utils/client';
+import { showPassword } from '../utils/PasswordReveal';
 // Context
 import { UserContext } from '../context/UserContext';
 import { postLogin } from '../utils/Fetch';
+import OpenEye from '../img/eye.svg';
 
 function Login() {
   const { setUser } = useContext(UserContext);
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
   const [loginForm, setLoginForm] = useState(loginDataTemplate);
   const [successLoginUser, setSuccessLoginUser] = useState('');
+  const [fieldType, setFieldType] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(OpenEye);
 
   let navigate = useNavigate();
 
@@ -33,7 +35,7 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    postLogin(loginForm, setSuccessLoginUser, setUser, homePage)
+    postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
   };
 
   return (
@@ -79,14 +81,27 @@ function Login() {
                       </div>
 
                       {/* <!-- Password input --> */}
-                      <div className='mb-6'>
+                      <div className='mb-6 relative flex z-0'>
                         <input
-                          type='password'
+                          type={fieldType}
                           name='password'
                           className='standard__inputs'
                           placeholder='Password'
                           onChange={handleChange}
                         />
+                        <label
+                          className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                          htmlFor='toggle'
+                        >
+                          <img
+                            onClick={() =>
+                              showPassword(fieldType, setFieldType, setEyeIcon)
+                            }
+                            src={eyeIcon}
+                            className='h-6 w-6 my-2 mr-2'
+                            alt='open eye'
+                          />
+                        </label>
                       </div>
 
                       <div className='flex justify-between items-center mb-6'>

@@ -4,15 +4,21 @@ import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/nav/Navbar';
 // Data
 import { registerDataTemplate, registerFormResponses } from './utils/utils';
-// Axios
-import client from '../utils/client';
+// Functions
+import { showPassword, showConfirmPassword } from '../utils/PasswordReveal';
 // Select
 import CountrySelect from './utils/CountrySelect';
 // Validation
 import { validPassword } from './utils/Validation';
 import { postRegister } from '../utils/Fetch';
+// Icons
+import OpenEye from '../img/eye.svg';
 
 function Register() {
+  const [fieldType, setFieldType] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(OpenEye);
+  const [fieldTypeConfirm, setFieldTypeConfirm] = useState('password');
+  const [eyeIconConfirm, setEyeIconConfirm] = useState(OpenEye);
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [successRegisterUser, setSuccessRegisterUser] = useState('');
@@ -93,7 +99,7 @@ function Register() {
 
     const userData = registerForm;
 
-    postRegister(userData, setSuccessRegisterUser, login)
+    postRegister(userData, setSuccessRegisterUser, login);
   };
 
   return (
@@ -133,25 +139,56 @@ function Register() {
                     </div>
 
                     {/* <!-- Password input --> */}
-                    <div className='mb-6'>
+                    <div className='mb-6 relative flex z-0'>
                       <input
-                        type='password'
+                        type={fieldType}
                         name='password'
                         className='standard__inputs'
                         placeholder='Password'
                         onChange={handleChange}
                       />
+                      <label
+                        className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                        htmlFor='toggle'
+                      >
+                        <img
+                          onClick={() =>
+                            showPassword(fieldType, setFieldType, setEyeIcon)
+                          }
+                          src={eyeIcon}
+                          className='h-6 w-6 my-2 mr-2'
+                          alt='open eye'
+                        />
+                      </label>
                     </div>
 
                     {/* <!--Confirm Password input --> */}
-                    <div className='mb-6'>
+                    {/* <!-- Password input --> */}
+                    <div className='mb-6 relative flex z-0'>
                       <input
-                        type='password'
+                        type={fieldTypeConfirm}
                         name='confirmPassword'
                         className='standard__inputs'
                         placeholder='Confirm Password'
                         onChange={handleChange}
                       />
+                      <label
+                        className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                        htmlFor='toggle'
+                      >
+                        <img
+                          onClick={() =>
+                            showConfirmPassword(
+                              fieldTypeConfirm,
+                              setFieldTypeConfirm,
+                              setEyeIconConfirm
+                            )
+                          }
+                          src={eyeIconConfirm}
+                          className='h-6 w-6 my-2 mr-2'
+                          alt='open eye'
+                        />
+                      </label>
                     </div>
 
                     {/* <!-- FirstName input --> */}

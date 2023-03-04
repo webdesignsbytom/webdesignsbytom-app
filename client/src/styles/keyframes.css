@@ -1,4 +1,5 @@
-.testClass {
+.reveal__notifications {
+  position: absolute;
   height: 100%;
   width: 100%;
   animation-name: example;
@@ -6,6 +7,7 @@
   animation-timing-function: ease-in;
   padding: env(safe-area-inset-bottom, 50px);
   background-color: red;
+  z-index: 10;
 }
 
 @keyframes example {

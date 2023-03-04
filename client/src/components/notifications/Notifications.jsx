@@ -21,7 +21,7 @@ function Notifications() {
           <h2>Notifications</h2>
         </div>
         {/* Notification list */}
-        <section>
+        <section className='grid gap-2 mx-2 lg:mx-6'>
           {notifications.length > 0 ? (
             notifications.map((notification, index) => {
               return <Note notification={notification} key={index} />;
