@@ -24,7 +24,7 @@ import {
   AuthenticateDeveloper,
 } from './utils/AuthenticateUser';
 // Components
-import ConfirmPolicies from './components/cookies/ConfirmPolicies';
+import ConfirmPolicies from './components/popups/ConfirmPolicies';
 // Context
 import { UserContext } from './context/UserContext';
 
