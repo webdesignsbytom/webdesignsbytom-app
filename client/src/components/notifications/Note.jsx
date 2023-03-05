@@ -4,7 +4,13 @@ import closeCross from '../../img/closeCross.svg';
 // Fetch
 import { putSetNotificationViewed } from '../../utils/Fetch';
 
-function Note({ notification, notifications, setNotifications }) {
+function Note({
+  notification,
+  notifications,
+  setNotifications,
+  checkSeen,
+  setCheckSeen,
+}) {
   const { content, type, createdAt, id } = notification;
 
   const markAsSeen = () => {
