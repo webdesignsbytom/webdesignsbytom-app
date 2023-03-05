@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import Navbar from '../components/nav/Navbar';
+import Navbar from '../../components/nav/Navbar';
 // Data
-import { loginDataTemplate } from './utils/utils';
-import { showPassword } from '../utils/PasswordReveal';
+import { loginDataTemplate } from '../utils/utils';
+import { showPassword } from '../../utils/PasswordReveal';
 // Context
-import { UserContext } from '../context/UserContext';
-import { postLogin } from '../utils/Fetch';
-import OpenEye from '../img/eye.svg';
+import { UserContext } from '../../context/UserContext';
+import { postLogin } from '../../utils/Fetch';
+import OpenEye from '../../img/eye.svg';
 
 function Login() {
   const { setUser } = useContext(UserContext);

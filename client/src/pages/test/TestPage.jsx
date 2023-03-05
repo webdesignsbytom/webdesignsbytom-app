@@ -26,8 +26,8 @@ function TestPage() {
   const [successRegisterUser, setSuccessRegisterUser] = useState('');
   const [formResponses, setFormResponses] = useState(registerFormResponses);
 
-  const [hiddenPass, setHiddenPass] = useState('invisible');
-  const [hiddenEmail, setHiddenEmail] = useState('invisible');
+  const [hiddenPass, setHiddenPass] = useState('invisible h-4');
+  const [hiddenEmail, setHiddenEmail] = useState('invisible h-4');
 
   const [inputStyle, setInputStyle] = useState('standard__inputs');
 
@@ -43,17 +43,19 @@ function TestPage() {
           password: true,
         });
       }
-      
     }
-    if (registerForm.password !== registerForm.confirmPassword && registerForm.confirmPassword > 3) {
+    if (
+      registerForm.password !== registerForm.confirmPassword &&
+      registerForm.confirmPassword > 3
+    ) {
       setHiddenPass('block');
       setInputStyle('error__inputs');
-        setFormResponses({
-          ...formResponses,
-          password: false,
-        });
+      setFormResponses({
+        ...formResponses,
+        password: false,
+      });
     }
-  }, [registerForm.password, registerForm.confirmPassword, formResponses]);
+  }, [registerForm.password, registerForm.confirmPassword]);
 
   const login = () => {
     navigate('../login', { replace: true });
@@ -168,36 +170,38 @@ function TestPage() {
                     onChange={handleChange}
                   />
                 </div>
-                <p class={hiddenEmail}>
-                  <span class='text-xs text-black dark:text-red-500 font-medium'>
+                <p className={hiddenEmail}>
+                  <span className='text-xs text-black dark:text-red-500 font-medium'>
                     Oh, snapp! Some error message.{' '}
                   </span>
                 </p>
               </div>
 
               {/* <!-- Password input --> */}
-
-              <div className='relative flex z-0'>
-                <input
-                  type={fieldType}
-                  name='password'
-                  className={inputStyle}
-                  placeholder='Password'
-                  onChange={handleChange}
-                />
-                <label
-                  className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
-                  htmlFor='toggle'
-                >
-                  <img
-                    onClick={() =>
-                      showPassword(fieldType, setFieldType, setEyeIcon)
-                    }
-                    src={eyeIcon}
-                    className='h-6 w-6 my-2 mr-2'
-                    alt='open eye'
+              <div>
+                <div className='relative flex z-0'>
+                  <input
+                    type={fieldType}
+                    name='password'
+                    className={inputStyle}
+                    placeholder='Password'
+                    onChange={handleChange}
                   />
-                </label>
+                  <label
+                    className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                    htmlFor='toggle'
+                  >
+                    <img
+                      onClick={() =>
+                        showPassword(fieldType, setFieldType, setEyeIcon)
+                      }
+                      src={eyeIcon}
+                      className='h-6 w-6 my-2 mr-2'
+                      alt='open eye'
+                    />
+                  </label>
+                </div>
+                <p className='h-4'></p>
               </div>
 
               {/* <!--Confirm Password input --> */}
@@ -228,14 +232,14 @@ function TestPage() {
                     />
                   </label>
                 </div>
-                <p class={hiddenPass}>
+                <p className={hiddenPass}>
                   {formResponses.password === true && (
-                    <span class='text-xs text-black dark:text-red-500 font-medium'>
+                    <span className='text-xs text-black dark:text-red-500 font-medium'>
                       {formResponses.passwordMessage}
                     </span>
                   )}
                   {formResponses.password === false && (
-                    <span class='text-xs text-black dark:text-red-500 font-medium'>
+                    <span className='text-xs text-black dark:text-red-500 font-medium'>
                       {formResponses.passwordError}
                     </span>
                   )}
@@ -251,6 +255,7 @@ function TestPage() {
                   placeholder='First Name'
                   onChange={handleChange}
                 />
+                <p className='h-4'></p>
               </div>
 
               {/* <!-- LastName input --> */}
@@ -262,18 +267,20 @@ function TestPage() {
                   placeholder='Last Name'
                   onChange={handleChange}
                 />
+                <p className='h-4'></p>
               </div>
 
               {/* <!-- Country input --> */}
               <div className=''>
                 <CountrySelect handleChange={handleChange} />
+                <p className='h-4'></p>
               </div>
 
               <div className='flex'>
                 <input
                   type='checkbox'
                   name='agreedToTerms'
-                  className='form-check-input border-solid appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
+                  className='standard__checkbox'
                   id='agreedToTerms'
                   checked={agreedToTerms}
                   value={agreedToTerms}
@@ -294,29 +301,22 @@ function TestPage() {
                 </label>
               </div>
 
-              {/* Hidden password missing links */}
-              {formResponses.passwordLengthError && (
-                <div>Password too short</div>
-              )}
-              {formResponses.passwordMatchError && (
-                <div>Password doesnt match</div>
-              )}
-
               {/* <!-- Submit button --> */}
-              {successRegisterUser ? (
-                <p>{successRegisterUser}</p>
-              ) : (
-                <div className=''>
-                  <button
-                    type='submit'
-                    className='submit__button'
-                    data-mdb-ripple='true'
-                    data-mdb-ripple-color='light'
-                  >
-                    Register
-                  </button>
-                </div>
-              )}
+
+              <div className=''>
+                <p className='h-4'></p>
+
+                <button
+                  type='submit'
+                  className='submit__button'
+                  data-mdb-ripple='true'
+                  data-mdb-ripple-color='light'
+                >
+                  Register
+                </button>
+                <p className='h-4'></p>
+              </div>
+
               <div className='text-center'>
                 <Link to='/login'>
                   <p>
@@ -324,6 +324,7 @@ function TestPage() {
                     <span className='text-hyperlink-blue'>here</span> to login
                   </p>
                 </Link>
+                <p className='h-4'></p>
               </div>
             </form>
           </div>

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 // Axios
-import { postVerifyEmail } from '../utils/Fetch';
+import { postVerifyEmail } from '../../utils/Fetch';
 // Components
-import Navbar from '../components/nav/Navbar';
+import Navbar from '../../components/nav/Navbar';
 
 function Verify() {
   const { userId, uniqueString } = useParams();

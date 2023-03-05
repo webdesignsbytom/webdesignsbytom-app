@@ -35,5 +35,5 @@
 }
 
 .standard__checkbox {
-  
+  @apply border-solid h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left cursor-pointer mr-2
 }

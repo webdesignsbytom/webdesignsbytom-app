@@ -6,12 +6,12 @@ import PortfolioHome from './pages/portfolio/PortfolioHome';
 import SalesHome from './pages/sales/SalesHome';
 import AdminPanel from './pages/admin/AdminPanel';
 import DeveloperPanel from './pages/dev/DeveloperPanel';
-import Login from './users/Login';
-import Register from './users/Register';
+import Login from './users/login/Login';
+import Register from './users/register/Register';
 import ResetPassword from './pages/auth/ResetPassword';
 import UserAgreement from './pages/auth/UserAgreement';
 import Account from './pages/account/Account';
-import Verify from './users/Verify';
+import Verify from './pages/account/Verify'
 import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
 import TestPage from './pages/test/TestPage';
