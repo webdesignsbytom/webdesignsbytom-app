@@ -9,6 +9,7 @@ import {
 } from '../../utils/Fetch';
 // Components
 import Note from './Note';
+import Selector from './Selector';
 
 function Notifications() {
   const { user } = useContext(UserContext);
@@ -34,8 +35,14 @@ function Notifications() {
   }, []);
 
   const selectNotes = (event) => {
-    const { id } = event.target
-    setDisplayNotifications(id)
+    const { id } = event.target;
+    setDisplayNotifications(id);
+  };
+
+  const handleSelect = (event) => {
+    console.log('SEKEC', event.target);
+    const { name } = event.target;
+    console.log('name', name);
   };
 
   return (
@@ -45,61 +52,7 @@ function Notifications() {
           <div>
             <h2>Notifications</h2>
           </div>
-          <div
-            className='peer grid w-auto grid-cols-3 space-x-1 rounded-xl bg-gray-200 p-2'
-            x-data='app'
-          >
-            <div>
-              <input
-                type='radio'
-                name='option'
-                id='all'
-                className='peer hidden'
-                onChange={selectNotes}
-              />
-              <label
-                htmlFor='all'
-                aria-checked='false'
-                className='block cursor-pointer select-none rounded-xl px-2 py-1 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white'
-              >
-                All
-              </label>
-            </div>
-
-            <div>
-              <input
-                type='radio'
-                name='option'
-                id='seen'
-                className='peer hidden'
-                onChange={selectNotes}
-              />
-              <label
-                htmlFor='seen'
-                aria-checked='false'
-                className='block cursor-pointer select-none rounded-xl px-2 py-1 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white'
-              >
-                Seen
-              </label>
-            </div>
-
-            <div>
-              <input
-                aria-checked='true'
-                type='radio'
-                name='option'
-                id='new'
-                className='peer hidden'
-                onChange={selectNotes}
-              />
-              <label
-                htmlFor='new'
-                className='block cursor-pointer select-none rounded-xl px-2 py-1 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white'
-              >
-                New
-              </label>
-            </div>
-          </div>
+          <Selector handleSelect={handleSelect} />
         </div>
         {/* Notification list */}
         <section className='grid gap-2 mx-2 lg:mx-6'>
