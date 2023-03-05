@@ -20,10 +20,15 @@ module.exports = {
         'success-green': '',
         'event-red': '',
         'hyperlink-blue': '#2563eb',
+        'secleted': '#2563eb',
+        'non-selected': '#99DF8A',
       },
       gridTemplateRows: {
         'reg': 'auto 1fr',
         'even': '1fr 1fr 1fr'
+      },
+      width: {
+        id: '12ch;'
       }
     },
   },

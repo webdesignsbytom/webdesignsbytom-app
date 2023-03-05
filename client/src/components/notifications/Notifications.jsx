@@ -14,32 +14,26 @@ import Selector from './Selector';
 function Notifications() {
   const { user } = useContext(UserContext);
   const [notifications, setNotifications] = useState([]);
-  const [seenNotifications, setSeenNotifications] = useState([]);
-  const [unseenNotifications, setUnseenNotifications] = useState([]);
-  const [allNotifications, setAllNotifications] = useState([]);
-  const [displayNotifications, setDisplayNotifications] = useState('unseen');
-
-  console.log('seen', seenNotifications);
-  console.log('unseenNotifications', unseenNotifications);
-  console.log('allNotifications', allNotifications);
+  // Tell which one to display
+  const [displayNotifications, setDisplayNotifications] = useState('new-notifications');
 
   useEffect(() => {
-    getUserNotifications(setAllNotifications, user.id);
     getUnseenNotifications(setNotifications, user.id);
-    getSeenNotifications(setSeenNotifications, user.id);
-    getUnseenNotifications(setUnseenNotifications, user.id);
-  }, []);
+  }, [])
 
   const handleSelect = (event) => {
     const { id } = event.target;
     if (id === 'all-notifications') {
       getUserNotifications(setNotifications, user.id);
+      setDisplayNotifications('all-notifications')
     }
     if (id === 'seen-notifications') {
       getSeenNotifications(setNotifications, user.id);
+      setDisplayNotifications('seen-notifications')
     }
     if (id === 'new-notifications') {
       getUnseenNotifications(setNotifications, user.id);
+      setDisplayNotifications('new-notifications')
     }
   };
 
@@ -50,7 +44,7 @@ function Notifications() {
           <div>
             <h2>Notifications</h2>
           </div>
-          <Selector handleSelect={handleSelect} />
+          <Selector handleSelect={handleSelect} displayNotifications={displayNotifications} />
         </div>
         {/* Notification list */}
         <section className='grid gap-2 mx-2 lg:mx-6'>

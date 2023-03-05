@@ -37,3 +37,11 @@
 .standard__checkbox {
   @apply border-solid h-4 w-4 border border-gray-300 rounded-sm bg-white focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left cursor-pointer mr-2
 }
+
+.inactive__select {
+  @apply inline-flex border-2 items-center justify-center text-center w-full py-1 px-2 bg-non-selected border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700
+}
+
+.active__select {
+  @apply inline-flex border-2 items-center justify-center text-center w-full py-1 px-2 rounded-lg cursor-pointer bg-secleted 
+}

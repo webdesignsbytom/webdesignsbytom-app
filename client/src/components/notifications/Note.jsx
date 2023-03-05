@@ -10,13 +10,6 @@ function Note({ notification, notifications, setNotifications }) {
   const markAsSeen = () => {
     console.log('marked as seen');
     putSetNotificationViewed(id);
-
-    const found = notifications.find((e) => e.id === id);
-    console.log('found', found);
-
-    setNotifications([
-      ((current) => current.filter((e) => e.id === id))
-    ])
   };
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Selector({ handleSelect }) {
+function Selector({ handleSelect, displayNotifications }) {
   
   return (
     <>
@@ -17,7 +17,7 @@ function Selector({ handleSelect }) {
             />
             <label
               htmlFor='all-notifications'
-              className='inline-flex border-2 items-center justify-center text-center w-full py-1 px-2 text-gray-500 bg-white border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+              className={displayNotifications === 'all-notifications' ? 'active__select' : 'inactive__select'}
             >
               <div className='block'>
                 <div className='w-full select-none'>All</div>
@@ -35,7 +35,7 @@ function Selector({ handleSelect }) {
             />
             <label
               htmlFor='seen-notifications'
-              className='inline-flex border-2 items-center justify-center text-center w-full py-1 px-2 text-gray-500 bg-white border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+              className={displayNotifications === 'seen-notifications' ? 'active__select' : 'inactive__select'}
             >
               <div className='block'>
                 <div className='w-full select-none'>Seen</div>
@@ -53,7 +53,8 @@ function Selector({ handleSelect }) {
             />
             <label
               htmlFor='new-notifications'
-              className='inline-flex border-2 items-center justify-center text-center w-full py-1 px-2 text-gray-500 bg-white border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:bg-blue-600 peer-checked:text-white hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
+              className={displayNotifications === 'new-notifications' ? 'active__select' : 'inactive__select'}
+
             >
               <div className='block'>
                 <div className='w-full select-none'>New</div>
