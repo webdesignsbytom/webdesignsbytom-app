@@ -13,6 +13,8 @@ module.exports = {
         'colour-dark': '#1A7408',
         'transparent-black': 'rgba(0, 0, 0, 0.65)',
         'transparent-white': 'rgba(255, 255, 255, 0.65)',
+        'main-text': '#000000',
+        'alt-text': '#ffffff',
         'hover-text': '#6b7280',
         'active-text': '#6b7280',
         'placeholder-text': 'rgb(55 65 81)',
@@ -24,6 +26,11 @@ module.exports = {
         'non-selected': '#99DF8A',
       },
       gridTemplateRows: {
+        'reg': 'auto 1fr',
+        'even': '1fr 1fr 1fr',
+        'one': '1fr'
+      },
+      gridTemplateColumns: {
         'reg': 'auto 1fr',
         'even': '1fr 1fr 1fr'
       },

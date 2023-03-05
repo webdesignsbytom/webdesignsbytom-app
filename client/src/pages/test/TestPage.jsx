@@ -1,86 +1,74 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/nav/Navbar';
-import LoginForm from '../../users/login/LoginForm';
-import { loginDataTemplate } from '../../users/utils/utils';
-import { postLogin } from '../../utils/Fetch';
+import React, { useContext, useEffect, useState } from 'react';
+// Context
 import { UserContext } from '../../context/UserContext';
-import OpenEye from '../../img/eye.svg'
-import { showPassword } from '../../utils/PasswordReveal';
+// Components
+import Selector from '../../components/notifications/Selector';
+import client from '../../utils/client';
+import closeCross from '../../img/closeCross.svg'
+import { putSetNotificationViewed } from '../../utils/Fetch';
 function TestPage() {
-  const { setUser } = useContext(UserContext);
-  const [rememberMeChecked, setRememberMeChecked] = useState(true);
-  const [loginForm, setLoginForm] = useState(loginDataTemplate);
-  const [successLoginUser, setSuccessLoginUser] = useState('');
-  const [fieldType, setFieldType] = useState('password');
-  const [eyeIcon, setEyeIcon] = useState(OpenEye);
+  const { user } = useContext(UserContext);
+  const [notifications, setNotifications] = useState([]);
+  // Tell which one to display
+  const [displayNotifications, setDisplayNotifications] = useState('new-notifications');
 
-  let navigate = useNavigate();
+  useEffect(() => {
+    client
+    .get(`/notifications/${user.id}/false`)
+    .then((res) => {
+      console.log('res', res.data)
+      setNotifications(res.data.data.notifications);
+    })
+    .catch((err) => console.error('Unable to get unseen notifications', err.response));
+  }, [notifications.length]);
 
-  const homePage = () => {
-    navigate('/account', { replace: true });
+  const handleSelect = (event) => {
+    const { id } = event.target;
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setLoginForm({
-      ...loginForm,
-      [name]: value,
-    });
+  const markSeen = (id) => {
+    console.log('marked as seen');
+    putSetNotificationViewed(id)
   };
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
-  };
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen'>
-        <Navbar />
-        {/* Main */}
-        <section className='grid h-[calc(100vh-64px)]'>
-          <article className='hidden text-black text-center text-2xl font-extrabold my-2 lg:grid'>
-            <h1 className='select-none'>login</h1>
-          </article>
-          <div className='max-h-full m-2 lg:grid lg:grid-cols-2 lg:gap-2'>
-            {/* Header */}
-            <section className='lg:justify-center align-middle'>
-              <article className='text-black text-center text-2xl font-extrabold my-2 lg:hidden'>
-                <h1 className='select-none'>login</h1>
-              </article>
-              {/* Image */}
-              <section className='bg-green-400 my-2 lg:max-w-xl lg:mx-auto lg:my-8'>
-                <div className='flex justify-center'>
-                  <img
-                    src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'
-                    className='lg:h-auto h-52'
-                    alt='Phone'
-                  />
-                </div>
-              </section>
-            </section>
-
-            {/* Form */}
-            <section className=''>
-              <LoginForm 
-              handleLogin={handleLogin}
-              handleChange={handleChange}
-              fieldType={fieldType}
-              setFieldType={setFieldType}
-              showPassword={showPassword}
-              eyeIcon={eyeIcon}
-              setEyeIcon={setEyeIcon}
-                rememberMeChecke={rememberMeChecked}
-              setRememberMeChecked={setRememberMeChecked}
-              successLoginUser={successLoginUser}
-              />
-            </section>
+      <div>
+        <div className='flex m-2 justify-between'>
+          <div>
+            <h2>TEST</h2>
           </div>
+          <Selector
+            handleSelect={handleSelect}
+            displayNotifications={displayNotifications}
+          />
+        </div>
+        {/* Notification list */}
+        <section className='grid gap-2 mx-2 lg:mx-6'>
+          {notifications && notifications.length > 0 ? (
+            notifications.map((notification, index) => {
+              return (
+                <>
+                  <div key={index}>
+                    {notification.type}
+                    {notification.content}
+                    <img
+          onClick={markSeen}
+          src={closeCross}
+          className='w-6 h-6 cursor-pointer'
+          alt='close cross'
+        />
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <p>Nothing to display</p>
+          )}
         </section>
       </div>
     </>
   );
 }
 
-export default TestPage
+export default TestPage;

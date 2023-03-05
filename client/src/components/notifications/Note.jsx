@@ -1,19 +1,12 @@
 import React from 'react';
 // Icons
 import closeCross from '../../img/closeCross.svg';
-// Fetch
 import { putSetNotificationViewed } from '../../utils/Fetch';
 
-function Note({
-  notification,
-  notifications,
-  setNotifications,
-  checkSeen,
-  setCheckSeen,
-}) {
+function Note({ notification, notifications, setNotifications }) {
   const { content, type, createdAt, id } = notification;
 
-  const markAsSeen = () => {
+  const markAsSeen = (id) => {
     console.log('marked as seen');
     putSetNotificationViewed(id);
   };
@@ -25,7 +18,7 @@ function Note({
         <p>{type}</p>
         <p>{createdAt}</p>
         <img
-          onClick={markAsSeen}
+          onClick={() => markAsSeen(id)}
           src={closeCross}
           className='w-6 h-6 cursor-pointer'
           alt='close cross'

@@ -21,6 +21,7 @@ import Notification from '../../img/notification.svg';
 import Notifications from '../notifications/Notifications';
 // Styles
 import '../../styles/keyframes.css';
+import TestPage from '../../pages/test/TestPage';
 
 function Navbar() {
   const {
@@ -28,6 +29,7 @@ function Navbar() {
     setToggleNavigation,
     toggleNotifications,
     setToggleNotifications,
+    setToggleTests, toggleTests
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
 
@@ -43,6 +45,10 @@ function Navbar() {
 
   const displayNotifications = () => {
     setToggleNotifications(true);
+  };
+
+  const displayTest = () => {
+    setToggleTests(true);
   };
 
   const closeNotifications = () => {
@@ -215,6 +221,22 @@ function Navbar() {
                     <h3>Notifications</h3>
                   </Link>
                 </li>
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayTest();
+                    }}
+                  >
+                    <img
+                      src={Notification}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <h3>Test Page</h3>
+                  </Link>
+                </li>
               </>
             )}
             <li className='phone__nav__li'>
@@ -320,6 +342,11 @@ function Navbar() {
       {toggleNotifications && (
         <div className='reveal__notifications'>
           <Notifications />
+        </div>
+      )}
+      {toggleTests && (
+        <div className='reveal__notifications'>
+          <TestPage />
         </div>
       )}
     </>
