@@ -27,7 +27,7 @@
 /* Inputs */
 
 .standard__inputs {
-  @apply block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-main-colour focus:outline-none
+  @apply block w-full px-4 py-2 text-xl font-normal text-placeholder-text bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none
 }
 
 .error__inputs {
@@ -35,5 +35,5 @@
 }
 
 .standard__checkbox {
-  @apply border-solid h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left cursor-pointer mr-2
+  @apply border-solid h-4 w-4 border border-gray-300 rounded-sm bg-white focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left cursor-pointer mr-2
 }

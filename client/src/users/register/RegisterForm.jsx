@@ -24,9 +24,9 @@ function RegisterForm({
 }) {
   return (
     <>
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className='py-4 lg:max-w-xl lg:m-auto'>
         {/* <!-- Email input --> */}
-        <div className=''>
+        <div>
           <div>
             <input
               type='text'
@@ -100,12 +100,12 @@ function RegisterForm({
           </div>
           <p className={hiddenPass}>
             {formResponses.password === true && (
-              <span className='text-xs text-black dark:text-red-500 font-medium'>
+              <span className='text-xs text-green-500 dark:text-green-700 font-medium'>
                 {formResponses.passwordMessage}
               </span>
             )}
             {formResponses.password === false && (
-              <span className='text-xs text-black dark:text-red-500 font-medium'>
+              <span className='text-xs text-red-500 dark:text-red-700 font-medium'>
                 {formResponses.passwordError}
               </span>
             )}
@@ -142,21 +142,20 @@ function RegisterForm({
           <p className='h-4'></p>
         </div>
 
-        <div className='flex'>
+        <div className='form-group form-check ml-1'>
           <input
             type='checkbox'
-            name='agreedToTerms'
-            className='standard__checkbox'
+            className='form-check-input h-4 w-4 border border-main-colour rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
             id='agreedToTerms'
-            checked={agreedToTerms}
-            value={agreedToTerms}
-            onChange={checkHandler}
+              checked={agreedToTerms}
+              value={agreedToTerms}
+              onChange={checkHandler}
           />
           <label
-            htmlFor='link-checkbox'
-            className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 align-top'
+            className='form-check-label inline-block text-gray-800 dark:text-white'
+            htmlFor='agreedToTerms'
           >
-            I agree with the{' '}
+             I agree with the{' '}
             <Link
               to='/terms-and-conditions'
               className='text-hyperlink-blue dark:text-hyperlink-blue hover:underline'

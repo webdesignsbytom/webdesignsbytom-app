@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import RegisterForm from './RegisterForm';
@@ -11,7 +11,6 @@ import {
 // Functions
 import { showPassword, showConfirmPassword } from '../../utils/PasswordReveal';
 // Select
-import CountrySelect from '../../users/utils/CountrySelect'; // Validation
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
 // Icons
@@ -138,46 +137,54 @@ function Register() {
   };
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen overflow-hidden'>
+      <div className='bg-white dark:bg-black h-screen'>
         <Navbar />
         {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] grid-rows-1 bg-blue-400'>
-          <div className='max-h-full m-2'>
+        <section className='grid h-[calc(100vh-64px)]'>
+          <article className='hidden text-black text-center text-2xl font-extrabold my-2 lg:grid'>
+            <h1 className='select-none'>REGISTER</h1>
+          </article>
+          <div className='max-h-full m-2 lg:grid lg:grid-cols-2 lg:gap-2'>
             {/* Header */}
-            <article className='text-black text-center text-2xl font-extrabold'>
-              <h1 className=''>REGISTER</h1>
-            </article>
-            {/* Image */}
-            <section className='bg-green-400 my-2'>
-              <div className='flex justify-center'>
-                <img
-                  src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'
-                  className='h-24'
-                  alt='Phone'
-                />
-              </div>
+            <section className='lg:justify-center align-middle'>
+              <article className='text-black text-center text-2xl font-extrabold my-2 lg:hidden'>
+                <h1 className='select-none'>REGISTER</h1>
+              </article>
+              {/* Image */}
+              <section className='bg-green-400 my-2 lg:max-w-xl lg:mx-auto lg:my-8'>
+                <div className='flex justify-center'>
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'
+                    className='h-32 lg:h-auto'
+                    alt='Phone'
+                  />
+                </div>
+              </section>
             </section>
 
             {/* Form */}
-            <RegisterForm handleRegister={handleRegister}
-handleChange={handleChange}
-hiddenEmail={hiddenEmail}
-fieldType={fieldType}
-inputStyle={inputStyle}
-showPassword={showPassword}
-setFieldType={setFieldType}
-setEyeIcon={setEyeIcon}
-fieldTypeConfirm={fieldTypeConfirm}
-showConfirmPassword={showConfirmPassword}
-setFieldTypeConfirm={setFieldTypeConfirm}
-setEyeIconConfirm={setEyeIconConfirm}
-eyeIcon={eyeIcon} 
-eyeIconConfirm={eyeIconConfirm}
-hiddenPass={hiddenPass}
-formResponses={formResponses}
-agreedToTerms={agreedToTerms}
-checkHandler={checkHandler}
-/>
+            <section className=''>
+              <RegisterForm
+                handleRegister={handleRegister}
+                handleChange={handleChange}
+                hiddenEmail={hiddenEmail}
+                fieldType={fieldType}
+                inputStyle={inputStyle}
+                showPassword={showPassword}
+                setFieldType={setFieldType}
+                setEyeIcon={setEyeIcon}
+                fieldTypeConfirm={fieldTypeConfirm}
+                showConfirmPassword={showConfirmPassword}
+                setFieldTypeConfirm={setFieldTypeConfirm}
+                setEyeIconConfirm={setEyeIconConfirm}
+                eyeIcon={eyeIcon}
+                eyeIconConfirm={eyeIconConfirm}
+                hiddenPass={hiddenPass}
+                formResponses={formResponses}
+                agreedToTerms={agreedToTerms}
+                checkHandler={checkHandler}
+              />
+            </section>
           </div>
         </section>
       </div>
