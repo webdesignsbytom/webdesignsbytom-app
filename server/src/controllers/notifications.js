@@ -39,6 +39,11 @@ export const getAllNotifications = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
+    foundNotifications.forEach((note, index) => {
+      const date = note.createdAt.toLocaleString();
+      note.createdAt = date;
+    });
+
     myEmitterNotifications.emit('get-all-notifications', req.user);
     return sendDataResponse(res, 200, { notifications: foundNotifications });
     //
@@ -72,6 +77,11 @@ export const getNotificationsByUserId = async (req, res) => {
       // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    foundNotifications.forEach((note, index) => {
+      const date = note.createdAt.toLocaleString();
+      note.createdAt = date;
+    });
 
     myEmitterNotifications.emit('get-notifications-for-user', req.user);
     return sendDataResponse(res, 200, { notifications: foundNotifications });

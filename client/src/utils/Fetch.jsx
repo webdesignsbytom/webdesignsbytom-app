@@ -7,7 +7,7 @@ export function getUserById(userId, setUser) {
       setUser(res.data.data.user);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to get user by id', err);
     });
 }
 
@@ -19,7 +19,7 @@ export function setFormByUserId(userId, setUpdateUserForm) {
       setUpdateUserForm(res.data.data.user);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to get user date', err);
     });
 }
 
@@ -30,17 +30,8 @@ export function deleteAccount(userId) {
       alert(`Deleted user ${userId}`);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to delete account', err);
     });
-}
-
-export function deletePost(setPostResponse, postId) {
-  client
-    .delete(`/post/${postId}`)
-    .then((res) => {
-      setPostResponse(res.data);
-    })
-    .catch((err) => console.error('Unable to delete post', err.response));
 }
 
 // Notifications
@@ -50,7 +41,7 @@ export function getUserNotifications(setAllNotifications, userId) {
     .then((res) => {
       setAllNotifications(res.data.data.notifications);
     })
-    .catch((err) => console.error('Unable to delete post', err.response));
+    .catch((err) => console.error('Unable to get all notifications', err.response));
 }
 
 export function getSeenNotifications(setSeenNotifications, userId) {
@@ -59,7 +50,7 @@ export function getSeenNotifications(setSeenNotifications, userId) {
     .then((res) => {
       setSeenNotifications(res.data.data.notifications);
     })
-    .catch((err) => console.error('Unable to delete post', err.response));
+    .catch((err) => console.error('Unable to seen notifications', err.response));
 }
 
 export function getUnseenNotifications(setUnseenNotifications, userId) {
@@ -68,7 +59,16 @@ export function getUnseenNotifications(setUnseenNotifications, userId) {
     .then((res) => {
       setUnseenNotifications(res.data.data.notifications);
     })
-    .catch((err) => console.error('Unable to delete post', err.response));
+    .catch((err) => console.error('Unable to get unseen notifications', err.response));
+}
+
+export function putSetNotificationViewed(notificationId) {
+  client
+    .put(`/notifications/viewed/${notificationId}`)
+    .then((res) => {
+      console.log('res', res.data)
+    })
+    .catch((err) => console.error('Unable to set to viewed', err.response));
 }
 
 // Account page
@@ -99,7 +99,7 @@ export function putUpdateUser(userId, updateUserForm, setUser) {
     setUser(res.data.data.user);
   })
   .catch((err) => {
-    console.error(err);
+    console.error('Unable to update user', err);
   });
 }
 
@@ -113,7 +113,7 @@ export function getEventsLog(setEventLog) {
       setEventLog(res.data.data.events);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to get all events', err);
     });
 }
 
@@ -126,7 +126,7 @@ export function postRegister(userData, setSuccessRegisterUser, login) {
     })
     .then(() => login())
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to register new user', err);
     });
 }
 
@@ -145,7 +145,7 @@ export function postLogin(loginForm, setSuccessLoginUser, setUser, homePage) {
     .then(() => homePage())
 
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to login', err);
     });
 }
 
@@ -171,7 +171,7 @@ export function postVerifyEmail(userId, uniqueString, setPage, isFetched) {
       }
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to send verification email', err);
     });
 }
 
@@ -184,6 +184,6 @@ export function postPasswordReset(resetEmail, setSuccessResetPassword) {
       console.log('data', res.data);
     })
     .catch((err) => {
-      console.error(err);
+      console.error('Unable to send password reset', err);
     });
 }

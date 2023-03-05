@@ -5,12 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      transitionProperty: {
-        'height': 'height'
-      },
-      variants: {
-        height: ['responsive', 'hover', 'focus']
-    },
       colors: {
         'main-colour': '#4aad37',
         'colour-pale': '#99DF8A',
@@ -26,6 +20,10 @@ module.exports = {
         'event-red': '',
         'hyperlink-blue': '#2563eb',
       },
+      gridTemplateRows: {
+        'reg': 'auto 1fr',
+        'even': '1fr 1fr 1fr'
+      }
     },
   },
   plugins: [],

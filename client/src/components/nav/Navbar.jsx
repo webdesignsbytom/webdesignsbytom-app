@@ -65,7 +65,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='mx-auto px-2 sm:px-6 lg:px-4 bg-green-400 max-h-screen'>
+      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-green-400'>
         <div className='flex h-16 items-center justify-between px-4'>
           <div
             onClick={() => {

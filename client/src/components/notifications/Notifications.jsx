@@ -24,25 +24,23 @@ function Notifications() {
   console.log('allNotifications', allNotifications);
 
   useEffect(() => {
-    getUserNotifications(setNotifications, user.id);
     getUserNotifications(setAllNotifications, user.id);
+    getUnseenNotifications(setNotifications, user.id);
     getSeenNotifications(setSeenNotifications, user.id);
     getUnseenNotifications(setUnseenNotifications, user.id);
   }, []);
 
-  useEffect(() => {
-    setNotifications(allNotifications);
-  }, []);
-
-  const selectNotes = (event) => {
-    const { id } = event.target;
-    setDisplayNotifications(id);
-  };
-
   const handleSelect = (event) => {
-    console.log('SEKEC', event.target);
-    const { name } = event.target;
-    console.log('name', name);
+    const { id } = event.target;
+    if (id === 'all-notifications') {
+      getUserNotifications(setNotifications, user.id);
+    }
+    if (id === 'seen-notifications') {
+      getSeenNotifications(setNotifications, user.id);
+    }
+    if (id === 'new-notifications') {
+      getUnseenNotifications(setNotifications, user.id);
+    }
   };
 
   return (
@@ -56,30 +54,16 @@ function Notifications() {
         </div>
         {/* Notification list */}
         <section className='grid gap-2 mx-2 lg:mx-6'>
-          {displayNotifications === 'unseen' &&
-          unseenNotifications.length > 0 ? (
-            unseenNotifications.map((notification, index) => {
-              return <Note notification={notification} key={index} />;
-            })
-          ) : (
-            <p>Nothing to display</p>
-          )}
-
-          {displayNotifications === 'new' && seenNotifications.length > 0 ? (
-            seenNotifications.map((notification, index) => {
-              return <Note notification={notification} key={index} />;
-            })
-          ) : (
-            <p>Nothing to display</p>
-          )}
-
-          {displayNotifications === 'all' && allNotifications.length > 0 ? (
-            allNotifications.map((notification, index) => {
-              return <Note notification={notification} key={index} />;
-            })
-          ) : (
-            <p>Nothing to display</p>
-          )}
+          {notifications && 
+            notifications.length > 0 ? (
+              notifications.map((notification, index) => {
+                return <Note notification={notification} notifications={notifications} setNotifications={setNotifications} key={index} />;
+              })
+            ) : (
+              <p>Nothing to display</p>
+            )
+          }
+          
         </section>
       </div>
     </>

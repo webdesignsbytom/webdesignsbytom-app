@@ -9,9 +9,12 @@ export const registerDataTemplate = {
 };
 
 export const registerFormResponses = {
+  password: false,
   passwordMatchError: false,
   passwordLengthError: false,
   agreedToTermsError: false,
+  passwordMessage: 'Password Accepted',
+  passwordError: 'Passwords do not match',
 };
 
 export const loginDataTemplate = {

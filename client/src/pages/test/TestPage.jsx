@@ -1,199 +1,334 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
-
-import { RadioGroup } from '@headlessui/react';
+// Data
+import {
+  registerDataTemplate,
+  registerFormResponses,
+} from '../../users/utils/utils';
+// Functions
+import { showPassword, showConfirmPassword } from '../../utils/PasswordReveal';
+// Select
+import CountrySelect from '../../users/utils/CountrySelect'; // Validation
+import { validPassword } from '../../users/utils/Validation';
+import { postRegister } from '../../utils/Fetch';
+// Icons
+import OpenEye from '../../img/eye.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
 function TestPage() {
-  const handleChange = (event) => {
-    console.log('SEKEC', event.target);
-    const { name } = event.target;
-    console.log('name', name);
+  const [fieldType, setFieldType] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(OpenEye);
+  const [fieldTypeConfirm, setFieldTypeConfirm] = useState('password');
+  const [eyeIconConfirm, setEyeIconConfirm] = useState(OpenEye);
+  const [registerForm, setRegisterForm] = useState(registerDataTemplate);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [successRegisterUser, setSuccessRegisterUser] = useState('');
+  const [formResponses, setFormResponses] = useState(registerFormResponses);
+
+  const [hiddenPass, setHiddenPass] = useState('invisible');
+  const [hiddenEmail, setHiddenEmail] = useState('invisible');
+
+  const [inputStyle, setInputStyle] = useState('standard__inputs');
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (registerForm.password === registerForm.confirmPassword) {
+      if (registerForm.password > 0) {
+        setHiddenPass('block');
+        setInputStyle('standard__inputs');
+        setFormResponses({
+          ...formResponses,
+          password: true,
+        });
+      }
+      
+    }
+    if (registerForm.password !== registerForm.confirmPassword && registerForm.confirmPassword > 3) {
+      setHiddenPass('block');
+      setInputStyle('error__inputs');
+        setFormResponses({
+          ...formResponses,
+          password: false,
+        });
+    }
+  }, [registerForm.password, registerForm.confirmPassword, formResponses]);
+
+  const login = () => {
+    navigate('../login', { replace: true });
   };
 
+  const checkHandler = (event) => {
+    setAgreedToTerms(!agreedToTerms);
+    setRegisterForm({
+      ...registerForm,
+      agreedToTerms: !agreedToTerms,
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (registerForm.password.length > 8) {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: false,
+      });
+    } else {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+    }
+
+    setRegisterForm({
+      ...registerForm,
+      [name]: value,
+    });
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    if (registerForm.password !== registerForm.confirmPassword) {
+      setFormResponses({
+        ...formResponses,
+        passwordMatchError: true,
+        password: false,
+      });
+      setHiddenPass('block');
+      setInputStyle('error__inputs');
+      return;
+    }
+
+    const checkPassword = validPassword(registerForm.password);
+
+    if (checkPassword === false) {
+      alert('Passwords too short');
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+
+      return;
+    }
+
+    if (agreedToTerms !== true) {
+      alert('Please check to agree to terms and conditons');
+      setFormResponses({
+        ...formResponses,
+        agreedToTermsError: true,
+      });
+      return;
+    }
+
+    setFormResponses({
+      passwordMatchError: true,
+      passwordLengthError: true,
+      agreedToTermsError: true,
+    });
+
+    const userData = registerForm;
+
+    postRegister(userData, setSuccessRegisterUser, login);
+  };
   return (
     <>
-      {/* <form className='grid place-content-center h-screen'>
-        <div className='flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600 peer-checked:bg-blue-500'>
-          <div className='flex items-center h-5'>
-            <input
-              id='helper-radio-4'
-              name='helper-radio'
-              type='radio'
-              value=''
-              className='peer hidden'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='ml-2 text-sm'>
-            <label
-              htmlFor='helper-radio-4'
-              className='font-medium text-gray-900 dark:text-gray-300'
-            >
-              <div>Individual</div>
-              <p
-                id='helper-radio-text-4'
-                className='text-xs font-normal text-gray-500 dark:text-gray-300'
-              >
-                Some helpful instruction goes over here.
-              </p>
-            </label>
-          </div>
-        </div>
-
-        <div className='flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600 peer-checked:bg-blue-500'>
-          <div className='flex items-center h-5'>
-            <input
-              id='helper-radio-5'
-              name='helper-radio'
-              type='radio'
-              value=''
-              className='peer hidden'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='ml-2 text-sm'>
-            <label
-              htmlFor='helper-radio-5'
-              className='font-medium text-gray-900 dark:text-gray-300'
-            >
-              <div>Company</div>
-              <p
-                id='helper-radio-text-5'
-                className='text-xs font-normal text-gray-500 dark:text-gray-300'
-              >
-                Some helpful instruction goes over here.
-              </p>
-            </label>
-          </div>
-        </div>
-
-        <div className='flex p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600 peer-checked:bg-blue-500'>
-          <div className='flex items-center h-5'>
-            <input
-              id='helper-radio-6'
-              name='helper-radio'
-              type='radio'
-              value=''
-              className='peer hidden'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='ml-2 text-sm'>
-            <label
-              htmlFor='helper-radio-6'
-              className='font-medium text-gray-900 dark:text-gray-300'
-            >
-              <div>Non profit</div>
-              <p
-                id='helper-radio-text-6'
-                className='text-xs font-normal text-gray-500 dark:text-gray-300'
-              >
-                Some helpful instruction goes over here.
-              </p>
-            </label>
-          </div>
-        </div>
-      </form> */}
-
-      <form action='' className='h-screen grid place-content-center'>
-        <ul className='grid w-full gap-6 md:grid-cols-3'>
-          <li>
-            <input
-              type='radio'
-              id='all-notifications'
-              name='hosting'
-              value='all-notifications'
-              className='hidden peer'
-              required
-              aria-checked
-              defaultChecked
-            />
-            <label
-              htmlFor='all-notifications'
-              
-              className='inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:border-2 peer-checked:border-solid peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
-            >
-              <div className='block'>
-                <div className='w-full'>All</div>
+      <div className='bg-white dark:bg-black h-screen overflow-hidden'>
+        <Navbar />
+        {/* Main */}
+        <section className='grid h-[calc(100vh-64px)] grid-rows-1 bg-blue-400'>
+          <div className='max-h-full m-2'>
+            {/* Header */}
+            <article className='text-black text-center text-2xl font-extrabold'>
+              <h1 className=''>REGISTER</h1>
+            </article>
+            {/* Image */}
+            <section className='bg-green-400 my-2'>
+              <div className='flex justify-center'>
+                <img
+                  src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'
+                  className='h-24'
+                  alt='Phone'
+                />
               </div>
-              <svg
-                aria-hidden='true'
-                className='w-6 h-6 ml-3'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                  clipRule='evenodd'
-                ></path>
-              </svg>
-            </label>
-          </li>
-          <li>
-            <input
-              type='radio'
-              id='seen-notifications'
-              name='hosting'
-              value='seen-notifications'
-              className='hidden peer'
-            />
-            <label
-              htmlFor='seen-notifications'
-              className='inline-flex border-2 items-center justify-between w-full p-5 text-gray-500 bg-white border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:border-2 peer-checked:border-solid peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
-            >
-              <div className='block'>
-                <div className='w-full'>Seen</div>
+            </section>
+
+            {/* Form */}
+            <form onSubmit={handleRegister}>
+              {/* <!-- Email input --> */}
+              <div className=''>
+                <div>
+                  <input
+                    type='text'
+                    name='email'
+                    className='standard__inputs'
+                    placeholder='Email address'
+                    onChange={handleChange}
+                  />
+                </div>
+                <p class={hiddenEmail}>
+                  <span class='text-xs text-black dark:text-red-500 font-medium'>
+                    Oh, snapp! Some error message.{' '}
+                  </span>
+                </p>
               </div>
-              <svg
-                aria-hidden='true'
-                className='w-6 h-6 ml-3'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                  clipRule='evenodd'
-                ></path>
-              </svg>
-            </label>
-          </li>
-          <li>
-            <input
-              type='radio'
-              id='new-notifications'
-              name='hosting'
-              value='new-notifications'
-              className='hidden peer'
-            />
-            <label
-              htmlFor='new-notifications'
-              className='inline-flex border-2 items-center justify-between w-full p-5 text-gray-500 bg-white border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:border-2 peer-checked:border-solid peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700'
-            >
-              <div className='block'>
-                <div className='w-full'>New</div>
+
+              {/* <!-- Password input --> */}
+
+              <div className='relative flex z-0'>
+                <input
+                  type={fieldType}
+                  name='password'
+                  className={inputStyle}
+                  placeholder='Password'
+                  onChange={handleChange}
+                />
+                <label
+                  className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                  htmlFor='toggle'
+                >
+                  <img
+                    onClick={() =>
+                      showPassword(fieldType, setFieldType, setEyeIcon)
+                    }
+                    src={eyeIcon}
+                    className='h-6 w-6 my-2 mr-2'
+                    alt='open eye'
+                  />
+                </label>
               </div>
-              <svg
-                aria-hidden='true'
-                className='w-6 h-6 ml-3'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z'
-                  clipRule='evenodd'
-                ></path>
-              </svg>
-            </label>
-          </li>
-        </ul>
-      </form>
+
+              {/* <!--Confirm Password input --> */}
+              <div>
+                <div className='relative flex z-0'>
+                  <input
+                    type={fieldTypeConfirm}
+                    name='confirmPassword'
+                    className={inputStyle}
+                    placeholder='Confirm Password'
+                    onChange={handleChange}
+                  />
+                  <label
+                    className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
+                    htmlFor='toggle'
+                  >
+                    <img
+                      onClick={() =>
+                        showConfirmPassword(
+                          fieldTypeConfirm,
+                          setFieldTypeConfirm,
+                          setEyeIconConfirm
+                        )
+                      }
+                      src={eyeIconConfirm}
+                      className='h-6 w-6 my-2 mr-2'
+                      alt='open eye'
+                    />
+                  </label>
+                </div>
+                <p class={hiddenPass}>
+                  {formResponses.password === true && (
+                    <span class='text-xs text-black dark:text-red-500 font-medium'>
+                      {formResponses.passwordMessage}
+                    </span>
+                  )}
+                  {formResponses.password === false && (
+                    <span class='text-xs text-black dark:text-red-500 font-medium'>
+                      {formResponses.passwordError}
+                    </span>
+                  )}
+                </p>
+              </div>
+
+              {/* <!-- FirstName input --> */}
+              <div className=''>
+                <input
+                  type='text'
+                  name='firstName'
+                  className='standard__inputs'
+                  placeholder='First Name'
+                  onChange={handleChange}
+                />
+              </div>
+
+              {/* <!-- LastName input --> */}
+              <div className=''>
+                <input
+                  type='text'
+                  name='lastName'
+                  className='standard__inputs'
+                  placeholder='Last Name'
+                  onChange={handleChange}
+                />
+              </div>
+
+              {/* <!-- Country input --> */}
+              <div className=''>
+                <CountrySelect handleChange={handleChange} />
+              </div>
+
+              <div className='flex'>
+                <input
+                  type='checkbox'
+                  name='agreedToTerms'
+                  className='form-check-input border-solid appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-main-colour checked:border-gray-900 focus:outline-none transition duration-200 bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer'
+                  id='agreedToTerms'
+                  checked={agreedToTerms}
+                  value={agreedToTerms}
+                  onChange={checkHandler}
+                />
+                <label
+                  htmlFor='link-checkbox'
+                  className='ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 align-top'
+                >
+                  I agree with the{' '}
+                  <Link
+                    to='/terms-and-conditions'
+                    className='text-hyperlink-blue dark:text-hyperlink-blue hover:underline'
+                  >
+                    terms and conditions
+                  </Link>
+                  .
+                </label>
+              </div>
+
+              {/* Hidden password missing links */}
+              {formResponses.passwordLengthError && (
+                <div>Password too short</div>
+              )}
+              {formResponses.passwordMatchError && (
+                <div>Password doesnt match</div>
+              )}
+
+              {/* <!-- Submit button --> */}
+              {successRegisterUser ? (
+                <p>{successRegisterUser}</p>
+              ) : (
+                <div className=''>
+                  <button
+                    type='submit'
+                    className='submit__button'
+                    data-mdb-ripple='true'
+                    data-mdb-ripple-color='light'
+                  >
+                    Register
+                  </button>
+                </div>
+              )}
+              <div className='text-center'>
+                <Link to='/login'>
+                  <p>
+                    Already a member? Click{' '}
+                    <span className='text-hyperlink-blue'>here</span> to login
+                  </p>
+                </Link>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
