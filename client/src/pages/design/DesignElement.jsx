@@ -23,15 +23,15 @@ function DesignElement({ displayElement }) {
               />
               <img src={QMark} className='w-6 cursor-pointer' alt="information" />
             </div>
-            <nav>
-              <ul className='flex gap-4 justify-center'>
-                <li className='menu__link'>
+            <nav className='flex'>
+              <ul className='flex gap-4 justify-center align-middle'>
+                <li className='menu__link flex align-middle'>
                   <p>Save</p>
                 </li>
-                <li className='menu__link'>
+                <li className='menu__link flex align-middle'>
                   <p>Undo</p>
                 </li>
-                <li className='menu__link'>
+                <li className='menu__link flex align-middle'>
                   <p>Delete</p>
                 </li>
               </ul>

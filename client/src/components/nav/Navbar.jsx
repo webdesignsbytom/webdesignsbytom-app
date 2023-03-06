@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 // Context
 import { ToggleContext } from '../../context/ToggleContext';
 import { UserContext } from '../../context/UserContext';
@@ -30,6 +30,7 @@ import TestPage from '../../pages/test/TestPage';
 import SocialBar from '../social/SocialBar';
 
 function Navbar() {
+  console.log('xxxxxxx', window.location.pathname);
   const {
     toggleNavigation,
     setToggleNavigation,
@@ -39,6 +40,12 @@ function Navbar() {
     toggleTests,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
+  const [activeNav, setActiveNav] = useState('#');
+  console.log('ACTIVE', activeNav);
+
+  useEffect(() => {
+    setActiveNav(window.location.pathname);
+  }, []);
 
   let navigate = useNavigate();
 
@@ -121,56 +128,92 @@ function Navbar() {
             {/* Large screen - Main Nav Bar */}
             <nav className='hidden md:flex'>
               <ul className='flex gap-4'>
-                <li>
-                  <Link className='nav__link' to='/'>
-                    Home
-                  </Link>
+                <li
+                  className={activeNav === '/' ? 'selected__link' : 'nav__link'}
+                >
+                  <Link to='/'>Home</Link>
                 </li>
+
                 {user.email && (
-                  <li>
-                    <Link to='/account' className='nav__link'>
-                      Account
-                    </Link>
+                  <li
+                    className={
+                      activeNav === '/account' ? 'selected__link' : 'nav__link'
+                    }
+                  >
+                    <Link to='/account'>Account</Link>
                   </li>
                 )}
-                <li>
-                  <Link to='/design' className='nav__link'>
-                    Design
-                  </Link>
+                <li
+                  className={
+                    activeNav === '/design' ? 'selected__link' : 'nav__link'
+                  }
+                >
+                  <Link to='/design'>Design</Link>
                 </li>
-                <li>
-                  <Link to='/contact' className='nav__link'>
-                    Contact
-                  </Link>
+                <li
+                  className={
+                    activeNav === '/contact' ? 'selected__link' : 'nav__link'
+                  }
+                >
+                  <Link to='/contact'>Contact</Link>
                 </li>
-                <li>
-                  <Link to='/portfolio' className='nav__link'>
-                    Portfolio
-                  </Link>
+
+                <li
+                  className={
+                    activeNav === '/portfolio' ? 'selected__link' : 'nav__link'
+                  }
+                >
+                  <Link to='/portfolio'>Portfolio</Link>
                 </li>
+
                 {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
-                  <li>
-                    <Link to='/admin' className='nav__link'>
-                      Admin
-                    </Link>
+                  <li
+                    className={
+                      activeNav === '/admin' ? 'selected__link' : 'nav__link'
+                    }
+                  >
+                    <Link to='/admin'>Admin</Link>
                   </li>
                 )}
                 {user.role === 'DEVELOPER' && (
-                  <li>
+                  <li className={
+                    activeNav === '/developments' ? 'selected__link' : 'nav__link'
+                  }>
+                    <Link>Development</Link>
+                  </li>
+                )}
+                {/* {user.role === 'DEVELOPER' && (
+                  <li
+                    className={
+                      activeNav === '/development'
+                        ? 'selected__link'
+                        : 'nav__link'
+                    }
+                  >
                     <Link to='/development' className='nav__link'>
                       Development
                     </Link>
                   </li>
-                )}
+                )} */}
                 {!user.email && (
                   <>
-                    <li>
-                      <Link to='/login' className='nav__link'>
+                    <li
+                      className={
+                        activeNav === '/login' ? 'selected__link' : 'nav__link'
+                      }
+                    >
+                      <Link to='/login'>
                         Login
                       </Link>
                     </li>
-                    <li>
-                      <Link to='/register' className='nav__link'>
+                    <li
+                      className={
+                        activeNav === '/register'
+                          ? 'selected__link'
+                          : 'nav__link'
+                      }
+                    >
+                      <Link to='/register'>
                         Register
                       </Link>
                     </li>
@@ -178,7 +221,7 @@ function Navbar() {
                 )}
                 {user.email && (
                   <li>
-                    <Link onClick={signOut} className='nav__link'>
+                    <Link onClick={signOut}>
                       Sign out
                     </Link>
                   </li>
@@ -380,7 +423,11 @@ function Navbar() {
                   <img src={LinkedIn} className='social__link' alt='linkedIn' />
                 </div>
                 <div>
-                  <img src={Instagram} className='social__link' alt='instagram' />
+                  <img
+                    src={Instagram}
+                    className='social__link'
+                    alt='instagram'
+                  />
                 </div>
               </section>
             </li>
