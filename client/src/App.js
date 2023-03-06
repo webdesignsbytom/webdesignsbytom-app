@@ -79,6 +79,7 @@ function App() {
         />
 
         {/* Util Routes */}
+        <Route path='/user-cookie-policy' element={<UserAgreement />} />
         <Route path='/terms-and-conditions' element={<UserAgreement />} />
         <Route path='/test' element={<TestPage />} />
         <Route path='*' element={<Error404 />} />

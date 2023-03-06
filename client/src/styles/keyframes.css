@@ -2,7 +2,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  animation-name: example;
+  animation-name: notes;
   animation-duration: 0.25s;
   animation-timing-function: ease-in;
   padding: env(safe-area-inset-bottom, 50px);
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 
-@keyframes example {
+@keyframes notes {
   0% {
     height: 0;
   }
@@ -21,3 +21,20 @@
     background-color: red;
   }
 }
+
+.reveal__cookie__policy {
+  animation-name: cookies;
+  animation-duration: 1.25s;
+  animation-timing-function: ease-in;
+  height: 52px;
+}
+
+@keyframes cookies {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: auto;
+  }
+}
+
