@@ -24,7 +24,7 @@ function RegisterForm({
 }) {
   return (
     <>
-      <form onSubmit={handleRegister} className='py-4 lg:max-w-xl lg:m-auto'>
+      <form onSubmit={handleRegister} className='py-4 lg:w-full lg:my-auto lg:px-8'>
         {/* <!-- Email input --> */}
         <div>
           <div>

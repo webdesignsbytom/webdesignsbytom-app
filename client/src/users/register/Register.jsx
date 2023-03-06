@@ -148,10 +148,10 @@ function Register() {
             {/* Header */}
             <section className='lg:justify-center align-middle'>
               <article className='text-black text-center text-2xl font-extrabold my-2 lg:hidden'>
-                <h1 className='select-none'>REGISTER</h1>
+                <h1 className='select-none py-4'>REGISTER</h1>
               </article>
               {/* Image */}
-              <section className='bg-green-400 my-2 lg:max-w-xl lg:mx-auto lg:my-8'>
+              <section className='my-2 lg:max-w-xl lg:mx-auto lg:my-8'>
                 <div className='flex justify-center'>
                   <img
                     src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'

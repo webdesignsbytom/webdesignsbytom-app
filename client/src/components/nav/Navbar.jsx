@@ -18,10 +18,16 @@ import Admin from '../../img/admin.svg';
 import Developer from '../../img/developer.svg';
 import Search from '../../img/search.svg';
 import Notification from '../../img/notification.svg';
+import Github from '../../img/social/github.svg';
+import Twitter from '../../img/social/twitter.svg';
+import LinkedIn from '../../img/social/linkedin.svg';
+import Instagram from '../../img/social/instagram.svg';
+// Components
 import Notifications from '../notifications/Notifications';
 // Styles
 import '../../styles/keyframes.css';
 import TestPage from '../../pages/test/TestPage';
+import SocialBar from '../social/SocialBar';
 
 function Navbar() {
   const {
@@ -29,7 +35,8 @@ function Navbar() {
     setToggleNavigation,
     toggleNotifications,
     setToggleNotifications,
-    setToggleTests, toggleTests
+    setToggleTests,
+    toggleTests,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
 
@@ -72,7 +79,8 @@ function Navbar() {
   return (
     <>
       <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black'>
-        <div className='flex h-16 items-center justify-between px-4'>
+        <section className='flex h-16 items-center justify-between px-4'>
+          {/* Logo */}
           <div
             onClick={() => {
               navigateHome();
@@ -110,7 +118,7 @@ function Navbar() {
               </span>
             </nav>
 
-            {/* Main Nav Bar */}
+            {/* Large screen - Main Nav Bar */}
             <nav className='hidden md:flex'>
               <ul className='flex gap-4'>
                 <li>
@@ -178,17 +186,20 @@ function Navbar() {
               </ul>
             </nav>
           </section>
-        </div>
+          <div className='hidden md:flex'>
+            <SocialBar />
+          </div>
+        </section>
       </div>
 
-      {/* Phone navigatino */}
+      {/* Phone navigation */}
       {toggleNavigation && (
-        <div className='absolute bg-green-700 w-full h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
+        <div className='absolute bg-colour-med w-full h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
           <ul className='grid gap-2 mt-2'>
             <li className='phone__nav__li'>
               <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
                 <img src={Home} className='w-8' alt='home' />
-                <div>
+                <div className='flex items-center text-xl'>
                   <h3>Home</h3>
                 </div>
               </Link>
@@ -202,7 +213,9 @@ function Navbar() {
                     onClick={toggleNavbar}
                   >
                     <img src={Account} className='w-8' alt='account' />
-                    <h3>Account</h3>
+                    <div className='flex items-center text-xl'>
+                      <h3>Account</h3>
+                    </div>
                   </Link>
                 </li>
                 <li className='phone__nav__li'>
@@ -218,7 +231,9 @@ function Navbar() {
                       className='w-8'
                       alt='notNotification'
                     />
-                    <h3>Notifications</h3>
+                    <div className='flex items-center text-xl'>
+                      <h3>Notifications</h3>
+                    </div>
                   </Link>
                 </li>
                 <li className='phone__nav__li'>
@@ -234,7 +249,9 @@ function Navbar() {
                       className='w-8'
                       alt='notNotification'
                     />
-                    <h3>Test Page</h3>
+                    <div className='flex items-center text-xl'>
+                      <h3>Test Page</h3>
+                    </div>
                   </Link>
                 </li>
               </>
@@ -246,7 +263,9 @@ function Navbar() {
                 onClick={toggleNavbar}
               >
                 <img src={Design} className='w-8' alt='design' />
-                <h3>Design</h3>
+                <div className='flex items-center text-xl'>
+                  <h3>Design</h3>
+                </div>
               </Link>
             </li>
             <li className='phone__nav__li'>
@@ -256,7 +275,9 @@ function Navbar() {
                 onClick={toggleNavbar}
               >
                 <img src={Contact} className='w-8' alt='contact' />
-                <h3>Contact</h3>
+                <div className='flex items-center text-xl'>
+                  <h3>Contact</h3>
+                </div>
               </Link>
             </li>
             <li className='phone__nav__li'>
@@ -266,7 +287,9 @@ function Navbar() {
                 onClick={toggleNavbar}
               >
                 <img src={Portfolio} className='w-8' alt='portfolio' />
-                <h3>Portfolio</h3>
+                <div className='flex items-center text-xl'>
+                  <h3>Portfolio</h3>
+                </div>
               </Link>
             </li>
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
@@ -277,7 +300,9 @@ function Navbar() {
                   onClick={toggleNavbar}
                 >
                   <img src={Admin} className='w-8' alt='admin' />
-                  <h3>Admin</h3>
+                  <div className='flex items-center text-xl'>
+                    <h3>Admin</h3>
+                  </div>
                 </Link>
               </li>
             )}
@@ -289,7 +314,9 @@ function Navbar() {
                   onClick={toggleNavbar}
                 >
                   <img src={Developer} className='w-8' alt='development' />
-                  <h3>Development</h3>
+                  <div className='flex items-center text-xl'>
+                    <h3>Development</h3>
+                  </div>
                 </Link>
               </li>
             )}
@@ -302,7 +329,9 @@ function Navbar() {
                     onClick={toggleNavbar}
                   >
                     <img src={Login} className='w-8' alt='login' />
-                    <h3>Login</h3>
+                    <div className='flex items-center text-xl'>
+                      <h3>Login</h3>
+                    </div>
                   </Link>
                 </li>
                 <li className='phone__nav__li'>
@@ -312,7 +341,9 @@ function Navbar() {
                     onClick={toggleNavbar}
                   >
                     <img src={Register} className='w-8' alt='register' />
-                    <h3>Register</h3>
+                    <div className='flex items-center text-xl'>
+                      <h3>Register</h3>
+                    </div>
                   </Link>
                 </li>
               </>
@@ -321,7 +352,9 @@ function Navbar() {
               <li className='phone__nav__li'>
                 <Link onClick={signOut} className='phone__nav__link'>
                   <img src={Logout} className='w-8' alt='logout' />
-                  <h3>Log out</h3>
+                  <div className='flex items-center text-xl'>
+                    <h3>Log out</h3>
+                  </div>
                 </Link>
               </li>
             )}
@@ -331,9 +364,25 @@ function Navbar() {
                 <input
                   type='text'
                   placeholder='Search...'
-                  className='w-full pl-2'
+                  className='w-full ml-2 pl-2 rounded'
                 />
               </div>
+            </li>
+            <li className='phone__nav__li flex justify-center'>
+              <section className='flex gap-1 border-2 border-black border-solid p-2 space-x-2'>
+                <div>
+                  <img src={Github} className='social__link' alt='github' />
+                </div>
+                <div>
+                  <img src={Twitter} className='social__link' alt='twitter' />
+                </div>
+                <div>
+                  <img src={LinkedIn} className='social__link' alt='linkedIn' />
+                </div>
+                <div>
+                  <img src={Instagram} className='social__link' alt='instagram' />
+                </div>
+              </section>
             </li>
           </ul>
         </div>
