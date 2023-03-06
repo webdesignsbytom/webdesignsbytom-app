@@ -7,6 +7,14 @@ import QMark from '../../img/questionMark.svg'
 
 function DesignElement({ displayElement }) {
   const [fileSaveName, setFileSaveName] = useState('untitled');
+
+  //TODO: user effect change of file name and update design name
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    console.log('change', value)
+    setFileSaveName(value)
+  }
   console.log('DES ELM display', displayElement);
   return (
     <>
@@ -20,6 +28,7 @@ function DesignElement({ displayElement }) {
                 name='fileName'
                 id='fileName'
                 placeholder={fileSaveName}
+                onChange={handleChange}
               />
               <img src={QMark} className='w-6 cursor-pointer' alt="information" />
             </div>

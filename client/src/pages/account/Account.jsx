@@ -12,7 +12,7 @@ import {
   setFormByUserId,
   deleteAccount,
   postResendVerificationEmail,
-  putUpdateUser
+  putUpdateUser,
 } from '../../utils/Fetch';
 // Data
 import { sampleUserData } from '../../users/utils/utils';
@@ -27,7 +27,7 @@ function Account() {
   const [resendVerification, setResendVerification] = useState(true);
   let navigate = useNavigate();
 
-  console.log('user: ', user)
+  console.log('user: ', user);
 
   useEffect(() => {
     const foundUser = LoggedInUser();
@@ -38,9 +38,9 @@ function Account() {
     setTimeout(() => {
       if (!user.isVerified) {
         setResendVerification(false);
-      } 
-    }, 2000)
-  }, [])
+      }
+    }, 2000);
+  }, []);
 
   function handleResend() {
     postResendVerificationEmail(user.email, setAlert, initAlert);
@@ -67,86 +67,87 @@ function Account() {
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    
-    putUpdateUser(user.id, updateUserForm, setUser)
+
+    putUpdateUser(user.id, updateUserForm, setUser);
   };
 
   return (
     <>
-      <Navbar />
-      <div className='m-2 min-h-full'>
-        <div className='text-left my-2'>
-          <h1 className='font-extrabold text-2xl'>
-            Account: {user.firstName} {user.lastName}
-          </h1>
-        </div>
-
-        {/* Get user error alerts */}
-        {alert && (
-          <div>
-            {alert.status} {alert.content}
+      <div className='bg-white dark:bg-black h-screen lg:overflow-hidden'>
+        <Navbar />
+        {/* Main */}
+        <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg'>
+          {/* Titles */}
+          <div className='text-left my-2'>
+            <h1 className='font-extrabold text-2xl'>
+              Account: {user.firstName} {user.lastName}
+            </h1>
           </div>
-        )}
+          {/* Main container */}
+          <section className='grid lg:grid-cols-2'>
+            <section className='p-2'>
+              {/* Display user */}
+              <UserCard user={user} />
+              {/* update form */}
+              <form onSubmit={handleUpdate}>
+                {/* <!-- Email input --> */}
+                <div className='mb-6'>
+                  <input
+                    type='text'
+                    name='email'
+                    className='standard__inputs'
+                    placeholder='Email address'
+                    onChange={handleChange}
+                  />
+                </div>
 
-        {/* Display user */}
-        <UserCard user={user} />
+                {/* <!-- FirstName input --> */}
+                <div className='mb-6'>
+                  <input
+                    type='text'
+                    name='firstName'
+                    className='standard__inputs'
+                    placeholder='First Name'
+                    onChange={handleChange}
+                  />
+                </div>
 
-        {/* update form */}
-        <section>
-          <form onSubmit={handleUpdate}>
-            {/* <!-- Email input --> */}
-            <div className='mb-6'>
-              <input
-                type='text'
-                name='email'
-                className='standard__inputs'
-                placeholder='Email address'
-                onChange={handleChange}
-              />
-            </div>
+                {/* <!-- LastName input --> */}
+                <div className='mb-6'>
+                  <input
+                    type='text'
+                    name='lastName'
+                    className='standard__inputs'
+                    placeholder='Last Name'
+                    onChange={handleChange}
+                  />
+                </div>
 
-            {/* <!-- FirstName input --> */}
-            <div className='mb-6'>
-              <input
-                type='text'
-                name='firstName'
-                className='standard__inputs'
-                placeholder='First Name'
-                onChange={handleChange}
-              />
-            </div>
+                {/* <!-- Country input --> */}
+                <div className='mb-4'>
+                  <CountrySelect handleChange={handleChange} />
+                </div>
 
-            {/* <!-- LastName input --> */}
-            <div className='mb-6'>
-              <input
-                type='text'
-                name='lastName'
-                className='standard__inputs'
-                placeholder='Last Name'
-                onChange={handleChange}
-              />
-            </div>
+                <div className='mb-6'>
+                  <button className='submit__button'>Update Profile</button>
+                </div>
+              </form>
+              {/* Delete account */}
+              <section>
+                <button onClick={deleteProfile} className='delete__button'>
+                  Delete Profile
+                </button>
+              </section>
+            </section>
 
-            {/* <!-- Country input --> */}
-            <div className='mb-4'>
-              <CountrySelect handleChange={handleChange} />
-            </div>
+            <section className='bg-blue-300 p-2' ></section>
 
-            <div className='mb-6'>
-              <button className='submit__button'>Update Profile</button>
-            </div>
-          </form>
-        </section>
-
-        {/* Delete account */}
-        <section className='mx-2'>
-          <button onClick={deleteProfile} className='delete__button'>
-            Delete Profile
-          </button>
+            {!resendVerification && (
+              <ResendConfirmEmail handleResend={handleResend} />
+            )}
+          </section>
         </section>
       </div>
-
-      {!resendVerification && <ResendConfirmEmail handleResend={handleResend} />}
     </>
   );
 }
