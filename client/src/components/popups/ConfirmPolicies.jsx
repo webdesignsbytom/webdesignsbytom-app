@@ -30,7 +30,7 @@ function ConfirmPolicies() {
             <p>
               For infomation on our privacy and cookies policies, please follow
               the link by clicking{' '}
-              <span className='text-hyperlink-blue cursor-pointer'>
+              <span className='text-hyperlink-blue font-bold cursor-pointer'>
                 <Link to='/user-cookie-policy'>
                 here
                 </Link>
