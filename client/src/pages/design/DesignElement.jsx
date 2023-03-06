@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
 // Icons
-import QMark from '../../img/questionMark.svg'
+import QMark from '../../img/questionMark.svg';
+import FloppyDisk from '../../img/floppyDisk.svg'
+import Bin from '../../img/bin.svg';
+import Undo from '../../img/undo.svg'
+import PageOptions from '../../components/pageOptions/PageOptions';
+import CompenentOptions from '../../components/componentOptions/CompenentOptions';
+import FooterOptions from '../../components/footerOptions/FooterOptions';
 
 function DesignElement({ displayElement }) {
   const [fileSaveName, setFileSaveName] = useState('untitled');
@@ -11,11 +17,11 @@ function DesignElement({ displayElement }) {
   //TODO: user effect change of file name and update design name
 
   const handleChange = (event) => {
-    const { name, value } = event.target
-    console.log('change', value)
-    setFileSaveName(value)
-  }
-  console.log('DES ELM display', displayElement);
+    const { value } = event.target;
+    console.log('change', value);
+    setFileSaveName(value);
+  };
+
   return (
     <>
       <main className='lg:grid lg:grid-flow-col lg:w-full lg:pl-[200px]'>
@@ -30,17 +36,27 @@ function DesignElement({ displayElement }) {
                 placeholder={fileSaveName}
                 onChange={handleChange}
               />
-              <img src={QMark} className='w-6 cursor-pointer' alt="information" />
+              <div className='group pl-1'>
+                <img
+                  src={QMark}
+                  className='w-6 cursor-pointer group'
+                  alt='information'
+                />
+                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle'>Enter a name to save your design with</div>
+              </div>
             </div>
             <nav className='flex'>
               <ul className='flex gap-4 justify-center align-middle'>
                 <li className='menu__link flex align-middle'>
+                  <img src={FloppyDisk}  className='w-6 pr-1' alt="save" />
                   <p>Save</p>
                 </li>
                 <li className='menu__link flex align-middle'>
+                  <img src={Undo} className='w-6 pr-1' alt="undo" />
                   <p>Undo</p>
                 </li>
                 <li className='menu__link flex align-middle'>
+                  <img src={Bin} className='w-6 pr-1' alt="delete" />
                   <p>Delete</p>
                 </li>
               </ul>
@@ -50,6 +66,9 @@ function DesignElement({ displayElement }) {
             <div className='border-2 border-solid border-black rounded'>
               {displayElement === 'nav' && <NavOptions />}
               {displayElement === 'palette' && <ColorPalette />}
+              {displayElement === 'pages' && <PageOptions />}
+              {displayElement === 'components' && <CompenentOptions />}
+              {displayElement === 'footers' && <FooterOptions />}
             </div>
           </section>
         </div>

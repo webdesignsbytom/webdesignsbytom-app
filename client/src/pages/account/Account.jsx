@@ -78,18 +78,18 @@ function Account() {
         {/* Main */}
         <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg'>
           {/* Titles */}
-          <div className='text-left my-2'>
+          <div className='text-left mt-2 mb-2 pl-4'>
             <h1 className='font-extrabold text-2xl'>
               Account: {user.firstName} {user.lastName}
             </h1>
           </div>
           {/* Main container */}
           <section className='grid lg:grid-cols-2'>
-            <section className='p-2'>
+            <section className='grid sm:w-[500px] mx-auto p-2'>
               {/* Display user */}
               <UserCard user={user} />
               {/* update form */}
-              <form onSubmit={handleUpdate}>
+              <form onSubmit={handleUpdate} className='mt-2'>
                 {/* <!-- Email input --> */}
                 <div className='mb-6'>
                   <input
@@ -140,7 +140,9 @@ function Account() {
               </section>
             </section>
 
-            <section className='bg-blue-300 p-2' ></section>
+            <section className='bg-blue-300 p-2'>
+              <div className='bg-red-400 grid w-full lg:grid-cols-1 lg:grid-rows-1'>a</div>
+            </section>
 
             {!resendVerification && (
               <ResendConfirmEmail handleResend={handleResend} />

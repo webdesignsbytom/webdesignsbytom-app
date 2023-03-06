@@ -1,7 +1,6 @@
 import React from 'react';
 
 function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
-
   const setDisplay = (event) => {
     const { id } = event.target;
     setDisplayElement(id);
@@ -15,35 +14,31 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
           </div>
           <nav>
             <ul className='grid gap-2 grid-cols-3 lg:grid-cols-none mb-4 mt-2'>
-              <li className='options__link' onClick={setDisplay}>
-                <button id='palette'>
-                  Color
-                </button>
+              <li className='options__link' id='nav' onClick={setDisplay}>
+                <button>Nav</button>
               </li>
-              <li className='options__link' onClick={setDisplay}>
-                <button id='nav'>
-                  Nav
-                </button>
+              <li className='options__link' id='palette' onClick={setDisplay}>
+                <button>Color</button>
               </li>
-              <li className='options__link' onClick={setDisplay}>
-                <button id='pages'>
-                  Pages
-                </button>
+              <li className='options__link' id='pages' onClick={setDisplay}>
+                <button>Pages</button>
               </li>
-              <li className='options__link' onClick={setDisplay}>
-                <button id='components'>
-                  Components
-                </button>
+              <li
+                className='options__link'
+                id='components'
+                onClick={setDisplay}
+              >
+                <button>Components</button>
               </li>
-              <li className='options__link' onClick={setDisplay}>
-                <button id='footer'>
-                  Footer
-                </button>
+              <li className='options__link' id='footers' onClick={setDisplay}>
+                <button>Footer</button>
               </li>
-              <li className='options__link lg:hidden' onClick={setDisplay}>
-                <button id='saves'>
-                  Saves
-                </button>
+              <li
+                className='options__link lg:hidden'
+                id='saves'
+                onClick={setDisplay}
+              >
+                <button>Saves</button>
               </li>
             </ul>
           </nav>

@@ -182,19 +182,7 @@ function Navbar() {
                     <Link>Development</Link>
                   </li>
                 )}
-                {/* {user.role === 'DEVELOPER' && (
-                  <li
-                    className={
-                      activeNav === '/development'
-                        ? 'selected__link'
-                        : 'nav__link'
-                    }
-                  >
-                    <Link to='/development' className='nav__link'>
-                      Development
-                    </Link>
-                  </li>
-                )} */}
+                
                 {!user.email && (
                   <>
                     <li
@@ -220,7 +208,7 @@ function Navbar() {
                   </>
                 )}
                 {user.email && (
-                  <li>
+                  <li className='nav__link'>
                     <Link onClick={signOut}>
                       Sign out
                     </Link>
