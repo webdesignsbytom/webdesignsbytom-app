@@ -69,7 +69,7 @@ function LoginForm({
           </div>
           <Link
             to='/reset-lost-password'
-            className='text-main-colour hover:text-main-colour-med focus:text-main-colour-med active:text-main-colour-dark duration-200 transition ease-in-out'
+            className='text-hyperlink-blue dark:text-white hover:text-main-colour-med focus:text-main-colour-med active:text-main-colour-dark duration-200 transition ease-in-out'
           >
             Forgot password?
           </Link>

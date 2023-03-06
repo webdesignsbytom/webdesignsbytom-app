@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         'main-colour': '#cbd5e1',
         'nav-colour': '#cbd5e1',
-        'colour-pale': '#99DF8A',
+        'colour-pale': '#f1f5f9',
         'colour-light': '#6DC85A',
         'colour-med': '#94a3b8',
         'colour-dark': '#1e293b',
@@ -29,11 +29,13 @@ module.exports = {
       gridTemplateRows: {
         'reg': 'auto 1fr',
         'even': '1fr 1fr 1fr',
-        'one': '1fr'
+        'one': '1fr',
+        'special': 'auto 1fr 0.5fr'
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
-        'even': '1fr 1fr 1fr'
+        'even': '1fr 1fr 1fr',
+        'one': '1fr'
       },
       width: {
         id: '12ch;'

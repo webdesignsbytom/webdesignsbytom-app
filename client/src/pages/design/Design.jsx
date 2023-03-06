@@ -9,7 +9,7 @@ import client from '../../utils/client';
 function Design() {
   const { user } = useContext(UserContext)
 
-  const [displayElement, setDisplayElement] = useState('palette');
+  const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([])
 
   console.log('DESIGN', user);
@@ -25,9 +25,9 @@ function Design() {
   }, [])
 
   return (
-    <div className='max-h-screen overflow-hidden'>
+    <div className='max-h-screen lg:overflow-hidden lg:left-0'>
       <Navbar />
-      <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-reg min-h-[calc(100vh-64px)]'>
+      <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black'>
         {/* Side bar */}
         <OptionsNav
           displayElement={displayElement}
