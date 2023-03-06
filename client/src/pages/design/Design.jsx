@@ -32,6 +32,7 @@ function Design() {
         <OptionsNav
           displayElement={displayElement}
           setDisplayElement={setDisplayElement}
+          savedDesigns={savedDesigns}
         />
         {/* Preview section */}
         <DesignElement displayElement={displayElement} />

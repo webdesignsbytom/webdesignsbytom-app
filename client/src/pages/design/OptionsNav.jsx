@@ -1,6 +1,7 @@
 import React from 'react';
 
-function OptionsNav({ displayElement, setDisplayElement }) {
+function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
+  
   const setDisplay = (event) => {
     const { id } = event.target;
     setDisplayElement(id);
@@ -42,7 +43,17 @@ function OptionsNav({ displayElement, setDisplayElement }) {
             </ul>
           </nav>
 
-          <section>Saves</section>
+          <section>
+            <h2>Saves</h2>
+            {savedDesigns > 0 &&
+              savedDesigns.map((design, index) => {
+                return (
+                  <>
+                    <div className='text-black'>{design.name}</div>
+                  </>
+                );
+              })}
+          </section>
         </div>
       </div>
     </>
