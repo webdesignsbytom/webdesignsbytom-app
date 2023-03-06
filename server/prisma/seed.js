@@ -122,6 +122,13 @@ async function seed() {
         viewed: true
       },
     });
+
+    const devDesigns = await dbClient.design.create({
+      data: {
+        name: `${i}}`,
+        userId: devUser.id,
+      }
+    })
   }
 
   const eventOne = await dbClient.event.create({

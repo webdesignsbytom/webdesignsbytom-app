@@ -105,8 +105,8 @@ export const getDesignsFromUser = async (req, res) => {
     console.log('foundDesigns', foundDesigns);
     // If no found users
 
-    myEmitterDesigns.emit('get-user-designs', req.user);
-    return sendDataResponse(res, 200, { user: foundDesigns });
+    // myEmitterDesigns.emit('get-user-designs', req.user);
+    return sendDataResponse(res, 200, { designs: foundDesigns });
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(
