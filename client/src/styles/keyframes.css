@@ -54,7 +54,7 @@
 }
 
 .animation__wiggle:hover {
-  animation: 2s infinite alternate wiggle;
+  animation: 2s infinite ease wiggle;
 }
 
 @keyframes wiggle {
