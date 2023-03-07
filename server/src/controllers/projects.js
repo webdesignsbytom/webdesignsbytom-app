@@ -16,33 +16,28 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
 
 export const getAllProjects = async (req, res) => {
   console.log('get all projects');
   try {
-    // Find all projects
     const foundProjects = await findAllProjects();
 
-    // If no found projects
     if (!foundProjects) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found projects',
-        'Event database'
+        'Not found Event',
+        'Project database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     // myEmitterProjects.emit('get-all-projects', req.user);
     return sendDataResponse(res, 200, { projects: foundProjects });
-    //
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get all events`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -51,17 +46,12 @@ export const getAllProjects = async (req, res) => {
 };
 
 export const getProjectById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
-  const projectId = Number(req.params.projectId)
+console.log('getprojectById')
+  const projectId = req.params.projectId
 
   try {
-    console.log('test');
     const foundProject = await findProjectById(projectId);
-    console.log('foundProject', foundProject);
-    // If no found projects
     if (!foundProject) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -74,7 +64,7 @@ export const getProjectById = async (req, res) => {
     // myEmitterProjects.emit('get-project-by-id', req.user)
     return sendDataResponse(res, 200, { project: foundProject });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get project by ID`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -85,14 +75,10 @@ export const getProjectById = async (req, res) => {
 export const getProjectsFromUser = async (req, res) => {
   console.log('get user id project');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -101,9 +87,19 @@ export const getProjectsFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
     const foundProjects = await findUserProjectsById(userId);
     console.log('foundProjects', foundProjects);
-    // If no found users
+
+    if (!foundProjects) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found Event',
+        'Projects database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     myEmitterProjects.emit('get-user-projects', req.user);
     return sendDataResponse(res, 200, { user: foundProjects });
@@ -122,10 +118,9 @@ export const getProjectsFromUser = async (req, res) => {
 export const createNewProject = async (req, res) => {
   console.log('createNewProject');
   const { type, name, userId, domainName } = req.body;
-  console.log(req.body);
+
   try {
     if (!type || !name || !userId) {
-      //
       const missingField = new MissingFieldEvent(
         null,
         'Project creation: Missing Field/s event'
@@ -133,26 +128,41 @@ export const createNewProject = async (req, res) => {
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
-    console.log('XXXX');
 
     const foundProject = await findProjectByName(name);
-    console.log('found project', foundProject);
 
     if (foundProject) {
       return sendDataResponse(res, 400, { project: 'Project name already exists' });
     }
 
     const foundUser = await findUserById(userId);
-    console.log('found user', foundUser);
+
+    if (!foundUser) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found Event',
+        'User not found'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     const createdProject = await createProject(type, name, userId, domainName);
-    console.log('created project', createdProject);
+
+    if (!createdProject) {
+      const badRequest = new BadRequestEvent(
+        req.user,
+        'Bad request',
+        'Project database'
+      );
+      myEmitterErrors.emit('error', badRequest);
+      return sendMessageResponse(res, badRequest.code, badRequest.message);
+    }
 
     // myEmitterProjects.emit('create-project', createdProject);
-
     return sendDataResponse(res, 201, { createdProject });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Create new project`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -162,22 +172,18 @@ export const createNewProject = async (req, res) => {
 
 export const deleteProject = async (req, res) => {
   console.log('deleteProject');
-  const id = Number(req.params.id);
-  console.log(id);
+  const projectId = req.params.projectId
 
   try {
-    const foundProject = await findProjectById(id);
-    console.log('foundProject', foundProject);
+    const foundProject = await findProjectById(projectId);
 
     if (!foundProject) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found project',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 

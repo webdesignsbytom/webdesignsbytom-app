@@ -24,7 +24,11 @@ import {
   testEmail,
 } from '../utils/sendEmail.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import {
+  EVENT_MESSAGES,
+  sendDataResponse,
+  sendMessageResponse,
+} from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
@@ -46,19 +50,14 @@ export const sendTestyEmail = async (req, res) => {
 };
 
 export const getAllUsers = async (req, res) => {
-  console.log('req params', req.params);
-  console.log('req user', req.user);
+  console.log('getAllUsers');
   try {
-    // Find all users
     const foundUsers = await findAllUsers();
-
-    // If no found users
     if (!foundUsers) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'User database not found'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.allUsersNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -66,9 +65,8 @@ export const getAllUsers = async (req, res) => {
 
     // myEmitterUsers.emit('get-all-users', req.user);
     return sendDataResponse(res, 200, { users: foundUsers });
-    //
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get all users`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -77,22 +75,16 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const getUserById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
+  console.log('getUserById');
   const userId = req.params.id;
-  console.log('userId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
-    // If no found users
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -104,7 +96,7 @@ export const getUserById = async (req, res) => {
     myEmitterUsers.emit('get-user-by-id', req.user);
     return sendDataResponse(res, 200, { user: foundUser });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get user by ID`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -113,13 +105,12 @@ export const getUserById = async (req, res) => {
 };
 
 export const registerNewUser = async (req, res) => {
+  console.log('create new user');
   const { email, password, role, firstName, lastName, country, agreedToTerms } =
     req.body;
-    console.log('reg')
   const lowerCaseEmail = email.toLowerCase();
-  //
+
   try {
-    //
     if (
       !lowerCaseEmail ||
       !password ||
@@ -139,7 +130,7 @@ export const registerNewUser = async (req, res) => {
 
     const foundUser = await findUserByEmail(lowerCaseEmail);
     if (foundUser) {
-      return sendDataResponse(res, 400, { email: 'Email already in use' });
+      return sendDataResponse(res, 400, { email: EVENT_MESSAGES.emailInUse });
     }
 
     const hashedPassword = await bcrypt.hash(password, hashRate);
@@ -153,6 +144,16 @@ export const registerNewUser = async (req, res) => {
       agreedToTerms
     );
 
+    if (!createdUser) {
+      const notCreated = new BadRequestEvent(
+        req.user,
+        EVENT_MESSAGES.badRequest,
+        EVENT_MESSAGES.createUserFail
+      );
+      myEmitterErrors.emit('error', notCreated);
+      return sendMessageResponse(res, notCreated.code, notCreated.message);
+    }
+
     myEmitterUsers.emit('register', createdUser);
 
     const uniqueString = uuid() + createdUser.id;
@@ -164,11 +165,9 @@ export const registerNewUser = async (req, res) => {
       createdUser.email,
       uniqueString
     );
-    console.log('email verified');
     return sendDataResponse(res, 201, { createdUser });
-    //
   } catch (err) {
-    //
+    // Error
     const serverError = new RegistrationServerErrorEvent(
       `Register Server error`
     );
@@ -179,23 +178,22 @@ export const registerNewUser = async (req, res) => {
 };
 
 export const verifyUser = async (req, res) => {
+  console.log('Verifying user')
   const { userId, uniqueString } = req.params;
 
   try {
-    // check if the verification record exists
     const foundVerification = await findVerification(userId);
-    console.log('found', foundVerification);
 
     if (!foundVerification) {
       const missingVerification = new NotFoundEvent(
         userId,
-        'Verification record not found'
+        EVENT_MESSAGES.verificationNotFound
       );
       myEmitterErrors.emit('error', missingVerification);
       return sendMessageResponse(
         res,
         404,
-        "Account record doesn't exist or has been verified already. Please sign up or log in."
+        EVENT_MESSAGES.verificationNotFoundReturnMessage
       );
     }
 
@@ -206,7 +204,7 @@ export const verifyUser = async (req, res) => {
       return sendMessageResponse(
         res,
         401,
-        'Link has expired. Please sign up again.'
+        EVENT_MESSAGES.expiredLinkMessage
       );
     }
 
@@ -219,7 +217,7 @@ export const verifyUser = async (req, res) => {
       return sendMessageResponse(
         res,
         401,
-        'Invalid verification details passed. Check your inbox.'
+        EVENT_MESSAGES.invalidVerificationMessage
       );
     }
 
@@ -248,17 +246,18 @@ export const verifyUser = async (req, res) => {
 };
 
 export const resendVerificationEmail = async (req, res) => {
+  console.log('resendVerificationEmail')
   const { email } = req.params;
 
   if (!email) {
-    const err = new BadRequestEvent('Missing user identifier');
-    return sendMessageResponse(res, err.code, err.message);
+    const badRequest = new BadRequestEvent(EVENT_MESSAGES.missingUserIdentifier);
+    return sendMessageResponse(res, badRequest.code, badRequest.message);
   }
 
   try {
     const foundUser = await dbClient.user.findUnique({ where: { email } });
     if (!foundUser) {
-      const notFound = new NotFoundError('user', 'email');
+      const notFound = new NotFoundEvent('user', 'email');
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -266,13 +265,12 @@ export const resendVerificationEmail = async (req, res) => {
       where: { userId: foundUser.id },
     });
 
-    console.log('foundVerificion', foundVerification);
     if (!foundVerification) {
       const serverError = new ServerConflictError(
         email,
-        "Account verification record doesn't exist or has been verified already."
+        EVENT_MESSAGES.verificationNotFoundReturnMessage
       );
-      console.log('Error');
+
       myEmitterErrors.emit('verification-not-found', serverError);
       return sendMessageResponse(res, serverError.code, serverError.message);
     }
@@ -284,9 +282,7 @@ export const resendVerificationEmail = async (req, res) => {
     await createVerificationInDB(foundUser.id, hashedString);
 
     await sendVerificationEmail(foundUser.id, foundUser.email, uniqueString);
-    console.log('resend');
     myEmitterUsers.emit('resend-verification', foundUser);
-    console.log('emitter');
     return sendMessageResponse(res, 201, 'Verification email resent');
   } catch (err) {
     // Create error instance
@@ -318,7 +314,7 @@ export const sendPasswordReset = async (req, res) => {
 
     if (!foundUser) {
       return sendDataResponse(res, 404, {
-        email: 'Email not found in database',
+        email: EVENT_MESSAGES.emailNotFound,
       });
     }
     // Create unique string for verify URL
@@ -345,7 +341,7 @@ export const resetPassword = async (req, res) => {
   if (password !== confirmPassword) {
     const badRequest = new BadRequestEvent(
       userId,
-      'Reset Password - New passwords do not match'
+      EVENT_MESSAGES.passwordMatchError
     );
     myEmitterErrors.emit('error', badRequest);
     return sendMessageResponse(res, badRequest.code, badRequest.message);
@@ -357,13 +353,13 @@ export const resetPassword = async (req, res) => {
     if (!foundResetRequest) {
       const missingRequest = new NotFoundEvent(
         userId,
-        'Verification record not found'
+        EVENT_MESSAGES.verificationNotFound
       );
       myEmitterErrors.emit('error', missingRequest);
       return sendMessageResponse(
         res,
         404,
-        "Account record doesn't exist or has been reset already."
+        EVENT_MESSAGES.passwordResetError
       );
     }
 
@@ -374,7 +370,7 @@ export const resetPassword = async (req, res) => {
       return sendMessageResponse(
         res,
         401,
-        'Link has expired. Please sign up again.'
+        EVENT_MESSAGES.expiredLinkMessage
       );
     }
 
@@ -387,7 +383,7 @@ export const resetPassword = async (req, res) => {
       return sendMessageResponse(
         res,
         401,
-        'Invalid reset password details passed. Check your inbox.'
+        EVENT_MESSAGES.invalidVerificationMessage
       );
     }
 
@@ -404,7 +400,7 @@ export const resetPassword = async (req, res) => {
     sendDataResponse(res, 200, { user: updatedUser });
     myEmitterUsers.emit('password-reset', updatedUser);
   } catch (err) {
-    // Create error instance
+    // Error
     const serverError = new ServerErrorEvent(`Verify New User Server error`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -413,23 +409,18 @@ export const resetPassword = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  console.log('update');
+  console.log('update user');
   const userId = req.params.userId;
-  console.log('id', userId);
   const { email, firstName, lastName, country } = req.body;
-  const body = req.body;
-  console.log('body', body);
 
   try {
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
-    // If no found users
+
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -442,7 +433,6 @@ export const updateUser = async (req, res) => {
       lastName,
       country
     );
-    console.log('updated user', updatedUser);
 
     delete updatedUser.password;
     delete updatedUser.agreedToTerms;
@@ -450,7 +440,7 @@ export const updateUser = async (req, res) => {
     // myEmitterUsers.emit('update-user', req.user);
     return sendDataResponse(res, 200, { user: updatedUser });
   } catch (err) {
-    // Create error instance
+    // Error
     const serverError = new ServerErrorEvent(`Verify New User Server error`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -459,20 +449,18 @@ export const updateUser = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
+  console.log('deleteUser')
   const userId = req.params.userId;
 
   try {
     const foundUser = await findUserById(userId);
-    // If no found users
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 

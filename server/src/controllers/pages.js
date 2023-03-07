@@ -14,25 +14,21 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
 
 export const getAllPages = async (req, res) => {
   console.log('get all pages');
   try {
-    // Find all pages
     const foundPages = await findAllPages();
 
-    // If no found pages
     if (!foundPages) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found pages',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -50,17 +46,12 @@ export const getAllPages = async (req, res) => {
 
 
 export const getPageById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
-  const pageId = Number(req.params.pageId)
+  console.log('GetPageById');
+  const pageId = req.params.pageId
 
   try {
-    console.log('test');
     const foundPage = await findPageById(pageId);
-    console.log('foundPage', foundPage);
-    // If no found pages
     if (!foundPage) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -84,7 +75,7 @@ export const getPageById = async (req, res) => {
 export const createNewPage = async (req, res) => {
   console.log('createNewPage');
   const { type, name, desc, price } = req.body;
-  console.log(req.body);
+
   try {
     if (!type || !name || !desc || !price) {
       //
@@ -104,10 +95,18 @@ export const createNewPage = async (req, res) => {
     }
 
     const createdPage = await createPage(type, name, desc, price);
-    console.log('created page', createdPage);
+
+    if (!createdPage) {
+      const notCreated = new BadRequestEvent(
+        req.user,
+        'Bad Request',
+        'Cant create page'
+      );
+      myEmitterErrors.emit('error', notCreated);
+      return sendMessageResponse(res, notCreated.code, notCreated.message);
+    }
 
     // myEmitterPages.emit('create-page', createdPage);
-
     return sendDataResponse(res, 201, { createdPage });
   } catch (err) {
     //
@@ -122,14 +121,10 @@ export const createNewPage = async (req, res) => {
 export const getPagesFromUser = async (req, res) => {
   console.log('get user id page');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -138,14 +133,22 @@ export const getPagesFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
     const foundPages = await findUserPagesById(userId);
-    console.log('foundPages', foundPages);
-    // If no found users
+    if (!foundPages) {
+      const badRequest = new BadRequestEvent(
+        req.user,
+        'Bad Request',
+        'Cant update notification to viewed'
+      );
+      myEmitterErrors.emit('error', badRequest);
+      return sendMessageResponse(res, badRequest.code, badRequest.message);
+    }
 
     myEmitterPages.emit('get-user-pages', req.user);
     return sendDataResponse(res, 200, { user: foundPages });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(
       req.user,
       `Get user pages by ID`
@@ -157,23 +160,19 @@ export const getPagesFromUser = async (req, res) => {
 };
 
 export const deletePage = async (req, res) => {
-  console.log('deletePage');
-  const id = Number(req.params.id);
-  console.log(id);
+  console.log('deletePage')
+  const pageId = req.params.pageId
 
   try {
-    const foundPage = await findPageById(id);
-    console.log('foundPage', foundPage);
+    const foundPage = await findPageById(pageId);
 
     if (!foundPage) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found page',
-        'Event database'
+        'Not found Event',
+        'Pages database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -184,7 +183,7 @@ export const deletePage = async (req, res) => {
       message: `Page ${foundPage.name} deleted`,
     });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Delete page`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);

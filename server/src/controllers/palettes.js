@@ -16,25 +16,21 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
+  BadRequestEvent
 } from '../event/utils/errorUtils.js';
 
 export const getAllPalettes = async (req, res) => {
   console.log('get all palettes');
   try {
-    // Find all palettes
     const foundPalettes = await findAllPalettes();
 
-    // If no found palettes
     if (!foundPalettes) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found palettes',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -51,17 +47,12 @@ export const getAllPalettes = async (req, res) => {
 };
 
 export const getPaletteById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
-  const paletteId = Number(req.params.paletteId)
+  console.log('getPaletteById');
+  const paletteId = req.params.paletteId
 
   try {
-    console.log('test');
     const foundPalette = await findPaletteById(paletteId);
-    console.log('foundPalette', foundPalette);
-    // If no found palettes
     if (!foundPalette) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -74,7 +65,7 @@ export const getPaletteById = async (req, res) => {
     // myEmitterPalettes.emit('get-palette-by-id', req.user)
     return sendDataResponse(res, 200, { palette: foundPalette });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get palette by ID`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -83,14 +74,11 @@ export const getPaletteById = async (req, res) => {
 };
 
 export const getPalettesFromUser = async (req, res) => {
-  console.log('get user id palette');
+  console.log('get user id palettes');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
       // Create error instance
       const notFound = new NotFoundEvent(
@@ -102,13 +90,20 @@ export const getPalettesFromUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
     const foundPalettes = await findUserPalettesById(userId);
-    console.log('foundPalettes', foundPalettes);
-    // If no found users
 
+    if (!foundPalettes) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found Event',
+        'Palette database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
     myEmitterPalettes.emit('get-user-palettes', req.user);
     return sendDataResponse(res, 200, { user: foundPalettes });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(
       req.user,
       `Get user palettes by ID`
@@ -122,7 +117,6 @@ export const getPalettesFromUser = async (req, res) => {
 export const createNewPalette = async (req, res) => {
   console.log('createNewPalette');
   const { designId, bgMain, bgAlt, paletteOne, paletteTwo, paletteThree, hover, selected } = req.body;
-  console.log(req.body);
   try {
     if (!req.body) {
       //
@@ -133,16 +127,32 @@ export const createNewPalette = async (req, res) => {
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
-    console.log('XXXX');
 
     const foundUser = await findUserById(userId);
-    console.log('found user', foundUser);
+
+    if (!foundUser) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found Event',
+        'User database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     const createdPalette = await createPalette(designId, bgMain, bgAlt, paletteOne, paletteTwo, paletteThree, hover, selected);
-    console.log('created palette', createdPalette);
 
+    if (!createdPalette) {
+      const badRequest = new BadRequestEvent(
+        req.user,
+        'Bad request',
+        'Palette database'
+      );
+      myEmitterErrors.emit('error', badRequest);
+      return sendMessageResponse(res, badRequest.code, badRequest.message);
+    }
+    
     // myEmitterPalettes.emit('create-palette', createdPalette);
-
     return sendDataResponse(res, 201, { createdPalette });
   } catch (err) {
     //
@@ -155,22 +165,18 @@ export const createNewPalette = async (req, res) => {
 
 export const deletePalette = async (req, res) => {
   console.log('deletePalette');
-  const id = Number(req.params.id);
-  console.log(id);
+  const paletteId = req.params.paletteId
 
   try {
-    const foundPalette = await findPaletteById(id);
-    console.log('foundPalette', foundPalette);
+    const foundPalette = await findPaletteById(paletteId);
 
     if (!foundPalette) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found palette',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 

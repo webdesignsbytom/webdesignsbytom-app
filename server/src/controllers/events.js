@@ -14,25 +14,20 @@ import {
 export const getAllEvents = async (req, res) => {
   console.log('get all events');
   try {
-    // Find all events
     const foundEvents = await findAllEvents();
 
-    // If no found events
     if (!foundEvents) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found events',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     myEmitterEvents.emit('get-all-events', req.user);
     return sendDataResponse(res, 200, { events: foundEvents });
-    //
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Get all events`);

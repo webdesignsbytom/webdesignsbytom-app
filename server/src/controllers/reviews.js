@@ -15,33 +15,31 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
+import { EVENT_MESSAGES } from '../utils/responses.js';
 
 export const getAllReviews = async (req, res) => {
   console.log('get all reviews');
   try {
-    // Find all reviews
     const foundReviews = await findAllReviews();
-
-    // If no found reviews
     if (!foundReviews) {
-      // Create error instance
       const notFound = new NotFoundEvent(
+        // User
         req.user,
-        'Not found reviews',
+        // Topic
+        EVENT_MESSAGES.notFoundReview,
+        // Target
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     // myEmitterReviews.emit('get-all-reviews', req.user);
     return sendDataResponse(res, 200, { reviews: foundReviews });
-    //
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get all events`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -50,20 +48,15 @@ export const getAllReviews = async (req, res) => {
 };
 
 export const getReviewById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
-  const reviewId = Number(req.params.reviewId)
+  console.log('getReviewById')
+  const reviewId = req.params.reviewId
 
   try {
-    console.log('test');
     const foundReview = await findReviewById(reviewId);
-    console.log('foundReview', foundReview);
-    // If no found reviews
     if (!foundReview) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find review by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -84,30 +77,35 @@ export const getReviewById = async (req, res) => {
 export const getReviewsFromUser = async (req, res) => {
   console.log('get user id review');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find user by ID'
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
     const foundReviews = await findUserReviewsById(userId);
-    console.log('foundReviews', foundReviews);
-    // If no found users
+    if (!foundReviews) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        'Cant user reviews'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     myEmitterReviews.emit('get-user-reviews', req.user);
     return sendDataResponse(res, 200, { user: foundReviews });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(
       req.user,
       `Get user reviews by ID`
@@ -121,10 +119,8 @@ export const getReviewsFromUser = async (req, res) => {
 export const createNewReview = async (req, res) => {
   console.log('createNewReview');
   const { email, userId, value, content } = req.body;
-  console.log(req.body);
   try {
     if (!content || !value) {
-      //
       const missingField = new MissingFieldEvent(
         null,
         'Review creation: Missing Field/s event'
@@ -132,16 +128,21 @@ export const createNewReview = async (req, res) => {
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
-    console.log('XXXX');
 
     const foundUser = await findUserById(userId);
-    console.log('found user', foundUser);
 
     const createdReview = await createReview(email, userId, value, content);
-    console.log('created review', createdReview);
+    if (!createdReview) {
+      const badRequest = new BadRequestEvent(
+        req.user,
+        EVENT_MESSAGES.badRequest,
+        EVENT_MESSAGES.createReviewFail
+      );
+      myEmitterErrors.emit('error', badRequest);
+      return sendMessageResponse(res, badRequest.code, badRequest.message);
+    }
 
     // myEmitterReviews.emit('create-review', createdReview);
-
     return sendDataResponse(res, 201, { createdReview });
   } catch (err) {
     //
@@ -154,22 +155,17 @@ export const createNewReview = async (req, res) => {
 
 export const deleteReview = async (req, res) => {
   console.log('deleteReview');
-  const id = Number(req.params.id);
-  console.log(id);
+  const reviewId = req.params.reviewId
 
   try {
-    const foundReview = await findReviewById(id);
-    console.log('foundReview', foundReview);
-
+    const foundReview = await findReviewById(reviewId);
     if (!foundReview) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found review',
-        'Event database'
+        EVENT_MESSAGES.notFoundReview,
+        'Review database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 

@@ -52,13 +52,10 @@ export const getAllComplaints = async (req, res) => {
 
 export const getComplaintById = async (req, res) => {
   console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
-  const complaintId = Number(req.params.complaintId)
+  const complaintId = req.params.complaintId
 
   try {
-    console.log('test');
     const foundComplaint = await findComplaintById(complaintId);
-    console.log('foundComplaint', foundComplaint);
     // If no found complaints
     if (!foundComplaint) {
       // Create error instance
@@ -85,12 +82,9 @@ export const getComplaintById = async (req, res) => {
 export const getComplaintsFromUser = async (req, res) => {
   console.log('get user id complaint');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
       // Create error instance
       const notFound = new NotFoundEvent(
@@ -101,9 +95,8 @@ export const getComplaintsFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
     const foundComplaints = await findUserComplaintsById(userId);
-    console.log('foundComplaints', foundComplaints);
-    // If no found users
 
     myEmitterComplaints.emit('get-user-complaints', req.user);
     return sendDataResponse(res, 200, { user: foundComplaints });
@@ -111,7 +104,7 @@ export const getComplaintsFromUser = async (req, res) => {
     //
     const serverError = new ServerErrorEvent(
       req.user,
-      `Get user complaints by ID`
+      `Get user complaints`
     );
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -122,7 +115,7 @@ export const getComplaintsFromUser = async (req, res) => {
 export const createNewComplaint = async (req, res) => {
   console.log('createNewComplaint');
   const { email, userId, content } = req.body;
-  console.log(req.body);
+
   try {
     if (!content) {
       //
@@ -133,16 +126,13 @@ export const createNewComplaint = async (req, res) => {
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
-    console.log('XXXX');
 
     const foundUser = await findUserById(userId);
-    console.log('found user', foundUser);
 
     const createdComplaint = await createComplaint(email, userId, content);
     console.log('created complaint', createdComplaint);
 
     // myEmitterComplaints.emit('create-complaint', createdComplaint);
-
     return sendDataResponse(res, 201, { createdComplaint });
   } catch (err) {
     //
@@ -157,24 +147,21 @@ export const createNewComplaint = async (req, res) => {
 export const setComplaintToViewed = async (req, res) => {
   console.log('setComplaintToView');
   const complaintId = req.params.complaintId
-  console.log('complaintId', complaintId);
 
   try {
     const foundComplaint = await findComplaintById(complaintId);
-    console.log('foundComplaint', foundComplaint);
     // If no found complaints
     if (!foundComplaint) {
       // Create error instance
       const notFound = new NotFoundEvent(
         'Not found event',
-        'Cant find complaint by ID'
+        'Cant set complaint to viewed'
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     const updatedComplaint = await updateComplaintToViewed(complaintId);
-    console.log('updated complaint', updatedComplaint);
 
     // myEmitterComplaints.emit('viewed-complaint', req.complaint);
     return sendDataResponse(res, 200, { complaint: updatedComplaint });
@@ -191,12 +178,10 @@ export const setComplaintToViewed = async (req, res) => {
 
 export const deleteComplaint = async (req, res) => {
   console.log('deleteComplaint');
-  const id = Number(req.params.id);
-  console.log(id);
+  const complaintId = req.params.complaintId
 
   try {
-    const foundComplaint = await findComplaintById(id);
-    console.log('foundComplaint', foundComplaint);
+    const foundComplaint = await findComplaintById(complaintId);
 
     if (!foundComplaint) {
       // Create error instance
@@ -210,8 +195,9 @@ export const deleteComplaint = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    await deleteComplaintById(id);
+    await deleteComplaintById(complaintId);
     myEmitterComplaints.emit('deleted-complaint', req.user);
+    
     return sendDataResponse(res, 200, {
       complaint: foundComplaint,
       message: `Complaint ${foundComplaint.name} deleted`,

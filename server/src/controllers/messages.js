@@ -14,33 +14,29 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
+  BadRequestEvent
 } from '../event/utils/errorUtils.js';
 
 export const getAllMessages = async (req, res) => {
   console.log('get all messages');
   try {
-    // Find all messages
     const foundMessages = await findAllMessages();
 
-    // If no found messages
     if (!foundMessages) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found messages',
-        'Event database'
+        'Not found Eveny',
+        'Messages database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     // myEmitterMessages.emit('get-all-messages', req.user);
     return sendDataResponse(res, 200, { messages: foundMessages });
-    //
   } catch (err) {
     //
-    const serverError = new ServerErrorEvent(req.user, `Get all events`);
+    const serverError = new ServerErrorEvent(req.user, `Get all messages`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
@@ -49,17 +45,12 @@ export const getAllMessages = async (req, res) => {
 
 
 export const getMessageById = async (req, res) => {
-  console.log('USer by ID req', req.user);
-  console.log('req.params', req.params);
+  console.log('getMessageById');
   const messageId = req.params.messageId
 
   try {
-    console.log('test');
     const foundMessage = await findMessageById(messageId);
-    console.log('foundMessage', foundMessage);
-    // If no found messages
     if (!foundMessage) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -72,7 +63,6 @@ export const getMessageById = async (req, res) => {
     // myEmitterMessages.emit('get-message-by-id', req.user)
     return sendDataResponse(res, 200, { message: foundMessage });
   } catch (err) {
-    //
     const serverError = new ServerErrorEvent(req.user, `Get message by ID`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -83,12 +73,9 @@ export const getMessageById = async (req, res) => {
 export const createNewMessage = async (req, res) => {
   console.log('createNewMessage');
   const { subject, content, sentFromId, userId } = req.body;
-  console.log(req.body);
 
   try {
-    //
     if (!subject || !content || !sentFromId || !userId) {
-      //
       const missingField = new MissingFieldEvent(
         null,
         'Message creation: Missing Field/s event'
@@ -98,9 +85,8 @@ export const createNewMessage = async (req, res) => {
     }
 
     const foundUser = await findUserById(userId);
-    console.log('found message', foundUser);
 
-    if (foundUser) {
+    if (!foundUser) {
       return sendDataResponse(res, 400, { message: 'Recipient not found in database' });
     }
 
@@ -108,10 +94,8 @@ export const createNewMessage = async (req, res) => {
     console.log('created message', createdMessage);
 
     // myEmitterMessages.emit('create-message', createdMessage);
-
     return sendDataResponse(res, 201, { createdMessage });
   } catch (err) {
-    //
     const serverError = new ServerErrorEvent(req.user, `Create new message`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -119,18 +103,13 @@ export const createNewMessage = async (req, res) => {
   }
 };
 
-
 export const getMessagesFromUser = async (req, res) => {
-  console.log('get user id message');
+  console.log('get user messages');
   const userId = req.params.userId;
-  console.log('useeId', userId);
 
   try {
-    console.log('test');
     const foundUser = await findUserById(userId);
-    console.log('foundUser', foundUser);
     if (!foundUser) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found event',
@@ -142,15 +121,23 @@ export const getMessagesFromUser = async (req, res) => {
 
     const foundMessages = await findUserMessagesById(userId);
     console.log('foundMessages', foundMessages);
-    // If no found users
+
+    if (!foundMessages) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found event',
+        `No found messages for user ${userId}`
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     myEmitterMessages.emit('get-user-messages', req.user);
     return sendDataResponse(res, 200, { messages: foundMessages });
   } catch (err) {
-    //
     const serverError = new ServerErrorEvent(
       req.user,
-      `Get user messages by ID`
+      `Get user messages by user`
     );
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -158,18 +145,13 @@ export const getMessagesFromUser = async (req, res) => {
   }
 };
 
-
 export const setMessageToViewed = async (req, res) => {
   console.log('setMessageToView');
   const messageId = req.params.messageId;
-  console.log('messageId', messageId);
 
   try {
     const foundMessage = await findMessageById(messageId);
-    console.log('foundMessage', foundMessage);
-    // If no found messages
     if (!foundMessage) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.message,
         'Not found event',
@@ -180,12 +162,20 @@ export const setMessageToViewed = async (req, res) => {
     }
 
     const updatedMessage = await updateMessageToViewed(messageId);
-    console.log('updated message', updatedMessage);
+
+    if (!updatedMessage) {
+      const notFound = new BadRequestEvent(
+        req.user,
+        'Not found event',
+        `No found messages for user ${userId}`
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
 
     // myEmitterMessages.emit('viewed-message', req.message);
     return sendDataResponse(res, 200, { message: updatedMessage });
   } catch (err) {
-    // Create error instance
     const serverError = new ServerErrorEvent(
       `Viewed Message Server error`
     );
@@ -202,7 +192,6 @@ export const deleteMessage = async (req, res) => {
 
   try {
     const foundMessage = await findMessageById(messageId);
-    console.log('foundMessage', foundMessage);
 
     if (!foundMessage) {
       // Create error instance

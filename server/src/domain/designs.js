@@ -17,6 +17,22 @@ export const findUserDesignsById = (userId) =>
     where: { userId: userId },
   });
 
+export const checkFileDoesntExist = (name, userId) => 
+  dbClient.design.findFirst({
+    AND: [
+      {
+        name: {
+          equals: name,
+        },
+      },
+      {
+        userId: {
+          equals: userId,
+        },
+      },
+    ],
+  })
+
 export const createDesign = (userId, name, colorPalette) =>
   dbClient.design.create({
     data: {

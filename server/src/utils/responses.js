@@ -9,6 +9,35 @@ const STATUS_MESSAGES = {
   500: 'error',
 };
 
+export const EVENT_MESSAGES = {
+  badRequest: `Bad Request`,
+  notFound: `Not Found`,
+  missingUserIdentifier: `Missing User identifier`,
+  // Notifications
+  userNotificationsNotFound: `User notifications not found`,
+  notificationIdNotFound: `Failed find notification`,
+  createNotificationFail: `Failed to create notification`,
+  markNotificationViewedFailed: `Failed to mark notification as viewed`,
+  // Projects
+  createProjectFail: `Failed to create project`,
+  // Reviews
+  createReviewFail: `Failed to create review`,
+  notFoundReview: `Failed to find review/s`,
+  // Users
+  userNotFound: `User not found`,
+  allUsersNotFound: `User database not found`,
+  emailInUse: `Email already in use`,
+  emailNotFound: `Email not found in database`,
+  createUserFail: `Failed to create new user`,
+  passwordMatchError: `Password match error for reset Password - New passwords do not match`,
+  passwordResetError: `Account record doesn't exist or has been reset already.`,
+  // Verification
+  verificationNotFound: `Verification record not found`,
+  verificationNotFoundReturnMessage: `Account record doesn't exist or has been verified already. Please sign up or log in.`,
+  expiredLinkMessage: `Links has expired, please sign up or log in and check your account`,
+  invalidVerificationMessage: `Invalid verification details passed. Check your inbox, or contact support`,
+
+}
 // Error responses for eventEmitter/errors
 export const RESPONSE_MESSAGES = {
   ConfictEvent: 'Request conflicts with data on server',

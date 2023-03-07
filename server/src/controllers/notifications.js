@@ -11,44 +11,41 @@ import {
   findViewedNotifications,
 } from '../domain/notifications.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
+  BadRequestEvent
 } from '../event/utils/errorUtils.js';
 import { findUserById } from '../domain/users.js';
 
 export const getAllNotifications = async (req, res) => {
   console.log('get all notifications');
   try {
-    // Find all notifications
     const foundNotifications = await findAllNotifications();
 
-    // If no found notifications
     if (!foundNotifications) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found notifications',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     foundNotifications.forEach((note, index) => {
-      const date = note.createdAt.toLocaleString();
-      note.createdAt = date;
+      const createdDate = note.createdAt.toLocaleString();
+      const updatedDate = note.updatedAt.toLocaleString();
+      note.createdAt = createdDate;
+      note.updatedAt = updatedDate;
     });
 
     myEmitterNotifications.emit('get-all-notifications', req.user);
     return sendDataResponse(res, 200, { notifications: foundNotifications });
-    //
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(req.user, `Get all notifications`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
@@ -59,28 +56,25 @@ export const getAllNotifications = async (req, res) => {
 export const getNotificationsByUserId = async (req, res) => {
   console.log('getNotificationsByUserId');
   const userId = req.params.userId;
-  console.log('userId', userId);
 
   try {
-    // Find all notifications
     const foundNotifications = await findNotificationsByUserId(userId);
 
-    // If no found notifications
     if (!foundNotifications) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         `Not found notifications for user ${userId}`,
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     foundNotifications.forEach((note, index) => {
-      const date = note.createdAt.toLocaleString();
-      note.createdAt = date;
+      const createdDate = note.createdAt.toLocaleString();
+      const updatedDate = note.updatedAt.toLocaleString();
+      note.createdAt = createdDate;
+      note.updatedAt = updatedDate;
     });
 
     myEmitterNotifications.emit('get-notifications-for-user', req.user);
@@ -109,20 +103,22 @@ export const getViewedNotificationsByUserId = async (req, res) => {
 
     if (!foundUser) {
       return sendDataResponse(res, 404, {
-        notification: 'User not found in database',
+        notification: EVENT_MESSAGES.userNotFound,
       });
     }
 
     const foundNotifications = await findViewedNotifications(userId, value);
 
     foundNotifications.forEach((note, index) => {
-      const date = note.createdAt.toLocaleString();
-      note.createdAt = date;
+      const createdDate = note.createdAt.toLocaleString();
+      const updatedDate = note.updatedAt.toLocaleString();
+      note.createdAt = createdDate;
+      note.updatedAt = updatedDate;
     });
 
     if (!foundNotifications) {
       return sendDataResponse(res, 404, {
-        notification: 'User notifications not found in database',
+        notification: EVENT_MESSAGES.userNotificationsNotFound,
       });
     }
 
@@ -139,9 +135,10 @@ export const getViewedNotificationsByUserId = async (req, res) => {
     throw err;
   }
 };
+
 export const createNotification = async (req, res) => {
+  console.log('createNotification')
   const { type, content, userId } = req.body;
-  console.log(type, content, userId);
 
   try {
     if (!type || !content || !userId) {
@@ -160,11 +157,20 @@ export const createNotification = async (req, res) => {
       userId
     );
 
-    // myEmitterNotifications.emit('create-notification', createdNotification);
+    if (!createdNotification) {
+      const notCreated = new BadRequestEvent(
+        req.user,
+        EVENT_MESSAGES.badRequest,
+        EVENT_MESSAGES.createNotificationFail
+      );
+      myEmitterErrors.emit('error', notCreated);
+      return sendMessageResponse(res, notCreated.code, notCreated.message);
+    }
 
+    // myEmitterNotifications.emit('create-notification', createdNotification);
     return sendDataResponse(res, 201, { createdNotification });
   } catch (err) {
-    //
+    // Error
     const serverError = new ServerErrorEvent(
       req.user,
       `Create new notification`
@@ -177,26 +183,31 @@ export const createNotification = async (req, res) => {
 
 export const setNotificationToViewed = async (req, res) => {
   console.log('setNotificationToView');
-  const { notificationId } = req.params;
-  console.log('notificationId', notificationId);
+  const notificationId = req.params.notificationId;
 
   try {
     const foundNotification = await findNotificationById(notificationId);
-    console.log('foundNotification', foundNotification);
-    // If no found notifications
     if (!foundNotification) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.notification,
-        'Not found event',
-        'Cant find notification by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.notificationIdNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
     const updatedNotification = await updateNotificationById(notificationId);
-    console.log('updated notification', updatedNotification);
+
+    if (!updatedNotification) {
+      const notCreated = new BadRequestEvent(
+        req.user,
+        EVENT_MESSAGES.badRequest,
+        EVENT_MESSAGES.markNotificationViewedFailed
+      );
+      myEmitterErrors.emit('error', notCreated);
+      return sendMessageResponse(res, notCreated.code, notCreated.message);
+    }
 
     // myEmitterNotifications.emit('viewed-notification', req.notification);
     return sendDataResponse(res, 200, { notification: updatedNotification });
@@ -213,25 +224,21 @@ export const setNotificationToViewed = async (req, res) => {
 
 export const deleteNotification = async (req, res) => {
   console.log('deleteNotification');
-  const id = req.params.notificationId;
-  console.log(id);
+  const notificationId = req.params.notificationId;
 
   try {
-    const foundNotification = await findNotificationById(id);
-    console.log('foundNotification', foundNotification);
-    // If no found notifications
+    const foundNotification = await findNotificationById(notificationId);
     if (!foundNotification) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.notification,
-        'Not found event',
-        'Cant find notification by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.notificationIdNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    await deleteNotificationById(id);
+    await deleteNotificationById(notificationId);
     // myEmitterNotifications.emit('deleted-notification', req.user);
     return sendDataResponse(res, 200, {
       notification: foundNotification,

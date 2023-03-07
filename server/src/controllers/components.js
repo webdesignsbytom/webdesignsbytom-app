@@ -15,25 +15,20 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  RegistrationServerErrorEvent,
 } from '../event/utils/errorUtils.js';
 
 export const getAllComponents = async (req, res) => {
   console.log('get all components');
   try {
-    // Find all components
     const foundComponents = await findAllComponents();
 
-    // If no found components
     if (!foundComponents) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found components',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
@@ -42,7 +37,7 @@ export const getAllComponents = async (req, res) => {
     //
   } catch (err) {
     //
-    const serverError = new ServerErrorEvent(req.user, `Get all events`);
+    const serverError = new ServerErrorEvent(req.user, `Get all components`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
@@ -54,10 +49,8 @@ export const getComponentsByQuery = async (req, res) => {
   const query = req.params.query
 
   try {
-
     const foundComponent = await findComponentByQuery(query)
 
-    // Error catch
     if (!foundComponent) {
       const notFound = new NotFoundEvent(
         req.user,
@@ -70,7 +63,6 @@ export const getComponentsByQuery = async (req, res) => {
 
     // myEmitterComponents.emit('find-component-by-query', req.user);
     return sendDataResponse(res, 200, { component: foundComponent });
-
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Find component by query`);
@@ -83,7 +75,7 @@ export const getComponentsByQuery = async (req, res) => {
 export const createNewComponent = async (req, res) => {
   console.log('createNewComponent');
   const { type, name, desc, mainImage, price } = req.body;
-  console.log(req.body);
+
   try {
     if (!type || !name || !desc || !mainImage || !price) {
       //
@@ -96,7 +88,6 @@ export const createNewComponent = async (req, res) => {
     }
 
     const foundComponent = await findComponentByName(name);
-    console.log('found component', foundComponent);
 
     if (foundComponent) {
       return sendDataResponse(res, 400, {
@@ -131,17 +122,14 @@ export const deleteComponent = async (req, res) => {
 
   try {
     const foundComponent = await findComponentById(componentId);
-    console.log('foundComponent', foundComponent);
 
     if (!foundComponent) {
-      // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
         'Not found component',
         'Event database'
       );
       myEmitterErrors.emit('error', notFound);
-      // Send response
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 

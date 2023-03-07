@@ -65,6 +65,7 @@ enum NotificationType {
   COMPLETION
   MESSAGE
   OFFER
+  TEST
 }
 
 model Notification {
@@ -97,10 +98,11 @@ enum EventType {
   ADMIN
   VISITOR
   DEVELOPER
+  TEST
 }
 
 model Event {
-  id           Int       @id @default(autoincrement())
+  id           String    @id @default(uuid())
   type         EventType
   topic        String?
   code         Int?
@@ -121,10 +123,11 @@ enum ComponentType {
   PREMIUM
   NAVIGATION
   API
+  TEST
 }
 
 model Component {
-  id        String           @id @default(uuid())
+  id        String        @id @default(uuid())
   type      ComponentType
   name      String        @default("")
   desc      String        @default("")
@@ -142,10 +145,11 @@ enum PageType {
   BASIC
   PREMIUM
   CANVAS
+  TEST
 }
 
 model Page {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   type      PageType
   name      String    @default("")
   desc      String    @default("")
@@ -161,10 +165,11 @@ enum ProjectType {
   OTHER
   CUSTOM
   SINGLE_PAGE
+  TEST
 }
 
 model Project {
-  id          Int         @id @default(autoincrement())
+  id          String      @id @default(uuid())
   type        ProjectType
   userId      String
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -179,7 +184,7 @@ model Project {
 }
 
 model Design {
-  id           Int            @id @default(autoincrement())
+  id           String         @id @default(uuid())
   name         String
   colorPalette ColorPalette[]
   userId       String
@@ -189,16 +194,16 @@ model Design {
 }
 
 model UserStory {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   content   String
-  projectId Int
+  projectId String
   project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
 
 model ColorPalette {
-  id           Int       @id @default(autoincrement())
+  id           String    @id @default(uuid())
   bgMain       String?   @default("")
   bgAlt        String?   @default("")
   paletteOne   String?   @default("")
@@ -206,7 +211,7 @@ model ColorPalette {
   paletteThree String?   @default("")
   hover        String?   @default("")
   selected     String?   @default("")
-  designId     Int
+  designId     String
   design       Design    @relation(fields: [designId], references: [id], onDelete: Cascade)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
@@ -214,7 +219,7 @@ model ColorPalette {
 
 // User reviews
 model Review {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   value     Int
   email     String    @unique
   userId    String?   @unique
@@ -225,7 +230,7 @@ model Review {
 }
 
 model Complaint {
-  id        Int       @id @default(autoincrement())
+  id        String    @id @default(uuid())
   email     String    @unique
   userId    String?   @unique
   user      User?     @relation(fields: [userId], references: [id])
