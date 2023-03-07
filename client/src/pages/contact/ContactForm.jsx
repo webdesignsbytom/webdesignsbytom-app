@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import CountrySelect from '../../users/utils/CountrySelect';
+// Components
+import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import client from '../../utils/client';
 
 function ContactForm({ formData, setFormData }) {
@@ -41,7 +42,7 @@ function ContactForm({ formData, setFormData }) {
           <input
             type='text'
             name='email'
-            className='standard__inputs'
+            className='contact__inputs'
             placeholder='Email address'
             onChange={handleChange}
           />
@@ -52,7 +53,7 @@ function ContactForm({ formData, setFormData }) {
           <input
             type='tel'
             name='phone'
-            className='standard__inputs'
+            className='contact__inputs'
             placeholder='Phone address'
             onChange={handleChange}
           />
@@ -63,7 +64,7 @@ function ContactForm({ formData, setFormData }) {
           <input
             type='text'
             name='firstName'
-            className='standard__inputs'
+            className='contact__inputs'
             placeholder='First Name'
             onChange={handleChange}
             required
@@ -75,7 +76,7 @@ function ContactForm({ formData, setFormData }) {
           <input
             type='text'
             name='lastName'
-            className='standard__inputs'
+            className='contact__inputs'
             placeholder='LastName'
             onChange={handleChange}
             required
@@ -84,7 +85,7 @@ function ContactForm({ formData, setFormData }) {
         {/* Country input */}
         <div className='mb-2'>
           <label htmlFor='country'>Country</label>
-          <CountrySelect handleChange={handleChange} />
+          <SmallCountrySelect handleChange={handleChange} />
         </div>
 
         {/* Message input */}
@@ -93,8 +94,8 @@ function ContactForm({ formData, setFormData }) {
           <textarea
             name='message'
             id='message'
-            className='w-full p-2'
-            rows='10'
+            className='w-full p-2 overflow-y-scroll resize-none scroll-smooth'
+            rows='5'
             handleChange={handleChange}
           ></textarea>
         </div>

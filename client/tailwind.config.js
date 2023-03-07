@@ -42,6 +42,9 @@ module.exports = {
       },
       fontSize: {
         'ss': '0.5rem'
+      },
+      animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
       }
     },
   },

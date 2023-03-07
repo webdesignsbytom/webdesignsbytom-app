@@ -42,7 +42,7 @@ function DesignElement({ displayElement, savedDesigns }) {
               <div className='group pl-1'>
                 <img
                   src={QMark}
-                  className='w-6 cursor-pointer group transition duration-200  ease-in-out hover:scale-125'
+                  className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                   alt='information'
                   data-te-animation-init
                 />
@@ -51,20 +51,20 @@ function DesignElement({ displayElement, savedDesigns }) {
             </div>
             <nav className='flex'>
               <ul className='flex gap-4 justify-center align-middle'>
-                <li className='menu__link flex align-middle'>
-                  <img src={NewFile}  className='w-5 md:w-6 pr-1' alt="new" />
+                <li className='menu__link flex align-middle group'>
+                  <img src={NewFile}  className='animation__wiggle w-5 md:w-6 pr-1' alt="new" />
                   <p>New</p>
                 </li>
                 <li className='menu__link flex align-middle'>
-                  <img src={FloppyDisk}  className='w-5 md:w-6 pr-1' alt="save" />
+                  <img src={FloppyDisk}  className='w-5 md:w-6 pr-1 animation__wiggle' alt="save" />
                   <p>Save</p>
                 </li>
                 <li className='menu__link flex align-middle'>
-                  <img src={Undo} className='w-5 md:w-6 pr-1' alt="undo" />
+                  <img src={Undo} className='w-5 md:w-6 pr-1 animation__wiggle' alt="undo" />
                   <p>Undo</p>
                 </li>
                 <li className='menu__link flex align-middle'>
-                  <img src={Bin} className='w-5 md:w-6 pr-1' alt="delete" />
+                  <img src={Bin} className='w-5 md:w-6 pr-1 animation__wiggle' alt="delete" />
                   <p>Delete</p>
                 </li>
               </ul>
