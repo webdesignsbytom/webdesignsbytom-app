@@ -45,7 +45,7 @@ function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [activeNav, setActiveNav] = useState('#');
   const [pageName, setPageName] = useState('home');
-
+console.log('user.role', user.role);
   useEffect(() => {
     setActiveNav(window.location.pathname);
     setPageName(window.location.pathname.substring(1));
@@ -219,7 +219,7 @@ function Navbar() {
                         : 'nav__link'
                     }
                   >
-                    <Link>Development</Link>
+                    <Link to='/development'>Development</Link>
                   </li>
                 )}
 
