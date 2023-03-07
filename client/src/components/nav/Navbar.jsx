@@ -142,7 +142,8 @@ function Navbar() {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-6 h-6'
+                  className='w-6 h-6 transition duration-200 ease-in-out focus:scale-125 active:scale-125'
+                  data-te-animation-init
                 >
                   <path
                     strokeLinecap='round'
@@ -461,7 +462,7 @@ function Navbar() {
                 <input
                   type='text'
                   placeholder='Search...'
-                  className='w-full ml-2 pl-2 rounded'
+                  className='w-full ml-2 pl-2 rounded text-black'
                 />
               </div>
             </li>

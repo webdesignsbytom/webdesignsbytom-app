@@ -9,7 +9,7 @@ module.exports = {
         'main-colour': '#cbd5e1',
         'nav-colour': '#cbd5e1',
         'colour-pale': '#f1f5f9',
-        'colour-light': '#6DC85A',
+        'colour-light': '#e2e8f0',
         'colour-med': '#94a3b8',
         'colour-dark': '#1e293b',
         'transparent-black': 'rgba(0, 0, 0, 0.65)',

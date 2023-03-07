@@ -10,8 +10,9 @@ import Undo from '../../img/undo.svg'
 import PageOptions from '../../components/pageOptions/PageOptions';
 import CompenentOptions from '../../components/componentOptions/CompenentOptions';
 import FooterOptions from '../../components/footerOptions/FooterOptions';
+import SavedDesigns from './SavedDesigns';
 
-function DesignElement({ displayElement }) {
+function DesignElement({ displayElement, savedDesigns }) {
   const [fileSaveName, setFileSaveName] = useState('untitled');
 
   //TODO: user effect change of file name and update design name
@@ -39,10 +40,11 @@ function DesignElement({ displayElement }) {
               <div className='group pl-1'>
                 <img
                   src={QMark}
-                  className='w-6 cursor-pointer group'
+                  className='w-6 cursor-pointer group transition duration-200  ease-in-out hover:scale-125'
                   alt='information'
+                  data-te-animation-init
                 />
-                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle'>Enter a name to save your design with</div>
+                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[150px]'>Enter a name to save your design with</div>
               </div>
             </div>
             <nav className='flex'>
@@ -69,6 +71,7 @@ function DesignElement({ displayElement }) {
               {displayElement === 'pages' && <PageOptions />}
               {displayElement === 'components' && <CompenentOptions />}
               {displayElement === 'footers' && <FooterOptions />}
+              {displayElement === 'saves' && <SavedDesigns />}
             </div>
           </section>
         </div>

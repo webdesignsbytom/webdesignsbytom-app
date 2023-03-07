@@ -1,10 +1,13 @@
 import React from 'react';
 
 function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
+  
   const setDisplay = (event) => {
     const { id } = event.target;
+    console.log('ID', id);
     setDisplayElement(id);
   };
+
   return (
     <>
       <div className='bg-colour-pale grid lg:min-w-[200px] lg:h-[calc(100vh-64px)] lg:fixed lg:left-0 lg:border-r-2 lg:border-solid lg:border-black'>
@@ -15,10 +18,14 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
           <nav>
             <ul className='grid gap-2 grid-cols-3 lg:grid-cols-none mb-4 mt-2'>
               <li className='options__link' id='nav' onClick={setDisplay}>
-                <button>Nav</button>
+                <button id='nav' onClick={setDisplay}>
+                  Nav
+                </button>
               </li>
               <li className='options__link' id='palette' onClick={setDisplay}>
-                <button>Color</button>
+                <button id='palette' onClick={setDisplay}>
+                  Color
+                </button>
               </li>
               <li className='options__link' id='pages' onClick={setDisplay}>
                 <button>Pages</button>
@@ -28,17 +35,23 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                 id='components'
                 onClick={setDisplay}
               >
-                <button>Components</button>
+                <button id='components' onClick={setDisplay}>
+                  Components
+                </button>
               </li>
               <li className='options__link' id='footers' onClick={setDisplay}>
-                <button>Footer</button>
+                <button id='footers' onClick={setDisplay}>
+                  Footer
+                </button>
               </li>
               <li
                 className='options__link lg:hidden'
                 id='saves'
                 onClick={setDisplay}
               >
-                <button>Saves</button>
+                <button id='saves' onClick={setDisplay}>
+                  Saves
+                </button>
               </li>
             </ul>
           </nav>

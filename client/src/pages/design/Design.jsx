@@ -3,17 +3,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../../components/nav/Navbar';
 import DesignElement from './DesignElement';
 import OptionsNav from './OptionsNav';
+// Context
 import { UserContext } from '../../context/UserContext';
 import client from '../../utils/client';
 
 function Design() {
   const { user } = useContext(UserContext)
-
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([])
 
-  console.log('DESIGN', user);
-
+console.log('Display', displayElement)
   useEffect(() => {
     client
     .get(`/designs/user-designs/${user.id}`)
@@ -21,7 +20,7 @@ function Design() {
       console.log('res', res.data)
       setSavedDesigns(res.data.data.designs);
     })
-    .catch((err) => console.error('Unable to get unseen notifications', err.response));
+    .catch((err) => console.error('Unable to get designs', err.response));
   }, [])
 
   return (
@@ -35,7 +34,7 @@ function Design() {
           savedDesigns={savedDesigns}
         />
         {/* Preview section */}
-        <DesignElement displayElement={displayElement} />
+        <DesignElement displayElement={displayElement} savedDesigns={savedDesigns} />
       </section>
     </div>
   );

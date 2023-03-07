@@ -18,15 +18,15 @@
 
 /* Nav */
 .phone__nav__li {
-  @apply bg-main-colour mx-2 p-1 rounded ;
+  @apply bg-main-colour text-white mx-2 p-1 rounded transition duration-75 ease-in-out focus:scale-125 active:scale-105 active:bg-colour-light active:text-active-text;
 } 
 
 .selected__nav__li {
-  @apply bg-main-colour mx-2 p-1 rounded text-colour-med ;
+  @apply mx-2 p-1 rounded;
 } 
 
 .phone__nav__link {
-  @apply flex font-bold text-white gap-2 align-middle;
+  @apply flex font-bold gap-2 align-middle;
 }
 
 /* Buttons */

@@ -38,3 +38,18 @@
   }
 }
 
+.animation__scaling:active {
+  animation-name: scaling;
+  animation-duration: .5s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes scaling {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.5;
+  }
+}
+
