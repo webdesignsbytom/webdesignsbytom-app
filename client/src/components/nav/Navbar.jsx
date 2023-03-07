@@ -18,6 +18,8 @@ import Admin from '../../img/admin.svg';
 import Developer from '../../img/developer.svg';
 import MessageIcon from '../../img/messageIcon.svg';
 import Notification from '../../img/notification.svg';
+import TestIcon from '../../img/testIcon.svg';
+import EventsIcon from '../../img/eventsIcon.svg';
 import Search from '../../img/search.svg';
 import Github from '../../img/social/github.svg';
 import Twitter from '../../img/social/twitter.svg';
@@ -30,6 +32,7 @@ import MessagesComponent from '../messages/MessagesComponent';
 import '../../styles/keyframes.css';
 import TestPage from '../../pages/test/TestPage';
 import SocialBar from '../social/SocialBar';
+import EventMenu from '../event/EventMenu';
 
 function Navbar() {
   const {
@@ -41,11 +44,13 @@ function Navbar() {
     toggleTests,
     toggleMessages,
     setToggleMessages,
+    toggleEvents,
+    setToggleEvents,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
   const [activeNav, setActiveNav] = useState('#');
   const [pageName, setPageName] = useState('home');
-console.log('user.role', user.role);
+  console.log('user.role', user.role);
   useEffect(() => {
     setActiveNav(window.location.pathname);
     setPageName(window.location.pathname.substring(1));
@@ -58,10 +63,19 @@ console.log('user.role', user.role);
     setToggleNotifications(false);
     setToggleMessages(false);
     setToggleTests(false);
+    setToggleEvents(false)
   };
 
   const navigateHome = () => {
     navigate('/', { replace: true });
+  };
+
+  const displayEvents = () => {
+    setToggleEvents(true)
+    setToggleNotifications(false);
+    setToggleNavigation(false);
+    setToggleMessages(false);
+    setToggleTests(false);
   };
 
   const displayNotifications = () => {
@@ -69,6 +83,7 @@ console.log('user.role', user.role);
     setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
+    setToggleEvents(false)
   };
 
   const displayMessages = () => {
@@ -76,6 +91,7 @@ console.log('user.role', user.role);
     setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleTests(false);
+    setToggleEvents(false)
   };
 
   const displayTest = () => {
@@ -83,6 +99,7 @@ console.log('user.role', user.role);
     setToggleMessages(false);
     setToggleNavigation(false);
     setToggleNotifications(false);
+    setToggleEvents(false)
   };
 
   const closeNotifications = () => {
@@ -95,6 +112,9 @@ console.log('user.role', user.role);
 
   const closeMessages = () => {
     setToggleMessages(false);
+  };
+  const closeEvents = () => {
+    setToggleEvents(false);
   };
 
   const signOut = (event) => {
@@ -118,6 +138,7 @@ console.log('user.role', user.role);
               closeNotifications();
               closeNavbar();
               closeMessages();
+              closeEvents();
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
@@ -134,6 +155,8 @@ console.log('user.role', user.role);
               onClick={() => {
                 toggleNavbar();
                 closeNotifications();
+                closeMessages();
+                closeEvents();
               }}
               className='md:hidden'
             >
@@ -326,25 +349,6 @@ console.log('user.role', user.role);
                     </div>
                   </Link>
                 </li>
-                {/* Test Page */}
-                <li className='phone__nav__li'>
-                  <Link
-                    className='phone__nav__link'
-                    onClick={() => {
-                      toggleNavbar();
-                      displayTest();
-                    }}
-                  >
-                    <img
-                      src={Notification}
-                      className='w-8'
-                      alt='notNotification'
-                    />
-                    <div className='flex items-center text-xl'>
-                      <h3>Test Page</h3>
-                    </div>
-                  </Link>
-                </li>
               </>
             )}
             {/* Design */}
@@ -403,18 +407,58 @@ console.log('user.role', user.role);
             )}
             {user.role === 'DEVELOPER' && (
               // Developer
-              <li className='phone__nav__li'>
-                <Link
-                  to='/development'
-                  className='phone__nav__link'
-                  onClick={toggleNavbar}
-                >
-                  <img src={Developer} className='w-8' alt='development' />
-                  <div className='flex items-center text-xl'>
-                    <h3>Development</h3>
-                  </div>
-                </Link>
-              </li>
+              <>
+                <li className='phone__nav__li'>
+                  <Link
+                    to='/development'
+                    className='phone__nav__link'
+                    onClick={toggleNavbar}
+                  >
+                    <img src={Developer} className='w-8' alt='development' />
+                    <div className='flex items-center text-xl'>
+                      <h3>Development</h3>
+                    </div>
+                  </Link>
+                </li>
+                {/* Events */}
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayEvents();
+                    }}
+                  >
+                    <img
+                      src={EventsIcon}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <div className='flex items-center text-xl'>
+                      <h3>Events</h3>
+                    </div>
+                  </Link>
+                </li>
+                {/* Test Page */}
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayTest();
+                    }}
+                  >
+                    <img
+                      src={TestIcon}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <div className='flex items-center text-xl'>
+                      <h3>Test Page</h3>
+                    </div>
+                  </Link>
+                </li>
+              </>
             )}
             {!user.email && (
               <>
@@ -529,6 +573,11 @@ console.log('user.role', user.role);
       {toggleMessages && (
         <div className='reveal__component'>
           <MessagesComponent />
+        </div>
+      )}
+      {toggleEvents && (
+        <div className='reveal__component'>
+          <EventMenu />
         </div>
       )}
       {toggleTests && (

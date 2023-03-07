@@ -15,7 +15,7 @@ function ConfirmPolicies() {
     <>
       <section className='fixed bottom-0 border-t-2 border-solid border-black w-full p-2 bg-slate-300 reveal__cookie__policy'>
         <div className='flex gap-2'>
-          <article className='grid align-middle items-center'>
+          <article className='flex lg:grid align-middle items-center'>
             <h2>Confirm Privacy Policies</h2>
           </article>
           <div className='flex gap-2'>
@@ -28,7 +28,7 @@ function ConfirmPolicies() {
           </div>
           <article className='grid text-sm items-center ml-6'>
             <p>
-              For infomation on our privacy and cookies policies, please follow
+              For infomation on our privacy and <span className='text-bold'>cookies</span> policies, please follow
               the link by clicking{' '}
               <span className='text-hyperlink-blue font-bold cursor-pointer'>
                 <Link to='/user-cookie-policy'>
