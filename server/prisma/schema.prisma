@@ -219,11 +219,13 @@ model ColorPalette {
 
 // User reviews
 model Review {
-  id        String    @id @default(uuid())
-  value     Int
-  email     String    @unique
-  userId    String?   @unique
-  user      User?     @relation(fields: [userId], references: [id])
+  id     String  @id @default(uuid())
+  value  Int
+  email  String  @unique
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id])
+  viewed Boolean @default(false)
+
   content   String
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
@@ -235,6 +237,7 @@ model Complaint {
   userId    String?   @unique
   user      User?     @relation(fields: [userId], references: [id])
   content   String
+  viewed    Boolean   @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
