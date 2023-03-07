@@ -39,6 +39,9 @@ module.exports = {
       },
       width: {
         id: '12ch;'
+      },
+      fontSize: {
+        'ss': '0.5rem'
       }
     },
   },

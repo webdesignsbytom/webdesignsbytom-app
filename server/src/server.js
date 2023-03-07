@@ -6,18 +6,19 @@ import morgan from 'morgan';
 import { join } from 'path';
 import * as url from 'url';
 // Import routers
-import userRouter from './routes/users.js';
-import eventRouter from './routes/events.js';
 import authRouter from './routes/auth.js';
-import notificationRouter from './routes/notifications.js';
-import componentRouter from './routes/components.js';
-import pageRouter from './routes/pages.js';
-import projectRouter from './routes/projects.js';
+import contactRouter from './routes/contacts.js';
 import complaintRouter from './routes/complaints.js';
-import reviewRouter from './routes/reviews.js';
-import paletteRouter from './routes/palettes.js';
+import componentRouter from './routes/components.js';
 import designRouter from './routes/designs.js';
+import eventRouter from './routes/events.js';
+import notificationRouter from './routes/notifications.js';
 import messageRouter from './routes/messages.js';
+import pageRouter from './routes/pages.js';
+import paletteRouter from './routes/palettes.js';
+import projectRouter from './routes/projects.js';
+import reviewRouter from './routes/reviews.js';
+import userRouter from './routes/users.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -36,18 +37,19 @@ const HTTP_URL = process.env.HTTP_URL || 'https://webdesignsbytom-app.vercel.app
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
-app.use('/users', userRouter);
-app.use('/events', eventRouter);
-app.use('/notifications', notificationRouter);
-app.use('/components', componentRouter);
-app.use('/projects', projectRouter);
-app.use('/complaints', complaintRouter);
-app.use('/messages', messageRouter);
-app.use('/reviews', reviewRouter);
-app.use('/designs', designRouter);
-app.use('/color-palette', paletteRouter);
-app.use('/pages', pageRouter);
 app.use('/', authRouter);
+app.use('/color-palette', paletteRouter);
+app.use('/complaints', complaintRouter);
+app.use('/components', componentRouter);
+app.use('/contacts', contactRouter);
+app.use('/designs', designRouter);
+app.use('/events', eventRouter);
+app.use('/messages', messageRouter);
+app.use('/notifications', notificationRouter);
+app.use('/pages', pageRouter);
+app.use('/projects', projectRouter);
+app.use('/reviews', reviewRouter);
+app.use('/users', userRouter);
 
 // Server interface page
 app.get('/', (req, res) => {

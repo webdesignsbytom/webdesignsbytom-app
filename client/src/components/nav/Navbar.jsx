@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // Context
 import { ToggleContext } from '../../context/ToggleContext';
 import { UserContext } from '../../context/UserContext';
@@ -25,7 +25,7 @@ import LinkedIn from '../../img/social/linkedin.svg';
 import Instagram from '../../img/social/instagram.svg';
 // Components
 import Notifications from '../notifications/Notifications';
-import MessagesComponent from '../messages/MessageComponent';
+import MessagesComponent from '../messages/MessagesComponent';
 // Styles
 import '../../styles/keyframes.css';
 import TestPage from '../../pages/test/TestPage';

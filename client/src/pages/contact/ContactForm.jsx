@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CountrySelect from '../../users/utils/CountrySelect';
+import client from '../../utils/client';
 
 function ContactForm({ formData, setFormData }) {
+  const [contactSuccessMessage, setContactSuccessMessage] = useState({})
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log('VALUE', value);
@@ -15,6 +17,16 @@ function ContactForm({ formData, setFormData }) {
   console.log('formData', formData);
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    console.log('formData', formData);
+    client
+      .post(`/contacts/create`, formData, false)
+      .then((res) => {
+        setContactSuccessMessage(res.data.data.createdContact);
+      })
+      .catch((err) => {
+        console.error('Unable to send contact message', err);
+      });
   };
 
   return (
@@ -76,10 +88,17 @@ function ContactForm({ formData, setFormData }) {
         </div>
 
         {/* Message input */}
-        <div className='mb-2 p-1'>
+        <div className='mb-2'>
           <label htmlFor='message'>Message:</label>
-          <textarea name='message' id='message' className='w-full' rows='10'></textarea>
+          <textarea
+            name='message'
+            id='message'
+            className='w-full p-2'
+            rows='10'
+            handleChange={handleChange}
+          ></textarea>
         </div>
+
         {/* <!-- Submit button --> */}
         <div className='mb-2'>
           <button

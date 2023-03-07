@@ -126,6 +126,19 @@ enum ComponentType {
   TEST
 }
 
+model Contact {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  phone     Int       @default(000)
+  firstName String    @default("")
+  lastName  String    @default("")
+  country   String    @default("")
+  message   String    @default("")
+  viewed    Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
 model Component {
   id        String        @id @default(uuid())
   type      ComponentType

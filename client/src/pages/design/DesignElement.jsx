@@ -7,6 +7,8 @@ import QMark from '../../img/questionMark.svg';
 import FloppyDisk from '../../img/floppyDisk.svg'
 import Bin from '../../img/bin.svg';
 import Undo from '../../img/undo.svg'
+import NewFile from '../../img/newFile.svg'
+// Components
 import PageOptions from '../../components/pageOptions/PageOptions';
 import CompenentOptions from '../../components/componentOptions/CompenentOptions';
 import FooterOptions from '../../components/footerOptions/FooterOptions';
@@ -50,15 +52,19 @@ function DesignElement({ displayElement, savedDesigns }) {
             <nav className='flex'>
               <ul className='flex gap-4 justify-center align-middle'>
                 <li className='menu__link flex align-middle'>
-                  <img src={FloppyDisk}  className='w-6 pr-1' alt="save" />
+                  <img src={NewFile}  className='w-5 md:w-6 pr-1' alt="new" />
+                  <p>New</p>
+                </li>
+                <li className='menu__link flex align-middle'>
+                  <img src={FloppyDisk}  className='w-5 md:w-6 pr-1' alt="save" />
                   <p>Save</p>
                 </li>
                 <li className='menu__link flex align-middle'>
-                  <img src={Undo} className='w-6 pr-1' alt="undo" />
+                  <img src={Undo} className='w-5 md:w-6 pr-1' alt="undo" />
                   <p>Undo</p>
                 </li>
                 <li className='menu__link flex align-middle'>
-                  <img src={Bin} className='w-6 pr-1' alt="delete" />
+                  <img src={Bin} className='w-5 md:w-6 pr-1' alt="delete" />
                   <p>Delete</p>
                 </li>
               </ul>

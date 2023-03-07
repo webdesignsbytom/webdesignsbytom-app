@@ -24,6 +24,10 @@ export const EVENT_MESSAGES = {
   componentTag: `Component database`,
   componentNotFound: `Failed to find component/s`,
   createComponentFail: `Failed to create component`,
+  // Contacts
+  contactTag: `Contact database`,
+  contactNotFound: `Failed to find contact/s`,
+  createContactFail: `Failed to create contact`,
   // Designs
   designTag: `Design database`,
   designNotFound: `Failed to find design/s`,

@@ -8,11 +8,11 @@
 }
 
 .menu__link {
-  @apply cursor-pointer text-sm lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text  dark:text-white 
+  @apply grid sm:flex cursor-pointer text-xs md:text-sm lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text  dark:text-white 
 }
 
 .options__link {
-  @apply cursor-pointer text-sm lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text border-2 border-solid border-black rounded text-center 
+  @apply cursor-pointer text-xs lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text border-2 border-solid border-black rounded text-center 
   lg:text-left hover:bg-zinc-400 active:bg-red-300 dark:text-white
 }
 

@@ -7,6 +7,7 @@ import { contactFormTemplate } from '../../utils/utils';
 
 function Contact() {
   const [formData, setFormData] = useState(contactFormTemplate)
+  
   return (
     <>
       <div className='bg-white dark:bg-black h-screen lg:overflow-hidden'>

@@ -3,6 +3,6 @@ export const contactFormTemplate = {
     phone: '',
     firstName: '',
     lastName: '',
-    country: '',
+    country: 'United Kingdom',
     message: ''
 }
