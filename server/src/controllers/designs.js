@@ -28,7 +28,7 @@ export const getAllDesigns = async (req, res) => {
     if (!foundDesigns) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Designs database'
       );
       myEmitterErrors.emit('error', notFound);
@@ -57,7 +57,7 @@ export const getDesignById = async (req, res) => {
     if (!foundDesign) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find design by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -85,8 +85,8 @@ export const getDesignsFromUser = async (req, res) => {
     if (!foundUser) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -133,7 +133,7 @@ export const createNewDesign = async (req, res) => {
     if (!foundUser) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find user, design create'
       );
       myEmitterErrors.emit('error', notFound);
@@ -145,7 +145,7 @@ export const createNewDesign = async (req, res) => {
     if (!createdDesign) {
       const notCreated = new BadRequestEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant create design for user'
       );
       myEmitterErrors.emit('error', notCreated);

@@ -3,7 +3,7 @@ import { myEmitterErrors } from '../event/errorEvents.js';
 import { myEmitterEvents } from '../event/eventsLog.js';
 import { findAllEvents } from '../domain/events.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
@@ -19,8 +19,8 @@ export const getAllEvents = async (req, res) => {
     if (!foundEvents) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found events',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.eventTag
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);

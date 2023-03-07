@@ -85,7 +85,7 @@ export const getReviewsFromUser = async (req, res) => {
       const notFound = new NotFoundEvent(
         req.user,
         EVENT_MESSAGES.notFound,
-        'Cant find user by ID'
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -95,7 +95,7 @@ export const getReviewsFromUser = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant user reviews'
       );
       myEmitterErrors.emit('error', notFound);

@@ -10,7 +10,7 @@ import {
   deleteComponentById,
 } from '../domain/components.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
@@ -25,8 +25,9 @@ export const getAllComponents = async (req, res) => {
     if (!foundComponents) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found components',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.componentTag
+
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -54,8 +55,8 @@ export const getComponentsByQuery = async (req, res) => {
     if (!foundComponent) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found components',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.componentTag
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -126,8 +127,8 @@ export const deleteComponent = async (req, res) => {
     if (!foundComponent) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found component',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.componentTag
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);

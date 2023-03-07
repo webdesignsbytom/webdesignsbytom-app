@@ -55,7 +55,7 @@ export const getPaletteById = async (req, res) => {
     if (!foundPalette) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find palette by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -83,8 +83,8 @@ export const getPalettesFromUser = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -94,7 +94,7 @@ export const getPalettesFromUser = async (req, res) => {
     if (!foundPalettes) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found Event',
+        EVENT_MESSAGES.notFound,
         'Palette database'
       );
       myEmitterErrors.emit('error', notFound);
@@ -133,7 +133,7 @@ export const createNewPalette = async (req, res) => {
     if (!foundUser) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found Event',
+        EVENT_MESSAGES.notFound,
         'User database'
       );
       myEmitterErrors.emit('error', notFound);

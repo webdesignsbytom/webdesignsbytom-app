@@ -9,7 +9,7 @@ import {
   updateMessageToViewed
 } from '../domain/messages.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
@@ -25,8 +25,8 @@ export const getAllMessages = async (req, res) => {
     if (!foundMessages) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found Eveny',
-        'Messages database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.messageTag
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -53,8 +53,8 @@ export const getMessageById = async (req, res) => {
     if (!foundMessage) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find message by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.messageNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -112,8 +112,8 @@ export const getMessagesFromUser = async (req, res) => {
     if (!foundUser) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -125,7 +125,7 @@ export const getMessagesFromUser = async (req, res) => {
     if (!foundMessages) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         `No found messages for user ${userId}`
       );
       myEmitterErrors.emit('error', notFound);
@@ -154,7 +154,7 @@ export const setMessageToViewed = async (req, res) => {
     if (!foundMessage) {
       const notFound = new NotFoundEvent(
         req.message,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find message by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -166,7 +166,7 @@ export const setMessageToViewed = async (req, res) => {
     if (!updatedMessage) {
       const notFound = new BadRequestEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         `No found messages for user ${userId}`
       );
       myEmitterErrors.emit('error', notFound);

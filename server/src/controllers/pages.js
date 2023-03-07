@@ -54,7 +54,7 @@ export const getPageById = async (req, res) => {
     if (!foundPage) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
+        EVENT_MESSAGES.notFound,
         'Cant find page by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -127,8 +127,8 @@ export const getPagesFromUser = async (req, res) => {
     if (!foundUser) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -169,7 +169,7 @@ export const deletePage = async (req, res) => {
     if (!foundPage) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found Event',
+        EVENT_MESSAGES.notFound,
         'Pages database'
       );
       myEmitterErrors.emit('error', notFound);

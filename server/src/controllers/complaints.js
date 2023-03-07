@@ -11,7 +11,7 @@ import {
 } from '../domain/complaints.js';
 import { findUserById } from '../domain/users.js';
 // Response messages
-import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
@@ -30,8 +30,8 @@ export const getAllComplaints = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found complaints',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.complaintTag
       );
       myEmitterErrors.emit('error', notFound);
       // Send response
@@ -61,8 +61,8 @@ export const getComplaintById = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find complaint by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.complaintNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -89,8 +89,8 @@ export const getComplaintsFromUser = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found event',
-        'Cant find user by ID'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.userNotFound
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -154,8 +154,8 @@ export const setComplaintToViewed = async (req, res) => {
     if (!foundComplaint) {
       // Create error instance
       const notFound = new NotFoundEvent(
-        'Not found event',
-        'Cant set complaint to viewed'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.markComplaintViewedFailed
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -187,8 +187,8 @@ export const deleteComplaint = async (req, res) => {
       // Create error instance
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found complaint',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.complaintTag
       );
       myEmitterErrors.emit('error', notFound);
       // Send response
