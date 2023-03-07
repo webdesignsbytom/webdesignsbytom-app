@@ -16,21 +16,22 @@ import Register from '../../img/register.svg';
 import Logout from '../../img/logout.svg';
 import Admin from '../../img/admin.svg';
 import Developer from '../../img/developer.svg';
-import Search from '../../img/search.svg';
+import MessageIcon from '../../img/messageIcon.svg';
 import Notification from '../../img/notification.svg';
+import Search from '../../img/search.svg';
 import Github from '../../img/social/github.svg';
 import Twitter from '../../img/social/twitter.svg';
 import LinkedIn from '../../img/social/linkedin.svg';
 import Instagram from '../../img/social/instagram.svg';
 // Components
 import Notifications from '../notifications/Notifications';
+import MessagesComponent from '../messages/MessageComponent';
 // Styles
 import '../../styles/keyframes.css';
 import TestPage from '../../pages/test/TestPage';
 import SocialBar from '../social/SocialBar';
 
 function Navbar() {
-  console.log('xxxxxxx', window.location.pathname);
   const {
     toggleNavigation,
     setToggleNavigation,
@@ -38,19 +39,25 @@ function Navbar() {
     setToggleNotifications,
     setToggleTests,
     toggleTests,
+    toggleMessages,
+    setToggleMessages,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
   const [activeNav, setActiveNav] = useState('#');
-  console.log('ACTIVE', activeNav);
+  const [pageName, setPageName] = useState('home')
 
   useEffect(() => {
     setActiveNav(window.location.pathname);
+    setPageName(window.location.pathname.substring(1));
   }, []);
 
   let navigate = useNavigate();
 
   const toggleNavbar = () => {
     setToggleNavigation(!toggleNavigation);
+    setToggleNotifications(false);
+    setToggleMessages(false);
+    setToggleTests(false);
   };
 
   const navigateHome = () => {
@@ -59,10 +66,23 @@ function Navbar() {
 
   const displayNotifications = () => {
     setToggleNotifications(true);
+    setToggleNavigation(false);
+    setToggleMessages(false);
+    setToggleTests(false);
+  };
+  
+  const displayMessages = () => {
+    setToggleMessages(true);
+    setToggleNavigation(false);
+    setToggleNotifications(false);
+    setToggleTests(false);
   };
 
   const displayTest = () => {
     setToggleTests(true);
+    setToggleMessages(false);
+    setToggleNavigation(false);
+    setToggleNotifications(false);
   };
 
   const closeNotifications = () => {
@@ -71,6 +91,10 @@ function Navbar() {
 
   const closeNavbar = () => {
     setToggleNavigation(false);
+  };
+
+  const closeMessages = () => {
+    setToggleMessages(false);
   };
 
   const signOut = (event) => {
@@ -93,11 +117,15 @@ function Navbar() {
               navigateHome();
               closeNotifications();
               closeNavbar();
+              closeMessages()
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
             Logo
           </div>
+          <section className='md:hidden'>
+            <h3 className='text-sm capitalize text-colour-dark font-bold'>{pageName}</h3>
+          </section>
           <section>
             {/* Phone nav bar */}
             <nav
@@ -135,6 +163,7 @@ function Navbar() {
                 </li>
 
                 {user.email && (
+                  // Account
                   <li
                     className={
                       activeNav === '/account' ? 'selected__link' : 'nav__link'
@@ -143,6 +172,7 @@ function Navbar() {
                     <Link to='/account'>Account</Link>
                   </li>
                 )}
+                {/* Design */}
                 <li
                   className={
                     activeNav === '/design' ? 'selected__link' : 'nav__link'
@@ -150,6 +180,7 @@ function Navbar() {
                 >
                   <Link to='/design'>Design</Link>
                 </li>
+                {/* Contact */}
                 <li
                   className={
                     activeNav === '/contact' ? 'selected__link' : 'nav__link'
@@ -157,7 +188,7 @@ function Navbar() {
                 >
                   <Link to='/contact'>Contact</Link>
                 </li>
-
+                  {/* Portfolio */}
                 <li
                   className={
                     activeNav === '/portfolio' ? 'selected__link' : 'nav__link'
@@ -167,6 +198,7 @@ function Navbar() {
                 </li>
 
                 {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
+                  //  Admin
                   <li
                     className={
                       activeNav === '/admin' ? 'selected__link' : 'nav__link'
@@ -176,24 +208,29 @@ function Navbar() {
                   </li>
                 )}
                 {user.role === 'DEVELOPER' && (
-                  <li className={
-                    activeNav === '/developments' ? 'selected__link' : 'nav__link'
-                  }>
+                  // Developer
+                  <li
+                    className={
+                      activeNav === '/developments'
+                        ? 'selected__link'
+                        : 'nav__link'
+                    }
+                  >
                     <Link>Development</Link>
                   </li>
                 )}
-                
+
                 {!user.email && (
                   <>
+                  {/* Login */}
                     <li
                       className={
                         activeNav === '/login' ? 'selected__link' : 'nav__link'
                       }
                     >
-                      <Link to='/login'>
-                        Login
-                      </Link>
+                      <Link to='/login'>Login</Link>
                     </li>
+                    {/* Register */}
                     <li
                       className={
                         activeNav === '/register'
@@ -201,17 +238,14 @@ function Navbar() {
                           : 'nav__link'
                       }
                     >
-                      <Link to='/register'>
-                        Register
-                      </Link>
+                      <Link to='/register'>Register</Link>
                     </li>
                   </>
                 )}
                 {user.email && (
+                  // Sign out
                   <li className='nav__link'>
-                    <Link onClick={signOut}>
-                      Sign out
-                    </Link>
+                    <Link onClick={signOut}>Sign out</Link>
                   </li>
                 )}
               </ul>
@@ -227,6 +261,7 @@ function Navbar() {
       {toggleNavigation && (
         <div className='absolute bg-colour-med w-full h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
           <ul className='grid gap-2 mt-2'>
+            {/* Home */}
             <li className='phone__nav__li'>
               <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
                 <img src={Home} className='w-8' alt='home' />
@@ -237,6 +272,7 @@ function Navbar() {
             </li>
             {user.email && (
               <>
+                {/* Account */}
                 <li className='phone__nav__li'>
                   <Link
                     to='/account'
@@ -249,6 +285,7 @@ function Navbar() {
                     </div>
                   </Link>
                 </li>
+                {/* Notifications */}
                 <li className='phone__nav__li'>
                   <Link
                     className='phone__nav__link'
@@ -267,6 +304,26 @@ function Navbar() {
                     </div>
                   </Link>
                 </li>
+                {/* Messages */}
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayMessages();
+                    }}
+                  >
+                    <img
+                      src={MessageIcon}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <div className='flex items-center text-xl'>
+                      <h3>Messages</h3>
+                    </div>
+                  </Link>
+                </li>
+                {/* Test Page */}
                 <li className='phone__nav__li'>
                   <Link
                     className='phone__nav__link'
@@ -287,6 +344,7 @@ function Navbar() {
                 </li>
               </>
             )}
+            {/* Design */}
             <li className='phone__nav__li'>
               <Link
                 to='/design'
@@ -299,6 +357,7 @@ function Navbar() {
                 </div>
               </Link>
             </li>
+            {/* Contact */}
             <li className='phone__nav__li'>
               <Link
                 to='/contact'
@@ -311,6 +370,7 @@ function Navbar() {
                 </div>
               </Link>
             </li>
+            {/* Portfolio */}
             <li className='phone__nav__li'>
               <Link
                 to='/portfolio'
@@ -324,6 +384,7 @@ function Navbar() {
               </Link>
             </li>
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
+              // Admin
               <li className='phone__nav__li'>
                 <Link
                   to='/admin'
@@ -338,6 +399,7 @@ function Navbar() {
               </li>
             )}
             {user.role === 'DEVELOPER' && (
+              // Developer
               <li className='phone__nav__li'>
                 <Link
                   to='/development'
@@ -353,6 +415,7 @@ function Navbar() {
             )}
             {!user.email && (
               <>
+              {/* Login */}
                 <li className='phone__nav__li'>
                   <Link
                     to='/login'
@@ -365,6 +428,7 @@ function Navbar() {
                     </div>
                   </Link>
                 </li>
+                {/* Register */}
                 <li className='phone__nav__li'>
                   <Link
                     to='/register'
@@ -380,6 +444,7 @@ function Navbar() {
               </>
             )}
             {user.email && (
+              // Logout
               <li className='phone__nav__li'>
                 <Link onClick={signOut} className='phone__nav__link'>
                   <img src={Logout} className='w-8' alt='logout' />
@@ -389,6 +454,7 @@ function Navbar() {
                 </Link>
               </li>
             )}
+            {/* Search */}
             <li className='phone__nav__li'>
               <div className='flex'>
                 <img src={Search} className='w-8' alt='search' />
@@ -399,6 +465,7 @@ function Navbar() {
                 />
               </div>
             </li>
+            {/* Social links */}
             <li className='phone__nav__li flex justify-center'>
               <section className='flex gap-1 border-2 border-black border-solid p-2 space-x-2'>
                 <div>
@@ -424,12 +491,17 @@ function Navbar() {
       )}
 
       {toggleNotifications && (
-        <div className='reveal__notifications'>
+        <div className='reveal__component'>
           <Notifications />
         </div>
       )}
+      {toggleMessages && (
+        <div className='reveal__component'>
+          <MessagesComponent />
+        </div>
+      )}
       {toggleTests && (
-        <div className='reveal__notifications'>
+        <div className='reveal__component'>
           <TestPage />
         </div>
       )}

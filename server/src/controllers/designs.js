@@ -19,7 +19,7 @@ import {
   MissingFieldEvent,
   BadRequestEvent,
 } from '../event/utils/errorUtils.js';
-
+import { EVENT_MESSAGES } from '../utils/responses.js';
 export const getAllDesigns = async (req, res) => {
   console.log('get all designs');
   try {
