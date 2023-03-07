@@ -17,6 +17,6 @@ router.get('/', getAllDesigns);
 router.get('/user-designs/:userId', getDesignsFromUser);
 router.get('/:designId', getDesignById);
 router.post('/create', createNewDesign);
-router.delete('/delete/:id', deleteDesign);
+router.delete('/delete/:designId', deleteDesign);
 
 export default router;

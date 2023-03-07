@@ -17,6 +17,6 @@ router.get('/', getAllPages);
 router.get('/user-pages/:userId', getPagesFromUser);
 router.get('/:pageId', getPageById);
 router.post('/create', createNewPage);
-router.delete('/delete/:id', deletePage);
+router.delete('/delete/:pageId', deletePage);
 
 export default router;

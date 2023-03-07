@@ -17,6 +17,6 @@ router.get('/', getAllPalettes);
 router.get('/user-palettes/:userId', getPalettesFromUser);
 router.get('/:paletteId', getPaletteById);
 router.post('/create', createNewPalette);
-router.delete('/delete/:id', deletePalette);
+router.delete('/delete/:paletteId', deletePalette);
 
 export default router;

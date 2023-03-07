@@ -7,14 +7,14 @@ export const findComplaintByName = (name) =>
     where: { name: name },
   });
 
-export const findComplaintById = (id) =>
+export const findComplaintById = (complaintId) =>
   dbClient.complaint.findFirst({
-    where: { id: id },
+    where: { id: complaintId },
   });
 
-export const findUserComplaintsById = (id) =>
+export const findUserComplaintsById = (userId) =>
   dbClient.complaint.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createComplaint = (email, userId, content) =>
@@ -26,9 +26,19 @@ export const createComplaint = (email, userId, content) =>
     },
   });
 
-export const deleteComplaintById = (id) =>
+  export const updateComplaintToViewed = (complaintId) =>
+  dbClient.notification.update({
+    where: {
+      id: complaintId,
+    },
+    data: {
+      viewed: true,
+    },
+  });
+
+export const deleteComplaintById = (complaintId) =>
   dbClient.complaint.delete({
     where: {
-      id: id,
+      id: complaintId,
     },
   });

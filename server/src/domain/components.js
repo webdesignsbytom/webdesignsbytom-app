@@ -7,10 +7,28 @@ export const findComponentByName = (name) =>
     where: { name: name },
   });
 
-export const findComponentById = (id) =>
+export const findComponentById = (componentId) =>
   dbClient.component.findFirst({
-    where: { id: id },
+    where: { id: componentId },
   });
+
+export const findComponentByQuery = (query) => 
+  dbClient.component.findFirst({
+    where: {
+      OR: [
+        {
+          id: {
+            equals: query,
+          },
+        },
+        {
+          name: {
+            equals: query,
+          },
+        },
+      ],
+    },
+  })
 
 export const createComponent = (type, name, desc, mainImage, price) =>
   dbClient.component.create({
@@ -23,9 +41,9 @@ export const createComponent = (type, name, desc, mainImage, price) =>
     }
   })
 
-export const deleteComponentById = (id) => 
+export const deleteComponentById = (componentId) => 
   dbClient.component.delete({
     where: {
-      id: id,
+      id: componentId,
     }
   })

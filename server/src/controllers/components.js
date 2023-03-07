@@ -3,6 +3,7 @@ import { myEmitterErrors } from '../event/errorEvents.js';
 import { myEmitterComponents } from '../event/componentEvents.js';
 import {
   findAllComponents,
+  findComponentByQuery,
   findComponentByName,
   createComponent,
   findComponentById,
@@ -47,6 +48,37 @@ export const getAllComponents = async (req, res) => {
     throw err;
   }
 };
+
+export const getComponentsByQuery = async (req, res) => {
+  console.log('getComponentsByQuery')
+  const query = req.params.query
+
+  try {
+
+    const foundComponent = await findComponentByQuery(query)
+
+    // Error catch
+    if (!foundComponent) {
+      const notFound = new NotFoundEvent(
+        req.user,
+        'Not found components',
+        'Event database'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    // myEmitterComponents.emit('find-component-by-query', req.user);
+    return sendDataResponse(res, 200, { component: foundComponent });
+
+  } catch (err) {
+    //
+    const serverError = new ServerErrorEvent(req.user, `Find component by query`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+}
 
 export const createNewComponent = async (req, res) => {
   console.log('createNewComponent');
@@ -95,11 +127,10 @@ export const createNewComponent = async (req, res) => {
 
 export const deleteComponent = async (req, res) => {
   console.log('deleteComponent');
-  const id = Number(req.params.id);
-  console.log(id);
+  const componentId = req.params.componentId;
 
   try {
-    const foundComponent = await findComponentById(id);
+    const foundComponent = await findComponentById(componentId);
     console.log('foundComponent', foundComponent);
 
     if (!foundComponent) {
@@ -114,7 +145,7 @@ export const deleteComponent = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    await deleteComponentById(id);
+    await deleteComponentById(componentId);
     myEmitterComponents.emit('deleted-component', req.user);
     return sendDataResponse(res, 200, {
       component: foundComponent,

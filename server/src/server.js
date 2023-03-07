@@ -17,6 +17,7 @@ import complaintRouter from './routes/complaints.js';
 import reviewRouter from './routes/reviews.js';
 import paletteRouter from './routes/palettes.js';
 import designRouter from './routes/designs.js';
+import messageRouter from './routes/messages.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -41,6 +42,7 @@ app.use('/notifications', notificationRouter);
 app.use('/components', componentRouter);
 app.use('/projects', projectRouter);
 app.use('/complaints', complaintRouter);
+app.use('/messages', messageRouter);
 app.use('/reviews', reviewRouter);
 app.use('/designs', designRouter);
 app.use('/color-palette', paletteRouter);

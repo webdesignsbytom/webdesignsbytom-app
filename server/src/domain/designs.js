@@ -7,14 +7,14 @@ export const findDesignByName = (name) =>
     where: { name: name },
   });
 
-export const findDesignById = (id) =>
+export const findDesignById = (designId) =>
   dbClient.design.findFirst({
-    where: { id: id },
+    where: { id: designId },
   });
 
-export const findUserDesignsById = (id) =>
+export const findUserDesignsById = (userId) =>
   dbClient.design.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createDesign = (userId, name, colorPalette) =>
@@ -26,9 +26,9 @@ export const createDesign = (userId, name, colorPalette) =>
     },
   });
 
-export const deleteDesignById = (id) =>
+export const deleteDesignById = (designId) =>
   dbClient.design.delete({
     where: {
-      id: id,
+      id: designId,
     },
   });

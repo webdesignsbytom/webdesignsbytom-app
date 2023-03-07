@@ -7,14 +7,14 @@ export const findPageByName = (name) =>
     where: { name: name },
   });
 
-  export const findPageById = (id) =>
+  export const findPageById = (pageId) =>
   dbClient.page.findFirst({
-    where: { id: id },
+    where: { id: pageId },
   });
 
-  export const findUserPagesById = (id) =>
+  export const findUserPagesById = (userId) =>
   dbClient.page.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createPage = (type, name, desc, price) =>
@@ -27,9 +27,9 @@ export const createPage = (type, name, desc, price) =>
     }
   })
 
-  export const deletePageById = (id) => 
+  export const deletePageById = (pageId) => 
   dbClient.page.delete({
     where: {
-      id: id,
+      id: pageId,
     }
   })

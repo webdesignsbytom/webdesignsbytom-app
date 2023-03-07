@@ -7,14 +7,14 @@ export const findPaletteByName = (name) =>
     where: { name: name },
   });
 
-export const findPaletteById = (id) =>
+export const findPaletteById = (paletteId) =>
   dbClient.palette.findFirst({
-    where: { id: id },
+    where: { id: paletteId },
   });
 
-export const findUserPalettesById = (id) =>
+export const findUserPalettesById = (userId) =>
   dbClient.palette.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createPalette = (designId, bgMain, bgAlt, paletteOne, paletteTwo, paletteThree, hover, selected) =>
@@ -31,9 +31,9 @@ export const createPalette = (designId, bgMain, bgAlt, paletteOne, paletteTwo, p
     },
   });
 
-export const deletePaletteById = (id) =>
+export const deletePaletteById = (paletteId) =>
   dbClient.palette.delete({
     where: {
-      id: id,
+      id: paletteId,
     },
   });

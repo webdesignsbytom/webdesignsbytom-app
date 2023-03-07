@@ -17,6 +17,6 @@ router.get('/', getAllReviews);
 router.get('/user-reviews/:userId', getReviewsFromUser);
 router.get('/:reviewId', getReviewById);
 router.post('/create', createNewReview);
-router.delete('/delete/:id', deleteReview);
+router.delete('/delete/:reviewId', deleteReview);
 
 export default router;

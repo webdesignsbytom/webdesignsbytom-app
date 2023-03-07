@@ -7,14 +7,14 @@ export const findReviewByName = (name) =>
     where: { name: name },
   });
 
-export const findReviewById = (id) =>
+export const findReviewById = (reviewId) =>
   dbClient.review.findFirst({
-    where: { id: id },
+    where: { id: reviewId },
   });
 
-export const findUserReviewsById = (id) =>
+export const findUserReviewsById = (userId) =>
   dbClient.review.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createReview = (email, userId, value, content) =>
@@ -23,13 +23,13 @@ export const createReview = (email, userId, value, content) =>
       email: email,
       userId: userId,
       value: value,
-      content: content
+      content: content,
     },
   });
 
-export const deleteReviewById = (id) =>
+export const deleteReviewById = (reviewId) =>
   dbClient.review.delete({
     where: {
-      id: id,
+      id: reviewId,
     },
   });

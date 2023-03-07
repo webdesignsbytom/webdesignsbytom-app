@@ -9,10 +9,10 @@ export const findNotificationsByUserId = (userId) =>
         }
     })
 
-export const findNotificationById = (id) =>
+export const findNotificationById = (notificationId) =>
     dbClient.notification.findFirst({
         where: {
-            id: id,
+            id: notificationId,
         }
     })
 
@@ -34,18 +34,18 @@ export const createNewNotification = (type, content, userId) =>
         }
     })
 
-export const updateNotificationById = (id) =>
+export const updateNotificationById = (notificationId) =>
     dbClient.notification.update({
         where: {
-            id: id,
+            id: notificationId,
         },
         data: {
             viewed: true,
         }
     })
 
-export const deleteNotificationById = (id) => dbClient.notification.delete({
+export const deleteNotificationById = (notificationId) => dbClient.notification.delete({
     where: {
-        id: id,
+        id: notificationId,
     }
 })

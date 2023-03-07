@@ -7,6 +7,7 @@ import {
   findComplaintById,
   deleteComplaintById,
   findUserComplaintsById,
+  updateComplaintToViewed
 } from '../domain/complaints.js';
 import { findUserById } from '../domain/users.js';
 // Response messages
@@ -146,6 +147,42 @@ export const createNewComplaint = async (req, res) => {
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new complaint`);
+    myEmitterErrors.emit('error', serverError);
+    sendMessageResponse(res, serverError.code, serverError.message);
+    throw err;
+  }
+};
+
+
+export const setComplaintToViewed = async (req, res) => {
+  console.log('setComplaintToView');
+  const complaintId = req.params.complaintId
+  console.log('complaintId', complaintId);
+
+  try {
+    const foundComplaint = await findComplaintById(complaintId);
+    console.log('foundComplaint', foundComplaint);
+    // If no found complaints
+    if (!foundComplaint) {
+      // Create error instance
+      const notFound = new NotFoundEvent(
+        'Not found event',
+        'Cant find complaint by ID'
+      );
+      myEmitterErrors.emit('error', notFound);
+      return sendMessageResponse(res, notFound.code, notFound.message);
+    }
+
+    const updatedComplaint = await updateComplaintToViewed(complaintId);
+    console.log('updated complaint', updatedComplaint);
+
+    // myEmitterComplaints.emit('viewed-complaint', req.complaint);
+    return sendDataResponse(res, 200, { complaint: updatedComplaint });
+  } catch (err) {
+    // Create error instance
+    const serverError = new ServerErrorEvent(
+      `Viewed Complaint Server error`
+    );
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;

@@ -108,7 +108,7 @@ export const createNewPage = async (req, res) => {
 
     // myEmitterPages.emit('create-page', createdPage);
 
-    return sendDataResponse(res, 201, { createdUser });
+    return sendDataResponse(res, 201, { createdPage });
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new page`);

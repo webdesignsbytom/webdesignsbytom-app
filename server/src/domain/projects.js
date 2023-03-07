@@ -7,14 +7,14 @@ export const findProjectByName = (name) =>
     where: { name: name },
   });
 
-export const findProjectById = (id) =>
+export const findProjectById = (projectId) =>
   dbClient.project.findFirst({
-    where: { id: id },
+    where: { id: projectId },
   });
 
-export const findUserProjectsById = (id) =>
+export const findUserProjectsById = (userId) =>
   dbClient.project.findMany({
-    where: { userId: id },
+    where: { userId: userId },
   });
 
 export const createProject = (type, name, userId, domainName) =>
@@ -27,9 +27,9 @@ export const createProject = (type, name, userId, domainName) =>
     },
   });
 
-export const deleteProjectById = (id) =>
+export const deleteProjectById = (projectId) =>
   dbClient.project.delete({
     where: {
-      id: id,
+      id: projectId,
     },
   });

@@ -5,6 +5,7 @@ import {
   deleteComplaint,
   getComplaintsFromUser,
   getComplaintById,
+  setComplaintToViewed
 } from '../controllers/complaints.js';
 import {
   validateAuthentication,
@@ -17,6 +18,7 @@ router.get('/', getAllComplaints);
 router.get('/user-complaints/:userId', getComplaintsFromUser);
 router.get('/:complaintId', getComplaintById);
 router.post('/create', createNewComplaint);
-router.delete('/delete/:id', deleteComplaint);
+router.put('/viewed/:complaintId', setComplaintToViewed);
+router.delete('/delete/:complaintId', deleteComplaint);
 
 export default router;

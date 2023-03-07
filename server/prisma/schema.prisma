@@ -32,6 +32,7 @@ model User {
   notifications  Notification[]
   projects       Project[]
   designs        Design[]
+  messages       Message[]
   review         Review?
   complaints     Complaint?
   agreedToTerms  Boolean           @default(false)
@@ -70,11 +71,23 @@ model Notification {
   id        String           @id @default(uuid())
   type      NotificationType
   content   String
-  userId    String           
+  userId    String
   user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   viewed    Boolean          @default(false)
   createdAt DateTime         @default(now())
   updatedAt DateTime?        @updatedAt
+}
+
+model Message {
+  id         String    @id @default(uuid())
+  subject    String
+  content    String
+  sentFromId String
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  viewed     Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
 }
 
 // EVENTS
@@ -111,7 +124,7 @@ enum ComponentType {
 }
 
 model Component {
-  id        Int           @id @default(autoincrement())
+  id        String           @id @default(uuid())
   type      ComponentType
   name      String        @default("")
   desc      String        @default("")

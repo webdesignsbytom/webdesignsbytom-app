@@ -98,11 +98,29 @@ async function seed() {
       },
     });
 
+    const UserMessage = await dbClient.message.create({
+      data: {
+        userId: createdUser.id,
+        subject: 'MESSAGE',
+        content: 'message rest unseen',
+        sentFromId: adminUser.id,
+      },
+    });
+
     const adminNote = await dbClient.notification.create({
       data: {
         userId: adminUser.id,
         type: 'MESSAGE',
         content: 'message rest',
+      },
+    });
+
+    const adminMessage = await dbClient.message.create({
+      data: {
+        userId: createdUser.id,
+        subject: 'MESSAGE',
+        content: 'message rest unseen',
+        sentFromId: devUser.id,
       },
     });
 
@@ -114,21 +132,30 @@ async function seed() {
       },
     });
 
+    const devUserMessage = await dbClient.message.create({
+      data: {
+        userId: createdUser.id,
+        subject: 'MESSAGE',
+        content: 'message rest unseen',
+        sentFromId: adminUser.id,
+      },
+    });
+
     const devUserNoteSeen = await dbClient.notification.create({
       data: {
         userId: devUser.id,
         type: 'MESSAGE',
         content: 'message rest seen',
-        viewed: true
+        viewed: true,
       },
     });
 
     const devDesigns = await dbClient.design.create({
       data: {
-        name: `${i}}`,
+        name: `${i}`,
         userId: devUser.id,
-      }
-    })
+      },
+    });
   }
 
   const eventOne = await dbClient.event.create({
