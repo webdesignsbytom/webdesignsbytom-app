@@ -26,7 +26,7 @@ app.disable('x-powered-by');
 // Add middleware
 app.use(
   cors({ 
-    origin: "*"
+    origin: "https://cute-pudding-2b5aa1.netlify.app/"
   })
 );
 app.use(morgan('dev'));
