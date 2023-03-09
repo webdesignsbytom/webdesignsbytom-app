@@ -26,7 +26,7 @@ app.disable('x-powered-by');
 // Add middleware
 app.use(
   cors({ 
-    origin: process.env.ORIGIN
+    origin: "*"
   })
 );
 app.use(morgan('dev'));
