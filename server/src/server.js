@@ -24,7 +24,11 @@ const app = express();
 app.disable('x-powered-by');
 
 // Add middleware
-app.use(cors());
+app.use(
+  cors({ 
+    origin: process.env.ORIGIN
+  })
+);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
