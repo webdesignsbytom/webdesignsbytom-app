@@ -53,6 +53,7 @@ app.use('/users', userRouter);
 
 // Server interface page
 app.get('/', (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
   res.sendFile('index.html', {
     root: join(__dirname, '..', 'public', 'views'),
   });

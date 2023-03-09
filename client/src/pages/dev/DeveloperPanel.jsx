@@ -4,12 +4,21 @@ import Navbar from '../../components/nav/Navbar';
 // Fetch
 import { getEventsLog } from '../../utils/Fetch';
 import EventLog from './EventLog';
+import client from '../../utils/client';
 
 function DeveloperPanel() {
   const [eventLog, setEventLog] = useState([]);
 
   useEffect(() => {
-    getEventsLog(setEventLog);
+    client
+    .get(`/events`)
+    .then((res) => {
+      console.log('res', res.data);
+      setEventLog(res.data.data.events);
+    })
+    .catch((err) => {
+      console.error('Unable to get all events', err);
+    });
   }, []);
 
   console.log('event log', eventLog);
