@@ -28,7 +28,6 @@ export const getAllEvents = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-    res.header("Access-Control-Allow-Origin", "*");
     // // myEmitterEvents.emit('get-all-events', req.user);
     return sendDataResponse(res, 200, { events: foundEvents });
   } catch (err) {
