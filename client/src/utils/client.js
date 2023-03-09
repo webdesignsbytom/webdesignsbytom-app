@@ -7,7 +7,6 @@ const client = {
     const url = `${host}${path}`;
     const headers = {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
-      headers: {"Access-Control-Allow-Origin": "*"}
     };
     console.log('HEADERS', headers);
     return axios.get(url, { headers });

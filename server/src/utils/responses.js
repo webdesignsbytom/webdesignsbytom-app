@@ -92,13 +92,10 @@ export const RESPONSE_MESSAGES = {
 
 // Data responses
 export function sendDataResponse(res, statusCode, payload) {
-  return (
-    res.header('Access-Control-Allow-Origin', '*'),
-    res.status(statusCode).json({
-      status: STATUS_MESSAGES[statusCode],
-      data: payload,
-    })
-  );
+  return res.status(statusCode).json({
+    status: STATUS_MESSAGES[statusCode],
+    data: payload,
+  });
 }
 
 // Error responses
