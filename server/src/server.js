@@ -26,7 +26,7 @@ app.disable('x-powered-by');
 // Add middleware
 app.use(
   cors({ 
-    origin: "*",
+    origin: "*"
   })
 );
 app.use(morgan('dev'));
@@ -55,24 +55,24 @@ app.use('/projects', projectRouter);
 app.use('/reviews', reviewRouter);
 app.use('/users', userRouter);
 
-// // Server interface page
-// app.get('/', (req, res) => {
-//   res.sendFile('index.html', {
-//     root: join(__dirname, '..', 'public', 'views'),
-//   });
-// });
+// Server interface page
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {
+    root: join(__dirname, '..', 'public', 'views'),
+  });
+});
 
-// // For all unknown requests 404 page returns
-// app.all('*', (req, res) => {
-//   res.status(404);
-//   if (req.accepts('html')) {
-//     res.sendFile(join(__dirname, '..', 'public', 'views', '404.html'));
-//   } else if (req.accepts('json')) {
-//     res.json({ message: '404 Not Found' });
-//   } else {
-//     res.type('txt').send('404 Not Found');
-//   }
-// });
+// For all unknown requests 404 page returns
+app.all('*', (req, res) => {
+  res.status(404);
+  if (req.accepts('html')) {
+    res.sendFile(join(__dirname, '..', 'public', 'views', '404.html'));
+  } else if (req.accepts('json')) {
+    res.json({ message: '404 Not Found' });
+  } else {
+    res.type('txt').send('404 Not Found');
+  }
+});
 
 // Start our API server
 app.listen(PORT, () => {
