@@ -26,7 +26,7 @@ app.disable('x-powered-by');
 // Add middleware
 app.use(
   cors({ 
-    origin: "https://640a4c0603e4690d21de58e8--cute-pudding-2b5aa1.netlify.app/"
+    origin: "https://76.76.21.123:443"
   })
 );
 app.use(morgan('dev'));
