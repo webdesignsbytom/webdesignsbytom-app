@@ -101,7 +101,7 @@ async function seed() {
     const UserMessage = await dbClient.message.create({
       data: {
         userId: createdUser.id,
-        subject: 'MESSAGE',
+        subject: 'TEST',
         content: 'message rest unseen',
         sentFromId: adminUser.id,
       },
@@ -110,7 +110,7 @@ async function seed() {
     const adminNote = await dbClient.notification.create({
       data: {
         userId: adminUser.id,
-        type: 'MESSAGE',
+        type: 'TEST',
         content: 'message rest',
       },
     });
@@ -127,8 +127,8 @@ async function seed() {
     const devUserNote = await dbClient.notification.create({
       data: {
         userId: devUser.id,
-        type: 'MESSAGE',
-        content: 'message rest unseen',
+        type: 'TEST',
+        content: `${i} notification new and shiney`,
       },
     });
 
@@ -144,8 +144,8 @@ async function seed() {
     const devUserNoteSeen = await dbClient.notification.create({
       data: {
         userId: devUser.id,
-        type: 'MESSAGE',
-        content: 'message rest seen',
+        type: 'TEST',
+        content: `${i} Lorem ipsum dolor sit amet old note`,
         viewed: true,
       },
     });

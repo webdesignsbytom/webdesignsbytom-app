@@ -8,9 +8,12 @@ import {
   getUnseenNotifications,
 } from '../../utils/Fetch';
 // Components
-import Note from './Note';
+import Note from './NoteItem';
 import Selector from './Selector';
 import client from '../../utils/client';
+import NewNote from './notes/NewNote';
+import SeenNote from './notes/SeenNote';
+import AllNotes from './notes/AllNotes';
 
 function Notifications() {
   const { user } = useContext(UserContext);
@@ -18,11 +21,12 @@ function Notifications() {
   const [allNotifications, setAllNotifications] = useState([]);
   const [viewedNotifications, setViewedNotifications] = useState([]);
   const [unSeenNotifications, setUnSeenNotifications] = useState([]);
-  const [displayNotifications, setDisplayNotifications] = useState([]);
+  const [displayNotifications, setDisplayNotifications] = useState('new-notifications');
 
   const [createdSuccess, setCreatedSuccess] = useState({});
   const [markedSeenSuccess, setMarkedSeenSuccess] = useState({});
   const [deletedNote, setDeletedNote] = useState({});
+  // For new note
   const [testForm, setTestForm] = useState({
     email: 'test@example.com',
     userId: 1,
@@ -31,39 +35,43 @@ function Notifications() {
   });
 
   console.log('allnotifications', allNotifications);
+  console.log('user', user);
   console.log('viewedNotifications', viewedNotifications);
-  console.log('unseennotifiucatio', unSeenNotifications);
+  console.log('unseennotifiucation', unSeenNotifications);
+
 
   useEffect(() => {
     client
-      .get(`/notifications`)
+      .get(`/notifications/user-notifications/${user.id}`)
       .then((res) => {
         setAllNotifications(res.data.data.notifications);
-        const seenNotes = res.data.data.notifications.filter(
-          (notification) => notification.viewed === true
-        );
-        setViewedNotifications(seenNotes);
-        const unseenNotes = res.data.data.notifications.filter(
-          (notification) => notification.viewed === false
-        );
-        setUnSeenNotifications(unseenNotes);
-        setDisplayNotifications(unseenNotes);
+        const seenNotes = res.data.data.notifications.filter((notification) => notification.viewed === true);
+        setViewedNotifications(seenNotes)
+        const unseenNotes = res.data.data.notifications.filter((notification) => notification.viewed === false);
+        setUnSeenNotifications(unseenNotes)
       })
       .catch((err) => {
         console.error('Unable to get notifications', err);
       });
-  }, [deletedNote, createdSuccess, markedSeenSuccess]);
+  }, [deletedNote, createdSuccess]);
 
   const selectViewed = (event) => {
-    setDisplayNotifications(viewedNotifications)
+    const { id } = event.target
+    console.log('id: ', id);
+    setDisplayNotifications(id)
   };
 
   const selectAll = (event) => {
-    setDisplayNotifications(allNotifications)
+    const { id } = event.target
+    console.log('id: ', id);
+
+    setDisplayNotifications(id)
   };
 
   const selectNew = (event) => {
-    setDisplayNotifications(unSeenNotifications)
+    const { id } = event.target
+    console.log('id: ', id);
+    setDisplayNotifications(id)
   };
 
   const markSeen = (note) => {
@@ -110,46 +118,9 @@ function Notifications() {
         </div>
         {/* Notification list */}
         <section className='grid gap-2 mx-2 lg:mx-6'>
-          {displayNotifications.length > 0 ? (
-            displayNotifications.map((note, index) => {
-              return (
-                <>
-                  <div
-                    key={index}
-                    className='grid grid-cols-3 border-2 border-solid border-black mb-2 mx-2'
-                  >
-                    <div>
-                      <p>Note Id: {note.id}</p>
-                      <p>Type: {note.type}</p>
-                      <p className='text-red-500'>
-                        Viewed: {JSON.stringify(note.viewed)}
-                      </p>
-                    </div>
-                    <div>
-                      <p>Content: {note.content}</p>
-                      <p>UserId: {note.userId}</p>
-                    </div>
-                    <div>
-                      <div
-                        className='cursor-pointer border-2 border-solid border-black h-min p-2'
-                        onClick={() => deleteNotification(note)}
-                      >
-                        Delete X
-                      </div>
-                      <div
-                        className='cursor-pointer border-2 border-solid border-black h-min p-2'
-                        onClick={() => markSeen(note)}
-                      >
-                        Mark Seen
-                      </div>
-                    </div>
-                  </div>
-                </>
-              );
-            })
-          ) : (
-            <p>Nothing to display</p>
-          )}
+          {displayNotifications === 'new-notifications' && <NewNote unSeenNotifications={unSeenNotifications} markSeen={markSeen} deleteNotification={deleteNotification} />}
+          {displayNotifications === 'seen-notifications' && <SeenNote viewedNotifications={viewedNotifications} markSeen={markSeen} deleteNotification={deleteNotification} />}
+          {displayNotifications === 'all-notifications' && <AllNotes allNotifications={allNotifications} markSeen={markSeen} deleteNotification={deleteNotification} />}
         </section>
       </div>
     </>
