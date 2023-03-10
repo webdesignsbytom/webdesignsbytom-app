@@ -112,7 +112,7 @@ function Notifications() {
   return (
     <>
       <div>
-        <div className='flex m-2 justify-between'>
+        <div className='flex mx-2 my-4 justify-between border-b-2 border-black border-solid pb-4'>
           <div className='flex align-middle font-bold pt-1'>
             <h2>Notifications</h2>
           </div>

@@ -24,7 +24,7 @@ module.exports = {
         'event-red': '',
         'hyperlink-blue': '#2563eb',
         'secleted': '#2563eb',
-        'non-selected': '#99DF8A',
+        'non-selected': '#cbd5e1',
       },
       gridTemplateRows: {
         'reg': 'auto 1fr',

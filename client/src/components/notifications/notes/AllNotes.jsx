@@ -4,8 +4,6 @@ import NoteItem from '../NoteItem';
 function AllNotes({ allNotifications, markSeen, deleteNotification }) {
   return (
     <>
-      <div>All Notes</div>
-
       {allNotifications.map((notification, index) => {
         return (
           <>
