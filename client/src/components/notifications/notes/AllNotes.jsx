@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 import NoteItem from '../NoteItem';
 
-function AllNotes({ allNotifications, markSeen, deleteNotification}) {
+function AllNotes({ allNotifications, markSeen, deleteNotification }) {
   return (
     <>
-    <div>All Notes</div>
+      <div>All Notes</div>
 
-    {allNotifications.map((notification, index) => {
-      return (
-        <>
-          <NoteItem key={index} notification={notification} />
-        </>
-      );
-    })}
-  </>
-  )
+      {allNotifications.map((notification, index) => {
+        return (
+          <>
+            <NoteItem key={index} notification={notification} markSeen={markSeen} deleteNotification={deleteNotification}/>
+          </>
+        );
+      })}
+    </>
+  );
 }
 
-export default AllNotes
+export default AllNotes;

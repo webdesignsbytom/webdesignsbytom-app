@@ -10,10 +10,11 @@ function NewNote({ unSeenNotifications, markSeen, deleteNotification }) {
       {unSeenNotifications.map((notification, index) => {
         return (
           <>
-            <NoteItem key={index} notification={notification} />
+            <NoteItem key={index} notification={notification} markSeen={markSeen} deleteNotification={deleteNotification} />
           </>
         );
-      })}
+      })
+      }
     </>
   );
 }

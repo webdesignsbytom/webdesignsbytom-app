@@ -74,9 +74,11 @@ function Notifications() {
     setDisplayNotifications(id)
   };
 
-  const markSeen = (note) => {
+  const markSeen = (noteId) => {
+    console.log('NOTE', noteId);
+
     client
-      .put(`/notifications/viewed/${note.id}`, testForm)
+      .put(`/notifications/viewed/${noteId}`, testForm)
       .then((res) => {
         const newNote = allNotifications.filter(
           (note) => note.id === res.data.data.notification.id
@@ -111,7 +113,7 @@ function Notifications() {
     <>
       <div>
         <div className='flex m-2 justify-between'>
-          <div>
+          <div className='flex align-middle font-bold pt-1'>
             <h2>Notifications</h2>
           </div>
           <Selector selectViewed={selectViewed} selectAll={selectAll} selectNew={selectNew} />

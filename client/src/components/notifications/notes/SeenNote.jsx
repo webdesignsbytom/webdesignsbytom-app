@@ -9,7 +9,7 @@ function SeenNote({ viewedNotifications, markSeen, deleteNotification}) {
     {viewedNotifications.map((notification, index) => {
       return (
         <>
-          <NoteItem key={index} notification={notification} />
+          <NoteItem key={index} notification={notification} markSeen={markSeen} deleteNotification={deleteNotification} />
         </>
       );
     })}
