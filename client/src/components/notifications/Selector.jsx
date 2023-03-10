@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Selector({ handleSelect, displayNotifications }) {
+function Selector({ selectViewed, selectAll, selectNew, displayNotifications }) {
   
   return (
     <>
@@ -13,7 +13,7 @@ function Selector({ handleSelect, displayNotifications }) {
               name='hosting'
               value='all-notifications'
               className='hidden peer'
-              onChange={handleSelect}
+              onChange={selectAll}
             />
             <label
               htmlFor='all-notifications'
@@ -31,7 +31,7 @@ function Selector({ handleSelect, displayNotifications }) {
               name='hosting'
               value='seen-notifications'
               className='hidden peer'
-              onChange={handleSelect}
+              onChange={selectViewed}
             />
             <label
               htmlFor='seen-notifications'
@@ -49,7 +49,7 @@ function Selector({ handleSelect, displayNotifications }) {
               name='hosting'
               value='new-notifications'
               className='hidden peer'
-              onChange={handleSelect}
+              onChange={selectNew}
             />
             <label
               htmlFor='new-notifications'

@@ -28,8 +28,8 @@ export const getAllNotifications = async (req, res) => {
     if (!foundNotifications) {
       const notFound = new NotFoundEvent(
         req.user,
-        'Not found notifications',
-        'Event database'
+        EVENT_MESSAGES.notFound,
+        EVENT_MESSAGES.notificationTag
       );
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
@@ -42,7 +42,7 @@ export const getAllNotifications = async (req, res) => {
       note.updatedAt = updatedDate;
     });
 
-    myEmitterNotifications.emit('get-all-notifications', req.user);
+    // myEmitterNotifications.emit('get-all-notifications', req.user);
     return sendDataResponse(res, 200, { notifications: foundNotifications });
   } catch (err) {
     // Error
