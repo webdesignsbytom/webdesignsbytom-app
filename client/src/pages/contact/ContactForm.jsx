@@ -94,7 +94,7 @@ function ContactForm({ formData, setFormData }) {
           <textarea
             name='message'
             id='message'
-            className='w-full p-2 overflow-y-scroll resize-none scroll-smooth'
+            className='overflow-y-scroll resize-none scroll-smooth textbox__inputs'
             rows='5'
             handleChange={handleChange}
           ></textarea>

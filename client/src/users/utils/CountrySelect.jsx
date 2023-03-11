@@ -7,7 +7,7 @@ function CountrySelect({ handleChange }) {
         id='country'
         name='country'
         onChange={handleChange}
-        className='standard__inputs'
+        className='country__inputs'
         required
       >
         <option defaultValue='United Kingdom'>United Kingdom</option>

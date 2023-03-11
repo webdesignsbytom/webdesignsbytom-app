@@ -167,7 +167,7 @@ function Navbar() {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-6 h-6 transition duration-200 ease-in-out focus:scale-125 active:scale-125'
+                  className='w-6 h-6 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path
