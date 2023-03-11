@@ -20,7 +20,7 @@ const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     const decodedUserData = LoggedInUser()
-
+    
     if (decodedUserData) {
       const userId = decodedUserData.id
       getUserById(userId, setUser)
