@@ -17,8 +17,8 @@ function EventsPhone() {
   const { user } = useContext(UserContext);
 
   const [allEvents, setAllEvents] = useState([]);
-  const [viewedEvents, setViewedEvents] = useState([]);
-  const [unSeenEvents, setUnSeenEvents] = useState([]);
+  const [errorEvents, setErrorEvents] = useState([]);
+  const [successEvents, setSuccessEvents] = useState([]);
   const [displayEvents, setDisplayEvents] = useState('all-events');
 
   const [deletedEvent, setDeletedEvent] = useState({});
@@ -30,6 +30,14 @@ function EventsPhone() {
       .then((res) => {
         console.log('response', res.data);
         setAllEvents(res.data.data.events);
+
+        const errorEvents = res.data.data.events.filter((event) => event.type === 'ERROR');
+        console.log('errorEvents', errorEvents);
+        setErrorEvents(errorEvents)
+
+        const successEventsArr = res.data.data.events.filter((event) => event.code === 200)
+        console.log('successEvents', successEvents);
+        setSuccessEvents(successEventsArr)
       })
       .catch((err) => {
         console.error('Unable to get events', err);
@@ -70,10 +78,10 @@ function EventsPhone() {
         {/* Notification list */}
         <section className='grid gap-2 mx-2 lg:mx-6'>
           {displayEvents === 'new-events' && (
-            <EventsContainer events={unSeenEvents} />
+            <EventsContainer events={successEvents} />
           )}
-          {displayEvents === 'seen-events' && (
-            <EventsContainer events={viewedEvents} />
+          {displayEvents === 'error-events' && (
+            <EventsContainer events={errorEvents} />
           )}
           {displayEvents === 'all-events' && (
             <EventsContainer events={allEvents} />

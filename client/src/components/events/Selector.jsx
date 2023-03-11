@@ -30,16 +30,16 @@ function Selector({ selectViewed, selectAll, selectNew, displayEvents }) {
           <li>
             <input
               type='radio'
-              id='seen-events'
+              id='error-events'
               name='hosting'
-              value='seen-events'
+              value='error-events'
               className='hidden peer'
               onChange={selectViewed}
             />
             <label
-              htmlFor='seen-events'
+              htmlFor='error-events'
               className={
-                displayEvents === 'seen-events'
+                displayEvents === 'error-events'
                   ? 'active__select'
                   : 'inactive__select'
               }
@@ -67,7 +67,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayEvents }) {
               }
             >
               <div className='block'>
-                <div className='w-full select-none'>Events</div>
+                <div className='w-full select-none'>200</div>
               </div>
             </label>
           </li>
