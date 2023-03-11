@@ -134,9 +134,9 @@ async function seed() {
 
     const devUserMessage = await dbClient.message.create({
       data: {
-        userId: createdUser.id,
-        subject: 'MESSAGE',
-        content: 'message rest unseen',
+        userId: devUser.id,
+        subject: 'TEST',
+        content: `Ahh i needed to say ${i}`,
         sentFromId: adminUser.id,
       },
     });

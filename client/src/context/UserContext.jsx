@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useEffect, useState } from 'react';
 // Data
 import { sampleUserData } from '../users/utils/utils';
@@ -17,10 +17,9 @@ const UserContextProvider = ({ children }) => {
   );
   const [toggleCookiePolicy, setToggleCookiePolicy] = useState(false)
 
-
   useEffect(() => {
     const decodedUserData = LoggedInUser()
-    
+
     if (decodedUserData) {
       const userId = decodedUserData.id
       getUserById(userId, setUser)

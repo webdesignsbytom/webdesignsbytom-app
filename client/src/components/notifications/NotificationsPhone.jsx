@@ -15,7 +15,7 @@ import NewNote from './notes/NewNote';
 import SeenNote from './notes/SeenNote';
 import AllNotes from './notes/AllNotes';
 
-function Notifications() {
+function NotificationsPhone() {
   const { user } = useContext(UserContext);
 
   const [allNotifications, setAllNotifications] = useState([]);
@@ -34,12 +34,6 @@ function Notifications() {
     content: 'testing',
   });
 
-  console.log('allnotifications', allNotifications);
-  console.log('user', user);
-  console.log('viewedNotifications', viewedNotifications);
-  console.log('unseennotifiucation', unSeenNotifications);
-
-
   useEffect(() => {
     client
       .get(`/notifications/user-notifications/${user.id}`)
@@ -53,7 +47,7 @@ function Notifications() {
       .catch((err) => {
         console.error('Unable to get notifications', err);
       });
-  }, [deletedNote, createdSuccess]);
+  }, [deletedNote, createdSuccess, user.id]);
 
   const selectViewed = (event) => {
     const { id } = event.target
@@ -129,4 +123,4 @@ function Notifications() {
   );
 }
 
-export default Notifications;
+export default NotificationsPhone;

@@ -26,13 +26,13 @@ import Twitter from '../../img/social/twitter.svg';
 import LinkedIn from '../../img/social/linkedin.svg';
 import Instagram from '../../img/social/instagram.svg';
 // Components
-import Notifications from '../notifications/Notifications';
-import MessagesComponent from '../messages/MessagesComponent';
+import NotificationsPhone from '../notifications/NotificationsPhone';
+import MessagesPhone from '../messages/MessagesPhone';
+import SocialBar from '../social/SocialBar';
+import TestPage from '../../pages/test/TestPage';
 // Styles
 import '../../styles/keyframes.css';
-import TestPage from '../../pages/test/TestPage';
-import SocialBar from '../social/SocialBar';
-import EventMenu from '../event/EventMenu';
+import EventsPhone from '../events/EventsPhone';
 
 function Navbar() {
   const {
@@ -567,17 +567,17 @@ function Navbar() {
 
       {toggleNotifications && (
         <div className='reveal__component'>
-          <Notifications />
+          <NotificationsPhone />
         </div>
       )}
       {toggleMessages && (
         <div className='reveal__component'>
-          <MessagesComponent />
+          <MessagesPhone />
         </div>
       )}
       {toggleEvents && (
         <div className='reveal__component'>
-          <EventMenu />
+          <EventsPhone />
         </div>
       )}
       {toggleTests && (

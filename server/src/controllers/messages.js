@@ -16,6 +16,7 @@ import {
   MissingFieldEvent,
   BadRequestEvent
 } from '../event/utils/errorUtils.js';
+import { findUserById } from '../domain/users.js';
 
 export const getAllMessages = async (req, res) => {
   console.log('get all messages');
@@ -42,7 +43,6 @@ export const getAllMessages = async (req, res) => {
     throw err;
   }
 };
-
 
 export const getMessageById = async (req, res) => {
   console.log('getMessageById');
@@ -118,8 +118,8 @@ export const getMessagesFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-
-    const foundMessages = await findUserMessagesById(userId);
+    console.log('XXX foundUser', foundUser)
+    const foundMessages = await findUserMessagesById(foundUser.id);
     console.log('foundMessages', foundMessages);
 
     if (!foundMessages) {

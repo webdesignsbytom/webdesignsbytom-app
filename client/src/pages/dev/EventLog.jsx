@@ -1,5 +1,5 @@
 import React from 'react';
-import Event from '../../components/event/Event';
+import EventItem from '../../components/events/EventItem';
 
 function EventLog({ eventLog }) {
   return (
@@ -10,7 +10,7 @@ function EventLog({ eventLog }) {
           <div className='mx-2'>
             <ul className='grid gap-1 w-full max-w-full'>
               {eventLog?.map((event, index) => {
-                return <Event key={index} event={event} />;
+                return <EventItem key={index} event={event} />;
               })}
             </ul>
           </div>

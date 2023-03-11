@@ -17,6 +17,7 @@ import {
 // Data
 import { sampleUserData } from '../../users/utils/utils';
 import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
+import MessagesComponent from '../../components/messages/MessagesComponent';
 
 const initAlert = { status: '', content: '' };
 
@@ -141,7 +142,9 @@ function Account() {
             </section>
 
             <section className='bg-blue-300 p-2'>
-              <div className='bg-red-400 grid w-full lg:grid-cols-1 lg:grid-rows-1'>a</div>
+              <div className='bg-red-400 grid w-full lg:grid-cols-1 lg:grid-rows-1'>
+                <MessagesComponent />
+              </div>
             </section>
 
             {!resendVerification && (

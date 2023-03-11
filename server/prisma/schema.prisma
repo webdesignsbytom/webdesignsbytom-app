@@ -87,6 +87,7 @@ model Message {
   userId     String
   user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   viewed     Boolean   @default(false)
+  starred    Boolean   @default(false)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime? @updatedAt
 }
