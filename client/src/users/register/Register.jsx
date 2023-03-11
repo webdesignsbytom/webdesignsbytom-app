@@ -38,10 +38,10 @@ function Register() {
       if (registerForm.password > 0) {
         setHiddenPass('block');
         setInputStyle('standard__inputs');
-        setFormResponses({
+        setFormResponses(formResponses => ({
           ...formResponses,
           password: true,
-        });
+        }));
       }
     }
     if (
@@ -50,13 +50,13 @@ function Register() {
     ) {
       setHiddenPass('block');
       setInputStyle('error__inputs');
-      setFormResponses({
+      setFormResponses(formResponses => ({
         ...formResponses,
         password: false,
-      });
+      }));
     }
   }, [registerForm.password, registerForm.confirmPassword]);
-
+console.log('formResponses', formResponses);
   const login = () => {
     navigate('../login', { replace: true });
   };
