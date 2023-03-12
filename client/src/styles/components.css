@@ -13,7 +13,7 @@
 
 .options__link {
   @apply cursor-pointer text-xs lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text border-2 border-solid border-black rounded text-center 
-  lg:text-left hover:bg-zinc-400 active:bg-red-300 dark:text-white
+  lg:text-left hover:bg-zinc-400 active:bg-red-300 dark:text-white py-2
 }
 
 /* Nav */

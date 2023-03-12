@@ -150,12 +150,6 @@ async function seed() {
       },
     });
 
-    const devDesigns = await dbClient.design.create({
-      data: {
-        name: `${i}`,
-        userId: devUser.id,
-      },
-    });
   }
 
   const eventOne = await dbClient.event.create({
@@ -243,6 +237,13 @@ async function seed() {
       name: 'Store Front',
       desc: 'Display various items from your shop',
       price: 100,
+    },
+  });
+
+  const devUserDesign = await dbClient.design.create({
+    data: {
+      userId: devUser.id,
+      name: 'Toms Design',
     },
   });
 }

@@ -4,20 +4,19 @@ import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
 // Icons
 import QMark from '../../img/questionMark.svg';
-import FloppyDisk from '../../img/floppyDisk.svg'
+import FloppyDisk from '../../img/floppyDisk.svg';
 import Bin from '../../img/bin.svg';
-import Undo from '../../img/undo.svg'
-import NewFile from '../../img/newFile.svg'
+import Undo from '../../img/undo.svg';
+import NewFile from '../../img/newFile.svg';
 // Components
 import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
 import FooterOptions from '../../components/options/footerOptions/FooterOptions';
 import SavedDesigns from './SavedDesigns';
+import UserStories from './UserStories';
 
 function DesignElement({ displayElement, savedDesigns }) {
   const [fileSaveName, setFileSaveName] = useState('untitled');
-
-  //TODO: user effect change of file name and update design name
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -39,32 +38,58 @@ function DesignElement({ displayElement, savedDesigns }) {
                 placeholder={fileSaveName}
                 onChange={handleChange}
               />
-              <div className='group pl-1'>
+              <div className='group flex align-middle h-full pl-1'>
                 <img
                   src={QMark}
                   className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                   alt='information'
                   data-te-animation-init
                 />
-                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[150px]'>Enter a name to save your design with</div>
+                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[150px]'>
+                  Enter a name to save your design with
+                </div>
               </div>
             </div>
             <nav className='flex'>
               <ul className='flex gap-4 justify-center align-middle'>
                 <li className='menu__link flex align-middle group'>
-                  <img src={NewFile}  className='animation__wiggle w-5 md:w-6 pr-1' alt="new" />
+                  <div className='grid w-full justify-center'>
+                    <img
+                      src={NewFile}
+                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
+                      alt='new design'
+                    />
+                  </div>
                   <p>New</p>
                 </li>
-                <li className='menu__link flex align-middle'>
-                  <img src={FloppyDisk}  className='w-5 md:w-6 pr-1 animation__wiggle' alt="save" />
+                <li className='menu__link flex align-middle group'>
+                  <div className='grid w-full justify-center'>
+                    <img
+                      src={FloppyDisk}
+                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
+                      alt='save design'
+                    />
+                  </div>
                   <p>Save</p>
                 </li>
-                <li className='menu__link flex align-middle'>
-                  <img src={Undo} className='w-5 md:w-6 pr-1 animation__wiggle' alt="undo" />
+                <li className='menu__link flex align-middle group'>
+                  <div className='grid w-full justify-center'>
+                    <img
+                      src={Undo}
+                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
+                      alt='undo last change'
+                    />
+                  </div>
                   <p>Undo</p>
                 </li>
-                <li className='menu__link flex align-middle'>
-                  <img src={Bin} className='w-5 md:w-6 pr-1 animation__wiggle' alt="delete" />
+                <li className='menu__link flex align-middle group'>
+                  <div className='grid w-full justify-center'>
+                    <img
+                      src={Bin}
+                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
+                      alt='delete design'
+                    />
+                  </div>
                   <p>Delete</p>
                 </li>
               </ul>
@@ -76,8 +101,9 @@ function DesignElement({ displayElement, savedDesigns }) {
               {displayElement === 'palette' && <ColorPalette />}
               {displayElement === 'pages' && <PageOptions />}
               {displayElement === 'components' && <CompenentOptions />}
+              {displayElement === 'user-stories' && <UserStories />}
               {displayElement === 'footers' && <FooterOptions />}
-              {displayElement === 'saves' && <SavedDesigns />}
+              {displayElement === 'saves' && <SavedDesigns savedDesigns={savedDesigns} />}
             </div>
           </section>
         </div>

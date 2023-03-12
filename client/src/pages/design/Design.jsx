@@ -11,17 +11,18 @@ function Design() {
   const { user } = useContext(UserContext)
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([])
-
-console.log('Display', displayElement)
+  const [openDesign, setOpenDesign] = useState({})
+console.log('openDesign', openDesign)
   useEffect(() => {
     client
     .get(`/designs/user-designs/${user.id}`)
     .then((res) => {
       console.log('res', res.data)
       setSavedDesigns(res.data.data.designs);
+      setOpenDesign(res.data.data.designs[0])
     })
     .catch((err) => console.error('Unable to get designs', err.response));
-  }, [])
+  }, [user.id])
 
   return (
     <div className='max-h-screen lg:overflow-hidden lg:left-0'>

@@ -11,47 +11,38 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
     <>
       <div className='bg-colour-pale grid lg:min-w-[200px] lg:h-[calc(100vh-64px)] lg:fixed lg:left-0 lg:border-r-2 lg:border-solid lg:border-black'>
         <div className='m-2 grid lg:grid-rows-special'>
-          <div className='text-main-text text-center m-2'>
+          <div className='hidden md:grid text-main-text text-center m-2'>
             <h2>Design Options</h2>
           </div>
           <nav>
-            <ul className='grid gap-2 grid-cols-3 lg:grid-cols-none mb-4 mt-2'>
+            <ul className='mb-2 mt-2'>
+              <section className='grid gap-2 grid-cols-3 lg:grid-cols-none'>
               <li className='options__link' id='nav' onClick={setDisplay}>
-                <button id='nav'>
-                  Nav
-                </button>
+                <button id='nav'>Nav</button>
               </li>
               <li className='options__link' id='palette' onClick={setDisplay}>
-                <button id='palette'>
-                  Color
-                </button>
+                <button id='palette'>Color</button>
               </li>
               <li className='options__link' id='pages' onClick={setDisplay}>
                 <button>Pages</button>
               </li>
-              <li
-                className='options__link'
-                id='components'
-                onClick={setDisplay}
-              >
-                <button id='components'>
-                  Components
-                </button>
+              <li className='options__link' id='components' onClick={setDisplay}>
+                <button id='components'>Components</button>
               </li>
               <li className='options__link' id='footers' onClick={setDisplay}>
-                <button id='footers'>
-                  Footer
-                </button>
+                <button id='footers'>Footer</button>
               </li>
-              <li
-                className='options__link lg:hidden'
-                id='saves'
-                onClick={setDisplay}
-              >
-                <button id='saves'>
-                  Saves
-                </button>
+              <li className='options__link' id='user-stories' onClick={setDisplay}>
+                <button id='user-stories'>User Stories</button>
               </li>
+              </section>
+
+              {/* Saves on phone */}
+              <section className='mt-2'>
+              <li className='options__link lg:hidden' id='saves' onClick={setDisplay}>
+                <button id='saves'>Saves</button>
+              </li>
+              </section>
             </ul>
           </nav>
 
