@@ -1,7 +1,6 @@
 import React from 'react';
 
 function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
-  
   const setDisplay = (event) => {
     const { id } = event.target;
     setDisplayElement(id);
@@ -17,31 +16,43 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
           <nav>
             <ul className='mb-2 mt-2'>
               <section className='grid gap-2 grid-cols-3 lg:grid-cols-none'>
-              <li className='options__link' id='nav' onClick={setDisplay}>
-                <button id='nav'>Nav</button>
-              </li>
-              <li className='options__link' id='palette' onClick={setDisplay}>
-                <button id='palette'>Color</button>
-              </li>
-              <li className='options__link' id='pages' onClick={setDisplay}>
-                <button>Pages</button>
-              </li>
-              <li className='options__link' id='components' onClick={setDisplay}>
-                <button id='components'>Components</button>
-              </li>
-              <li className='options__link' id='footers' onClick={setDisplay}>
-                <button id='footers'>Footer</button>
-              </li>
-              <li className='options__link' id='user-stories' onClick={setDisplay}>
-                <button id='user-stories'>User Stories</button>
-              </li>
+                <li className='options__link' id='nav' onClick={setDisplay}>
+                  <button className='pl-2'>Navigation</button>
+                </li>
+                <li className='options__link' id='palette' onClick={setDisplay}>
+                  <button className='pl-2'>Colour Theme</button>
+                </li>
+                <li className='options__link' id='pages' onClick={setDisplay}>
+                  <button className='pl-2'>Pages</button>
+                </li>
+                <li
+                  className='options__link'
+                  id='components'
+                  onClick={setDisplay}
+                >
+                  <button className='pl-2'>Components</button>
+                </li>
+                <li className='options__link' id='footers' onClick={setDisplay}>
+                  <button className='pl-2'>Footers</button>
+                </li>
+                <li
+                  className='options__link'
+                  id='user-stories'
+                  onClick={setDisplay}
+                >
+                  <button className='pl-2'>User Stories</button>
+                </li>
               </section>
 
               {/* Saves on phone */}
               <section className='mt-2'>
-              <li className='options__link lg:hidden' id='saves' onClick={setDisplay}>
-                <button id='saves'>Saves</button>
-              </li>
+                <li
+                  className='options__link lg:hidden'
+                  id='saves'
+                  onClick={setDisplay}
+                >
+                  <button className='pl-2'>Saved Designs</button>
+                </li>
               </section>
             </ul>
           </nav>
