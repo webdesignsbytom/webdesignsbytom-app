@@ -30,11 +30,7 @@ function MessagesComponent() {
           <ul>
             {userMessages.length > 0 &&
               userMessages.map((message, index) => {
-                return (
-                  <li>
-                    <MessageItem key={index} message={message} />
-                  </li>
-                );
+                return <MessageItem key={index} message={message} />;
               })}
           </ul>
         </section>
