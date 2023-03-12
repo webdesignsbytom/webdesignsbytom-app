@@ -6,22 +6,26 @@ import OptionsNav from './OptionsNav';
 // Context
 import { UserContext } from '../../context/UserContext';
 import client from '../../utils/client';
+import { designTemplate } from '../../utils/utils';
 
 function Design() {
-  const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
   const [displayElement, setDisplayElement] = useState('nav');
-  const [savedDesigns, setSavedDesigns] = useState([])
-  const [openDesign, setOpenDesign] = useState({})
-
+  const [savedDesigns, setSavedDesigns] = useState([]);
+  const [openDesign, setOpenDesign] = useState(designTemplate);
+  console.log('openDesign', openDesign);
+  
   useEffect(() => {
-    client
-    .get(`/designs/user-designs/${user.id}`)
-    .then((res) => {
-      setSavedDesigns(res.data.data.designs);
-      setOpenDesign(res.data.data.designs[0])
-    })
-    .catch((err) => console.error('Unable to get designs', err.response));
-  }, [user.id])
+    if (user.id) {
+      client
+        .get(`/designs/user-designs/${user.id}`)
+        .then((res) => {
+          setSavedDesigns(res.data.data.designs);
+          setOpenDesign(res.data.data.designs[0]);
+        })
+        .catch((err) => console.error('Unable to get designs', err.response));
+    }
+  }, [user.id]);
 
   return (
     <div className='max-h-screen lg:overflow-hidden lg:left-0'>
@@ -36,7 +40,12 @@ function Design() {
           setOpenDesign={setOpenDesign}
         />
         {/* Preview section */}
-        <DesignElement displayElement={displayElement} savedDesigns={savedDesigns} openDesign={openDesign} setOpenDesign={setOpenDesign} />
+        <DesignElement
+          displayElement={displayElement}
+          savedDesigns={savedDesigns}
+          openDesign={openDesign}
+          setOpenDesign={setOpenDesign}
+        />
       </section>
     </div>
   );

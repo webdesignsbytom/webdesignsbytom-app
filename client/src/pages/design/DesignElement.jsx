@@ -14,6 +14,7 @@ import CompenentOptions from '../../components/options/componentOptions/Compenen
 import FooterOptions from '../../components/options/footerOptions/FooterOptions';
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
+import client from '../../utils/client';
 
 function DesignElement({
   displayElement,
@@ -27,6 +28,18 @@ function DesignElement({
     const { value } = event.target;
     console.log('change', value);
     setFileSaveName(value);
+  };
+
+  const saveDesign = (event) => {
+    event.preventDefault();
+    console.log('SAVING', openDesign);
+
+    client
+      .put(`/designs/user/${openDesign.id}`, openDesign)
+      .then((res) => {
+        console.log('res', res.data);
+      })
+      .catch((err) => console.error('Unable to get designs', err.response));
   };
 
   return (
@@ -67,7 +80,10 @@ function DesignElement({
                   </div>
                   <p>New</p>
                 </li>
-                <li className='menu__link flex align-middle group'>
+                <li
+                  onClick={saveDesign}
+                  className='menu__link flex align-middle group'
+                >
                   <div className='grid w-full justify-center'>
                     <img
                       src={FloppyDisk}

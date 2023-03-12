@@ -5,6 +5,7 @@ import {
   deleteDesign,
   getDesignsFromUser,
   getDesignById,
+  saveDesign
 } from '../controllers/designs.js';
 import {
   validateAuthentication,
@@ -16,6 +17,7 @@ const router = Router();
 router.get('/', getAllDesigns);
 router.get('/user-designs/:userId', getDesignsFromUser);
 router.get('/:designId', getDesignById);
+router.put('/user/:designId', saveDesign);
 router.post('/create', createNewDesign);
 router.delete('/delete/:designId', deleteDesign);
 

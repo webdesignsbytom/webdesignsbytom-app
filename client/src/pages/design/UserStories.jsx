@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
@@ -8,8 +8,21 @@ import { userStoryTemplate } from '../../utils/utils';
 function UserStories({ openDesign, setOpenDesign }) {
   const { user } = useContext(UserContext);
   const [newUserStory, setNewUserStory] = useState(userStoryTemplate);
-  const [userStories, setUserStories] = useState([])
-console.log('userStories', userStories)
+  const [userStories, setUserStories] = useState([]);
+  console.log('USer', user);
+
+  console.log('openDesign', openDesign);
+  console.log('NEW_USER_STORY', newUserStory);
+
+  useEffect(() => {
+    if (openDesign.id) {
+      setNewUserStory({
+        ...newUserStory,
+        designId: openDesign.id,
+      });
+    }
+  }, []);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -21,24 +34,25 @@ console.log('userStories', userStories)
 
   const handleCreate = (event) => {
     event.preventDefault();
-    if (user) {
+    if (openDesign.id) {
       setNewUserStory({
         ...newUserStory,
         userId: user.id,
       });
     }
-    if (openDesign) {
+    if (openDesign.id) {
       setOpenDesign({
         ...openDesign,
         designId: openDesign.id,
       });
     }
 
-    setUserStories([
-      ...userStories,
-      newUserStory
-    ])
+    setUserStories([...userStories, newUserStory]);
 
+    setOpenDesign({
+      ...openDesign,
+      userStories: [...userStories, newUserStory],
+    });
   };
 
   return (
@@ -81,6 +95,7 @@ console.log('userStories', userStories)
                 id='user-story'
                 rows='2'
                 onChange={handleChange}
+                placeholder='I want to...'
               ></textarea>
             </div>
             {/* <!-- Submit button --> */}
@@ -96,14 +111,14 @@ console.log('userStories', userStories)
             </div>
           </form>
         </section>
-        <section>
+        <section className='mx-2'>
           <ul>
             {userStories.map((story, index) => {
               return (
                 <li key={index}>
                   <h3>{story.content}</h3>
                 </li>
-              )
+              );
             })}
           </ul>
         </section>

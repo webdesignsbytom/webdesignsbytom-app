@@ -56,3 +56,11 @@ export const deleteDesignById = (designId) =>
       id: designId,
     },
   });
+
+export const createNewUserStory = (story) => 
+  dbClient.userStory.create({
+    data: {
+      designId: story.designId,
+      content: story.content
+    }
+  })
