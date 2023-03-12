@@ -1,6 +1,8 @@
 import React from 'react';
 // Icons
 import closeCross from '../../img/closeCross.svg';
+import heart from '../../img/heart.svg';
+import eyeIcon from '../../img/eye.svg';
 
 function MessageItem({ message }) {
   const { subject, content, sentFromId, userId, viewed, starred, createdAt } =
@@ -10,8 +12,14 @@ function MessageItem({ message }) {
     <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-2'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
-          <p>Subject: {subject}</p>
-          <p>Date {createdAt}</p>
+          <div>
+            <p>Subject: {subject}</p>
+            <p>Date {createdAt}</p>
+          </div>
+          <div className='flex'>
+            {starred && <img src={heart} alt='favorite' />}
+            {viewed && <img src={eyeIcon} alt='seen' />}
+          </div>
         </div>
         <section className='flex justify-between p-1'>
           <div>
