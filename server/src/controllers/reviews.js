@@ -36,6 +36,13 @@ export const getAllReviews = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
+    foundReviews.forEach((review) => {
+      const createdDate = review.createdAt.toLocaleString();
+      const updatedDate = review.updatedAt.toLocaleString();
+      review.createdAt = createdDate;
+      review.updatedAt = updatedDate;
+    });
+
     // myEmitterReviews.emit('get-all-reviews', req.user);
     return sendDataResponse(res, 200, { reviews: foundReviews });
   } catch (err) {
@@ -101,6 +108,13 @@ export const getReviewsFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    foundReviews.forEach((review) => {
+      const createdDate = review.createdAt.toLocaleString();
+      const updatedDate = review.updatedAt.toLocaleString();
+      review.createdAt = createdDate;
+      review.updatedAt = updatedDate;
+    });
 
     myEmitterReviews.emit('get-user-reviews', req.user);
     return sendDataResponse(res, 200, { user: foundReviews });

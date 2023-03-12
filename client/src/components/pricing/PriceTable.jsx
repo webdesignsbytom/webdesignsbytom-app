@@ -8,7 +8,7 @@ import { pricingTableData } from '../../utils/utils';
 
 function PriceTable() {
   return (
-    <section className='m-2 bg-main-colour'>
+    <section className='bg-main-colour m-2'>
       <table className='border-2 border-black border-solid w-full'>
         <thead>
           <tr className='grid grid-cols-4 p-2'>
@@ -26,7 +26,6 @@ function PriceTable() {
         </thead>
         <tbody>
           {pricingTableData.map((item, index) => {
-            console.log('item', item);
             return (
               <tr key={index} className='grid grid-cols-4 px-2'>
                 <td className='border-2 border-black border-solid px-2'>
@@ -52,7 +51,7 @@ function PriceTable() {
                   ) : (
                     <img src={crossIcon} alt='not included' className='w-6' />
                   )}
-                  {item.fullstack.amount && (
+                  {item.fullstack.amount === 'infinite' && (
                     <img src={InfinityIcon} alt='check' className='w-5' />
                   )}
                 </td>

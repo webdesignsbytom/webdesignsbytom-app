@@ -33,6 +33,7 @@ model User {
   projects       Project[]
   designs        Design[]
   messages       Message[]
+  puchaseHistory PuchaseHistory[]
   review         Review?
   complaints     Complaint?
   agreedToTerms  Boolean           @default(false)
@@ -48,6 +49,16 @@ model UserVerification {
   expiresAt    DateTime
   createdAt    DateTime  @default(now())
   updatedAt    DateTime? @updatedAt
+}
+
+model PuchaseHistory {
+  id        String   @id @default(uuid())
+  title     String   @default("")
+  order     String
+  amount    Int
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
 
 model PasswordReset {
@@ -80,16 +91,17 @@ model Notification {
 }
 
 model Message {
-  id         String    @id @default(uuid())
-  subject    String
-  content    String
-  sentFromId String
-  userId     String
-  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  viewed     Boolean   @default(false)
-  starred    Boolean   @default(false)
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime? @updatedAt
+  id           String    @id @default(uuid())
+  subject      String    @default("untitled")
+  content      String    @default("")
+  sentFromId   String
+  sentFromName String    @default("")
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  viewed       Boolean   @default(false)
+  starred      Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
 }
 
 // EVENTS
@@ -186,9 +198,9 @@ enum ProjectType {
 model Project {
   id           String         @id @default(uuid())
   type         ProjectType
+  name         String
   userId       String
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name         String
   pagesTotal   Int?
   domainName   String?
   price        Int
@@ -202,7 +214,7 @@ model Project {
 
 model Design {
   id           String         @id @default(uuid())
-  name         String
+  name         String         @default("untitled")
   navDesign    NavDesign?
   colorPalette ColorPalette[]
   userStories  UserStory[]
@@ -259,6 +271,7 @@ model Review {
   user      User?     @relation(fields: [userId], references: [id])
   viewed    Boolean   @default(false)
   content   String
+  image     String?
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }

@@ -23,22 +23,7 @@ export const designTemplate = {
 
 export const pricingTableData = [
   {
-    title: 'email',
-    basicSite: {
-      available: true,
-      amount: 'infinite'
-    },
-    basicShop: {
-      available: true,
-      amount: 'infinite'
-    },
-    fullstack: {
-      available: true,
-      amount: null
-    },
-  },
-  {
-    title: 'contact',
+    title: 'Email address',
     basicSite: {
       available: true,
       amount: 'infinite'
@@ -53,10 +38,82 @@ export const pricingTableData = [
     },
   },
   {
-    title: 'map',
+    title: 'Contact Form',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
+    title: 'Social Media Interaction',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
+    title: 'Google Maps',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
+    title: 'Home Page',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
+    title: 'Reviews',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
+    title: '3 Months Testing',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  // Basic shop + 
+  {
+    title: 'Users',
     basicSite: {
       available: false,
-      amount: 'infinite'
     },
     basicShop: {
       available: true,
@@ -68,14 +125,13 @@ export const pricingTableData = [
     },
   },
   {
-    title: 'homepage',
+    title: 'Product Pages',
     basicSite: {
-      available: true,
-      amount: 'infinite'
+      available: false,
     },
     basicShop: {
       available: true,
-      amount: 'infinite'
+      amount: 100
     },
     fullstack: {
       available: true,
@@ -83,33 +139,15 @@ export const pricingTableData = [
     },
   },
   {
-    title: 'testing',
+    title: 'Analytics',
     basicSite: {
-      available: true,
-      amount: 'infinite'
+      available: false,
     },
     basicShop: {
       available: true,
-      amount: 'infinite'
     },
     fullstack: {
       available: true,
-      amount: 'infinite'
     },
   },
-  {
-    title: 'users',
-    basicSite: {
-      available: true,
-      amount: 'infinite'
-    },
-    basicShop: {
-      available: true,
-      amount: 'infinite'
-    },
-    fullstack: {
-      available: true,
-      amount: 'infinite'
-    },
-  }
 ]
