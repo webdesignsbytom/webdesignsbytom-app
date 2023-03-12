@@ -6,3 +6,10 @@ export const contactFormTemplate = {
     country: 'United Kingdom',
     message: ''
 }
+
+export const userStoryTemplate = {
+    userId: '',
+    designId: '',
+    projectId: '',
+    content: ''
+}

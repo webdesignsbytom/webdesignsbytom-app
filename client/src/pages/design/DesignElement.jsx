@@ -15,7 +15,12 @@ import FooterOptions from '../../components/options/footerOptions/FooterOptions'
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
 
-function DesignElement({ displayElement, savedDesigns }) {
+function DesignElement({
+  displayElement,
+  savedDesigns,
+  openDesign,
+  setOpenDesign,
+}) {
   const [fileSaveName, setFileSaveName] = useState('untitled');
 
   const handleChange = (event) => {
@@ -97,13 +102,49 @@ function DesignElement({ displayElement, savedDesigns }) {
           </section>
           <section className='overflow-x-hidden grid grid-rows-one min-h-[calc(100vh-104px)] p-2'>
             <div className='border-2 border-solid border-black rounded'>
-              {displayElement === 'nav' && <NavOptions />}
-              {displayElement === 'palette' && <ColorPalette />}
-              {displayElement === 'pages' && <PageOptions />}
-              {displayElement === 'components' && <CompenentOptions />}
-              {displayElement === 'user-stories' && <UserStories />}
-              {displayElement === 'footers' && <FooterOptions />}
-              {displayElement === 'saves' && <SavedDesigns savedDesigns={savedDesigns} />}
+              {displayElement === 'nav' && (
+                <NavOptions
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'palette' && (
+                <ColorPalette
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'pages' && (
+                <PageOptions
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'components' && (
+                <CompenentOptions
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'user-stories' && (
+                <UserStories
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'footers' && (
+                <FooterOptions
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                />
+              )}
+              {displayElement === 'saves' && (
+                <SavedDesigns
+                  openDesign={openDesign}
+                  setOpenDesign={setOpenDesign}
+                  savedDesigns={savedDesigns}
+                />
+              )}
             </div>
           </section>
         </div>

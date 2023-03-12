@@ -113,8 +113,8 @@ model Event {
   receivedBy   User?     @relation("receivedEvents", fields: [receivedById], references: [id], onDelete: Cascade)
   receivedById String?
   viewed       Boolean   @default(false)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime? @updatedAt
 }
 
 // Components
@@ -241,14 +241,15 @@ model ColorPalette {
 }
 
 model NavDesign {
-  id           String    @id @default(uuid())
-  projectId    String? @unique
-  project      Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  designId     String? @unique
-  design       Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime? @updatedAt
+  id        String    @id @default(uuid())
+  projectId String?   @unique
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  designId  String?   @unique
+  design    Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
+
 // User reviews
 model Review {
   id        String    @id @default(uuid())

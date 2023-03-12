@@ -12,12 +12,11 @@ function Design() {
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([])
   const [openDesign, setOpenDesign] = useState({})
-console.log('openDesign', openDesign)
+
   useEffect(() => {
     client
     .get(`/designs/user-designs/${user.id}`)
     .then((res) => {
-      console.log('res', res.data)
       setSavedDesigns(res.data.data.designs);
       setOpenDesign(res.data.data.designs[0])
     })
@@ -33,9 +32,11 @@ console.log('openDesign', openDesign)
           displayElement={displayElement}
           setDisplayElement={setDisplayElement}
           savedDesigns={savedDesigns}
+          openDesign={openDesign}
+          setOpenDesign={setOpenDesign}
         />
         {/* Preview section */}
-        <DesignElement displayElement={displayElement} savedDesigns={savedDesigns} />
+        <DesignElement displayElement={displayElement} savedDesigns={savedDesigns} openDesign={openDesign} setOpenDesign={setOpenDesign} />
       </section>
     </div>
   );

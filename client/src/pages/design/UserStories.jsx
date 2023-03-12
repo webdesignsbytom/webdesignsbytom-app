@@ -3,11 +3,13 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 // Icons
 import QMark from '../../img/questionMark.svg';
+import { userStoryTemplate } from '../../utils/utils';
 
-function UserStories() {
-  const { user } = useContext(UserContext)
-  const [newUserStory, setNewUserStory] = useState({});
-
+function UserStories({ openDesign, setOpenDesign }) {
+  const { user } = useContext(UserContext);
+  const [newUserStory, setNewUserStory] = useState(userStoryTemplate);
+  const [userStories, setUserStories] = useState([])
+console.log('userStories', userStories)
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -19,6 +21,24 @@ function UserStories() {
 
   const handleCreate = (event) => {
     event.preventDefault();
+    if (user) {
+      setNewUserStory({
+        ...newUserStory,
+        userId: user.id,
+      });
+    }
+    if (openDesign) {
+      setOpenDesign({
+        ...openDesign,
+        designId: openDesign.id,
+      });
+    }
+
+    setUserStories([
+      ...userStories,
+      newUserStory
+    ])
+
   };
 
   return (
@@ -57,7 +77,7 @@ function UserStories() {
             <div className='mb-2'>
               <textarea
                 className='w-full rounded border-2 border-slate-400 border-solid'
-                name='user-story'
+                name='content'
                 id='user-story'
                 rows='2'
                 onChange={handleChange}
@@ -71,10 +91,21 @@ function UserStories() {
                 data-mdb-ripple='true'
                 data-mdb-ripple-color='light'
               >
-                Sign in
+                Add Story
               </button>
             </div>
           </form>
+        </section>
+        <section>
+          <ul>
+            {userStories.map((story, index) => {
+              return (
+                <li key={index}>
+                  <h3>{story.content}</h3>
+                </li>
+              )
+            })}
+          </ul>
         </section>
       </main>
     </>
