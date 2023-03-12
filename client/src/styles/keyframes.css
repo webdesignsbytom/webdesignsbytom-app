@@ -26,7 +26,7 @@
   animation-name: cookies;
   animation-duration: 1.25s;
   animation-timing-function: ease-in;
-  height: 52px;
+  height: min-content;
 }
 
 @keyframes cookies {
