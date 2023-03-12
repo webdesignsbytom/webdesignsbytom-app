@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
 // Fetch
-import { getEventsLog } from '../../utils/Fetch';
 import EventLog from './EventLog';
 import client from '../../utils/client';
 
@@ -11,14 +10,13 @@ function DeveloperPanel() {
 
   useEffect(() => {
     client
-    .get(`/events`)
-    .then((res) => {
-      console.log('res', res.data);
-      setEventLog(res.data.data.events);
-    })
-    .catch((err) => {
-      console.error('Unable to get all events', err);
-    });
+      .get(`/events`)
+      .then((res) => {
+        setEventLog(res.data.data.events);
+      })
+      .catch((err) => {
+        console.error('Unable to get all events', err);
+      });
   }, []);
 
   console.log('event log', eventLog);
@@ -26,10 +24,13 @@ function DeveloperPanel() {
     <>
       <div className='bg-white dark:bg-black min-h-screen max-w-full overflow-hidden'>
         <Navbar />
-        <div>
-          <h2>DeveloperPanel</h2>
+        <section>
+          <div>
+            <h2>DeveloperPanel</h2>
+          </div>
+          
           <EventLog eventLog={eventLog} />
-        </div>
+        </section>
       </div>
     </>
   );

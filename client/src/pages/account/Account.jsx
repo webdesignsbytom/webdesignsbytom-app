@@ -28,8 +28,6 @@ function Account() {
   const [resendVerification, setResendVerification] = useState(true);
   let navigate = useNavigate();
 
-  console.log('user: ', user);
-
   useEffect(() => {
     const foundUser = LoggedInUser();
     setFormByUserId(foundUser.id, setUpdateUserForm);
@@ -41,7 +39,7 @@ function Account() {
         setResendVerification(false);
       }
     }, 2000);
-  }, []);
+  }, [user.isVerified]);
 
   function handleResend() {
     postResendVerificationEmail(user.email, setAlert, initAlert);

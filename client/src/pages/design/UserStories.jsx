@@ -3,16 +3,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 // Icons
 import QMark from '../../img/questionMark.svg';
+// Utils
 import { userStoryTemplate } from '../../utils/utils';
 
 function UserStories({ openDesign, setOpenDesign }) {
   const { user } = useContext(UserContext);
   const [newUserStory, setNewUserStory] = useState(userStoryTemplate);
   const [userStories, setUserStories] = useState([]);
-  console.log('USer', user);
-
-  console.log('openDesign', openDesign);
-  console.log('NEW_USER_STORY', newUserStory);
 
   useEffect(() => {
     if (openDesign.id) {
@@ -34,12 +31,6 @@ function UserStories({ openDesign, setOpenDesign }) {
 
   const handleCreate = (event) => {
     event.preventDefault();
-    if (openDesign.id) {
-      setNewUserStory({
-        ...newUserStory,
-        userId: user.id,
-      });
-    }
     if (openDesign.id) {
       setOpenDesign({
         ...openDesign,

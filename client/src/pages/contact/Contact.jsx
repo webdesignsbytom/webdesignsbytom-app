@@ -14,7 +14,7 @@ function Contact() {
         <Navbar />
 
         {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] lg:grid-cols-2 p-2'>
+        <main className='grid h-[calc(100vh-64px)] lg:grid-cols-2 p-2'>
 
           {/* Info */}
           <section className='grid h-full justify-center'>
@@ -40,7 +40,7 @@ function Contact() {
           <section className=''>
             <ContactForm formData={formData} setFormData={setFormData} />
           </section>
-        </section>
+        </main>
       </div>
     </>
   );
