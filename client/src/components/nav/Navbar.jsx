@@ -65,6 +65,7 @@ function Navbar() {
   const navigateHome = () => {
     navigate('/', { replace: true });
   };
+  console.log('x')
 
   const toggleNavbar = () => {
     setToggleNavigation(!toggleNavigation);
