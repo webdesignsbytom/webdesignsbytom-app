@@ -9,7 +9,7 @@ import Bin from '../../img/bin.svg';
 import Undo from '../../img/undo.svg'
 import NewFile from '../../img/newFile.svg'
 // Components
-import PageOptions from '../../components/pageOptions/PageOptions';
+import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/componentOptions/CompenentOptions';
 import FooterOptions from '../../components/footerOptions/FooterOptions';
 import SavedDesigns from './SavedDesigns';
