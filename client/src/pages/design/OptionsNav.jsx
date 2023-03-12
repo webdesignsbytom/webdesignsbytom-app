@@ -18,12 +18,12 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
           <nav>
             <ul className='grid gap-2 grid-cols-3 lg:grid-cols-none mb-4 mt-2'>
               <li className='options__link' id='nav' onClick={setDisplay}>
-                <button id='nav' onClick={setDisplay}>
+                <button id='nav'>
                   Nav
                 </button>
               </li>
               <li className='options__link' id='palette' onClick={setDisplay}>
-                <button id='palette' onClick={setDisplay}>
+                <button id='palette'>
                   Color
                 </button>
               </li>
@@ -35,12 +35,12 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                 id='components'
                 onClick={setDisplay}
               >
-                <button id='components' onClick={setDisplay}>
+                <button id='components'>
                   Components
                 </button>
               </li>
               <li className='options__link' id='footers' onClick={setDisplay}>
-                <button id='footers' onClick={setDisplay}>
+                <button id='footers'>
                   Footer
                 </button>
               </li>
@@ -49,7 +49,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                 id='saves'
                 onClick={setDisplay}
               >
-                <button id='saves' onClick={setDisplay}>
+                <button id='saves'>
                   Saves
                 </button>
               </li>
