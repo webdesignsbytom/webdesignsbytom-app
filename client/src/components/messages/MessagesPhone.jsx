@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// Context
 import { UserContext } from '../../context/UserContext';
-import client from '../../utils/client';
+// Components
 import MessageItem from './MessageItem';
+
+import client from '../../utils/client';
+
 function MessagesPhone() {
   const { user } = useContext(UserContext);
   const [userMessages, setUserMessages] = useState([]);
-  console.log('userMessages', userMessages);
 
   let navigate = useNavigate();
 
@@ -14,7 +17,6 @@ function MessagesPhone() {
     client
       .get(`/messages/user-messages/${user.id}`)
       .then((res) => {
-        console.log('response', res.data);
         setUserMessages(res.data.data.messages);
       })
       .catch((err) => {
@@ -23,8 +25,6 @@ function MessagesPhone() {
   }, []);
 
   const openMessage = (message) => {
-    console.log('open', message)
-    // user/:userId/messages/:messageId
     navigate(`../user/${user.id}/messages/${message.id}`, { state: message });
   };
   
