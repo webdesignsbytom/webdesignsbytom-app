@@ -8,7 +8,6 @@ const client = {
     const headers = {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
     };
-    console.log('HEADERS', headers);
     return axios.get(url, { headers });
   },
 

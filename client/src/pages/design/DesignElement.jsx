@@ -53,7 +53,7 @@ function DesignElement({
                 type='text'
                 name='fileName'
                 id='fileName'
-                placeholder={fileSaveName}
+                placeholder={openDesign.name}
                 onChange={handleChange}
               />
               <div className='group flex align-middle h-full pl-1'>

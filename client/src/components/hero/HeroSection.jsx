@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 function HeroSection() {
   return (
-    <div>HeroSection</div>
-  )
+    <header className='m-2'>
+      <article>
+        <h1>Web Design By Tom</h1>
+        <h2>Skilled and modern web development</h2>
+      </article>
+    </header>
+  );
 }
 
-export default HeroSection
+export default HeroSection;
