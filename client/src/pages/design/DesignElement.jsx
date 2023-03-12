@@ -10,8 +10,8 @@ import Undo from '../../img/undo.svg'
 import NewFile from '../../img/newFile.svg'
 // Components
 import PageOptions from '../../components/options/pageOptions/PageOptions';
-import CompenentOptions from '../../components/componentOptions/CompenentOptions';
-import FooterOptions from '../../components/footerOptions/FooterOptions';
+import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
+import FooterOptions from '../../components/options/footerOptions/FooterOptions';
 import SavedDesigns from './SavedDesigns';
 
 function DesignElement({ displayElement, savedDesigns }) {
