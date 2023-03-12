@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import client from '../../utils/client';
 import MessageItem from './MessageItem';
@@ -6,6 +7,8 @@ function MessagesPhone() {
   const { user } = useContext(UserContext);
   const [userMessages, setUserMessages] = useState([]);
   console.log('userMessages', userMessages);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     client
@@ -18,6 +21,13 @@ function MessagesPhone() {
         console.error('Unable to mark notification as seen', err);
       });
   }, []);
+
+  const openMessage = (message) => {
+    console.log('open', message)
+    // user/:userId/messages/:messageId
+    navigate(`../user/${user.id}/messages/${message.id}`, { state: message });
+  };
+  
 
   return (
     <>
@@ -33,8 +43,8 @@ function MessagesPhone() {
             {userMessages.length > 0 &&
               userMessages.map((message, index) => {
                 return (
-                  <li className='mb-2'>
-                    <MessageItem key={index} message={message} />
+                  <li className='mb-2' key={index} onClick={() => openMessage(message)}>
+                    <MessageItem message={message} />
                   </li>
                 )
               })}

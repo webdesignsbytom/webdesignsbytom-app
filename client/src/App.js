@@ -25,6 +25,7 @@ import {
 } from './utils/AuthenticateUser';
 // Components
 import ConfirmPolicies from './components/popups/ConfirmPolicies';
+import MessagePhoneItem from './components/messages/MessagePhoneItem';
 // Context
 import { UserContext } from './context/UserContext';
 
@@ -76,6 +77,11 @@ function App() {
         <Route
           path='users/reset-lost-password/:userId/:uniqueString'
           element={<EnterNewPassword />}
+        />
+        {/* Messages */}
+        <Route
+          path='user/:userId/messages/:messageId'
+          element={<MessagePhoneItem />}
         />
 
         {/* Util Routes */}

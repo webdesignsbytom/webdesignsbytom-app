@@ -50,7 +50,7 @@ function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [activeNav, setActiveNav] = useState('#');
   const [pageName, setPageName] = useState('home');
-  console.log('user.role', user.role);
+  
   useEffect(() => {
     setActiveNav(window.location.pathname);
     setPageName(window.location.pathname.substring(1));
@@ -63,7 +63,7 @@ function Navbar() {
     setToggleNotifications(false);
     setToggleMessages(false);
     setToggleTests(false);
-    setToggleEvents(false)
+    setToggleEvents(false);
   };
 
   const navigateHome = () => {
@@ -71,7 +71,7 @@ function Navbar() {
   };
 
   const displayEvents = () => {
-    setToggleEvents(true)
+    setToggleEvents(true);
     setToggleNotifications(false);
     setToggleNavigation(false);
     setToggleMessages(false);
@@ -83,7 +83,7 @@ function Navbar() {
     setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
-    setToggleEvents(false)
+    setToggleEvents(false);
   };
 
   const displayMessages = () => {
@@ -91,7 +91,7 @@ function Navbar() {
     setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleTests(false);
-    setToggleEvents(false)
+    setToggleEvents(false);
   };
 
   const displayTest = () => {
@@ -99,7 +99,7 @@ function Navbar() {
     setToggleMessages(false);
     setToggleNavigation(false);
     setToggleNotifications(false);
-    setToggleEvents(false)
+    setToggleEvents(false);
   };
 
   const closeNotifications = () => {
@@ -448,11 +448,7 @@ function Navbar() {
                       displayTest();
                     }}
                   >
-                    <img
-                      src={TestIcon}
-                      className='w-8'
-                      alt='notNotification'
-                    />
+                    <img src={TestIcon} className='w-8' alt='notNotification' />
                     <div className='flex items-center text-xl'>
                       <h3>Test Page</h3>
                     </div>
