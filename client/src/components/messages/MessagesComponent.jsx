@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+// Context
 import { UserContext } from '../../context/UserContext';
-import client from '../../utils/client';
+// Components
 import MessageItem from './MessageItem';
+import client from '../../utils/client';
 
 function MessagesComponent() {
   const { user } = useContext(UserContext);
