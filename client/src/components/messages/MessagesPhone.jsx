@@ -38,7 +38,7 @@ function MessagesPhone() {
           </div>
         </div>
         {/* Notification list */}
-        <section className='grid gap-2 mx-2 lg:mx-6'>
+        <main className='grid gap-2 mx-2 lg:mx-6'>
           <ul>
             {userMessages.length > 0 &&
               userMessages.map((message, index) => {
@@ -49,7 +49,7 @@ function MessagesPhone() {
                 )
               })}
           </ul>
-        </section>
+        </main>
       </div>
     </>
   );

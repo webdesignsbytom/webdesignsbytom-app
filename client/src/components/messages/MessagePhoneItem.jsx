@@ -32,6 +32,7 @@ function MessagePhoneItem() {
           <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
             <p>Subject: {subject}</p>
             <p>Date {createdAt}</p>
+            <p>From {sentFromId}</p>
           </div>
           <section className='flex justify-between p-1'>
             <div>
