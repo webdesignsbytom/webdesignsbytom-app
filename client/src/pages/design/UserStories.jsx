@@ -71,7 +71,7 @@ function UserStories({ openDesign, setOpenDesign }) {
                 alt='information'
                 data-te-animation-init
               />
-              <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[150px]'>
+              <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[250px]'>
                 A good user story is short description of an ability your app
                 will require.
                 <div>
