@@ -24,38 +24,92 @@ export const designTemplate = {
 export const pricingTableData = [
   {
     title: 'email',
-    basicSite: true,
-    basicShop: true,
-    fullstack: true,
+    basicSite: {
+      available: true,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: null
+    },
   },
   {
-    title: 'hosting',
-    basicSite: true,
-    basicShop: true,
-    fullstack: true,
+    title: 'contact',
+    basicSite: {
+      available: true,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: 'infinite'
+    },
   },
   {
-    title: 'testing',
-    basicSite: true,
-    basicShop: true,
-    fullstack: true,
+    title: 'map',
+    basicSite: {
+      available: false,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: 'infinite'
+    },
   },
   {
     title: 'homepage',
-    basicSite: true,
-    basicShop: true,
-    fullstack: true,
+    basicSite: {
+      available: true,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: 'infinite'
+    },
   },
   {
-    title: 'contact form',
-    basicSite: true,
-    basicShop: true,
-    fullstack: true,
+    title: 'testing',
+    basicSite: {
+      available: true,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: 'infinite'
+    },
   },
   {
-    title: 'animations',
-    basicSite: false,
-    basicShop: true,
-    fullstack: true,
-  },
+    title: 'users',
+    basicSite: {
+      available: true,
+      amount: 'infinite'
+    },
+    basicShop: {
+      available: true,
+      amount: 'infinite'
+    },
+    fullstack: {
+      available: true,
+      amount: 'infinite'
+    },
+  }
 ]
