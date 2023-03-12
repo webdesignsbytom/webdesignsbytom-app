@@ -4,7 +4,6 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
   
   const setDisplay = (event) => {
     const { id } = event.target;
-    console.log('ID', id);
     setDisplayElement(id);
   };
 
