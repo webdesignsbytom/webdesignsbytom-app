@@ -25,6 +25,7 @@ import Github from '../../img/social/github.svg';
 import Twitter from '../../img/social/twitter.svg';
 import LinkedIn from '../../img/social/linkedin.svg';
 import Instagram from '../../img/social/instagram.svg';
+import contactIcon from '../../img/contactIcon.svg'
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';
@@ -33,6 +34,7 @@ import TestPage from '../../pages/test/TestPage';
 // Styles
 import '../../styles/keyframes.css';
 import EventsPhone from '../events/EventsPhone';
+import ContactsPhone from '../contacts/ContactsPhone';
 
 function Navbar() {
   const {
@@ -46,11 +48,13 @@ function Navbar() {
     setToggleMessages,
     toggleEvents,
     setToggleEvents,
+    toggleContacts,
+    setToggleContacts,
   } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
   const [activeNav, setActiveNav] = useState('#');
   const [pageName, setPageName] = useState('home');
-  
+
   useEffect(() => {
     setActiveNav(window.location.pathname);
     setPageName(window.location.pathname.substring(1));
@@ -58,16 +62,17 @@ function Navbar() {
 
   let navigate = useNavigate();
 
+  const navigateHome = () => {
+    navigate('/', { replace: true });
+  };
+
   const toggleNavbar = () => {
     setToggleNavigation(!toggleNavigation);
     setToggleNotifications(false);
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
-  };
-
-  const navigateHome = () => {
-    navigate('/', { replace: true });
+    setToggleContacts(false)
   };
 
   const displayEvents = () => {
@@ -76,6 +81,7 @@ function Navbar() {
     setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
+    setToggleContacts(false)
   };
 
   const displayNotifications = () => {
@@ -84,6 +90,7 @@ function Navbar() {
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
+    setToggleContacts(false)
   };
 
   const displayMessages = () => {
@@ -92,10 +99,21 @@ function Navbar() {
     setToggleNotifications(false);
     setToggleTests(false);
     setToggleEvents(false);
+    setToggleContacts(false)
   };
 
   const displayTest = () => {
     setToggleTests(true);
+    setToggleMessages(false);
+    setToggleNavigation(false);
+    setToggleNotifications(false);
+    setToggleEvents(false);
+    setToggleContacts(false)
+  };
+
+  const displayContacts = () => {
+    setToggleContacts(true)
+    setToggleTests(false);
     setToggleMessages(false);
     setToggleNavigation(false);
     setToggleNotifications(false);
@@ -391,19 +409,40 @@ function Navbar() {
               </Link>
             </li>
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
-              // Admin
-              <li className='phone__nav__li'>
-                <Link
-                  to='/admin'
-                  className='phone__nav__link'
-                  onClick={toggleNavbar}
-                >
-                  <img src={Admin} className='w-8' alt='admin' />
-                  <div className='flex items-center text-xl'>
-                    <h3>Admin</h3>
-                  </div>
-                </Link>
-              </li>
+              <>
+                {/* Admin */}
+                <li className='phone__nav__li'>
+                  <Link
+                    to='/admin'
+                    className='phone__nav__link'
+                    onClick={toggleNavbar}
+                  >
+                    <img src={Admin} className='w-8' alt='admin' />
+                    <div className='flex items-center text-xl'>
+                      <h3>Admin</h3>
+                    </div>
+                  </Link>
+                </li>
+                {/* Contacts */}
+                <li className='phone__nav__li'>
+                  <Link
+                    className='phone__nav__link'
+                    onClick={() => {
+                      toggleNavbar();
+                      displayContacts();
+                    }}
+                  >
+                    <img
+                      src={contactIcon}
+                      className='w-8'
+                      alt='notNotification'
+                    />
+                    <div className='flex items-center text-xl'>
+                      <h3>Contacts</h3>
+                    </div>
+                  </Link>
+                </li>
+              </>
             )}
             {user.role === 'DEVELOPER' && (
               // Developer
@@ -574,6 +613,11 @@ function Navbar() {
       {toggleEvents && (
         <div className='reveal__component'>
           <EventsPhone />
+        </div>
+      )}
+      {toggleContacts && (
+        <div className='reveal__component'>
+          <ContactsPhone />
         </div>
       )}
       {toggleTests && (

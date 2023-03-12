@@ -36,6 +36,13 @@ export const getAllContacts = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
+    foundContacts.forEach((contact) => {
+      const createdDate = contact.createdAt.toLocaleString();
+      const updatedDate = contact.updatedAt.toLocaleString();
+      contact.createdAt = createdDate;
+      contact.updatedAt = updatedDate;
+    });
+
     // myEmitterContacts.emit('get-all-contacts', req.user);
     return sendDataResponse(res, 200, { contacts: foundContacts });
     //
@@ -64,6 +71,14 @@ export const getContactsByQuery = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    
+    foundContact.forEach((contact) => {
+      const createdDate = contact.createdAt.toLocaleString();
+      const updatedDate = contact.updatedAt.toLocaleString();
+      contact.createdAt = createdDate;
+      contact.updatedAt = updatedDate;
+    });
 
     // myEmitterContacts.emit('find-contact-by-query', req.user);
     return sendDataResponse(res, 200, { contact: foundContact });

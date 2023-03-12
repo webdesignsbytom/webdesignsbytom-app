@@ -8,6 +8,7 @@ const ToggleContextProvider = ({ children }) => {
   const [toggleNotifications, setToggleNotifications] = useState(false);
   const [toggleMessages, setToggleMessages] = useState(false);
   const [toggleEvents, setToggleEvents] = useState(false);
+  const [toggleContacts, setToggleContacts] = useState(false);
   const [toggleTests, setToggleTests] = useState(false);
 
   return (
@@ -23,6 +24,8 @@ const ToggleContextProvider = ({ children }) => {
         setToggleMessages,
         toggleEvents,
         setToggleEvents,
+        toggleContacts,
+        setToggleContacts,
       }}
     >
       {children}
