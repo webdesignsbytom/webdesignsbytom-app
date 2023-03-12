@@ -45,16 +45,17 @@ function ContactForm({ formData, setFormData }) {
             className='contact__inputs'
             placeholder='Email address'
             onChange={handleChange}
+            required
           />
         </div>
         {/* <!-- Phone input --> */}
         <div className='mb-2'>
-          <label htmlFor='phone'>Phone:</label>
+          <label className='flex justify-between' htmlFor='phone'><p>Phone:</p><p>* optional</p></label>
           <input
             type='tel'
             name='phone'
             className='contact__inputs'
-            placeholder='Phone address'
+            placeholder='Phone Number'
             onChange={handleChange}
           />
         </div>

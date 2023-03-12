@@ -17,7 +17,7 @@ function Contact() {
         <section className='grid h-[calc(100vh-64px)] lg:grid-cols-2 p-2'>
 
           {/* Info */}
-          <section className='bg-red-400 grid h-full justify-center'>
+          <section className='grid h-full justify-center'>
             <article className='m-1'>
               <div className='text-center my-2'>
                 <h1>Contact Me!</h1>
@@ -37,7 +37,7 @@ function Contact() {
           </section>
 
           {/* Inputs */}
-          <section className='bg-blue-400'>
+          <section className=''>
             <ContactForm formData={formData} setFormData={setFormData} />
           </section>
         </section>
