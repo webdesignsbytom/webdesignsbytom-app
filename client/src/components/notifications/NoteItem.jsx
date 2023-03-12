@@ -1,7 +1,6 @@
 import React from 'react';
 // Icons
 import closeCross from '../../img/closeCross.svg';
-import { putSetNotificationViewed } from '../../utils/Fetch';
 
 function NoteItem({ notification, markSeen, deleteNotification }) {
   const { content, type, createdAt, id } = notification;

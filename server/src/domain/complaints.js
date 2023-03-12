@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllComplaints = () => dbClient.complaint.findMany({});
+export const findAllComplaints = () =>
+  dbClient.complaint.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findComplaintByName = (name) =>
   dbClient.complaint.findFirst({
@@ -22,11 +27,11 @@ export const createComplaint = (email, userId, content) =>
     data: {
       email: email,
       userId: userId,
-      content: content
+      content: content,
     },
   });
 
-  export const updateComplaintToViewed = (complaintId) =>
+export const updateComplaintToViewed = (complaintId) =>
   dbClient.notification.update({
     where: {
       id: complaintId,

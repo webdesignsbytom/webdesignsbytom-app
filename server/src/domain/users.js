@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllUsers = () => dbClient.user.findMany({});
+export const findAllUsers = () =>
+  dbClient.user.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findUserByEmail = (email) =>
   dbClient.user.findUnique({
@@ -42,12 +47,12 @@ export const findResetRequest = (userId) =>
     },
   });
 
-export const findUserById = (userId) => 
+export const findUserById = (userId) =>
   dbClient.user.findUnique({
     where: {
-      id: userId
-    }
-  })
+      id: userId,
+    },
+  });
 
 export const resetUserPassword = (userId, password) =>
   dbClient.user.update({
@@ -55,24 +60,26 @@ export const resetUserPassword = (userId, password) =>
       id: userId,
     },
     data: {
-      password: password
-    }
-  })
+      password: password,
+    },
+  });
 
-export const deleteUserById = (userId) => dbClient.user.delete({
-  where: {
-    id: userId
-  }
-})
+export const deleteUserById = (userId) =>
+  dbClient.user.delete({
+    where: {
+      id: userId,
+    },
+  });
 
-export const updateUserById = (userId, email, firstName, lastName, country) => dbClient.user.update({
-  where: {
-    id: userId
-  },
-  data: {
-    email,
-    firstName,
-    lastName,
-    country
-  }
-})
+export const updateUserById = (userId, email, firstName, lastName, country) =>
+  dbClient.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      email,
+      firstName,
+      lastName,
+      country,
+    },
+  });

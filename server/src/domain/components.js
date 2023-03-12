@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllComponents = () => dbClient.component.findMany({});
+export const findAllComponents = () =>
+  dbClient.component.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findComponentByName = (name) =>
   dbClient.component.findFirst({
@@ -12,7 +17,7 @@ export const findComponentById = (componentId) =>
     where: { id: componentId },
   });
 
-export const findComponentByQuery = (query) => 
+export const findComponentByQuery = (query) =>
   dbClient.component.findFirst({
     where: {
       OR: [
@@ -28,22 +33,22 @@ export const findComponentByQuery = (query) =>
         },
       ],
     },
-  })
+  });
 
 export const createComponent = (type, name, desc, mainImage, price) =>
   dbClient.component.create({
     data: {
-        type: type,
-        name: name,
-        desc: desc,
-        mainImage: mainImage,
-        price: price
-    }
-  })
+      type: type,
+      name: name,
+      desc: desc,
+      mainImage: mainImage,
+      price: price,
+    },
+  });
 
-export const deleteComponentById = (componentId) => 
+export const deleteComponentById = (componentId) =>
   dbClient.component.delete({
     where: {
       id: componentId,
-    }
-  })
+    },
+  });

@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllDesigns = () => dbClient.design.findMany({});
+export const findAllDesigns = () =>
+  dbClient.design.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findDesignByName = (name) =>
   dbClient.design.findFirst({
@@ -15,9 +20,12 @@ export const findDesignById = (designId) =>
 export const findUserDesignsById = (userId) =>
   dbClient.design.findMany({
     where: { userId: userId },
+    orderBy: {
+      createdAt: 'desc',
+    },
   });
 
-export const checkFileDoesntExist = (name, userId) => 
+export const checkFileDoesntExist = (name, userId) =>
   dbClient.design.findFirst({
     AND: [
       {
@@ -31,14 +39,14 @@ export const checkFileDoesntExist = (name, userId) =>
         },
       },
     ],
-  })
+  });
 
 export const createDesign = (userId, name, colorPalette) =>
   dbClient.design.create({
     data: {
       userId: userId,
       name: name,
-      colorPalette: colorPalette
+      colorPalette: colorPalette,
     },
   });
 

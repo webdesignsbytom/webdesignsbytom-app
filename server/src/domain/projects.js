@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllProjects = () => dbClient.project.findMany({});
+export const findAllProjects = () =>
+  dbClient.project.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findProjectByName = (name) =>
   dbClient.project.findFirst({

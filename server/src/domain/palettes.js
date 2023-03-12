@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllPalettes = () => dbClient.palette.findMany({});
+export const findAllPalettes = () =>
+  dbClient.palette.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findPaletteByName = (name) =>
   dbClient.palette.findFirst({
@@ -17,7 +22,16 @@ export const findUserPalettesById = (userId) =>
     where: { userId: userId },
   });
 
-export const createPalette = (designId, bgMain, bgAlt, paletteOne, paletteTwo, paletteThree, hover, selected) =>
+export const createPalette = (
+  designId,
+  bgMain,
+  bgAlt,
+  paletteOne,
+  paletteTwo,
+  paletteThree,
+  hover,
+  selected
+) =>
   dbClient.palette.create({
     data: {
       designId: designId,
@@ -27,7 +41,7 @@ export const createPalette = (designId, bgMain, bgAlt, paletteOne, paletteTwo, p
       paletteTwo: paletteTwo,
       paletteThree: paletteThree,
       hover: hover,
-      selected: selected
+      selected: selected,
     },
   });
 

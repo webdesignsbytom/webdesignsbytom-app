@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllContacts = () => dbClient.contact.findMany({});
+export const findAllContacts = () =>
+  dbClient.contact.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findContactByName = (name) =>
   dbClient.contact.findFirst({

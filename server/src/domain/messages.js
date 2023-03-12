@@ -1,6 +1,11 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllMessages = () => dbClient.message.findMany({});
+export const findAllMessages = () =>
+  dbClient.message.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
 export const findMessageById = (messageId) =>
   dbClient.message.findFirst({
