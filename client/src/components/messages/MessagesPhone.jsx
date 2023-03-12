@@ -43,9 +43,7 @@ function MessagesPhone() {
             {userMessages.length > 0 &&
               userMessages.map((message, index) => {
                 return (
-                  <li className='mb-2' key={index} onClick={() => openMessage(message)}>
-                    <MessageItem message={message} />
-                  </li>
+                    <MessageItem message={message}  key={index} onClick={() => openMessage(message)} />
                 )
               })}
           </ul>

@@ -7,7 +7,7 @@ function MessageItem({ message }) {
     message;
 
   return (
-    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded'>
+    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-2'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
           <p>Subject: {subject}</p>

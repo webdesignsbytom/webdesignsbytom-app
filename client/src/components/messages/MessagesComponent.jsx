@@ -16,7 +16,7 @@ function MessagesComponent() {
         setUserMessages(res.data.data.messages);
       })
       .catch((err) => {
-        console.error('Unable to mark notification as seen', err);
+        console.error('Unable to get user messages', err);
       });
   }, [user.id]);
 
