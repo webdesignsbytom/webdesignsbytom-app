@@ -28,6 +28,13 @@ export const getAllEvents = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    foundEvents.forEach((event) => {
+      const createdDate = event.createdAt.toLocaleString();
+      const updatedDate = event.updatedAt.toLocaleString();
+      event.createdAt = createdDate;
+      event.updatedAt = updatedDate;
+    });
     // // myEmitterEvents.emit('get-all-events', req.user);
     return sendDataResponse(res, 200, { events: foundEvents });
   } catch (err) {

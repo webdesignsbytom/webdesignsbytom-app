@@ -6,15 +6,19 @@ import {
   findMessageById,
   deleteMessageById,
   findUserMessagesById,
-  updateMessageToViewed
+  updateMessageToViewed,
 } from '../domain/messages.js';
 // Response messages
-import { EVENT_MESSAGES, sendDataResponse, sendMessageResponse } from '../utils/responses.js';
+import {
+  EVENT_MESSAGES,
+  sendDataResponse,
+  sendMessageResponse,
+} from '../utils/responses.js';
 import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
-  BadRequestEvent
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
 import { findUserById } from '../domain/users.js';
 
@@ -33,6 +37,13 @@ export const getAllMessages = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
+    foundMessages.forEach((message) => {
+      const createdDate = message.createdAt.toLocaleString();
+      const updatedDate = message.updatedAt.toLocaleString();
+      message.createdAt = createdDate;
+      message.updatedAt = updatedDate;
+    });
+
     // myEmitterMessages.emit('get-all-messages', req.user);
     return sendDataResponse(res, 200, { messages: foundMessages });
   } catch (err) {
@@ -46,7 +57,7 @@ export const getAllMessages = async (req, res) => {
 
 export const getMessageById = async (req, res) => {
   console.log('getMessageById');
-  const messageId = req.params.messageId
+  const messageId = req.params.messageId;
 
   try {
     const foundMessage = await findMessageById(messageId);
@@ -59,6 +70,9 @@ export const getMessageById = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    foundMessage.createdAt = foundMessage.createdAt.toLocaleString();
+    foundMessage.updatedAt = foundMessage.updatedAt.toLocaleString();
 
     // myEmitterMessages.emit('get-message-by-id', req.user)
     return sendDataResponse(res, 200, { message: foundMessage });
@@ -87,10 +101,17 @@ export const createNewMessage = async (req, res) => {
     const foundUser = await findUserById(userId);
 
     if (!foundUser) {
-      return sendDataResponse(res, 400, { message: 'Recipient not found in database' });
+      return sendDataResponse(res, 400, {
+        message: 'Recipient not found in database',
+      });
     }
 
-    const createdMessage = await createMessage(subject, content, sentFromId, userId);
+    const createdMessage = await createMessage(
+      subject,
+      content,
+      sentFromId,
+      userId
+    );
     console.log('created message', createdMessage);
 
     // myEmitterMessages.emit('create-message', createdMessage);
@@ -118,7 +139,7 @@ export const getMessagesFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-    console.log('XXX foundUser', foundUser)
+    console.log('XXX foundUser', foundUser);
     const foundMessages = await findUserMessagesById(foundUser.id);
     console.log('foundMessages', foundMessages);
 
@@ -131,6 +152,13 @@ export const getMessagesFromUser = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
+
+    foundMessages.forEach((message) => {
+      const createdDate = message.createdAt.toLocaleString();
+      const updatedDate = message.updatedAt.toLocaleString();
+      message.createdAt = createdDate;
+      message.updatedAt = updatedDate;
+    });
 
     myEmitterMessages.emit('get-user-messages', req.user);
     return sendDataResponse(res, 200, { messages: foundMessages });
@@ -176,15 +204,12 @@ export const setMessageToViewed = async (req, res) => {
     // myEmitterMessages.emit('viewed-message', req.message);
     return sendDataResponse(res, 200, { message: updatedMessage });
   } catch (err) {
-    const serverError = new ServerErrorEvent(
-      `Viewed Message Server error`
-    );
+    const serverError = new ServerErrorEvent(`Viewed Message Server error`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
 };
-
 
 export const deleteMessage = async (req, res) => {
   console.log('deleteMessage');

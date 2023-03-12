@@ -10,6 +10,9 @@ export const findMessageById = (messageId) =>
 export const findUserMessagesById = (userId) =>
   dbClient.message.findMany({
     where: { userId: userId },
+    orderBy: {
+      createdAt: 'desc',
+    },
   });
 
 export const createMessage = (subject, content, sentFromId, userId) =>

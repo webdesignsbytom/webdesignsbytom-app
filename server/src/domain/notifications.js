@@ -2,7 +2,7 @@ import dbClient from '../utils/dbClient.js';
 
 export const findAllNotifications = () => dbClient.notification.findMany({
     orderBy: {
-        id: 'desc'
+        createdAt: 'desc'
     }
 });
 export const findNotificationsByUserId = (userId) =>
