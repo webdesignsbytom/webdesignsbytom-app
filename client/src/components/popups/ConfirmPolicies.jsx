@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 
@@ -28,12 +28,11 @@ function ConfirmPolicies() {
           </div>
           <article className='grid text-sm items-center ml-6'>
             <p>
-              For infomation on our privacy and <span className='text-bold'>cookies</span> policies, please follow
+              For infomation on our privacy and{' '}
+              <span className='text-bold'>cookies</span> policies, please follow
               the link by clicking{' '}
               <span className='text-hyperlink-blue font-bold cursor-pointer'>
-                <Link to='/user-cookie-policy'>
-                here
-                </Link>
+                <Link to='/user-cookie-policy'>here</Link>
               </span>
               .
             </p>

@@ -18,7 +18,7 @@ function MessagesComponent() {
       .catch((err) => {
         console.error('Unable to mark notification as seen', err);
       });
-  }, []);
+  }, [user.id]);
 
   return (
     <>

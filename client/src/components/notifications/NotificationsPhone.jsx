@@ -24,13 +24,6 @@ function NotificationsPhone() {
   const [createdSuccess, setCreatedSuccess] = useState({});
   const [markedSeenSuccess, setMarkedSeenSuccess] = useState({});
   const [deletedNote, setDeletedNote] = useState({});
-  // For new note
-  const [testForm, setTestForm] = useState({
-    email: 'test@example.com',
-    userId: 1,
-    type: 'PURCHASE',
-    content: 'testing',
-  });
 
   useEffect(() => {
     client
@@ -53,28 +46,23 @@ function NotificationsPhone() {
 
   const selectViewed = (event) => {
     const { id } = event.target;
-    console.log('id: ', id);
     setDisplayNotifications(id);
   };
 
   const selectAll = (event) => {
     const { id } = event.target;
-    console.log('id: ', id);
-
     setDisplayNotifications(id);
   };
 
   const selectNew = (event) => {
     const { id } = event.target;
-    console.log('id: ', id);
     setDisplayNotifications(id);
   };
 
   const markSeen = (noteId) => {
-    console.log('NOTE', noteId);
 
     client
-      .put(`/notifications/viewed/${noteId}`, testForm)
+      .put(`/notifications/viewed/${noteId}`)
       .then((res) => {
         const newNote = allNotifications.filter(
           (note) => note.id === res.data.data.notification.id

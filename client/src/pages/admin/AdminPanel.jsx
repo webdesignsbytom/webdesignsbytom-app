@@ -13,10 +13,6 @@ function AdminPanel() {
   const { user, setUser, token }  = useContext(UserContext)
   const [foundUser, setFoundUser] = useState(sampleUserData);
   const [userId, setUserId] = useState('');
-  console.log('Admin User', user);
-  console.log('userId', userId);
-  console.log('foundUser', foundUser);
-  console.log('token', token);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

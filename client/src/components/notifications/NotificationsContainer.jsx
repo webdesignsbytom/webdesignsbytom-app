@@ -1,16 +1,26 @@
 import React from 'react';
+// Components
 import NoteItem from './NoteItem';
-function NotificationsContainer({ notifications, markSeen, deleteNotification }) {
-console.log('AA ', notifications)
+
+function NotificationsContainer({
+  notifications,
+  markSeen,
+  deleteNotification,
+}) {
   return (
     <>
-      {notifications.map((notification, index) => {
-        return (
-          <>
-            <NoteItem key={index} notification={notification} markSeen={markSeen} deleteNotification={deleteNotification} />
-          </>
-        );
-      })}
+      <ul>
+        {notifications.map((notification, index) => {
+          return (
+            <NoteItem
+              key={index}
+              notification={notification}
+              markSeen={markSeen}
+              deleteNotification={deleteNotification}
+            />
+          );
+        })}
+      </ul>
     </>
   );
 }

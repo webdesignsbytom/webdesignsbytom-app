@@ -1,16 +1,15 @@
 import React from 'react';
+// Components
 import EventItem from './EventItem';
 
 function EventsContainer({ events }) {
   return (
     <>
-      {events.map((event, index) => {
-        return (
-          <>
-            <EventItem key={index} event={event} />
-          </>
-        );
-      })}
+      <ul>
+        {events.map((event, index) => {
+          return <EventItem event={event} key={index} />;
+        })}
+      </ul>
     </>
   );
 }

@@ -24,7 +24,7 @@ function SocialBar() {
             target='_blank'
             rel='noreferrer'
           >
-          <img src={Twitter} className='social__link' alt='twitter' />
+            <img src={Twitter} className='social__link' alt='twitter' />
           </a>
         </div>
         <div>
@@ -33,7 +33,7 @@ function SocialBar() {
             target='_blank'
             rel='noreferrer'
           >
-          <img src={LinkedIn} className='social__link' alt='linkedIn' />
+            <img src={LinkedIn} className='social__link' alt='linkedIn' />
           </a>
         </div>
         <div>
@@ -42,7 +42,7 @@ function SocialBar() {
             target='_blank'
             rel='noreferrer'
           >
-          <img src={Instagram} className='social__link' alt='instagram' />
+            <img src={Instagram} className='social__link' alt='instagram' />
           </a>
         </div>
       </section>
