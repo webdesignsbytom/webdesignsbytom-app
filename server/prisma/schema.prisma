@@ -34,6 +34,7 @@ model User {
   designs        Design[]
   messages       Message[]
   puchaseHistory PuchaseHistory[]
+  favorites      Favorite[]
   review         Review?
   complaints     Complaint?
   agreedToTerms  Boolean           @default(false)
@@ -77,6 +78,16 @@ enum NotificationType {
   MESSAGE
   OFFER
   TEST
+}
+
+model Favorite {
+  id        String    @id @default(uuid())
+  name      String    @default("")
+  link      String    @default("")
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model Notification {

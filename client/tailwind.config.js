@@ -30,12 +30,14 @@ module.exports = {
         'reg': 'auto 1fr',
         'even': '1fr 1fr 1fr',
         'one': '1fr',
-        'special': 'auto 1fr 0.5fr'
+        'special': 'auto 1fr 0.5fr',
+        'ls': '1fr 0.4fr'
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
         'even': '1fr 1fr 1fr',
-        'one': '1fr'
+        'one': '1fr',
+        'xo': '1fr 0.5fr'
       },
       width: {
         id: '12ch;'

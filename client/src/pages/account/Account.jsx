@@ -18,6 +18,11 @@ import {
 import { sampleUserData } from '../../users/utils/utils';
 import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
 import MessagesComponent from '../../components/messages/MessagesComponent';
+import Profile from '../../components/users/Profile';
+import client from '../../utils/client';
+import NoteItem from '../../components/notifications/NoteItem';
+import NotificationsContainer from '../../components/notifications/NotificationsContainer';
+import MessageItem from '../../components/messages/MessageItem';
 
 const initAlert = { status: '', content: '' };
 
@@ -26,11 +31,41 @@ function Account() {
   const [alert, setAlert] = useState(initAlert);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
+  // Notifications
+  const [allNotifications, setAllNotifications] = useState([]);
+  const [viewedNotifications, setViewedNotifications] = useState([]);
+  const [unSeenNotifications, setUnSeenNotifications] = useState([]);
+  const [displayNotifications, setDisplayNotifications] =
+    useState('new-notifications');
+  // Messages
+  const [userMessages, setUserMessages] = useState([]);
+
   let navigate = useNavigate();
 
   useEffect(() => {
     const foundUser = LoggedInUser();
     setFormByUserId(foundUser.id, setUpdateUserForm);
+
+    // Notifications
+    client
+      .get(`/notifications/user-notifications/${user.id}`)
+      .then((res) => {
+        console.log('res', res.data);
+        setAllNotifications(res.data.data.notifications);
+      })
+      .catch((err) => {
+        console.error('Unable to get notifications', err);
+      });
+
+    client
+      .get(`/messages/user-messages/${user.id}`)
+      .then((res) => {
+        console.log('response', res.data);
+        setUserMessages(res.data.data.messages);
+      })
+      .catch((err) => {
+        console.error('Unable to get user messages', err);
+      });
   }, []);
 
   useEffect(() => {
@@ -72,83 +107,73 @@ function Account() {
 
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen lg:overflow-hidden'>
+      <div className='bg-white dark:bg-black max-h-screen lg:overflow-hidden'>
         <Navbar />
         {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg'>
+        <section className='grid h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
           <div className='text-left mt-2 mb-2 pl-4'>
-            <h1 className='font-extrabold text-2xl'>
+            <h1 className='font-bold text-xl'>
               Account: {user.firstName} {user.lastName}
             </h1>
           </div>
-          {/* Main container */}
-          <section className='grid lg:grid-cols-2'>
-            <section className='grid sm:w-[500px] mx-auto p-2'>
-              {/* Display user */}
-              <UserCard user={user} />
-              {/* update form */}
-              <form onSubmit={handleUpdate} className='mt-2'>
-                {/* <!-- Email input --> */}
-                <div className='mb-6'>
-                  <input
-                    type='text'
-                    name='email'
-                    className='standard__inputs'
-                    placeholder='Email address'
-                    onChange={handleChange}
-                  />
+          {/* Main Container */}
+          <section className='interaction__container'>
+            {/* Left */}
+            <section className='bg-green-300 grid lg:grid-rows-reg'>
+              {/* Nav */}
+              <nav className='bg-yellow-300 p-2 lg:pr-24 lg:w-min border-b-2 border-black border-solid'>
+                <ul className='flex lg:text-left gap-24'>
+                  <li>Overview</li>
+                  <li>Designs</li>
+                  <li>Projects</li>
+                </ul>
+              </nav>
+              {/* Content */}
+              <section className='bg-red-500'>stuff</section>
+            </section>
+            {/* Right */}
+            <section className='bg-blue-300 grid lg:grid-rows-ls gap-2 overflow-hidden'>
+              {/* Messages */}
+              <section className='bg-green-300 grid lg:grid-rows-2 lg:gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
+                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 border-black border-solid'>
+                    Notifications
+                  </h3>
+                  <div className='overflow-scroll overflow-x-hidden'>
+                    <NotificationsContainer notifications={allNotifications} />
+                  </div>
+                </section>
+                <section className='border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 border-black border-solid'>
+                    Messages
+                  </h3>
+                  {/* <div className='overflow-scroll overflow-x-hidden'>
+                    <ul>
+                      {userMessages.map((message, index) => {
+                        return (
+                          <li key={index}>
+                            <MessageItem message={message} />
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div> */}
+                </section>
+              </section>
+              {/* Favorites */}
+              <section className='hidden lg:grid bg-yellow-300 border-2 border-black border-solid rounded-sm p-1'>
+                <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 border-black border-solid'>
+                    Favorites
+                  </h3>
                 </div>
-
-                {/* <!-- FirstName input --> */}
-                <div className='mb-6'>
-                  <input
-                    type='text'
-                    name='firstName'
-                    className='standard__inputs'
-                    placeholder='First Name'
-                    onChange={handleChange}
-                  />
-                </div>
-
-                {/* <!-- LastName input --> */}
-                <div className='mb-6'>
-                  <input
-                    type='text'
-                    name='lastName'
-                    className='standard__inputs'
-                    placeholder='Last Name'
-                    onChange={handleChange}
-                  />
-                </div>
-
-                {/* <!-- Country input --> */}
-                <div className='mb-4'>
-                  <CountrySelect handleChange={handleChange} />
-                </div>
-
-                <div className='mb-6'>
-                  <button className='submit__button'>Update Profile</button>
-                </div>
-              </form>
-              {/* Delete account */}
-              <section>
-                <button onClick={deleteProfile} className='delete__button'>
-                  Delete Profile
-                </button>
               </section>
             </section>
-
-            <section className='bg-blue-300 p-2'>
-              <div className='bg-red-400 grid w-full lg:grid-cols-1 lg:grid-rows-1'>
-                <MessagesComponent />
-              </div>
-            </section>
-
-            {!resendVerification && (
-              <ResendConfirmEmail handleResend={handleResend} />
-            )}
           </section>
+          {/* {!resendVerification && (
+            <ResendConfirmEmail handleResend={handleResend} />
+          )} */}
         </section>
       </div>
     </>
