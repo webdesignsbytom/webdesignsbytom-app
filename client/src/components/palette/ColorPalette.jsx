@@ -39,21 +39,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <h5 className='pl-1 lg:pl-0'>RGB</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HEX</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HSL</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
               </article>
@@ -70,21 +70,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <h5 className='pl-1 lg:pl-0'>RGB</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HEX</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HSL</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
               </article>
@@ -101,21 +101,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <h5 className='pl-1 lg:pl-0'>RGB</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HEX</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HSL</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
               </article>
@@ -132,21 +132,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <h5 className='pl-1 lg:pl-0'>RGB</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HEX</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HSL</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
               </article>
@@ -163,21 +163,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <h5 className='pl-1 lg:pl-0'>RGB</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HEX</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
                 <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
                   <h5 className='pl-1 lg:pl-0'>HSL</h5>
                   <input
                     type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
                   />
                 </div>
               </article>
@@ -261,7 +261,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     data-te-animation-init
                   />
                   <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
-                    Enter a name to save your design with
+                    Main Background colour.
                   </div>
                 </div>
               </div>
@@ -291,7 +291,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information for colour palette selection'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     A colour to compliment the main background.
                   </div>
                 </div>
@@ -322,7 +322,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     Usually a dark background. Can be semi-transparent or even
                     see through.
                   </div>
@@ -354,7 +354,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     Part of your SEO requires you to have the entire site
                     available in an alternate dark colour scheme.
                   </div>
@@ -386,7 +386,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     Primary font colour for general text.
                   </div>
                 </div>
@@ -417,7 +417,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     In dark mode alternate your text to contrast the background.
                     Dark modes are part of your SEO requirements.
                   </div>
@@ -449,7 +449,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     Alternative text colour for highlighting headers, titles or
                     specific words.
                   </div>
@@ -481,7 +481,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     To highlight the text the user hovers on. For a smooth
                     interactive user experience.
                   </div>
@@ -513,7 +513,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     A slightly darker colour than your text to highlight when
                     hovered over.
                   </div>
@@ -545,7 +545,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     For clicked on links and selected navigation links.
                   </div>
                 </div>
@@ -576,7 +576,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     The colour for all your borders throughout the site.
                   </div>
                 </div>
@@ -607,7 +607,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     In dark mode alternate your border colour as well.
                   </div>
                 </div>
@@ -638,7 +638,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0 z-10'>
                     To make links stand out as part of your SEO, hyperlinks get
                     a noticable colour.
                   </div>
