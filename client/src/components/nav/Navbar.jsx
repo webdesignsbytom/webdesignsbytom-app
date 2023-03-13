@@ -148,7 +148,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black'>
+      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black lg:w-full'>
         <section className='flex h-16 items-center justify-between px-4'>
           {/* Logo */}
           <div

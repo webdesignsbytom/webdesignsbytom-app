@@ -2,21 +2,22 @@ import React, { useContext, useState } from 'react';
 // Components
 import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
-// Icons
-import QMark from '../../img/questionMark.svg';
-import FloppyDisk from '../../img/floppyDisk.svg';
-import Bin from '../../img/bin.svg';
-import Undo from '../../img/undo.svg';
-import NewFile from '../../img/newFile.svg';
-// Components
 import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
 import FooterOptions from '../../components/options/footerOptions/FooterOptions';
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
 import client from '../../utils/client';
+// Context
 import { UserContext } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
+// Icons
+import QMark from '../../img/questionMark.svg';
+import FloppyDisk from '../../img/floppyDisk.svg';
+import Bin from '../../img/bin.svg';
+import Undo from '../../img/undo.svg';
+import NewFile from '../../img/newFile.svg';
+// Utils
+import { paletteTemplate } from '../../utils/utils';
 
 function DesignElement({
   displayElement,
@@ -28,6 +29,7 @@ function DesignElement({
   const { user } = useContext(UserContext);
   const [fileSaveName, setFileSaveName] = useState('untitled');
   const [userStories, setUserStories] = useState([]);
+  const [colourPalette, setColourPalette] = useState(paletteTemplate);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -37,10 +39,7 @@ function DesignElement({
 
   const saveNewDesign = (event) => {
     event.preventDefault();
-    console.log('SAVING', openDesign);
-    console.log('USER', user.id);
     if (user.email.length < 1) {
-      console.log('X');
       return setDisplayElement('register');
     } else {
       client
@@ -141,6 +140,8 @@ function DesignElement({
                 <ColorPalette
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
+                  colourPalette={colourPalette}
+                  setColourPalette={setColourPalette}
                 />
               )}
               {displayElement === 'pages' && (

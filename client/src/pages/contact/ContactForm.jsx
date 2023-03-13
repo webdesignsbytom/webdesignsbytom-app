@@ -34,10 +34,10 @@ function ContactForm({ formData, setFormData }) {
     <>
       <form
         onSubmit={handleSubmit}
-        className='py-4 lg:w-full lg:my-auto lg:px-8'
+        className='lg:w-full lg:my-auto lg:px-8'
       >
         {/* <!-- Email input --> */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label htmlFor='email'>Email:</label>
           <input
             type='text'
@@ -49,7 +49,7 @@ function ContactForm({ formData, setFormData }) {
           />
         </div>
         {/* <!-- Phone input --> */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label className='flex justify-between' htmlFor='phone'><p>Phone:</p><p>* optional</p></label>
           <input
             type='tel'
@@ -60,7 +60,7 @@ function ContactForm({ formData, setFormData }) {
           />
         </div>
         {/* <!-- FirstName input --> */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label htmlFor='firstName'>First Name:</label>
           <input
             type='text'
@@ -72,7 +72,7 @@ function ContactForm({ formData, setFormData }) {
           />
         </div>
         {/* <!-- LastName input --> */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label htmlFor='lastName'>Last Name:</label>
           <input
             type='text'
@@ -84,13 +84,13 @@ function ContactForm({ formData, setFormData }) {
           />
         </div>
         {/* Country input */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label htmlFor='country'>Country</label>
           <SmallCountrySelect handleChange={handleChange} />
         </div>
 
         {/* Message input */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <label htmlFor='message'>Message:</label>
           <textarea
             name='message'
@@ -102,7 +102,7 @@ function ContactForm({ formData, setFormData }) {
         </div>
 
         {/* <!-- Submit button --> */}
-        <div className='mb-2'>
+        <div className='mb-1'>
           <button
             type='submit'
             className='submit__button'
