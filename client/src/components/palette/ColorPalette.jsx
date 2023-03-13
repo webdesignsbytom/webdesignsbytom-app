@@ -260,7 +260,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer right-0 bottom-0'>
                     Enter a name to save your design with
                   </div>
                 </div>
