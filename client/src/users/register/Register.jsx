@@ -30,6 +30,7 @@ function Register() {
   const [hiddenEmail, setHiddenEmail] = useState('invisible h-4');
 
   const [inputStyle, setInputStyle] = useState('standard__inputs');
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
 
   let navigate = useNavigate();
 
@@ -92,6 +93,7 @@ console.log('formResponses', formResponses);
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setLoadingAnimation(true)
 
     if (registerForm.password !== registerForm.confirmPassword) {
       setFormResponses({
@@ -101,27 +103,29 @@ console.log('formResponses', formResponses);
       });
       setHiddenPass('block');
       setInputStyle('error__inputs');
+      setLoadingAnimation(false)
       return;
     }
-
+    
     const checkPassword = validPassword(registerForm.password);
-
+    
     if (checkPassword === false) {
       alert('Passwords too short');
       setFormResponses({
         ...formResponses,
         passwordLengthError: true,
       });
-
+      setLoadingAnimation(false)
       return;
     }
-
+    
     if (agreedToTerms !== true) {
       alert('Please check to agree to terms and conditons');
       setFormResponses({
         ...formResponses,
         agreedToTermsError: true,
       });
+      setLoadingAnimation(false)
       return;
     }
 
@@ -183,6 +187,7 @@ console.log('formResponses', formResponses);
                 formResponses={formResponses}
                 agreedToTerms={agreedToTerms}
                 checkHandler={checkHandler}
+                loadingAnimation={loadingAnimation}
               />
             </section>
           </div>

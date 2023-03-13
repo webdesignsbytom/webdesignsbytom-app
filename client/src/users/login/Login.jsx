@@ -18,7 +18,8 @@ function Login() {
   const [successLoginUser, setSuccessLoginUser] = useState('');
   const [fieldType, setFieldType] = useState('password');
   const [eyeIcon, setEyeIcon] = useState(OpenEye);
-
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+console.log('loading animation', loadingAnimation);
   let navigate = useNavigate();
 
   const homePage = () => {
@@ -36,6 +37,8 @@ function Login() {
 
   const handleLogin = (event) => {
     event.preventDefault();
+    console.log('CLICK')
+    setLoadingAnimation(!loadingAnimation)
     postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
   };
 
@@ -79,6 +82,7 @@ function Login() {
                 rememberMeChecked={rememberMeChecked}
                 setRememberMeChecked={setRememberMeChecked}
                 successLoginUser={successLoginUser}
+                loadingAnimation={loadingAnimation}
               />
             </section>
           </section>
