@@ -18,7 +18,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
       {/* Main */}
       <section className='grid grid-rows-2'>
         {/* Colour Picker */}
-        <section className='grid grid-cols-xo'>
+        <section className='grid lg:grid-cols-xo'>
           {/* Swatches */}
           <div className='grid grid-cols-5 ml-2 my-3'>
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
@@ -34,7 +34,11 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   HSL
                 </h5>
               </article>
-              <img src={changeIcon} className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin' alt="change to new random colour" />
+              <img
+                src={changeIcon}
+                className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                alt='change to new random colour'
+              />
             </div>
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardTwoBg}></div>
@@ -49,7 +53,11 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   HSL
                 </h5>
               </article>
-              <img src={changeIcon} className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin' alt="change to new random colour" />
+              <img
+                src={changeIcon}
+                className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                alt='change to new random colour'
+              />
             </div>
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardThreeBg}></div>
@@ -64,7 +72,11 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   HSL
                 </h5>
               </article>
-              <img src={changeIcon} className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin' alt="change to new random colour" />
+              <img
+                src={changeIcon}
+                className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                alt='change to new random colour'
+              />
             </div>
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFourBg}></div>
@@ -79,7 +91,11 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   HSL
                 </h5>
               </article>
-              <img src={changeIcon} className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin' alt="change to new random colour" />
+              <img
+                src={changeIcon}
+                className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                alt='change to new random colour'
+              />
             </div>
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFiveBg}></div>
@@ -94,7 +110,11 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   HSL
                 </h5>
               </article>
-              <img src={changeIcon} className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin' alt="change to new random colour" />
+              <img
+                src={changeIcon}
+                className='w-5 absolute right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                alt='change to new random colour'
+              />
             </div>
           </div>
           {/* Result cods */}
@@ -158,18 +178,18 @@ function ColorPalette({ colourPalette, setColourPalette }) {
         </section>
         {/* Saved Options */}
         <section>
-          <ul className='grid grid-cols-3 w-full'>
+          <ul className='grid lg:grid-cols-3 w-full'>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Main Background</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     Enter a name to save your design with
                   </div>
                 </div>
@@ -186,22 +206,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.mainBackground.css}>
-                  </div>
+                  <div className={colourPalette.mainBackground.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Alt Background</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
-                    alt='information'
+                    alt='information for colour palette selection'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     A colour to compliment the main background.
                   </div>
                 </div>
@@ -218,23 +237,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.altBackground.css}>
-                  </div>
+                  <div className={colourPalette.altBackground.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Nav Background</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    Usually a dark background. Can be semi-transparent or even see through.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    Usually a dark background. Can be semi-transparent or even
+                    see through.
                   </div>
                 </div>
               </div>
@@ -250,23 +269,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.navBackground.css}>
-                  </div>
+                  <div className={colourPalette.navBackground.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Dark Mode Background</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    Part of your SEO requires you to have the entire site available in an alternate dark colour scheme.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    Part of your SEO requires you to have the entire site
+                    available in an alternate dark colour scheme.
                   </div>
                 </div>
               </div>
@@ -282,22 +301,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeBackground.css}>
-                  </div>
+                  <div className={colourPalette.darkModeBackground.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Main Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     Primary font colour for general text.
                   </div>
                 </div>
@@ -314,23 +332,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.mainText.css}>
-                  </div>
+                  <div className={colourPalette.mainText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Dark Mode Main Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    In dark mode alternate your text to contrast the background. Dark modes are part of your SEO requirements.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    In dark mode alternate your text to contrast the background.
+                    Dark modes are part of your SEO requirements.
                   </div>
                 </div>
               </div>
@@ -346,23 +364,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeMainText.css}>
-                  </div>
+                  <div className={colourPalette.darkModeMainText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Alt Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    Alternative text colour for highlighting headers, titles or specific words.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    Alternative text colour for highlighting headers, titles or
+                    specific words.
                   </div>
                 </div>
               </div>
@@ -378,23 +396,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.altText.css}>
-                  </div>
+                  <div className={colourPalette.altText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Hover Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    To highlight the text the user hovers on. For a smooth interactive user experience.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    To highlight the text the user hovers on. For a smooth
+                    interactive user experience.
                   </div>
                 </div>
               </div>
@@ -410,23 +428,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.hoverText.css}>
-                  </div>
+                  <div className={colourPalette.hoverText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Dark Mode Hover Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    A slightly darker colour than your text to highlight when hovered over.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    A slightly darker colour than your text to highlight when
+                    hovered over.
                   </div>
                 </div>
               </div>
@@ -442,22 +460,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeHoverText.css}>
-                  </div>
+                  <div className={colourPalette.darkModeHoverText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Active Text</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     For clicked on links and selected navigation links.
                   </div>
                 </div>
@@ -474,22 +491,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.activeText.css}>
-                  </div>
+                  <div className={colourPalette.activeText.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Borders</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     The colour for all your borders throughout the site.
                   </div>
                 </div>
@@ -506,22 +522,21 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.borders.css}>
-                  </div>
+                  <div className={colourPalette.borders.css}></div>
                 </div>
               </div>
             </li>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Borders</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
                     In dark mode alternate your border colour as well.
                   </div>
                 </div>
@@ -538,23 +553,23 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeBorders.css}>
-                  </div>
+                  <div className={colourPalette.darkModeBorders.css}></div>
                 </div>
               </div>
             </li>
-            <li className='grid mx-6'>
+            <li className='grid mx-6 mb-2'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Hyperlinks</h4>
-                <div className='group flex align-middle h-full pl-1 pt-1'>
+                <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
                     src={QMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
                   />
-                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
-                    To make links stand out as part of your SEO, hyperlinks get a noticable colour.
+                  <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:right-0 lg:bottom-0'>
+                    To make links stand out as part of your SEO, hyperlinks get
+                    a noticable colour.
                   </div>
                 </div>
               </div>
@@ -570,8 +585,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.hyperlinks.css}>
-                  </div>
+                  <div className={colourPalette.hyperlinks.css}></div>
                 </div>
               </div>
             </li>

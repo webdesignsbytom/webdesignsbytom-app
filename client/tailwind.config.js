@@ -16,7 +16,7 @@ module.exports = {
         'transparent-white': 'rgba(255, 255, 255, 0.65)',
         'main-text': '#000000',
         'alt-text': '#ffffff',
-        'hover-text': '#6b7280',
+        'hover-text': '#94a3b8',
         'active-text': '#6b7280',
         'placeholder-text': 'rgb(55 65 81)',
         'error-red': '',

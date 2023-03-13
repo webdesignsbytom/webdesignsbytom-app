@@ -11,7 +11,7 @@ function Footer() {
           <p>Email: tom@webdesignsbytom.com</p>
         </div>
       </section>
-      <p className='text-center'>Copyright <span className='font-bold'>&copy;</span> {today.getFullYear()}</p>
+      <p className='text-center'>Copyright webdesignsbytom <span className='font-bold'>&copy;</span> {today.getFullYear()}</p>
     </footer>
   );
 }

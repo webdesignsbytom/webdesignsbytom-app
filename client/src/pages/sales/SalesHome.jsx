@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../../components/footer/Footer';
 import HeroSection from '../../components/hero/HeroSection';
 // Components
 import Navbar from '../../components/nav/Navbar';
@@ -12,6 +13,7 @@ function SalesHome() {
       <HeroSection />
       <ReviewsContainer />
       <PriceTable />
+      <Footer />
     </div>
   );
 }

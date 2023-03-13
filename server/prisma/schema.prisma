@@ -171,6 +171,7 @@ model Component {
   desc      String        @default("")
   mainImage String        @default("")
   price     Int
+  image     String        @default("https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/09/how-to-design-a-website-21-1024x500.png")
   createdAt DateTime      @default(now())
   updatedAt DateTime?     @updatedAt
 }
@@ -192,6 +193,7 @@ model Page {
   name      String    @default("")
   desc      String    @default("")
   price     Int
+  image     String    @default("https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/09/how-to-design-a-website-21-1024x500.png")
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
@@ -228,7 +230,7 @@ model Design {
   name         String         @default("untitled")
   navDesign    NavDesign?
   colorPalette ColorPalette[]
-  userStories  UserStory[]    
+  userStories  UserStory[]
   userId       String
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime       @default(now())

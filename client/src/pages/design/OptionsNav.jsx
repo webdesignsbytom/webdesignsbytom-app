@@ -65,7 +65,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
               savedDesigns.map((design, index) => {
                 return (
                   <>
-                    <div className='text-black'>{design.name}</div>
+                    <div key={index} className='text-black'>{design.name}</div>
                   </>
                 );
               })}

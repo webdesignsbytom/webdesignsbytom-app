@@ -7,7 +7,7 @@ function NoteItem({ notification, markSeen, deleteNotification }) {
 
   return (
     <>
-      <li className='grid grid-flow-row mb-1 bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded max-w-full w-full leading-3'>
+      <li className='grid grid-flow-row mb-[1px] bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded max-w-full w-full leading-3'>
         <article className='grid'>
           <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
             <p>Type: {type}</p>
