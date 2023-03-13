@@ -249,7 +249,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
         </section>
         {/* Saved Options */}
         <section>
-          <ul className='grid lg:grid-cols-3 w-full'>
+          <ul className='grid md:grid-cols-2 lg:grid-cols-3 w-full'>
             <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Main Background</h4>
