@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // Components
 import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
@@ -15,14 +15,19 @@ import FooterOptions from '../../components/options/footerOptions/FooterOptions'
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
 import client from '../../utils/client';
+import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
 
 function DesignElement({
   displayElement,
+  setDisplayElement,
   savedDesigns,
   openDesign,
   setOpenDesign,
 }) {
+  const { user } = useContext(UserContext);
   const [fileSaveName, setFileSaveName] = useState('untitled');
+  const [userStories, setUserStories] = useState([]);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -30,16 +35,21 @@ function DesignElement({
     setFileSaveName(value);
   };
 
-  const saveDesign = (event) => {
+  const saveNewDesign = (event) => {
     event.preventDefault();
     console.log('SAVING', openDesign);
-
-    client
-      .put(`/designs/user/${openDesign.id}`, openDesign)
-      .then((res) => {
-        console.log('res', res.data);
-      })
-      .catch((err) => console.error('Unable to get designs', err.response));
+    console.log('USER', user.id);
+    if (user.email.length < 1) {
+      console.log('X');
+      return setDisplayElement('register');
+    } else {
+      client
+        .post(`/designs/create`, openDesign)
+        .then((res) => {
+          console.log('res', res.data);
+        })
+        .catch((err) => console.error('Unable to get designs', err.response));
+    }
   };
 
   return (
@@ -81,7 +91,7 @@ function DesignElement({
                   <p>New</p>
                 </li>
                 <li
-                  onClick={saveDesign}
+                  onClick={saveNewDesign}
                   className='menu__link flex align-middle group'
                 >
                   <div className='grid w-full justify-center'>
@@ -117,7 +127,10 @@ function DesignElement({
             </nav>
           </section>
           <section className='overflow-x-hidden grid grid-rows-one min-h-[calc(100vh-104px)] p-2'>
-            <div className='border-2 border-solid border-black rounded'>
+            <div className='border-2 border-solid border-black rounded grid grid-rows-1'>
+              {displayElement === 'register' && (
+                <div>Please register ++ short form to sign up</div>
+              )}
               {displayElement === 'nav' && (
                 <NavOptions
                   openDesign={openDesign}
@@ -146,6 +159,8 @@ function DesignElement({
                 <UserStories
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
+                  userStories={userStories}
+                  setUserStories={setUserStories}
                 />
               )}
               {displayElement === 'footers' && (

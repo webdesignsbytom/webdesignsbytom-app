@@ -13,7 +13,7 @@ function Design() {
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([]);
   const [openDesign, setOpenDesign] = useState(designTemplate);
-  console.log('openDesign', openDesign);
+  console.log('1. openDesign', openDesign);
   
   useEffect(() => {
     if (user.id) {
@@ -42,6 +42,7 @@ function Design() {
         {/* Preview section */}
         <DesignElement
           displayElement={displayElement}
+          setDisplayElement={setDisplayElement}
           savedDesigns={savedDesigns}
           openDesign={openDesign}
           setOpenDesign={setOpenDesign}

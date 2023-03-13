@@ -557,7 +557,7 @@ function Navbar() {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img src={Github} className='social__link' alt='github' />
+                    <img src={Github} className='social__link w-6' alt='github' />
                   </a>
                 </div>
                 <div>
@@ -566,7 +566,7 @@ function Navbar() {
                     target='_blank'
                     rel='noreferrer'
                   >
-                    <img src={Twitter} className='social__link' alt='twitter' />
+                    <img src={Twitter} className='social__link w-6' alt='twitter' />
                   </a>
                 </div>
                 <div>
@@ -577,7 +577,7 @@ function Navbar() {
                   >
                     <img
                       src={LinkedIn}
-                      className='social__link'
+                      className='social__link w-6'
                       alt='linkedIn'
                     />
                   </a>
@@ -590,7 +590,7 @@ function Navbar() {
                   >
                     <img
                       src={Instagram}
-                      className='social__link'
+                      className='social__link w-6'
                       alt='instagram'
                     />
                   </a>

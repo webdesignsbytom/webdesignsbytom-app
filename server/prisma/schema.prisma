@@ -228,7 +228,7 @@ model Design {
   name         String         @default("untitled")
   navDesign    NavDesign?
   colorPalette ColorPalette[]
-  userStories  UserStory[]
+  userStories  UserStory[]    
   userId       String
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt    DateTime       @default(now())
