@@ -9,12 +9,12 @@ function MessageItem({ message }) {
     message;
 
   return (
-    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-2'>
+    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-1 leading-3 cursor-pointer'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
-          <div>
+          <div className='flex w-full justify-between'>
             <p>Subject: {subject}</p>
-            <p>Date {createdAt}</p>
+            <p>Date: {createdAt}</p>
           </div>
           <div className='flex'>
             {starred && <img src={heart} alt='favorite' />}
@@ -23,7 +23,7 @@ function MessageItem({ message }) {
         </div>
         <section className='flex justify-between p-1'>
           <div>
-            <p>Content: {content}</p>
+            <p>{content}</p>
           </div>
           <div>
             <img

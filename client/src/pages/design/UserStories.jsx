@@ -62,19 +62,13 @@ function UserStories({ openDesign, setOpenDesign }) {
                 alt='information'
                 data-te-animation-init
               />
-              <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[250px]'>
+              <div className='hidden absolute group-hover:block border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[250px] lg:w-[500px] lg:right-12'>
                 A good user story is short description of an ability your app
-                will require.
-                <div>
-                  <h5>For Example: </h5>
-                  <p>
-                    I want a user to be able to make, like and comment on posts
-                  </p>
-                  <p>
-                    I want the app to record user events and display them to
-                    admins
-                  </p>
-                </div>
+                will require. For Example: 
+                <p>'I want a user to be able to make,
+                like and comment on posts'</p> 
+                <p>'I want the app to record user events
+                and display them to admins'.</p>
               </div>
             </div>
           </div>

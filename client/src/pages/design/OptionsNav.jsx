@@ -17,30 +17,30 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
             <ul className='mb-2 mt-2'>
               <section className='grid gap-2 grid-cols-3 lg:grid-cols-none'>
                 <li className='options__link' id='nav' onClick={setDisplay}>
-                  <button className='pl-2'>Navigation</button>
+                  <button className='pl-2' id='nav'>Navigation</button>
                 </li>
                 <li className='options__link' id='palette' onClick={setDisplay}>
-                  <button className='pl-2'>Colour Theme</button>
+                  <button className='pl-2' id='palette'>Colour Theme</button>
                 </li>
                 <li className='options__link' id='pages' onClick={setDisplay}>
-                  <button className='pl-2'>Pages</button>
+                  <button className='pl-2' id='pages'>Pages</button>
                 </li>
                 <li
                   className='options__link'
                   id='components'
                   onClick={setDisplay}
                 >
-                  <button className='pl-2'>Components</button>
+                  <button className='pl-2' id='components'>Components</button>
                 </li>
                 <li className='options__link' id='footers' onClick={setDisplay}>
-                  <button className='pl-2'>Footers</button>
+                  <button className='pl-2' id='footers'>Footers</button>
                 </li>
                 <li
                   className='options__link'
                   id='user-stories'
                   onClick={setDisplay}
                 >
-                  <button className='pl-2'>User Stories</button>
+                  <button className='pl-2' id='user-stories'>User Stories</button>
                 </li>
               </section>
 
@@ -51,7 +51,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                   id='saves'
                   onClick={setDisplay}
                 >
-                  <button className='pl-2'>Saved Designs</button>
+                  <button id='saves' className='pl-2'>Saved Designs</button>
                 </li>
               </section>
             </ul>
