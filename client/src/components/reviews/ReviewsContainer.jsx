@@ -17,11 +17,11 @@ function ReviewsContainer() {
   }, []);
 
   return (
-    <section className='bg-main-colour m-2'>
+    <section className='bg-main-colour m-2 px-1'>
       <div>
         <h2>Reviews and Recomendations</h2>
       </div>
-      <ul className='w-full grid grid-cols-3 gap-2'>
+      <ul className='w-full grid lg:grid-cols-3 gap-2'>
         {allReviews.map((review, index) => {
           return <ReviewItem key={index} review={review} />;
         })}

@@ -12,27 +12,50 @@ function ColorPalette({ colourPalette, setColourPalette }) {
 
   return (
     <section className='grid grid-rows-reg'>
-      <div className='text-center'>
+      <div className='text-center flex justify-between'>
+        <div className='relative group flex align-middle h-full'>
+          <img
+            src={changeIcon}
+            className='w-5 ml-4 mt-3 cursor-pointer focus:animate-spin active:animate-spin'
+            alt='randomize all colours'
+          />
+          <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:left-0 lg:top-0 z-10 ml-8 mt-8'>
+            Randomize all colours.
+          </div>
+        </div>
         <h2>Create the theme and style for your website</h2>
+        <div></div>
       </div>
       {/* Main */}
-      <section className='grid grid-rows-2'>
+      <section className='grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
         {/* Colour Picker */}
         <section className='grid lg:grid-cols-xo'>
           {/* Swatches */}
-          <div className='grid grid-cols-5 ml-2 my-3'>
-            <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
+          <div className='grid grid-cols-5 lg:ml-2 my-3'>
+            <div className='relative grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardOneBg}></div>
               <article className='h-min text-xs'>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  RGB
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HEX
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HSL
-                </h5>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
               </article>
               <img
                 src={changeIcon}
@@ -43,15 +66,27 @@ function ColorPalette({ colourPalette, setColourPalette }) {
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardTwoBg}></div>
               <article className='h-min text-xs'>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  RGB
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HEX
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HSL
-                </h5>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
               </article>
               <img
                 src={changeIcon}
@@ -62,15 +97,27 @@ function ColorPalette({ colourPalette, setColourPalette }) {
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardThreeBg}></div>
               <article className='h-min text-xs'>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  RGB
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HEX
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HSL
-                </h5>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
               </article>
               <img
                 src={changeIcon}
@@ -81,15 +128,27 @@ function ColorPalette({ colourPalette, setColourPalette }) {
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFourBg}></div>
               <article className='h-min text-xs'>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  RGB
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HEX
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HSL
-                </h5>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
               </article>
               <img
                 src={changeIcon}
@@ -100,15 +159,27 @@ function ColorPalette({ colourPalette, setColourPalette }) {
             <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFiveBg}></div>
               <article className='h-min text-xs'>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  RGB
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HEX
-                </h5>
-                <h5 className='border-t-2 border-black border-solid px-2 py-1'>
-                  HSL
-                </h5>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
+                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
+                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
+                  <input
+                    type='text'
+                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] pl-1'
+                  />
+                </div>
               </article>
               <img
                 src={changeIcon}
@@ -118,7 +189,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
             </div>
           </div>
           {/* Result cods */}
-          <section>
+          <section className='h-min'>
             <div className='px-2'>
               <h4>Cool Slate</h4>
               <article className='grid grid-cols-6 border-solid border-black border-[1px]'>

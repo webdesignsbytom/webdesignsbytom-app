@@ -96,7 +96,7 @@ function ContactForm({ formData, setFormData }) {
             name='message'
             id='message'
             className='overflow-y-scroll resize-none scroll-smooth textbox__inputs'
-            rows='5'
+            rows='4'
             handleChange={handleChange}
           ></textarea>
         </div>

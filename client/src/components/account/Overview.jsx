@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
+// Components
+import Profile from '../../components/users/Profile';
 
 function Overview() {
-  return (
-    <div>Overview</div>
-  )
+  return <Profile />;
 }
 
-export default Overview
+export default Overview;

@@ -9,7 +9,7 @@ import { pricingTableData } from '../../utils/utils';
 function PriceTable() {
   return (
     <section className='bg-main-colour m-2'>
-      <table className='border-2 border-black border-solid w-full'>
+      <table className='border-2 border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'>
         <thead>
           <tr className='grid grid-cols-4 p-2'>
             <th className='border-2 border-black border-solid p-2'>Element</th>

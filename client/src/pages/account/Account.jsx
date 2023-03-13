@@ -119,10 +119,10 @@ function Account() {
 
   return (
     <>
-      <div className='bg-white dark:bg-black max-h-screen lg:overflow-hidden'>
+      <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
         <Navbar />
         {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
+        <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
           <div className='text-left mt-4 mb-1 pl-4 lg:mx-6'>
             <h1 className='font-bold text-xl'>
@@ -200,20 +200,20 @@ function Account() {
             {/* Right */}
             <section className='grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
-              <section className='grid lg:grid-rows-2 lg:gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
+              <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
+                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
-                  <div className='overflow-scroll overflow-x-hidden bg-main-colour'>
+                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
                     <NotificationsContainer notifications={allNotifications} />
                   </div>
                 </section>
                 <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
+                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Messages
                   </h3>
-                  <div className='overflow-scroll overflow-x-hidden bg-main-colour'>
+                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
                     <MessagesContainer messages={userMessages} />
                   </div>
                 </section>
