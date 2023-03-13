@@ -28,24 +28,24 @@ function PriceTable() {
           {pricingTableData.map((item, index) => {
             return (
               <tr key={index} className='grid grid-cols-4 px-2'>
-                <td className='border-2 border-black border-solid px-2'>
+                <td className='border-2 border-black border-solid p-2'>
                   {item.title}
                 </td>
-                <td className='border-2 border-black border-solid px-2 flex justify-center'>
+                <td className='border-2 border-black border-solid p-2 flex justify-center'>
                   {item.basicSite.available ? (
                     <img src={checkIcon} alt='check' className='w-6' />
                   ) : (
                     <img src={crossIcon} alt='not included' className='w-6' />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid px-2 flex justify-center'>
+                <td className='border-2 border-black border-solid p-2 flex justify-center'>
                   {item.basicShop.available ? (
                     <img src={checkIcon} alt='check' className='w-6' />
                   ) : (
                     <img src={crossIcon} alt='not included' className='w-6' />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid px-2 flex justify-center'>
+                <td className='border-2 border-black border-solid p-2 flex justify-center'>
                   {item.fullstack.available ? (
                     <img src={checkIcon} alt='check' className='w-6' />
                   ) : (
@@ -61,16 +61,16 @@ function PriceTable() {
         </tbody>
         <tfoot>
           <tr className='grid grid-cols-4 p-2'>
-            <td className='border-2 border-black border-solid px-2'>
+            <td className='border-2 border-black border-solid p-2'>
               Starting From:
             </td>
-            <td className='border-2 border-black border-solid px-2 flex justify-center'>
+            <td className='border-2 border-black border-solid p-2 flex justify-center'>
               £450
             </td>
-            <td className='border-2 border-black border-solid px-2 flex justify-center'>
+            <td className='border-2 border-black border-solid p-2 flex justify-center'>
               £750
             </td>
-            <td className='border-2 border-black border-solid px-2 flex justify-center'>
+            <td className='border-2 border-black border-solid p-2 flex justify-center'>
               £1450
             </td>
           </tr>
