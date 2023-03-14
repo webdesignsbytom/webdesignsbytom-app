@@ -6,6 +6,9 @@ import QuestionMark from '../../img/questionMark.svg';
 function ColorPalette({ colourPalette, setColourPalette }) {
   console.log('2. Palette', colourPalette);
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
+  const [rgbCardOne, setRgbCardOne] = useState('#0099ff');
+  const [hexCardOne, setHexCardOne] = useState('#0099ff');
+  const [hlsCardOne, setHlsCardOne] = useState('#0099ff');
   const [cardTwoBg, setCardTwoBg] = useState('bg-[#00ff00]');
   const [cardThreeBg, setCardThreeBg] = useState('bg-[#ff0000]');
   const [cardFourBg, setCardFourBg] = useState('bg-[#ffff00]');
@@ -33,29 +36,38 @@ function ColorPalette({ colourPalette, setColourPalette }) {
         <section className='grid lg:grid-cols-xo'>
           {/* Swatches */}
           <div className='grid grid-cols-5 lg:ml-2 my-3'>
-            <div className='relative grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardOneBg}></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>RGB</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={rgbCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HEX</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hexCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HLS</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hlsCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
               </article>
               <img
@@ -64,29 +76,38 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardTwoBg}></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>RGB</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={rgbCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HEX</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hexCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HLS</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hlsCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
               </article>
               <img
@@ -95,29 +116,38 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardThreeBg}></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>RGB</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={rgbCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HEX</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hexCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HLS</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hlsCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
               </article>
               <img
@@ -126,29 +156,38 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFourBg}></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>RGB</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={rgbCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HEX</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hexCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HLS</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hlsCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
               </article>
               <img
@@ -157,29 +196,38 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative grid grid-rows-rev border-2 border-black border-solid rounded'>
+           <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFiveBg}></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>RGB</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>RGB</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={rgbCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HEX</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HEX</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hexCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
-                <div className='lg:flex justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden'>
-                  <h5 className='pl-1 lg:pl-0'>HSL</h5>
-                  <input
-                    type='text'
-                    className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-[75px] md:w-[125] pl-1'
-                  />
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                  <h5 className='pl-2 lg:pl-0'>HLS</h5>
+                  <div className='px-1 sm:px-2 lg:px-0'>
+                    <input
+                      type='text'
+                      value={hlsCardOne}
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                    />
+                  </div>
                 </div>
               </article>
               <img
