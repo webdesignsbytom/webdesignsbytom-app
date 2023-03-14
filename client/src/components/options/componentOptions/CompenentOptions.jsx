@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../utils/client';
+import LoadingSpinner from '../../LoadingSpinner';
 import ComponentItem from './ComponentItem';
 
 function CompenentOptions() {
@@ -18,9 +19,15 @@ function CompenentOptions() {
   return (
     <section>
       <ul className='grid lg:grid-cols-3 p-2 gap-2'>
-        {allComponents.map((component, index) => {
-          return <ComponentItem component={component} key={index} />;
-        })}
+        {allComponents.length < 1 ? (
+          <div className='grid grid-rows-1'>
+            <LoadingSpinner height={'12'} width={'12'} />
+          </div>
+        ) : (
+          allComponents.map((component, index) => {
+            return <ComponentItem component={component} key={index} />;
+          })
+        )}
       </ul>
     </section>
   );

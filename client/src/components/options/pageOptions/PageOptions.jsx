@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../utils/client';
+import LoadingSpinner from '../../LoadingSpinner';
 import PageItem from './PageItem';
 
 function PageOptions() {
@@ -15,13 +16,19 @@ function PageOptions() {
       })
       .catch((err) => console.error('Unable to get designs', err.response));
   }, []);
-  
+
   return (
     <section>
       <ul className='grid lg:grid-cols-3 p-2 gap-2'>
-        {allPages.map((page, index) => {
-          return <PageItem page={page} key={index} />;
-        })}
+        {allPages.length < 1 ? (
+          <div className='grid grid-rows-1'>
+            <LoadingSpinner height={'12'} width={'12'} />
+          </div>
+        ) : (
+          allPages.map((page, index) => {
+            return <PageItem page={page} key={index} />;
+          })
+        )}
       </ul>
     </section>
   );
