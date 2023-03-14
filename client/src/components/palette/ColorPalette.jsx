@@ -5,14 +5,31 @@ import QuestionMark from '../../img/questionMark.svg';
 
 function ColorPalette({ colourPalette, setColourPalette }) {
   console.log('2. Palette', colourPalette);
+  // Card One
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
   const [rgbCardOne, setRgbCardOne] = useState('#0099ff');
   const [hexCardOne, setHexCardOne] = useState('#0099ff');
   const [hlsCardOne, setHlsCardOne] = useState('#0099ff');
+  // Card two
   const [cardTwoBg, setCardTwoBg] = useState('bg-[#00ff00]');
+  const [rgbCardTwo, setRgbCardTwo] = useState('#0099ff');
+  const [hexCardTwo, setHexCardTwo] = useState('#0099ff');
+  const [hlsCardTwo, setHlsCardTwo] = useState('#0099ff');
+  // Card three
   const [cardThreeBg, setCardThreeBg] = useState('bg-[#ff0000]');
+  const [rgbCardThree, setRgbCardThree] = useState('#0099ff');
+  const [hexCardThree, setHexCardThree] = useState('#0099ff');
+  const [hlsCardThree, setHlsCardThree] = useState('#0099ff');
+  // Card four
   const [cardFourBg, setCardFourBg] = useState('bg-[#ffff00]');
+  const [rgbCardFour, setRgbCardFour] = useState('#0099ff');
+  const [hexCardFour, setHexCardFour] = useState('#0099ff');
+  const [hlsCardFour, setHlsCardFour] = useState('#0099ff');
+  // Card five
   const [cardFiveBg, setCardFiveBg] = useState('bg-[#669999]');
+  const [rgbCardFive, setRgbCardFive] = useState('#0099ff');
+  const [hexCardFive, setHexCardFive] = useState('#0099ff');
+  const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
 
   return (
     <section className='grid grid-rows-reg'>
@@ -49,7 +66,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                     />
                   </div>
                 </div>
-               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>HEX</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
@@ -84,17 +101,17 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={rgbCardOne}
+                      value={rgbCardTwo}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
-               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>HEX</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hexCardOne}
+                      value={hexCardTwo}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -104,7 +121,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hlsCardOne}
+                      value={hlsCardTwo}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -124,17 +141,17 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={rgbCardOne}
+                      value={rgbCardThree}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
-               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>HEX</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hexCardOne}
+                      value={hexCardThree}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -144,7 +161,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hlsCardOne}
+                      value={hlsCardThree}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -164,17 +181,17 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={rgbCardOne}
+                      value={rgbCardFour}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
-               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>HEX</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hexCardOne}
+                      value={hexCardFour}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -184,7 +201,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hlsCardOne}
+                      value={hlsCardFour}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -196,7 +213,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 alt='change to new random colour'
               />
             </div>
-           <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div className={cardFiveBg}></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
@@ -204,17 +221,17 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={rgbCardOne}
+                      value={rgbCardFive}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
-               <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>HEX</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hexCardOne}
+                      value={hexCardFive}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -224,7 +241,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
-                      value={hlsCardOne}
+                      value={hlsCardFive}
                       className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
                     />
                   </div>
@@ -251,45 +268,45 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               </article>
             </div>
             <div className='px-2'>
-              <h4>Cool Slate</h4>
+              <h4>Warm Yellow</h4>
               <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-slate-700'></div>
-                <div className='h-6 bg-slate-300'></div>
-                <div className='h-6 bg-slate-200'></div>
-                <div className='h-6 bg-slate-500'></div>
+                <div className='h-6 bg-yellow-700'></div>
+                <div className='h-6 bg-yellow-300'></div>
+                <div className='h-6 bg-yellow-200'></div>
+                <div className='h-6 bg-yellow-500'></div>
                 <div className='h-6 bg-white'></div>
                 <div className='h-6 bg-black'></div>
               </article>
             </div>
             <div className='px-2'>
-              <h4>Cool Slate</h4>
+              <h4>Natural Green</h4>
               <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-slate-700'></div>
-                <div className='h-6 bg-slate-300'></div>
-                <div className='h-6 bg-slate-200'></div>
-                <div className='h-6 bg-slate-500'></div>
+                <div className='h-6 bg-green-700'></div>
+                <div className='h-6 bg-green-300'></div>
+                <div className='h-6 bg-green-200'></div>
+                <div className='h-6 bg-green-500'></div>
                 <div className='h-6 bg-white'></div>
                 <div className='h-6 bg-black'></div>
               </article>
             </div>
             <div className='px-2'>
-              <h4>Cool Slate</h4>
+              <h4>Deep Red</h4>
               <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-slate-700'></div>
-                <div className='h-6 bg-slate-300'></div>
-                <div className='h-6 bg-slate-200'></div>
-                <div className='h-6 bg-slate-500'></div>
+                <div className='h-6 bg-red-700'></div>
+                <div className='h-6 bg-red-300'></div>
+                <div className='h-6 bg-red-200'></div>
+                <div className='h-6 bg-red-500'></div>
                 <div className='h-6 bg-white'></div>
                 <div className='h-6 bg-black'></div>
               </article>
             </div>
             <div className='px-2'>
-              <h4>Cool Slate</h4>
+              <h4>Ocean Blue</h4>
               <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-slate-700'></div>
-                <div className='h-6 bg-slate-300'></div>
-                <div className='h-6 bg-slate-200'></div>
-                <div className='h-6 bg-slate-500'></div>
+                <div className='h-6 bg-blue-700'></div>
+                <div className='h-6 bg-blue-300'></div>
+                <div className='h-6 bg-blue-200'></div>
+                <div className='h-6 bg-blue-500'></div>
                 <div className='h-6 bg-white'></div>
                 <div className='h-6 bg-black'></div>
               </article>
