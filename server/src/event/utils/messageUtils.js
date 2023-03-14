@@ -4,18 +4,30 @@ import { myEmitterErrors } from '../errorEvents.js';
 import { CreateEventError } from './errorUtils.js';
 
 export const createGetAllMessagesEvent = async (user) => {
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+  if (user.role === 'USER') {
+    const notAuthorized = new NoPermissionEvent(user.id, 'Get all messages not authorized');
+    myEmitterErrors.emit('error', notAuthorized);
+    return;
+  }
+  
   try {
     await dbClient.event.create({
       data: {
-        type: 'DEVELOPER',
+        type: type,
         topic: 'Get all messages',
-        content: `Success`,
+        content: `Get all messages successful for ${user.email}`,
         createdById: user.id,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Get all messages');
+    const error = new CreateEventError(user.id, 'Get all messages');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -35,13 +47,13 @@ export const createCreateMessageEvent = async (user) => {
       data: {
         type: type,
         topic: 'Create message',
+        content: `Create message successful for ${user.email}`,
         createdById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Create message');
+    const error = new CreateEventError(user.id, 'Create message');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -62,13 +74,13 @@ export const createDeleteMessageEvent = async (user) => {
       data: {
         type: type,
         topic: 'Delete message',
+        content: `Delete message successful for ${user.email}`,
         createdById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        code: 204
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Delete message');
+    const error = new CreateEventError(user.id, 'Delete message');
     myEmitterErrors.emit('error', error);
     throw err;
   }

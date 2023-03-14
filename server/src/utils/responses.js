@@ -82,7 +82,7 @@ export const RESPONSE_MESSAGES = {
   ConfictEvent: 'Request conflicts with data on server',
   DeactivatedUserEvent: 'The target user account has been deactivated',
   ServerErrorEvent: 'Internal Server Error',
-  CreateEventError: 'Failed to create an event',
+  CreateEventError: 'Failed to create an event log',
   NotFoundEvent: 'was not found',
   NoPermissionEvent: 'You are not authorized to perform this action',
   NoValidationEvent: 'Unable to verify user',

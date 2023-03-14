@@ -4,18 +4,30 @@ import { myEmitterErrors } from '../errorEvents.js';
 import { CreateEventError } from './errorUtils.js';
 
 export const createGetAllContactsEvent = async (user) => {
+  if (user.role === 'ADMIN') {
+    type = 'ADMIN';
+  }
+  if (user.role === 'DEVELOPER') {
+    type = 'DEVELOPER';
+  }
+  if (user.role === 'USER') {
+    const notAuthorized = new NoPermissionEvent(user.id, 'Get all contact forms not authorized');
+    myEmitterErrors.emit('error', notAuthorized);
+    return;
+  }
+
   try {
     await dbClient.event.create({
       data: {
-        type: 'DEVELOPER',
+        type: type,
         topic: 'Get all contacts',
-        content: `Success`,
+        content: `Get all contact forms successful for ${user.email}`,
         createdById: user.id,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Get all contacts');
+    const error = new CreateEventError(user.id, 'Get all contacts');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -34,40 +46,44 @@ export const createCreateContactEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Create contact',
+        topic: 'Create contact form',
+        content: `Create contact form successful for ${user.email}`,
         createdById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Create contact');
+    const error = new CreateEventError(user.id, 'Create contact form');
     myEmitterErrors.emit('error', error);
     throw err;
   }
 };
 
 export const createDeleteContactEvent = async (user) => {
-  let type = 'USER';
   if (user.role === 'ADMIN') {
     type = 'ADMIN';
   }
   if (user.role === 'DEVELOPER') {
     type = 'DEVELOPER';
   }
+  if (user.role === 'USER') {
+    const notAuthorized = new NoPermissionEvent(user.id, 'Delete contact form not authorized');
+    myEmitterErrors.emit('error', notAuthorized);
+    return;
+  }
 
   try {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Delete contact',
+        topic: 'Delete contact form',
+        content: `Delete contact form successful for ${user.email}`,
         createdById: user.id,
-        createdAt: user.createdAt,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Delete contact');
+    const error = new CreateEventError(user.id, 'Delete contact form');
     myEmitterErrors.emit('error', error);
     throw err;
   }

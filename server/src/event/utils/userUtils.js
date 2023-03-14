@@ -9,13 +9,13 @@ export const createGetAllEvent = async (user) => {
       data: {
         type: 'ADMIN',
         topic: 'Get all users',
-        content: `Success ${user.email}`,
+        content: `Success getting all users for ${user.email}`,
         createdById: user.id,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Get all users');
+    const error = new CreateEventError(user.id, 'Get all users');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -35,14 +35,13 @@ export const createRegisterEvent = async (user) => {
       data: {
         type: type,
         topic: 'Register',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        content: `Register successful for ${user.email} as a ${user.role}`,
+        createdById: user.id,
+        code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Register');
+    const error = new CreateEventError(user.id, 'register');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -61,15 +60,14 @@ export const createVerifyEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Verify',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        topic: 'Verify User',
+        content: `Verification successful for ${user.email} as a ${user.role}`,
+        createdById: user.id,
+        code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Verify');
+    const error = new CreateEventError(user.id, 'Verification failed');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -88,15 +86,14 @@ export const createNewVerifyEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Verify-resend',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        topic: 'Verifyification email resend creation',
+        content: `Resend verification successful for ${user.email}`,
+        createdById: user.id,
+        code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Verify-resend');
+    const error = new CreateEventError(user.id, 'Verificaton resend failed');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -115,15 +112,14 @@ export const createPasswordResetEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Reset-password',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
+        topic: 'Password Reset',
+        content: `Reset password successful for ${user.email}`,
+        createdById: user.id,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Reset-password');
+    const error = new CreateEventError(user.id, 'Reset password failed');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -142,15 +138,14 @@ export const createUpdateUserEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'updated-user',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
+        topic: 'Updated User',
+        content: `Updated user account successful for ${user.email}`,
+        createdById: user.id,
         code: 200
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Deleted-user');
+    const error = new CreateEventError(user.id, 'Update user');
     myEmitterErrors.emit('error', error);
     throw err;
   }
@@ -169,15 +164,14 @@ export const createDeleteUserEvent = async (user) => {
     await dbClient.event.create({
       data: {
         type: type,
-        topic: 'Deleted-user',
-        content: user.role,
-        receivedById: user.id,
-        createdAt: user.createdAt,
-        code: 200
+        topic: 'Deleted User',
+        content: `Account deleted successfully for ${user.email}`,
+        createdById: user.id,
+        code: 204
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user, 'Deleted-user');
+    const error = new CreateEventError(user.id, 'Delete user');
     myEmitterErrors.emit('error', error);
     throw err;
   }
