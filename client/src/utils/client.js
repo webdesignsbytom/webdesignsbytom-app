@@ -7,6 +7,8 @@ const client = {
     const url = `${host}${path}`;
     const headers = {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+      'X-Requested-Wit': XMLHttpRequest,
+      withCredentials: false,
     };
     return axios.get(url, { headers });
   },
@@ -14,7 +16,9 @@ const client = {
   post: (path, data, withToken = true) => {
     const url = `${host}${path}`;
     const token = localStorage.getItem(tokenKey);
-    let headers = {};
+    let headers = {
+      'Content-Type': 'application/json',
+    };
 
     if (withToken) {
       headers['Authorization'] = `Bearer ${token}`;

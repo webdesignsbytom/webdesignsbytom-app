@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../utils/client';
+// Components
 import LoadingSpinner from '../../LoadingSpinner';
 import PageItem from './PageItem';
 
 function PageOptions() {
   const [allPages, setAllPages] = useState([]);
+
   console.log('allPages', allPages);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ function PageOptions() {
         console.log('res', res.data);
         setAllPages(res.data.data.pages);
       })
-      .catch((err) => console.error('Unable to get designs', err.response));
+      .catch((err) => console.error('Unable to get pages', err.response));
   }, []);
 
   return (

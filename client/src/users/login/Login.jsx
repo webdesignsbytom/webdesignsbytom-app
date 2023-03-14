@@ -37,7 +37,6 @@ console.log('loading animation', loadingAnimation);
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log('CLICK')
     setLoadingAnimation(!loadingAnimation)
     postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
   };

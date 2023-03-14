@@ -4,7 +4,7 @@ import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import client from '../../utils/client';
 
 function ContactForm({ formData, setFormData }) {
-  const [contactSuccessMessage, setContactSuccessMessage] = useState({})
+  const [contactSuccessMessage, setContactSuccessMessage] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,6 +25,7 @@ function ContactForm({ formData, setFormData }) {
     client
       .post(`/contacts/create`, formData, false)
       .then((res) => {
+        console.log('res', res.data);
         setContactSuccessMessage(res.data.data.createdContact);
       })
       .catch((err) => {
@@ -34,10 +35,7 @@ function ContactForm({ formData, setFormData }) {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className='lg:w-full lg:my-auto lg:px-8'
-      >
+      <form onSubmit={handleSubmit} className='lg:w-full lg:my-auto lg:px-8'>
         {/* <!-- Email input --> */}
         <div className='mb-1'>
           <label htmlFor='email'>Email:</label>
@@ -52,7 +50,10 @@ function ContactForm({ formData, setFormData }) {
         </div>
         {/* <!-- Phone input --> */}
         <div className='mb-1'>
-          <label className='flex justify-between' htmlFor='phone'><p>Phone:</p><p>* optional</p></label>
+          <label className='flex justify-between' htmlFor='phone'>
+            <p>Phone:</p>
+            <p>* optional</p>
+          </label>
           <input
             type='tel'
             name='phone'
@@ -99,7 +100,7 @@ function ContactForm({ formData, setFormData }) {
             id='message'
             className='overflow-y-scroll resize-none scroll-smooth textbox__inputs'
             rows='4'
-            handleChange={handleChange}
+            onChange={handleChange}
           ></textarea>
         </div>
 
