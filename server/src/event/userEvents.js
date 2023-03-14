@@ -32,6 +32,7 @@ myEmitterUsers.on('password-reset', async (user) => {
 myEmitterUsers.on('update-user', async (user) => {
   createUpdateUserEvent(user);
 });
+
 myEmitterUsers.on('deleted-user', async (user) => {
   createDeleteUserEvent(user);
 });

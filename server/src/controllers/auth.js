@@ -1,20 +1,18 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { JWT_EXPIRY, JWT_SECRET } from '../utils/config.js';
-// Componet
+// Database
 import { findUserByEmail } from '../domain/users.js';
 // Responses
 import { sendDataResponse, sendMessageResponse } from '../utils/responses.js';
 // Events
 import { myEmitterErrors } from '../event/errorEvents.js';
 import { LoginServerErrorEvent } from '../event/utils/errorUtils.js';
+// Token
 import { createAccessToken } from '../utils/tokens.js';
 
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
   const lowerCaseEmail = email.toLowerCase();
-console.log(req.body)
 
   if (!lowerCaseEmail || !password) {
     return sendDataResponse(res, 400, {
@@ -24,10 +22,8 @@ console.log(req.body)
 
   try {
     const existingUser = await findUserByEmail(lowerCaseEmail);
-    console.log('existingUser', existingUser);
 
     const areCredentialsValid = await validateCredentials(password, existingUser)
-    console.log('areCredentialsValid', areCredentialsValid);
 
     if (!areCredentialsValid) {
       return sendDataResponse(res, 400, {
