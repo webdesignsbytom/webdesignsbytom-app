@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 // Pages
-import HeroPage from './pages/hero/HeroPage';
+import HeroPage from './pages/heros/HeroPage';
 import PortfolioHome from './pages/portfolio/PortfolioHome';
 import SalesHome from './pages/sales/SalesHome';
 import AdminPanel from './pages/admin/AdminPanel';
