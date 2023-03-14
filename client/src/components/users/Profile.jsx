@@ -1,15 +1,23 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
+import LoadingSpinner from '../LoadingSpinner';
 import UserCard from './UserCard';
 
 function Profile({ handleUpdate, handleChange, deleteProfile }) {
   const { user } = useContext(UserContext);
 
   return (
-    <section className='grid'>
+    <section className='grid grid-rows-1 w-'>
       {/* Display user */}
-      <UserCard user={user} />
+      {user.id ? (
+        <UserCard user={user} />
+      ) : (
+        <div className='grid grid-rows-1 justify-center h-full lg:my-12'>
+          <LoadingSpinner height={'32'} width={'32'} />
+        </div>
+      )}
+
       {/* update form */}
       <form onSubmit={handleUpdate} className='mt-2'>
         {/* <!-- Email input --> */}

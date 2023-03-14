@@ -27,6 +27,7 @@ import MessagesContainer from '../../components/messages/MessagesContainer';
 import Overview from '../../components/account/Overview';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 const initAlert = { status: '', content: '' };
 
@@ -53,7 +54,7 @@ function Account() {
   const [listOfFavorites, setListOfFavorites] = useState([]);
 
   let navigate = useNavigate();
-
+  console.log('allNotifications', allNotifications);
   useEffect(() => {
     const foundUser = LoggedInUser();
     setFormByUserId(foundUser.id, setUpdateUserForm);
@@ -201,20 +202,35 @@ function Account() {
             <section className='grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <NotificationsContainer notifications={allNotifications} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:justify-center lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
+                    {allNotifications.length < 1 ? (
+                      <div className='grid grid-rows-1'>
+                        <LoadingSpinner height={'12'} width={'12'} />
+                      </div>
+                    ) : (
+                      <NotificationsContainer
+                        notifications={allNotifications}
+                      />
+                    )}
                   </div>
                 </section>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
+
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Messages
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <MessagesContainer messages={userMessages} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:justify-center lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
+                    {allNotifications.length < 1 ? (
+                      <div className='grid grid-rows-1'>
+                        <LoadingSpinner height={'12'} width={'12'} />
+                      </div>
+                    ) : (
+                      <MessagesContainer messages={userMessages} />
+                    )}
                   </div>
                 </section>
               </section>
