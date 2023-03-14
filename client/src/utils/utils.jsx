@@ -132,6 +132,18 @@ export const pricingTableData = [
     },
   },
   {
+    title: 'Cookies and Privacy Bar',
+    basicSite: {
+      available: true,
+    },
+    basicShop: {
+      available: true,
+    },
+    fullstack: {
+      available: true,
+    },
+  },
+  {
     title: 'Home Page',
     basicSite: {
       available: true,

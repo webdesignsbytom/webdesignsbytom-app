@@ -86,7 +86,7 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='w-[120px] mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+                <button className='w-[120px] mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   Button
                 </button>
               </div>
@@ -103,7 +103,7 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='w-[120px] mx-auto bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed'>
+                <button className='w-[120px] mx-auto bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed'>
                   Button
                 </button>
               </div>
@@ -120,9 +120,9 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'>
+                <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'>
                   <svg
-                    class='fill-current w-4 h-4 mr-2'
+                    className='fill-current w-4 h-4 mr-2'
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 20 20'
                   >
@@ -146,7 +146,7 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
+                  className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
                 >
                   Teal
                 </button>
@@ -166,7 +166,7 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
+                  className='text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
                 >
                   Purple to Pink
                 </button>
@@ -184,7 +184,7 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+                <button className='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   <LoadingSpinner width={'6'} height={'6'} />
                 </button>
               </div>
@@ -201,8 +201,8 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800'>
-                  <span class='relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800'>
+                  <span className='relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
                     Purple to blue
                   </span>
                 </button>
@@ -222,10 +222,10 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2'
+                  className='text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2'
                 >
                   <svg
-                    class='w-4 h-4 mr-2 -ml-1'
+                    className='w-4 h-4 mr-2 -ml-1'
                     aria-hidden='true'
                     focusable='false'
                     data-prefix='fab'
@@ -257,11 +257,11 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='text-gray-900 bg-white hover:bg-gray-100 border outline outline-1 outline-gray-300 border-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 mr-2 mb-2'
+                  className='text-gray-900 bg-white hover:bg-gray-100 border outline outline-1 outline-gray-300 border-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200 mr-2 mb-2'
                 >
                   <svg
                     aria-hidden='true'
-                    class='w-10 h-3 mr-2 -ml-1'
+                    className='w-10 h-3 mr-2 -ml-1'
                     viewBox='0 0 660 203'
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
@@ -293,11 +293,11 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
                   <svg
                     aria-hidden='true'
-                    class='w-5 h-5 mr-2 -ml-1'
+                    className='w-5 h-5 mr-2 -ml-1'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
@@ -322,10 +322,10 @@ function Buttons() {
               <div className='mx-auto'>
                 <button
                   type='button'
-                  class='inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
                   Messages
-                  <span class='inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full'>
+                  <span className='inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full'>
                     2
                   </span>
                 </button>
@@ -346,12 +346,12 @@ function Buttons() {
                 <button
                   disabled
                   type='button'
-                  class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center'
+                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center'
                 >
                   <svg
                     aria-hidden='true'
                     role='status'
-                    class='inline w-4 h-4 mr-3 text-white animate-spin'
+                    className='inline w-4 h-4 mr-3 text-white animate-spin'
                     viewBox='0 0 100 101'
                     fill='none'
                     xmlns='http://www.w3.org/2000/svg'
@@ -380,33 +380,33 @@ function Buttons() {
            <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
-              <div class='inline-flex rounded-md shadow-sm' role='group'>
+              <div className='inline-flex rounded-md shadow-sm' role='group'>
                 <button
                   type='button'
-                  class='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
+                  className='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
                 >
                   <svg
                     aria-hidden='true'
-                    class='w-4 h-4 mr-2 fill-current'
+                    className='w-4 h-4 mr-2 fill-current'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     ></path>
                   </svg>
                   Profile
                 </button>
                 <button
                   type='button'
-                  class='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
+                  className='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
                 >
                   <svg
                     aria-hidden='true'
-                    class='w-4 h-4 mr-2 fill-current'
+                    className='w-4 h-4 mr-2 fill-current'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
@@ -417,19 +417,19 @@ function Buttons() {
                 </button>
                 <button
                   type='button'
-                  class='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
+                  className='inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white'
                 >
                   <svg
                     aria-hidden='true'
-                    class='w-4 h-4 mr-2 fill-current'
+                    className='w-4 h-4 mr-2 fill-current'
                     fill='currentColor'
                     viewBox='0 0 20 20'
                     xmlns='http://www.w3.org/2000/svg'
                   >
                     <path
-                      fill-rule='evenodd'
+                      fillRule='evenodd'
                       d='M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z'
-                      clip-rule='evenodd'
+                      clipRule='evenodd'
                     ></path>
                   </svg>
                   Downloads
@@ -448,33 +448,33 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <div class='w-48 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
+                <div className='w-48 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
                   <button
                     type='button'
-                    class='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
+                    className='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 rounded-t-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
                   >
                     <svg
                       aria-hidden='true'
-                      class='w-4 h-4 mr-2 fill-current'
+                      className='w-4 h-4 mr-2 fill-current'
                       fill='currentColor'
                       viewBox='0 0 20 20'
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z'
-                        clip-rule='evenodd'
+                        clipRule='evenodd'
                       ></path>
                     </svg>
                     Profile
                   </button>
                   <button
                     type='button'
-                    class='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
+                    className='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
                   >
                     <svg
                       aria-hidden='true'
-                      class='w-4 h-4 mr-2 fill-current'
+                      className='w-4 h-4 mr-2 fill-current'
                       fill='currentColor'
                       viewBox='0 0 20 20'
                       xmlns='http://www.w3.org/2000/svg'
@@ -485,38 +485,38 @@ function Buttons() {
                   </button>
                   <button
                     type='button'
-                    class='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
+                    className='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
                   >
                     <svg
                       aria-hidden='true'
-                      class='w-4 h-4 mr-2 fill-current'
+                      className='w-4 h-4 mr-2 fill-current'
                       fill='currentColor'
                       viewBox='0 0 20 20'
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v7h-2l-1 2H8l-1-2H5V5z'
-                        clip-rule='evenodd'
+                        clipRule='evenodd'
                       ></path>
                     </svg>
                     Messages
                   </button>
                   <button
                     type='button'
-                    class='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
+                    className='relative inline-flex items-center w-full px-4 py-2 text-sm font-medium rounded-b-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white'
                   >
                     <svg
                       aria-hidden='true'
-                      class='w-4 h-4 mr-2 fill-current'
+                      className='w-4 h-4 mr-2 fill-current'
                       fill='currentColor'
                       viewBox='0 0 20 20'
                       xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        fill-rule='evenodd'
+                        fillRule='evenodd'
                         d='M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z'
-                        clip-rule='evenodd'
+                        clipRule='evenodd'
                       ></path>
                     </svg>
                     Download
@@ -539,7 +539,7 @@ function Buttons() {
                 <button
                   data-popover-target='popover-default'
                   type='button'
-                  class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
                   Default popover
                 </button>
@@ -547,14 +547,14 @@ function Buttons() {
                   data-popover
                   id='popover-default'
                   role='tooltip'
-                  class='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800'
+                  className='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800'
                 >
-                  <div class='px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700'>
-                    <h3 class='font-semibold text-gray-900 dark:text-white'>
+                  <div className='px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700'>
+                    <h3 className='font-semibold text-gray-900 dark:text-white'>
                       Popover title
                     </h3>
                   </div>
-                  <div class='px-3 py-2'>
+                  <div className='px-3 py-2'>
                     <p>
                       And here's some amazing content. It's very engaging.
                       Right?
@@ -579,7 +579,7 @@ function Buttons() {
                 <button
                   data-popover-target='popover-user-profile'
                   type='button'
-                  class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+                  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
                 >
                   User profile
                 </button>
@@ -587,13 +587,13 @@ function Buttons() {
                   data-popover
                   id='popover-user-profile'
                   role='tooltip'
-                  class='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600'
+                  className='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600'
                 >
-                  <div class='p-3'>
-                    <div class='flex items-center justify-between mb-2'>
+                  <div className='p-3'>
+                    <div className='flex items-center justify-between mb-2'>
                       <a href='#'>
                         <img
-                          class='w-10 h-10 rounded-full'
+                          className='w-10 h-10 rounded-full'
                           src='/docs/images/people/profile-picture-1.jpg'
                           alt='Jese Leos'
                         />
@@ -601,42 +601,42 @@ function Buttons() {
                       <div>
                         <button
                           type='button'
-                          class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
+                          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
                         >
                           Follow
                         </button>
                       </div>
                     </div>
-                    <p class='text-base font-semibold leading-none text-gray-900 dark:text-white'>
+                    <p className='text-base font-semibold leading-none text-gray-900 dark:text-white'>
                       <a href='#'>Jese Leos</a>
                     </p>
-                    <p class='mb-3 text-sm font-normal'>
-                      <a href='#' class='hover:underline'>
+                    <p className='mb-3 text-sm font-normal'>
+                      <a href='#' className='hover:underline'>
                         @jeseleos
                       </a>
                     </p>
-                    <p class='mb-4 text-sm font-light'>
+                    <p className='mb-4 text-sm font-light'>
                       Open-source contributor. Building{' '}
                       <a
                         href='#'
-                        class='text-blue-600 dark:text-blue-500 hover:underline'
+                        className='text-blue-600 dark:text-blue-500 hover:underline'
                       >
                         flowbite.com
                       </a>
                       .
                     </p>
-                    <ul class='flex text-sm font-light'>
-                      <li class='mr-2'>
-                        <a href='#' class='hover:underline'>
-                          <span class='font-semibold text-gray-900 dark:text-white'>
+                    <ul className='flex text-sm font-light'>
+                      <li className='mr-2'>
+                        <a href='#' className='hover:underline'>
+                          <span className='font-semibold text-gray-900 dark:text-white'>
                             799
                           </span>
                           <span>Following</span>
                         </a>
                       </li>
                       <li>
-                        <a href='#' class='hover:underline'>
-                          <span class='font-semibold text-gray-900 dark:text-white'>
+                        <a href='#' className='hover:underline'>
+                          <span className='font-semibold text-gray-900 dark:text-white'>
                             3,758
                           </span>
                           <span>Followers</span>
@@ -660,38 +660,38 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <div class='border-b border-gray-200 dark:border-gray-700'>
-                  <ul class='flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
-                    <li class='mr-2'>
+                <div className='border-b border-gray-200 dark:border-gray-700'>
+                  <ul className='flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
+                    <li className='mr-2'>
                       <a
                         href='#'
-                        class='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
+                        className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                       >
                         <svg
                           aria-hidden='true'
-                          class='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
+                          className='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
                           fill='currentColor'
                           viewBox='0 0 20 20'
                           xmlns='http://www.w3.org/2000/svg'
                         >
                           <path
-                            fill-rule='evenodd'
+                            fillRule='evenodd'
                             d='M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z'
-                            clip-rule='evenodd'
+                            clipRule='evenodd'
                           ></path>
                         </svg>
                         Profile
                       </a>
                     </li>
-                    <li class='mr-2'>
+                    <li className='mr-2'>
                       <a
                         href='#'
-                        class='inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group'
+                        className='inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group'
                         aria-current='page'
                       >
                         <svg
                           aria-hidden='true'
-                          class='w-5 h-5 mr-2 text-blue-600 dark:text-blue-500'
+                          className='w-5 h-5 mr-2 text-blue-600 dark:text-blue-500'
                           fill='currentColor'
                           viewBox='0 0 20 20'
                           xmlns='http://www.w3.org/2000/svg'
@@ -701,14 +701,14 @@ function Buttons() {
                         Dashboard
                       </a>
                     </li>
-                    <li class='mr-2'>
+                    <li className='mr-2'>
                       <a
                         href='#'
-                        class='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
+                        className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                       >
                         <svg
                           aria-hidden='true'
-                          class='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
+                          className='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
                           fill='currentColor'
                           viewBox='0 0 20 20'
                           xmlns='http://www.w3.org/2000/svg'
@@ -718,30 +718,30 @@ function Buttons() {
                         Settings
                       </a>
                     </li>
-                    <li class='mr-2'>
+                    <li className='mr-2'>
                       <a
                         href='#'
-                        class='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
+                        className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                       >
                         <svg
                           aria-hidden='true'
-                          class='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
+                          className='w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300'
                           fill='currentColor'
                           viewBox='0 0 20 20'
                           xmlns='http://www.w3.org/2000/svg'
                         >
                           <path d='M9 2a1 1 0 000 2h2a1 1 0 100-2H9z'></path>
                           <path
-                            fill-rule='evenodd'
+                            fillRule='evenodd'
                             d='M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z'
-                            clip-rule='evenodd'
+                            clipRule='evenodd'
                           ></path>
                         </svg>
                         Contacts
                       </a>
                     </li>
                     <li>
-                      <a class='inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500'>
+                      <a className='inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500'>
                         Disabled
                       </a>
                     </li>
@@ -761,7 +761,7 @@ function Buttons() {
             <article className='grid gap-4 justify-center'>
               <AddFavBar />
               <div className='mx-auto'>
-                <button class='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+                <button className='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   <LoadingSpinner width={'6'} height={'6'} />
                 </button>
               </div>

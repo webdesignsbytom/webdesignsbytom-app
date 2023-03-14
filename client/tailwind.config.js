@@ -43,6 +43,7 @@ module.exports = {
         'xo': '1fr 0.5fr',
         'a1a': 'auto 1fr auto',
         'aa': 'auto auto',
+        '3a': '1fr 1fr 0.7fr auto',
       },
       width: {
         id: '12ch;'

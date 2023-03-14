@@ -10,7 +10,7 @@ function ReviewItem({ review }) {
         <h2>{createdAt}</h2>
       </div>
       <div>
-        <img src={image} alt='Componay logo for review' />
+        <img className='w-8 h-8 rounded-full' src={image} alt='Componay logo for review' />
       </div>
       <div>
         <p>{content}</p>

@@ -148,7 +148,7 @@ function ContactForm() {
           >
             {loadingAnimation ? (
               <div className='grid'>
-                <LoadingSpinner height={'5'} width={'5'} />
+                <LoadingSpinner height={'h-5'} width={'w-5'} />
               </div>
             ) : (
               mainButtonContent && <span>Contact Tom</span>

@@ -1,21 +1,56 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// Spinner
-import LoadingSpinner from '../../components/utils/LoadingSpinner'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+// Components
+import SubmitButton from '../../components/utils/SubmitButton';
+// Utils
+import { showPassword } from '../../utils/PasswordReveal';
+import { loginDataTemplate } from '../utils/utils';
+// Fetch
+import { postLogin } from '../../utils/Fetch';
+// Icons
+import OpenEye from '../../img/eye.svg';
 
 function LoginForm({
-  handleLogin,
-  handleChange,
-  fieldType,
-  setFieldType,
-  showPassword,
-  eyeIcon,
-  setEyeIcon,
-  rememberMeChecked,
-  setRememberMeChecked,
-  successLoginUser,
-  loadingAnimation,
+  setUser
 }) {
+  const [loginSuccessMessage, setLoginSuccessMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [loginErrorMessage, setLoginErrorMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const [rememberMeChecked, setRememberMeChecked] = useState(true);
+  const [loginForm, setLoginForm] = useState(loginDataTemplate);
+  const [successLoginUser, setSuccessLoginUser] = useState('');
+  const [fieldType, setFieldType] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(OpenEye);
+
+  let navigate = useNavigate();
+
+  const homePage = () => {
+    navigate('/account', { replace: true });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setLoginForm({
+      ...loginForm,
+      [name]: value,
+    });
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setLoadingAnimation(!loadingAnimation)
+    //
+    postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
+  };
+
   return (
     <>
       <form
@@ -30,6 +65,7 @@ function LoginForm({
             className='standard__inputs'
             placeholder='Email address'
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -41,6 +77,7 @@ function LoginForm({
             className='standard__inputs'
             placeholder='Password'
             onChange={handleChange}
+            required
           />
           <label
             className='px-2 py-1 text-sm text-red-500 font-mono cursor-pointer absolute right-0'
@@ -85,20 +122,15 @@ function LoginForm({
 
         {/* <!-- Submit button --> */}
         <div className='mb-2'>
-          <button
-            type='submit'
-            className='submit__button'
-            data-mdb-ripple='true'
-            data-mdb-ripple-color='light'
-          >
-            {loadingAnimation ? (
-              <div className='grid'>
-                <LoadingSpinner height={'5'} width={'5'} />
-              </div>
-            ) : (
-              <span>Sign in</span>
-            )}
-          </button>
+          <SubmitButton
+            loadingAnimation={loadingAnimation}
+            mainButtonContent={mainButtonContent}
+            successMessage={loginSuccessMessage}
+            errorMessage={loginErrorMessage}
+            buttonMessage='Login'
+            spinnerHeight='h-5'
+            spinnerWidth='w-5'
+          />
         </div>
 
         <div className='mb-6 text-center'>

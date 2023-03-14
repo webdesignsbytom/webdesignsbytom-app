@@ -1,29 +1,150 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import LoadingSpinner from '../../components/utils/LoadingSpinner';
-
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+// Components
+import SubmitButton from '../../components/utils/SubmitButton';
+// Icons
+import OpenEye from '../../img/eye.svg';
+// Utils
+import { showConfirmPassword, showPassword } from '../../utils/PasswordReveal';
+import { registerDataTemplate, registerFormResponses } from '../utils/utils';
 import CountrySelect from '../utils/CountrySelect';
-function RegisterForm({
-  handleRegister,
-  handleChange,
-  hiddenEmail,
-  fieldType,
-  inputStyle,
-  showPassword,
-  setFieldType,
-  setEyeIcon,
-  fieldTypeConfirm,
-  showConfirmPassword,
-  setFieldTypeConfirm,
-  setEyeIconConfirm,
-  eyeIcon,
-  eyeIconConfirm,
-  hiddenPass,
-  formResponses,
-  agreedToTerms,
-  checkHandler,
-  loadingAnimation
-}) {
+// Validation
+import { validPassword } from '../../users/utils/Validation';
+import { postRegister } from '../../utils/Fetch';
+
+function RegisterForm() {
+  const [registerSuccessMessage, setRegisterSuccessMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [registerErrorMessage, setRegisterErrorMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const [fieldType, setFieldType] = useState('password');
+  const [eyeIcon, setEyeIcon] = useState(OpenEye);
+  const [fieldTypeConfirm, setFieldTypeConfirm] = useState('password');
+  const [eyeIconConfirm, setEyeIconConfirm] = useState(OpenEye);
+  const [registerForm, setRegisterForm] = useState(registerDataTemplate);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [successRegisterUser, setSuccessRegisterUser] = useState('');
+  const [formResponses, setFormResponses] = useState(registerFormResponses);
+
+  const [hiddenPass, setHiddenPass] = useState('invisible h-4');
+  const [hiddenEmail, setHiddenEmail] = useState('invisible h-4');
+
+  const [inputStyle, setInputStyle] = useState('standard__inputs');
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (registerForm.password === registerForm.confirmPassword) {
+      if (registerForm.password > 0) {
+        setHiddenPass('block');
+        setInputStyle('standard__inputs');
+        setFormResponses(formResponses => ({
+          ...formResponses,
+          password: true,
+        }));
+      }
+    }
+    if (
+      registerForm.password !== registerForm.confirmPassword &&
+      registerForm.confirmPassword > 3
+    ) {
+      setHiddenPass('block');
+      setInputStyle('error__inputs');
+      setFormResponses(formResponses => ({
+        ...formResponses,
+        password: false,
+      }));
+    }
+  }, [registerForm.password, registerForm.confirmPassword]);
+
+  const login = () => {
+    navigate('../login', { replace: true });
+  };
+
+  const checkHandler = (event) => {
+    setAgreedToTerms(!agreedToTerms);
+    setRegisterForm({
+      ...registerForm,
+      agreedToTerms: !agreedToTerms,
+    });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (registerForm.password.length > 8) {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: false,
+      });
+    } else {
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+    }
+
+    setRegisterForm({
+      ...registerForm,
+      [name]: value,
+    });
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    setMainButtonContent(false);
+    setLoadingAnimation(true);
+    
+    if (registerForm.password !== registerForm.confirmPassword) {
+      setFormResponses({
+        ...formResponses,
+        passwordMatchError: true,
+        password: false,
+      });
+      setHiddenPass('block');
+      setInputStyle('error__inputs');
+      setLoadingAnimation(false)
+      return;
+    }
+    
+    const checkPassword = validPassword(registerForm.password);
+    
+    if (checkPassword === false) {
+      alert('Passwords too short');
+      setFormResponses({
+        ...formResponses,
+        passwordLengthError: true,
+      });
+      setLoadingAnimation(false)
+      return;
+    }
+    
+    if (agreedToTerms !== true) {
+      alert('Please check to agree to terms and conditons');
+      setFormResponses({
+        ...formResponses,
+        agreedToTermsError: true,
+      });
+      setLoadingAnimation(false)
+      return;
+    }
+
+    setFormResponses({
+      passwordMatchError: true,
+      passwordLengthError: true,
+      agreedToTermsError: true,
+    });
+
+    const userData = registerForm;
+
+    postRegister(userData, setSuccessRegisterUser, login);
+  };
   return (
     <>
       <form
@@ -173,24 +294,18 @@ function RegisterForm({
 
         {/* <!-- Submit button --> */}
 
-        <div className=''>
-          <p className='h-4'></p>
-
-          <button
-            type='submit'
-            className='submit__button'
-            data-mdb-ripple='true'
-            data-mdb-ripple-color='light'
-          >
-            {loadingAnimation ? (
-              <div className='grid'>
-              <LoadingSpinner height={'5'} width={'5'} />
-            </div>
-            ) : (
-              <span>Sign in</span>
-            )}
-          </button>
-          <p className='h-4'></p>
+        <div className='mt-2'>
+          <div className='mb-2'>
+            <SubmitButton
+              loadingAnimation={loadingAnimation}
+              mainButtonContent={mainButtonContent}
+              successMessage={registerSuccessMessage}
+              errorMessage={registerErrorMessage}
+              buttonMessage='Sign Up'
+              spinnerHeight='h-5'
+              spinnerWidth='w-5'
+            />
+          </div>
         </div>
 
         <div className='text-center'>
