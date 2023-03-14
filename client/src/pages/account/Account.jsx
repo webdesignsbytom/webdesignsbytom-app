@@ -8,8 +8,8 @@ import MessagesContainer from '../../components/messages/MessagesContainer';
 import Overview from '../../components/account/AccountOverview';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
-import LoadingSpinner from '../../components/LoadingSpinner';
 import AccountOverview from '../../components/account/AccountOverview';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Fetch
 import {
   setFormByUserId,

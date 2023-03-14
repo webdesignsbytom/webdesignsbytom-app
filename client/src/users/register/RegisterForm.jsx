@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
 
 import CountrySelect from '../utils/CountrySelect';
 function RegisterForm({

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import client from '../../../utils/client';
 // Components
-import LoadingSpinner from '../../LoadingSpinner';
+import LoadingSpinner from '../../utils/LoadingSpinner';
 import ComponentItem from './ComponentItem';
 
 function CompenentOptions() {

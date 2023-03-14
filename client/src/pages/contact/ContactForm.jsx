@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import client from '../../utils/client';
+// Utils
 import { contactFormTemplate } from '../../utils/utils';
 
 function ContactForm() {

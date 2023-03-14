@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
-import LoadingSpinner from '../LoadingSpinner';
+import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';

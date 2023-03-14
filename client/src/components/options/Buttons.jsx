@@ -1,5 +1,8 @@
 import React from 'react';
-import LoadingSpinner from '../LoadingSpinner';
+// Components
+import LoadingSpinner from '../utils/LoadingSpinner';
+// Icons
+import AddFavBar from '../utils/AddFavBar';
 
 function Buttons() {
   return (
@@ -8,16 +11,17 @@ function Buttons() {
         <h2>Buttons</h2>
       </div>
       <section>
-        <ul className='grid grid-cols-3 w-full'>
+        <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full'>
           {/* Classic Button */}
-          <li className='mb-6'>
+          <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button className='w-[120px] mx-auto outline outline-1 outline-gray-400 py-2 px-4'>
                   Click
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Classic</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -26,14 +30,16 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+          {/* Button 2 */}
+          <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button className='w-[120px] mx-auto outline outline-1 outline-gray-400 rounded py-2 px-4'>
                   Click
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Styled</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -42,14 +48,15 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button className='w-[120px] mx-auto outline outline-1 rounded outline-gray-400 bg-white hover:outline-blue-500 hover:text-blue-500 hover:bg-gray-100 active:outline-blue-500 active:text-blue-500 py-2 px-4'>
                   Click
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Interactive</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -58,14 +65,15 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button className='w-[120px] mx-auto outline outline-1 rounded py-2 px-4 text-white outline-white bg-black hover:outline-black hover:text-blue-500 hover:bg-white active:outline-black active:text-blue-500'>
                   Click
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Dark Mode</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -74,14 +82,15 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='w-[120px] mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   Button
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Rounded</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -90,14 +99,15 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='w-[120px] mx-auto bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed'>
                   Button
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Disabled</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -106,8 +116,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'>
                   <svg
@@ -120,7 +131,7 @@ function Buttons() {
                   <span>Download</span>
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Download</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -129,8 +140,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -139,7 +151,7 @@ function Buttons() {
                   Teal
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Gradiant</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -148,8 +160,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -158,7 +171,7 @@ function Buttons() {
                   Purple to Pink
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Gradiant swap</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -167,14 +180,15 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   <LoadingSpinner width={'6'} height={'6'} />
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Loading</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -183,8 +197,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800'>
                   <span class='relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
@@ -192,7 +207,7 @@ function Buttons() {
                   </span>
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Colour Change</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -201,8 +216,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -226,7 +242,7 @@ function Buttons() {
                   Sign in with Facebook
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Facebook</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -235,8 +251,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -261,7 +278,7 @@ function Buttons() {
                   Pay with Visa
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Payments</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -270,8 +287,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -289,7 +307,7 @@ function Buttons() {
                   Buy now
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Buy Now</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -298,8 +316,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   type='button'
@@ -311,7 +330,7 @@ function Buttons() {
                   </span>
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Indicator</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -320,8 +339,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   disabled
@@ -348,7 +368,7 @@ function Buttons() {
                   Loading...
                 </button>
               </div>
-              <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+              <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
                 <h3 className='pl-2'>Loading Two</h3>
                 <p className='text-sm text-center'>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -357,8 +377,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div class='inline-flex rounded-md shadow-sm' role='group'>
                 <button
                   type='button'
@@ -423,8 +444,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <div class='w-48 text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
                   <button
@@ -510,8 +532,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   data-popover-target='popover-default'
@@ -549,8 +572,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button
                   data-popover-target='popover-user-profile'
@@ -632,8 +656,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <div class='border-b border-gray-200 dark:border-gray-700'>
                   <ul class='flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
@@ -732,8 +757,9 @@ function Buttons() {
               </div>
             </article>
           </li>
-          <li className='mb-6'>
+           <li className='mb-10'>
             <article className='grid gap-4 justify-center'>
+              <AddFavBar />
               <div className='mx-auto'>
                 <button class='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
                   <LoadingSpinner width={'6'} height={'6'} />

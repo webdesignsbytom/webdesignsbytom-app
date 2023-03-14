@@ -14,14 +14,22 @@ function Design() {
   const [savedDesigns, setSavedDesigns] = useState([]);
   const [openDesign, setOpenDesign] = useState(designTemplate);
   console.log('1. openDesign', openDesign);
-  
+
   useEffect(() => {
+    console.log('get designs');
     if (user.id) {
       client
         .get(`/designs/user-designs/${user.id}`)
         .then((res) => {
-          setSavedDesigns(res.data.data.designs);
-          setOpenDesign(res.data.data.designs[0]);
+          console.log('AAAA')
+          if (res.data.data.designs.length === 0) {
+            console.log('BBBB')
+            return;
+          } else {
+            console.log('XXXX')
+            setSavedDesigns(res.data.data.designs);
+            setOpenDesign(res.data.data.designs[0]);
+          }
         })
         .catch((err) => console.error('Unable to get designs', err.response));
     }
