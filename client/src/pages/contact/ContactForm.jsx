@@ -5,6 +5,7 @@ import client from '../../utils/client';
 
 function ContactForm({ formData, setFormData }) {
   const [contactSuccessMessage, setContactSuccessMessage] = useState({})
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log('VALUE', value);
@@ -16,6 +17,7 @@ function ContactForm({ formData, setFormData }) {
   };
 
   console.log('formData', formData);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 

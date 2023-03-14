@@ -1,47 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
-import UserCard from '../../components/users/UserCard';
-import CountrySelect from '../../users/utils/CountrySelect';
-import LoggedInUser from '../../utils/LoggedInUser';
-// Fetch
-import {
-  setFormByUserId,
-  deleteAccount,
-  postResendVerificationEmail,
-  putUpdateUser,
-} from '../../utils/Fetch';
-// Data
-import { sampleUserData } from '../../users/utils/utils';
-import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
-import MessagesComponent from '../../components/messages/MessagesComponent';
-import Profile from '../../components/users/Profile';
-import client from '../../utils/client';
-import NoteItem from '../../components/notifications/NoteItem';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
-import MessageItem from '../../components/messages/MessageItem';
 import MessagesContainer from '../../components/messages/MessagesContainer';
-import Overview from '../../components/account/Overview';
+import Overview from '../../components/account/AccountOverview';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
 import LoadingSpinner from '../../components/LoadingSpinner';
-
-const initAlert = { status: '', content: '' };
+import AccountOverview from '../../components/account/AccountOverview';
+// Fetch
+import {
+  setFormByUserId,
+} from '../../utils/Fetch';
+// Utils
+import LoggedInUser from '../../utils/LoggedInUser';
+import client from '../../utils/client';
 
 function Account() {
-  const { user, setUser } = useContext(UserContext);
-  const [alert, setAlert] = useState(initAlert);
+  const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
-  const [viewedNotifications, setViewedNotifications] = useState([]);
-  const [unSeenNotifications, setUnSeenNotifications] = useState([]);
-  const [displayNotifications, setDisplayNotifications] =
-    useState('new-notifications');
   // Messages
   const [userMessages, setUserMessages] = useState([]);
   // Display items
@@ -53,8 +35,6 @@ function Account() {
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
 
-  let navigate = useNavigate();
-  console.log('allNotifications', allNotifications);
   useEffect(() => {
     const foundUser = LoggedInUser();
     setFormByUserId(foundUser.id, setUpdateUserForm);
@@ -79,7 +59,7 @@ function Account() {
       .catch((err) => {
         console.error('Unable to get user messages', err);
       });
-  }, []);
+  }, [user.id]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -88,35 +68,6 @@ function Account() {
       }
     }, 2000);
   }, [user.isVerified]);
-
-  // function handleResend() {
-  //   postResendVerificationEmail(user.email, setAlert, initAlert);
-  // }
-
-  // const deleteProfile = (event) => {
-  //   event.preventDefault();
-
-  //   deleteAccount(user.id);
-  //   setUser(sampleUserData);
-  //   localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-
-  //   navigate('/', { replace: true });
-  // };
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setUpdateUserForm({
-  //     ...updateUserForm,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleUpdate = (event) => {
-  //   event.preventDefault();
-
-  //   putUpdateUser(user.id, updateUserForm, setUser);
-  // };
 
   return (
     <>
@@ -188,7 +139,7 @@ function Account() {
                 {displayDesigns && <Designs />}
                 {displayProjects && <Projects />}
                 {selectedNavElement === 'overview' && displayFixed === true && (
-                  <Overview />
+                  <AccountOverview />
                 )}
                 {selectedNavElement === 'designs' && displayFixed === true && (
                   <Designs />
@@ -206,7 +157,7 @@ function Account() {
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
-                  <div className='grid max-h-[300px] lg:max-h-none lg:justify-center lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
                     {allNotifications.length < 1 ? (
                       <div className='grid grid-rows-1'>
                         <LoadingSpinner height={'12'} width={'12'} />
@@ -223,7 +174,7 @@ function Account() {
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Messages
                   </h3>
-                  <div className='grid max-h-[300px] lg:max-h-none lg:justify-center lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
                     {allNotifications.length < 1 ? (
                       <div className='grid grid-rows-1'>
                         <LoadingSpinner height={'12'} width={'12'} />

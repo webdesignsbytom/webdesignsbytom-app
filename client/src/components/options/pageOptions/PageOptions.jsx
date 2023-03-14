@@ -15,6 +15,7 @@ function PageOptions() {
       })
       .catch((err) => console.error('Unable to get designs', err.response));
   }, []);
+  
   return (
     <section>
       <ul className='grid lg:grid-cols-3 p-2 gap-2'>

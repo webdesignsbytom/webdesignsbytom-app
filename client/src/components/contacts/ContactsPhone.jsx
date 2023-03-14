@@ -12,6 +12,7 @@ function ContactsPhone() {
   const [deletedContact, setDeletedContact] = useState({});
 
   console.log('display contacts', displayContacts);
+  
   useEffect(() => {
     client
       .get(`/contacts`)

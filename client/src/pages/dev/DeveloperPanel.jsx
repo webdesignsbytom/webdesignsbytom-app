@@ -1,47 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
-import UserCard from '../../components/users/UserCard';
-import CountrySelect from '../../users/utils/CountrySelect';
 import LoggedInUser from '../../utils/LoggedInUser';
 // Fetch
 import {
   setFormByUserId,
-  deleteAccount,
-  postResendVerificationEmail,
-  putUpdateUser,
 } from '../../utils/Fetch';
 // Data
-import { sampleUserData } from '../../users/utils/utils';
-import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
-import MessagesComponent from '../../components/messages/MessagesComponent';
-import Profile from '../../components/users/Profile';
 import client from '../../utils/client';
-import NoteItem from '../../components/notifications/NoteItem';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
-import MessageItem from '../../components/messages/MessageItem';
 import MessagesContainer from '../../components/messages/MessagesContainer';
-import Overview from '../../components/account/Overview';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
 import DevOverview from '../../components/dev/DevOverview';
 
-const initAlert = { status: '', content: '' };
 
 function DeveloperPanel() {
-  const { user, setUser } = useContext(UserContext);
-  const [alert, setAlert] = useState(initAlert);
+  const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
-  const [viewedNotifications, setViewedNotifications] = useState([]);
-  const [unSeenNotifications, setUnSeenNotifications] = useState([]);
-  const [displayNotifications, setDisplayNotifications] =
-    useState('new-notifications');
   // Messages
   const [userMessages, setUserMessages] = useState([]);
   // Display items
@@ -52,8 +33,6 @@ function DeveloperPanel() {
   const [displayFixed, setDisplayFixed] = useState(true);
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const foundUser = LoggedInUser();

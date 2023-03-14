@@ -29,7 +29,7 @@ function MessagesComponent() {
           <h3>Messages</h3>
         </div>
         <section>
-          <ul>
+          <ul className='w-full'>
             {userMessages.length > 0 &&
               userMessages.map((message, index) => {
                 return <MessageItem key={index} message={message} />;

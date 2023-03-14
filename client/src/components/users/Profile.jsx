@@ -1,10 +1,19 @@
 import React, { useContext } from 'react';
+// Context
 import { UserContext } from '../../context/UserContext';
-import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
+// Components
 import LoadingSpinner from '../LoadingSpinner';
 import UserCard from './UserCard';
+// Utils
+import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 
-function Profile({ handleUpdate, handleChange, deleteProfile }) {
+function Profile({
+  handleChange,
+  handleUpdateUser,
+  deleteUser,
+  updateAnimation,
+  deleteLoadingAnimation,
+}) {
   const { user } = useContext(UserContext);
 
   return (
@@ -19,7 +28,7 @@ function Profile({ handleUpdate, handleChange, deleteProfile }) {
       )}
 
       {/* update form */}
-      <form onSubmit={handleUpdate} className='mt-2'>
+      <form onSubmit={handleUpdateUser} className='mt-2'>
         {/* <!-- Email input --> */}
         <div className='mb-4'>
           <input
@@ -60,15 +69,43 @@ function Profile({ handleUpdate, handleChange, deleteProfile }) {
           <SmallCountrySelect handleChange={handleChange} />
         </div>
 
-        <div className='mb-4'>
-          <button className='submit__button'>Update Profile</button>
+        {/* <!-- Submit button --> */}
+        <div className='mb-2'>
+          <button
+            type='submit'
+            className='submit__button'
+            data-mdb-ripple='true'
+            data-mdb-ripple-color='light'
+          >
+            {updateAnimation ? (
+              <div className='grid'>
+                <LoadingSpinner height={'5'} width={'5'} />
+              </div>
+            ) : (
+              <span>Update Profile</span>
+            )}
+          </button>
         </div>
       </form>
       {/* Delete account */}
       <section>
-        <button onClick={deleteProfile} className='delete__button'>
-          Delete Profile
-        </button>
+        <div className='mb-2'>
+          <button
+            type='delete'
+            onClick={deleteUser}
+            className='delete__button'
+            data-mdb-ripple='true'
+            data-mdb-ripple-color='light'
+          >
+            {deleteLoadingAnimation ? (
+              <div className='grid'>
+                <LoadingSpinner height={'5'} width={'5'} />
+              </div>
+            ) : (
+              <span>Delete Profile</span>
+            )}
+          </button>
+        </div>
       </section>
     </section>
   );

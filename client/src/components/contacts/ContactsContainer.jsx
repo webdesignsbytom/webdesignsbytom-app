@@ -5,7 +5,7 @@ import ContactItem from './ContactItem';
 function ContactsContainer({ contacts }) {
   return (
     <>
-      <ul>
+      <ul className='w-full'>
         {contacts.map((contact, index) => {
           return <ContactItem contact={contact} key={index} />;
         })}

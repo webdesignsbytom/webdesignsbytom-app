@@ -31,10 +31,10 @@ import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';
 import SocialBar from '../social/SocialBar';
 import TestPage from '../../pages/test/TestPage';
-// Styles
-import '../../styles/keyframes.css';
 import EventsPhone from '../events/EventsPhone';
 import ContactsPhone from '../contacts/ContactsPhone';
+// Styles
+import '../../styles/keyframes.css';
 
 function Navbar() {
   const {
@@ -65,7 +65,6 @@ function Navbar() {
   const navigateHome = () => {
     navigate('/', { replace: true });
   };
-  console.log('x')
 
   const toggleNavbar = () => {
     setToggleNavigation(!toggleNavigation);

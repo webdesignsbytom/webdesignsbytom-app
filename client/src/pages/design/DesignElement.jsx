@@ -12,7 +12,7 @@ import client from '../../utils/client';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
-import QMark from '../../img/questionMark.svg';
+import QuestionMark from '../../img/questionMark.svg';
 import FloppyDisk from '../../img/floppyDisk.svg';
 import Bin from '../../img/bin.svg';
 import Undo from '../../img/undo.svg';
@@ -193,7 +193,7 @@ console.log('formResponses', formResponses);
               />
               <div className='group flex align-middle h-full pl-1'>
                 <img
-                  src={QMark}
+                  src={QuestionMark}
                   className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                   alt='information'
                   data-te-animation-init

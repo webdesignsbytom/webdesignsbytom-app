@@ -9,7 +9,7 @@ function MessagesContainer({
 }) {
   return (
     <>
-      <ul>
+      <ul className='w-full'>
         {messages.map((message, index) => {
           return (
             <MessageItem

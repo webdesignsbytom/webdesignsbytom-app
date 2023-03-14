@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 // Icons
 import changeIcon from '../../img/changeIcon.svg';
-import QMark from '../../img/questionMark.svg';
+import QuestionMark from '../../img/questionMark.svg';
+
 function ColorPalette({ colourPalette, setColourPalette }) {
   console.log('2. Palette', colourPalette);
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
@@ -255,7 +256,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Main Background</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -286,7 +287,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Alt Background</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information for colour palette selection'
                     data-te-animation-init
@@ -317,7 +318,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Nav Background</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -349,7 +350,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Dark Mode Background</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -381,7 +382,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Main Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -412,7 +413,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Dark Mode Main Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -444,7 +445,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Alt Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -476,7 +477,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Hover Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -508,7 +509,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Dark Mode Hover Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -540,7 +541,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Active Text</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -571,7 +572,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Borders</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -602,7 +603,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Borders</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init
@@ -633,7 +634,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                 <h4 className='text-sm mt-1'>Hyperlinks</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
                   <img
-                    src={QMark}
+                    src={QuestionMark}
                     className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                     alt='information'
                     data-te-animation-init

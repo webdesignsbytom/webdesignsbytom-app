@@ -5,11 +5,11 @@ import heart from '../../img/heart.svg';
 import eyeIcon from '../../img/eye.svg';
 
 function MessageItem({ message }) {
-  const { subject, content, sentFromId, userId, viewed, starred, createdAt } =
+  const { subject, content, viewed, starred, createdAt } =
     message;
 
   return (
-    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-[1px] leading-3 cursor-pointer'>
+    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-[1px] leading-3 cursor-pointer w-full'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
           <div className='flex w-full justify-between'>

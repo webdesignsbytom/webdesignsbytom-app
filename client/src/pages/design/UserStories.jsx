@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
-import QMark from '../../img/questionMark.svg';
+import QuestionMark from '../../img/questionMark.svg';
 import BinIcon from '../../img/bin.svg';
 // Utils
 import { userStoryTemplate } from '../../utils/utils';
@@ -92,7 +92,7 @@ function UserStories({
             <h2>Create New Story:</h2>
             <div className='group flex align-middle h-full pl-1'>
               <img
-                src={QMark}
+                src={QuestionMark}
                 className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
                 alt='information'
                 data-te-animation-init

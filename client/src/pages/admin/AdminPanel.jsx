@@ -1,48 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
-import UserCard from '../../components/users/UserCard';
-import CountrySelect from '../../users/utils/CountrySelect';
 import LoggedInUser from '../../utils/LoggedInUser';
 // Fetch
 import {
   setFormByUserId,
-  deleteAccount,
-  postResendVerificationEmail,
-  putUpdateUser,
 } from '../../utils/Fetch';
 // Data
-import { sampleUserData } from '../../users/utils/utils';
-import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
-import MessagesComponent from '../../components/messages/MessagesComponent';
-import Profile from '../../components/users/Profile';
 import client from '../../utils/client';
-import NoteItem from '../../components/notifications/NoteItem';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
-import MessageItem from '../../components/messages/MessageItem';
 import MessagesContainer from '../../components/messages/MessagesContainer';
-import Overview from '../../components/account/Overview';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
-import DevOverview from '../../components/dev/DevOverview';
 import AdminOverview from '../../components/admin/AdminOverview';
 
-const initAlert = { status: '', content: '' };
 
 function AdminPanel() {
-  const { user, setUser } = useContext(UserContext);
-  const [alert, setAlert] = useState(initAlert);
+  const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
-  const [viewedNotifications, setViewedNotifications] = useState([]);
-  const [unSeenNotifications, setUnSeenNotifications] = useState([]);
-  const [displayNotifications, setDisplayNotifications] =
-    useState('new-notifications');
   // Messages
   const [userMessages, setUserMessages] = useState([]);
   // Display items
@@ -53,8 +33,6 @@ function AdminPanel() {
   const [displayFixed, setDisplayFixed] = useState(true);
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const foundUser = LoggedInUser();
@@ -80,7 +58,7 @@ function AdminPanel() {
       .catch((err) => {
         console.error('Unable to get user messages', err);
       });
-  }, []);
+  }, [user.id]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -89,35 +67,6 @@ function AdminPanel() {
       }
     }, 2000);
   }, [user.isVerified]);
-
-  // function handleResend() {
-  //   postResendVerificationEmail(user.email, setAlert, initAlert);
-  // }
-
-  // const deleteProfile = (event) => {
-  //   event.preventDefault();
-
-  //   deleteAccount(user.id);
-  //   setUser(sampleUserData);
-  //   localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-
-  //   navigate('/', { replace: true });
-  // };
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setUpdateUserForm({
-  //     ...updateUserForm,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleUpdate = (event) => {
-  //   event.preventDefault();
-
-  //   putUpdateUser(user.id, updateUserForm, setUser);
-  // };
 
   return (
     <>
