@@ -213,7 +213,7 @@ function AdminPanel() {
               </section>
             </section>
             {/* Right */}
-            <section className='grid lg:grid-rows-ls gap-2 overflow-hidden'>
+            <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>

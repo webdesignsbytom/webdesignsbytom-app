@@ -212,7 +212,7 @@ function DeveloperPanel() {
               </section>
             </section>
             {/* Right */}
-            <section className='grid lg:grid-rows-ls gap-2 overflow-hidden'>
+            <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
@@ -233,7 +233,7 @@ function DeveloperPanel() {
                 </section>
               </section>
               {/* Favorites */}
-              <section className='hidden lg:grid border-2 border-black border-solid rounded-sm p-1'>
+              <section className='lg:grid border-2 border-black border-solid rounded-sm p-1'>
                 <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
                     Favorites
