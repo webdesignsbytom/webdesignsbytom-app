@@ -16,6 +16,7 @@ import {
   resetUserPassword,
   deleteUserById,
   updateUserById,
+  findUsersByRole,
 } from '../domain/users.js';
 import { createAccessToken } from '../utils/tokens.js';
 import {
@@ -39,6 +40,8 @@ import {
 } from '../event/utils/errorUtils.js';
 // Time
 import { v4 as uuid } from 'uuid';
+import { createNewNotification } from '../domain/notifications.js';
+import { createMessage } from '../domain/messages.js';
 // Password hash
 const hashRate = 8;
 
@@ -165,6 +168,55 @@ export const registerNewUser = async (req, res) => {
       createdUser.email,
       uniqueString
     );
+
+    const foundUsers = await findUsersByRole('ADMIN');
+    foundUsers.forEach(async (admin) => {
+      const message = {
+        subject: 'New user registered',
+        content: `New user has registered with ${email}. Check messages at link http://...`,
+        userId: admin.id,
+      };
+      const notification = {
+        type: 'MESSAGE',
+        content: `New user registered: ${email}`,
+        userId: admin.id,
+      };
+
+      const newMessage = await createMessage(
+        message.subject,
+        message.content,
+        'System',
+        'System',
+        message.userId
+      );
+
+      if (!newMessage) {
+        const notCreated = new BadRequestEvent(
+          req.user,
+          EVENT_MESSAGES.createMessageFail,
+          'Cant create message for admin - registration form'
+        );
+        myEmitterErrors.emit('error', notCreated);
+        return sendMessageResponse(res, notCreated.code, notCreated.message);
+      }
+
+      const newNotification = await createNewNotification(
+        notification.type,
+        notification.content,
+        notification.userId
+      );
+
+      if (!newNotification) {
+        const notCreated = new BadRequestEvent(
+          req.user,
+          EVENT_MESSAGES.createNotificationFail,
+          'Cant create notification for admin - registration form'
+        );
+        myEmitterErrors.emit('error', notCreated);
+        return sendMessageResponse(res, notCreated.code, notCreated.message);
+      }
+    });
+    
     return sendDataResponse(res, 201, { createdUser });
   } catch (err) {
     // Error
