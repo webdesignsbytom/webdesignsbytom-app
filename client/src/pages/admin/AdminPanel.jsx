@@ -4,6 +4,7 @@ import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoggedInUser from '../../utils/LoggedInUser';
+import SearchOptionsAdmin from '../../components/admin/SearchOptionsAdmin'
 // Fetch
 import {
   setFormByUserId,
@@ -15,12 +16,15 @@ import MessagesContainer from '../../components/messages/MessagesContainer';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
 import AdminOverview from '../../components/admin/AdminOverview';
+import UsersContainer from '../../components/users/UsersContainer';
 
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
+  // Users
+  const [allUsers, setAllUsers] = useState([])
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
   // Messages
@@ -28,9 +32,10 @@ function AdminPanel() {
   // Display items
   const [displayOverview, setDisplayOverview] = useState(false);
   const [displayProjects, setDisplayProjects] = useState(false);
-  const [displayDesigns, setDisplayDesigns] = useState(false);
-  const [selectedNavElement, setSelectedNavElement] = useState('overview');
+  const [displayUsers, setDisplayUsers] = useState(false);
+  const [displaySearch, setDisplaySearch] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
+  const [selectedNavElement, setSelectedNavElement] = useState('overview');
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
 
@@ -57,6 +62,16 @@ function AdminPanel() {
       })
       .catch((err) => {
         console.error('Unable to get user messages', err);
+      });
+
+      client
+      .get(`/users`)
+      .then((res) => {
+        console.log('response', res.data);
+        setAllUsers(res.data.data.users);
+      })
+      .catch((err) => {
+        console.error('Unable to get users', err);
       });
   }, [user.id]);
 
@@ -103,14 +118,14 @@ function AdminPanel() {
                   </li>
                   <li
                     onMouseEnter={() => {
-                      setDisplayDesigns(true);
+                      setDisplayUsers(true);
                       setDisplayFixed(false);
                     }}
                     onMouseLeave={() => {
-                      setDisplayDesigns(false);
+                      setDisplayUsers(false);
                       setDisplayFixed(true);
                     }}
-                    onClick={() => setSelectedNavElement('designs')}
+                    onClick={() => setSelectedNavElement('users')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
                     Users
@@ -127,18 +142,18 @@ function AdminPanel() {
                     onClick={() => setSelectedNavElement('projects')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
-                    Events
+                    Projects
                   </li>
                   <li
                     onMouseEnter={() => {
-                      setDisplayProjects(true);
+                      setDisplaySearch(true);
                       setDisplayFixed(false);
                     }}
                     onMouseLeave={() => {
-                      setDisplayProjects(false);
+                      setDisplaySearch(false);
                       setDisplayFixed(true);
                     }}
-                    onClick={() => setSelectedNavElement('projects')}
+                    onClick={() => setSelectedNavElement('search')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
                     Search
@@ -148,16 +163,20 @@ function AdminPanel() {
               {/* Content */}
               <section className='my-2'>
                 {displayOverview && <AdminOverview />}
-                {displayDesigns && <Designs />}
+                {displayUsers && <UsersContainer users={allUsers} />}
                 {displayProjects && <Projects />}
+                {displaySearch && <SearchOptionsAdmin />}
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AdminOverview />
                 )}
-                {selectedNavElement === 'designs' && displayFixed === true && (
-                  <Designs />
+                {selectedNavElement === 'users' && displayFixed === true && (
+                  <UsersContainer users={allUsers} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
                   <Projects />
+                )}
+                {selectedNavElement === 'search' && displayFixed === true && (
+                  <SearchOptionsAdmin />
                 )}
               </section>
             </section>

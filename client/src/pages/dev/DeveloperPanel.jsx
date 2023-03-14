@@ -4,8 +4,11 @@ import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoggedInUser from '../../utils/LoggedInUser';
+import EventsContainer from '../../components/events/EventsContainer';
+import SearchOptionsDev from '../../components/dev/SearchOptionsDev';
 // Fetch
 import {
+  getEventsLog,
   setFormByUserId,
 } from '../../utils/Fetch';
 // Data
@@ -15,22 +18,26 @@ import MessagesContainer from '../../components/messages/MessagesContainer';
 import Designs from '../../components/account/Designs';
 import Projects from '../../components/account/Projects';
 import DevOverview from '../../components/dev/DevOverview';
+import Analytics from '../../components/analytics/Analytics';
 
 
 function DeveloperPanel() {
   const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
+  // Events
+  const [allEvents, setAllEvents] = useState([]);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
   // Messages
   const [userMessages, setUserMessages] = useState([]);
   // Display items
   const [displayOverview, setDisplayOverview] = useState(false);
-  const [displayProjects, setDisplayProjects] = useState(false);
-  const [displayDesigns, setDisplayDesigns] = useState(false);
-  const [selectedNavElement, setSelectedNavElement] = useState('overview');
+  const [displayAnalytics, setDisplayAnalytics] = useState(false);
+  const [displayEvents, setDisplayEvents] = useState(false);
+  const [displaySearch, setDisplaySearch] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
+  const [selectedNavElement, setSelectedNavElement] = useState('overview');
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
 
@@ -58,6 +65,8 @@ function DeveloperPanel() {
       .catch((err) => {
         console.error('Unable to get user messages', err);
       });
+
+    getEventsLog(setAllEvents)
   }, []);
 
   useEffect(() => {
@@ -132,42 +141,42 @@ function DeveloperPanel() {
                   </li>
                   <li
                     onMouseEnter={() => {
-                      setDisplayDesigns(true);
+                      setDisplayAnalytics(true);
                       setDisplayFixed(false);
                     }}
                     onMouseLeave={() => {
-                      setDisplayDesigns(false);
+                      setDisplayAnalytics(false);
                       setDisplayFixed(true);
                     }}
-                    onClick={() => setSelectedNavElement('designs')}
+                    onClick={() => setSelectedNavElement('analytics')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
-                    Users
+                    Analytics
                   </li>
                   <li
                     onMouseEnter={() => {
-                      setDisplayProjects(true);
+                      setDisplayEvents(true);
                       setDisplayFixed(false);
                     }}
                     onMouseLeave={() => {
-                      setDisplayProjects(false);
+                      setDisplayEvents(false);
                       setDisplayFixed(true);
                     }}
-                    onClick={() => setSelectedNavElement('projects')}
+                    onClick={() => setSelectedNavElement('events')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
                     Events
                   </li>
                   <li
                     onMouseEnter={() => {
-                      setDisplayProjects(true);
+                      setDisplaySearch(true);
                       setDisplayFixed(false);
                     }}
                     onMouseLeave={() => {
-                      setDisplayProjects(false);
+                      setDisplaySearch(false);
                       setDisplayFixed(true);
                     }}
-                    onClick={() => setSelectedNavElement('projects')}
+                    onClick={() => setSelectedNavElement('search')}
                     className='cursor-pointer text-active-text hover:text-hover-text active:text-active-text'
                   >
                     Search
@@ -177,16 +186,20 @@ function DeveloperPanel() {
               {/* Content */}
               <section className='my-2'>
                 {displayOverview && <DevOverview />}
-                {displayDesigns && <Designs />}
-                {displayProjects && <Projects />}
+                {displayAnalytics && <Analytics />}
+                {displayEvents && <EventsContainer events={allEvents} />}
+                {displaySearch && <SearchOptionsDev />}
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <DevOverview />
                 )}
-                {selectedNavElement === 'designs' && displayFixed === true && (
-                  <Designs />
+                {selectedNavElement === 'analytics' && displayFixed === true && (
+                  <Analytics />
                 )}
-                {selectedNavElement === 'projects' && displayFixed === true && (
-                  <Projects />
+                {selectedNavElement === 'events' && displayFixed === true && (
+                  <EventsContainer events={allEvents} />
+                )}
+                {selectedNavElement === 'search' && displayFixed === true && (
+                  <SearchOptionsDev />
                 )}
               </section>
             </section>

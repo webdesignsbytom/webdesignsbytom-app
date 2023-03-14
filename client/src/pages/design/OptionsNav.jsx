@@ -19,7 +19,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                 {/* Nav */}
                 <li className='account__link' id='nav' onClick={setDisplay}>
                   <button className='lg:pl-2' id='nav'>
-                    Navigation
+                    Nav/Footer
                   </button>
                 </li>
                 {/* Colour theme */}
@@ -44,10 +44,10 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                     Components
                   </button>
                 </li>
-                {/* Footers */}
-                <li className='account__link' id='footers' onClick={setDisplay}>
-                  <button className='lg:pl-2' id='footers'>
-                    Footers
+                {/* Buttons */}
+                <li className='account__link' id='buttons' onClick={setDisplay}>
+                  <button className='lg:pl-2' id='buttons'>
+                    Buttons
                   </button>
                 </li>
                 {/* Stories */}

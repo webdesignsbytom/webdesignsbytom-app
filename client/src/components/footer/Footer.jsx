@@ -5,8 +5,8 @@ function Footer() {
   return (
     <footer className='bg-nav-colour grip gap-2 w-full text-sm p-1 text-center '>
       <section className='mx-4 py-2'>
-        <div className='flex justify-between '>
-          <p>Phone: 075</p>
+        <div className='flex justify-between'>
+          <p>Phone: 07541576148</p>
           <p>Email: tom@webdesignsbytom.com</p>
         </div>
       </section>

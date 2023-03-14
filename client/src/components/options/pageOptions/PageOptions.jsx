@@ -21,7 +21,7 @@ function PageOptions() {
 
   return (
     <section>
-      <ul className='grid lg:grid-cols-3 p-2 gap-2'>
+      <ul className='grid md:grid-cols-2 lg:grid-cols-3 p-2 gap-2'>
         {allPages.length < 1 ? (
           <div className='grid grid-rows-1'>
             <LoadingSpinner height={'12'} width={'12'} />

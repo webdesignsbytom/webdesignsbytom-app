@@ -7,8 +7,6 @@ const client = {
     const url = `${host}${path}`;
     const headers = {
       Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
-      'X-Requested-Wit': XMLHttpRequest,
-      withCredentials: false,
     };
     return axios.get(url, { headers });
   },

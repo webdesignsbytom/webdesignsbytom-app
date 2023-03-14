@@ -40,7 +40,8 @@ async function seed() {
         email: `email${i}@gmail${i}.com`,
         value: 5,
         content: 'Great',
-        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'
+        image:
+          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
       },
     });
 
@@ -87,6 +88,18 @@ async function seed() {
       lastName: 'Hats',
       country: 'UK',
       agreedToTerms: true,
+    },
+  });
+
+  const ContactMessage = await dbClient.message.create({
+    data: {
+      email: 'tom@gmail.com',
+      phone: 0534534534,
+      firstName: 'Tommy',
+      lastName: 'Testing',
+      country: 'United States',
+      subject: 'TEST',
+      message: 'Contact',
     },
   });
 
@@ -150,7 +163,6 @@ async function seed() {
         viewed: true,
       },
     });
-
   }
 
   const eventOne = await dbClient.event.create({

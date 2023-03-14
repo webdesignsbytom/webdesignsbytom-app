@@ -4,10 +4,10 @@ import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
 import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
-import FooterOptions from '../../components/options/footerOptions/FooterOptions';
+import Buttons from '../../components/options/Buttons';
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
-import RegisterForm from '../../users/register/RegisterForm'
+import RegisterForm from '../../users/register/RegisterForm';
 import client from '../../utils/client';
 // Context
 import { UserContext } from '../../context/UserContext';
@@ -23,7 +23,10 @@ import OpenEye from '../../img/eye.svg';
 import { paletteTemplate } from '../../utils/utils';
 import { showPassword, showConfirmPassword } from '../../utils/PasswordReveal';
 import { useNavigate } from 'react-router-dom';
-import { registerDataTemplate, registerFormResponses } from '../../users/utils/utils';
+import {
+  registerDataTemplate,
+  registerFormResponses,
+} from '../../users/utils/utils';
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
 
@@ -59,7 +62,7 @@ function DesignElement({
       if (registerForm.password > 0) {
         setHiddenPass('block');
         setInputStyle('standard__inputs');
-        setFormResponses(formResponses => ({
+        setFormResponses((formResponses) => ({
           ...formResponses,
           password: true,
         }));
@@ -71,13 +74,15 @@ function DesignElement({
     ) {
       setHiddenPass('block');
       setInputStyle('error__inputs');
-      setFormResponses(formResponses => ({
+      setFormResponses((formResponses) => ({
         ...formResponses,
         password: false,
       }));
     }
   }, [registerForm.password, registerForm.confirmPassword]);
-console.log('formResponses', formResponses);
+  
+  console.log('formResponses', formResponses);
+
   const login = () => {
     navigate('../login', { replace: true });
   };
@@ -257,29 +262,31 @@ console.log('formResponses', formResponses);
             <div className='border-2 border-solid border-black rounded grid grid-rows-1'>
               {/* Register form */}
               {displayElement === 'register' && (
-                 <section>
-                  <h2 className='text-center mt-2 text-2xl font-bold'>To Save Your Design Please Register Now!</h2>
+                <section>
+                  <h2 className='text-center mt-2 text-2xl font-bold'>
+                    To Save Your Design Please Register Now!
+                  </h2>
                   <RegisterForm
-                 handleRegister={handleRegister}
-                 handleChange={handleRegisterChange}
-                 hiddenEmail={hiddenEmail}
-                 fieldType={fieldType}
-                 inputStyle={inputStyle}
-                 showPassword={showPassword}
-                 setFieldType={setFieldType}
-                 setEyeIcon={setEyeIcon}
-                 fieldTypeConfirm={fieldTypeConfirm}
-                 showConfirmPassword={showConfirmPassword}
-                 setFieldTypeConfirm={setFieldTypeConfirm}
-                 setEyeIconConfirm={setEyeIconConfirm}
-                 eyeIcon={eyeIcon}
-                 eyeIconConfirm={eyeIconConfirm}
-                 hiddenPass={hiddenPass}
-                 formResponses={formResponses}
-                 agreedToTerms={agreedToTerms}
-                 checkHandler={checkHandler}
-               />
-                 </section>
+                    handleRegister={handleRegister}
+                    handleChange={handleRegisterChange}
+                    hiddenEmail={hiddenEmail}
+                    fieldType={fieldType}
+                    inputStyle={inputStyle}
+                    showPassword={showPassword}
+                    setFieldType={setFieldType}
+                    setEyeIcon={setEyeIcon}
+                    fieldTypeConfirm={fieldTypeConfirm}
+                    showConfirmPassword={showConfirmPassword}
+                    setFieldTypeConfirm={setFieldTypeConfirm}
+                    setEyeIconConfirm={setEyeIconConfirm}
+                    eyeIcon={eyeIcon}
+                    eyeIconConfirm={eyeIconConfirm}
+                    hiddenPass={hiddenPass}
+                    formResponses={formResponses}
+                    agreedToTerms={agreedToTerms}
+                    checkHandler={checkHandler}
+                  />
+                </section>
               )}
               {displayElement === 'nav' && (
                 <NavOptions
@@ -315,8 +322,8 @@ console.log('formResponses', formResponses);
                   setUserStories={setUserStories}
                 />
               )}
-              {displayElement === 'footers' && (
-                <FooterOptions
+              {displayElement === 'buttons' && (
+                <Buttons
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                 />

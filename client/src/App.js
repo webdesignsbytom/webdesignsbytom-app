@@ -28,6 +28,7 @@ import ConfirmPolicies from './components/popups/ConfirmPolicies';
 import MessagePhoneItem from './components/messages/MessagePhoneItem';
 // Context
 import { UserContext } from './context/UserContext';
+import ProjectContainer from './pages/project/ProjectContainer';
 
 function App() {
 
@@ -82,6 +83,12 @@ function App() {
         <Route
           path='user/:userId/messages/:messageId'
           element={<MessagePhoneItem />}
+        />
+
+        {/* Projects */}
+        <Route
+          path='user/:userId/projects/:projectId'
+          element={<ProjectContainer />}
         />
 
         {/* Util Routes */}

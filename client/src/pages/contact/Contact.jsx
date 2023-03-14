@@ -23,7 +23,7 @@ function Contact() {
               </div>
               <div className='sm:px-6'>
                 <p className='p-2 pb-6 md:mx-6 lg:mx-8'>
-                  If you need anything at all, just get in touch. If you need quotes or just to talk through somm ideas. I am available to help. Either contact me throught the form provided, or use one the email address or phone number below. Myself or my staff are available to help all week. 
+                  If you need anything at all, just get in touch. If you need quotes or just to talk through some ideas. I am available to help. Either contact me throught the form provided, or use one the email address or phone number below. Myself or my staff are available to help all week. 
                   <br />
                   If you have designs made through our design tool we can access them and get and up to date view of what site design you have created.
                 </p>
