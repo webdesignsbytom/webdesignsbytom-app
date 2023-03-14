@@ -80,7 +80,7 @@ function DesignElement({
       }));
     }
   }, [registerForm.password, registerForm.confirmPassword]);
-  
+
   console.log('formResponses', formResponses);
 
   const login = () => {
@@ -187,9 +187,9 @@ function DesignElement({
       <main className='lg:grid lg:grid-flow-col lg:w-full lg:pl-[200px]'>
         <div>
           <section className='bg-colour-pale p-2 flex justify-between gap-4 border-t-2 border-b-2 border-solid border-black lg:border-b-2 lg:border-t-0 lg:border-solid lg:border-black'>
-            <div className='flex'>
+            <div className='flex ml-1'>
               <input
-                className='max-w-[150px] lg:max-w-[200px] px-1 font-normal text-placeholder-text bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none'
+                className='max-w-[150px] md:max-w-[200px] lg:max-w-[250px] px-1 font-normal text-placeholder-text bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none'
                 type='text'
                 name='fileName'
                 id='fileName'
@@ -210,10 +210,10 @@ function DesignElement({
             </div>
 
             {/* File Options */}
-            <nav className='flex'>
+            <nav className='flex md:mr-2'>
               <ul className='flex gap-4 justify-center align-middle'>
-                <li className='menu__link flex align-middle group'>
-                  <div className='grid w-full items-center'>
+                <li className='menu__link'>
+                  <div className='grid w-full items-center justify-center'>
                     <img
                       src={NewFile}
                       className='animation__wiggle w-5 md:w-6 lg:pr-1'
@@ -222,11 +222,8 @@ function DesignElement({
                   </div>
                   <p>New</p>
                 </li>
-                <li
-                  onClick={saveNewDesign}
-                  className='menu__link flex align-middle group'
-                >
-                  <div className='grid w-full items-center'>
+                <li onClick={saveNewDesign} className='menu__link'>
+                  <div className='grid w-full items-center justify-center'>
                     <img
                       src={FloppyDisk}
                       className='animation__wiggle w-5 md:w-6 lg:pr-1'
@@ -235,8 +232,8 @@ function DesignElement({
                   </div>
                   <p>Save</p>
                 </li>
-                <li className='menu__link flex align-middle group'>
-                  <div className='grid w-full items-center'>
+                <li className='menu__link'>
+                  <div className='grid w-full items-center justify-center'>
                     <img
                       src={Undo}
                       className='animation__wiggle w-5 md:w-6 lg:pr-1'
@@ -245,8 +242,8 @@ function DesignElement({
                   </div>
                   <p>Undo</p>
                 </li>
-                <li className='menu__link flex align-middle group'>
-                  <div className='grid w-full items-center'>
+                <li className='menu__link'>
+                  <div className='grid w-full items-center justify-center'>
                     <img
                       src={Bin}
                       className='animation__wiggle w-5 md:w-6 lg:pr-1'

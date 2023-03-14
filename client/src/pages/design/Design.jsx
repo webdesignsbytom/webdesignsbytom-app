@@ -28,7 +28,7 @@ function Design() {
   }, [user.id]);
 
   return (
-    <div className='max-h-screen lg:overflow-hidden lg:left-0'>
+    <div className='max-h-screen lg:left-0'>
       <Navbar />
       <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black'>
         {/* Side bar */}

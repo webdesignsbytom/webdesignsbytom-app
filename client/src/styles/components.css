@@ -12,7 +12,7 @@
 }
 
 .menu__link {
-  @apply grid sm:flex cursor-pointer text-xs md:text-sm lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text  dark:text-white 
+  @apply grid md:flex cursor-pointer align-middle items-center text-xs md:text-sm lg:text-base transition ease-in-out duration-200 text-main-text hover:text-hover-text active:text-active-text dark:text-white 
 }
 
 .options__link {

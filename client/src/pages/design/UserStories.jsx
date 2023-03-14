@@ -97,7 +97,7 @@ function UserStories({
                 alt='information'
                 data-te-animation-init
               />
-              <div className='hidden absolute group-hover:block border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[250px] lg:w-[500px] lg:right-12'>
+              <div className='hidden absolute group-hover:block border-2 border-black border-solid rounded bg-colour-med p-1 text-sm align-middle max-w-[250px] lg:w-[500px] right-2 lg:right-12'>
                 A good user story is short description of an ability your app
                 will require. For Example:
                 <p>
