@@ -135,8 +135,8 @@ function DeveloperPanel() {
             {/* Left */}
             <section className='grid lg:grid-rows-reg'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 border-b-2 border-hover-text border-solid'>
-                <ul className='flex lg:text-left gap-24'>
+              <nav className='p-2 lg:w-[90%] lg:pr-12 border-b-2 border-hover-text border-solid w-full'>
+                <ul className='flex justify-between lg:text-left lg:gap-24'>
                   <li
                     onMouseEnter={() => {
                       setDisplayOverview(true);
