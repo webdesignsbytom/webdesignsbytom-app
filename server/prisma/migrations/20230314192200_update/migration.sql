@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Contact" ALTER COLUMN "phone" SET DEFAULT '',
+ALTER COLUMN "phone" SET DATA TYPE TEXT;

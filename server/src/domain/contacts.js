@@ -7,9 +7,9 @@ export const findAllContacts = () =>
     },
   });
 
-export const findContactByName = (name) =>
+export const findContactByEmail = (email) =>
   dbClient.contact.findFirst({
-    where: { name: name },
+    where: { email: email },
   });
 
 export const findContactById = (contactId) =>

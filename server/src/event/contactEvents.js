@@ -11,8 +11,8 @@ myEmitterContacts.on('get-all-contacts', async (user) =>
   createGetAllContactsEvent(user)
 );
 
-myEmitterContacts.on('create-contact', async (user) =>
-  createCreateContactEvent(user)
+myEmitterContacts.on('create-contact', async (createdContact) =>
+  createCreateContactEvent(createdContact)
 );
 
 myEmitterContacts.on('deleted-contact', async (user) =>

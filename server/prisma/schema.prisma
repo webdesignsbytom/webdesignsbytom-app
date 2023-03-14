@@ -154,7 +154,7 @@ enum ComponentType {
 model Contact {
   id        String    @id @default(uuid())
   email     String    @unique
-  phone     Int       @default(000)
+  phone     String    @default("")
   firstName String    @default("")
   lastName  String    @default("")
   country   String    @default("")

@@ -33,27 +33,20 @@ export const createGetAllContactsEvent = async (user) => {
   }
 };
 
-export const createCreateContactEvent = async (user) => {
+export const createCreateContactEvent = async (createdContact) => {
   let type = 'USER';
-  if (user.role === 'ADMIN') {
-    type = 'ADMIN';
-  }
-  if (user.role === 'DEVELOPER') {
-    type = 'DEVELOPER';
-  }
 
   try {
     await dbClient.event.create({
       data: {
         type: type,
         topic: 'Create contact form',
-        content: `Create contact form successful for ${user.email}`,
-        createdById: user.id,
+        content: `Create contact form successful for ${createdContact.email}`,
         code: 201
       },
     });
   } catch (err) {
-    const error = new CreateEventError(user.id, 'Create contact form');
+    const error = new CreateEventError(createdContact.email, 'Create contact form');
     myEmitterErrors.emit('error', error);
     throw err;
   }

@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
+import LoadingSpinner from '../../components/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import client from '../../utils/client';
+import { contactFormTemplate } from '../../utils/utils';
 
-function ContactForm({ formData, setFormData }) {
-  const [contactSuccessMessage, setContactSuccessMessage] = useState({});
+function ContactForm() {
+  const [contactSuccessMessage, setContactSuccessMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [contactErrorMessage, setContactErrorMessage] = useState({
+    status: false,
+    message: '',
+  });
+  const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const [formData, setFormData] = useState(contactFormTemplate);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     console.log('VALUE', value);
+
+    if (name === 'email') {
+      setContactErrorMessage({
+        status: false,
+        message: '',
+      })
+      setMainButtonContent(true)
+    }
 
     setFormData({
       ...formData,
@@ -16,20 +36,33 @@ function ContactForm({ formData, setFormData }) {
     });
   };
 
-  console.log('formData', formData);
+  console.log('formData 2', formData);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    console.log('formData', formData);
+    console.log('formData submit', formData);
+    setMainButtonContent(false);
+    setLoadingAnimation(true);
     client
       .post(`/contacts/create`, formData, false)
       .then((res) => {
         console.log('res', res.data);
-        setContactSuccessMessage(res.data.data.createdContact);
+        setLoadingAnimation(false);
+        setContactSuccessMessage({
+          status: true,
+          message: 'SUCCESS',
+        });
       })
       .catch((err) => {
-        console.error('Unable to send contact message', err);
+        setLoadingAnimation(false);
+        setContactErrorMessage({
+          status: true,
+          message: err.response.data.data.contact,
+        });
+        console.error(
+          'Unable to send contact message',
+          err.response.data.data.contact
+        );
       });
   };
 
@@ -112,7 +145,19 @@ function ContactForm({ formData, setFormData }) {
             data-mdb-ripple='true'
             data-mdb-ripple-color='light'
           >
-            Send Message
+            {loadingAnimation ? (
+              <div className='grid'>
+                <LoadingSpinner height={'5'} width={'5'} />
+              </div>
+            ) : (
+              mainButtonContent && <span>Contact Tom</span>
+            )}
+            {contactSuccessMessage.status && (
+              <span>{contactSuccessMessage.message}</span>
+            )}
+            {contactErrorMessage.status && (
+              <span>{contactErrorMessage.message}</span>
+            )}
           </button>
         </div>
       </form>

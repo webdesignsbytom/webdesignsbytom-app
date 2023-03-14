@@ -12,6 +12,12 @@ export const findUserByEmail = (email) =>
     where: { email: email },
   });
 
+export const findUsersByRole = (role) =>
+  dbClient.user.findMany({
+    where: {
+      role: role
+    }
+  })
 export const createUser = (
   email,
   password,

@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import ContactForm from './ContactForm';
 import Footer from '../../components/footer/Footer';
-// Utils
-import { contactFormTemplate } from '../../utils/utils';
 
 function Contact() {
-  const [formData, setFormData] = useState(contactFormTemplate);
 
   return (
     <>
@@ -33,7 +30,7 @@ function Contact() {
 
           {/* Inputs */}
           <section className='mb-4 lg:mt-6'>
-            <ContactForm formData={formData} setFormData={setFormData} />
+            <ContactForm />
           </section>
         </main>
 

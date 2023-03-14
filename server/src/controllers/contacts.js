@@ -1,10 +1,12 @@
 // Emitters
 import { myEmitterErrors } from '../event/errorEvents.js';
 import { myEmitterContacts } from '../event/contactEvents.js';
+// Domains
+import { findUsersByRole } from '../domain/users.js';
 import {
   findAllContacts,
   findContactByQuery,
-  findContactByName,
+  findContactByEmail,
   createContact,
   findContactById,
   deleteContactById,
@@ -19,7 +21,10 @@ import {
   NotFoundEvent,
   ServerErrorEvent,
   MissingFieldEvent,
+  BadRequestEvent,
 } from '../event/utils/errorUtils.js';
+import { createMessage } from '../domain/messages.js';
+import { createNewNotification } from '../domain/notifications.js';
 
 export const getAllContacts = async (req, res) => {
   console.log('get all contacts');
@@ -72,7 +77,6 @@ export const getContactsByQuery = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    
     foundContact.forEach((contact) => {
       const createdDate = contact.createdAt.toLocaleString();
       const updatedDate = contact.updatedAt.toLocaleString();
@@ -99,18 +103,17 @@ export const createNewContact = async (req, res) => {
     if (!email || !phone || !firstName || !lastName || !country || !message) {
       //
       const missingField = new MissingFieldEvent(
-        null,
+        'Visitor contact form',
         'Contact creation: Missing Field/s event'
       );
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
 
-    const foundContact = await findContactByName(name);
-
+    const foundContact = await findContactByEmail(email);
     if (foundContact) {
       return sendDataResponse(res, 400, {
-        contact: 'Contact name already exists',
+        contact: 'Contact email already exists',
       });
     }
 
@@ -122,9 +125,66 @@ export const createNewContact = async (req, res) => {
       country,
       message
     );
-    console.log('created contact', createdContact);
 
-    // myEmitterContacts.emit('create-contact', createdContact);
+    if (!createdContact) {
+      const notCreated = new BadRequestEvent(
+        req.user,
+        EVENT_MESSAGES.createContactFail,
+        'Cant create contact'
+      );
+      myEmitterErrors.emit('error', notCreated);
+      return sendMessageResponse(res, notCreated.code, notCreated.message);
+    }
+
+    myEmitterContacts.emit('create-contact', createdContact);
+
+    const foundUsers = await findUsersByRole('ADMIN');
+    foundUsers.forEach(async (admin) => {
+      const message = {
+        subject: 'New Contact Message',
+        content: `New contact form submittion form ${email}. Check messages at link http://...`,
+        userId: admin.id,
+      };
+      const notification = {
+        type: 'MESSAGE',
+        content: `New contact form submittion form ${email}`,
+        userId: admin.id,
+      };
+
+      const newMessage = await createMessage(
+        message.subject,
+        message.content,
+        'System',
+        'System',
+        message.userId
+      );
+
+      if (!newMessage) {
+        const notCreated = new BadRequestEvent(
+          req.user,
+          EVENT_MESSAGES.createMessageFail,
+          'Cant create message for admin - contact form'
+        );
+        myEmitterErrors.emit('error', notCreated);
+        return sendMessageResponse(res, notCreated.code, notCreated.message);
+      }
+
+      const newNotification = await createNewNotification(
+        notification.type,
+        notification.content,
+        notification.userId
+      );
+
+      if (!newNotification) {
+        const notCreated = new BadRequestEvent(
+          req.user,
+          EVENT_MESSAGES.createNotificationFail,
+          'Cant create notification for admin - contact form'
+        );
+        myEmitterErrors.emit('error', notCreated);
+        return sendMessageResponse(res, notCreated.code, notCreated.message);
+      }
+    });
 
     return sendDataResponse(res, 201, { createdContact });
   } catch (err) {

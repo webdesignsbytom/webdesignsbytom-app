@@ -77,6 +77,18 @@ async function seed() {
       agreedToTerms: true,
     },
   });
+  const adminUserTwo = await dbClient.user.create({
+    data: {
+      email: 'admin2@admin.com',
+      password,
+      role: 'ADMIN',
+      isVerified: true,
+      firstName: 'Raymond',
+      lastName: 'Holt',
+      country: 'USA',
+      agreedToTerms: true,
+    },
+  });
 
   const devUser = await dbClient.user.create({
     data: {
@@ -91,14 +103,26 @@ async function seed() {
     },
   });
 
-  const ContactMessage = await dbClient.message.create({
+  const devUserTwo = await dbClient.user.create({
+    data: {
+      email: 'dev2@dev.com',
+      password,
+      role: 'DEVELOPER',
+      isVerified: true,
+      firstName: 'Mean',
+      lastName: 'Girl',
+      country: 'UK',
+      agreedToTerms: true,
+    },
+  });
+
+  const ContactMessage = await dbClient.contact.create({
     data: {
       email: 'tom@gmail.com',
-      phone: 0534534534,
+      phone: '0534534534',
       firstName: 'Tommy',
       lastName: 'Testing',
       country: 'United States',
-      subject: 'TEST',
       message: 'Contact',
     },
   });

@@ -20,12 +20,13 @@ export const findUserMessagesById = (userId) =>
     },
   });
 
-export const createMessage = (subject, content, sentFromId, userId) =>
+export const createMessage = (subject, content, sentFromId, sentFromName, userId) =>
   dbClient.message.create({
     data: {
       subject: subject,
       content: content,
       sentFromId: sentFromId,
+      sentFromName: sentFromName,
       userId: userId,
     },
   });
