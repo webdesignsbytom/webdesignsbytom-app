@@ -75,10 +75,10 @@ export const getComponentsByQuery = async (req, res) => {
 
 export const createNewComponent = async (req, res) => {
   console.log('createNewComponent');
-  const { type, name, desc, mainImage, price } = req.body;
+  const { type, name, desc, image, price } = req.body;
 
   try {
-    if (!type || !name || !desc || !mainImage || !price) {
+    if (!type || !name || !desc || !image || !price) {
       //
       const missingField = new MissingFieldEvent(
         null,
@@ -100,7 +100,7 @@ export const createNewComponent = async (req, res) => {
       type,
       name,
       desc,
-      mainImage,
+      image,
       price
     );
     console.log('created component', createdComponent);

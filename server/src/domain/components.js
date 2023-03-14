@@ -35,13 +35,13 @@ export const findComponentByQuery = (query) =>
     },
   });
 
-export const createComponent = (type, name, desc, mainImage, price) =>
+export const createComponent = (type, name, desc, image, price) =>
   dbClient.component.create({
     data: {
       type: type,
       name: name,
       desc: desc,
-      mainImage: mainImage,
+      image: image,
       price: price,
     },
   });
