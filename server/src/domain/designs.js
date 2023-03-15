@@ -27,7 +27,7 @@ export const findUserDesignsById = (userId) =>
     include: {
       navDesign: true,
       colorPalette: true,
-      userStory: true
+      userStories: true
     },
     orderBy: {
       createdAt: 'desc',
