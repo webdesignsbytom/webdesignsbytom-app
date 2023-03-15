@@ -181,6 +181,11 @@ export const saveDesign = async (req, res) => {
   console.log(colorPalette);
 
   try {
+
+    if (id === undefined) {
+      console.log('LLLLLLLL')
+      const newDesign = await createNewDesign()
+    }
     const foundDesign = await findDesignById(id);
 
     if (foundDesign) {
