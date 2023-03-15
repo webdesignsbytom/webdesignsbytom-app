@@ -173,31 +173,40 @@ export const createNewDesign = async (req, res) => {
 export const saveDesign = async (req, res) => {
   console.log('SAVE', req.body);
   const { id, name, userId, userStories, navDesign, colorPalette } = req.body;
-  console.log(id)
-  console.log(name)
-  console.log(userStories)
-  console.log(userId)
-  console.log(navDesign)
-  console.log(colorPalette)
+  console.log(id);
+  console.log(name);
+  console.log(userStories);
+  console.log(userId);
+  console.log(navDesign);
+  console.log(colorPalette);
 
   try {
-    const foundDesign = await findDesignById(id)
+    const foundDesign = await findDesignById(id);
 
-    console.log('found', foundDesign)
-    userStories.forEach((story) => {
-      if (!story.designId) {
-        console.log('XXX', story)
-        story.designId = id
-      }
-      foundDesign.userStories.forEach(async (existingStory) => {
-        if (story.content !== existingStory.content) {
-          const newStory = await createNewUserStory(story)
-          console.log('new', newStory)
+    if (foundDesign) {
+      console.log('found', foundDesign);
+      userStories.forEach((story) => {
+        if (!story.designId) {
+          console.log('XXX', story);
+          story.designId = id;
         }
-      })
-    })
+        foundDesign.userStories.forEach(async (existingStory) => {
+          if (story.content !== existingStory.content) {
+            const newStory = await createNewUserStory(story);
+            console.log('new', newStory);
+          }
+        });
+      });
+    } else {
+      userStories.forEach((story) => {
+        if (!story.designId) {
+          console.log('XXX', story);
+          story.designId = id;
+        }
+      });
+    }
 
-    console.log('user2 ', userStories)
+    console.log('user2 ', userStories);
     return sendDataResponse(res, 200, { design: foundDesign });
   } catch (err) {
     //
