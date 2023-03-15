@@ -44,3 +44,27 @@ TypeError: Cannot read properties of null (reading 'id')
     at Route.dispatch (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\route.js:114:3)    at Layer.handle [as handle_request] (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\layer.js:95:5)
     at C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\index.js:284:15
     at param (C:\Users\tom_b\Documents\code\portfolio-work\webdesignsbytom-app\server\node_modules\express\lib\router\index.js:365:14)  
+
+
+
+
+ateNewDesign
+ERROR EVENT ServerErrorEvent {
+  user: undefined,
+  topic: 'Create new design',
+  code: 500,
+  message: 'Internal Server Error'
+}
+TTTTT ServerErrorEvent {
+  user: undefined,
+  topic: 'Create new design',
+  code: 500,
+  message: 'Internal Server Error'
+}
+POST /designs/create 500 748.069 ms - 52
+C:\Users\Tom\Documents\code\main\webdesignsbytom-app\server\node_modules\@prisma\client\runtime\library.js:149
+`});return process.env.NO_COLOR||i==="colorless"?(0,No.default)(B):B},"renderErrorStr"),b=new ne(g(o));throw process.env.NODE_ENV!=="production"&&Object.defineProperty(b,"render",{get:()=>g,enumerable:!1}),b}normalizePath(t,r){let n=t.slice(),i=[],o,s=r;for(;(o=n.shift())!==void 0;)!Array.isArray(s)&&o===0||(o==="select"?s[o]?s=s[o]:s=s.include:s&&s[o]&&(s=s[o]),i.push(o));return i}};l(ti,"Document");var ne=class extends Error{get[Symbol.toStringTag](){return"PrismaClientValidationError"}};l(ne,"PrismaClientValidationError");var Q=class extends Error{constructor(t){super(t+`
+                                                                                          ^    
+
+PrismaClientValidationError:
+Invalid `prisma.design.findFirst()` invocation:

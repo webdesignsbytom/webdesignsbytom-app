@@ -15,6 +15,10 @@ export const findDesignByName = (name) =>
 export const findDesignById = (designId) =>
   dbClient.design.findFirst({
     where: { id: designId },
+    include: {
+      navDesign: true,
+      colorPalette: true
+    }
   });
 
 export const findUserDesignsById = (userId) =>
@@ -27,26 +31,33 @@ export const findUserDesignsById = (userId) =>
 
 export const checkFileDoesntExist = (name, userId) =>
   dbClient.design.findFirst({
-    AND: [
-      {
-        name: {
-          equals: name,
+    where: {
+      AND: [
+        {
+          name: {
+            equals: name,
+          },
         },
-      },
-      {
-        userId: {
-          equals: userId,
+        {
+          userId: {
+            equals: userId,
+          },
         },
-      },
-    ],
+      ],
+    },
   });
 
-export const createDesign = (userId, name, colorPalette) =>
+export const createDesign = (
+  name,
+  navDesign,
+  colorPalette,
+  userStories,
+  userId
+) =>
   dbClient.design.create({
     data: {
       userId: userId,
       name: name,
-      colorPalette: colorPalette,
     },
   });
 
@@ -57,10 +68,25 @@ export const deleteDesignById = (designId) =>
     },
   });
 
-export const createNewUserStory = (story) => 
+export const createNewUserStory = (story) =>
   dbClient.userStory.create({
     data: {
       designId: story.designId,
-      content: story.content
-    }
-  })
+      content: story.content,
+    },
+  });
+
+// NAV
+export const createEmptyNav = (designId) =>
+  dbClient.navDesign.create({
+    data: {
+      designId: designId,
+    },
+  });
+
+export const createEmptyStories = (designId) =>
+  dbClient.userStory.create({
+    data: {
+      designId: designId,
+    },
+  });

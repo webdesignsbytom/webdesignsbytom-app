@@ -1,24 +1,24 @@
 import dbClient from '../utils/dbClient.js';
 
 export const findAllPalettes = () =>
-  dbClient.palette.findMany({
+  dbClient.colorPalette.findMany({
     orderBy: {
       createdAt: 'desc',
     },
   });
 
 export const findPaletteByName = (name) =>
-  dbClient.palette.findFirst({
+  dbClient.colorPalette.findFirst({
     where: { name: name },
   });
 
 export const findPaletteById = (paletteId) =>
-  dbClient.palette.findFirst({
+  dbClient.colorPalette.findFirst({
     where: { id: paletteId },
   });
 
 export const findUserPalettesById = (userId) =>
-  dbClient.palette.findMany({
+  dbClient.colorPalette.findMany({
     where: { userId: userId },
   });
 
@@ -32,7 +32,7 @@ export const createPalette = (
   hover,
   selected
 ) =>
-  dbClient.palette.create({
+  dbClient.colorPalette.create({
     data: {
       designId: designId,
       bgMain: bgMain,
@@ -44,6 +44,13 @@ export const createPalette = (
       selected: selected,
     },
   });
+
+export const createEmptyPalette = (designId) =>
+  dbClient.colorPalette.create({
+    data: {
+      designId: designId
+    }
+  })
 
 export const deletePaletteById = (paletteId) =>
   dbClient.palette.delete({

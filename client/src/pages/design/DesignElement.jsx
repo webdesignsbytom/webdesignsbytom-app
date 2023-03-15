@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 // Components
 import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
@@ -18,7 +18,7 @@ import Bin from '../../img/bin.svg';
 import Undo from '../../img/undo.svg';
 import NewFile from '../../img/newFile.svg';
 // Utils
-import { paletteTemplate } from '../../utils/utils';
+import { designTemplate, paletteTemplate } from '../../utils/utils';
 
 function DesignElement({
   displayElement,
@@ -36,21 +36,28 @@ function DesignElement({
 
   const handleChange = (event) => {
     const { value } = event.target;
-    console.log('change', value);
+    console.log('XXX change', value);
     setFileSaveName(value);
   };
 
-  const saveNewDesign = (event) => {
+  const createNewDesign = (event) => {
     event.preventDefault();
     if (user.email.length < 1) {
       return setDisplayElement('register');
     } else {
+      let newDesign = designTemplate
+      newDesign.userId = user.id
+
       client
-        .post(`/designs/create`, openDesign)
+        .post(`/designs/create`, newDesign)
         .then((res) => {
-          console.log('res', res.data);
+          console.log('NEW D res', res.data);
+          // setOpenDesign(res.data.data.design);
         })
-        .catch((err) => console.error('Unable to get designs', err.response));
+        .catch((err) => {
+          console.error('Unable to save designs', err.response);
+          console.error('Unable to save designs', err.response.data.message);
+        });
     }
   };
 
@@ -84,7 +91,7 @@ function DesignElement({
             {/* File Options */}
             <nav className='flex md:mr-2'>
               <ul className='flex gap-4 justify-center align-middle'>
-                <li className='menu__link'>
+                <li onClick={createNewDesign} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
                     <img
                       src={NewFile}
@@ -94,7 +101,7 @@ function DesignElement({
                   </div>
                   <p>New</p>
                 </li>
-                <li onClick={saveNewDesign} className='menu__link'>
+                <li className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
                     <img
                       src={FloppyDisk}

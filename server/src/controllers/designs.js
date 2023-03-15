@@ -10,6 +10,8 @@ import {
   findUserDesignsById,
   checkFileDoesntExist,
   createNewUserStory,
+  createEmptyNav,
+  createEmptyStories,
 } from '../domain/designs.js';
 import { findUserById } from '../domain/users.js';
 // Response messages
@@ -21,6 +23,7 @@ import {
   BadRequestEvent,
 } from '../event/utils/errorUtils.js';
 import { EVENT_MESSAGES } from '../utils/responses.js';
+import { createEmptyPalette } from '../domain/palettes.js';
 export const getAllDesigns = async (req, res) => {
   console.log('get all designs');
   try {
@@ -111,26 +114,20 @@ export const getDesignsFromUser = async (req, res) => {
 
 export const createNewDesign = async (req, res) => {
   console.log('createNewDesign');
-  const { userId, name, colorPalette } = req.body;
+  const { name, navDesign, colorPalette, userStories, userId } = req.body;
+  console.log('name', name, navDesign, colorPalette, userStories, userId);
 
   try {
     if (!req.body) {
       const missingField = new MissingFieldEvent(
         null,
-        'Design creation: Missing Field/s event'
+        'Design creation: Missing request body'
       );
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
 
-    const foundDesign = await checkFileDoesntExist(name, userId);
-
-    if (foundDesign) {
-      return sendDataResponse(res, 400, {
-        design: 'Design name already exists',
-      });
-    }
-
+    console.log('AAAA');
     const foundUser = await findUserById(userId);
 
     if (!foundUser) {
@@ -142,8 +139,15 @@ export const createNewDesign = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-
-    const createdDesign = await createDesign(userId, name, colorPalette);
+    console.log('ttt');
+    const createdDesign = await createDesign(
+      name,
+      navDesign,
+      colorPalette,
+      userStories,
+      userId
+    );
+    console.log('created', createdDesign);
 
     if (!createdDesign) {
       const notCreated = new BadRequestEvent(
@@ -209,7 +213,7 @@ export const saveDesign = async (req, res) => {
             console.log('new story: ', story);
             const newStory = await createNewUserStory(story);
             console.log('SS new story: ', newStory);
-          })
+          });
         }
       });
     }

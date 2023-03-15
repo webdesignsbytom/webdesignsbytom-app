@@ -129,7 +129,7 @@ export class DeactivatedUserEvent extends ErrorEventBase {
 }
 
 export class ServerErrorEvent extends ErrorEventBase {
-  constructor(user, topic) {
+  constructor(user = 'visitor', topic) {
     super(user, topic);
     this.code = 500;
     this.message = RESPONSE_MESSAGES.ServerErrorEvent;

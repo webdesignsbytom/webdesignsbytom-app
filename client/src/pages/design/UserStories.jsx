@@ -39,11 +39,8 @@ function UserStories({
 
   const handleCreate = (event) => {
     event.preventDefault();
-    console.log('Open Design', openDesign);
-    console.log('Form', newUserStoryForm);
 
     if (openDesign.userStories) {
-      console.log('PPPP')
       const found = openDesign.userStories.find(
         (story) => story.content === newUserStoryForm.content
       );
@@ -51,7 +48,6 @@ function UserStories({
         return setErrorDisplay({ error: 'Story already exists', active: true });
       }
     }
-    console.log('III')
     if (openDesign.id) {
       setOpenDesign({
         ...openDesign,
@@ -60,7 +56,6 @@ function UserStories({
     }
 
     setUserStoriesArr([...userStoriesArr, newUserStoryForm]);
-
     setOpenDesign({
       ...openDesign,
       userStories: [...userStoriesArr, newUserStoryForm],
@@ -68,16 +63,10 @@ function UserStories({
 
     setNewUserStoryForm(userStoryTemplate);
   };
-console.log('UER storyies', userStoriesArr)
+  
   const deleteUserStory = (story, index) => {
-    console.log('delete', story);
-    console.log('index', index);
-    
     const newStoryArray = userStoriesArr
-    console.log('NEW', newStoryArray)
-    const removedArray = newStoryArray.splice(index, 1)
-    console.log('removedArray', removedArray)
-    console.log('NEW2', newStoryArray)
+    newStoryArray.splice(index, 1)
 
     setOpenDesign({
       ...openDesign,
