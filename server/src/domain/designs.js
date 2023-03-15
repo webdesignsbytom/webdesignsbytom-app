@@ -17,8 +17,8 @@ export const findDesignById = (designId) =>
     where: { id: designId },
     include: {
       navDesign: true,
-      colorPalette: true
-    }
+      colorPalette: true,
+    },
   });
 
 export const findUserDesignsById = (userId) =>
@@ -27,7 +27,7 @@ export const findUserDesignsById = (userId) =>
     include: {
       navDesign: true,
       colorPalette: true,
-      userStories: true
+      userStories: true,
     },
     orderBy: {
       createdAt: 'desc',
@@ -63,6 +63,14 @@ export const createDesign = (
     data: {
       userId: userId,
       name: name,
+      userStories: {
+        create: { content: 'I want my website to suit me perfectly' },
+      },
+    },
+    include: {
+      navDesign: true,
+      colorPalette: true,
+      userStories: true,
     },
   });
 
