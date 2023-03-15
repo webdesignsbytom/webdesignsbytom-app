@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 // Components
 import ColorPalette from '../../components/palette/ColorPalette';
 import NavOptions from './NavOptions';
@@ -34,6 +34,12 @@ function DesignElement({
   // Colour palette
   const [colourPalette, setColourPalette] = useState(paletteTemplate);
 
+  useEffect(() => {
+    if (openDesign) {
+      setUserStoriesArr(openDesign.userStories);
+    }
+  }, []);
+
   const handleChange = (event) => {
     const { value } = event.target;
     console.log('XXX change', value);
@@ -45,8 +51,8 @@ function DesignElement({
     if (user.email.length < 1) {
       return setDisplayElement('register');
     } else {
-      let newDesign = designTemplate
-      newDesign.userId = user.id
+      let newDesign = designTemplate;
+      newDesign.userId = user.id;
 
       client
         .post(`/designs/create`, newDesign)
@@ -55,10 +61,27 @@ function DesignElement({
           // setOpenDesign(res.data.data.design);
         })
         .catch((err) => {
-          console.error('Unable to save designs', err.response);
-          console.error('Unable to save designs', err.response.data.message);
+          console.error('Unable to create designs', err.response);
+          console.error('Unable to create designs', err.response.data.message);
         });
     }
+  };
+
+  const saveUpdateDesign = () => {
+    console.log('SAve', openDesign);
+    if (user.email.length < 1) {
+      return setDisplayElement('register');
+    }
+
+    client
+      .put(`/designs/user/${openDesign.id}`, openDesign, false)
+      .then((res) => {
+        console.log('SAVE res', res.data);
+      })
+      .catch((err) => {
+        console.error('Unable to save designs', err.response);
+        console.error('Unable to save designs', err.response.data.message);
+      });
   };
 
   return (
@@ -101,7 +124,7 @@ function DesignElement({
                   </div>
                   <p>New</p>
                 </li>
-                <li className='menu__link'>
+                <li onClick={saveUpdateDesign} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
                     <img
                       src={FloppyDisk}

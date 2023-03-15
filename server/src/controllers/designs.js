@@ -171,62 +171,93 @@ export const createNewDesign = async (req, res) => {
 };
 
 export const saveDesign = async (req, res) => {
-  console.log('SAVE');
-  const { id, userStories } = req.body;
-  console.log('id: ', userStories);
+  console.log('SAVE', req.body);
+  const { id, name, userId, userStories, navDesign, colorPalette } = req.body;
+  console.log(id)
+  console.log(name)
+  console.log(userStories)
+  console.log(userId)
+  console.log(navDesign)
+  console.log(colorPalette)
 
   try {
-    const foundDesign = await findDesignById(id);
-    console.log('foundDesign: ', foundDesign);
-    if (!foundDesign) {
-      const notFound = new NotFoundEvent(
-        req.user,
-        EVENT_MESSAGES.notFound,
-        EVENT_MESSAGES.designNotFound
-      );
-      myEmitterErrors.emit('error', notFound);
-      return sendMessageResponse(res, notFound.code, notFound.message);
-    }
+    const foundDesign = await findDesignById(id)
 
-    if (userStories) {
-      console.log('AAAA');
-      userStories.forEach((story) => {
-        console.log('story: ', story);
-        console.log('foundDesign.userStories', foundDesign);
-        if (foundDesign.userStories) {
-          foundDesign.userStories.forEach(async (design) => {
-            if (design.content !== story.content) {
-              const newStory = await createNewUserStory(story);
-              console.log('newStory: ', newStory);
-            } else {
-              const invalid = new BadRequestEvent(
-                req.user,
-                EVENT_MESSAGES.designTag,
-                'User story already exists'
-              );
-              myEmitterErrors.emit('error', invalid);
-              return sendMessageResponse(res, invalid.code, invalid.message);
-            }
-          });
-        } else {
-          userStories.forEach(async (story) => {
-            console.log('new story: ', story);
-            const newStory = await createNewUserStory(story);
-            console.log('SS new story: ', newStory);
-          });
+    console.log('found', foundDesign)
+    userStories.forEach((story) => {
+      if (!story.designId) {
+        console.log('XXX', story)
+        story.designId = id
+      }
+      foundDesign.userStories.forEach(async (existingStory) => {
+        if (story.content !== existingStory.content) {
+          const newStory = await createNewUserStory(story)
+          console.log('new', newStory)
         }
-      });
-    }
+      })
+    })
 
-    // myEmitterDesigns.emit('get-design-by-id', req.user)
+    console.log('user2 ', userStories)
     return sendDataResponse(res, 200, { design: foundDesign });
   } catch (err) {
     //
-    const serverError = new ServerErrorEvent(req.user, `Get design by ID`);
+    const serverError = new ServerErrorEvent(req.user, `Save design`);
     myEmitterErrors.emit('error', serverError);
     sendMessageResponse(res, serverError.code, serverError.message);
     throw err;
   }
+  // try {
+  //   const foundDesign = await findDesignById(id);
+  //   console.log('foundDesign: ', foundDesign);
+  //   if (!foundDesign) {
+  //     const notFound = new NotFoundEvent(
+  //       req.user,
+  //       EVENT_MESSAGES.notFound,
+  //       EVENT_MESSAGES.designNotFound
+  //     );
+  //     myEmitterErrors.emit('error', notFound);
+  //     return sendMessageResponse(res, notFound.code, notFound.message);
+  //   }
+
+  //   if (userStories) {
+  //     console.log('AAAA');
+  //     userStories.forEach((story) => {
+  //       console.log('story: ', story);
+  //       console.log('foundDesign.userStories', foundDesign);
+  //       if (foundDesign.userStories) {
+  //         foundDesign.userStories.forEach(async (design) => {
+  //           if (design.content !== story.content) {
+  //             const newStory = await createNewUserStory(story);
+  //             console.log('newStory: ', newStory);
+  //           } else {
+  //             const invalid = new BadRequestEvent(
+  //               req.user,
+  //               EVENT_MESSAGES.designTag,
+  //               'User story already exists'
+  //             );
+  //             myEmitterErrors.emit('error', invalid);
+  //             return sendMessageResponse(res, invalid.code, invalid.message);
+  //           }
+  //         });
+  //       } else {
+  //         userStories.forEach(async (story) => {
+  //           console.log('new story: ', story);
+  //           const newStory = await createNewUserStory(story);
+  //           console.log('SS new story: ', newStory);
+  //         });
+  //       }
+  //     });
+  //   }
+
+  //   // myEmitterDesigns.emit('get-design-by-id', req.user)
+  //   return sendDataResponse(res, 200, { design: foundDesign });
+  // } catch (err) {
+  //   //
+  //   const serverError = new ServerErrorEvent(req.user, `Get design by ID`);
+  //   myEmitterErrors.emit('error', serverError);
+  //   sendMessageResponse(res, serverError.code, serverError.message);
+  //   throw err;
+  // }
 };
 
 export const deleteDesign = async (req, res) => {

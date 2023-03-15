@@ -274,19 +274,6 @@ async function seed() {
       price: 100,
     },
   });
-
-  const devUserDesign = await dbClient.design.create({
-    data: {
-      userId: devUser.id,
-      name: 'Toms Design',
-    },
-  });
-  const devUserStory = await dbClient.userStory.create({
-    data: {
-      designId: devUserDesign.id,
-      content: 'I want my website to suit me perfectly',
-    },
-  });
 }
 
 seed().catch(async (error) => {

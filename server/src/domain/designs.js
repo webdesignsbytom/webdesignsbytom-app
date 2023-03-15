@@ -18,6 +18,7 @@ export const findDesignById = (designId) =>
     include: {
       navDesign: true,
       colorPalette: true,
+      userStories: true,
     },
   });
 
