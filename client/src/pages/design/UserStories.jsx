@@ -6,51 +6,52 @@ import QuestionMark from '../../img/questionMark.svg';
 import BinIcon from '../../img/bin.svg';
 // Utils
 import { userStoryTemplate } from '../../utils/utils';
+import { statusResults } from '../../users/utils/utils';
 
 function UserStories({
   openDesign,
   setOpenDesign,
-  userStories,
-  setUserStories,
+  userStoriesArr,
+  setUserStoriesArr,
 }) {
   const { user } = useContext(UserContext);
-  const [newUserStory, setNewUserStory] = useState(userStoryTemplate);
-  const [errorDisplay, setErrorDisplay] = useState({
-    active: false,
-    error: '',
-  });
-  const [tempId, setTempId] = useState(1)
+  const [newUserStoryForm, setNewUserStoryForm] = useState(userStoryTemplate);
+  const [errorDisplay, setErrorDisplay] = useState(statusResults);
 
   useEffect(() => {
     if (openDesign.id) {
-      setNewUserStory({
-        ...newUserStory,
+      setNewUserStoryForm({
+        ...newUserStoryForm,
         designId: openDesign.id,
       });
     }
-  }, []);
+  }, [userStoriesArr]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setErrorDisplay({ error: '', active: false })
-    setNewUserStory({
-      ...newUserStory,
+    setErrorDisplay({ error: '', active: false });
+
+    setNewUserStoryForm({
+      ...newUserStoryForm,
       [name]: value,
     });
   };
 
   const handleCreate = (event) => {
     event.preventDefault();
+    console.log('Open Design', openDesign);
+    console.log('Form', newUserStoryForm);
 
-    newUserStory.tempId = tempId
-    const found = openDesign.userStories.find(
-      (story) => story.content === newUserStory.content
-    );
-
-    if (found) {
-      return setErrorDisplay({ error: 'Story already exists', active: true });
+    if (openDesign.userStories) {
+      console.log('PPPP')
+      const found = openDesign.userStories.find(
+        (story) => story.content === newUserStoryForm.content
+      );
+      if (found) {
+        return setErrorDisplay({ error: 'Story already exists', active: true });
+      }
     }
-
+    console.log('III')
     if (openDesign.id) {
       setOpenDesign({
         ...openDesign,
@@ -58,27 +59,30 @@ function UserStories({
       });
     }
 
-    setTempId(prev => prev + 1)
-    setUserStories([...userStories, newUserStory]);
+    setUserStoriesArr([...userStoriesArr, newUserStoryForm]);
 
     setOpenDesign({
       ...openDesign,
-      userStories: [...userStories, newUserStory],
+      userStories: [...userStoriesArr, newUserStoryForm],
     });
 
-    setNewUserStory(userStoryTemplate)
+    setNewUserStoryForm(userStoryTemplate);
   };
+console.log('UER storyies', userStoriesArr)
+  const deleteUserStory = (story, index) => {
+    console.log('delete', story);
+    console.log('index', index);
+    
+    const newStoryArray = userStoriesArr
+    console.log('NEW', newStoryArray)
+    const removedArray = newStoryArray.splice(index, 1)
+    console.log('removedArray', removedArray)
+    console.log('NEW2', newStoryArray)
 
-  const deleteUserStory = (story) => {
-    const { tempId } = story
-    console.log('content deleted', tempId)
-    console.log('openDesign.userStories', openDesign.userStories)
-    const newArray = openDesign.userStories
-    console.log('new array', newArray)
-    const found = newArray.filter(e => e.tempId === story.tempId)
-    console.log('xx', newArray.indexOf(found))
-    console.log('found', found)
-    console.log('newArray', newArray)
+    setOpenDesign({
+      ...openDesign,
+      userStories: newStoryArray
+    })
   };
 
   return (
@@ -110,6 +114,7 @@ function UserStories({
               </div>
             </div>
           </div>
+          {/* Story form */}
           <form onSubmit={handleCreate}>
             <div className='mb-2'>
               <textarea
@@ -118,7 +123,7 @@ function UserStories({
                 id='user-story'
                 rows='2'
                 onChange={handleChange}
-                value={newUserStory.content}
+                value={newUserStoryForm.content}
                 placeholder='I want to...'
               ></textarea>
             </div>
@@ -130,21 +135,24 @@ function UserStories({
                 data-mdb-ripple='true'
                 data-mdb-ripple-color='light'
               >
-                
-                {errorDisplay.active ? errorDisplay.error : <span>Add Story</span>}
+                {errorDisplay.active ? (
+                  errorDisplay.error
+                ) : (
+                  <span>Add Story</span>
+                )}
               </button>
             </div>
           </form>
         </section>
         <section className='mx-2'>
           <ul>
-            {userStories.map((story, index) => {
+            {openDesign.userStories.map((story, index) => {
               return (
                 <li key={index} className='flex justify-between'>
                   <h3>{story.content}</h3>
                   <span>
                     <img
-                      onClick={() => deleteUserStory(story)}
+                      onClick={() => deleteUserStory(story, index)}
                       className='w-5 cursor-pointer'
                       src={BinIcon}
                       alt='delete user story'

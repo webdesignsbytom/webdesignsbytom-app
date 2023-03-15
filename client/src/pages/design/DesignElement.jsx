@@ -17,18 +17,8 @@ import FloppyDisk from '../../img/floppyDisk.svg';
 import Bin from '../../img/bin.svg';
 import Undo from '../../img/undo.svg';
 import NewFile from '../../img/newFile.svg';
-import OpenEye from '../../img/eye.svg';
-
 // Utils
 import { paletteTemplate } from '../../utils/utils';
-import { showPassword, showConfirmPassword } from '../../utils/PasswordReveal';
-import { useNavigate } from 'react-router-dom';
-import {
-  registerDataTemplate,
-  registerFormResponses,
-} from '../../users/utils/utils';
-import { validPassword } from '../../users/utils/Validation';
-import { postRegister } from '../../utils/Fetch';
 
 function DesignElement({
   displayElement,
@@ -39,128 +29,10 @@ function DesignElement({
 }) {
   const { user } = useContext(UserContext);
   const [fileSaveName, setFileSaveName] = useState('untitled');
-  const [userStories, setUserStories] = useState([]);
+  // User Stories
+  const [userStoriesArr, setUserStoriesArr] = useState([]);
+  // Colour palette
   const [colourPalette, setColourPalette] = useState(paletteTemplate);
-  const [fieldType, setFieldType] = useState('password');
-  const [eyeIcon, setEyeIcon] = useState(OpenEye);
-  const [fieldTypeConfirm, setFieldTypeConfirm] = useState('password');
-  const [eyeIconConfirm, setEyeIconConfirm] = useState(OpenEye);
-  const [registerForm, setRegisterForm] = useState(registerDataTemplate);
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [successRegisterUser, setSuccessRegisterUser] = useState('');
-  const [formResponses, setFormResponses] = useState(registerFormResponses);
-
-  const [hiddenPass, setHiddenPass] = useState('invisible h-4');
-  const [hiddenEmail, setHiddenEmail] = useState('invisible h-4');
-
-  const [inputStyle, setInputStyle] = useState('standard__inputs');
-
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    if (registerForm.password === registerForm.confirmPassword) {
-      if (registerForm.password > 0) {
-        setHiddenPass('block');
-        setInputStyle('standard__inputs');
-        setFormResponses((formResponses) => ({
-          ...formResponses,
-          password: true,
-        }));
-      }
-    }
-    if (
-      registerForm.password !== registerForm.confirmPassword &&
-      registerForm.confirmPassword > 3
-    ) {
-      setHiddenPass('block');
-      setInputStyle('error__inputs');
-      setFormResponses((formResponses) => ({
-        ...formResponses,
-        password: false,
-      }));
-    }
-  }, [registerForm.password, registerForm.confirmPassword]);
-
-  console.log('formResponses', formResponses);
-
-  const login = () => {
-    navigate('../login', { replace: true });
-  };
-
-  const checkHandler = (event) => {
-    setAgreedToTerms(!agreedToTerms);
-    setRegisterForm({
-      ...registerForm,
-      agreedToTerms: !agreedToTerms,
-    });
-  };
-
-  const handleRegisterChange = (event) => {
-    const { name, value } = event.target;
-
-    if (registerForm.password.length > 8) {
-      setFormResponses({
-        ...formResponses,
-        passwordLengthError: false,
-      });
-    } else {
-      setFormResponses({
-        ...formResponses,
-        passwordLengthError: true,
-      });
-    }
-
-    setRegisterForm({
-      ...registerForm,
-      [name]: value,
-    });
-  };
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-
-    if (registerForm.password !== registerForm.confirmPassword) {
-      setFormResponses({
-        ...formResponses,
-        passwordMatchError: true,
-        password: false,
-      });
-      setHiddenPass('block');
-      setInputStyle('error__inputs');
-      return;
-    }
-
-    const checkPassword = validPassword(registerForm.password);
-
-    if (checkPassword === false) {
-      alert('Passwords too short');
-      setFormResponses({
-        ...formResponses,
-        passwordLengthError: true,
-      });
-
-      return;
-    }
-
-    if (agreedToTerms !== true) {
-      alert('Please check to agree to terms and conditons');
-      setFormResponses({
-        ...formResponses,
-        agreedToTermsError: true,
-      });
-      return;
-    }
-
-    setFormResponses({
-      passwordMatchError: true,
-      passwordLengthError: true,
-      agreedToTermsError: true,
-    });
-
-    const userData = registerForm;
-
-    postRegister(userData, setSuccessRegisterUser, login);
-  };
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -263,26 +135,7 @@ function DesignElement({
                   <h2 className='text-center mt-2 text-2xl font-bold'>
                     To Save Your Design Please Register Now!
                   </h2>
-                  <RegisterForm
-                    handleRegister={handleRegister}
-                    handleChange={handleRegisterChange}
-                    hiddenEmail={hiddenEmail}
-                    fieldType={fieldType}
-                    inputStyle={inputStyle}
-                    showPassword={showPassword}
-                    setFieldType={setFieldType}
-                    setEyeIcon={setEyeIcon}
-                    fieldTypeConfirm={fieldTypeConfirm}
-                    showConfirmPassword={showConfirmPassword}
-                    setFieldTypeConfirm={setFieldTypeConfirm}
-                    setEyeIconConfirm={setEyeIconConfirm}
-                    eyeIcon={eyeIcon}
-                    eyeIconConfirm={eyeIconConfirm}
-                    hiddenPass={hiddenPass}
-                    formResponses={formResponses}
-                    agreedToTerms={agreedToTerms}
-                    checkHandler={checkHandler}
-                  />
+                  <RegisterForm />
                 </section>
               )}
               {displayElement === 'nav' && (
@@ -315,8 +168,8 @@ function DesignElement({
                 <UserStories
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
-                  userStories={userStories}
-                  setUserStories={setUserStories}
+                  userStoriesArr={userStoriesArr}
+                  setUserStoriesArr={setUserStoriesArr}
                 />
               )}
               {displayElement === 'buttons' && (

@@ -10,7 +10,6 @@ export const contactFormTemplate = {
 };
 
 export const userStoryTemplate = {
-  tempId: '',
   designId: '',
   projectId: '',
   content: '',
