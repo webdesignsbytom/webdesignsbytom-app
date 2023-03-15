@@ -19,7 +19,7 @@ export const designTemplate = {
   name: 'untitled',
   navDesign: {},
   colorPalette: [],
-  userStories: [],
+  userStories: [{content: 'I want my website to suit me perfectly'}],
   userId: '',
 };
 

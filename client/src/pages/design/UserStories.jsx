@@ -135,7 +135,7 @@ function UserStories({
         </section>
         <section className='mx-2'>
           <ul>
-            {openDesign.userStories.map((story, index) => {
+            {openDesign.userStories && openDesign.userStories.map((story, index) => {
               return (
                 <li key={index} className='flex justify-between'>
                   <h3>{story.content}</h3>

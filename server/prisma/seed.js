@@ -281,6 +281,12 @@ async function seed() {
       name: 'Toms Design',
     },
   });
+  const devUserStory = await dbClient.userStory.create({
+    data: {
+      designId: devUserDesign.id,
+      content: 'I want my website to suit me perfectly',
+    },
+  });
 }
 
 seed().catch(async (error) => {

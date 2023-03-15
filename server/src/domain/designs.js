@@ -24,6 +24,11 @@ export const findDesignById = (designId) =>
 export const findUserDesignsById = (userId) =>
   dbClient.design.findMany({
     where: { userId: userId },
+    include: {
+      navDesign: true,
+      colorPalette: true,
+      userStory: true
+    },
     orderBy: {
       createdAt: 'desc',
     },
