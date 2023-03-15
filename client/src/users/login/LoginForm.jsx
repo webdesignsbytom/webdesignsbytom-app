@@ -4,23 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import SubmitButton from '../../components/utils/SubmitButton';
 // Utils
 import { showPassword } from '../../utils/PasswordReveal';
-import { loginDataTemplate } from '../utils/utils';
+import { loginDataTemplate, statusResults } from '../utils/utils';
 // Fetch
 import { postLogin } from '../../utils/Fetch';
 // Icons
 import OpenEye from '../../img/eye.svg';
 
-function LoginForm({
-  setUser
-}) {
-  const [loginSuccessMessage, setLoginSuccessMessage] = useState({
-    status: false,
-    message: '',
-  });
-  const [loginErrorMessage, setLoginErrorMessage] = useState({
-    status: false,
-    message: '',
-  });
+function LoginForm({ setUser }) {
+  const [loginSuccessMessage, setLoginSuccessMessage] = useState(statusResults);
+  const [loginErrorMessage, setLoginErrorMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
@@ -46,7 +38,7 @@ function LoginForm({
 
   const handleLogin = (event) => {
     event.preventDefault();
-    setLoadingAnimation(!loadingAnimation)
+    setLoadingAnimation(!loadingAnimation);
     //
     postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
   };

@@ -2,19 +2,14 @@ import React, { useState } from 'react';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
+import { statusResults } from '../../users/utils/utils';
 import client from '../../utils/client';
 // Utils
 import { contactFormTemplate } from '../../utils/utils';
 
 function ContactForm() {
-  const [contactSuccessMessage, setContactSuccessMessage] = useState({
-    status: false,
-    message: '',
-  });
-  const [contactErrorMessage, setContactErrorMessage] = useState({
-    status: false,
-    message: '',
-  });
+  const [contactSuccessMessage, setContactSuccessMessage] = useState(statusResults);
+  const [contactErrorMessage, setContactErrorMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [formData, setFormData] = useState(contactFormTemplate);
@@ -37,13 +32,11 @@ function ContactForm() {
     });
   };
 
-  console.log('formData 2', formData);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('formData submit', formData);
     setMainButtonContent(false);
     setLoadingAnimation(true);
+
     client
       .post(`/contacts/create`, formData, false)
       .then((res) => {

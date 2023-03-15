@@ -34,3 +34,8 @@ export const sampleUserData = {
   createdAt: '',
   updatedAt: '',
 };
+
+export const statusResults = {
+  status: false,
+  message: '',
+};

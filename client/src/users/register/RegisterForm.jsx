@@ -6,21 +6,15 @@ import SubmitButton from '../../components/utils/SubmitButton';
 import OpenEye from '../../img/eye.svg';
 // Utils
 import { showConfirmPassword, showPassword } from '../../utils/PasswordReveal';
-import { registerDataTemplate, registerFormResponses } from '../utils/utils';
+import { registerDataTemplate, registerFormResponses, statusResults } from '../utils/utils';
 import CountrySelect from '../utils/CountrySelect';
 // Validation
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
 
 function RegisterForm() {
-  const [registerSuccessMessage, setRegisterSuccessMessage] = useState({
-    status: false,
-    message: '',
-  });
-  const [registerErrorMessage, setRegisterErrorMessage] = useState({
-    status: false,
-    message: '',
-  });
+  const [registerSuccessMessage, setRegisterSuccessMessage] = useState(statusResults);
+  const [registerErrorMessage, setRegisterErrorMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [fieldType, setFieldType] = useState('password');
@@ -29,12 +23,11 @@ function RegisterForm() {
   const [eyeIconConfirm, setEyeIconConfirm] = useState(OpenEye);
   const [registerForm, setRegisterForm] = useState(registerDataTemplate);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [successRegisterUser, setSuccessRegisterUser] = useState('');
   const [formResponses, setFormResponses] = useState(registerFormResponses);
-
+  // Email and password
   const [hiddenPass, setHiddenPass] = useState('invisible h-4');
   const [hiddenEmail, setHiddenEmail] = useState('invisible h-4');
-
+  // Input colour
   const [inputStyle, setInputStyle] = useState('standard__inputs');
 
   let navigate = useNavigate();
@@ -100,7 +93,7 @@ function RegisterForm() {
     event.preventDefault();
     setMainButtonContent(false);
     setLoadingAnimation(true);
-    
+
     if (registerForm.password !== registerForm.confirmPassword) {
       setFormResponses({
         ...formResponses,
@@ -143,7 +136,7 @@ function RegisterForm() {
 
     const userData = registerForm;
 
-    postRegister(userData, setSuccessRegisterUser, login);
+    postRegister(userData, login);
   };
   return (
     <>
