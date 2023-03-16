@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import SubmitButton from '../../components/utils/SubmitButton';
 // Icons
 import OpenEye from '../../img/eye.svg';
 // Utils
@@ -11,10 +10,10 @@ import CountrySelect from '../utils/CountrySelect';
 // Validation
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
+import { SubmitButton } from '../../components/utils/SubmitButtons';
 
 function RegisterForm() {
-  const [registerSuccessMessage, setRegisterSuccessMessage] = useState(statusResults);
-  const [registerErrorMessage, setRegisterErrorMessage] = useState(statusResults);
+  const [registerResponseMessage, setRegisterResponseMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [fieldType, setFieldType] = useState('password');
@@ -292,8 +291,7 @@ function RegisterForm() {
             <SubmitButton
               loadingAnimation={loadingAnimation}
               mainButtonContent={mainButtonContent}
-              successMessage={registerSuccessMessage}
-              errorMessage={registerErrorMessage}
+              responseMessage={registerResponseMessage}
               buttonMessage='Sign Up'
               spinnerHeight='h-5'
               spinnerWidth='w-5'

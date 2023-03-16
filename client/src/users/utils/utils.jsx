@@ -37,5 +37,6 @@ export const sampleUserData = {
 
 export const statusResults = {
   status: false,
+  result: 'failed',
   message: '',
 };

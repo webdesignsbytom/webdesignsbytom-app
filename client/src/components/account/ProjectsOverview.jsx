@@ -2,6 +2,7 @@ import React from 'react';
 import LoadingSpinner from '../utils/LoadingSpinner';
 
 function ProjectsOverview({ userProjects, projectResponse }) {
+  
   return (
     <div>
       <h2>ProjectsOverview</h2>

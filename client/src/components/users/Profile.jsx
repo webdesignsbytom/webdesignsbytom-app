@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
@@ -6,15 +6,47 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
+import client from '../../utils/client';
+import { statusResults } from '../../users/utils/utils';
+import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
-function Profile({
-  handleChange,
-  handleUpdateUser,
-  deleteUser,
-  updateAnimation,
-  deleteLoadingAnimation,
-}) {
+function Profile() {
   const { user } = useContext(UserContext);
+  const [userUpdateForm, setUserUpdateForm] = useState({});
+  const [updateAnimation, setUpdateAnimation] = useState(false);
+  const [deleteLoadingAnimation, setDeleteLoadingAnimation] = useState(false);
+  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const [updateResponseMessage, setUpdateResponseMessage] =
+    useState(statusResults);
+
+  const handleUpdateUser = (event) => {
+    event.preventDefault();
+    setUpdateAnimation(true);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setUserUpdateForm({
+      ...userUpdateForm,
+      [name]: value,
+    });
+  };
+
+  const deleteUser = (event) => {
+    event.preventDefault();
+    setDeleteLoadingAnimation(true);
+
+    client
+      .delete(`/users/delete-user/${user.id}`)
+      .then((res) => {
+        console.log('res', res.data);
+        setDeleteLoadingAnimation(false);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <section className='grid grid-rows-one'>
@@ -28,10 +60,10 @@ function Profile({
       )}
 
       {/* update form */}
-      <form onSubmit={handleUpdateUser} className='mt-2'> 
-      <div className='mb-2'>
-        <h2>Update Account Information</h2>
-      </div>
+      <form onSubmit={handleUpdateUser} className='mt-2'>
+        <div className='mb-2'>
+          <h2>Update Account Information</h2>
+        </div>
         {/* <!-- Email input --> */}
         <div className='mb-4'>
           <input
@@ -74,40 +106,27 @@ function Profile({
 
         {/* <!-- Submit button --> */}
         <div className='mb-2'>
-          <button
-            type='submit'
-            className='submit__button'
-            data-mdb-ripple='true'
-            data-mdb-ripple-color='light'
-          >
-            {updateAnimation ? (
-              <div className='grid'>
-                <LoadingSpinner height={'5'} width={'5'} />
-              </div>
-            ) : (
-              <span>Update Profile</span>
-            )}
-          </button>
+          <SubmitButton
+            loadingAnimation={updateAnimation}
+            mainButtonContent={mainButtonContent}
+            responseMessage={updateResponseMessage}
+            buttonMessage='Update Profile'
+            spinnerHeight='h-5'
+            spinnerWidth='w-5'
+          />
         </div>
       </form>
       {/* Delete account */}
       <section>
         <div className=''>
-          <button
-            type='delete'
-            onClick={deleteUser}
-            className='delete__button'
-            data-mdb-ripple='true'
-            data-mdb-ripple-color='light'
-          >
-            {deleteLoadingAnimation ? (
-              <div className='grid'>
-                <LoadingSpinner height={'5'} width={'5'} />
-              </div>
-            ) : (
-              <span>Delete Profile</span>
-            )}
-          </button>
+        <DeleteButton
+            loadingAnimation={deleteLoadingAnimation}
+            mainButtonContent={mainButtonContent}
+            responseMessage={updateResponseMessage}
+            buttonMessage='Delete Account'
+            spinnerHeight='h-5'
+            spinnerWidth='w-5'
+          />
         </div>
       </section>
     </section>

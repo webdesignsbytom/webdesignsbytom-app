@@ -6,7 +6,6 @@ import Navbar from '../../components/nav/Navbar';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
 import MessagesContainer from '../../components/messages/MessagesContainer';
 import Overview from '../../components/account/AccountOverview';
-import Projects from '../../components/account/ProjectsOverview';
 import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Fetch
@@ -40,6 +39,9 @@ function Account() {
   // Project overview
   const [userProjects, setUserProjects] = useState([]);
   const [projectResponse, setProjectResponse] = useState(statusResults);
+
+console.log('user projecrs', userProjects)
+console.log('user des', userDesigns)
 
   useEffect(() => {
     const foundUser = LoggedInUser();
@@ -84,6 +86,7 @@ function Account() {
     client
       .get(`/projects/user-projects/${user.id}`)
       .then((res) => {
+        console.log('project res', res.data)
         setUserProjects(res.data.data.projects);
         setProjectResponse({
           status: true,
@@ -173,7 +176,7 @@ function Account() {
               </nav>
               {/* Content */}
               <section className='grid lg:mr-4'>
-                {displayOverview && <Overview />}
+                {displayOverview && <AccountOverview />}
                 {displayDesigns && (
                   <DesignsOverview
                     userDesigns={userDesigns}
@@ -204,6 +207,7 @@ function Account() {
                 )}
               </section>
             </section>
+
             {/* Right */}
             <section className='grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}

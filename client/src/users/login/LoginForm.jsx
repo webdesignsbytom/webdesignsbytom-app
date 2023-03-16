@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
-import SubmitButton from '../../components/utils/SubmitButton';
+import { SubmitButton } from '../../components/utils/SubmitButtons';
 // Utils
 import { showPassword } from '../../utils/PasswordReveal';
 import { loginDataTemplate, statusResults } from '../utils/utils';
@@ -11,8 +11,7 @@ import { postLogin } from '../../utils/Fetch';
 import OpenEye from '../../img/eye.svg';
 
 function LoginForm({ setUser }) {
-  const [loginSuccessMessage, setLoginSuccessMessage] = useState(statusResults);
-  const [loginErrorMessage, setLoginErrorMessage] = useState(statusResults);
+  const [loginResponseMessage, setLoginResponseMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
@@ -117,8 +116,7 @@ function LoginForm({ setUser }) {
           <SubmitButton
             loadingAnimation={loadingAnimation}
             mainButtonContent={mainButtonContent}
-            successMessage={loginSuccessMessage}
-            errorMessage={loginErrorMessage}
+            responseMessage={loginResponseMessage}
             buttonMessage='Login'
             spinnerHeight='h-5'
             spinnerWidth='w-5'

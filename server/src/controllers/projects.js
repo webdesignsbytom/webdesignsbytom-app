@@ -77,6 +77,7 @@ export const getProjectsFromUser = async (req, res) => {
   const userId = req.params.userId;
 
   try {
+
     const foundUser = await findUserById(userId);
     if (!foundUser) {
       const notFound = new NotFoundEvent(
@@ -102,7 +103,7 @@ export const getProjectsFromUser = async (req, res) => {
     }
 
     // myEmitterProjects.emit('get-user-projects', req.user);
-    return sendDataResponse(res, 200, { user: foundProjects });
+    return sendDataResponse(res, 200, { projects: foundProjects });
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(
