@@ -172,8 +172,8 @@ function DeveloperPanel() {
             <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
                   <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>

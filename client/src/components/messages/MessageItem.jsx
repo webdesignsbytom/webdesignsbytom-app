@@ -1,35 +1,37 @@
 import React from 'react';
 // Icons
-import closeCross from '../../img/closeCross.svg';
+import EyeIcon from '../../img/eye.svg';
+import BinIcon from '../../img/bin.svg';
 import heart from '../../img/heart.svg';
-import eyeIcon from '../../img/eye.svg';
 
 function MessageItem({ message }) {
-  const { subject, content, viewed, starred, createdAt } =
-    message;
+  const { subject, content, viewed, starred, createdAt } = message;
 
   return (
-    <li className='grid bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded mb-[1px] leading-3 cursor-pointer w-full'>
+    <li className='grid grid-flow-row mb-[1px] bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded lg:rounded-none max-w-full w-full leading-3'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
           <div className='flex w-full justify-between'>
             <p>Subject: {subject}</p>
             <p>Date: {createdAt}</p>
           </div>
-          <div className='flex'>
-            {starred && <img src={heart} alt='favorite' />}
-            {viewed && <img src={eyeIcon} alt='seen' />}
-          </div>
         </div>
         <section className='flex justify-between p-1'>
           <div>
-            <p>{content}</p>
+            <p className='lg:text-sm'>{content}</p>
           </div>
-          <div>
+          <div className='flex'>
             <img
-              src={closeCross}
-              className='w-6 h-6 cursor-pointer'
-              alt='close cross'
+              // onClick={() => markSeen(id)}
+              src={EyeIcon}
+              className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none focus:scale-125 hover:scale-125 active:scale-125'
+              alt='seen button'
+            />
+            <img
+              // onClick={() => deleteNotification(id)}
+              src={BinIcon}
+              className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none focus:scale-125 hover:scale-125 active:scale-125'
+              alt='delete button'
             />
           </div>
         </section>

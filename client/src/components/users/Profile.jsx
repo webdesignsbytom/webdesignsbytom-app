@@ -60,7 +60,7 @@ function Profile() {
       )}
 
       {/* update form */}
-      <form onSubmit={handleUpdateUser} className='mt-2'>
+      <form onSubmit={handleUpdateUser} className='mt-2 md:mx-6 lg:mx-0'>
         <div className='mb-2'>
           <h2>Update Account Information</h2>
         </div>
@@ -117,8 +117,7 @@ function Profile() {
         </div>
       </form>
       {/* Delete account */}
-      <section>
-        <div className=''>
+      <section className='md:mx-6 lg:mx-0'>
         <DeleteButton
             loadingAnimation={deleteLoadingAnimation}
             mainButtonContent={mainButtonContent}
@@ -127,7 +126,6 @@ function Profile() {
             spinnerHeight='h-5'
             spinnerWidth='w-5'
           />
-        </div>
       </section>
     </section>
   );

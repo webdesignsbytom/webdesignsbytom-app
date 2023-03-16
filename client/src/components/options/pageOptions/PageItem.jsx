@@ -2,6 +2,7 @@ import React from 'react';
 // Icons
 import HeartIcon from '../../../img/heart.svg';
 import PlusIconReg from '../../../img/plusIconReg.svg';
+import AddFavBar from '../../utils/AddFavBar';
 
 function PageItem({ page }) {
   const { id, type, name, desc, price, image } = page;
@@ -14,22 +15,7 @@ function PageItem({ page }) {
             <h3>{name}</h3>
             <h4 className='text-sm'>Type: {type}</h4>
           </div>
-          <section className='flex'>
-            <div>
-              <img
-                className='w-5 cursor-pointer m-1'
-                src={PlusIconReg}
-                alt='favorite icon'
-              />
-            </div>
-            <div>
-              <img
-                className='w-5 cursor-pointer m-1'
-                src={HeartIcon}
-                alt='favorite icon'
-              />
-            </div>
-          </section>
+          <AddFavBar />
         </div>
 
         <img src={image} alt={`Page ${name} display`} />

@@ -10,13 +10,14 @@ function Services() {
         <h5>What I Offer</h5>
         <h2>Services</h2>
       </section>
-      <div className='container services__container'>
-        <article className='service'>
-          <div className='service__head'>
+
+      <section className='grid lg:grid-cols-3 gap-8 mx-8'>
+        <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
+          <div className=''>
             <h3>UI/UX Design</h3>
           </div>
 
-          <ul className='service__list'>
+          <ul className=''>
             <li>
               <p>Wireframe and figma designs using the latest design tools</p>
             </li>
@@ -41,12 +42,12 @@ function Services() {
           </ul>
         </article>
         {/* END OF UI/UX */}
-        <article className='service'>
-          <div className='service__head'>
+        <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
+          <div className=''>
             <h3>Web Development</h3>
           </div>
 
-          <ul className='service__list'>
+          <ul className=''>
             <li>
               <p>Fullstack web design and development</p>
             </li>
@@ -70,12 +71,12 @@ function Services() {
             </li>
           </ul>
         </article>
-        <article className='service'>
-          <div className='service__head'>
+        <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
+          <div className=''>
             <h3>Other Skills</h3>
           </div>
 
-          <ul className='service__list'>
+          <ul className=''>
             <li>
               <p>ISO 9001 documentation and auditing</p>
             </li>
@@ -90,7 +91,7 @@ function Services() {
             </li>
           </ul>
         </article>
-      </div>
+      </section>
     </section>
   );
 }
