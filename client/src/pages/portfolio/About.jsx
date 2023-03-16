@@ -9,7 +9,7 @@ function About() {
       id='about'
       className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4'
     >
-      <section className='text-center mt-8'>
+      <section className='text-center mt-8 mb-4'>
         <h5>Get To Know Me</h5>
         <h2 className='text-2xl'>About Me</h2>
       </section>
@@ -23,7 +23,7 @@ function About() {
 
         <section className='grid gap-10 w-full lg:px-10'>
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
+            <article className='bg-colour-med rounded-xl text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <img
                   src={ExperienceIcon}
@@ -40,7 +40,7 @@ function About() {
               <small>Renewable energy installer</small>
             </article>
 
-            <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
+            <article className='bg-colour-med rounded-xl text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <img
                   src={ExperienceIcon}
@@ -57,7 +57,7 @@ function About() {
               <small>Advice and information</small>
             </article>
 
-            <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
+            <article className='bg-colour-med rounded-xl text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <img
                   src={ExperienceIcon}
@@ -92,10 +92,10 @@ function About() {
               </p>
             </article>
             <div className='flex gap-6'>
-              <button className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+              <button  className='bg-main-colour grid justify-center py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
                 Lets talk!
               </button>
-              <button className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full '>
+              <button className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
                 Show Me Some Skills!
               </button>
             </div>

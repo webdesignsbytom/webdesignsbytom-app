@@ -9,7 +9,7 @@ function Experience() {
       id='experience'
       className='lg:h-[90vh] lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4 mx-2'
     >
-      <section className='text-center mt-8'>
+      <section className='text-center mt-8 mb-4'>
         <h5>What skills I have</h5>
         <h2 className='text-2xl'>My Experience</h2>
       </section>

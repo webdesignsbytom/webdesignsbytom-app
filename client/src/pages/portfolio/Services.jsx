@@ -6,7 +6,7 @@ function Services() {
       id='experience'
       className='lg:h-[90vh] lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4'
     >
-      <section className='text-center mt-8'>
+      <section className='text-center mt-8 mb-4'>
         <h5>What I Offer</h5>
         <h2 className='text-2xl'>Services</h2>
       </section>
