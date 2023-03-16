@@ -51,6 +51,17 @@ async function seed() {
         content: 'Crap',
       },
     });
+
+    const project = await dbClient.project.create({
+      data: {
+        type: 'TEST',
+        domainName: `www.${i}.com`,
+        ownerName: `${user.firstName} ${user.lastName}`,
+        name: 'New fun',
+        userId: user.id,
+        price: 1000
+      },
+    });
   }
 
   const createdUser = await dbClient.user.create({

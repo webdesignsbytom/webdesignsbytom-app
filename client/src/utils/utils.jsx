@@ -15,11 +15,19 @@ export const userStoryTemplate = {
   content: '',
 };
 
+export const messageTemplate = {
+  subject: '',
+  content: '',
+  sentFromId: '',
+  sentFromName: '',
+  userId: '',
+};
+
 export const designTemplate = {
   name: 'untitled',
   navDesign: {},
   colorPalette: [],
-  userStories: [{content: 'I want my website to suit me perfectly'}],
+  userStories: [{ content: 'I want my website to suit me perfectly' }],
   userId: '',
 };
 

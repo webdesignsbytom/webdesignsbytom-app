@@ -24,8 +24,8 @@ function AdminPanel() {
   const [allUsers, setAllUsers] = useState([]);
   // Contact form messages
   const [allContacts, setAllContacts] = useState([]);
-  // Messages
-  const [userMessages, setUserMessages] = useState([]);
+  // Projects
+  const [allProjects, setAllProjects] = useState([]);
   // Display items
   const [displayOverview, setDisplayOverview] = useState(false);
   const [displayProjects, setDisplayProjects] = useState(false);
@@ -52,13 +52,13 @@ function AdminPanel() {
       });
 
     client
-      .get(`/messages/user-messages/${user.id}`)
+      .get(`/projects`)
       .then((res) => {
         console.log('response', res.data);
-        setUserMessages(res.data.data.messages);
+        setAllProjects(res.data.data.projects);
       })
       .catch((err) => {
-        console.error('Unable to get user messages', err);
+        console.error('Unable to get all projects', err);
       });
 
     client
@@ -162,7 +162,7 @@ function AdminPanel() {
                 {/* Hover */}
                 {displayOverview && <AdminOverview />}
                 {displayUsers && <UsersContainer users={allUsers} />}
-                {displayProjects && <AdminProjects />}
+                {displayProjects && <AdminProjects projects={allProjects} />}
                 {displaySearch && <AdminSearch />}
                 {/* Open */}
                 {selectedNavElement === 'overview' && displayFixed === true && (
@@ -172,7 +172,7 @@ function AdminPanel() {
                   <UsersContainer users={allUsers} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <AdminProjects />
+                  <AdminProjects projects={allProjects} />
                 )}
                 {selectedNavElement === 'search' && displayFixed === true && (
                   <AdminSearch />

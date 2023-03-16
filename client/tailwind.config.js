@@ -35,6 +35,7 @@ module.exports = {
         'ls': '1fr 0.4fr',
         'a1a': 'auto 1fr auto',
         'aa': 'auto auto',
+        '3x': '3fr 1fr',
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
@@ -48,6 +49,7 @@ module.exports = {
         '1p1': '1fr 30px 1fr',
         '2a': '2fr 1fr auto',
         '3a': '1fr 1fr 0.7fr auto',
+        '3x': '3fr 1fr',
 
       },
       width: {

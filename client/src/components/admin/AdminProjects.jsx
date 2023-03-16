@@ -1,9 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-function AdminProjects() {
+function AdminProjects({ projects }) {
   return (
-    <div>Admin Projects - all projects open</div>
-  )
+    <ul className='w-full'>
+      {projects.map((project, index) => {
+        return (
+          <li key={index} className='w-full cursor-pointer border-b-2 border-solid border-black'>
+            <h3>Project Name:{project.name}</h3>
+            <h3>Project owner:{project.userId}</h3>
+            <h3>Project owner:{project.ownerName}</h3>
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
-export default AdminProjects
+export default AdminProjects;

@@ -86,10 +86,10 @@ export const getMessageById = async (req, res) => {
 
 export const createNewMessage = async (req, res) => {
   console.log('createNewMessage');
-  const { subject, content, sentFromId, userId } = req.body;
+  const { subject, content, sentFromId, sentFromName, userId } = req.body;
 
   try {
-    if (!subject || !content || !sentFromId || !userId) {
+    if (!subject || !content || !sentFromId || !userId || !sentFromName) {
       const missingField = new MissingFieldEvent(
         null,
         'Message creation: Missing Field/s event'
@@ -97,7 +97,7 @@ export const createNewMessage = async (req, res) => {
       myEmitterErrors.emit('error', missingField);
       return sendMessageResponse(res, missingField.code, missingField.message);
     }
-
+console.log('XX')
     const foundUser = await findUserById(userId);
 
     if (!foundUser) {
@@ -105,11 +105,12 @@ export const createNewMessage = async (req, res) => {
         message: 'Recipient not found in database',
       });
     }
-
+    console.log('found', foundUser);
     const createdMessage = await createMessage(
       subject,
       content,
       sentFromId,
+      sentFromName,
       userId
     );
     console.log('created message', createdMessage);
