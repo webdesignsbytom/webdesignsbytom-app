@@ -8,7 +8,7 @@ function PortfolioDisplay() {
 
   const displayInfo = (item) => {
     console.log('itemsssss', item);
-    navigate('/portfolioItem', {
+    navigate(`/portfolio-item/${item.title}`, {
       state: item,
     });
   };
@@ -16,14 +16,14 @@ function PortfolioDisplay() {
   return (
     <section
       id='portfolio'
-      className='lg:h-screen lg:max-h-screen lg:overflow-hidden bg-red-200 grid lg:grid-rows-reg'
+      className='lg:h-screen lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4'
     >
       <section className='text-center mt-8'>
         <h5>My Recent Work</h5>
         <h2 className='text-2xl'>Portfolio</h2>
       </section>
 
-      <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center md:mx-2 p-4 lg:mx-8 bg-blue-400 my-auto py-2'>
+      <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center md:mx-2 p-4 lg:mx-8 my-auto py-2'>
         {portfolioData.map((item, index) => {
           return (
             <article
@@ -58,12 +58,16 @@ function PortfolioDisplay() {
                 <div className='flex md:grid gap-4'>
                   <a
                     href={item.github}
+                    target='_blank'
+                    rel='noreferrer'
                     className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
                   >
                     Github
                   </a>
                   <a
                     href={item.demo}
+                    target='_blank'
+                    rel='noreferrer'
                     className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
                   >
                     Live Demo

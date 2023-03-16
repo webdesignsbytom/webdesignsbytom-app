@@ -29,6 +29,7 @@ import MessagePhoneItem from './components/messages/MessagePhoneItem';
 // Context
 import { UserContext } from './context/UserContext';
 import ProjectContainer from './pages/project/ProjectContainer';
+import PortfolioItem from './pages/portfolio/PortfolioItem';
 
 function App() {
 
@@ -74,6 +75,7 @@ function App() {
         />
         <Route path='/design' element={<Design />} />
 
+        <Route path='/portfolio-item/:itemName' element={<PortfolioItem />} />
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
         <Route
           path='users/reset-lost-password/:userId/:uniqueString'

@@ -1,22 +1,25 @@
 import React from 'react';
+import OrbitAnimation from '../../components/utils/OrbitAnimation';
+// Styles
+import '../../styles/orbitAnimation.css'
 
 function Experience() {
   return (
     <section
       id='experience'
-      className='lg:h-screen lg:max-h-screen lg:overflow-hidden bg-red-200 grid lg:grid-rows-reg'
+      className='lg:h-[90vh] lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4'
     >
       <section className='text-center mt-8'>
         <h5>What skills I have</h5>
         <h2 className='text-2xl'>My Experience</h2>
       </section>
 
-      <section className='bg-green-400 my-auto grid grid-cols-3 lg:mx-8'>
+      <section className='my-auto grid grid-cols-faf lg:mx-8 lg:gap-6'>
         <section className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
-          <div>
+          <div className='mb-6 text-xl'>
             <h3>Frontend Development</h3>
           </div>
-          <div className='grid sm:grid-cols-2'>
+          <div className='grid sm:grid-cols-2 gap-6'>
             <article className=''>
               {/* <BsPatchCheckFill className='-icon' /> */}
               <div>
@@ -62,13 +65,15 @@ function Experience() {
           </div>
         </section>
 
-        <section>{/* <OrbitAnimation />  */}</section>
+        <section className='bg-main-colour grid h-full rounded-xl text-center px-4 py-8 w-full z-0'>
+          <OrbitAnimation /> 
+          </section>
 
         <section className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
-          <div>
-            <h3>Backend Development</h3>
+          <div className='mb-6 text-xl'>
+            <h3>Frontend Development</h3>
           </div>
-          <div className='grid sm:grid-cols-2'>
+          <div className='grid sm:grid-cols-2 gap-6'>
             <article className=''>
               {/* <BsPatchCheckFill className='-icon' /> */}
               <div>

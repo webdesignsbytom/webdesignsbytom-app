@@ -7,7 +7,7 @@ function About() {
   return (
     <section
       id='about'
-      className='lg:h-screen lg:max-h-screen bg-red-200 grid lg:grid-rows-reg'
+      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4'
     >
       <section className='text-center mt-8'>
         <h5>Get To Know Me</h5>
@@ -15,9 +15,9 @@ function About() {
       </section>
 
       {/* Main */}
-      <main className='h-[1fr] bg-blue-400 grid md:grid-cols-reg w-full gap-8 px-8 my-auto py-10'>
+      <main className='h-[1fr] grid md:grid-cols-reg w-full gap-8 px-8 my-auto py-10'>
         
-        <div className='lg:mx-20 object-contain'>
+        <div className='lg:mx-12 object-contain'>
           <img className='w-80 rounded-xl' src={Avatar} alt='me' />
         </div>
 

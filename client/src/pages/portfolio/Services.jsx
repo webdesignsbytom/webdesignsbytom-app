@@ -3,17 +3,17 @@ import React from 'react';
 function Services() {
   return (
     <section
-      id='services'
-      className='lg:h-screen lg:max-h-screen lg:overflow-hidden bg-red-200 grid lg:grid-rows-reg'
+      id='experience'
+      className='lg:h-[90vh] lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4'
     >
       <section className='text-center mt-8'>
         <h5>What I Offer</h5>
-        <h2>Services</h2>
+        <h2 className='text-2xl'>Services</h2>
       </section>
 
-      <section className='grid lg:grid-cols-3 gap-8 mx-8'>
-        <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full h-min'>
-          <div className=''>
+      <section className='my-auto grid lg:grid-cols-3 gap-8 mx-8'>
+        <article className='bg-main-colour rounded-xl text-center p-4 w-full h-min'>
+          <div className='mb-4 border-2 border-black border-solid'>
             <h3>UI/UX Design</h3>
           </div>
 
