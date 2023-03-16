@@ -54,7 +54,7 @@ console.log('getprojectById')
     if (!foundProject) {
       const notFound = new NotFoundEvent(
         req.user,
-        EVENT_MESSAGES.notFound,
+        'not found',
         'Cant find project by ID'
       );
       myEmitterErrors.emit('error', notFound);
@@ -101,7 +101,7 @@ export const getProjectsFromUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    myEmitterProjects.emit('get-user-projects', req.user);
+    // myEmitterProjects.emit('get-user-projects', req.user);
     return sendDataResponse(res, 200, { user: foundProjects });
   } catch (err) {
     //

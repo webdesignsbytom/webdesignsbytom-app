@@ -15,8 +15,6 @@ import {
 import client from '../../utils/client';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
 import MessagesContainer from '../../components/messages/MessagesContainer';
-import Designs from '../../components/account/Designs';
-import Projects from '../../components/account/Projects';
 import DevOverview from '../../components/dev/DevOverview';
 import Analytics from '../../components/analytics/Analytics';
 

@@ -11,12 +11,11 @@ import {
 } from '../../utils/Fetch';
 // Data
 import client from '../../utils/client';
-import NotificationsContainer from '../../components/notifications/NotificationsContainer';
-import MessagesContainer from '../../components/messages/MessagesContainer';
-import Designs from '../../components/account/Designs';
-import Projects from '../../components/account/Projects';
 import AdminOverview from '../../components/admin/AdminOverview';
 import UsersContainer from '../../components/users/UsersContainer';
+import ContactsContainer from '../../components/contacts/ContactsContainer';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
+import ProjectsOverview from '../../components/account/ProjectsOverview';
 
 
 function AdminPanel() {
@@ -25,8 +24,8 @@ function AdminPanel() {
   const [resendVerification, setResendVerification] = useState(true);
   // Users
   const [allUsers, setAllUsers] = useState([])
-  // Notifications
-  const [allNotifications, setAllNotifications] = useState([]);
+  // Contact form messages
+  const [allContacts, setAllContacts] = useState([]);
   // Messages
   const [userMessages, setUserMessages] = useState([]);
   // Display items
@@ -45,13 +44,13 @@ function AdminPanel() {
 
     // Notifications
     client
-      .get(`/notifications/user-notifications/${user.id}`)
+      .get(`/contacts`)
       .then((res) => {
         console.log('res', res.data);
-        setAllNotifications(res.data.data.notifications);
+        setAllContacts(res.data.data.contacts);
       })
       .catch((err) => {
-        console.error('Unable to get notifications', err);
+        console.error('Unable to get contact messages', err);
       });
 
     client
@@ -161,10 +160,10 @@ function AdminPanel() {
                 </ul>
               </nav>
               {/* Content */}
-              <section className='my-2'>
+              <section className='my-4 grid grid-rows-one h-[1fr] overflow-hidden'>
                 {displayOverview && <AdminOverview />}
                 {displayUsers && <UsersContainer users={allUsers} />}
-                {displayProjects && <Projects />}
+                {displayProjects && <ProjectsOverview />}
                 {displaySearch && <SearchOptionsAdmin />}
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AdminOverview />
@@ -173,7 +172,7 @@ function AdminPanel() {
                   <UsersContainer users={allUsers} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <Projects />
+                  <ProjectsOverview />
                 )}
                 {selectedNavElement === 'search' && displayFixed === true && (
                   <SearchOptionsAdmin />
@@ -184,20 +183,35 @@ function AdminPanel() {
             <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <NotificationsContainer notifications={allNotifications} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
+                    {/* {allNotifications.length < 1 ? (
+                      <div className='grid grid-rows-1'>
+                        <LoadingSpinner height={'12'} width={'12'} />
+                      </div>
+                    ) : (
+                      <NotificationsContainer
+                        notifications={allNotifications}
+                      />
+                    )} */}
                   </div>
                 </section>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
-                    Messages
+
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                    Contact Form
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <MessagesContainer messages={userMessages} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
+                    {allContacts.length < 1 ? (
+                      <div className='grid grid-rows-1'>
+                        <LoadingSpinner height={'h-6 lg:h-12'} width={'w-6 lg:w-12'} />
+                      </div>
+                    ) : (
+                      <ContactsContainer contacts={allContacts} />
+                    )}
                   </div>
                 </section>
               </section>

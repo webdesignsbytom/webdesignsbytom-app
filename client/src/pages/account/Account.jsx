@@ -6,17 +6,17 @@ import Navbar from '../../components/nav/Navbar';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
 import MessagesContainer from '../../components/messages/MessagesContainer';
 import Overview from '../../components/account/AccountOverview';
-import Designs from '../../components/account/Designs';
-import Projects from '../../components/account/Projects';
+import Projects from '../../components/account/ProjectsOverview';
 import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Fetch
-import {
-  setFormByUserId,
-} from '../../utils/Fetch';
+import { setFormByUserId } from '../../utils/Fetch';
 // Utils
 import LoggedInUser from '../../utils/LoggedInUser';
 import client from '../../utils/client';
+import { statusResults } from '../../users/utils/utils';
+import DesignsOverview from '../../components/account/DesignsOverview';
+import ProjectsOverview from '../../components/account/ProjectsOverview';
 
 function Account() {
   const { user } = useContext(UserContext);
@@ -34,6 +34,12 @@ function Account() {
   const [displayFixed, setDisplayFixed] = useState(true);
   // Favorites
   const [listOfFavorites, setListOfFavorites] = useState([]);
+  // Design overview
+  const [userDesigns, setUserDesigns] = useState([]);
+  const [designResponse, setDesignResponse] = useState(statusResults);
+  // Project overview
+  const [userProjects, setUserProjects] = useState([]);
+  const [projectResponse, setProjectResponse] = useState(statusResults);
 
   useEffect(() => {
     const foundUser = LoggedInUser();
@@ -43,7 +49,6 @@ function Account() {
     client
       .get(`/notifications/user-notifications/${user.id}`)
       .then((res) => {
-        console.log('res', res.data);
         setAllNotifications(res.data.data.notifications);
       })
       .catch((err) => {
@@ -53,11 +58,44 @@ function Account() {
     client
       .get(`/messages/user-messages/${user.id}`)
       .then((res) => {
-        console.log('response', res.data);
         setUserMessages(res.data.data.messages);
       })
       .catch((err) => {
         console.error('Unable to get user messages', err);
+      });
+
+    client
+      .get(`/designs/user-designs/${user.id}`)
+      .then((res) => {
+        setUserDesigns(res.data.data.designs);
+        setDesignResponse({
+          status: true,
+          message: 'Success',
+        });
+      })
+      .catch((err) => {
+        setDesignResponse({
+          status: false,
+          message: 'Fail',
+        });
+        console.error('Unable to get all notifications', err.response);
+      });
+
+    client
+      .get(`/projects/user-projects/${user.id}`)
+      .then((res) => {
+        setUserProjects(res.data.data.projects);
+        setProjectResponse({
+          status: true,
+          message: 'Success',
+        });
+      })
+      .catch((err) => {
+        setProjectResponse({
+          status: false,
+          message: 'Fail',
+        });
+        console.error('Unable to get all notifications', err.response);
       });
   }, [user.id]);
 
@@ -76,7 +114,7 @@ function Account() {
         {/* Main */}
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
-          <div className='text-left mt-4 mb-1 pl-4 lg:mx-6'>
+          <div className='text-left mt-4 mb-1 lg:mx-6'>
             <h1 className='font-bold text-xl'>
               Account: {user.firstName} {user.lastName}
             </h1>
@@ -86,7 +124,7 @@ function Account() {
             {/* Left */}
             <section className='grid lg:grid-rows-reg'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 border-b-2 border-hover-text border-solid'>
+              <nav className='p-2 lg:w-[90%] lg:pr-12 lg:mb-4 border-b-2 border-hover-text border-solid'>
                 <ul className='flex lg:text-left gap-24'>
                   <li
                     onMouseEnter={() => {
@@ -134,18 +172,35 @@ function Account() {
                 </ul>
               </nav>
               {/* Content */}
-              <section className='my-2'>
+              <section className='grid lg:mr-4'>
                 {displayOverview && <Overview />}
-                {displayDesigns && <Designs />}
-                {displayProjects && <Projects />}
+                {displayDesigns && (
+                  <DesignsOverview
+                    userDesigns={userDesigns}
+                    designResponse={designResponse}
+                  />
+                )}
+                {displayProjects && (
+                  <ProjectsOverview
+                    userProjects={userProjects}
+                    projectResponse={projectResponse}
+                  />
+                )}
+
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AccountOverview />
                 )}
                 {selectedNavElement === 'designs' && displayFixed === true && (
-                  <Designs />
+                  <DesignsOverview
+                    userDesigns={userDesigns}
+                    designResponse={designResponse}
+                  />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <Projects />
+                  <ProjectsOverview
+                    userProjects={userProjects}
+                    projectResponse={projectResponse}
+                  />
                 )}
               </section>
             </section>
@@ -154,13 +209,16 @@ function Account() {
               {/* Messages */}
               <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
                     {allNotifications.length < 1 ? (
                       <div className='grid grid-rows-1'>
-                        <LoadingSpinner height={'12'} width={'12'} />
+                        <LoadingSpinner
+                          height={'h-5 lg:h-12'}
+                          width={'w-5 lg:w-12'}
+                        />
                       </div>
                     ) : (
                       <NotificationsContainer
@@ -171,7 +229,7 @@ function Account() {
                 </section>
 
                 <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Messages
                   </h3>
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>

@@ -1,5 +1,26 @@
 import client from './client';
 
+// DESIGNS
+// Get all designs
+
+// Get all user designs
+export async function getUserDesignsFromDB(
+  userId,
+  setUserDesigns,
+  setDesignResponse
+) {
+  console.log('SSS', userId);
+  client
+    .get(`/designs/user-designs/${userId}`)
+    .then((res) => {
+      console.log(res.data)
+      // setUserDesigns(res.data.data.notifications);
+    })
+    .catch((err) =>
+      console.error('Unable to get all notifications', err.response)
+    );
+}
+
 // NOTIFICATIONS
 // Get all user notifications
 export function getUserNotifications(setAllNotifications, userId) {

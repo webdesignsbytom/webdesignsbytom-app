@@ -17,7 +17,7 @@ function Profile({
   const { user } = useContext(UserContext);
 
   return (
-    <section className='grid grid-rows-1 w-'>
+    <section className='grid grid-rows-one'>
       {/* Display user */}
       {user.id ? (
         <UserCard user={user} />
@@ -28,7 +28,10 @@ function Profile({
       )}
 
       {/* update form */}
-      <form onSubmit={handleUpdateUser} className='mt-2'>
+      <form onSubmit={handleUpdateUser} className='mt-2'> 
+      <div className='mb-2'>
+        <h2>Update Account Information</h2>
+      </div>
         {/* <!-- Email input --> */}
         <div className='mb-4'>
           <input
@@ -89,7 +92,7 @@ function Profile({
       </form>
       {/* Delete account */}
       <section>
-        <div className='mb-2'>
+        <div className=''>
           <button
             type='delete'
             onClick={deleteUser}
