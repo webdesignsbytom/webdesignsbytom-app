@@ -206,7 +206,7 @@ function AdminPanel() {
                   </h3>
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
                     {allContacts.length < 1 ? (
-                      <div className='grid grid-rows-1'>
+                      <div className='grid grid-rows-1 justify-center'>
                         <LoadingSpinner
                           height={'h-6 lg:h-12'}
                           width={'w-6 lg:w-12'}

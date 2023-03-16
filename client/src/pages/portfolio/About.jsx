@@ -7,7 +7,7 @@ function About() {
   return (
     <section
       id='about'
-      className='lg:h-screen lg:max-h-screen lg:overflow-hidden bg-red-200 grid lg:grid-rows-reg'
+      className='lg:h-screen lg:max-h-screen bg-red-200 grid lg:grid-rows-reg'
     >
       <section className='text-center mt-8'>
         <h5>Get To Know Me</h5>

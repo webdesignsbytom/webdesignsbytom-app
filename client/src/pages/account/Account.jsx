@@ -218,7 +218,7 @@ function Account() {
                   </h3>
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour'>
                     {allNotifications.length < 1 ? (
-                      <div className='grid grid-rows-1'>
+                      <div className='grid grid-rows-1 justify-center'>
                         <LoadingSpinner
                           height={'h-5 lg:h-12'}
                           width={'w-5 lg:w-12'}
@@ -238,8 +238,11 @@ function Account() {
                   </h3>
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
                     {allNotifications.length < 1 ? (
-                      <div className='grid grid-rows-1'>
-                        <LoadingSpinner height={'12'} width={'12'} />
+                      <div className='grid grid-rows-1 justify-center'>
+                        <LoadingSpinner
+                          height={'h-5 lg:h-12'}
+                          width={'w-5 lg:w-12'}
+                        />
                       </div>
                     ) : (
                       <MessagesContainer messages={userMessages} />

@@ -15,6 +15,7 @@ import MessagesContainer from '../../components/messages/MessagesContainer';
 import DevOverview from '../../components/dev/DevOverview';
 import Analytics from '../../components/analytics/Analytics';
 import DevSearch from '../../components/dev/DevSearch';
+import LoadingSpinner from '../../components/utils/LoadingSpinner';
 
 function DeveloperPanel() {
   const { user } = useContext(UserContext);
@@ -176,17 +177,39 @@ function DeveloperPanel() {
                   <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <NotificationsContainer notifications={allNotifications} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
+                    {allEvents.length < 1 ? (
+                      <div className='grid grid-rows-1 justify-center'>
+                        <allNotifications
+                          height={'h-6 lg:h-12'}
+                          width={'w-6 lg:w-12'}
+                        />
+                      </div>
+                    ) : (
+                      <NotificationsContainer
+                        notifications={allNotifications}
+                      />
+                    )}
                   </div>
+                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'></div>
                 </section>
-                <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
+                <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
+                  <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Events
                   </h3>
-                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <EventsContainer events={allEvents} />
+                  <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
+                    {allEvents.length < 1 ? (
+                      <div className='grid grid-rows-1 justify-center'>
+                        <LoadingSpinner
+                          height={'h-6 lg:h-12'}
+                          width={'w-6 lg:w-12'}
+                        />
+                      </div>
+                    ) : (
+                      <EventsContainer events={allEvents} />
+                    )}
                   </div>
+                  <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'></div>
                 </section>
               </section>
               {/* Favorites */}

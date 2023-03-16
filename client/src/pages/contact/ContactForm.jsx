@@ -8,7 +8,8 @@ import client from '../../utils/client';
 import { contactFormTemplate } from '../../utils/utils';
 
 function ContactForm() {
-  const [contactSuccessMessage, setContactSuccessMessage] = useState(statusResults);
+  const [contactSuccessMessage, setContactSuccessMessage] =
+    useState(statusResults);
   const [contactErrorMessage, setContactErrorMessage] = useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
@@ -22,8 +23,8 @@ function ContactForm() {
       setContactErrorMessage({
         status: false,
         message: '',
-      })
-      setMainButtonContent(true)
+      });
+      setMainButtonContent(true);
     }
 
     setFormData({
@@ -140,8 +141,8 @@ function ContactForm() {
             data-mdb-ripple-color='light'
           >
             {loadingAnimation ? (
-              <div className='grid'>
-                <LoadingSpinner height={'h-5'} width={'w-5'} />
+              <div className='flex justify-center'>
+                <LoadingSpinner height={'h-5 lg:h-12'} width={'w-5 lg:w-12'} />
               </div>
             ) : (
               mainButtonContent && <span>Contact Tom</span>
