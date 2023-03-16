@@ -157,7 +157,7 @@ function DesignElement({
               </ul>
             </nav>
           </section>
-          <section className='grid grid-rows-one min-h-[calc(100vh-104px)] lg:max-h-[calc(100vh-104px)] p-2'>
+          <section className='grid grid-rows-one min-h-[calc(100vh-104px)] max-h-[calc(100vh-104px)] p-2'>
             <div className='grid grid-rows-one h-auto border-2 border-solid border-black rounded overflow-y-scroll'>
               {/* Register form */}
               {displayElement === 'register' && (

@@ -117,7 +117,7 @@ console.log('user des', userDesigns)
         {/* Main */}
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
-          <div className='text-left mt-4 mb-1 lg:mx-6'>
+          <div className='text-left ml-2 mt-4 mb-1 lg:mx-6'>
             <h1 className='font-bold text-xl'>
               Account: {user.firstName} {user.lastName}
             </h1>
@@ -127,8 +127,8 @@ console.log('user des', userDesigns)
             {/* Left */}
             <section className='grid lg:grid-rows-reg'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 lg:mb-4 border-b-2 border-hover-text border-solid'>
-                <ul className='flex lg:text-left gap-24'>
+              <nav className='p-2 lg:w-[90%] lg:pr-12 lg:mb-4 border-b-2 border-hover-text border-solid mb-4'>
+                <ul className='flex lg:text-left justify-between'>
                   <li
                     onMouseEnter={() => {
                       setDisplayOverview(true);

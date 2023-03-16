@@ -14,7 +14,7 @@ function Login() {
       <div className='bg-white dark:bg-black h-screen'>
         <Navbar />
         {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg'>
+        <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg sm:mx-6'>
           <article className='hidden text-black text-center text-2xl font-extrabold my-2 lg:grid'>
             <h1 className='select-none'>Login</h1>
           </article>

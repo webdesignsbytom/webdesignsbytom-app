@@ -131,8 +131,13 @@ function Navbar() {
   const closeMessages = () => {
     setToggleMessages(false);
   };
+
   const closeEvents = () => {
     setToggleEvents(false);
+  };
+
+  const closeContacts = () => {
+    setToggleContacts(false);
   };
 
   const signOut = (event) => {
@@ -157,6 +162,7 @@ function Navbar() {
               closeNavbar();
               closeMessages();
               closeEvents();
+              closeContacts()
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
@@ -175,6 +181,7 @@ function Navbar() {
                 closeNotifications();
                 closeMessages();
                 closeEvents();
+                closeContacts()
               }}
               className='md:hidden'
             >
