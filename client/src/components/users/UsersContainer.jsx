@@ -4,7 +4,7 @@ import UserItem from './UserItem';
 function UsersContainer({ users }) {
     return (
         <>
-          <ul className='grid grid-rows-one lg:max-h-[500px] h-fit overflow-x-hidden overflow-scroll'>
+          <ul className='grid grid-rows-one lg:max-h-[500px] h-fit overflow-x-hidden overflow-scroll w-full'>
             {users.map((user, index) => {
               return <UserItem user={user} key={index} />;
             })}

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // Icons
 import EyeIcon from '../../img/eye.svg';
 import BinIcon from '../../img/bin.svg';
-import heart from '../../img/heart.svg';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 function MessageItem({ message }) {
+  const { user } = useContext(UserContext)
   const { subject, content, viewed, starred, createdAt } = message;
+  const navigate = useNavigate();
+
+  const openMessage = () => {
+    console.log('open message')
+
+    navigate(`/user/${user.id}/messages/${message.id}`, {
+      state: message,
+    });
+  }
 
   return (
-    <li className='grid grid-flow-row mb-[1px] bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded lg:rounded-none max-w-full w-full leading-3'>
+    <li onClick={openMessage} className='grid grid-flow-row mb-[1px] cursor-pointer bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded lg:rounded-none max-w-full w-full leading-3'>
       <article>
         <div className='flex justify-between border-b-2 border-solid border-black p-1 text-xs'>
           <div className='flex w-full justify-between'>

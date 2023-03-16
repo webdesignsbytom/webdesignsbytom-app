@@ -49,7 +49,7 @@ function PortfolioItem() {
 
   return (
     <>
-      <div>
+      <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
         <div className='bg-nav-colour dark:bg-black w-full flex items-center h-16 px-2 sm:px-6 lg:px-4'>
           <nav className='flex justify-between w-full'>
             <div className='flex'>
@@ -81,13 +81,13 @@ function PortfolioItem() {
           </nav>
         </div>
         {/* MAIN PAGE */}
-        <main className='grid lg:grid-cols-2 gap-6 m-4'>
+        <main className='grid lg:grid-cols-xo gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] overflow-hidden'>
           <div className=''>
-            <div className=''>
+            <div className='text-3xl mb-4 font-bold'>
               <h1>{portfolioItem.title}</h1>
             </div>
 
-            <div className=''>App Purpose: {portfolioItem.headline}</div>
+            <div className='mb-2'><span className='font-bold'>App Purpose:</span> {portfolioItem.headline}</div>
 
             <article className=''>{portfolioItem.desc}</article>
 
@@ -108,21 +108,21 @@ function PortfolioItem() {
             </div>
           </div>
 
-          <div className=''>
-            <div className=''>
-              <ul className='flex'>
+          <div className='grid grid-rows-a1a bg-green-400'>
+            <div className='flex justify-end h-fit'>
+              <ul className='flex bg-main-colour rounded-full w-fit items-center m-1 py-1 px-4'>
                 {portfolioItem.icons.map((icon, index) => {
                   return (
                     <li key={index} className=''>
-                      <img className='w-10' src={icon} alt='icon' />
+                      <img className='w-8' src={icon} alt='icon' />
                     </li>
                   );
                 })}
               </ul>
             </div>
 
-            <div className=''>
-              <div className=''>
+            <section className='grid bg-red-400'>
+              <section className=''>
                 <div className=''>
                   <div className=''>
                     <img
@@ -135,9 +135,9 @@ function PortfolioItem() {
                     <div className=''></div>
                   </div>
                 </div>
-              </div>
+              </section>
 
-              <div className=''>
+              <section className=''>
                 <div className=''>
                   <div className=''>
                     <div className=''>
@@ -156,9 +156,9 @@ function PortfolioItem() {
                   </div>
                   <div className=''></div>
                 </div>
-              </div>
+              </section>
 
-              <div className=''>
+              <section className=''>
                 <div className=''>
                   <div className=''>
                     <img
@@ -174,15 +174,18 @@ function PortfolioItem() {
                     <div className=''></div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </section>
+            </section>
 
-            <div className=''>
+            <div className='flex justify-between items-end'>
               <div className=''>
-                <h6>PHONE - TABLET - LAPTOP - MONITOR</h6>
+                <h6 className='flex'>
+                  PHONE - <span className='flex text-active-text'>TABLET</span>{' '}
+                  - LAPTOP - <span className='flex text-active-text'>MONITOR</span>
+                </h6>
                 <h3>Fully Responsive Design</h3>
               </div>
-              <div className=''>
+              <div className='flex'>
                 <a
                   target='_blank'
                   className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'

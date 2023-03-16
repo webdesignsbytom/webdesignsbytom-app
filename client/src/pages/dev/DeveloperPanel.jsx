@@ -16,6 +16,7 @@ import DevOverview from '../../components/dev/DevOverview';
 import Analytics from '../../components/analytics/Analytics';
 import DevSearch from '../../components/dev/DevSearch';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
+import EventItem from '../../components/events/EventItem';
 
 function DeveloperPanel() {
   const { user } = useContext(UserContext);
@@ -206,7 +207,11 @@ function DeveloperPanel() {
                         />
                       </div>
                     ) : (
-                      <EventsContainer events={allEvents} />
+                      <ul className='grid grid-rows-one lg:max-h-[500px] h-fit'>
+                      {allEvents.map((event, index) => {
+                        return <EventItem event={event} key={index} />;
+                      })}
+                    </ul>
                     )}
                   </div>
                   <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'></div>

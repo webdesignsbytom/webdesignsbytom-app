@@ -30,6 +30,7 @@ import MessagePhoneItem from './components/messages/MessagePhoneItem';
 import { UserContext } from './context/UserContext';
 import ProjectContainer from './pages/project/ProjectContainer';
 import PortfolioItem from './pages/portfolio/PortfolioItem';
+import MessageOpen from './components/messages/MessageOpen';
 
 function App() {
 
@@ -84,8 +85,9 @@ function App() {
         {/* Messages */}
         <Route
           path='user/:userId/messages/:messageId'
-          element={<MessagePhoneItem />}
+          element={<MessageOpen />}
         />
+
 
         {/* Projects */}
         <Route
