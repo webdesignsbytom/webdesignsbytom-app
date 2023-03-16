@@ -8,7 +8,7 @@ import Instagram from '../../img/social/instagram.svg';
 function SocialBar() {
   return (
     <>
-      <section className='flex gap-1 border-2 border-white border-solid p-2 space-x-2'>
+      <section className='flex gap-1 border-2 border-white border-solid p-2 space-x-2 w-fit'>
         <div>
           <a
             href='https://github.com/webdesignbytom'

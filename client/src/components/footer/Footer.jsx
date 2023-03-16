@@ -1,4 +1,5 @@
 import React from 'react';
+import SocialBar from '../social/SocialBar';
 
 function Footer() {
   const today = new Date();
@@ -10,7 +11,15 @@ function Footer() {
           <p>Email: tom@webdesignsbytom.com</p>
         </div>
       </section>
-      <p className='text-center'>Copyright webdesignsbytom <span className='font-bold'>&copy;</span> {today.getFullYear()}</p>
+      <section className='flex justify-center mb-4'>
+        <SocialBar />
+      </section>
+      <section className='my-2'>
+        <p className='text-center'>
+          Copyright webdesignsbytom <span className='font-bold'>&copy;</span>{' '}
+          {today.getFullYear()}
+        </p>
+      </section>
     </footer>
   );
 }

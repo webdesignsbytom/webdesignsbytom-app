@@ -32,8 +32,8 @@ function Contact() {
               </div>
             </article>
 
-            <div className='contact__options'>
-              <article className='contact__option'>
+            <div className='grid lg:grid-cols-3 gap-6'>
+              <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
                 {/* <HiOutlineMail className='contact__option-icon'/> */}
                 <h4>Email</h4>
                 <h5>tom@webdesignsbytom.com</h5>
@@ -46,7 +46,7 @@ function Contact() {
                 </a>
               </article>
 
-              <article className='contact__option'>
+              <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
                 {/* <FaFacebookMessenger className='contact__option-icon'/> */}
                 <h4>Messenger</h4>
                 <h5>webdesignsbytom</h5>
@@ -59,7 +59,7 @@ function Contact() {
                 </a>
               </article>
 
-              <article className='contact__option'>
+              <article className='bg-main-colour rounded-xl text-center px-4 py-8 w-full'>
                 {/* <ImWhatsapp className='contact__option-icon'/> */}
                 <h4>WhatsApp</h4>
                 <h5>Chat any time</h5>
