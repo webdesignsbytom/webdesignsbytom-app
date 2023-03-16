@@ -37,6 +37,7 @@ function LoginForm({ setUser }) {
 
   const handleLogin = (event) => {
     event.preventDefault();
+    console.log('login')
     setLoadingAnimation(!loadingAnimation);
     //
     postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
