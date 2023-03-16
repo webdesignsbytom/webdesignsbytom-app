@@ -1,6 +1,6 @@
 /* Containers */
 .interaction__container {
-  @apply m-2 grid lg:grid-cols-xo gap-2 overflow-hidden lg:mx-6
+  @apply m-2 grid lg:grid-rows-none lg:grid-cols-xo gap-2 overflow-hidden lg:mx-6
 }
 /* Text */
 .nav__link {

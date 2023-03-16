@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { statusResults } from '../../users/utils/utils';
 import LoadingSpinner from '../utils/LoadingSpinner';
+import { SubmitButton } from '../utils/SubmitButtons';
 
 function ProjectsOverview({ userProjects, projectResponse }) {
-  
-  return (
-    <div>
-      <h2>ProjectsOverview</h2>
+  const [updateAnimation, setUpdateAnimation] = useState(false);
+  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const [updateResponseMessage, setUpdateResponseMessage] =
+    useState(statusResults);
 
+  const buyProject = () => {
+    console.log('project');
+  };
+
+  return (
+    <section>
+      <div className='mb-2'>
+        <h2>Projects Overview</h2>
+      </div>
+      <section className='mb-2'>
+        <SubmitButton
+          loadingAnimation={updateAnimation}
+          mainButtonContent={mainButtonContent}
+          responseMessage={updateResponseMessage}
+          buttonMessage='Buy New Website'
+          spinnerHeight='h-5'
+          spinnerWidth='w-5'
+          action={buyProject}
+        />
+      </section>
       {projectResponse.status === false && (
         <div className='grid grid-rows-1'>
           <LoadingSpinner height={'h-5 lg:h-12'} width={'w-5 lg:w-12'} />
@@ -24,7 +46,7 @@ function ProjectsOverview({ userProjects, projectResponse }) {
           })}
         </ul>
       )}
-    </div>
+    </section>
   );
 }
 

@@ -40,8 +40,8 @@ function Account() {
   const [userProjects, setUserProjects] = useState([]);
   const [projectResponse, setProjectResponse] = useState(statusResults);
 
-console.log('user projecrs', userProjects)
-console.log('user des', userDesigns)
+  console.log('user projecrs', userProjects);
+  console.log('user des', userDesigns);
 
   useEffect(() => {
     const foundUser = LoggedInUser();
@@ -86,7 +86,7 @@ console.log('user des', userDesigns)
     client
       .get(`/projects/user-projects/${user.id}`)
       .then((res) => {
-        console.log('project res', res.data)
+        console.log('project res', res.data);
         setUserProjects(res.data.data.projects);
         setProjectResponse({
           status: true,
@@ -125,10 +125,10 @@ console.log('user des', userDesigns)
           {/* Main Container */}
           <section className='interaction__container'>
             {/* Left */}
-            <section className='grid lg:grid-rows-reg'>
+            <section className='grid md:grid-rows-reg h-min sm:h-[90%] lg:h-full'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 lg:mb-4 border-b-2 border-hover-text border-solid mb-4'>
-                <ul className='flex lg:text-left justify-between'>
+              <nav className='p-2 h-min lg:mr-4 lg:mb-4 border-b-2 border-hover-text border-solid mb-4'>
+                <ul className='flex justify-between lg:justify-start lg:gap-28'>
                   <li
                     onMouseEnter={() => {
                       setDisplayOverview(true);

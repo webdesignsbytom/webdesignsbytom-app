@@ -6,29 +6,29 @@ function UserCard({ user }) {
   return (
     <>
       <section className='grid border-2 border-black border-solid rounded-md sm:grid-cols-reg sm:w-[500px] sm:mx-auto lg:w-full'>
-        <div className='flex justify-center p-4 sm:items-center'>
+        <section className='flex justify-center p-4 sm:items-center mx-12'>
           <img
             className='rounded-full h-32 w-32 shadow-xl border-2 border-slate-200 border-solid object-fill'
             src={profileImage}
             alt='Profile'
           />
-        </div>
-        <article className='grid justify-left p-4'>
-          <div className='flex'>
+        </section>
+        <article className='grid gap-2 mx-auto justify-center lg:justify-left p-4 h-min my-auto w-min'>
+          <div className='flex justify-between'>
             <h4>Email: </h4> 
-            <p>{email}</p>
+            <p className='ml-2'>{email}</p>
           </div>
-          <div className='flex'>
+          <div className='flex justify-between'>
             <h4>First Name: </h4>
-            <p>{firstName}</p>
+            <p className='ml-2'>{firstName}</p>
           </div>
-          <div className='flex'>
+          <div className='flex justify-between'>
             <h4>Last Name: </h4>
-            <p>{lastName}</p>
+            <p className='ml-2'>{lastName}</p>
           </div>
-          <div className='flex'>
+          <div className='flex justify-between '>
             <h4>Country: </h4>
-            <p>{country}</p>
+            <p className='ml-2'>{country}</p>
           </div>
         </article>
       </section>

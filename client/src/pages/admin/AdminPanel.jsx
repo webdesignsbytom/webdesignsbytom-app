@@ -4,11 +4,8 @@ import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoggedInUser from '../../utils/LoggedInUser';
-import SearchOptionsAdmin from '../../components/admin/SearchOptionsAdmin'
 // Fetch
-import {
-  setFormByUserId,
-} from '../../utils/Fetch';
+import { setFormByUserId } from '../../utils/Fetch';
 // Data
 import client from '../../utils/client';
 import AdminOverview from '../../components/admin/AdminOverview';
@@ -16,14 +13,15 @@ import UsersContainer from '../../components/users/UsersContainer';
 import ContactsContainer from '../../components/contacts/ContactsContainer';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
-
+import AdminSearch from '../../components/admin/AdminSearch';
+import AdminProjects from '../../components/admin/AdminProjects';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Users
-  const [allUsers, setAllUsers] = useState([])
+  const [allUsers, setAllUsers] = useState([]);
   // Contact form messages
   const [allContacts, setAllContacts] = useState([]);
   // Messages
@@ -63,7 +61,7 @@ function AdminPanel() {
         console.error('Unable to get user messages', err);
       });
 
-      client
+    client
       .get(`/users`)
       .then((res) => {
         console.log('response', res.data);
@@ -89,9 +87,9 @@ function AdminPanel() {
         {/* Main */}
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
-          <div className='text-left mt-4 mb-1 pl-4 lg:mx-6'>
+          <div className='text-left ml-2 mt-4 mb-1 lg:mx-6'>
             <h1 className='font-bold text-xl'>
-            Admin Panel: {user.firstName} {user.lastName}
+              Admin Panel: {user.firstName} {user.lastName}
             </h1>
           </div>
           {/* Main Container */}
@@ -99,8 +97,8 @@ function AdminPanel() {
             {/* Left */}
             <section className='grid lg:grid-rows-reg'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 border-b-2 border-hover-text border-solid w-full'>
-                <ul className='flex justify-between lg:text-left lg:gap-24'>
+              <nav className='p-2 lg:mr-4 lg:mb-4 border-b-2 border-hover-text border-solid mb-4'>
+                <ul className='flex justify-between lg:justify-start lg:gap-28'>
                   <li
                     onMouseEnter={() => {
                       setDisplayOverview(true);
@@ -160,11 +158,13 @@ function AdminPanel() {
                 </ul>
               </nav>
               {/* Content */}
-              <section className='my-4 grid grid-rows-one h-[1fr] overflow-hidden'>
+              <section className='grid lg:mr-4'>
+                {/* Hover */}
                 {displayOverview && <AdminOverview />}
                 {displayUsers && <UsersContainer users={allUsers} />}
-                {displayProjects && <ProjectsOverview />}
-                {displaySearch && <SearchOptionsAdmin />}
+                {displayProjects && <AdminProjects />}
+                {displaySearch && <AdminSearch />}
+                {/* Open */}
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AdminOverview />
                 )}
@@ -172,10 +172,10 @@ function AdminPanel() {
                   <UsersContainer users={allUsers} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <ProjectsOverview />
+                  <AdminProjects />
                 )}
                 {selectedNavElement === 'search' && displayFixed === true && (
-                  <SearchOptionsAdmin />
+                  <AdminSearch />
                 )}
               </section>
             </section>
@@ -207,7 +207,10 @@ function AdminPanel() {
                   <div className='grid max-h-[300px] lg:max-h-none lg:items-center overflow-scroll overflow-x-hidden bg-main-colour w-full'>
                     {allContacts.length < 1 ? (
                       <div className='grid grid-rows-1'>
-                        <LoadingSpinner height={'h-6 lg:h-12'} width={'w-6 lg:w-12'} />
+                        <LoadingSpinner
+                          height={'h-6 lg:h-12'}
+                          width={'w-6 lg:w-12'}
+                        />
                       </div>
                     ) : (
                       <ContactsContainer contacts={allContacts} />

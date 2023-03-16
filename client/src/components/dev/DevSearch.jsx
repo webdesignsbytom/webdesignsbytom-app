@@ -1,9 +1,9 @@
 import React from 'react'
 
-function SearchOptionsDev() {
+function DevSearch() {
   return (
     <div>SearchOptions</div>
   )
 }
 
-export default SearchOptionsDev
+export default DevSearch

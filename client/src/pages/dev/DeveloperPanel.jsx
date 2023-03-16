@@ -5,19 +5,16 @@ import { UserContext } from '../../context/UserContext';
 import Navbar from '../../components/nav/Navbar';
 import LoggedInUser from '../../utils/LoggedInUser';
 import EventsContainer from '../../components/events/EventsContainer';
-import SearchOptionsDev from '../../components/dev/SearchOptionsDev';
+import SearchOptionsDev from '../../components/dev/DevSearch';
 // Fetch
-import {
-  getEventsLog,
-  setFormByUserId,
-} from '../../utils/Fetch';
+import { getEventsLog, setFormByUserId } from '../../utils/Fetch';
 // Data
 import client from '../../utils/client';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
 import MessagesContainer from '../../components/messages/MessagesContainer';
 import DevOverview from '../../components/dev/DevOverview';
 import Analytics from '../../components/analytics/Analytics';
-
+import DevSearch from '../../components/dev/DevSearch';
 
 function DeveloperPanel() {
   const { user } = useContext(UserContext);
@@ -64,7 +61,7 @@ function DeveloperPanel() {
         console.error('Unable to get user messages', err);
       });
 
-    getEventsLog(setAllEvents)
+    getEventsLog(setAllEvents);
   }, []);
 
   useEffect(() => {
@@ -75,35 +72,6 @@ function DeveloperPanel() {
     }, 2000);
   }, [user.isVerified]);
 
-  // function handleResend() {
-  //   postResendVerificationEmail(user.email, setAlert, initAlert);
-  // }
-
-  // const deleteProfile = (event) => {
-  //   event.preventDefault();
-
-  //   deleteAccount(user.id);
-  //   setUser(sampleUserData);
-  //   localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
-
-  //   navigate('/', { replace: true });
-  // };
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-
-  //   setUpdateUserForm({
-  //     ...updateUserForm,
-  //     [name]: value,
-  //   });
-  // };
-
-  // const handleUpdate = (event) => {
-  //   event.preventDefault();
-
-  //   putUpdateUser(user.id, updateUserForm, setUser);
-  // };
-
   return (
     <>
       <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
@@ -111,9 +79,9 @@ function DeveloperPanel() {
         {/* Main */}
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
-          <div className='text-left mt-4 mb-1 pl-4 lg:mx-6'>
+          <div className='text-left ml-2 mt-4 mb-1 lg:mx-6'>
             <h1 className='font-bold text-xl'>
-            Developer Panel: {user.firstName} {user.lastName}
+              Developer Panel: {user.firstName} {user.lastName}
             </h1>
           </div>
           {/* Main Container */}
@@ -121,8 +89,8 @@ function DeveloperPanel() {
             {/* Left */}
             <section className='grid lg:grid-rows-reg'>
               {/* Nav */}
-              <nav className='p-2 lg:w-[90%] lg:pr-12 border-b-2 border-hover-text border-solid w-full'>
-                <ul className='flex justify-between lg:text-left lg:gap-24'>
+              <nav className='p-2 lg:mr-4 lg:mb-4 border-b-2 border-hover-text border-solid mb-4'>
+                <ul className='flex justify-between lg:justify-start lg:gap-28'>
                   <li
                     onMouseEnter={() => {
                       setDisplayOverview(true);
@@ -186,18 +154,17 @@ function DeveloperPanel() {
                 {displayOverview && <DevOverview />}
                 {displayAnalytics && <Analytics />}
                 {displayEvents && <EventsContainer events={allEvents} />}
-                {displaySearch && <SearchOptionsDev />}
+                {displaySearch && <DevSearch />}
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <DevOverview />
                 )}
-                {selectedNavElement === 'analytics' && displayFixed === true && (
-                  <Analytics />
-                )}
+                {selectedNavElement === 'analytics' &&
+                  displayFixed === true && <Analytics />}
                 {selectedNavElement === 'events' && displayFixed === true && (
                   <EventsContainer events={allEvents} />
                 )}
                 {selectedNavElement === 'search' && displayFixed === true && (
-                  <SearchOptionsDev />
+                  <DevSearch />
                 )}
               </section>
             </section>
@@ -215,10 +182,10 @@ function DeveloperPanel() {
                 </section>
                 <section className='grid border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
-                    Messages
+                    Events
                   </h3>
                   <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'>
-                    <MessagesContainer messages={userMessages} />
+                    <EventsContainer events={allEvents} />
                   </div>
                 </section>
               </section>

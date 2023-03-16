@@ -5,7 +5,7 @@ function EventItem({ event }) {
 
   return (
     <>
-      <li className='grid grid-flow-row mb-2 bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded max-w-full w-full'>
+      <li className='grid grid-flow-row mb-[1px] bg-colour-pale dark:bg-black dark:text-white border-2 border-solid border-black rounded max-w-full w-full'>
         <section className='border-black border-b-2 border-solid '>
           <div className='mx-1 flex justify-between align-middle text-sm'>
             <h6 className='w-[90px]'>{type}</h6>
