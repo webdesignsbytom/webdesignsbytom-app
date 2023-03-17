@@ -58,6 +58,13 @@ export const findUserById = (userId) =>
     where: {
       id: userId,
     },
+    include: {
+      messages: true,
+      notifications: true,
+      favorites: true,
+      designs: true,
+      projects: true,
+    }
   });
 
 export const resetUserPassword = (userId, password) =>

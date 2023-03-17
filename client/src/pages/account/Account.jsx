@@ -5,7 +5,6 @@ import { UserContext } from '../../context/UserContext';
 import Navbar from '../../components/nav/Navbar';
 import NotificationsContainer from '../../components/notifications/NotificationsContainer';
 import MessagesContainer from '../../components/messages/MessagesContainer';
-import Overview from '../../components/account/AccountOverview';
 import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Fetch
@@ -40,66 +39,79 @@ function Account() {
   const [userProjects, setUserProjects] = useState([]);
   const [projectResponse, setProjectResponse] = useState(statusResults);
 
-  console.log('user projecrs', userProjects);
-  console.log('user des', userDesigns);
+  console.log('user', user);
 
   useEffect(() => {
     const foundUser = LoggedInUser();
-    setFormByUserId(foundUser.id, setUpdateUserForm);
+    console.log(' xx foundUser', foundUser);
+
+    client
+      .get(`/users/${user.id}`)
+      .then((res) => {
+        setUpdateUserForm(res.data.data.user);
+        setUserMessages(res.data.data.user.messages);
+        setAllNotifications(res.data.data.user.notifications);
+        setListOfFavorites(res.data.data.user.favorites);
+        setUserProjects(res.data.data.user.projects);
+        setUserDesigns(res.data.data.user.designs);
+      })
+      .catch((err) => {
+        console.error('Unable to get user by id', err);
+      });
 
     // Notifications
-    client
-      .get(`/notifications/user-notifications/${user.id}`)
-      .then((res) => {
-        setAllNotifications(res.data.data.notifications);
-      })
-      .catch((err) => {
-        console.error('Unable to get notifications', err);
-      });
+    // client
+    //   .get(`/notifications/user-notifications/${user.id}`)
+    //   .then((res) => {
+    //     setAllNotifications(res.data.data.notifications);
+    //   })
+    //   .catch((err) => {
+    //     console.error('Unable to get notifications', err);
+    //   });
 
-    client
-      .get(`/messages/user-messages/${user.id}`)
-      .then((res) => {
-        setUserMessages(res.data.data.messages);
-      })
-      .catch((err) => {
-        console.error('Unable to get user messages', err);
-      });
+    // client
+    //   .get(`/messages/user-messages/${user.id}`)
+    //   .then((res) => {
+    //     setUserMessages(res.data.data.messages);
+    //   })
+    //   .catch((err) => {
+    //     console.error('Unable to get user messages', err);
+    //   });
 
-    client
-      .get(`/designs/user-designs/${user.id}`)
-      .then((res) => {
-        setUserDesigns(res.data.data.designs);
-        setDesignResponse({
-          status: true,
-          message: 'Success',
-        });
-      })
-      .catch((err) => {
-        setDesignResponse({
-          status: false,
-          message: 'Fail',
-        });
-        console.error('Unable to get all notifications', err.response);
-      });
+    // client
+    //   .get(`/designs/user-designs/${user.id}`)
+    //   .then((res) => {
+    //     setUserDesigns(res.data.data.designs);
+    //     setDesignResponse({
+    //       status: true,
+    //       message: 'Success',
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     setDesignResponse({
+    //       status: false,
+    //       message: 'Fail',
+    //     });
+    //     console.error('Unable to get all notifications', err.response);
+    //   });
 
-    client
-      .get(`/projects/user-projects/${user.id}`)
-      .then((res) => {
-        console.log('project res', res.data);
-        setUserProjects(res.data.data.projects);
-        setProjectResponse({
-          status: true,
-          message: 'Success',
-        });
-      })
-      .catch((err) => {
-        setProjectResponse({
-          status: false,
-          message: 'Fail',
-        });
-        console.error('Unable to get all notifications', err.response);
-      });
+    // client
+    //   .get(`/projects/user-projects/${user.id}`)
+    //   .then((res) => {
+    //     console.log('project res', res.data);
+    //     setUserProjects(res.data.data.projects);
+    //     setProjectResponse({
+    //       status: true,
+    //       message: 'Success',
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     setProjectResponse({
+    //       status: false,
+    //       message: 'Fail',
+    //     });
+    //     console.error('Unable to get all notifications', err.response);
+    //   });
   }, [user.id]);
 
   useEffect(() => {

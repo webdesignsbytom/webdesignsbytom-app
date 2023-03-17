@@ -560,14 +560,14 @@ function Navbar() {
               </div>
             </li>
             {/* Social links */}
-            <li className='phone__nav__li flex justify-center'>
+            <div className='my-2'>
               <SocialBar
                 textColour={'white'}
                 borderColour={'white'}
                 darkColour={'colour-dark'}
                 darkBorderColour={'colour-dark'}
               />
-            </li>
+          </div>
           </ul>
         </div>
       )}

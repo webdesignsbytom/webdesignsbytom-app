@@ -4,6 +4,7 @@ export function getUserById(userId, setUser) {
   client
     .get(`/users/${userId}`)
     .then((res) => {
+      console.log('res', res.data)
       setUser(res.data.data.user);
     })
     .catch((err) => {

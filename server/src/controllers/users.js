@@ -92,7 +92,7 @@ export const getUserById = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-
+console.log('found', foundUser)
     delete foundUser.password;
     delete foundUser.agreedToTerms;
 
