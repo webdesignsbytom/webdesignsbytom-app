@@ -310,7 +310,7 @@ function Navbar() {
 
       {/* Phone navigation */}
       {toggleNavigation && (
-        <div className='absolute bg-colour-med w-full h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
+        <div className='absolute bg-colour-med w-full min-h-[calc(100%_-_4rem)] overflow-hidden z-10 md:hidden'>
           <ul className='grid gap-2 mt-2'>
             {/* Home */}
             <li className='phone__nav__li'>
