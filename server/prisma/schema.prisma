@@ -208,33 +208,33 @@ enum ProjectType {
 }
 
 model Project {
-  id           String         @id @default(uuid())
-  type         ProjectType
-  name         String
-  userId       String
-  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  ownerName    String
-  pagesTotal   Int?
-  domainName   String?
-  price        Int
-  userStories  UserStory[]
+  id            String          @id @default(uuid())
+  type          ProjectType
+  name          String
+  userId        String
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ownerName     String
+  pagesTotal    Int?
+  domainName    String?
+  price         Int
+  userStories   UserStory[]
   colourPalette colourPalette[]
-  navDesign    NavDesign?
-  startDate    DateTime       @default(now())
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime?      @updatedAt
+  navDesign     NavDesign?
+  startDate     DateTime        @default(now())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime?       @updatedAt
 }
 
 model Design {
-  id           String         @id @default(uuid())
-  name         String         @default("untitled")
-  navDesign    NavDesign?
+  id            String          @id @default(uuid())
+  name          String          @default("untitled")
+  navDesign     NavDesign?
   colourPalette colourPalette[]
-  userStories  UserStory[]
-  userId       String
-  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime?      @updatedAt
+  userStories   UserStory[]
+  userId        String
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime?       @updatedAt
 }
 
 model UserStory {
@@ -249,20 +249,27 @@ model UserStory {
 }
 
 model colourPalette {
-  id           String    @id @default(uuid())
-  bgMain       String?   @default("")
-  bgAlt        String?   @default("")
-  paletteOne   String?   @default("")
-  paletteTwo   String?   @default("")
-  paletteThree String?   @default("")
-  hover        String?   @default("")
-  selected     String?   @default("")
-  projectId    String?
-  project      Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  designId     String?
-  design       Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime? @updatedAt
+  id                 String    @id @default(uuid())
+  mainBackground     String?   @default("")
+  altBackground      String?   @default("")
+  navBackground      String?   @default("")
+  darkModeBackground String?   @default("")
+  mainText           String?   @default("")
+  darkModeMainText  String?   @default("")
+  altText           String?   @default("")
+  hoverText           String?   @default("")
+  darkModeHoverText           String?   @default("")
+  activeText           String?   @default("")
+  borders           String?   @default("")
+  darkModeBorders           String?   @default("")
+  hyperlinks           String?   @default("")
+
+  projectId          String?
+  project            Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  designId           String?
+  design             Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime? @updatedAt
 }
 
 model NavDesign {
