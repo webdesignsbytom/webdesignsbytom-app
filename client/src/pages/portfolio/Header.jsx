@@ -5,7 +5,7 @@ import CV from '../../assets/files/TomBrockingtonResume2023.pdf';
 
 function Header() {
   return (
-    <header className='grid relative h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center'>
+    <header className='grid relative h-[calc(100vh-32px)] lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center'>
       <section className='text-center'>
         <h4>Hello I am</h4>
         <h1 className='text-4xl py-4'>Tom Brockington</h1>
