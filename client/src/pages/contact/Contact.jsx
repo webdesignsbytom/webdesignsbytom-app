@@ -2,7 +2,10 @@ import React from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import ContactForm from './ContactForm';
-import Footer from '../../components/footer/Footer';
+// React icons
+import { GiRaven } from 'react-icons/gi';
+import { MdEmail } from 'react-icons/md';
+import { ImWhatsapp } from 'react-icons/im';
 
 function Contact() {
   return (
@@ -12,8 +15,8 @@ function Contact() {
         {/* Main */}
         <main className='grid md:mx-8 lg:h-full lg:grid-cols-2 p-2'>
           {/* Info */}
-          <section className='grid h-min items-center my-auto'>
-            <article className='m-1 bg-main-colour h-min mb-4'>
+          <section className='grid h-min items-center my-4 md:my-auto lg:mx-20'>
+            <article className='m-1 bg-main-colour h-min mb-4 p-4 rounded'>
               <div className='text-center mt-4'>
                 <h1 className='text-2xl font-bold'>Contact Me!</h1>
               </div>
@@ -32,47 +35,63 @@ function Contact() {
               </div>
             </article>
 
-            <div className='grid grid-cols-3 gap-2'>
-              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full'>
-                {/* <HiOutlineMail className='contact__option-icon'/> */}
-                <h4>Email</h4>
-                <h5 className='text-xs'>tom@webdesignsbytom.com</h5>
-                <a
-                  href='mailto:tom@webdesignsbytom.com'
-                  rel='noreferrer'
-                  target='_blank'
-                  className='text-xs'
-                >
-                  Send a message
-                </a>
+            <div className='grid grid-cols-3 mx-1 gap-2'>
+              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <div className='grid justify-center'>
+                  <div className='grid justify-center'>
+                    <MdEmail />
+                  </div>
+                  <h4 className='text-sm font-semibold md:text-base'>Email</h4>
+                  <h5 className='text-ss md:text-xs'>
+                    tom@webdesignsbytom.com
+                  </h5>
+                  <a
+                    href='mailto:tom@webdesignsbytom.com'
+                    rel='noreferrer'
+                    target='_blank'
+                    className='text-xs md:text-base'
+                  >
+                    Send a email
+                  </a>
+                </div>
               </article>
 
-              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full'>
-                {/* <FaFacebookMessenger className='contact__option-icon'/> */}
-                <h4>Messenger</h4>
-                <h5 className='text-xs'>webdesignsbytom</h5>
-                <a
-                  href='http:facebook-subdomain'
-                  rel='noreferrer'
-                  target='_blank'
-                  className='text-xs'
-                >
-                  Send a message
-                </a>
+              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <div className='grid justify-center'>
+                  <div className='grid justify-center'>
+                    <GiRaven />
+                  </div>
+                  <h4 className='text-sm font-semibold md:text-base'>Raven</h4>
+                  <h5 className='text-ss md:text-xs'>webdesignsbytom</h5>
+                  <a
+                    href='http:facebook-subdomain'
+                    rel='noreferrer'
+                    target='_blank'
+                    className='text-xs md:text-base'
+                  >
+                    Send a scroll
+                  </a>
+                </div>
               </article>
 
-              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full'>
-                {/* <ImWhatsapp className='contact__option-icon'/> */}
-                <h4>WhatsApp</h4>
-                <h5 className='text-xs'>Chat any time</h5>
-                <a
-                  href='https://api.whatsapp.com/send?phone+447841378347'
-                  rel='noreferrer'
-                  target='_blank'
-                  className='text-xs'
-                >
-                  Send a message
-                </a>
+              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <div className='grid justify-center'>
+                  <div className='grid justify-center'>
+                    <ImWhatsapp />
+                  </div>
+                  <h4 className='text-sm font-semibold md:text-base'>
+                    WhatsApp
+                  </h4>
+                  <h5 className='text-ss md:text-xs'>Chat any time</h5>
+                  <a
+                    href='https://api.whatsapp.com/send?phone+447541576148'
+                    rel='noreferrer'
+                    target='_blank'
+                    className='text-xs md:text-base'
+                  >
+                    Send a message
+                  </a>
+                </div>
               </article>
             </div>
           </section>

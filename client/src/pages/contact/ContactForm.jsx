@@ -133,7 +133,7 @@ function ContactForm() {
         </div>
 
         {/* <!-- Submit button --> */}
-        <div className='mb-1'>
+        <div className='my-2'>
           <button
             type='submit'
             className='submit__button'
