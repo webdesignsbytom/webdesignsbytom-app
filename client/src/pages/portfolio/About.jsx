@@ -2,6 +2,7 @@ import React from 'react';
 // Images
 import Avatar from '../../img/TomAvatar.jpg';
 import ExperienceIcon from '../../img/home.svg';
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
@@ -92,9 +93,9 @@ function About() {
               </p>
             </article>
             <div className='flex gap-6'>
-              <button  className='bg-main-colour grid justify-center py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+              <Link to='/contact' className='bg-main-colour grid justify-center py-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
                 Lets talk!
-              </button>
+              </Link>
               <button className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
                 Show Me Some Skills!
               </button>

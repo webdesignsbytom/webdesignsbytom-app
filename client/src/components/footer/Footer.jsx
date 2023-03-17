@@ -12,7 +12,7 @@ function Footer() {
         </div>
       </section>
       <section className='flex justify-center mb-4'>
-        <SocialBar />
+        <SocialBar colour={'white'}/>
       </section>
       <section className='my-2'>
         <p className='text-center'>

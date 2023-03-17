@@ -303,7 +303,7 @@ function Navbar() {
             </nav>
           </section>
           <div className='hidden md:flex'>
-            <SocialBar />
+            <SocialBar colour={'white'} />
           </div>
         </section>
       </div>

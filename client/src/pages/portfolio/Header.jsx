@@ -6,7 +6,7 @@ import CV from '../../assets/files/TomBrockingtonResume2023.pdf';
 function Header() {
   return (
     <header className='grid relative h-[calc(100vh-32px)] lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center'>
-      <section className='text-center'>
+      <section className='text-center mb-10 md:mb-0'>
         <h4>Hello I am</h4>
         <h1 className='text-4xl py-4'>Tom Brockington</h1>
         <h5 className='text-light'>
@@ -30,9 +30,16 @@ function Header() {
       </section>
       <section className='absolute bottom-10 flex justify-between w-full px-10'>
         <div>
-          <SocialBar />
+          <SocialBar border={'main-colour'} />
         </div>
-        <div>a</div>
+        <div><a
+                    href='mailto:tom@webdesignsbytom.com'
+                    rel='noreferrer'
+                    target='_blank'
+                    className='text-xs md:text-base'
+                  >
+                    tom@webdesignsbytom.com
+                  </a></div>
       </section>
     </header>
   );
