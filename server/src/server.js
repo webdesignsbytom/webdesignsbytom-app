@@ -75,6 +75,16 @@ app.all('*', (req, res) => {
   }
 });
 
+app.use((error, req, res, next) => {
+  console.error(error)
+
+  if (error.code === 'P2025') {
+    return sendDataResponse(res, 404, 'Record does not exist')
+  }
+
+  return sendDataResponse(res, 500)
+})
+
 // Start our API server
 app.listen(PORT, () => {
   console.log(
