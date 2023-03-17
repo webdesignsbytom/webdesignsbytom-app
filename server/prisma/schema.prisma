@@ -218,7 +218,7 @@ model Project {
   domainName   String?
   price        Int
   userStories  UserStory[]
-  colorPalette ColorPalette[]
+  colourPalette colourPalette[]
   navDesign    NavDesign?
   startDate    DateTime       @default(now())
   createdAt    DateTime       @default(now())
@@ -229,7 +229,7 @@ model Design {
   id           String         @id @default(uuid())
   name         String         @default("untitled")
   navDesign    NavDesign?
-  colorPalette ColorPalette[]
+  colourPalette colourPalette[]
   userStories  UserStory[]
   userId       String
   user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -248,7 +248,7 @@ model UserStory {
   updatedAt DateTime? @updatedAt
 }
 
-model ColorPalette {
+model colourPalette {
   id           String    @id @default(uuid())
   bgMain       String?   @default("")
   bgAlt        String?   @default("")

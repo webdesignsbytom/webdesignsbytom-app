@@ -114,8 +114,8 @@ export const getDesignsFromUser = async (req, res) => {
 
 export const createNewDesign = async (req, res) => {
   console.log('createNewDesign');
-  const { name, navDesign, colorPalette, userStories, userId } = req.body;
-  console.log('name', name, navDesign, colorPalette, userStories, userId);
+  const { name, navDesign, colourPalette, userStories, userId } = req.body;
+  console.log('name', name, navDesign, colourPalette, userStories, userId);
 
   try {
     if (!req.body) {
@@ -143,7 +143,7 @@ export const createNewDesign = async (req, res) => {
     const createdDesign = await createDesign(
       name,
       navDesign,
-      colorPalette,
+      colourPalette,
       userStories,
       userId
     );
@@ -172,13 +172,13 @@ export const createNewDesign = async (req, res) => {
 
 export const saveDesign = async (req, res) => {
   console.log('SAVE', req.body);
-  const { id, name, userId, userStories, navDesign, colorPalette } = req.body;
+  const { id, name, userId, userStories, navDesign, colourPalette } = req.body;
   console.log(id);
   console.log(name);
   console.log(userStories);
   console.log(userId);
   console.log(navDesign);
-  console.log(colorPalette);
+  console.log(colourPalette);
 
   try {
 

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import changeIcon from '../../img/changeIcon.svg';
 import QuestionMark from '../../img/questionMark.svg';
 
-function ColorPalette({ colourPalette, setColourPalette }) {
-  console.log('2. Palette', colourPalette);
+function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
+  console.log('2. Palette', colourPaletteObject);
   // Card One
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
   const [rgbCardOne, setRgbCardOne] = useState('#0099ff');
@@ -334,7 +334,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.mainBackground.colour}
+                    {colourPaletteObject.mainBackground.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -343,7 +343,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.mainBackground.css}></div>
+                  <div className={colourPaletteObject.mainBackground.css}></div>
                 </div>
               </div>
             </li>
@@ -365,7 +365,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.altBackground.colour}
+                    {colourPaletteObject.altBackground.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -374,7 +374,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.altBackground.css}></div>
+                  <div className={colourPaletteObject.altBackground.css}></div>
                 </div>
               </div>
             </li>
@@ -397,7 +397,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.navBackground.colour}
+                    {colourPaletteObject.navBackground.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin'
@@ -406,7 +406,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.navBackground.css}></div>
+                  <div className={colourPaletteObject.navBackground.css}></div>
                 </div>
               </div>
             </li>
@@ -429,7 +429,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.darkModeBackground.colour}
+                    {colourPaletteObject.darkModeBackground.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -438,7 +438,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeBackground.css}></div>
+                  <div className={colourPaletteObject.darkModeBackground.css}></div>
                 </div>
               </div>
             </li>
@@ -460,7 +460,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.mainText.colour}
+                    {colourPaletteObject.mainText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -469,7 +469,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.mainText.css}></div>
+                  <div className={colourPaletteObject.mainText.css}></div>
                 </div>
               </div>
             </li>
@@ -492,7 +492,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.darkModeMainText.colour}
+                    {colourPaletteObject.darkModeMainText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -501,7 +501,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeMainText.css}></div>
+                  <div className={colourPaletteObject.darkModeMainText.css}></div>
                 </div>
               </div>
             </li>
@@ -524,7 +524,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.altText.colour}
+                    {colourPaletteObject.altText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -533,7 +533,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.altText.css}></div>
+                  <div className={colourPaletteObject.altText.css}></div>
                 </div>
               </div>
             </li>
@@ -556,7 +556,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.hoverText.colour}
+                    {colourPaletteObject.hoverText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -565,7 +565,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.hoverText.css}></div>
+                  <div className={colourPaletteObject.hoverText.css}></div>
                 </div>
               </div>
             </li>
@@ -588,7 +588,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.darkModeHoverText.colour}
+                    {colourPaletteObject.darkModeHoverText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -597,7 +597,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeHoverText.css}></div>
+                  <div className={colourPaletteObject.darkModeHoverText.css}></div>
                 </div>
               </div>
             </li>
@@ -619,7 +619,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.activeText.colour}
+                    {colourPaletteObject.activeText.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -628,7 +628,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.activeText.css}></div>
+                  <div className={colourPaletteObject.activeText.css}></div>
                 </div>
               </div>
             </li>
@@ -650,7 +650,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.borders.colour}
+                    {colourPaletteObject.borders.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -659,7 +659,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.borders.css}></div>
+                  <div className={colourPaletteObject.borders.css}></div>
                 </div>
               </div>
             </li>
@@ -681,7 +681,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.darkModeBorders.colour}
+                    {colourPaletteObject.darkModeBorders.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -690,7 +690,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.darkModeBorders.css}></div>
+                  <div className={colourPaletteObject.darkModeBorders.css}></div>
                 </div>
               </div>
             </li>
@@ -713,7 +713,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
               <div className='flex justify-center gap-1'>
                 <div className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
                   <h5 className='align-middle'>
-                    {colourPalette.hyperlinks.colour}
+                    {colourPaletteObject.hyperlinks.colour}
                   </h5>
                   <img
                     className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
@@ -722,7 +722,7 @@ function ColorPalette({ colourPalette, setColourPalette }) {
                   />
                 </div>
                 <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPalette.hyperlinks.css}></div>
+                  <div className={colourPaletteObject.hyperlinks.css}></div>
                 </div>
               </div>
             </li>
@@ -733,4 +733,4 @@ function ColorPalette({ colourPalette, setColourPalette }) {
   );
 }
 
-export default ColorPalette;
+export default ColourPalette;

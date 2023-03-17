@@ -15,7 +15,7 @@ function Contact() {
         {/* Main */}
         <main className='grid md:mx-8 lg:h-full lg:grid-cols-2 p-2'>
           {/* Info */}
-          <section className='grid h-min items-center my-4 md:my-auto lg:mx-20'>
+          <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
             <article className='m-1 bg-main-colour h-min mb-4 p-4 rounded'>
               <div className='text-center mt-4'>
                 <h1 className='text-2xl font-bold'>Contact Me!</h1>
@@ -36,7 +36,7 @@ function Contact() {
             </article>
 
             <div className='grid grid-cols-3 mx-1 gap-2'>
-              <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+              <article className='grid bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
                 <div className='grid justify-center'>
                   <div className='grid justify-center'>
                     <MdEmail />

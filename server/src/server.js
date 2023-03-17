@@ -43,7 +43,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 // Start of actions
 app.use('/', authRouter);
-app.use('/color-palette', paletteRouter);
+app.use('/colour-palette', paletteRouter);
 app.use('/complaints', complaintRouter);
 app.use('/components', componentRouter);
 app.use('/contacts', contactRouter);

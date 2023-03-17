@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 // Components
-import ColorPalette from '../../components/palette/ColorPalette';
+import ColourPalette from '../../components/palette/ColourPalette';
 import NavOptions from './NavOptions';
 import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
@@ -32,7 +32,7 @@ function DesignElement({
   // User Stories
   const [userStoriesArr, setUserStoriesArr] = useState([]);
   // Colour palette
-  const [colourPalette, setColourPalette] = useState(paletteTemplate);
+  const [colourPaletteObject, setColourPaletteObject] = useState(paletteTemplate);
 
   useEffect(() => {
     if (openDesign) {
@@ -153,11 +153,11 @@ function DesignElement({
                 />
               )}
               {displayElement === 'palette' && (
-                <ColorPalette
+                <ColourPalette
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
-                  colourPalette={colourPalette}
-                  setColourPalette={setColourPalette}
+                  colourPaletteObject={colourPaletteObject}
+                  setColourPaletteObject={setColourPaletteObject}
                 />
               )}
               {displayElement === 'pages' && (

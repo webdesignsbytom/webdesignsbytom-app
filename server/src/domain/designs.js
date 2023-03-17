@@ -17,7 +17,7 @@ export const findDesignById = (designId) =>
     where: { id: designId },
     include: {
       navDesign: true,
-      colorPalette: true,
+      colourPalette: true,
       userStories: true,
     },
   });
@@ -27,7 +27,7 @@ export const findUserDesignsById = (userId) =>
     where: { userId: userId },
     include: {
       navDesign: true,
-      colorPalette: true,
+      colourPalette: true,
       userStories: true,
     },
     orderBy: {
@@ -56,7 +56,7 @@ export const checkFileDoesntExist = (name, userId) =>
 export const createDesign = (
   name,
   navDesign,
-  colorPalette,
+  colourPalette,
   userStories,
   userId
 ) =>
@@ -70,7 +70,7 @@ export const createDesign = (
     },
     include: {
       navDesign: true,
-      colorPalette: true,
+      colourPalette: true,
       userStories: true,
     },
   });

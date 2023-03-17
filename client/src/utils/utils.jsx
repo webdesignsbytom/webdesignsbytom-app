@@ -26,7 +26,7 @@ export const messageTemplate = {
 export const designTemplate = {
   name: 'untitled',
   navDesign: {},
-  colorPalette: [],
+  colourPalette: [],
   userStories: [{ content: 'I want my website to suit me perfectly' }],
   userId: '',
 };
