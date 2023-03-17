@@ -31,6 +31,7 @@ import { UserContext } from './context/UserContext';
 import ProjectContainer from './pages/project/ProjectContainer';
 import PortfolioItem from './pages/portfolio/PortfolioItem';
 import MessageOpen from './components/messages/MessageOpen';
+import SendNewMessage from './pages/messages/SendNewMessage';
 
 function App() {
 
@@ -87,7 +88,10 @@ function App() {
           path='user/:userId/messages/:messageId'
           element={<MessageOpen />}
         />
-
+        <Route
+          path='user/messages/create-new'
+          element={<SendNewMessage />}
+        />
 
         {/* Projects */}
         <Route
