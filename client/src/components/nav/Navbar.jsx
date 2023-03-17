@@ -25,7 +25,7 @@ import Github from '../../img/social/github.svg';
 import Twitter from '../../img/social/twitter.svg';
 import LinkedIn from '../../img/social/linkedin.svg';
 import Instagram from '../../img/social/instagram.svg';
-import contactIcon from '../../img/contactIcon.svg'
+import contactIcon from '../../img/contactIcon.svg';
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';
@@ -72,7 +72,7 @@ function Navbar() {
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
-    setToggleContacts(false)
+    setToggleContacts(false);
   };
 
   const displayEvents = () => {
@@ -81,7 +81,7 @@ function Navbar() {
     setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
-    setToggleContacts(false)
+    setToggleContacts(false);
   };
 
   const displayNotifications = () => {
@@ -90,7 +90,7 @@ function Navbar() {
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
-    setToggleContacts(false)
+    setToggleContacts(false);
   };
 
   const displayMessages = () => {
@@ -99,7 +99,7 @@ function Navbar() {
     setToggleNotifications(false);
     setToggleTests(false);
     setToggleEvents(false);
-    setToggleContacts(false)
+    setToggleContacts(false);
   };
 
   const displayTest = () => {
@@ -108,11 +108,11 @@ function Navbar() {
     setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleEvents(false);
-    setToggleContacts(false)
+    setToggleContacts(false);
   };
 
   const displayContacts = () => {
-    setToggleContacts(true)
+    setToggleContacts(true);
     setToggleTests(false);
     setToggleMessages(false);
     setToggleNavigation(false);
@@ -162,7 +162,7 @@ function Navbar() {
               closeNavbar();
               closeMessages();
               closeEvents();
-              closeContacts()
+              closeContacts();
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
@@ -181,7 +181,7 @@ function Navbar() {
                 closeNotifications();
                 closeMessages();
                 closeEvents();
-                closeContacts()
+                closeContacts();
               }}
               className='md:hidden'
             >
@@ -303,7 +303,12 @@ function Navbar() {
             </nav>
           </section>
           <div className='hidden md:flex'>
-            <SocialBar colour={'white'} />
+            <SocialBar
+              textColour={'white'}
+              borderColour={'white'}
+              darkColour={'colour-dark'}
+              darkBorderColour={'colour-dark'}
+            />
           </div>
         </section>
       </div>
@@ -556,52 +561,12 @@ function Navbar() {
             </li>
             {/* Social links */}
             <li className='phone__nav__li flex justify-center'>
-              <section className='flex gap-1 border-2 border-black border-solid p-2 space-x-2'>
-                <div>
-                  <a
-                    href='https://github.com/webdesignbytom'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img src={Github} className='social__link w-6' alt='github' />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href='https://twitter.com/webdesignsbytom'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img src={Twitter} className='social__link w-6' alt='twitter' />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href='https://www.linkedin.com/in/tom-brockington-b011b8230/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img
-                      src={LinkedIn}
-                      className='social__link w-6'
-                      alt='linkedIn'
-                    />
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href='https://www.instagram.com/webdesignsbytom/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <img
-                      src={Instagram}
-                      className='social__link w-6'
-                      alt='instagram'
-                    />
-                  </a>
-                </div>
-              </section>
+              <SocialBar
+                textColour={'white'}
+                borderColour={'white'}
+                darkColour={'colour-dark'}
+                darkBorderColour={'colour-dark'}
+              />
             </li>
           </ul>
         </div>

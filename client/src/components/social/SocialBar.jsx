@@ -5,16 +5,16 @@ import { BsGithub } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 
-function SocialBar({ colour, darkColour }) {
+function SocialBar({ textColour, borderColour, darkTextColour, darkBorderColour }) {
   return (
     <>
-      <section className={`flex gap-1 border-2 border-${colour} border-solid p-2 space-x-2 w-fit`} >
+      <section className={`flex gap-1 border-2 border-${borderColour} dark:border-${darkBorderColour} border-solid p-2 space-x-2 w-fit`} >
         <div>
           <a
             href='https://github.com/webdesignbytom'
             target='_blank'
             rel='noreferrer'
-            className={`text-${colour} hover:text-active-text`}
+            className={`text-${textColour} dark:text-${darkTextColour} hover:text-active-text`}
           >
             <BsGithub />
           </a>
@@ -24,7 +24,7 @@ function SocialBar({ colour, darkColour }) {
             href='https://twitter.com/webdesignsbytom'
             target='_blank'
             rel='noreferrer'
-            className={`text-${colour} hover:text-active-text`}
+            className={`text-${textColour} dark:text-${darkTextColour} hover:text-active-text`}
           >
             <BsTwitter />
           </a>
@@ -34,7 +34,7 @@ function SocialBar({ colour, darkColour }) {
             href='https://www.linkedin.com/in/tom-brockington-b011b8230/'
             target='_blank'
             rel='noreferrer'
-            className={`text-${colour} hover:text-active-text`}
+            className={`text-${textColour} dark:text-${darkTextColour} hover:text-active-text`}
           >
             <BsLinkedin />
           </a>
@@ -44,7 +44,7 @@ function SocialBar({ colour, darkColour }) {
             href='https://www.instagram.com/webdesignsbytom/'
             target='_blank'
             rel='noreferrer'
-            className={`text-${colour} hover:text-active-text`}
+            className={`text-${textColour} dark:text-${darkTextColour} hover:text-active-text`}
           >
             <BsInstagram />
           </a>

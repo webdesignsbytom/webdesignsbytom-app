@@ -30,16 +30,18 @@ function Header() {
       </section>
       <section className='absolute bottom-10 flex justify-between w-full px-10'>
         <div>
-          <SocialBar border={'main-colour'} />
+          <SocialBar colour={'main-colour'} />
         </div>
-        <div><a
-                    href='mailto:tom@webdesignsbytom.com'
-                    rel='noreferrer'
-                    target='_blank'
-                    className='text-xs md:text-base'
-                  >
-                    tom@webdesignsbytom.com
-                  </a></div>
+        <div>
+          <a
+            href='mailto:tom@webdesignsbytom.com'
+            rel='noreferrer'
+            target='_blank'
+            className='text-xs md:text-base'
+          >
+            tom@webdesignsbytom.com
+          </a>
+        </div>
       </section>
     </header>
   );
