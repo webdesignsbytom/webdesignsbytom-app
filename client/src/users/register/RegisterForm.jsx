@@ -11,6 +11,8 @@ import CountrySelect from '../utils/CountrySelect';
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
 import { SubmitButton } from '../../components/utils/SubmitButtons';
+// React icons
+import { BsFolderPlus } from 'react-icons/bs';
 
 function RegisterForm() {
   const [registerResponseMessage, setRegisterResponseMessage] = useState(statusResults);

@@ -42,7 +42,7 @@ function Contact() {
                     <MdEmail />
                   </div>
                   <h4 className='text-sm font-semibold md:text-base'>Email</h4>
-                  <h5 className='text-ss md:text-xs'>
+                  <h5 className='text-ss md:text-xs break-words overflow-hidden'>
                     tom@webdesignsbytom.com
                   </h5>
                   <a

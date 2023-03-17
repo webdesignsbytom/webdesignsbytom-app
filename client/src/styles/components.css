@@ -88,5 +88,5 @@
 
 /* Social */
 .social__link {
-  @apply w-4 cursor-pointer hover:bg-hover-text transition ease-in-out duration-200
+  @apply w-4 cursor-pointer hover:text-white transition ease-in-out duration-200
 }

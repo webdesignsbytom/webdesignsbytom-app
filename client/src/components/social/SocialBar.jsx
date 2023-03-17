@@ -1,4 +1,10 @@
 import React from 'react';
+// React icons
+import { BsInstagram } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
+import { BsLinkedin } from 'react-icons/bs';
+import { BsTwitter } from 'react-icons/bs';
+
 // Icons
 import Github from '../../img/social/github.svg';
 import Twitter from '../../img/social/twitter.svg';
@@ -14,8 +20,9 @@ function SocialBar() {
             href='https://github.com/webdesignbytom'
             target='_blank'
             rel='noreferrer'
+            className='text-white hover:text-colour-dark'
           >
-            <img src={Github} className='social__link' alt='github' />
+            <BsGithub />
           </a>
         </div>
         <div>
@@ -23,8 +30,9 @@ function SocialBar() {
             href='https://twitter.com/webdesignsbytom'
             target='_blank'
             rel='noreferrer'
+            className='text-white hover:text-colour-dark'
           >
-            <img src={Twitter} className='social__link' alt='twitter' />
+            <BsTwitter />
           </a>
         </div>
         <div>
@@ -32,8 +40,9 @@ function SocialBar() {
             href='https://www.linkedin.com/in/tom-brockington-b011b8230/'
             target='_blank'
             rel='noreferrer'
+            className='text-white hover:text-colour-dark'
           >
-            <img src={LinkedIn} className='social__link' alt='linkedIn' />
+            <BsLinkedin />
           </a>
         </div>
         <div>
@@ -41,8 +50,9 @@ function SocialBar() {
             href='https://www.instagram.com/webdesignsbytom/'
             target='_blank'
             rel='noreferrer'
+            className='text-white hover:text-colour-dark'
           >
-            <img src={Instagram} className='social__link' alt='instagram' />
+            <BsInstagram />
           </a>
         </div>
       </section>

@@ -13,12 +13,12 @@ import client from '../../utils/client';
 import { UserContext } from '../../context/UserContext';
 // Icons
 import QuestionMark from '../../img/questionMark.svg';
-import FloppyDisk from '../../img/floppyDisk.svg';
-import Bin from '../../img/bin.svg';
-import Undo from '../../img/undo.svg';
-import NewFile from '../../img/newFile.svg';
 // Utils
 import { designTemplate, paletteTemplate } from '../../utils/utils';
+// React icons
+import { BsFolderPlus } from 'react-icons/bs';
+import { BsSave } from 'react-icons/bs';
+import { BsFolderMinus } from 'react-icons/bs';
 
 function DesignElement({
   displayElement,
@@ -116,41 +116,19 @@ function DesignElement({
               <ul className='flex gap-4 justify-center align-middle'>
                 <li onClick={createNewDesign} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
-                    <img
-                      src={NewFile}
-                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
-                      alt='new design'
-                    />
+                    <BsFolderPlus className='mr-1 mt-1' />
                   </div>
                   <p>New</p>
                 </li>
                 <li onClick={saveUpdateDesign} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
-                    <img
-                      src={FloppyDisk}
-                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
-                      alt='save design'
-                    />
+                    <BsSave className='mr-1 mt-1' />
                   </div>
                   <p>Save</p>
                 </li>
                 <li className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
-                    <img
-                      src={Undo}
-                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
-                      alt='undo last change'
-                    />
-                  </div>
-                  <p>Undo</p>
-                </li>
-                <li className='menu__link'>
-                  <div className='grid w-full items-center justify-center'>
-                    <img
-                      src={Bin}
-                      className='animation__wiggle w-5 md:w-6 lg:pr-1'
-                      alt='delete design'
-                    />
+                    <BsFolderMinus className='mr-1 mt-1' />
                   </div>
                   <p>Delete</p>
                 </li>
