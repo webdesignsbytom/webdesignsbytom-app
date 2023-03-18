@@ -10,13 +10,23 @@ import Footer from '../../components/footer/Footer';
 import { ToggleContext } from '../../context/ToggleContext';
 
 function PortfolioHome() {
-  const { toggleNavigation } = useContext(ToggleContext);
+  const {
+    toggleNavigation,
+    toggleNotifications,
+    toggleMessages,
+    toggleEvents,
+    toggleContacts,
+  } = useContext(ToggleContext);
   console.log('toggleNavigation', toggleNavigation);
 
   return (
     <div>
       <Navbar />
-      {!toggleNavigation && (
+      {(!toggleNavigation ||
+        !toggleNotifications ||
+        !toggleMessages ||
+        !toggleEvents ||
+        !toggleContacts) && (
         <>
           <Header />
           <About />
