@@ -63,7 +63,7 @@ function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className='lg:w-full lg:my-auto lg:px-8'>
+      <form onSubmit={handleSubmit} className='lg:w-full lg:my-auto lg:px-2'>
         {/* <!-- Email input --> */}
         <div className='mb-1'>
           <label htmlFor='email'>Email:</label>

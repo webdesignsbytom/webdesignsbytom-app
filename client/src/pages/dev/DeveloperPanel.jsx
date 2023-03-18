@@ -3,31 +3,19 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
-import LoggedInUser from '../../utils/LoggedInUser';
 import EventsContainer from '../../components/events/EventsContainer';
-import SearchOptionsDev from '../../components/dev/DevSearch';
-// Fetch
-import { getEventsLog, setFormByUserId } from '../../utils/Fetch';
-// Data
-import client from '../../utils/client';
-import NotificationsContainer from '../../components/notifications/NotificationsContainer';
-import MessagesContainer from '../../components/messages/MessagesContainer';
 import DevOverview from '../../components/dev/DevOverview';
 import Analytics from '../../components/analytics/Analytics';
 import DevSearch from '../../components/dev/DevSearch';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import EventItem from '../../components/events/EventItem';
+// Fetch
+import { getEventsLog } from '../../utils/Fetch';
 
 function DeveloperPanel() {
   const { user } = useContext(UserContext);
-  const [updateUserForm, setUpdateUserForm] = useState(user);
-  const [resendVerification, setResendVerification] = useState(true);
   // Events
   const [allEvents, setAllEvents] = useState([]);
-  // Notifications
-  const [allNotifications, setAllNotifications] = useState([]);
-  // Messages
-  const [userMessages, setUserMessages] = useState([]);
   // Display items
   const [displayOverview, setDisplayOverview] = useState(false);
   const [displayAnalytics, setDisplayAnalytics] = useState(false);
@@ -35,44 +23,10 @@ function DeveloperPanel() {
   const [displaySearch, setDisplaySearch] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
   const [selectedNavElement, setSelectedNavElement] = useState('overview');
-  // Favorites
-  const [listOfFavorites, setListOfFavorites] = useState([]);
 
   useEffect(() => {
-    const foundUser = LoggedInUser();
-    setFormByUserId(foundUser.id, setUpdateUserForm);
-
-    // Notifications
-    client
-      .get(`/notifications/user-notifications/${user.id}`)
-      .then((res) => {
-        console.log('res', res.data);
-        setAllNotifications(res.data.data.notifications);
-      })
-      .catch((err) => {
-        console.error('Unable to get notifications', err);
-      });
-
-    client
-      .get(`/messages/user-messages/${user.id}`)
-      .then((res) => {
-        console.log('response', res.data);
-        setUserMessages(res.data.data.messages);
-      })
-      .catch((err) => {
-        console.error('Unable to get user messages', err);
-      });
-
     getEventsLog(setAllEvents);
   }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (!user.isVerified) {
-        setResendVerification(false);
-      }
-    }, 2000);
-  }, [user.isVerified]);
 
   return (
     <>
@@ -187,9 +141,7 @@ function DeveloperPanel() {
                         />
                       </div>
                     ) : (
-                      <NotificationsContainer
-                        notifications={allNotifications}
-                      />
+                      <div>center of whatever</div>
                     )}
                   </div>
                   <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'></div>
@@ -224,15 +176,7 @@ function DeveloperPanel() {
                     Favorites
                   </h3>
                   <ul className='bg-main-colour grid h-full'>
-                    {listOfFavorites > 0 ? (
-                      listOfFavorites.map((favorite, index) => {
-                        return <li key={index}>{favorite.name}</li>;
-                      })
-                    ) : (
-                      <div className='grid justify-center'>
-                        <p>Nothing to display</p>
-                      </div>
-                    )}
+                   todos
                   </ul>
                 </div>
               </section>

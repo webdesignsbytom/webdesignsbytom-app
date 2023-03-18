@@ -23,7 +23,7 @@ function Experience() {
           </div>
           <div className='grid grid-cols-3 md:grid-cols-2 gap-2 lg:gap-6'>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -34,7 +34,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -45,7 +45,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -56,7 +56,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -67,7 +67,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -78,7 +78,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -89,7 +89,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>
@@ -100,7 +100,7 @@ function Experience() {
               </div>
             </article>
             <article className='flex justify-center py-1 px-2'>
-              <div className='grid justify-center lg:grid-cols-reg w-fit'>
+              <div className='grid justify-center lg:grid-cols-item w-fit'>
                 <section className='flex items-center justify-center my-2 lg:pr-4'>
                   <BsFillPatchCheckFill />
                 </section>

@@ -1,10 +1,27 @@
 import React, { useState } from 'react';
 // Icons
 import changeIcon from '../../img/changeIcon.svg';
-import QuestionMark from '../../img/questionMark.svg';
+// Colour picker
+import { SketchPicker } from 'react-color';
+import Swatches from './Swatches';
+import ColourItem from './ColourItem';
 
 function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   console.log('2. Palette', colourPaletteObject);
+
+  const [currentColour, setCurrentColour] = useState({ background: '#000' });
+  const [displayPicker, setDisplayPicker] = useState(false);
+  console.log('currentColour', currentColour);
+
+  const handleChangeComplete = (color) => {
+    setCurrentColour({ background: color.hex });
+  };
+
+  const openPicker = (event) => {
+    const { id } = event.target;
+    console.log('id', id);
+    setDisplayPicker(!displayPicker);
+  };
   // Card One
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
   const [rgbCardOne, setRgbCardOne] = useState('#0099ff');
@@ -48,13 +65,25 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
         <div></div>
       </div>
       {/* Main */}
-      <section className='grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
+      <section className='relative grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
         {/* Colour Picker */}
+        {displayPicker && (
+          <div className='z-10 absolute top-0 cursor-pointer'>
+            <SketchPicker
+              color={currentColour.background}
+              onChangeComplete={handleChangeComplete}
+            />
+          </div>
+        )}
         <section className='grid lg:grid-cols-xo'>
           {/* Swatches */}
           <div className='grid grid-cols-5 lg:ml-2 my-3'>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
-              <div className={cardOneBg}></div>
+              <div
+                className={`${cardOneBg} cursor-pointer`}
+                id='cardOneBg'
+                onClick={openPicker}
+              ></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
@@ -94,7 +123,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
               />
             </div>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
-              <div className={cardTwoBg}></div>
+              <div
+                className={`${cardTwoBg} cursor-pointer`}
+                id='cardTwoBg'
+                onClick={openPicker}
+              ></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
@@ -134,7 +167,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
               />
             </div>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
-              <div className={cardThreeBg}></div>
+              <div
+                className={`${cardThreeBg} cursor-pointer`}
+                id='cardThreeBg'
+                onClick={openPicker}
+              ></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
@@ -174,7 +211,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
               />
             </div>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
-              <div className={cardFourBg}></div>
+              <div
+                className={`${cardFourBg} cursor-pointer`}
+                id='cardFourBg'
+                onClick={openPicker}
+              ></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
@@ -214,7 +255,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
               />
             </div>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
-              <div className={cardFiveBg}></div>
+              <div
+                className={`${cardFiveBg} cursor-pointer`}
+                id='cardFiveBg'
+                onClick={openPicker}
+              ></div>
               <article className='h-min text-xs'>
                 <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
@@ -255,68 +300,21 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             </div>
           </div>
           {/* Result cods */}
-          <section className='h-min'>
-            <div className='px-2'>
-              <h4>Cool Slate</h4>
-              <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-slate-700'></div>
-                <div className='h-6 bg-slate-300'></div>
-                <div className='h-6 bg-slate-200'></div>
-                <div className='h-6 bg-slate-500'></div>
-                <div className='h-6 bg-white'></div>
-                <div className='h-6 bg-black'></div>
-              </article>
-            </div>
-            <div className='px-2'>
-              <h4>Warm Yellow</h4>
-              <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-yellow-700'></div>
-                <div className='h-6 bg-yellow-300'></div>
-                <div className='h-6 bg-yellow-200'></div>
-                <div className='h-6 bg-yellow-500'></div>
-                <div className='h-6 bg-white'></div>
-                <div className='h-6 bg-black'></div>
-              </article>
-            </div>
-            <div className='px-2'>
-              <h4>Natural Green</h4>
-              <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-green-700'></div>
-                <div className='h-6 bg-green-300'></div>
-                <div className='h-6 bg-green-200'></div>
-                <div className='h-6 bg-green-500'></div>
-                <div className='h-6 bg-white'></div>
-                <div className='h-6 bg-black'></div>
-              </article>
-            </div>
-            <div className='px-2'>
-              <h4>Deep Red</h4>
-              <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-red-700'></div>
-                <div className='h-6 bg-red-300'></div>
-                <div className='h-6 bg-red-200'></div>
-                <div className='h-6 bg-red-500'></div>
-                <div className='h-6 bg-white'></div>
-                <div className='h-6 bg-black'></div>
-              </article>
-            </div>
-            <div className='px-2'>
-              <h4>Ocean Blue</h4>
-              <article className='grid grid-cols-6 border-solid border-black border-[1px]'>
-                <div className='h-6 bg-blue-700'></div>
-                <div className='h-6 bg-blue-300'></div>
-                <div className='h-6 bg-blue-200'></div>
-                <div className='h-6 bg-blue-500'></div>
-                <div className='h-6 bg-white'></div>
-                <div className='h-6 bg-black'></div>
-              </article>
-            </div>
-          </section>
+          <Swatches />
         </section>
         {/* Saved Options */}
         <section>
           <ul className='grid md:grid-cols-2 lg:grid-cols-3 w-full'>
-            <li className='grid mx-6'>
+            {colourPaletteObject.map((colour, index) => {
+              return (
+                <ColourItem
+                  key={index}
+                  colour={colour}
+                  openPicker={openPicker}
+                />
+              );
+            })}
+            {/* <li className='grid mx-6'>
               <div className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
                 <h4 className='text-sm mt-1'>Main Background</h4>
                 <div className='relative group flex align-middle h-full pl-1 pt-1'>
@@ -337,13 +335,16 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     {colourPaletteObject.mainBackground.colour}
                   </h5>
                   <img
-                    className='w-4 cursor-pointer focus:animate-spin active:animate-spin '
+                    className='w-4 cursor-pointer focus:animate-spin active:animate-spin'
                     src={changeIcon}
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.mainBackground.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    className={colourPaletteObject.mainBackground.css}
+                    onClick={openPicker}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -373,8 +374,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.altBackground.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.altBackground.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -405,8 +409,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.navBackground.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.navBackground.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -437,8 +444,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.darkModeBackground.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.darkModeBackground.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -468,8 +478,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.mainText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.mainText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -500,8 +513,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.darkModeMainText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.darkModeMainText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -532,8 +548,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.altText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.altText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -564,8 +583,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.hoverText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.hoverText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -596,8 +618,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.darkModeHoverText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.darkModeHoverText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -627,8 +652,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.activeText.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.activeText.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -658,8 +686,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.borders.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.borders.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -689,8 +720,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.darkModeBorders.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    onClick={openPicker}
+                    className={colourPaletteObject.darkModeBorders.css}
+                  ></div>
                 </div>
               </div>
             </li>
@@ -721,11 +755,15 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                     alt='switch colour format'
                   />
                 </div>
-                <div className='border-2 border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
-                  <div className={colourPaletteObject.hyperlinks.css}></div>
+                <div className='border-2 cursor-pointer border-black border-solid rounded w-[30px] grid grid-rows-1 overflow-hidden'>
+                  <div
+                    id='hyperlinks'
+                    onClick={openPicker}
+                    className={colourPaletteObject.hyperlinks.css}
+                  ></div>
                 </div>
               </div>
-            </li>
+            </li> */}
           </ul>
         </section>
       </section>

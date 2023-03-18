@@ -36,6 +36,7 @@ module.exports = {
         'a1a': 'auto 1fr auto',
         'aa': 'auto auto',
         '3x': '3fr 1fr',
+        'item': '50px 1fr',
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
@@ -50,7 +51,7 @@ module.exports = {
         '2a': '2fr 1fr auto',
         '3a': '1fr 1fr 0.7fr auto',
         '3x': '3fr 1fr',
-
+        'item': '50px 1fr',
       },
       width: {
         id: '12ch;'

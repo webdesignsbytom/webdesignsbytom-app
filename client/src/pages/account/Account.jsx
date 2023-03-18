@@ -42,9 +42,6 @@ function Account() {
   console.log('user', user);
 
   useEffect(() => {
-    const foundUser = LoggedInUser();
-    console.log(' xx foundUser', foundUser);
-
     client
       .get(`/users/${user.id}`)
       .then((res) => {
@@ -58,60 +55,6 @@ function Account() {
       .catch((err) => {
         console.error('Unable to get user by id', err);
       });
-
-    // Notifications
-    // client
-    //   .get(`/notifications/user-notifications/${user.id}`)
-    //   .then((res) => {
-    //     setAllNotifications(res.data.data.notifications);
-    //   })
-    //   .catch((err) => {
-    //     console.error('Unable to get notifications', err);
-    //   });
-
-    // client
-    //   .get(`/messages/user-messages/${user.id}`)
-    //   .then((res) => {
-    //     setUserMessages(res.data.data.messages);
-    //   })
-    //   .catch((err) => {
-    //     console.error('Unable to get user messages', err);
-    //   });
-
-    // client
-    //   .get(`/designs/user-designs/${user.id}`)
-    //   .then((res) => {
-    //     setUserDesigns(res.data.data.designs);
-    //     setDesignResponse({
-    //       status: true,
-    //       message: 'Success',
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     setDesignResponse({
-    //       status: false,
-    //       message: 'Fail',
-    //     });
-    //     console.error('Unable to get all notifications', err.response);
-    //   });
-
-    // client
-    //   .get(`/projects/user-projects/${user.id}`)
-    //   .then((res) => {
-    //     console.log('project res', res.data);
-    //     setUserProjects(res.data.data.projects);
-    //     setProjectResponse({
-    //       status: true,
-    //       message: 'Success',
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     setProjectResponse({
-    //       status: false,
-    //       message: 'Fail',
-    //     });
-    //     console.error('Unable to get all notifications', err.response);
-    //   });
   }, [user.id]);
 
   useEffect(() => {

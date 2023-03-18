@@ -1,21 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
+import { ToggleContext } from '../../context/ToggleContext';
 // Components
 import Navbar from '../../components/nav/Navbar';
-import LoggedInUser from '../../utils/LoggedInUser';
-// Fetch
-import { setFormByUserId } from '../../utils/Fetch';
-// Data
-import client from '../../utils/client';
 import AdminOverview from '../../components/admin/AdminOverview';
 import UsersContainer from '../../components/users/UsersContainer';
 import ContactsContainer from '../../components/contacts/ContactsContainer';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
-import ProjectsOverview from '../../components/account/ProjectsOverview';
 import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
-import { ToggleContext } from '../../context/ToggleContext';
+// Data
+import client from '../../utils/client';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
@@ -40,10 +36,6 @@ function AdminPanel() {
   const [listOfFavorites, setListOfFavorites] = useState([]);
 
   useEffect(() => {
-    const foundUser = LoggedInUser();
-    setFormByUserId(foundUser.id, setUpdateUserForm);
-
-    // Notifications
     client
       .get(`/contacts`)
       .then((res) => {

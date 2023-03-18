@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
+// Forms
 import ContactForm from './ContactForm';
 // React icons
 import { GiRaven } from 'react-icons/gi';
@@ -17,7 +18,7 @@ function Contact() {
         <Navbar />
         {/* Main */}
         {!toggleNavigation && (
-          <main className='grid md:mx-8 lg:h-full lg:grid-cols-2 p-2'>
+          <main className='grid md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
             {/* Info */}
             <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
               <article className='m-1 bg-main-colour h-min mb-4 p-4 rounded'>

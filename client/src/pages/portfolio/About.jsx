@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // Images
 import Avatar from '../../img/TomAvatar.jpg';
 import ExperienceIcon from '../../img/home.svg';
-import { Link } from 'react-router-dom';
 
 function About() {
   return (

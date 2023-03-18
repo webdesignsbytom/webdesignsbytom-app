@@ -30,7 +30,10 @@ function Header() {
       </section>
       <section className='absolute bottom-10 flex justify-between w-full px-10'>
         <div>
-          <SocialBar colour={'main-colour'} />
+        <SocialBar
+              borders={'border-main-colour dark:border-colour-dark'}
+              icons={'text-main-colour dark:text-colour-dark'}
+            />
         </div>
         <div>
           <a

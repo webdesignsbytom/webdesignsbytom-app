@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import Navbar from '../../components/nav/Navbar'
 function HeroPage() {
   return (
-    <div>
+    <div className='h-screen grid grid-rows-reg'>
       <Navbar />
-      <section>
-        <div>
+      <section className='grid h-full align-middle items-center justify-center'>
+        <div className='w-full min-w-[300px] grid gap-2'>
           <Link to='/developer'><button className='submit__button'>Hire Private</button></Link>
-          <Link to='/portfolio'><button className='submit__button'>Hire Dev</button></Link>
+          <Link to='/portfolio'><button className='alt__submit__button'>Hire Dev</button></Link>
         </div>
       </section>
     </div>

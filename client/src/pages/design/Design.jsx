@@ -5,9 +5,11 @@ import DesignElement from './DesignElement';
 import OptionsNav from './OptionsNav';
 // Context
 import { UserContext } from '../../context/UserContext';
-import client from '../../utils/client';
-import { designTemplate } from '../../utils/utils';
 import { ToggleContext } from '../../context/ToggleContext';
+// Utils
+import { designTemplate } from '../../utils/utils';
+// Data
+import client from '../../utils/client';
 
 function Design() {
   const { user } = useContext(UserContext);
@@ -16,7 +18,6 @@ function Design() {
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([]);
   const [openDesign, setOpenDesign] = useState(designTemplate);
-  console.log('1. openDesign', openDesign);
 
   useEffect(() => {
     console.log('get designs');
