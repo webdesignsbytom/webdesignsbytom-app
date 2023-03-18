@@ -304,10 +304,8 @@ function Navbar() {
           </section>
           <div className='hidden md:flex'>
             <SocialBar
-              textColour={'white'}
-              borderColour={'white'}
-              darkColour={'colour-dark'}
-              darkBorderColour={'colour-dark'}
+              borders={'border-white dark:border-colour-dark'}
+              icons={'text-white dark:text-colour-dark'}
             />
           </div>
         </section>
@@ -560,14 +558,12 @@ function Navbar() {
               </div>
             </li>
             {/* Social links */}
-            <div className='my-2'>
+            <div className='my-2 flex justify-center'>
               <SocialBar
-                textColour={'white'}
-                borderColour={'white'}
-                darkColour={'colour-dark'}
-                darkBorderColour={'colour-dark'}
+                borders={'border-white dark:border-colour-dark'}
+                icons={'text-white dark:text-colour-dark'}
               />
-          </div>
+            </div>
           </ul>
         </div>
       )}
