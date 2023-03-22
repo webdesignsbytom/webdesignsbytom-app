@@ -21,10 +21,6 @@ import Notification from '../../img/notification.svg';
 import TestIcon from '../../img/testIcon.svg';
 import EventsIcon from '../../img/eventsIcon.svg';
 import Search from '../../img/search.svg';
-import Github from '../../img/social/github.svg';
-import Twitter from '../../img/social/twitter.svg';
-import LinkedIn from '../../img/social/linkedin.svg';
-import Instagram from '../../img/social/instagram.svg';
 import contactIcon from '../../img/contactIcon.svg';
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
@@ -152,8 +148,8 @@ function Navbar() {
 
   return (
     <>
-      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black lg:w-full'>
-        <section className='flex h-16 items-center justify-between px-4'>
+      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black lg:w-full overflow-hidden'>
+        <section className='flex relative h-16 items-center justify-between px-4'>
           {/* Logo */}
           <div
             onClick={() => {
