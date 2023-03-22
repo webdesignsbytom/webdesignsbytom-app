@@ -1,7 +1,7 @@
 import React from 'react';
 // Icons
-import changeIcon from '../../img/changeIcon.svg';
-import QuestionMark from '../../img/questionMark.svg';
+import changeIcon from '../../assets/img/changeIcon.svg';
+import QuestionMark from '../../assets/img/questionMark.svg';
 
 function ColourItem({ colour, openPicker }) {
     

@@ -1,12 +1,12 @@
 import React from 'react';
-import GitHubIcon from '../../img/github-black.svg'
-import HTML5Icon from '../../img/html5.svg'
-import NodeIcon from '../../img/nodejs.svg'
-import Javascript from '../../img/javascript.svg'
-import ExpressJS from '../../img/expressjs.svg'
-import ReactJSIcon from '../../img/reactjs-icon.svg';
-import TailwindIcon from '../../img/tailwindcss-icon.svg';
-import Prisma from '../../img/file_type_light_prisma.svg';
+import GitHubIcon from '../../assets/img/github-black.svg'
+import HTML5Icon from '../../assets/img/html5.svg'
+import NodeIcon from '../../assets/img/nodejs.svg'
+import Javascript from '../../assets/img/javascript.svg'
+import ExpressJS from '../../assets/img/expressjs.svg'
+import ReactJSIcon from '../../assets/img/reactjs-icon.svg';
+import TailwindIcon from '../../assets/img/tailwindcss-icon.svg';
+import Prisma from '../../assets/img/file_type_light_prisma.svg';
 
 
 function OrbitAnimation() {

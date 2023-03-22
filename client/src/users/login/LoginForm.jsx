@@ -3,12 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 // Components
 import { SubmitButton } from '../../components/utils/SubmitButtons';
 // Utils
-import { showPassword } from '../../utils/PasswordReveal';
+import { showPassword } from '../../users/utils/PasswordReveal';
 import { loginDataTemplate, statusResults } from '../utils/utils';
 // Fetch
 import { postLogin } from '../../utils/Fetch';
 // Icons
-import OpenEye from '../../img/eye.svg';
+import OpenEye from '../../assets/img/eye.svg';
 
 function LoginForm({ setUser }) {
   const [loginResponseMessage, setLoginResponseMessage] = useState(statusResults);

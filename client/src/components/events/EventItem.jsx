@@ -1,7 +1,7 @@
 import React from 'react';
 // Icons
-import EyeIcon from '../../img/eye.svg';
-import BinIcon from '../../img/bin.svg';
+import EyeIcon from '../../assets/img/eye.svg';
+import BinIcon from '../../assets/img/bin.svg';
 
 function EventItem({ event }) {
   const { type, topic, code, content, createdById, receivedById, createdAt } =

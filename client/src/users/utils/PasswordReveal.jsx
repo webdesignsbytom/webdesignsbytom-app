@@ -1,6 +1,6 @@
 // Icons
-import OpenEye from '../img/eye.svg';
-import ClosedEye from '../img/closedEye.svg';
+import OpenEye from '../../assets/img/eye.svg';
+import ClosedEye from '../../assets/img/closedEye.svg';
 
 export function showPassword(fieldType, setFieldType, setEyeIcon) {
   if (fieldType === 'password') {

@@ -6,22 +6,22 @@ import { UserContext } from '../../context/UserContext';
 // Data
 import { sampleUserData } from '../../users/utils/utils';
 // Icons
-import Home from '../../img/home.svg';
-import Account from '../../img/account.svg';
-import Design from '../../img/design.svg';
-import Contact from '../../img/contact.svg';
-import Portfolio from '../../img/portfolio.svg';
-import Login from '../../img/login.svg';
-import Register from '../../img/register.svg';
-import Logout from '../../img/logout.svg';
-import Admin from '../../img/admin.svg';
-import Developer from '../../img/developer.svg';
-import MessageIcon from '../../img/messageIcon.svg';
-import Notification from '../../img/notification.svg';
-import TestIcon from '../../img/testIcon.svg';
-import EventsIcon from '../../img/eventsIcon.svg';
-import Search from '../../img/search.svg';
-import contactIcon from '../../img/contactIcon.svg';
+import Home from '../../assets/img/home.svg';
+import Account from '../../assets/img/account.svg';
+import Design from '../../assets/img/design.svg';
+import Contact from '../../assets/img/contact.svg';
+import Portfolio from '../../assets/img/portfolio.svg';
+import Login from '../../assets/img/login.svg';
+import Register from '../../assets/img/register.svg';
+import Logout from '../../assets/img/logout.svg';
+import Admin from '../../assets/img/admin.svg';
+import Developer from '../../assets/img/developer.svg';
+import MessageIcon from '../../assets/img/messageIcon.svg';
+import Notification from '../../assets/img/notification.svg';
+import TestIcon from '../../assets/img/testIcon.svg';
+import EventsIcon from '../../assets/img/eventsIcon.svg';
+import Search from '../../assets/img/search.svg';
+import contactIcon from '../../assets/img/contactIcon.svg';
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';

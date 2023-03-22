@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { statusResults } from '../../users/utils/utils';
-// Spinner
+// Items
 import LoadingSpinner from '../utils/LoadingSpinner';
 import { SubmitButton } from '../utils/SubmitButtons';
 

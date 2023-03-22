@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
 // Icons
-import OpenEye from '../../img/eye.svg';
+import OpenEye from '../../assets/img/eye.svg';
 // Utils
-import { showConfirmPassword, showPassword } from '../../utils/PasswordReveal';
+import { showConfirmPassword, showPassword } from '../../users/utils/PasswordReveal';
 import { registerDataTemplate, registerFormResponses, statusResults } from '../utils/utils';
 import CountrySelect from '../utils/CountrySelect';
 // Validation

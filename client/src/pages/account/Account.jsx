@@ -10,7 +10,7 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Fetch
 import { setFormByUserId } from '../../utils/Fetch';
 // Utils
-import LoggedInUser from '../../utils/LoggedInUser';
+import LoggedInUser from '../../users/utils/LoggedInUser';
 import client from '../../utils/client';
 import { statusResults } from '../../users/utils/utils';
 import DesignsOverview from '../../components/account/DesignsOverview';

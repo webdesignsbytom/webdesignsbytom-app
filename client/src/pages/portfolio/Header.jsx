@@ -1,7 +1,7 @@
 import React from 'react';
 import SocialBar from '../../components/social/SocialBar';
 // PDF
-import CV from '../../assets/files/TomBrockingtonResume2023.pdf';
+import CV from '../../assets/pdf/TomBrockingtonResume2023.pdf';
 
 function Header() {
   return (

@@ -22,7 +22,7 @@ import {
   AuthenticateUser,
   AuthenticateAdmin,
   AuthenticateDeveloper,
-} from './utils/AuthenticateUser';
+} from './users/utils/AuthenticateUser';
 // Components
 import ConfirmPolicies from './components/popups/ConfirmPolicies';
 import MessagePhoneItem from './components/messages/MessagePhoneItem';

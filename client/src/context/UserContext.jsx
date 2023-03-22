@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 // Data
 import { sampleUserData } from '../users/utils/utils';
-import LoggedInUser from '../utils/LoggedInUser';
+import LoggedInUser from '../users/utils/LoggedInUser';
 // Fetch
 import { getUserById } from '../utils/Fetch';
 // Context

@@ -12,7 +12,7 @@ import client from '../../utils/client';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
-import QuestionMark from '../../img/questionMark.svg';
+import QuestionMark from '../../assets/img/questionMark.svg';
 // Utils
 import { designTemplate, paletteTemplate } from '../../utils/utils';
 // React icons

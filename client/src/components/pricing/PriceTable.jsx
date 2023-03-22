@@ -1,8 +1,8 @@
 import React from 'react';
 // Icons
-import checkIcon from '../../img/checkIcon.svg';
-import crossIcon from '../../img/closeCross.svg';
-import InfinityIcon from '../../img/infinityIcon.svg';
+import checkIcon from '../../assets/img/checkIcon.svg';
+import crossIcon from '../../assets/img/closeCross.svg';
+import InfinityIcon from '../../assets/img/infinityIcon.svg';
 // Utils
 import { pricingTableData } from '../../utils/utils';
 

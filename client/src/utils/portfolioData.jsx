@@ -1,23 +1,23 @@
 // Icons
-import ReactIcon from '../img/reactjs-icon.svg';
-import HTML5Icon from '../img/html5.svg';
-import TailwindIcon from '../img/tailwindcss-icon.svg';
-import CSS3icon from '../img/css3.svg';
-import Expressjs from '../img/expressjs.svg';
-import Prisma from '../img/file_type_light_prisma.svg';
-import Javascript from '../img/javascript.svg';
+import ReactIcon from '../assets/img/reactjs-icon.svg';
+import HTML5Icon from '../assets/img/html5.svg';
+import TailwindIcon from '../assets/img/tailwindcss-icon.svg';
+import CSS3icon from '../assets/img/css3.svg';
+import Expressjs from '../assets/img/expressjs.svg';
+import Prisma from '../assets/img/file_type_light_prisma.svg';
+import Javascript from '../assets/img/javascript.svg';
 // Photos
-import TavyEpoxy from '../img/tavyepoxyfull.png';
-import BioClicker from '../img/bioclickerMonitor.png';
-import Myecoapp from '../img/myecoapp.png';
-import LuxuryPoker from '../img/luxury-poker.png';
-import MyecoappMonitor from '../img/myecoappMonitor.png';
-import Calculator from '../img/calculator.png';
+import TavyEpoxy from '../assets/img/tavyepoxyfull.png';
+import BioClicker from '../assets/img/bioclickerMonitor.png';
+import Myecoapp from '../assets/img/myecoapp.png';
+import LuxuryPoker from '../assets/img/luxury-poker.png';
+import MyecoappMonitor from '../assets/img/myecoappMonitor.png';
+import Calculator from '../assets/img/calculator.png';
 // Photos - Phone
-import BioCLickerPhone from '../img/bioclickerPhone.jpg';
-import MyecoappPhone from '../img/myecoappPhone.jpg';
-import TavyepoxyPhone from '../img/tavyepoxyPhone.jpg';
-import MatchedbettingPhone from '../img/matchedbettingPhone.jpg';
+import BioCLickerPhone from '../assets/img/bioclickerPhone.jpg';
+import MyecoappPhone from '../assets/img/myecoappPhone.jpg';
+import TavyepoxyPhone from '../assets/img/tavyepoxyPhone.jpg';
+import MatchedbettingPhone from '../assets/img/matchedbettingPhone.jpg';
 
 export const initialData = {
   id: 1,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 // Icons
-import closeCross from '../../img/closeCross.svg';
-import backArrow from '../../img/backArrow.svg';
+import closeCross from '../../assets/img/closeCross.svg';
+import backArrow from '../../assets/img/backArrow.svg';
 
 function MessagePhoneItem() {
   const location = useLocation();
