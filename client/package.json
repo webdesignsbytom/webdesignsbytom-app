@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "https://www.webdesignsbytom.com",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.12",
