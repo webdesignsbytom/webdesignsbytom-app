@@ -1,5 +1,6 @@
-import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+// Context
+import { useContext } from 'react';
 // Pages
 import HeroPage from './pages/heros/HeroPage';
 import PortfolioHome from './pages/portfolio/PortfolioHome';
@@ -25,7 +26,6 @@ import {
 } from './users/utils/AuthenticateUser';
 // Components
 import ConfirmPolicies from './components/popups/ConfirmPolicies';
-import MessagePhoneItem from './components/messages/MessagePhoneItem';
 // Context
 import { UserContext } from './context/UserContext';
 import ProjectContainer from './pages/project/ProjectContainer';
@@ -34,8 +34,8 @@ import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
 
 function App() {
-
   const { toggleCookiePolicy } = useContext(UserContext)
+
   return (
     <>
       <Routes>
