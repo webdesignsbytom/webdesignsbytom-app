@@ -25,7 +25,7 @@ App developed with:
 
 Frontend: React, JavaScript, Tailwind, Axios, validator
 
-Backend: Express, Prisma, JavaScript
+Backend: Express, Prisma, JavaScript, express-handlebars
 
 ## Run this project locally
 
