@@ -13,6 +13,7 @@ function DesignsOverview({ userDesigns, designResponse }) {
   const startNewDesign = () => {
     console.log('design');
   };
+  
   return (
     <section>
       <div className='mb-2'>
