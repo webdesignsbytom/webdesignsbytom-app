@@ -28,7 +28,6 @@ export const createErrorEvent = async (errorEvent) => {
 
 export const createLoginErrorEvent = async (errorEvent) => {
   console.log('SSSS', errorEvent.user);
-  let userEmail = errorEvent.user;
 
   let codeId;
   if (errorEvent.code) {
