@@ -2,44 +2,40 @@ import React, { useEffect } from 'react';
 
 function Particles() {
   const useScript = (url) => {
-    
     useEffect(() => {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
-      console.log('canvas', canvas);
-      console.log('ctx', ctx);
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      canvas.style.position = 'absolute';
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
-
       const container = document.querySelector('#particles');
+
       container.appendChild(canvas);
+
+      var rect = canvas.parentNode.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
 
       let particlesArray;
 
       let mouse = {
         x: null,
         y: null,
-        radius: (canvas.height / 80) * (canvas.width / 80),
+        radius: (canvas.height / 90) * (canvas.width / 90),
       };
 
-      window.addEventListener('mousemove', function (e) {
+      container.addEventListener('mousemove', function (e) {
         console.log(e);
         mouse.x = e.x;
         mouse.y = e.y;
       });
 
       class Particle {
-        constructor(x, y, directionX, directionY, size, colour) {
+        constructor(x, y, directionX, directionY, size, colour, speed) {
           this.x = x;
           this.y = y;
           this.directionX = directionX;
           this.directionY = directionY;
           this.size = size;
           this.colour = colour;
+          this.speed = speed;
         }
 
         // draw each particle
@@ -89,9 +85,9 @@ function Particles() {
       // create particle array
       function init() {
         particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 9000;
-        for (let i = 0; i < numberOfParticles * 1.6; i++) {
-          let size = Math.random() * 5 + 1;
+        let numberOfParticles = (canvas.height * canvas.width) / 3000;
+        for (let i = 0; i < numberOfParticles * 5; i++) {
+          let size = Math.random() * 4 + 1;
           let x =
             Math.random() * (window.innerWidth - size * 2 - size * 2) +
             size * 2;
@@ -120,7 +116,7 @@ function Particles() {
                 (particlesArray[a].y - particlesArray[b].y);
 
             if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-              opacityValue = 1 - distance / 20000;
+              opacityValue = 1 - distance / 5000;
               ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
               ctx.beginPath();
               ctx.beginPath();
@@ -160,7 +156,11 @@ function Particles() {
       };
     }, [url]);
   };
-  return <div id='particles' className=''>{useScript()}</div>;
+  return (
+    <div id='particles' className='grid w-full h-full'>
+      {useScript()}
+    </div>
+  );
 }
 
 export default Particles;
