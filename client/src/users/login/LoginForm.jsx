@@ -47,7 +47,7 @@ function LoginForm({ setUser }) {
     <>
       <form
         onSubmit={handleLogin}
-        className='py-4 lg:w-full lg:my-auto lg:px-8'
+        className='py-4 lg:mt-10 lg:w-full lg:my-auto lg:px-8'
       >
         {/* <!-- Email input --> */}
         <div className='mb-6'>

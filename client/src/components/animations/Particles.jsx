@@ -87,27 +87,32 @@ function Particles() {
         }
       }
 
-      // create particle array
       function init() {
         particlesArray = [];
-        let numberOfParticles = (canvas.height * canvas.width) / 8000;
-        for (let i = 0; i < numberOfParticles * 3; i++) {
-          let size = Math.random() * 4 + 1;
-          let x = Math.random() * (rect.width - size * 2 - size * 2) + size * 2;
-          let y =
-            Math.random() * (rect.height - size * 2 - size * 2) + size * 2;
-          let directionX = Math.random() * 5 - 2.5;
-          let directionY = Math.random() * 5 - 2.5;
-          let colour = '#000000';
+        // create particle array for large screen
+        console.log('CS', canvas.width);
 
-          particlesArray.push(
-            new Particle(x, y, directionX, directionY, size, colour)
-          );
-        }
+        if (canvas.width < 500) {
+          console.log('aaa');
+          let numberOfParticles = (canvas.height * canvas.width) / 1800;
+          for (let i = 0; i < numberOfParticles * 2.2; i++) {
+            let size = Math.random() * 2 + 1;
+            let x =
+              Math.random() * (rect.width - size * 2 - size * 2) + size * 2;
+            let y =
+              Math.random() * (rect.height - size * 2 - size * 2) + size * 2;
+            let directionX = Math.random() * 5 - 2.5;
+            let directionY = Math.random() * 5 - 2.5;
+            let colour = '#000000';
 
-        if (particlesArray.length < 400) {
-          setInterval(() => {
-            console.log('x', particlesArray.length);
+            particlesArray.push(
+              new Particle(x, y, directionX, directionY, size, colour)
+            );
+          }
+        } else {
+          console.log('bbb');
+          let numberOfParticles = (canvas.height * canvas.width) / 1800;
+          for (let i = 0; i < numberOfParticles; i++) {
             let size = Math.random() * 4 + 1;
             let x =
               Math.random() * (rect.width - size * 2 - size * 2) + size * 2;
@@ -120,7 +125,7 @@ function Particles() {
             particlesArray.push(
               new Particle(x, y, directionX, directionY, size, colour)
             );
-          }, 100);
+          }
         }
       }
 
@@ -136,7 +141,12 @@ function Particles() {
                 (particlesArray[a].y - particlesArray[b].y);
 
             if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-              opacityValue = 1 - distance / 5000;
+              if (canvas.width < 500) {
+                opacityValue = 1 - distance / 1500;
+              } else {
+                opacityValue = 1 - distance / 5000;
+              }
+
               ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
               ctx.beginPath();
               ctx.beginPath();

@@ -1,47 +1,52 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoginForm from './LoginForm';
-// Data
 // Context
 import { UserContext } from '../../context/UserContext';
+import { ToggleContext } from '../../context/ToggleContext';
+import Particles from '../../components/animations/Particles';
 
 function Login() {
   const { setUser } = useContext(UserContext);
+  const { toggleNavigation } = useContext(ToggleContext);
 
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen'>
+      <div className='bg-white dark:bg-black h-screen lg:grid-rows-reg lg:overflow-hidden'>
         <Navbar />
-        {/* Main */}
-        <section className='grid h-[calc(100vh-64px)] lg:grid-rows-reg sm:mx-6'>
-          <article className='hidden text-black text-center text-2xl font-extrabold my-2 lg:grid'>
-            <h1 className='select-none'>Login</h1>
-          </article>
-          <section className='max-h-full m-2 lg:grid lg:grid-cols-2 lg:gap-2'>
-            {/* Header */}
-            <section className='lg:flex lg:items-center lg:justify-center align-middle'>
-              <article className='text-black text-center text-2xl font-extrabold my-2 lg:hidden'>
-                <h1 className='select-none py-4'>Login</h1>
-              </article>
-              {/* Image */}
-              <section className='flex items-center my-2 lg:max-w-xl'>
-                <div className='flex justify-center lg:mx-auto lg:my-8 lg:px-8'>
-                  <img
-                    src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg'
-                    className='lg:h-auto lg:w-full h-52'
-                    alt='Phone'
-                  />
+        {!toggleNavigation && (
+          <section className='grid grid-rows-2 lg:grid-rows-none lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-cols-2 h-full'>
+            {/* Main */}
+            <section className='grid relative overflow-hidden px-2 lg:px-0 py-6 w-full'>
+              <section className='border-black border-2 lg:border-l-0 lg:border-t-4 lg:border-b-4 lg:border-r-4 border-solid p-1'>
+                <Particles />
+              </section>
+
+              <section className='absolute grid h-full w-full z-10 justify-center items-center px-10'>
+                <div className='bg-transparent-black p-2 lg:p-4'>
+                  <article className='bg-black p-2 lg:p-6'>
+                    <h1 className='text-white text-3xl text-center mb-5 font-bold'>
+                      Login
+                    </h1>
+                    <h2 className='text-white mx-auto text-center lg:max-w-[50%]'>
+                      Login and gain access to{' '}
+                      <span className='text-hyperlink-blue'>
+                        <Link to='/design'>design tools</Link>
+                      </span>{' '}
+                      and project overview pages for designs in progress
+                    </h2>
+                  </article>
                 </div>
               </section>
             </section>
-
             {/* Form */}
-            <section className='grid w-full'>
+            <section className='grid my-auto px-4 w-full'>
               <LoginForm setUser={setUser} />
             </section>
           </section>
-        </section>
+        )}
       </div>
     </>
   );
