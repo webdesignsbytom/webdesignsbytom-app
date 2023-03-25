@@ -91,7 +91,7 @@ function Particles() {
       function init() {
         particlesArray = [];
         let numberOfParticles = (canvas.height * canvas.width) / 8000;
-        for (let i = 0; i < numberOfParticles * 3; i++) {
+        for (let i = 0; i < numberOfParticles * 1; i++) {
           let size = Math.random() * 4 + 1;
           let x = Math.random() * (rect.width - size * 2 - size * 2) + size * 2;
           let y =
