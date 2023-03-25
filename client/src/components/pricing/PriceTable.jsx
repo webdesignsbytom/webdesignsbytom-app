@@ -1,5 +1,6 @@
 import React from 'react';
 // Icons
+import { BsCheck2Circle } from 'react-icons/bs';
 import checkIcon from '../../assets/img/checkIcon.svg';
 import crossIcon from '../../assets/img/closeCross.svg';
 import InfinityIcon from '../../assets/img/infinityIcon.svg';

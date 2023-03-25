@@ -267,3 +267,57 @@ export const pricingTableData = [
     },
   },
 ];
+
+
+export const basicListItems = [
+  {
+    text: `Up to 5 pages`
+  },
+  {
+    text: `10 GB of storage`
+  },
+  {
+    text: `Hosting from £3.99`
+  },
+  {
+    text: `3 Months free testing`
+  },
+  {
+    text: `SSL Certificates`
+  },
+]
+export const shopListItems = [
+  {
+    text: `Up to 5 pages`
+  },
+  {
+    text: `10 GB of storage`
+  },
+  {
+    text: `Hosting from £3.99`
+  },
+  {
+    text: `3 Months free testing`
+  },
+  {
+    text: `SSL Certificates`
+  },
+]
+
+export const fullstackListItems = [
+  {
+    text: `Up to 5 pages`
+  },
+  {
+    text: `10 GB of storage`
+  },
+  {
+    text: `Hosting from £3.99`
+  },
+  {
+    text: `3 Months free testing`
+  },
+  {
+    text: `SSL Certificates`
+  },
+]

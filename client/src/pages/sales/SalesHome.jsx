@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 import Footer from '../../components/footer/Footer';
 import HeroSection from '../../components/hero/HeroSection';
 import Navbar from '../../components/nav/Navbar';
+import PurchaseOptions from '../../components/options/purchaseOptions/PurchaseOptions';
 import PriceTable from '../../components/pricing/PriceTable';
 import ReviewsContainer from '../../components/reviews/ReviewsContainer';
+// Context
 import { ToggleContext } from '../../context/ToggleContext';
 
 function SalesHome() {
@@ -16,8 +18,9 @@ function SalesHome() {
       {!toggleNavigation && (
         <>
           <HeroSection />
-          <ReviewsContainer />
+          <PurchaseOptions />
           <PriceTable />
+          <ReviewsContainer />
           <Footer />
         </>
       )}

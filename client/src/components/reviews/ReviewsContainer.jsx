@@ -30,7 +30,11 @@ function ReviewsContainer() {
         ) : (
           <ul className='grid sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:justify-center'>
             {allReviews.map((review, index) => {
-              return <ReviewItem key={index} review={review} />;
+              if (index < 3) {
+                return <ReviewItem key={index} review={review} />;
+              } else {
+                return
+              }
             })}
           </ul>
         )}
