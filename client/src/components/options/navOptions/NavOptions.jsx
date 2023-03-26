@@ -58,6 +58,14 @@ function NavOptions() {
                 })}
               </ul>
             </section>
+            <div>
+              <button
+                onClick={resetNavBar}
+                className='mx-auto w-[300px] bg-blue-500 mb-20 hover:bg-blue-700 text-white font-bold py-2 px-4'
+              >
+                reset
+              </button>
+            </div>
             <NavItemsList selectNavBarOption={selectNavBarOption} />
           </div>
         )}

@@ -407,7 +407,7 @@ function Buttons() {
               </button>
             </div>
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Loading</h3>
+              <h3 className='pl-2'>Small Nav</h3>
               <p className='text-sm text-center'>
                 Common selection menu bar. These can be links to other pages or open a drop down menu with further options.
               </p>
@@ -494,7 +494,7 @@ function Buttons() {
               </div>
             </div>
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Nav Groups</h3>
+              <h3 className='pl-2'>Vertical Nav</h3>
               <p className='text-sm text-center'>
                 Dropdown menu or available as a navigation menu. A variety of uses from a button group.
               </p>
@@ -593,7 +593,7 @@ function Buttons() {
               </div>
             </div>
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Loading</h3>
+              <h3 className='pl-2'>Large Nav</h3>
               <p className='text-sm text-center'>
                 Larger combination menu of buttons and navigation options.
               </p>
