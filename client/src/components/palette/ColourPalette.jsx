@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // Icons
 import changeIcon from '../../assets/img/changeIcon.svg';
+import { RxCross2 } from 'react-icons/rx';
 // Colour picker
 import { SketchPicker } from 'react-color';
 import Swatches from './Swatches';
@@ -14,7 +15,6 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [displayPicker, setDisplayPicker] = useState(false);
   console.log('currentColour', currentColour);
   console.log('selectedCard', selectedCard);
-
   const handleChangeComplete = (color) => {
     console.log('Colour', color);
     setCurrentColour({ background: color.hex });
@@ -60,6 +60,11 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [hexCardFive, setHexCardFive] = useState('#0099ff');
   const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
 
+  const closeColourPicker = () => {
+    setDisplayPicker(false);
+  };
+  console.log('cardOneBg', cardOneBg);
+
   return (
     <section className='grid grid-rows-reg'>
       <div className='text-center flex justify-between'>
@@ -80,7 +85,10 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
       <section className='relative grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
         {/* Colour Picker */}
         {displayPicker && (
-          <div className='z-10 absolute top-0 cursor-pointer'>
+          <div className='z-10 bg-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer'>
+            <div className='flex justify-end'>
+              <RxCross2 onClick={closeColourPicker} />
+            </div>
             <SketchPicker
               color={currentColour.background}
               onChange={handleChangeComplete}
@@ -316,7 +324,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
         </section>
         {/* Saved Options */}
         <section>
-          <ul className='grid md:grid-cols-2 lg:grid-cols-3 w-full'>
+          <ul className='grid md:grid-cols-2 pb-4 lg:pb-0 lg:grid-cols-3 w-full'>
             {colourPaletteObject.map((colour, index) => {
               return (
                 <ColourItem

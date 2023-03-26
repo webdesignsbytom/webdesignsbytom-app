@@ -44,7 +44,7 @@ function SalesCta() {
               see. This tool saves your design allowing us both to review the
               data during builds and make quick changes to your designs.
             </p>
-            <span>Sign up now to save your designs <Link to='/register' className='text-hyperlink-blue'>Sign up</Link></span>
+            <span className='font-semibold mt-4'>Sign up now to save your designs - <Link to='/register' className='text-hyperlink-blue'>Sign up</Link></span>
           </article>
         </div>
 

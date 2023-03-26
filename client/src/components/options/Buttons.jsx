@@ -1,6 +1,4 @@
 import React from 'react';
-// Components
-import LoadingSpinner from '../utils/LoadingSpinner';
 // Icons
 import AddFavBar from '../utils/AddFavBar';
 
@@ -10,7 +8,7 @@ function Buttons() {
       <div>
         <h2>Buttons</h2>
       </div>
-      <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full'>
+      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full'>
         {/* Classic Button */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
@@ -23,8 +21,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Classic</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Standard button with no effect - lets move on..
               </p>
             </div>
           </article>
@@ -39,10 +36,9 @@ function Buttons() {
               </button>
             </div>
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Styled</h3>
+              <h3 className='pl-2'>Rounded</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                The simplest style - You can vary how much you round off edges on any web element.
               </p>
             </div>
           </article>
@@ -58,8 +54,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Interactive</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Hover effects give life and animation to the button pressing experience.
               </p>
             </div>
           </article>
@@ -75,8 +70,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Dark Mode</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Remember modern sites come with a dark mode that inverts the colour theme.
               </p>
             </div>
           </article>
@@ -90,10 +84,9 @@ function Buttons() {
               </button>
             </div>
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Rounded</h3>
+              <h3 className='pl-2'>Rounded XL</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                A popular button style - Well rounded edges and bold lettering with hover effects.
               </p>
             </div>
           </article>
@@ -109,8 +102,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Disabled</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Occasionally you need a button but dont want user to press it.
               </p>
             </div>
           </article>
@@ -133,8 +125,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Download</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Buttons are more than links. They can download files directly to your computer.
               </p>
             </div>
           </article>
@@ -147,14 +138,13 @@ function Buttons() {
                 type='button'
                 className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2'
               >
-                Teal
+                Button
               </button>
             </div>
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Gradiant</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Colour gradients add a little depth to the button and you can even add an effect to clicked buttons.
               </p>
             </div>
           </article>
@@ -173,29 +163,12 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Gradiant swap</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Reverce the colour gradient direction.
               </p>
             </div>
           </article>
         </li>
-        <li className='mb-10'>
-          <article className='grid gap-4 justify-center'>
-            <AddFavBar />
-            <div className='mx-auto'>
-              <button className='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
-                <LoadingSpinner width={'6'} height={'6'} />
-              </button>
-            </div>
-            <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Loading</h3>
-              <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
-              </p>
-            </div>
-          </article>
-        </li>
+        {/*  */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
@@ -209,8 +182,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Colour Change</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                A variety of colour and hover and select effects.
               </p>
             </div>
           </article>
@@ -244,8 +216,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Facebook</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                A button to automatically sign users in using Facebook accounts.
               </p>
             </div>
           </article>
@@ -280,8 +251,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Payments</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                All forms of popular payment buttons available.
               </p>
             </div>
           </article>
@@ -309,8 +279,7 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Buy Now</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Store, cart and shopping assit buttons.
               </p>
             </div>
           </article>
@@ -332,12 +301,12 @@ function Buttons() {
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Indicator</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Buttons with internal information such as number of new messages.
               </p>
             </div>
           </article>
         </li>
+        {/* Loading button */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
@@ -368,15 +337,15 @@ function Buttons() {
               </button>
             </div>
             <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Loading Two</h3>
+              <h3 className='pl-2'>Loading</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Loading button with animated spinner.
               </p>
             </div>
           </article>
         </li>
-        <li className='mb-10'>
+        {/* Bar 1 */}
+        <li className='md:col-span-2 mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
             <div className='inline-flex rounded-md shadow-sm' role='group'>
@@ -437,8 +406,7 @@ function Buttons() {
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Loading</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Common selection menu bar. These can be links to other pages or open a drop down menu with further options.
               </p>
             </div>
           </article>
@@ -525,144 +493,22 @@ function Buttons() {
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Nav Groups</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Dropdown menu or available as a navigation menu. A variety of uses from a button group.
               </p>
             </div>
           </article>
         </li>
-        <li className='mb-10'>
-          <article className='grid gap-4 justify-center'>
-            <AddFavBar />
-            <div className='mx-auto'>
-              <button
-                data-popover-target='popover-default'
-                type='button'
-                className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-              >
-                Default popover
-              </button>
-              <div
-                data-popover
-                id='popover-default'
-                role='tooltip'
-                className='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800'
-              >
-                <div className='px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700'>
-                  <h3 className='font-semibold text-gray-900 dark:text-white'>
-                    Popover title
-                  </h3>
-                </div>
-                <div className='px-3 py-2'>
-                  <p>
-                    And here's some amazing content. It's very engaging. Right?
-                  </p>
-                </div>
-                <div data-popper-arrow></div>
-              </div>
-            </div>
-            <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Pop Up</h3>
-              <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
-              </p>
-            </div>
-          </article>
-        </li>
-        <li className='mb-10'>
-          <article className='grid gap-4 justify-center'>
-            <AddFavBar />
-            <div className='mx-auto'>
-              <button
-                data-popover-target='popover-user-profile'
-                type='button'
-                className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-              >
-                User profile
-              </button>
-              <div
-                data-popover
-                id='popover-user-profile'
-                role='tooltip'
-                className='absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:bg-gray-800 dark:border-gray-600'
-              >
-                <div className='p-3'>
-                  <div className='flex items-center justify-between mb-2'>
-                    <a href='#'>
-                      <img
-                        className='w-10 h-10 rounded-full'
-                        src='/docs/images/people/profile-picture-1.jpg'
-                        alt='Jese Leos'
-                      />
-                    </a>
-                    <div>
-                      <button
-                        type='button'
-                        className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
-                      >
-                        Follow
-                      </button>
-                    </div>
-                  </div>
-                  <p className='text-base font-semibold leading-none text-gray-900 dark:text-white'>
-                    <a href='#'>Jese Leos</a>
-                  </p>
-                  <p className='mb-3 text-sm font-normal'>
-                    <a href='#' className='hover:underline'>
-                      @jeseleos
-                    </a>
-                  </p>
-                  <p className='mb-4 text-sm font-light'>
-                    Open-source contributor. Building{' '}
-                    <a
-                      href='#'
-                      className='text-blue-600 dark:text-blue-500 hover:underline'
-                    >
-                      flowbite.com
-                    </a>
-                    .
-                  </p>
-                  <ul className='flex text-sm font-light'>
-                    <li className='mr-2'>
-                      <a href='#' className='hover:underline'>
-                        <span className='font-semibold text-gray-900 dark:text-white'>
-                          799
-                        </span>
-                        <span>Following</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href='#' className='hover:underline'>
-                        <span className='font-semibold text-gray-900 dark:text-white'>
-                          3,758
-                        </span>
-                        <span>Followers</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div data-popper-arrow></div>
-              </div>
-            </div>
-            <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Profile</h3>
-              <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
-              </p>
-            </div>
-          </article>
-        </li>
-        <li className='mb-10'>
+       
+      
+        <li className='mb-10 md:col-span-3'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
             <div className='mx-auto'>
               <div className='border-b border-gray-200 dark:border-gray-700'>
                 <ul className='flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
                   <li className='mr-2'>
-                    <a
-                      href='#'
+                    <button
+                      
                       className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                     >
                       <svg
@@ -679,11 +525,10 @@ function Buttons() {
                         ></path>
                       </svg>
                       Profile
-                    </a>
+                    </button>
                   </li>
                   <li className='mr-2'>
-                    <a
-                      href='#'
+                    <button
                       className='inline-flex p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group'
                       aria-current='page'
                     >
@@ -697,11 +542,10 @@ function Buttons() {
                         <path d='M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z'></path>
                       </svg>
                       Dashboard
-                    </a>
+                    </button>
                   </li>
                   <li className='mr-2'>
-                    <a
-                      href='#'
+                    <button
                       className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                     >
                       <svg
@@ -714,11 +558,10 @@ function Buttons() {
                         <path d='M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z'></path>
                       </svg>
                       Settings
-                    </a>
+                    </button>
                   </li>
                   <li className='mr-2'>
-                    <a
-                      href='#'
+                    <button
                       className='inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group'
                     >
                       <svg
@@ -736,12 +579,12 @@ function Buttons() {
                         ></path>
                       </svg>
                       Contacts
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a className='inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500'>
+                    <button className='inline-block p-4 text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500'>
                       Disabled
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -749,29 +592,12 @@ function Buttons() {
             <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
               <h3 className='pl-2'>Loading</h3>
               <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
+                Larger combination menu of buttons and navigation options.
               </p>
             </div>
           </article>
         </li>
-        <li className='mb-10'>
-          <article className='grid gap-4 justify-center'>
-            <AddFavBar />
-            <div className='mx-auto'>
-              <button className='w-[120px] mx-auto flex justify-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
-                <LoadingSpinner width={'6'} height={'6'} />
-              </button>
-            </div>
-            <div className='w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
-              <h3 className='pl-2'>Loading</h3>
-              <p className='text-sm text-center'>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem
-                obcaecati nihil voluptate sit quasi.
-              </p>
-            </div>
-          </article>
-        </li>
+       
       </ul>
     </section>
   );

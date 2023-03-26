@@ -58,8 +58,11 @@ function PurchaseOptions() {
                 <p className='text-xl font-medium tracking-wide text-white'>
                   Basic Website
                 </p>
+                <p className='text-sm font-semibold text-white dark:text-white'>
+                  from
+                </p>
                 <div className='flex items-center justify-center'>
-                  <p className='mr-2 text-3xl font-semibold text-white lg:text-6xl'>
+                  <p className='mr-2 text-5xl font-semibold text-white lg:text-6xl'>
                     £450
                   </p>
                 </div>
@@ -96,6 +99,9 @@ function PurchaseOptions() {
                 <p className='text-xl font-medium tracking-wide text-white'>
                   Online Shop
                 </p>
+                <p className='text-sm font-semibold text-white dark:text-white'>
+                  from
+                </p>
                 <div className='flex items-center justify-center'>
                   <p className='mr-2 text-5xl font-semibold text-white lg:text-6xl'>
                     £750
@@ -103,7 +109,7 @@ function PurchaseOptions() {
                 </div>
               </div>
               <ul className='mb-8 space-y-2'>
-              {shopListItems.map((item, index) => {
+                {shopListItems.map((item, index) => {
                   return (
                     <li key={index} className='flex items-center'>
                       <article className='mr-3 text-white'>
@@ -133,6 +139,10 @@ function PurchaseOptions() {
                 <p className='text-xl font-medium tracking-wide text-white'>
                   Fullstack Project
                 </p>
+                <p className='text-sm font-semibold text-white dark:text-white'>
+                  from
+                </p>
+
                 <div className='flex items-center justify-center'>
                   <p className='mr-2 text-5xl font-semibold text-white lg:text-6xl'>
                     £1200
@@ -140,7 +150,7 @@ function PurchaseOptions() {
                 </div>
               </div>
               <ul className='mb-8 space-y-2'>
-              {fullstackListItems.map((item, index) => {
+                {fullstackListItems.map((item, index) => {
                   return (
                     <li key={index} className='flex items-center'>
                       <article className='mr-3 text-white'>

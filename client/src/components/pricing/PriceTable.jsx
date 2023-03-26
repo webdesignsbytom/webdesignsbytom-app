@@ -18,16 +18,16 @@ function PriceTable() {
       >
         <thead>
           <tr className='grid grid-cols-4'>
-            <th className='border-2 border-black border-solid p-2'>
+            <th className='border-2 flex items-center justify-center border-black border-solid p-2'>
               Component
             </th>
-            <th className='border-2 border-black border-solid p-2'>
+            <th className='border-2 flex items-center justify-center border-black border-solid p-2'>
               Basic Site
             </th>
-            <th className='border-2 border-black border-solid p-2'>
+            <th className='border-2 flex items-center justify-center border-black border-solid p-2'>
               Online Shop
             </th>
-            <th className='border-2 border-black border-solid p-2'>
+            <th className='border-2 flex items-center justify-center border-black border-solid p-2'>
               Fullstack Project
             </th>
           </tr>
@@ -39,24 +39,24 @@ function PriceTable() {
                 key={index}
                 className='grid grid-cols-4 odd:bg-white even:bg-slate-300'
               >
-                <td className='border-2 border-black border-solid px-2 py-1'>
+                <td className='border-2 flex items-center justify-left border-black border-solid px-2 py-1'>
                   {item.title}
                 </td>
-                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center font-semibold'>
+                <td className='border-2  border-black border-solid px-2 py-1 flex items-center justify-center font-semibold'>
                   {item.basicSite.available ? (
                     <FiCheckCircle size={20} />
                   ) : (
                     <RxCross2 size={20} />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center'>
+                <td className='border-2 border-black border-solid px-2 py-1 flex items-center justify-center'>
                   {item.basicShop.available ? (
                     <FiCheckCircle size={20} />
                   ) : (
                     <RxCross2 size={20} />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center'>
+                <td className='border-2 border-black border-solid px-2 py-1 flex items-center justify-center'>
                   {item.fullstack.available ? (
                     <FiCheckCircle size={20} />
                   ) : (

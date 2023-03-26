@@ -8,7 +8,7 @@ export function getUserById(userId, setUser) {
       setUser(res.data.data.user);
     })
     .catch((err) => {
-      console.error('Unable to get user by id', err);
+      console.error('Unable to get user by id', err.response);
     });
 }
 
