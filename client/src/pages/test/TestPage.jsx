@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import SocialBar from '../../components/social/SocialBar';
+import HeroSwitch from '../heros/HeroSwitch';
 
 function TestPage() {
+  const [buttonOneStyle, setButtonOneStyle] = useState('day__button__one');
+  const [buttonTwoStyle, setButtonTwoStyle] = useState('day__button__two');
+  const [blurSetting, setBlurSetting] = useState('blur-none'); 
+
   useEffect(() => {
     const container = document.getElementById('time__container');
     console.log('container', container);
     // DOM Elements
     const time = document.getElementById('time'),
       greeting = document.getElementById('greeting'),
-      name = document.getElementById('name'),
-      focus = document.getElementById('focus');
-
+      name = document.getElementById('name');
     // Options
     const showAmPm = true;
 
@@ -49,17 +54,23 @@ function TestPage() {
         container.style.backgroundImage =
           "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
         greeting.textContent = 'Good Morning, ';
+        setButtonOneStyle('day__button__one');
+        setButtonTwoStyle('day__button__two');
       } else if (hour < 18) {
         // Afternoon
         container.style.backgroundImage =
           "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
         greeting.textContent = 'Good Afternoon, ';
+        setButtonOneStyle('afternoon__button__one');
+        setButtonTwoStyle('afternoon__button__two');
       } else {
         // Evening
         container.style.backgroundImage =
           "url('https://i.ibb.co/924T2Wv/night.jpg')";
         greeting.textContent = 'Good Evening, ';
         container.style.color = 'white';
+        setButtonOneStyle('night__button__one');
+        setButtonTwoStyle('night__button__two');
       }
     }
 
@@ -85,39 +96,24 @@ function TestPage() {
       }
     }
 
-    // Get Focus
-    function getFocus() {
-      if (localStorage.getItem('focus') === null) {
-        focus.textContent = '[Enter Focus]';
-      } else {
-        focus.textContent = localStorage.getItem('focus');
-      }
-    }
-
-    // Set Focus
-    function setFocus(e) {
-      if (e.type === 'keypress') {
-        // Make sure enter is pressed
-        if (e.which == 13 || e.keyCode == 13) {
-          localStorage.setItem('focus', e.target.innerText);
-          focus.blur();
-        }
-      } else {
-        localStorage.setItem('focus', e.target.innerText);
-      }
-    }
-
     name.addEventListener('keypress', setName);
     name.addEventListener('blur', setName);
-    focus.addEventListener('keypress', setFocus);
-    focus.addEventListener('blur', setFocus);
 
     // Run
     showTime();
     setBgGreet();
     getName();
-    getFocus();
   }, []);
+
+  const blurEffectStart = () => {
+    console.log('BLUR')
+    setBlurSetting('backdrop-blur-md')
+  }
+
+  const blurEffectEnd = () => {
+    console.log('BLUR')
+    setBlurSetting('blur-none')
+  }
 
   return (
     <div className='grid h-[100vh] w-full'>
@@ -126,16 +122,52 @@ function TestPage() {
         style={{
           backgroundImage: 'url("https://i.ibb.co/3mThcXc/afternoon.jpg")',
         }}
-        className='grid object-contain bg-cover'
+        className='grid relative object-contain bg-cover'
       >
-        <time id='time'></time>
-        <h1>
-          <span id='greeting'></span>
-          <span id='name' contenteditable='true'></span>
-        </h1>
+        <section className={`grid items-center justify-center w-full ${blurSetting} transition duration-500 ease-in`}>
+          <section className='absolute px-6 pt-6 top-0 left-0 w-full flex justify-between'>
+            <div>
+              <h1 className='font-bold text-3xl text-center'>
+                Web Designs By Tom
+              </h1>
+              <h2 className='text-left'>
+                Professional{' '}
+                <span className='font-extrabold italic'>modern</span> web design
+              </h2>
+            </div>
+            <section>
+              <SocialBar />
+            </section>
+          </section>
 
-        <h2>What Is Your Focus For Today?</h2>
-        <h2 id='focus' contenteditable='true'></h2>
+          <article className='grid p-1 text-center'>
+            <time id='time' className='text-6xl my-2 font-bold'></time>
+            <h1 className='text-2xl'>
+              <span id='greeting'></span>
+              <span id='name' contenteditable='true'></span>
+            </h1>
+
+            <div className='grid w-full md:flex my-2 gap-2 justify-center'>
+              <Link to='/developer'>
+                <button onMouseEnter={blurEffectStart} onMouseLeave={blurEffectEnd} className={`${buttonOneStyle}`}>Hire Private</button>
+              </Link>
+              <Link to='/portfolio'>
+                <button onMouseEnter={blurEffectStart} onMouseLeave={blurEffectEnd} className={`${buttonTwoStyle}`}>Hire Dev</button>
+              </Link>
+            </div>
+            <section className='font-semibold'>
+              <p>Available to build high quality web products.</p>
+              <p>
+                My website boasts design tools and modern web features to create
+                the perfect website to suit your needs.
+              </p>
+            </section>
+          </article>
+
+          <section className='absolute bottom-0 left-0 grid w-full justify-center'>
+            <HeroSwitch />
+          </section>
+        </section>
       </div>
     </div>
   );

@@ -94,3 +94,28 @@
 .social__link {
   @apply w-4 cursor-pointer hover:text-white transition ease-in-out duration-200
 }
+
+/* TIMED BUTTONS */
+.night__button__one {
+  @apply bg-blue-800 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
+
+.night__button__two {
+  @apply bg-blue-400 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
+
+.day__button__one {
+  @apply bg-yellow-400 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-orange-600 hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
+
+.day__button__two {
+  @apply bg-yellow-300 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-orange-400 hover:shadow-lg focus:bg-orange-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
+
+.afternoon__button__one {
+  @apply bg-yellow-400 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
+
+.afternoon__button__two {
+  @apply bg-yellow-200 border-2 border-solid border-black grid justify-center py-2 px-8 text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:text-black hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full
+}
