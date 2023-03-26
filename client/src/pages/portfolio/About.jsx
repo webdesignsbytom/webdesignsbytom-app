@@ -36,7 +36,7 @@ function About() {
               <br />
               <small>Electrical Engineer</small>
               <br />
-              <small>Renewable energy installer</small>
+              <small>Renewable Energy Installer</small>
             </article>
 
             <article className='bg-main-colour rounded-xl cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-slate-400 hover:outline text-center px-4 py-8 w-full'>
@@ -49,7 +49,7 @@ function About() {
               <br />
               <small>MERN Stack Design</small>
               <br />
-              <small>Advice and information</small>
+              <small>Advice and Information</small>
             </article>
 
             <article className='bg-main-colour rounded-xl cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-slate-400 hover:outline text-center px-4 py-8 w-full'>
@@ -60,9 +60,9 @@ function About() {
               <h5 className='text-xl mb-2'>Projects</h5>
               <small>My Personal Projects</small>
               <br />
-              <small>Web and circuit design</small>
+              <small>Web and Circuit Design</small>
               <br />
-              <small>See what I'm building</small>
+              <small>See What I'm Building</small>
             </article>
           </div>
 
