@@ -18,7 +18,7 @@ function ReviewsContainer() {
   }, []);
 
   return (
-    <section className='bg-main-colour m-2 px-1'>
+    <section className='bg-main-colour my-4 mx-4 lg:mx-4 px-1'>
       <div className='text-center text-xl py-1'>
         <h2>Reviews and Recomendations</h2>
       </div>
@@ -28,9 +28,9 @@ function ReviewsContainer() {
             <LoadingSpinner height={'h-12 lg:h-24'} width={'w-12 lg:w-24'} />
           </div>
         ) : (
-          <ul className='grid sm:grid-cols-2 lg:grid-cols-3 gap-2 lg:justify-center'>
+          <ul className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:justify-center my-4 mx-4'>
             {allReviews.map((review, index) => {
-              if (index < 3) {
+              if (index < 4) {
                 return <ReviewItem key={index} review={review} />;
               } else {
                 return

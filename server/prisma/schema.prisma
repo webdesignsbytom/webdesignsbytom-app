@@ -249,27 +249,27 @@ model UserStory {
 }
 
 model colourPalette {
-  id                 String    @id @default(uuid())
-  mainBackground     String?   @default("")
-  altBackground      String?   @default("")
-  navBackground      String?   @default("")
-  darkModeBackground String?   @default("")
-  mainText           String?   @default("")
-  darkModeMainText  String?   @default("")
-  altText           String?   @default("")
-  hoverText           String?   @default("")
-  darkModeHoverText           String?   @default("")
-  activeText           String?   @default("")
-  borders           String?   @default("")
-  darkModeBorders           String?   @default("")
-  hyperlinks           String?   @default("")
+  id                 String  @id @default(uuid())
+  mainBackground     String? @default("")
+  altBackground      String? @default("")
+  navBackground      String? @default("")
+  darkModeBackground String? @default("")
+  mainText           String? @default("")
+  darkModeMainText   String? @default("")
+  altText            String? @default("")
+  hoverText          String? @default("")
+  darkModeHoverText  String? @default("")
+  activeText         String? @default("")
+  borders            String? @default("")
+  darkModeBorders    String? @default("")
+  hyperlinks         String? @default("")
 
-  projectId          String?
-  project            Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  designId           String?
-  design             Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime? @updatedAt
+  projectId String?
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  designId  String?
+  design    Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
 }
 
 model NavDesign {
@@ -292,6 +292,7 @@ model Review {
   viewed    Boolean   @default(false)
   content   String
   image     String?
+  url       String?
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
