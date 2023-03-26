@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+// Context
+import { UserContext } from '../../context/UserContext';
 // Components
 import ColourPalette from '../../components/palette/ColourPalette';
-import NavOptions from './NavOptions';
+import NavOptions from '../../components/options/navOptions/NavOptions';
 import PageOptions from '../../components/options/pageOptions/PageOptions';
 import CompenentOptions from '../../components/options/componentOptions/CompenentOptions';
 import Buttons from '../../components/options/Buttons';
@@ -9,8 +11,6 @@ import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
 import RegisterForm from '../../users/register/RegisterForm';
 import client from '../../utils/client';
-// Context
-import { UserContext } from '../../context/UserContext';
 // Icons
 import QuestionMark from '../../assets/img/questionMark.svg';
 // Utils

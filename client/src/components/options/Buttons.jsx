@@ -43,6 +43,7 @@ function Buttons() {
             </div>
           </article>
         </li>
+        {/* 3 */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
@@ -59,6 +60,7 @@ function Buttons() {
             </div>
           </article>
         </li>
+        {/* 4 */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
@@ -75,6 +77,7 @@ function Buttons() {
             </div>
           </article>
         </li>
+        {/* 5 */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
