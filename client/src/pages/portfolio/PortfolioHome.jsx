@@ -8,6 +8,7 @@ import PortfolioDisplay from './PortfolioDisplay';
 import Services from './Services';
 import Footer from '../../components/footer/Footer';
 import { ToggleContext } from '../../context/ToggleContext';
+import PortfolioCta from './PortfolioCta';
 
 function PortfolioHome() {
   const {
@@ -33,6 +34,7 @@ function PortfolioHome() {
           <PortfolioDisplay />
           <Experience />
           <Services />
+          <PortfolioCta />
           <Footer />
         </>
       )}
