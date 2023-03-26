@@ -37,7 +37,7 @@ function SalesCta() {
           </h2>
           <article>
             <p className='text-base text-gray-700 md:text-lg'>
-              You can create a basic design for you website using my custom
+              You can create a basic design for your website using my custom
               build tool. Pick from navigation and footer options. Choose from
               multiple buttons with a variety of effects, pick colour styles and
               swatches, create user stories for the design elements you want to

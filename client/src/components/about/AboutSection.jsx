@@ -614,7 +614,7 @@ function AboutSection() {
                 Welcome to Webdesignsbytom
               </span>
               <h2 className='text-dark mb-8 text-3xl font-bold sm:text-4xl'>
-                Modern and fully customizable web design
+                Modern and fully customisable web design
               </h2>
               <p className='text-body-color mb-8 text-base'>
                 Your dream website can come to life with my help. While my name

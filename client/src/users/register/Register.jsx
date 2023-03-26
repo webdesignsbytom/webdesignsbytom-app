@@ -17,7 +17,7 @@ function Register() {
         {!toggleNavigation && (
           <section className='grid grid-rows-2 lg:grid-rows-none lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-cols-2 h-full'>
             {/* Main */}
-            <section className='grid relative overflow-hidden px-2 lg:px-0 pt-6 w-full'>
+            <section className='grid relative overflow-hidden px-2 lg:px-0 pt-6 lg:my-6 lg:pt-0 w-full'>
               <section className='border-black border-2 lg:border-l-0 lg:border-t-4 lg:border-b-4 lg:border-r-4 border-solid p-1'>
                 <Particles />
               </section>

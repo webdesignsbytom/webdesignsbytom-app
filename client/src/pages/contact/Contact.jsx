@@ -26,8 +26,9 @@ function Contact() {
                   <h1 className='text-2xl font-bold'>Contact Me!</h1>
                 </div>
                 <div className='sm:px-6'>
+                  <p className='p-2 md:mx-6 text-center lg:mx-4 leading-5 font-semibold'>If you need anything at all, just get in touch!</p>
                   <p className='p-2 pb-6 md:mx-6 lg:mx-4 leading-5'>
-                    If you need anything at all, just get in touch. If you need
+                     If you need
                     quotes or just to talk through some ideas. I am available to
                     help. Either contact me throught the form provided, or use
                     one the email address or phone number below. Myself or my

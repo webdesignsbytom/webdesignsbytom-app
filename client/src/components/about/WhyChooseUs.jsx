@@ -78,7 +78,7 @@ function WhyChooseUs() {
                   These site are easier to make. However many people under
                   estimate the time it can take to build multiple pages of
                   content, as well as create a phone version. Style is harder
-                  than it looks..
+                  than it looks.
                 </p>
               </div>
             </div>
@@ -104,7 +104,7 @@ function WhyChooseUs() {
               <div className='grow ml-4'>
                 <p className='font-bold mb-1'>Complete Control</p>
                 <p className='text-gray-500'>
-                  You can usually save money and time by having a site built for
+                  You can save time and money by having a site built for
                   you. Not only that, you can go beyond the 3 or 4 template
                   options from the provider. Any style you think of can be
                   applied. More animation styles are available.
@@ -164,7 +164,7 @@ function WhyChooseUs() {
                 <p className='text-gray-500'>
                   The team has a variety of skills that helps us move quickly to
                   complete projects. We are patient and understanding when it
-                  comes to figuring out your web design vision. Not only that
+                  comes to building your web design vision. Not only that
                   but we provide a quick and easy desing tool to help design and
                   keep the team up to date on any changes to a project.
                 </p>

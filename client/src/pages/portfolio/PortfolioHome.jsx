@@ -9,6 +9,7 @@ import Services from './Services';
 import Footer from '../../components/footer/Footer';
 import { ToggleContext } from '../../context/ToggleContext';
 import PortfolioCta from './PortfolioCta';
+import ReviewsContainer from '../../components/reviews/ReviewsContainer';
 
 function PortfolioHome() {
   const {
@@ -34,6 +35,7 @@ function PortfolioHome() {
           <PortfolioDisplay />
           <Experience />
           <Services />
+          <ReviewsContainer />
           <PortfolioCta />
           <Footer />
         </>

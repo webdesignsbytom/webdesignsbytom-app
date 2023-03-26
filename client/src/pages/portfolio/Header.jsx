@@ -1,9 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+// Components
 import SocialBar from '../../components/social/SocialBar';
 // PDF
 import CV from '../../assets/pdf/TomBrockingtonResume2023.pdf';
 
 function Header() {
+  let navigate = useNavigate();
+
+  const contactPage = () => {
+    navigate('/contact', { replace: true });
+  }
+
   return (
     <header className='grid relative h-[calc(100vh-32px)] lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center'>
       <section className='text-center mb-10 md:mb-0'>
@@ -23,7 +31,7 @@ function Header() {
           >
             Download CV
           </a>
-          <button className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+          <button onClick={contactPage} className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
             Contact Me
           </button>
         </div>
