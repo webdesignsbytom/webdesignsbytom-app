@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import AboutSection from '../../components/about/AboutSection';
 // Components
 import Footer from '../../components/footer/Footer';
-import HeroSection from '../../components/hero/HeroSection';
 import Navbar from '../../components/nav/Navbar';
 import PurchaseOptions from '../../components/options/purchaseOptions/PurchaseOptions';
 import PriceTable from '../../components/pricing/PriceTable';
@@ -17,7 +17,7 @@ function SalesHome() {
       <Navbar />
       {!toggleNavigation && (
         <>
-          <HeroSection />
+          <AboutSection />
           <PurchaseOptions />
           <PriceTable />
           <ReviewsContainer />

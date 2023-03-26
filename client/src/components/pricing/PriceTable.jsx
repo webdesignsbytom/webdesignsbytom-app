@@ -8,15 +8,19 @@ import { pricingTableData } from '../../utils/utils';
 
 function PriceTable() {
   return (
-    <section className='my-10 mx-6'>
+    <section id='pricing' className='my-10 mx-6'>
       <section className='text-center text-3xl my-4'>
         <h3 className='font-semibold'>Basic Options</h3>
         <h4>Of Thousands Available!</h4>
       </section>
-      <table className='bg-slate-500 border-2 border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'>
+      <table
+        className='bg-slate-500 border-2 shadow-2xl border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'
+      >
         <thead>
           <tr className='grid grid-cols-4'>
-            <th className='border-2 border-black border-solid p-2'>Component</th>
+            <th className='border-2 border-black border-solid p-2'>
+              Component
+            </th>
             <th className='border-2 border-black border-solid p-2'>
               Basic Site
             </th>
