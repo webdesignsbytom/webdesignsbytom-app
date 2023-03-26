@@ -20,11 +20,9 @@ function NavOptions() {
   };
 
   const selectNavBarOption = (item) => {
-    console.log('item xxx', item);
-
     const currentArray = navigationStyleOptions.menuOptions;
-    console.log('currentArray', currentArray);
     currentArray.push(item);
+
     setNavigationStyleOptions({
       ...navigationStyleOptions,
       menuOptions: currentArray,
@@ -39,7 +37,7 @@ function NavOptions() {
   };
 
   return (
-    <section className='bg-black relative'>
+    <section className='relative'>
       {/* If top nav */}
       {navigationStyleOptions.position &&
         navigationStyleOptions.positionType === 'topNav' && (
@@ -47,7 +45,6 @@ function NavOptions() {
             <section className='h-16 bg-slate-500 w-full'>
               <ul className='flex h-full justify-between items-center w-full'>
                 {navigationStyleOptions.menuOptions.map((item, index) => {
-                  console.log('item: ' + item);
                   return (
                     <li className='p-2' key={index}>
                       <h5 className='text-white font-semibold text-xl'>
@@ -58,15 +55,17 @@ function NavOptions() {
                 })}
               </ul>
             </section>
-            <div>
-              <button
-                onClick={resetNavBar}
-                className='mx-auto w-[300px] bg-blue-500 mb-20 hover:bg-blue-700 text-white font-bold py-2 px-4'
-              >
-                reset
-              </button>
-            </div>
-            <NavItemsList selectNavBarOption={selectNavBarOption} />
+            <section>
+              <div className='flex justify-end w-full p-1'>
+                <button
+                  onClick={resetNavBar}
+                  className='bg-blue-500 mb-20 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl'
+                >
+                  Reset
+                </button>
+              </div>
+              <NavItemsList selectNavBarOption={selectNavBarOption} />
+            </section>
           </div>
         )}
 
@@ -77,7 +76,6 @@ function NavOptions() {
             <section className='h-full bg-slate-500 w-full'>
               <ul className='grid gap-2 h-full justify-between items-center w-[200px]'>
                 {navigationStyleOptions.menuOptions.map((item, index) => {
-                  console.log('item: ' + item);
                   return (
                     <li className='p-2' key={index}>
                       <h5 className='text-white font-semibold text-xl'>
@@ -88,15 +86,17 @@ function NavOptions() {
                 })}
               </ul>
             </section>
-            <div>
-              <button
-                onClick={resetNavBar}
-                className='mx-auto w-[300px] bg-blue-500 mb-20 hover:bg-blue-700 text-white font-bold py-2 px-4'
-              >
-                reset
-              </button>
-            </div>
-            <NavItemsList selectNavBarOption={selectNavBarOption} />
+            <section className='grid grid-rows-reg w-full'>
+              <div className='flex justify-end w-full p-1'>
+                <button
+                  onClick={resetNavBar}
+                  className='bg-blue-500 mb-20 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-xl'
+                >
+                  Reset
+                </button>
+              </div>
+              <NavItemsList selectNavBarOption={selectNavBarOption} />
+            </section>
           </div>
         )}
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BsLinkedin } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 const navItemOptionsList = [
   {
@@ -21,7 +22,7 @@ const navItemOptionsList = [
   {
     title: `Mobile Burger Menu`,
     id: 'burger-menu',
-    icon: '=',
+    icon: <GiHamburgerMenu />,
   },
   {
     title: `Search Bar`,
