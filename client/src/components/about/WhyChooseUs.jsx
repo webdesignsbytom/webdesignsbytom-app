@@ -2,10 +2,10 @@ import React from 'react';
 
 function WhyChooseUs() {
   return (
-    <div className='container my-24 px-6 mx-auto'>
-      <section className='mb-32 text-gray-800'>
+    <div className='container mb-6 px-6 mx-auto md:my-20'>
+      <section className='text-gray-800'>
         <h2 className='text-3xl font-bold mb-12 text-center'>
-          Why is WebDesignsByTom so great?
+          Why WebDesignsByTom is so great
         </h2>
 
         <div className='flex flex-wrap items-center'>

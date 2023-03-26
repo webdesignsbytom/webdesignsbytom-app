@@ -11,7 +11,7 @@ function Footer() {
           <p>Email: tom@webdesignsbytom.com</p>
         </div>
       </section>
-      <section className='flex justify-center mb-4'>
+      <section className='flex justify-center my-4'>
         <SocialBar
           borders={'border-white dark:border-colour-dark'}
           icons={'text-white dark:text-colour-dark'}

@@ -11,7 +11,8 @@ import { postLogin } from '../../utils/Fetch';
 import OpenEye from '../../assets/img/eye.svg';
 
 function LoginForm({ setUser }) {
-  const [loginResponseMessage, setLoginResponseMessage] = useState(statusResults);
+  const [loginResponseMessage, setLoginResponseMessage] =
+    useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [rememberMeChecked, setRememberMeChecked] = useState(true);
@@ -37,7 +38,7 @@ function LoginForm({ setUser }) {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    console.log('login')
+    console.log('login');
     setLoadingAnimation(!loadingAnimation);
     //
     postLogin(loginForm, setSuccessLoginUser, setUser, homePage);
@@ -47,8 +48,10 @@ function LoginForm({ setUser }) {
     <>
       <form
         onSubmit={handleLogin}
-        className='py-4 lg:mt-10 lg:w-full lg:my-auto lg:px-8'
+        className='pb-2 lg:mt-10 lg:w-full lg:my-auto lg:px-8'
       >
+        <h2 className='text-xl py-2'>Login here</h2>
+
         {/* <!-- Email input --> */}
         <div className='mb-6'>
           <input

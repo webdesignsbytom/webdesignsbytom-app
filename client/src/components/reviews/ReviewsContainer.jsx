@@ -20,9 +20,9 @@ function ReviewsContainer() {
   }, []);
 
   return (
-    <section className='bg-main-colour rounded my-4 lg:my-20 mx-4 lg:mx-10 px-1'>
+    <section className='bg-main-colour rounded mt-4 mb-20 lg:my-20 mx-4 lg:mx-10 px-1'>
       <div className='text-center text-xl py-1'>
-        <h2 className='max-w-lg mb-6 md:my-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto'>
+        <h2 className='max-w-lg my-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto'>
           <span className='relative inline-block'>
             <svg
               viewBox='0 0 52 24'

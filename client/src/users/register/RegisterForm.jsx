@@ -4,8 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 // Icons
 import OpenEye from '../../assets/img/eye.svg';
 // Utils
-import { showConfirmPassword, showPassword } from '../../users/utils/PasswordReveal';
-import { registerDataTemplate, registerFormResponses, statusResults } from '../utils/utils';
+import {
+  showConfirmPassword,
+  showPassword,
+} from '../../users/utils/PasswordReveal';
+import {
+  registerDataTemplate,
+  registerFormResponses,
+  statusResults,
+} from '../utils/utils';
 import CountrySelect from '../utils/CountrySelect';
 // Validation
 import { validPassword } from '../../users/utils/Validation';
@@ -15,7 +22,8 @@ import { SubmitButton } from '../../components/utils/SubmitButtons';
 import { BsFolderPlus } from 'react-icons/bs';
 
 function RegisterForm() {
-  const [registerResponseMessage, setRegisterResponseMessage] = useState(statusResults);
+  const [registerResponseMessage, setRegisterResponseMessage] =
+    useState(statusResults);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [fieldType, setFieldType] = useState('password');
@@ -38,7 +46,7 @@ function RegisterForm() {
       if (registerForm.password > 0) {
         setHiddenPass('block');
         setInputStyle('standard__inputs');
-        setFormResponses(formResponses => ({
+        setFormResponses((formResponses) => ({
           ...formResponses,
           password: true,
         }));
@@ -50,7 +58,7 @@ function RegisterForm() {
     ) {
       setHiddenPass('block');
       setInputStyle('error__inputs');
-      setFormResponses(formResponses => ({
+      setFormResponses((formResponses) => ({
         ...formResponses,
         password: false,
       }));
@@ -103,29 +111,29 @@ function RegisterForm() {
       });
       setHiddenPass('block');
       setInputStyle('error__inputs');
-      setLoadingAnimation(false)
+      setLoadingAnimation(false);
       return;
     }
-    
+
     const checkPassword = validPassword(registerForm.password);
-    
+
     if (checkPassword === false) {
       alert('Passwords too short');
       setFormResponses({
         ...formResponses,
         passwordLengthError: true,
       });
-      setLoadingAnimation(false)
+      setLoadingAnimation(false);
       return;
     }
-    
+
     if (agreedToTerms !== true) {
       alert('Please check to agree to terms and conditons');
       setFormResponses({
         ...formResponses,
         agreedToTermsError: true,
       });
-      setLoadingAnimation(false)
+      setLoadingAnimation(false);
       return;
     }
 
@@ -143,8 +151,10 @@ function RegisterForm() {
     <>
       <form
         onSubmit={handleRegister}
-        className='py-4 lg:w-full lg:my-auto lg:px-8'
+        className='pb-4 lg:w-full lg:my-auto lg:px-8'
       >
+        <h2 className='text-xl py-2'>Register here</h2>
+
         {/* <!-- Email input --> */}
         <div>
           <div>

@@ -18,7 +18,7 @@ function Contact() {
         <Navbar />
         {/* Main */}
         {!toggleNavigation && (
-          <main className='grid md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
+          <main className='grid mx-4 md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
             {/* Info */}
             <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
               <article className='m-1 bg-main-colour h-min mb-4 p-4 rounded'>
@@ -26,7 +26,7 @@ function Contact() {
                   <h1 className='text-2xl font-bold'>Contact Me!</h1>
                 </div>
                 <div className='sm:px-6'>
-                  <p className='p-2 pb-6 md:mx-6 lg:mx-4'>
+                  <p className='p-2 pb-6 md:mx-6 lg:mx-4 leading-5'>
                     If you need anything at all, just get in touch. If you need
                     quotes or just to talk through some ideas. I am available to
                     help. Either contact me throught the form provided, or use
