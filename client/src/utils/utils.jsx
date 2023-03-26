@@ -288,36 +288,36 @@ export const basicListItems = [
 ]
 export const shopListItems = [
   {
-    text: `Up to 5 pages`
+    text: `Hundreds of store products`
   },
   {
-    text: `10 GB of storage`
+    text: `Individual product pages`
   },
   {
-    text: `Hosting from £3.99`
+    text: `Stripe, Paypal or Visa payments`
   },
   {
-    text: `3 Months free testing`
+    text: `Purchasing and thank you pages`
   },
   {
-    text: `SSL Certificates`
+    text: `Update products admin area`
   },
 ]
 
 export const fullstackListItems = [
   {
-    text: `Up to 5 pages`
+    text: `Intergrated API's`
   },
   {
-    text: `10 GB of storage`
+    text: `Custom database deisgns`
   },
   {
-    text: `Hosting from £3.99`
+    text: `Developer and admin tools`
   },
   {
-    text: `3 Months free testing`
+    text: `Fully customized components`
   },
   {
-    text: `SSL Certificates`
+    text: `User features`
   },
 ]

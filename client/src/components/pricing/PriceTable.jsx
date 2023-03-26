@@ -1,66 +1,72 @@
 import React from 'react';
 // Icons
-import { BsCheck2Circle } from 'react-icons/bs';
-import checkIcon from '../../assets/img/checkIcon.svg';
-import crossIcon from '../../assets/img/closeCross.svg';
-import InfinityIcon from '../../assets/img/infinityIcon.svg';
+import { FiCheckCircle } from 'react-icons/fi';
+import { RxCross2 } from 'react-icons/rx';
+import { IoMdInfinite } from 'react-icons/io';
 // Utils
 import { pricingTableData } from '../../utils/utils';
 
 function PriceTable() {
   return (
-    <section className='bg-main-colour m-2'>
-      <table className='border-2 border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'>
+    <section className='my-10 mx-6'>
+      <section className='text-center text-3xl my-4'>
+        <h3 className='font-semibold'>Basic Options</h3>
+        <h4>Of Thousands Available!</h4>
+      </section>
+      <table className='bg-slate-500 border-2 border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'>
         <thead>
-          <tr className='grid grid-cols-4 p-2'>
-            <th className='border-2 border-black border-solid p-2'>Element</th>
+          <tr className='grid grid-cols-4'>
+            <th className='border-2 border-black border-solid p-2'>Component</th>
             <th className='border-2 border-black border-solid p-2'>
               Basic Site
             </th>
             <th className='border-2 border-black border-solid p-2'>
-              Basic Shop
+              Online Shop
             </th>
             <th className='border-2 border-black border-solid p-2'>
               Fullstack Project
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className=''>
           {pricingTableData.map((item, index) => {
             return (
-              <tr key={index} className='grid grid-cols-4 px-2'>
-                <td className='border-2 border-black border-solid p-2'>
+              <tr
+                key={index}
+                className='grid grid-cols-4 odd:bg-white even:bg-slate-300'
+              >
+                <td className='border-2 border-black border-solid px-2 py-1'>
                   {item.title}
                 </td>
-                <td className='border-2 border-black border-solid p-2 flex justify-center'>
+                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center font-semibold'>
                   {item.basicSite.available ? (
-                    <img src={checkIcon} alt='check' className='w-6' />
+                    <FiCheckCircle size={20} />
                   ) : (
-                    <img src={crossIcon} alt='not included' className='w-6' />
+                    <RxCross2 size={20} />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid p-2 flex justify-center'>
+                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center'>
                   {item.basicShop.available ? (
-                    <img src={checkIcon} alt='check' className='w-6' />
+                    <FiCheckCircle size={20} />
                   ) : (
-                    <img src={crossIcon} alt='not included' className='w-6' />
+                    <RxCross2 size={20} />
                   )}
                 </td>
-                <td className='border-2 border-black border-solid p-2 flex justify-center'>
+                <td className='border-2 border-black border-solid px-2 py-1 flex justify-center'>
                   {item.fullstack.available ? (
-                    <img src={checkIcon} alt='check' className='w-6' />
+                    <FiCheckCircle size={20} />
                   ) : (
-                    <img src={crossIcon} alt='not included' className='w-6' />
+                    <RxCross2 size={20} />
                   )}
                   {item.fullstack.amount === 'infinite' && (
-                    <img src={InfinityIcon} alt='check' className='w-5' />
+                    <IoMdInfinite size={20} />
                   )}
                 </td>
               </tr>
             );
           })}
         </tbody>
-        <tfoot>
+        {/* <tfoot>
           <tr className='grid grid-cols-4 p-2'>
             <td className='border-2 border-black border-solid p-2'>
               Starting From:
@@ -75,7 +81,7 @@ function PriceTable() {
               £1450
             </td>
           </tr>
-        </tfoot>
+        </tfoot> */}
       </table>
     </section>
   );
