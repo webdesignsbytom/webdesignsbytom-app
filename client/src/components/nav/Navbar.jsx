@@ -22,6 +22,7 @@ import TestIcon from '../../assets/img/testIcon.svg';
 import EventsIcon from '../../assets/img/eventsIcon.svg';
 import Search from '../../assets/img/search.svg';
 import contactIcon from '../../assets/img/contactIcon.svg';
+
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';
@@ -556,8 +557,8 @@ function Navbar() {
             {/* Social links */}
             <div className='my-2 flex justify-center'>
               <SocialBar
-                borders={'border-white dark:border-colour-dark'}
-                icons={'text-white dark:text-colour-dark'}
+                borders={'border-white border-4 dark:border-colour-dark'}
+                icons={'text-white dark:text-colour-dark text-3xl'}
               />
             </div>
           </ul>
