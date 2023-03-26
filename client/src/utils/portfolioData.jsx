@@ -94,9 +94,10 @@ export const portfolioData = [
       'Purchasing Functions',
       'Variable Menus',
       'Admin Panel with users data',
+      'Animated canvas gameplay'
     ],
     headline: 'Game design using state management and purchasing',
-    desc: 'Bio-Clikcer a react based idle clicker game. Based on hugely popular phone and browser idle clicker games. This involves a huge amount of player states and is a great example of the abilities of using state in react. Furthermore rending items, achievements and buildings like they were items in an online store. The player data is all collected and saved to localstorage and server databases for using various devices. Every element on the page is subject to rerendering and has been smoothly laid out to prevent overloading issues',
+    desc: 'Bio-Clikcer a react based idle clicker game. Based on hugely popular phone and browser idle clicker games. This involves a huge amount of player states and is a great example of the abilities of using state in react. Furthermore rending items, achievements and buildings like they were items in an online store. The player data is all collected and saved to localstorage and server databases for using various devices. Every element on the page is subject to rerendering and has been smoothly laid out to prevent overloading issues. An animated component on the main screen has a game where you can tap on click on enemy units.',
     featuredComponent: 'Game',
     liveSite: 'https://rococo-kleicha-53fa88.netlify.app/',
   },
