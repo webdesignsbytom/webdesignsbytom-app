@@ -7,14 +7,13 @@ import NotificationsContainer from '../../components/notifications/Notifications
 import MessagesContainer from '../../components/messages/MessagesContainer';
 import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
-// Fetch
-import { setFormByUserId } from '../../utils/Fetch';
-// Utils
-import LoggedInUser from '../../users/utils/LoggedInUser';
-import client from '../../utils/client';
-import { statusResults } from '../../users/utils/utils';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
+// Fetch
+import { setFormByUserId } from '../../utils/Fetch';
+import client from '../../utils/client';
+// Utils
+import { statusResults } from '../../users/utils/utils';
 
 function Account() {
   const { user } = useContext(UserContext);

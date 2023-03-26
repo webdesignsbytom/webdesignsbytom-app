@@ -618,14 +618,14 @@ function AboutSection() {
               </h2>
               <p className='text-body-color mb-8 text-base'>
                 Your dream website can come to life with my help. While my name
-                is on the site i work with a team of skilled developers from all
+                is on the site I work with a team of skilled developers from all
                 over the world. Producing beautiful results designed with the
                 latest search engine optimisation tactics and features as
                 standard.
               </p>
               <p className='text-body-color mb-3 text-base'>
                 We offer a range of affordable websites and can complete any
-                custom build you image.
+                custom build you imagine.
               </p>
               <p className='text-body-color mb-12 text-base'>
                 My quick and easy design tool will help you build a website

@@ -28,12 +28,12 @@ function WhyChooseUs() {
                 <article className='flex justify-center items-center h-full'>
                   <div className='px-6 py-12 md:px-12 text-white text-center'>
                     <h3 className='text-2xl uppercase font-bold mb-6'>
-                      Year of experience delivering qulaity{' '}
+                      Year of experience delivering quality{' '}
                     </h3>
                     <p style={{ color: 'hsl(210, 12%, 80%)' }}>
                       Personally I have worked for years in the engineering and
-                      technology fields and bring a wealth of practical thinking
-                      and solutions to problems. My goals has always been to
+                      technology fields and bring a wealth of knowledge, practical thinking
+                      and solutions to problems. My goals have always been to
                       produce excellent work that can be used to represent my
                       skills. Teaming up with a number of skilled individuals
                       from around the world only makes this company more useful
@@ -71,11 +71,13 @@ function WhyChooseUs() {
                 </div>
               </div>
               <div className='grow ml-4'>
-                <p className='font-bold mb-1'>Why not use a CMD like wix.</p>
+                <p className='font-bold mb-1'>
+                  Why not use a CMD like Wordpress or Wix.
+                </p>
                 <p className='text-gray-500'>
-                  These site are easy to make. However many people under
+                  These site are easier to make. However many people under
                   estimate the time it can take to build multiple pages of
-                  content. As well as create a phone version. Style is harder
+                  content, as well as create a phone version. Style is harder
                   than it looks..
                 </p>
               </div>
@@ -132,7 +134,7 @@ function WhyChooseUs() {
                 <p className='font-bold mb-1'>Expertise</p>
                 <p className='text-gray-500'>
                   There is so much more that goes into making a successful
-                  website than you can learn quicky. By using a real web
+                  website than you can learn quickly. By using a real web
                   designer you know that everything important will be covered.
                   From registering your website, to security and page speed.
                 </p>
@@ -161,11 +163,10 @@ function WhyChooseUs() {
                 <p className='font-bold mb-1'>Friendly Design Team</p>
                 <p className='text-gray-500'>
                   The team has a variety of skills that helps us move quickly to
-                  complete projects. Not only that we are patient and
-                  understanding when it comes to figuring out your web design
-                  vision. Not only that but we provide a quick and easy desing
-                  tool to help design and keep the team up to date on any
-                  changes to a project.
+                  complete projects. We are patient and understanding when it
+                  comes to figuring out your web design vision. Not only that
+                  but we provide a quick and easy desing tool to help design and
+                  keep the team up to date on any changes to a project.
                 </p>
               </div>
             </div>
