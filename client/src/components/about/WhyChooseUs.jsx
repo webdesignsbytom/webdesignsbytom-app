@@ -28,7 +28,7 @@ function WhyChooseUs() {
                 <article className='flex justify-center items-center h-full'>
                   <div className='px-6 py-12 md:px-12 text-white text-center'>
                     <h3 className='text-2xl uppercase font-bold mb-6'>
-                      Year of experience delivering quality{' '}
+                      Years of experience delivering quality{' '}
                     </h3>
                     <p style={{ color: 'hsl(210, 12%, 80%)' }}>
                       Personally I have worked for years in the engineering and
