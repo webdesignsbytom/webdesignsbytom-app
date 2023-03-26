@@ -8,7 +8,7 @@ import { pricingTableData } from '../../utils/utils';
 
 function PriceTable() {
   return (
-    <section id='pricing' className='my-10 mx-6'>
+    <section id='pricing' className='my-10 mx-20'>
       <section className='text-center text-3xl my-4'>
         <h3 className='font-semibold'>Basic Options</h3>
         <h4>Of Thousands Available!</h4>
