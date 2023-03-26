@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'afternoon': "url('https://i.ibb.co/3mThcXc/afternoon.jpg')",
+      },
       colors: {
         'main-colour': '#cbd5e1',
         'nav-colour': '#cbd5e1',

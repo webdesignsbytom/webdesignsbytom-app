@@ -8,32 +8,10 @@ import Swatches from './Swatches';
 import ColourItem from './ColourItem';
 
 function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
-  console.log('2. Palette', colourPaletteObject);
-
-  const [currentColour, setCurrentColour] = useState({ background: '#000' });
+  const [currentColour, setCurrentColour] = useState({ background: '#ff0000' });
   const [selectedCard, setSelectedCard] = useState('cardOneBg');
   const [displayPicker, setDisplayPicker] = useState(false);
-  console.log('currentColour', currentColour);
-  console.log('selectedCard', selectedCard);
-  const handleChangeComplete = (color) => {
-    console.log('Colour', color);
-    setCurrentColour({ background: color.hex });
 
-    if (selectedCard === 'cardOneBg') {
-      console.log('xxxx');
-      setCardOneBg(`bg-[${color.hex}]`);
-      setRgbCardOne();
-      setHexCardOne();
-      setHlsCardOne();
-    }
-  };
-
-  const openPicker = (event) => {
-    const { id } = event.target;
-    console.log('id', id);
-    setSelectedCard(id);
-    setDisplayPicker(!displayPicker);
-  };
   // Card One
   const [cardOneBg, setCardOneBg] = useState('bg-[#0099ff]');
   const [rgbCardOne, setRgbCardOne] = useState('#0099ff');
@@ -55,7 +33,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [hexCardFour, setHexCardFour] = useState('#0099ff');
   const [hlsCardFour, setHlsCardFour] = useState('#0099ff');
   // Card five
-  const [cardFiveBg, setCardFiveBg] = useState('bg-[#669999]');
+  const [cardFiveBg, setCardFiveBg] = useState('bg-[#ffff00]');
   const [rgbCardFive, setRgbCardFive] = useState('#0099ff');
   const [hexCardFive, setHexCardFive] = useState('#0099ff');
   const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
@@ -63,8 +41,25 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const closeColourPicker = () => {
     setDisplayPicker(false);
   };
-  console.log('cardOneBg', cardOneBg);
 
+  const handleChangeComplete = (color) => {
+    setCurrentColour({ background: color.hex });
+  };
+
+  const setNewColour = (event) => {
+    const str = String(currentColour.background);
+    console.log(`bg-[${str}]`);
+    setCardFiveBg(`bg-[${str}]`);
+    console.log('e.t',event.target)
+  };
+
+  const openPicker = (event) => {
+    const { id } = event.target;
+    setSelectedCard(id);
+    setDisplayPicker(!displayPicker);
+  };
+
+  console.log('card5', cardFiveBg);
   return (
     <section className='grid grid-rows-reg'>
       <div className='text-center flex justify-between'>
@@ -85,14 +80,22 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
       <section className='relative grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
         {/* Colour Picker */}
         {displayPicker && (
-          <div className='z-10 bg-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer'>
-            <div className='flex justify-end'>
+          <div className='z-10 bg-white border-2 border-black border-solid dark:border-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer'>
+            <div className='flex justify-end my-1'>
               <RxCross2 onClick={closeColourPicker} />
             </div>
             <SketchPicker
               color={currentColour.background}
               onChange={handleChangeComplete}
             />
+            <div className='flex justify-center my-2'>
+              <button
+                onClick={setNewColour}
+                className={`py-1 px-3 outline outine-black outline-1 rounded-lg hover:bg-red-500`}
+              >
+                SET COLOUR
+              </button>
+            </div>
           </div>
         )}
         <section className='grid lg:grid-cols-xo'>
