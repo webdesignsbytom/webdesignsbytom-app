@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'outfit': 'Outfit',
+        'poppins': 'Poppins'
+      },
       backgroundImage: {
         'afternoon': "url('https://i.ibb.co/3mThcXc/afternoon.jpg')",
       },

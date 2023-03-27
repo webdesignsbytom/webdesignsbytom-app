@@ -1,7 +1,7 @@
 import React from 'react';
+// Icons
 import { HiArrowSmLeft } from 'react-icons/hi';
 import { HiArrowSmRight } from 'react-icons/hi';
-
 
 function HeroSwitch() {
   return (
