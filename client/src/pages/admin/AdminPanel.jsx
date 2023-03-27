@@ -12,6 +12,7 @@ import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
 // Data
 import client from '../../utils/client';
+import AdminUpdate from '../../components/admin/AdminUpdate';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
@@ -30,6 +31,7 @@ function AdminPanel() {
   const [displayProjects, setDisplayProjects] = useState(false);
   const [displayUsers, setDisplayUsers] = useState(false);
   const [displaySearch, setDisplaySearch] = useState(false);
+  const [displayUpdate, setDisplayUpdate] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
   const [selectedNavElement, setSelectedNavElement] = useState('overview');
   // Favorites
@@ -139,6 +141,20 @@ function AdminPanel() {
                     </li>
                     <li
                       onMouseEnter={() => {
+                        setDisplayUpdate(true);
+                        setDisplayFixed(false);
+                      }}
+                      onMouseLeave={() => {
+                        setDisplayUpdate(false);
+                        setDisplayFixed(true);
+                      }}
+                      onClick={() => setSelectedNavElement('update')}
+                      className='cursor-pointer hidden lg:block text-active-text hover:text-hover-text active:text-active-text'
+                    >
+                      Update
+                    </li>
+                    <li
+                      onMouseEnter={() => {
                         setDisplaySearch(true);
                         setDisplayFixed(false);
                       }}
@@ -159,6 +175,7 @@ function AdminPanel() {
                   {displayOverview && <AdminOverview />}
                   {displayUsers && <UsersContainer users={allUsers} />}
                   {displayProjects && <AdminProjects projects={allProjects} />}
+                  {displayUpdate && <AdminUpdate />}
                   {displaySearch && <AdminSearch />}
                   {/* Open */}
                   {selectedNavElement === 'overview' &&
@@ -169,6 +186,10 @@ function AdminPanel() {
                   {selectedNavElement === 'projects' &&
                     displayFixed === true && (
                       <AdminProjects projects={allProjects} />
+                    )}
+                  {selectedNavElement === 'update' &&
+                    displayFixed === true && (
+                      <AdminUpdate />
                     )}
                   {selectedNavElement === 'search' && displayFixed === true && (
                     <AdminSearch />

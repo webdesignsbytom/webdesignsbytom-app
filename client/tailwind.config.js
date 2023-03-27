@@ -13,8 +13,9 @@ module.exports = {
         'afternoon': "url('https://i.ibb.co/3mThcXc/afternoon.jpg')",
       },
       colors: {
-        'main-colour': '#cbd5e1',
-        'nav-colour': '#cbd5e1',
+        'main-colour': '#1F2937',
+        'nav-colour': '#1F2937',
+        'footer-colour': '#1F2937',
         'colour-pale': '#f1f5f9',
         'colour-light': '#e2e8f0',
         'colour-med': '#94a3b8',

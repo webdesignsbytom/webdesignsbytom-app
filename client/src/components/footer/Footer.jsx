@@ -4,7 +4,7 @@ import SocialBar from '../social/SocialBar';
 function Footer() {
   const today = new Date();
   return (
-    <footer className='bg-nav-colour grip gap-2 w-full text-sm p-1 text-center mt-4 py-2'>
+    <footer className='bg-footer-colour text-white grip gap-2 w-full text-sm p-1 text-center mt-4 py-2'>
       <section className='mx-4 py-2'>
         <div className='flex justify-between'>
           <p>Phone: 07541576148</p>
