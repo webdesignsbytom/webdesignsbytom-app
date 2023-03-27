@@ -8,7 +8,7 @@ import { loginDataTemplate, statusResults } from '../utils/utils';
 // Fetch
 import { postLogin } from '../../utils/Fetch';
 // Icons
-import OpenEye from '../../assets/img/eye.svg';
+import OpenEye from '../../assets/svg/eye.svg';
 
 function LoginForm({ setUser }) {
   const [loginResponseMessage, setLoginResponseMessage] =

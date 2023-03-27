@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // Icons
-import changeIcon from '../../assets/img/changeIcon.svg';
+import changeIcon from '../../assets/svg/changeIcon.svg';
 import { RxCross2 } from 'react-icons/rx';
 // Colour picker
 import { SketchPicker } from 'react-color';

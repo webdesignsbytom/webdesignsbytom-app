@@ -1,7 +1,7 @@
 import React from 'react';
 // Icons
-import PlusIconReg from '../../assets/img/plusIconReg.svg';
-import HeartIcon from '../../assets/img/heart.svg';
+import PlusIconReg from '../../assets/svg/plusIconReg.svg';
+import HeartIcon from '../../assets/svg/heart.svg';
 
 function AddFavBar() {
     

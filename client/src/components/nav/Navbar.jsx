@@ -6,22 +6,21 @@ import { UserContext } from '../../context/UserContext';
 // Data
 import { sampleUserData } from '../../users/utils/utils';
 // Icons
-import Home from '../../assets/img/home.svg';
-import Account from '../../assets/img/account.svg';
-import Design from '../../assets/img/design.svg';
-import Contact from '../../assets/img/contact.svg';
-import Portfolio from '../../assets/img/portfolio.svg';
-import Login from '../../assets/img/login.svg';
-import Register from '../../assets/img/register.svg';
-import Logout from '../../assets/img/logout.svg';
-import Admin from '../../assets/img/admin.svg';
-import Developer from '../../assets/img/developer.svg';
-import MessageIcon from '../../assets/img/messageIcon.svg';
-import Notification from '../../assets/img/notification.svg';
-import TestIcon from '../../assets/img/testIcon.svg';
-import EventsIcon from '../../assets/img/eventsIcon.svg';
-import Search from '../../assets/img/search.svg';
-import contactIcon from '../../assets/img/contactIcon.svg';
+import Home from '../../assets/svg/homeIcon-white.svg';
+import Account from '../../assets/svg/accountIcon-white.svg';
+import Admin from '../../assets/svg/adminIcon-white.svg'
+import Contact from '../../assets/svg/contactIcon-white.svg';
+import Design from '../../assets/svg/designIcon-white.svg';
+import Developer from '../../assets/svg/developerIcon-white.svg';
+import Login from '../../assets/svg/loginIcon-white.svg';
+import Logout from '../../assets/svg/logoutIcon-white.svg';
+import MessageIcon from '../../assets/svg/messageIcon-white.svg';
+import Notification from '../../assets/svg/notificationIcon-white.svg';
+import Portfolio from '../../assets/svg/portfolioIcon-white.svg';
+import Register from '../../assets/svg/registerIcon-white.svg';
+import TestIcon from '../../assets/svg/testIcon-white.svg';
+import EventsIcon from '../../assets/svg/eventsIcon-white.svg';
+import Search from '../../assets/svg/searchIcon-white.svg';
 
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
@@ -310,7 +309,7 @@ function Navbar() {
 
       {/* Phone navigation */}
       {toggleNavigation && (
-        <div className='absolute bg-colour-med w-full min-h-[calc(100%_-_4rem)] overflow-hidden z-20 md:hidden'>
+        <div className='absolute bg-gray-200 w-full min-h-[calc(100%_-_4rem)] overflow-hidden z-20 md:hidden'>
           <ul className='grid gap-2 mt-2'>
             {/* Home */}
             <li className='phone__nav__li'>
@@ -440,7 +439,7 @@ function Navbar() {
                     }}
                   >
                     <img
-                      src={contactIcon}
+                      src={Contact}
                       className='w-8'
                       alt='notNotification'
                     />

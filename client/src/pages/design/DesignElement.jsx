@@ -12,7 +12,7 @@ import UserStories from './UserStories';
 import RegisterForm from '../../users/register/RegisterForm';
 import client from '../../utils/client';
 // Icons
-import QuestionMark from '../../assets/img/questionMark.svg';
+import QuestionMark from '../../assets/svg/questionMark.svg';
 // Utils
 import { designTemplate, paletteTemplate } from '../../utils/utils';
 // React icons

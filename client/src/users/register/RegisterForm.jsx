@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Components
 // Icons
-import OpenEye from '../../assets/img/eye.svg';
+import OpenEye from '../../assets/svg/eye.svg';
 // Utils
 import {
   showConfirmPassword,

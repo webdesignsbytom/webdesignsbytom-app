@@ -1,7 +1,7 @@
 import React from 'react';
 // Icons
-import BinIcon from '../../assets/img/bin.svg';
-import EyeIcon from '../../assets/img/eye.svg';
+import BinIcon from '../../assets/svg/bin.svg';
+import EyeIcon from '../../assets/svg/eye.svg';
 
 function UserItem({ user }) {
   const { id, firstName, lastName, country, email, createdAt } = user;

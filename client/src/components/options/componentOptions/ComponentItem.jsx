@@ -1,7 +1,5 @@
 import React from 'react';
-// Icons
-import HeartIcon from '../../../assets/img/heart.svg';
-import PlusIconReg from '../../../assets/img/plusIconReg.svg';
+// Components
 import AddFavBar from '../../utils/AddFavBar';
 
 function ComponentItem({ component }) {

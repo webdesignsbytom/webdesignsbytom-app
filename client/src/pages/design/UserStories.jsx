@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
-import QuestionMark from '../../assets/img/questionMark.svg';
-import BinIcon from '../../assets/img/bin.svg';
+import QuestionMark from '../../assets/svg/questionMark.svg';
+import BinIcon from '../../assets/svg/bin.svg';
 // Utils
 import { userStoryTemplate } from '../../utils/utils';
 import { statusResults } from '../../users/utils/utils';

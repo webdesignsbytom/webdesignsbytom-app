@@ -1,7 +1,7 @@
 import React from 'react';
 // Icons
-import EyeIcon from '../../assets/img/eye.svg';
-import BinIcon from '../../assets/img/bin.svg';
+import EyeIcon from '../../assets/svg/eye.svg';
+import BinIcon from '../../assets/svg/bin.svg';
 
 function NoteItem({ notification, markSeen, deleteNotification }) {
   const { content, type, createdAt, id } = notification;

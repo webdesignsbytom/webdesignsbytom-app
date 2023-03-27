@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Icons
-import EyeIcon from '../../assets/img/eye.svg';
-import BinIcon from '../../assets/img/bin.svg';
+import EyeIcon from '../../assets/svg/eye.svg';
+import BinIcon from '../../assets/svg/bin.svg';
 
 function MessageItem({ message }) {
   const { user } = useContext(UserContext);
