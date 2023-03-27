@@ -27,21 +27,21 @@ function ReviewsContainer() {
             <svg
               viewBox='0 0 52 24'
               fill='currentColor'
-              className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-blue-400 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
+              className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-yellow-500 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
             >
               <defs>
                 <pattern
-                  id='2c67e949-4a23-49f7-bf27-ca140852cf21'
+                  id='bd1bde-4a23-49f7-bf27-ca140852cf21'
                   x='0'
                   y='0'
                   width='.135'
                   height='.30'
                 >
-                  <circle cx='1' cy='1' r='.7' />
+                  <circle cx='1' cy='1' r='1' />
                 </pattern>
               </defs>
               <rect
-                fill='url(#2c67e949-4a23-49f7-bf27-ca140852cf21)'
+                fill='url(#bd1bde-4a23-49f7-bf27-ca140852cf21)'
                 width='52'
                 height='24'
               />

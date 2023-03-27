@@ -13,21 +13,21 @@ function SalesCta() {
               <svg
                 viewBox='0 0 52 24'
                 fill='currentColor'
-                className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-gray-400 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
+                className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-yellow-500 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
               >
                 <defs>
                   <pattern
-                    id='2c67e949-4a23-49f7-bf27-ca140852cf21'
+                    id='bd1bde-4a23-49f7-bf27-ca140852cf21'
                     x='0'
                     y='0'
                     width='.135'
                     height='.30'
                   >
-                    <circle cx='1' cy='1' r='.7' />
+                    <circle cx='1' cy='1' r='1' />
                   </pattern>
                 </defs>
                 <rect
-                  fill='url(#2c67e949-4a23-49f7-bf27-ca140852cf21)'
+                  fill='url(#bd1bde-4a23-49f7-bf27-ca140852cf21)'
                   width='52'
                   height='24'
                 />
@@ -44,7 +44,12 @@ function SalesCta() {
               see. This tool saves your design allowing us both to review the
               data during builds and make quick changes to your designs.
             </p>
-            <span className='font-semibold mt-4'>Sign up now to save your designs - <Link to='/register' className='text-hyperlink-blue'>Sign up</Link></span>
+            <span className='font-semibold mt-4'>
+              Sign up now to save your designs -{' '}
+              <Link to='/register' className='text-hyperlink-blue'>
+                Sign up
+              </Link>
+            </span>
           </article>
         </div>
 
@@ -54,7 +59,7 @@ function SalesCta() {
             className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
           >
             <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
-            <span className='absolute inset-0 w-full h-full bg-slate-200 rounded-md '></span>
+            <span className='absolute inset-0 w-full h-full bg-black rounded-md '></span>
             <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
             <span className='relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
               Design Tool
@@ -64,10 +69,10 @@ function SalesCta() {
             to='/register'
             className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
           >
-            <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
-            <span className='absolute inset-0 w-full h-full bg-slate-200 rounded-md '></span>
-            <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
-            <span className='relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+            <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-green-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+            <span className='absolute inset-0 w-full h-full bg-black rounded-md '></span>
+            <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-green-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
+            <span className='relative text-green-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
               Sign Up
             </span>
           </Link>

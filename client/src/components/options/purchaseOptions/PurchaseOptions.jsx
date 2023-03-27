@@ -17,28 +17,28 @@ function PurchaseOptions() {
         <div className='max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12'>
           <h2 className='max-w-lg text-center mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto'>
             <span className='relative inline-block'>
-              <svg
-                viewBox='0 0 52 24'
-                fill='currentColor'
-                className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-gray-400 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
-              >
-                <defs>
-                  <pattern
-                    id='2c67e949-4a23-49f7-bf27-ca140852cf21'
-                    x='0'
-                    y='0'
-                    width='.135'
-                    height='.30'
-                  >
-                    <circle cx='1' cy='1' r='.7' />
-                  </pattern>
-                </defs>
-                <rect
-                  fill='url(#2c67e949-4a23-49f7-bf27-ca140852cf21)'
-                  width='52'
-                  height='24'
-                />
-              </svg>
+            <svg
+              viewBox='0 0 52 24'
+              fill='currentColor'
+              className='absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-green-600 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block'
+            >
+              <defs>
+                <pattern
+                  id='bd1bde-4a23-49f7-bf27-ca140852cf21'
+                  x='0'
+                  y='0'
+                  width='.135'
+                  height='.30'
+                >
+                  <circle cx='1' cy='1' r='1' />
+                </pattern>
+              </defs>
+              <rect
+                fill='url(#bd1bde-4a23-49f7-bf27-ca140852cf21)'
+                width='52'
+                height='24'
+              />
+            </svg>
               <span className='relative'>Affordable</span>
             </span>{' '}
             for everyone
@@ -81,7 +81,7 @@ function PurchaseOptions() {
               </ul>
               <button
                 type='submit'
-                className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-300 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
+                className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
               >
                 Get Now
               </button>
@@ -122,7 +122,7 @@ function PurchaseOptions() {
               </ul>
               <button
                 type='submit'
-                className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md bg-yellow-400 hover:bg-yellow-700 focus:shadow-outline focus:outline-none'
+                className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide transition duration-200 rounded shadow-md bg-yellow-500 hover:bg-yellow-700 focus:shadow-outline focus:outline-none text-white'
               >
                 Get Now
               </button>
@@ -163,7 +163,7 @@ function PurchaseOptions() {
               </ul>
               <button
                 type='submit'
-                className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-teal-900 transition duration-200 rounded shadow-md bg-green-400 hover:bg-green-700 focus:shadow-outline focus:outline-none'
+                className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide transition duration-200 rounded shadow-md bg-green-600 hover:bg-green-700 focus:shadow-outline focus:outline-none text-white'
               >
                 Get Now
               </button>

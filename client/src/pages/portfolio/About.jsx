@@ -26,7 +26,7 @@ function About() {
 
         <section className='grid gap-10 w-full lg:px-10'>
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            <article className='bg-main-colour rounded-xl cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-slate-400 hover:outline text-center px-4 py-8 w-full'>
+            <article className='bg-gray-900 rounded-xl border-4 border-solid border-purple-600 cursor-pointer hover:bg-black hover:text-white text-white hover:outline-4 hover:outline-transparent-purple hover:outline text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <TbReportAnalytics size={35} />
               </div>
@@ -39,7 +39,7 @@ function About() {
               <small>Renewable Energy Installer</small>
             </article>
 
-            <article className='bg-main-colour rounded-xl cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-slate-400 hover:outline text-center px-4 py-8 w-full'>
+            <article className='bg-gray-900 rounded-xl border-4 border-solid border-yellow-500 cursor-pointer hover:bg-black hover:text-white text-white hover:outline-4 hover:outline-transparent-yellow hover:outline text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <MdOutlineLocalOffer size={35} />
               </div>
@@ -52,7 +52,7 @@ function About() {
               <small>Advice and Information</small>
             </article>
 
-            <article className='bg-main-colour rounded-xl cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-slate-400 hover:outline text-center px-4 py-8 w-full'>
+            <article className='bg-gray-900 text-white rounded-xl border-4 border-solid border-green-600 cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-transparent-green hover:outline text-center px-4 py-8 w-full'>
               <div className='flex justify-center mb-4'>
                 <AiOutlineProject size={35} />
               </div>

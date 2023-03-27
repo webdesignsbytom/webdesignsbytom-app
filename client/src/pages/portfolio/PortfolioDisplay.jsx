@@ -60,7 +60,7 @@ function PortfolioDisplay() {
                     href={item.github}
                     target='_blank'
                     rel='noreferrer'
-                    className='bg-slate-500 grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
+                    className='bg-gray-900 grid justify-center p-2 text-purple-600 font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
                   >
                     Github
                   </a>
@@ -68,13 +68,13 @@ function PortfolioDisplay() {
                     href={item.demo}
                     target='_blank'
                     rel='noreferrer'
-                    className='bg-slate-500 grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
+                    className='bg-gray-900 grid justify-center p-2 text-yellow-500 font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
                   >
                     Live Demo
                   </a>
                   <button
                     onClick={() => displayInfo(item)}
-                    className='bg-slate-500 grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
+                    className='bg-gray-900 grid justify-center p-2 text-green-600 font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-xl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-xl transition duration-150 ease-in-out w-full items-center hover:bg-slate-200'
                   >
                     More Info
                   </button>
