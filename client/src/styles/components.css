@@ -27,7 +27,7 @@
 
 /* Nav */
 .phone__nav__li {
-  @apply bg-main-colour text-white mx-2 p-1 rounded transition duration-75 ease-in-out focus:scale-125 active:scale-105 active:bg-colour-light active:text-active-text;
+  @apply bg-gradient-to-r from-slate-500 to-slate-400 outline outline-2 outline-gray-900 text-white mx-2 p-1 rounded transition duration-75 ease-in-out focus:scale-125 active:scale-105 active:bg-colour-light active:text-active-text;
 } 
 
 .selected__nav__li {

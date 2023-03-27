@@ -314,8 +314,8 @@ function Navbar() {
             {/* Home */}
             <li className='phone__nav__li'>
               <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
-                <img src={Home} className='w-8' alt='home' />
-                <div className='flex items-center text-xl'>
+                <img src={Home} className='w-8 ml-1' alt='home' />
+                <div className='flex items-center text-xl ml-1'>
                   <h3>Home</h3>
                 </div>
               </Link>
@@ -329,8 +329,8 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Account} className='w-8' alt='account' />
-                    <div className='flex items-center text-xl'>
+                    <img src={Account} className='w-8 ml-1' alt='account' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Account</h3>
                     </div>
                   </Link>
@@ -346,10 +346,10 @@ function Navbar() {
                   >
                     <img
                       src={Notification}
-                      className='w-8'
+                      className='w-8 ml-1'
                       alt='notNotification'
                     />
-                    <div className='flex items-center text-xl'>
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Notifications</h3>
                     </div>
                   </Link>
@@ -365,10 +365,10 @@ function Navbar() {
                   >
                     <img
                       src={MessageIcon}
-                      className='w-8'
+                      className='w-8 ml-1'
                       alt='notNotification'
                     />
-                    <div className='flex items-center text-xl'>
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Messages</h3>
                     </div>
                   </Link>
@@ -382,8 +382,8 @@ function Navbar() {
                 className='phone__nav__link'
                 onClick={toggleNavbar}
               >
-                <img src={Design} className='w-8' alt='design' />
-                <div className='flex items-center text-xl'>
+                <img src={Design} className='w-8 ml-1' alt='design' />
+                <div className='flex items-center text-xl ml-1'>
                   <h3>Design</h3>
                 </div>
               </Link>
@@ -395,8 +395,8 @@ function Navbar() {
                 className='phone__nav__link'
                 onClick={toggleNavbar}
               >
-                <img src={Contact} className='w-8' alt='contact' />
-                <div className='flex items-center text-xl'>
+                <img src={Contact} className='w-8 ml-1' alt='contact' />
+                <div className='flex items-center text-xl ml-1'>
                   <h3>Contact</h3>
                 </div>
               </Link>
@@ -408,8 +408,8 @@ function Navbar() {
                 className='phone__nav__link'
                 onClick={toggleNavbar}
               >
-                <img src={Portfolio} className='w-8' alt='portfolio' />
-                <div className='flex items-center text-xl'>
+                <img src={Portfolio} className='w-8 ml-1' alt='portfolio' />
+                <div className='flex items-center text-xl ml-1'>
                   <h3>Portfolio</h3>
                 </div>
               </Link>
@@ -423,8 +423,8 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Admin} className='w-8' alt='admin' />
-                    <div className='flex items-center text-xl'>
+                    <img src={Admin} className='w-8 ml-1' alt='admin' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Admin</h3>
                     </div>
                   </Link>
@@ -440,10 +440,10 @@ function Navbar() {
                   >
                     <img
                       src={Contact}
-                      className='w-8'
+                      className='w-8 ml-1'
                       alt='notNotification'
                     />
-                    <div className='flex items-center text-xl'>
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Contacts</h3>
                     </div>
                   </Link>
@@ -459,8 +459,8 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Developer} className='w-8' alt='development' />
-                    <div className='flex items-center text-xl'>
+                    <img src={Developer} className='w-8 ml-1' alt='development' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Development</h3>
                     </div>
                   </Link>
@@ -476,10 +476,10 @@ function Navbar() {
                   >
                     <img
                       src={EventsIcon}
-                      className='w-8'
+                      className='w-8 ml-1'
                       alt='notNotification'
                     />
-                    <div className='flex items-center text-xl'>
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Events</h3>
                     </div>
                   </Link>
@@ -493,8 +493,8 @@ function Navbar() {
                       displayTest();
                     }}
                   >
-                    <img src={TestIcon} className='w-8' alt='notNotification' />
-                    <div className='flex items-center text-xl'>
+                    <img src={TestIcon} className='w-8 ml-1' alt='notNotification' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Test Page</h3>
                     </div>
                   </Link>
@@ -510,8 +510,8 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Login} className='w-8' alt='login' />
-                    <div className='flex items-center text-xl'>
+                    <img src={Login} className='w-8 ml-1' alt='login' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Login</h3>
                     </div>
                   </Link>
@@ -523,8 +523,8 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Register} className='w-8' alt='register' />
-                    <div className='flex items-center text-xl'>
+                    <img src={Register} className='w-8 ml-1' alt='register' />
+                    <div className='flex items-center text-xl ml-1'>
                       <h3>Register</h3>
                     </div>
                   </Link>
@@ -535,8 +535,8 @@ function Navbar() {
               // Logout
               <li className='phone__nav__li'>
                 <Link onClick={signOut} className='phone__nav__link'>
-                  <img src={Logout} className='w-8' alt='logout' />
-                  <div className='flex items-center text-xl'>
+                  <img src={Logout} className='w-8 ml-1' alt='logout' />
+                  <div className='flex items-center text-xl ml-1'>
                     <h3>Log out</h3>
                   </div>
                 </Link>
@@ -545,7 +545,7 @@ function Navbar() {
             {/* Search */}
             <li className='phone__nav__li'>
               <div className='flex'>
-                <img src={Search} className='w-8' alt='search' />
+                <img src={Search} className='w-8 ml-1' alt='search' />
                 <input
                   type='text'
                   placeholder='Search...'
