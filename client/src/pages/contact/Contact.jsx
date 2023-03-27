@@ -21,7 +21,7 @@ function Contact() {
           <main className='grid mx-4 md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
             {/* Info */}
             <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
-              <article className='m-1 bg-main-colour h-min mb-4 p-4 rounded'>
+              <article className='m-1 bg-slate-300 h-min mb-4 p-4 rounded'>
                 <div className='text-center mt-4'>
                   <h1 className='text-2xl font-bold'>Contact Me!</h1>
                 </div>
@@ -42,7 +42,7 @@ function Contact() {
               </article>
 
               <div className='grid grid-cols-3 mx-1 gap-2'>
-                <article className='grid bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <article className='grid bg-main-colour border-4 text-white border-purple-700 border-solid rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 hover:outline-transparent-purple'>
                   <div className='grid justify-center'>
                     <div className='grid justify-center'>
                       <MdEmail />
@@ -64,7 +64,7 @@ function Contact() {
                   </div>
                 </article>
 
-                <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <article className='bg-main-colour rounded-xl border-4 text-white border-yellow-500 border-solid text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 hover:outline-transparent-yellow'>
                   <div className='grid justify-center'>
                     <div className='grid justify-center'>
                       <GiRaven />
@@ -84,7 +84,7 @@ function Contact() {
                   </div>
                 </article>
 
-                <article className='bg-main-colour rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group hover:bg-blue-400 cursor-pointer hover:scale-105 hover:text-white'>
+                <article className='bg-main-colour border-4 text-white border-green-700 border-solid rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 hover:outline-transparent-green'>
                   <div className='grid justify-center'>
                     <div className='grid justify-center'>
                       <ImWhatsapp />

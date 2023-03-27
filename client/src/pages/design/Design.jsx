@@ -13,7 +13,14 @@ import { designTemplate } from '../../utils/utils';
 
 function Design() {
   const { user } = useContext(UserContext);
-  const { toggleNavigation } = useContext(ToggleContext);
+  const {
+    toggleNavigation,
+    toggleNotifications,
+    toggleMessages,
+    toggleEvents,
+    toggleContacts,
+    toggleTests,
+  } = useContext(ToggleContext);
 
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([]);
@@ -39,10 +46,13 @@ function Design() {
     }
   }, [user.id]);
 
+  console.log('toggleMessages', toggleMessages)
+  console.log('toggleNotifications', toggleNotifications)
+
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>
       <Navbar />
-      {!toggleNavigation && (
+      {(toggleNavigation === false || toggleMessages === false) && (
         <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black '>
           {/* Side bar */}
           <OptionsNav

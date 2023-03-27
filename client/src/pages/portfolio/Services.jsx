@@ -15,7 +15,7 @@ function Services() {
 
       <section className='my-auto grid lg:grid-cols-3 gap-8 mx-4 lg:mx-8'>
         <article className='bg-main-colour rounded-xl text-center p-1 w-full h-min'>
-          <div className='mb-2 border-2 border-black border-solid rounded-lg'>
+          <div className='mb-2 border-4 border-purple-600 border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>UI/UX Design</h3>
           </div>
 
@@ -70,7 +70,7 @@ function Services() {
 
         {/* END OF UI/UX */}
         <article className='bg-main-colour rounded-xl text-center p-1 w-full h-min'>
-          <div className='mb-2 border-2 border-black border-solid rounded-lg'>
+          <div className='mb-2 border-4 border-yellow-500 border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>Web Development</h3>
           </div>
 
@@ -128,11 +128,11 @@ function Services() {
 
         {/* Other skills */}
         <article className='bg-main-colour rounded-xl text-center p-1 w-full h-min'>
-          <div className='mb-2 border-2 border-black border-solid rounded-lg'>
+          <div className='mb-1 border-4 bg-slate-200 border-green-600 border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>Other Skills</h3>
           </div>
 
-          <ul className='grid gap-2 p-2 w-full'>
+          <ul className='grid gap-2 p-2 w-full border-4 bg-slate-200 border-green-600 border-solid rounded-lg'>
             <li className='grid grid-cols-reg w-full gap-2 items-center'>
               <div>
                 <BsCheck2Circle size={30} />

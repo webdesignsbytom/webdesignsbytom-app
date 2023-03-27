@@ -15,7 +15,7 @@ function ReviewItem({ review }) {
             );
           })}
         </ul>
-        <h4>{createdAt}</h4>
+        <h4 className='text-xs md:text-base'>{createdAt}</h4>
       </div>
       <article className='flex justify-center my-4'>
         <img

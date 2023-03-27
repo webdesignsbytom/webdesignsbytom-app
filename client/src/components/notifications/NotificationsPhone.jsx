@@ -40,7 +40,7 @@ function NotificationsPhone() {
         setUnSeenNotifications(unseenNotes);
       })
       .catch((err) => {
-        console.error('Unable to get notifications', err);
+        console.error('Unable to get notifications', err.response);
       });
   }, [deletedNote, createdSuccess, user.id]);
 
@@ -95,7 +95,7 @@ function NotificationsPhone() {
 
   return (
     <>
-      <div>
+      <div className=''>
         <div className='flex mx-2 my-4 justify-between border-b-2 border-black border-solid pb-4'>
           <div className='flex align-middle font-bold pt-1'>
             <h2>Notifications</h2>
