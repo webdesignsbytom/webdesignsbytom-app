@@ -10,13 +10,13 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
 // Fetch
-import { setFormByUserId } from '../../utils/Fetch';
 import client from '../../utils/client';
 // Utils
 import { statusResults } from '../../users/utils/utils';
 
 function Account() {
   const { user } = useContext(UserContext);
+  
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
@@ -37,8 +37,6 @@ function Account() {
   // Project overview
   const [userProjects, setUserProjects] = useState([]);
   const [projectResponse, setProjectResponse] = useState(statusResults);
-
-  console.log('user', user);
 
   useEffect(() => {
     client

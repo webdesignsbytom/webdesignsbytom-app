@@ -5,7 +5,7 @@ import EventItem from './EventItem';
 function EventsContainer({ events }) {
   return (
     <>
-      <ul className='grid grid-rows-one lg:max-h-[500px] h-fit overflow-x-hidden overflow-scroll'>
+      <ul className='grid grid-rows-one max-h-[600px] lg:max-h-[500px] overflow-y-scroll'>
         {events.map((event, index) => {
           return <EventItem event={event} key={index} />;
         })}

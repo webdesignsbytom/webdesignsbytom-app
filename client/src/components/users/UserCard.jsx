@@ -13,7 +13,7 @@ function UserCard({ user }) {
             alt='Profile'
           />
         </section>
-        <article className='grid gap-2 mx-auto justify-center lg:justify-left p-4 h-min my-auto w-min'>
+        <article className='grid w-full gap-2 mx-auto lg:justify-left p-4 h-min my-auto'>
           <div className='flex justify-between'>
             <h4>Email: </h4> 
             <p className='ml-2'>{email}</p>

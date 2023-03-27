@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { statusResults } from '../../users/utils/utils';
 // Items
 import LoadingSpinner from '../utils/LoadingSpinner';
@@ -10,14 +11,16 @@ function DesignsOverview({ userDesigns, designResponse }) {
   const [updateResponseMessage, setUpdateResponseMessage] =
     useState(statusResults);
 
+  let navigate = useNavigate();
+
   const startNewDesign = () => {
-    console.log('design');
+    navigate('/design', { replace: true });
   };
-  
+
   return (
     <section>
       <div className='mb-2'>
-        <h2>Designs Overview</h2>
+        <h2>Current Website Designs</h2>
       </div>
       <section className='mb-2'>
         <SubmitButton
@@ -31,13 +34,7 @@ function DesignsOverview({ userDesigns, designResponse }) {
         />
       </section>
 
-      {designResponse.status === false && (
-        <div className='grid grid-rows-1'>
-          <LoadingSpinner height={'h-5 lg:h-12'} width={'w-5 lg:w-12'} />
-        </div>
-      )}
-
-      {designResponse.status === true && userDesigns.length === 0 && (
+      {designResponse.status === false && userDesigns.length === 0 && (
         <article>Nothing to display - No Saved Designs</article>
       )}
 

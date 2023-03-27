@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Components
@@ -12,12 +13,16 @@ import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
 function Profile() {
   const { user } = useContext(UserContext);
+  // Form data
   const [userUpdateForm, setUserUpdateForm] = useState({});
+  // Response and animation
   const [updateAnimation, setUpdateAnimation] = useState(false);
   const [deleteLoadingAnimation, setDeleteLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [updateResponseMessage, setUpdateResponseMessage] =
     useState(statusResults);
+
+  let navigate = useNavigate();
 
   const handleUpdateUser = (event) => {
     event.preventDefault();
@@ -44,8 +49,15 @@ function Profile() {
         setDeleteLoadingAnimation(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error(err.response);
       });
+  };
+
+  const openPasswordUpdate = () => {
+    navigate(`/users/${user.id}/update-password`, {
+      replace: true,
+      state: user,
+    });
   };
 
   return (
@@ -60,7 +72,7 @@ function Profile() {
       )}
 
       {/* update form */}
-      <form onSubmit={handleUpdateUser} className='mt-2 md:mx-6 lg:mx-0'>
+      <form onSubmit={handleUpdateUser} className='mt-2 mx-2 md:mx-6 lg:mx-0'>
         <div className='mb-2'>
           <h2>Update Account Information</h2>
         </div>
@@ -104,6 +116,19 @@ function Profile() {
           <SmallCountrySelect handleChange={handleChange} />
         </div>
 
+        {/* <!-- Change password button --> */}
+        <div className='mb-2'>
+          <SubmitButton
+            loadingAnimation={updateAnimation}
+            mainButtonContent={mainButtonContent}
+            responseMessage={updateResponseMessage}
+            buttonMessage='Change Password'
+            spinnerHeight='h-5'
+            spinnerWidth='w-5'
+            action={openPasswordUpdate}
+          />
+        </div>
+
         {/* <!-- Submit button --> */}
         <div className='mb-2'>
           <SubmitButton
@@ -113,19 +138,21 @@ function Profile() {
             buttonMessage='Update Profile'
             spinnerHeight='h-5'
             spinnerWidth='w-5'
+            action={handleUpdateUser}
           />
         </div>
       </form>
       {/* Delete account */}
-      <section className='md:mx-6 lg:mx-0'>
+      <section className='mx-2 md:mx-6 lg:mx-0'>
         <DeleteButton
-            loadingAnimation={deleteLoadingAnimation}
-            mainButtonContent={mainButtonContent}
-            responseMessage={updateResponseMessage}
-            buttonMessage='Delete Account'
-            spinnerHeight='h-5'
-            spinnerWidth='w-5'
-          />
+          loadingAnimation={deleteLoadingAnimation}
+          mainButtonContent={mainButtonContent}
+          responseMessage={updateResponseMessage}
+          buttonMessage='Delete Account'
+          spinnerHeight='h-5'
+          spinnerWidth='w-5'
+          action={deleteUser}
+        />
       </section>
     </section>
   );

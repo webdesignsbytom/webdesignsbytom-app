@@ -32,7 +32,14 @@ function DesignElement({
   // User Stories
   const [userStoriesArr, setUserStoriesArr] = useState([]);
   // Colour palette
-  const [colourPaletteObject, setColourPaletteObject] = useState(paletteTemplate);
+  const [colourPaletteObject, setColourPaletteObject] =
+    useState(paletteTemplate);
+  // Nav Options
+  const [navigationStyleOptions, setNavigationStyleOptions] = useState({
+    position: false,
+    positionType: '',
+    menuOptions: [],
+  });
 
   useEffect(() => {
     if (openDesign) {
@@ -150,6 +157,8 @@ function DesignElement({
                 <NavOptions
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
+                  navigationStyleOptions={navigationStyleOptions}
+                  setNavigationStyleOptions={setNavigationStyleOptions}
                 />
               )}
               {displayElement === 'palette' && (

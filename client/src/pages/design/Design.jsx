@@ -6,10 +6,10 @@ import OptionsNav from './OptionsNav';
 // Context
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
-// Utils
-import { designTemplate } from '../../utils/utils';
 // Data
 import client from '../../utils/client';
+// Utils
+import { designTemplate } from '../../utils/utils';
 
 function Design() {
   const { user } = useContext(UserContext);

@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import NavItemsList from './NavItemsList';
 
-function NavOptions() {
-  const [navigationStyleOptions, setNavigationStyleOptions] = useState({
-    position: false,
-    positionType: '',
-    menuOptions: [],
-  });
+function NavOptions({ navigationStyleOptions, setNavigationStyleOptions }) {
 
   console.log('nav', navigationStyleOptions);
   const selectNavPosition = (event) => {

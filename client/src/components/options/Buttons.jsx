@@ -4,10 +4,7 @@ import AddFavBar from '../utils/AddFavBar';
 
 function Buttons() {
   return (
-    <section>
-      <div>
-        <h2>Buttons</h2>
-      </div>
+    <section className='mt-6'>
       <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full'>
         {/* Classic Button */}
         <li className='mb-10'>

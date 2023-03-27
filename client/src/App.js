@@ -32,6 +32,8 @@ import ProjectContainer from './pages/project/ProjectContainer';
 import PortfolioItem from './pages/portfolio/PortfolioItem';
 import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
+import NewProject from './pages/project/NewProject';
+import UpdatePassword from './pages/account/UpdatePassword';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext)
@@ -79,6 +81,7 @@ function App() {
 
         <Route path='/portfolio-item/:itemName' element={<PortfolioItem />} />
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
+        <Route path='users/:userId/update-password' element={<UpdatePassword />} />
         <Route
           path='users/reset-lost-password/:userId/:uniqueString'
           element={<EnterNewPassword />}
@@ -97,6 +100,10 @@ function App() {
         <Route
           path='user/:userId/projects/:projectId'
           element={<ProjectContainer />}
+        />
+        <Route
+          path='new-project'
+          element={<NewProject />}
         />
 
         {/* Util Routes */}

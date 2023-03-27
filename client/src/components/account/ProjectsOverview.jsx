@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // Utils
 import { statusResults } from '../../users/utils/utils';
 import LoadingSpinner from '../utils/LoadingSpinner';
@@ -10,14 +11,16 @@ function ProjectsOverview({ userProjects, projectResponse }) {
   const [updateResponseMessage, setUpdateResponseMessage] =
     useState(statusResults);
 
+  let navigate = useNavigate();
+
   const buyProject = () => {
-    console.log('project');
+    navigate('/new-project', { replace: true });
   };
 
   return (
     <section>
       <div className='mb-2'>
-        <h2>Projects Overview</h2>
+        <h2>Open Projects</h2>
       </div>
       <section className='mb-2'>
         <SubmitButton
@@ -30,13 +33,8 @@ function ProjectsOverview({ userProjects, projectResponse }) {
           action={buyProject}
         />
       </section>
-      {projectResponse.status === false && (
-        <div className='grid grid-rows-1'>
-          <LoadingSpinner height={'h-5 lg:h-12'} width={'w-5 lg:w-12'} />
-        </div>
-      )}
 
-      {projectResponse.status === true && userProjects.length === 0 && (
+      {projectResponse.status === false && userProjects.length === 0 && (
         <article>Nothing to display - No Saved Projects</article>
       )}
 

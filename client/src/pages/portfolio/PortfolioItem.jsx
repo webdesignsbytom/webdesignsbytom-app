@@ -9,7 +9,6 @@ function PortfolioItem() {
 
   const [portfolioItem, setPortfolioItem] = useState(initialData);
 
-  console.log('portf', portfolioItem);
   // Set the item to be displayed
   useEffect(() => {
     console.log('location: ', location);
@@ -21,7 +20,7 @@ function PortfolioItem() {
   }, []);
 
   const returnHome = () => {
-    navigate('../', {});
+    navigate('../', { replace: false });
   };
 
   const nextPage = () => {
@@ -34,6 +33,7 @@ function PortfolioItem() {
       setPortfolioItem(newPageItem);
     }
   };
+
   const prevPage = () => {
     const currentId = portfolioItem.id;
     const newPageItem = portfolioData[currentId];
@@ -45,8 +45,6 @@ function PortfolioItem() {
     }
   };
 
-  console.log('XXXX', portfolioItem);
-
   return (
     <>
       <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
@@ -55,7 +53,7 @@ function PortfolioItem() {
             <div className='flex'>
               <Link
                 className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
-                to='/'
+                onClick={returnHome}
               >
                 Return
               </Link>
