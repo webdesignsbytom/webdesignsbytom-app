@@ -87,7 +87,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
           <article>
             <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
               <h1 className='grid text-6xl font-semibold font-outfit'>
-                <span className='text-left -ml-4 md:-ml-8'>Web Designs</span> <br />{' '}
+                <span className='text-left -ml-4 md:-ml-8'>Web Designs</span>{' '}
                 <span className='text-right -mr-4 md:-mr-8'>By Tom</span>
               </h1>
               <h2 className='font-semibold text-center mt-2'>

@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 // Context
 import { useContext } from 'react';
 // Pages
-import HeroPage from './pages/heros/HeroPage';
 import PortfolioHome from './pages/portfolio/PortfolioHome';
 import SalesHome from './pages/sales/SalesHome';
 import AdminPanel from './pages/admin/AdminPanel';
@@ -43,7 +42,6 @@ function App() {
     <>
       <Routes>
         <Route path='/' index element={<IndexPage />} />
-        <Route path='/index' element={<HeroPage />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
         <Route path='/sales' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />
