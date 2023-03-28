@@ -149,7 +149,7 @@ function TimeOfDay() {
               </h1>
   
               <div className='grid w-full md:flex my-2 gap-2 justify-center'>
-                <Link to='/developer'>
+                <Link to='/sales'>
                   <button onMouseEnter={blurEffectStart} onMouseLeave={blurEffectEnd} className={`${buttonOneStyle}`}>Hire Private</button>
                 </Link>
                 <Link to='/portfolio'>

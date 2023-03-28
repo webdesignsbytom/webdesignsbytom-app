@@ -97,7 +97,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
 
             <section className='my-4'>
               <div className='grid w-full md:flex my-2 gap-2 justify-center font-outfit'>
-                <Link to='/developer'>
+                <Link to='/sales'>
                   <button className='py-2 px-4 uppercase border-white hover:bg-transparent-white cursor-pointer border-3 border-solid font-medium w-full'>
                     Hire Personal
                   </button>
