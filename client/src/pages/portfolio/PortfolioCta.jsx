@@ -1,20 +1,25 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function PortfolioCta() {
   let navigate = useNavigate();
 
-  const contactPage = () => {
-    navigate('/contact', { replace: true });
-  }
 
   return (
     <section className='mx-4 mb-10 lg:mx-auto lg:my-10'>
       <h4 className='text-center my-2 font-semibold text-xl'>Any Questions?</h4>
-      <div className='flex justify-center'>
-        <button onClick={contactPage} className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full lg:w-[300px]'>
-          Contact Me
-        </button>
+      <div className='flex justify-center my-2'>
+        <Link
+          to='/contact'
+          className='w-full max-w-[250px] relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
+        >
+          <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-yellow-500 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+          <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+          <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-yellow-500 rounded-md opacity-0 group-hover:opacity-100 '></span>
+          <span className='relative text-yellow-500 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+            Contact Me
+          </span>
+        </Link>
       </div>
     </section>
   );
