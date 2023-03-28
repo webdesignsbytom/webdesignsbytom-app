@@ -20,17 +20,44 @@ function PortfolioItem() {
     }
   }, [location]);
 
+  // const nextPage = () => {
+  //   const currentId = portfolioItem.id;
+  //   const newPageItem = portfolioData[3];
+
+  //   if (currentId === portfolioData.length) {
+  //     let newItem = portfolioData[0];
+  //     console.log('1newitem', newItem);
+
+  //     let str = newItem.title.replace(/\s/g, '-');
+  //     str = str.toLowerCase();
+  //     console.log('str', str);
+  //     navigate(`/portfolio-item/${str}`, {
+  //       state: newItem,
+  //     });
+
+  //   } else {
+  //     let newItem = newPageItem;
+  //     console.log('2newitem', newItem);
+
+  //     let str = newItem.title.replace(/\s/g, '-');
+  //     str = str.toLowerCase();
+  //     console.log('str', str);
+
+  //     navigate(`/portfolio-item/${str}`, {
+  //       state: newItem,
+  //     });
+  //   }
+  // };
+
   const nextPage = () => {
     const currentId = portfolioItem.id;
     const newPageItem = portfolioData[currentId];
 
     if (currentId === portfolioData.length) {
-      location.state = portfolioData[0];
+      setPortfolioItem(portfolioData[0]);
     } else {
-      location.state = newPageItem;
+      setPortfolioItem(newPageItem);
     }
-
-
   };
 
   const prevPage = () => {
