@@ -54,6 +54,103 @@ async function seed() {
     });
   }
 
+  const page1 = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: `Home`,
+      desc: 'Home page, index page, splash page. Make your mark with a visually interesting display.',
+      price: 100,
+    },
+  })
+  const page2 = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: `About`,
+      desc: 'About page. A short description of you or your business. Call to action buttons to tak users where they need to go.',
+      price: 100,
+    },
+  })
+  const page3 = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: `Contact`,
+      desc: 'Contact pages will consist of a form, but is better to include media links, email, phone and other communication methods. Google maps API for exact location displayed.',
+      price: 100,
+    },
+  })
+  const page4 = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: `Gallery`,
+      desc: 'A display page to show off something you are pleased to display. This might be products or places.',
+      price: 100,
+    },
+  })
+  const page5 = await dbClient.page.create({
+    data: {
+      type: 'BASIC',
+      name: `FAQ`,
+      desc: 'Easily answered questions to save you time responding. A staple of most websites.',
+      price: 100,
+    },
+  })
+  const page6 = await dbClient.page.create({
+    data: {
+      type: 'SHOP',
+      name: `Store Front`,
+      desc: 'Popular products can be displayed in the store front. Sales or important information can be convayed.',
+      price: 100,
+    },
+  })
+  const page7 = await dbClient.page.create({
+    data: {
+      type: 'SHOP',
+      name: `Cart`,
+      desc: 'Carts need to be eligant and users can easily update or remove their items.',
+      price: 100,
+    },
+  })
+  const page8 = await dbClient.page.create({
+    data: {
+      type: 'SHOP',
+      name: `Thank You`,
+      desc: 'Little pages like this make your app look more professional. They are touches a user is used to seeing.',
+      price: 100,
+    },
+  })
+  const page9 = await dbClient.page.create({
+    data: {
+      type: 'BLOG',
+      name: `Posts`,
+      desc: 'Every blog needs to show it has posts. A smart layout with easy navigation for switching between blog posts is essential.',
+      price: 100,
+    },
+  })
+  const page10 = await dbClient.page.create({
+    data: {
+      type: 'BLOG',
+      name: `Upload posts`,
+      desc: 'As an admin of a website you want a quick and easy page where you can manage all your posts and create new ones.',
+      price: 100,
+    },
+  })
+  const page11 = await dbClient.page.create({
+    data: {
+      type: 'ADMIN',
+      name: `Admin Overview`,
+      desc: 'As an admin you can look over data about your site. User information, admin powers, total views and traffic.',
+      price: 100,
+    },
+  })
+  const page12 = await dbClient.page.create({
+    data: {
+      type: 'DEVELOPER',
+      name: `Upload posts`,
+      desc: 'As an developer on app manager. You will need to collect reports about your website and log and errors for improvements. Websites must be constantly evolving to keep up.',
+      price: 100,
+    },
+  })
+
   for (let i = 0; i <= 2; i++) {
     const review = await dbClient.review.create({
       data: {

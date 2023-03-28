@@ -19,7 +19,6 @@ function PageItem({ page }) {
         <img src={image} alt={`Page ${name} display`} />
 
         <p>{desc}</p>
-        <h5>{price}</h5>
       </article>
     </li>
   );

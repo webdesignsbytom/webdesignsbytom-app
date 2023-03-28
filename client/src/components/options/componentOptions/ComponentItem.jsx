@@ -18,7 +18,6 @@ function ComponentItem({ component }) {
         <img src={image} alt='page example' />
 
         <p>{desc}</p>
-        <h5>£{price}</h5>
       </article>
     </li>
   );
