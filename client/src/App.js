@@ -34,6 +34,7 @@ import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
 import NewProject from './pages/project/NewProject';
 import UpdatePassword from './pages/account/UpdatePassword';
+import IndexPage from './pages/heros/IndexPage';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext)
@@ -42,6 +43,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' index element={<HeroPage />} />
+        <Route path='/index' element={<IndexPage />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
         <Route path='/developer' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />

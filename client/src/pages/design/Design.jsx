@@ -52,12 +52,8 @@ function Design() {
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>
       <Navbar />
-      {(!toggleNavigation ||
-        !toggleNotifications ||
-        !toggleMessages ||
-        !toggleEvents ||
-        !toggleContacts) && (
-        <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black '>
+      {(!toggleNavigation) && (
+        <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black'>
           {/* Side bar */}
           <OptionsNav
             displayElement={displayElement}

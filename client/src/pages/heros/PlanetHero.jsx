@@ -75,8 +75,8 @@ function PlanetHero() {
       </header>
 
       {/* Video component */}
-      <section className='grid absolute z-0 w-full h-full overflow-hidden bg-cover object-cover'>
-        <video className='grid' autoPlay loop muted id='video'>
+      <section className='grid absolute z-0 w-full h-full overflow-hidden lg:bg-cover object-cover'>
+        <video className='grid w-full h-full object-contain' autoPlay loop muted id='video'>
           <source src={EarthVideo} type='video/mp4' />
         </video>
 

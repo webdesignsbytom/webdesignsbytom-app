@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
+// Pages
+import PlanetHero from '../../pages/heros/PlanetHero';
 
 function IndexPage() {
+  const [pageNumber, setPageNumber] = useState(1);
+
   return (
-    <div>IndexPage</div>
-  )
+    <>
+      <PlanetHero />
+    </>
+  );
 }
 
-export default IndexPage
+export default IndexPage;
