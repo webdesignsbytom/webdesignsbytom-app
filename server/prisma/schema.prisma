@@ -171,6 +171,10 @@ model Component {
   desc      String        @default("")
   price     Int
   image     String        @default("https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/09/how-to-design-a-website-21-1024x500.png")
+  designId  String?
+  design    Design?       @relation(fields: [designId], references: [id], onDelete: Cascade)
+  projectId String?
+  project   Project?      @relation(fields: [projectId], references: [id], onDelete: Cascade)
   createdAt DateTime      @default(now())
   updatedAt DateTime?     @updatedAt
 }
@@ -181,6 +185,7 @@ enum PageType {
   ADMIN
   DEVELOPER
   BASIC
+  FULLSTACK
   PREMIUM
   CANVAS
   TEST
@@ -191,19 +196,22 @@ model Page {
   type      PageType
   name      String    @default("")
   desc      String    @default("")
-  price     Int
   image     String    @default("https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2018/09/how-to-design-a-website-21-1024x500.png")
+  designId  String?
+  design    Design?   @relation(fields: [designId], references: [id], onDelete: Cascade)
+  projectId String?
+  project   Project?  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
 }
 
 enum ProjectType {
   BASIC
-  BASIC_SHOP
+  SHOP
   FULLSTACK
   OTHER
   CUSTOM
-  SINGLE_PAGE
+  PAGE
   TEST
 }
 
@@ -221,6 +229,8 @@ model Project {
   colourPalette colourPalette[]
   navDesign     NavDesign?
   startDate     DateTime        @default(now())
+  pages         Page[]
+  components    Component[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime?       @updatedAt
 }
@@ -232,6 +242,8 @@ model Design {
   colourPalette colourPalette[]
   userStories   UserStory[]
   userId        String
+  pages         Page[]
+  components    Component[]
   user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt     DateTime        @default(now())
   updatedAt     DateTime?       @updatedAt
