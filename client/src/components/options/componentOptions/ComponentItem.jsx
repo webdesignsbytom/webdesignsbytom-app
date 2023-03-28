@@ -3,7 +3,7 @@ import React from 'react';
 import AddFavBar from '../../utils/AddFavBar';
 
 function ComponentItem({ component }) {
-  const { id, type, name, desc, price, image } = component;
+  const { type, name, desc, image } = component;
   return (
     <li className='border-2 border-black border-solid p-1 rounded'>
       <article>

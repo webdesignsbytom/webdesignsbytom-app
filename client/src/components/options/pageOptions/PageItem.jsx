@@ -3,7 +3,7 @@ import React from 'react';
 import AddFavBar from '../../utils/AddFavBar';
 
 function PageItem({ page }) {
-  const { id, type, name, desc, price, image } = page;
+  const { type, name, desc, image } = page;
 
   return (
     <li className='border-2 border-black border-solid p-1 rounded'>
