@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // Data
 import {
   basicListItems,
@@ -9,6 +10,13 @@ import {
 import { BsCheck2Circle } from 'react-icons/bs';
 
 function PurchaseOptions() {
+  let navigate = useNavigate();
+
+  const startNewProject = (event) => {
+    const { id } = event.target
+    navigate('/new-project', { replace: true, state: id });
+  };
+
   return (
     <section className='relative w-full h-full'>
       <div className='absolute hidden w-full bg-gray-50 lg:block h-96' />
@@ -80,7 +88,8 @@ function PurchaseOptions() {
                 })}
               </ul>
               <button
-                type='submit'
+                onClick={startNewProject}
+                id='basic'
                 className='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none'
               >
                 Get Now
@@ -121,7 +130,8 @@ function PurchaseOptions() {
                 })}
               </ul>
               <button
-                type='submit'
+                id='shop'
+                onClick={startNewProject}
                 className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide transition duration-200 rounded shadow-md bg-yellow-500 hover:bg-yellow-700 focus:shadow-outline focus:outline-none text-white'
               >
                 Get Now
@@ -162,7 +172,8 @@ function PurchaseOptions() {
                 })}
               </ul>
               <button
-                type='submit'
+                id='fullstack'
+                onClick={startNewProject}
                 className='inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide transition duration-200 rounded shadow-md bg-green-600 hover:bg-green-700 focus:shadow-outline focus:outline-none text-white'
               >
                 Get Now

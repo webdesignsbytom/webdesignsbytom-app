@@ -21,6 +21,7 @@ import Register from '../../assets/svg/registerIcon-white.svg';
 import TestIcon from '../../assets/svg/testIcon-white.svg';
 import EventsIcon from '../../assets/svg/eventsIcon-white.svg';
 import Search from '../../assets/svg/searchIcon-white.svg';
+import StoreIcon from '../../assets/svg/storeIcon-white.svg';
 
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
@@ -227,6 +228,14 @@ function Navbar() {
                 >
                   <Link to='/design'>Design</Link>
                 </li>
+                {/* Sales */}
+                <li
+                  className={
+                    activeNav === '/sales' ? 'selected__link' : 'nav__link'
+                  }
+                >
+                  <Link to='/sales'>Sales</Link>
+                </li>
                 {/* Contact */}
                 <li
                   className={
@@ -385,6 +394,19 @@ function Navbar() {
                 <img src={Design} className='w-8 ml-1' alt='design' />
                 <div className='flex items-center text-xl ml-1'>
                   <h3>Design</h3>
+                </div>
+              </Link>
+            </li>
+            {/* Store */}
+            <li className='phone__nav__li'>
+              <Link
+                to='/store'
+                className='phone__nav__link'
+                onClick={toggleNavbar}
+              >
+                <img src={StoreIcon} className='w-8 ml-1' alt='store' />
+                <div className='flex items-center text-xl ml-1'>
+                  <h3>Store</h3>
                 </div>
               </Link>
             </li>

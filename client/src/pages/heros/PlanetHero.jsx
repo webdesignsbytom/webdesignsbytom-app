@@ -76,7 +76,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
       </header>
 
       {/* Video component */}
-      <section className='bg-red-500 -ml-10 lg:-ml-0 grid z-0 w-full h-full lg:overflow-hidden lg:bg-cover lg:object-cover'>
+      <section className='bg-black min-h-[calc(100%_-_4rem)] -ml-10 lg:-ml-0 grid z-0 w-full md:h-full lg:overflow-hidden lg:bg-cover lg:object-cover'>
         <video className='grid absolute min-w-full max-h-full max-w-none lg:min-w-full lg:max-h-full lg:min-h-full xl:max-h-none xl:min-h-full xl:w-full' autoPlay loop muted id='video'>
           <source src={EarthVideo} type='video/mp4' />
         </video>

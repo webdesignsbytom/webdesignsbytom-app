@@ -45,7 +45,7 @@ function App() {
         <Route path='/' index element={<IndexPage />} />
         <Route path='/index' element={<HeroPage />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
-        <Route path='/developer' element={<SalesHome />} />
+        <Route path='/sales' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />
 
         {/* Secure routes */}
