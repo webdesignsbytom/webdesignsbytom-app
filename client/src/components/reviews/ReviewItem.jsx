@@ -1,20 +1,12 @@
 import React from 'react';
 
 function ReviewItem({ review }) {
-  const { value, content, image, url } = review;
+  const { content, image, url } = review;
 
   return (
     <article className='grid bg-white dark:bg-black dark:text-white border-2 text-sm lg:text-base shadow-lg border-black border-solid p-1 rounded w-full'>
       <div className='grid justify-center md:flex md:justify-between w-full'>
-        <ul className='flex gap-1 justify-center w-full'>
-          {[...Array(value)].map((index) => {
-            return (
-              <li key={index} className='star'>
-                ⭐
-              </li>
-            );
-          })}
-        </ul>
+        <div className='flex gap-1 justify-center w-full'>⭐⭐⭐⭐⭐</div>
       </div>
       <article className='flex justify-center my-4'>
         <a href={url} target='_blank' rel='noreferrer'>

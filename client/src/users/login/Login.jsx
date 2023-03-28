@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import LoginForm from './LoginForm';
+import Particles from '../../components/animations/Particles';
 // Context
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
-import Particles from '../../components/animations/Particles';
 
 function Login() {
   const { setUser } = useContext(UserContext);

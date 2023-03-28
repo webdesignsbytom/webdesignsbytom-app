@@ -20,20 +20,17 @@ function PortfolioItem() {
     }
   }, [location]);
 
-  const returnHome = () => {
-    console.log('xx')
-    navigate('../', { replace: false });
-  };
-
   const nextPage = () => {
     const currentId = portfolioItem.id;
     const newPageItem = portfolioData[currentId];
 
     if (currentId === portfolioData.length) {
-      setPortfolioItem(portfolioData[0]);
+      location.state = portfolioData[0];
     } else {
-      setPortfolioItem(newPageItem);
+      location.state = newPageItem;
     }
+
+
   };
 
   const prevPage = () => {
@@ -55,7 +52,7 @@ function PortfolioItem() {
           <nav className='flex justify-between w-full'>
             <div className='flex items-center'>
               <Link
-                onClick={returnHome}
+                to='/portfolio'
                 className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
                 <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>

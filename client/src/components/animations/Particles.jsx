@@ -13,11 +13,6 @@ function Particles() {
       canvas.width = rect.width;
       canvas.height = rect.height;
 
-      console.log('canvas', canvas);
-      console.log('ctx', ctx);
-      console.log('container', container);
-      console.log('rect', rect);
-
       let particlesArray;
 
       let mouse = {
@@ -90,10 +85,7 @@ function Particles() {
       function init() {
         particlesArray = [];
         // create particle array for large screen
-        console.log('CS', canvas.width);
-
         if (canvas.width < 500) {
-          console.log('aaa');
           let numberOfParticles = (canvas.height * canvas.width) / 1800;
           for (let i = 0; i < numberOfParticles * 2.2; i++) {
             let size = Math.random() * 2 + 1;
@@ -110,7 +102,6 @@ function Particles() {
             );
           }
         } else {
-          console.log('bbb');
           let numberOfParticles = (canvas.height * canvas.width) / 1800;
           for (let i = 0; i < numberOfParticles; i++) {
             let size = Math.random() * 4 + 1;

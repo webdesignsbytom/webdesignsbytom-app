@@ -7,8 +7,10 @@ function PortfolioDisplay() {
   const navigate = useNavigate();
 
   const displayInfo = (item) => {
-    navigate(`/portfolio-item/${item.title}`, {
-      state: item,
+    let str = item.title.replace(/\s/g, "-");
+    str = str.toLowerCase();
+    navigate(`/portfolio-item/${str}`, {
+      replace: true, state: item,
     });
   };
 
