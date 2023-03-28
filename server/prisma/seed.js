@@ -268,6 +268,26 @@ async function seed() {
       image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/wervings.png?raw=true',
     },
   });
+  const rvsReview = await dbClient.review.create({
+    data: {
+      email: `andy@rapidvansolutions.com`,
+      value: 5,
+      url: `www.rapidvansolutions.com`,
+      content:
+        'Thank you for designing and building our website. I understand nothing about the internet and Tom worked with that.',
+      image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/RVS-logo.jpg?raw=true',
+    },
+  });
+  const musicReview = await dbClient.review.create({
+    data: {
+      email: `andy@rapidvansolutions.com`,
+      value: 5,
+      url: `www.stuartturnbull.net`,
+      content:
+        'A hard working man and a pleasure to work with. Said yes to everything i asked and didnt over complicate the job.',
+      image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/RVS-logo.jpg?raw=true',
+    },
+  });
 
   // USERS
   const createdUser = await dbClient.user.create({
