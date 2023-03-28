@@ -271,13 +271,13 @@ export const pricingTableData = [
 
 export const basicListItems = [
   {
-    text: `Up to 5 pages`
+    text: `Up to 10 pages`
   },
   {
     text: `10 GB of storage`
   },
   {
-    text: `Hosting from £3.99`
+    text: `Hosting from £3.99 pm`
   },
   {
     text: `3 Months free testing`
@@ -306,7 +306,7 @@ export const shopListItems = [
 
 export const fullstackListItems = [
   {
-    text: `Intergrated API's`
+    text: `Intergrated restful API's`
   },
   {
     text: `Custom database deisgns`

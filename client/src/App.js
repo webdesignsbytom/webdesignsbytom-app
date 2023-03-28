@@ -43,7 +43,7 @@ function App() {
       <Routes>
         <Route path='/' index element={<IndexPage />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
-        <Route path='/sales' element={<SalesHome />} />
+        <Route path='/store' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />
 
         {/* Secure routes */}

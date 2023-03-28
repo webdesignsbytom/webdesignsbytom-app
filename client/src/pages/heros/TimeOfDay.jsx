@@ -77,10 +77,10 @@ function TimeOfDay() {
   
       // Get Name
       function getName() {
-        if (localStorage.getItem('name') === null) {
-          name.textContent = '[Enter Name]';
+        if (localStorage.getItem('heroName') === null) {
+          name.textContent = 'Enter Name';
         } else {
-          name.textContent = localStorage.getItem('name');
+          name.textContent = localStorage.getItem('heroName');
         }
       }
   
@@ -89,11 +89,11 @@ function TimeOfDay() {
         if (e.type === 'keypress') {
           // Make sure enter is pressed
           if (e.which == 13 || e.keyCode == 13) {
-            localStorage.setItem('name', e.target.innerText);
+            localStorage.setItem('heroName', e.target.innerText);
             name.blur();
           }
         } else {
-          localStorage.setItem('name', e.target.innerText);
+          localStorage.setItem('heroName', e.target.innerText);
         }
       }
   
@@ -107,12 +107,10 @@ function TimeOfDay() {
     }, []);
   
     const blurEffectStart = () => {
-      console.log('BLUR')
       setBlurSetting('backdrop-blur-md')
     }
   
     const blurEffectEnd = () => {
-      console.log('BLUR')
       setBlurSetting('blur-none')
     }
   
@@ -149,7 +147,7 @@ function TimeOfDay() {
               </h1>
   
               <div className='grid w-full md:flex my-2 gap-2 justify-center'>
-                <Link to='/sales'>
+                <Link to='/store'>
                   <button onMouseEnter={blurEffectStart} onMouseLeave={blurEffectEnd} className={`${buttonOneStyle}`}>Hire Private</button>
                 </Link>
                 <Link to='/portfolio'>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+// Components
 import AboutSection from '../../components/about/AboutSection';
 import WhyChooseUs from '../../components/about/WhyChooseUs';
-// Components
 import Footer from '../../components/footer/Footer';
 import Navbar from '../../components/nav/Navbar';
 import PurchaseOptions from '../../components/options/purchaseOptions/PurchaseOptions';

@@ -76,17 +76,17 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
       </header>
 
       {/* Video component */}
-      <section className='bg-black min-h-[calc(100%_-_4rem)] -ml-10 lg:-ml-0 grid z-0 w-full md:h-full lg:overflow-hidden lg:bg-cover lg:object-cover'>
+      <section className='bg-black max-h-[calc(100%_-_4rem)] -ml-10 lg:-ml-0 grid z-0 w-full md:h-full lg:overflow-hidden lg:bg-cover lg:object-cover'>
         <video className='grid absolute min-w-full max-h-full max-w-none lg:min-w-full lg:max-h-full lg:min-h-full xl:max-h-none xl:min-h-full xl:w-full' autoPlay loop muted id='video'>
           <source src={EarthVideo} type='video/mp4' />
         </video>
       </section>
 
-      <section className='text-white grid z-10 absolute h-full w-full justify-center items-center'>
+      <section className='text-white grid z-10 px-2 absolute h-full w-full justify-center items-center'>
         <section>
           <article>
             <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
-              <h1 className='grid text-6xl font-semibold font-outfit'>
+              <h1 className='grid text-5xl font-semibold font-outfit'>
                 <span className='text-left -ml-4 md:-ml-8'>Web Designs</span>{' '}
                 <span className='text-right -mr-4 md:-mr-8'>By Tom</span>
               </h1>
@@ -97,7 +97,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
 
             <section className='my-4'>
               <div className='grid w-full md:flex my-2 gap-2 justify-center font-outfit'>
-                <Link to='/sales'>
+                <Link to='/store'>
                   <button className='py-2 px-4 uppercase border-white hover:bg-transparent-white cursor-pointer border-3 border-solid font-medium w-full'>
                     Hire Personal
                   </button>

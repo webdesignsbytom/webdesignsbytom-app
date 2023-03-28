@@ -54,7 +54,7 @@ async function seed() {
     });
   }
 
-  for (let i = 0; i <= 3; i++) {
+  for (let i = 0; i <= 2; i++) {
     const review = await dbClient.review.create({
       data: {
         email: `email${i}@gmail${i}.com`,
@@ -67,6 +67,17 @@ async function seed() {
       },
     });
   }
+
+  const wervingsReview = await dbClient.review.create({
+    data: {
+      email: `sales@wervings.com`,
+      value: 5,
+      url: `www.wervings.co.uk`,
+      content:
+        'Tom has run our business ecommerce website for years now and has always done splendid work! Very easy to work with.',
+      image: 'https://instagram.fbrs4-1.fna.fbcdn.net/v/t51.2885-19/71502051_740469529760061_4462238516784398336_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fbrs4-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=b2fwdLk1VrgAX94GCkr&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAxqY5lDGxvtBg71BV1BhRjCaNc8p1gR1AYBjh1jxoglQ&oe=64280BB2&_nc_sid=8fd12b',
+    },
+  });
 
   const createdUser = await dbClient.user.create({
     data: {

@@ -11,7 +11,7 @@ function PriceTable() {
     <section id='pricing' className='mb-12 mx-4 lg:mx-20'>
       <section className='text-center text-3xl my-4'>
         <h3 className='font-semibold'>Basic Options</h3>
-        <h4>Of Thousands Available!</h4>
+        <h4>Of Hundreds Available!</h4>
       </section>
       <table
         className='bg-slate-500 border-2 shadow-2xl border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'

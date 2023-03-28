@@ -228,13 +228,13 @@ function Navbar() {
                 >
                   <Link to='/design'>Design</Link>
                 </li>
-                {/* Sales */}
+                {/* Store */}
                 <li
                   className={
-                    activeNav === '/sales' ? 'selected__link' : 'nav__link'
+                    activeNav === '/store' ? 'selected__link' : 'nav__link'
                   }
                 >
-                  <Link to='/sales'>Sales</Link>
+                  <Link to='/store'>Store</Link>
                 </li>
                 {/* Contact */}
                 <li
