@@ -115,7 +115,7 @@ function Experience() {
           </div>
         </section>
 
-        <section className='bg-main-colour grid rounded-xl text-center p-4 w-full z-0'>
+        <section className='bg-main-colour grid rounded-xl text-center p-4 min-h-[130px] w-full z-0'>
           <div className='outline-4 outline grid outline-yellow-500 rounded-lg w-full f-full'>
             <OrbitAnimation />
           </div>

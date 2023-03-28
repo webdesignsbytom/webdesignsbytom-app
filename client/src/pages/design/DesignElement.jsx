@@ -112,7 +112,7 @@ function DesignElement({
                   alt='information'
                   data-te-animation-init
                 />
-                <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
+                <div className='hidden absolute z-50 group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle max-w-[150px] cursor-pointer'>
                   Enter a name to save your design with
                 </div>
               </div>

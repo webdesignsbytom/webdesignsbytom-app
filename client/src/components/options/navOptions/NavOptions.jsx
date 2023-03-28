@@ -97,8 +97,8 @@ function NavOptions({ navigationStyleOptions, setNavigationStyleOptions }) {
 
       {/* Select Nav */}
       {!navigationStyleOptions.position && (
-        <section className='absolute z-10 grid w-full h-full justify-center items-center bg-white'>
-          <article className='bg-green-500 rounded-xl p-6'>
+        <section className='grid w-full h-full justify-center items-center bg-white'>
+          <article className='border-black border-2 border-solid rounded-xl p-6'>
             <div className='text-center p-2 font-semibold'>
               <h3 className='text-xl capitalize'>
                 Select A navigaion menu type

@@ -12,7 +12,7 @@ import Register from './users/register/Register';
 import ResetPassword from './pages/auth/ResetPassword';
 import UserAgreement from './pages/auth/UserAgreement';
 import Account from './pages/account/Account';
-import Verify from './pages/account/Verify'
+import Verify from './pages/account/Verify';
 import EnterNewPassword from './pages/auth/EnterNewPassword';
 import Design from './pages/design/Design';
 import TestPage from './pages/test/TestPage';
@@ -37,13 +37,13 @@ import UpdatePassword from './pages/account/UpdatePassword';
 import IndexPage from './pages/heros/IndexPage';
 
 function App() {
-  const { toggleCookiePolicy } = useContext(UserContext)
+  const { toggleCookiePolicy } = useContext(UserContext);
 
   return (
     <>
       <Routes>
-        <Route path='/' index element={<HeroPage />} />
-        <Route path='/index' element={<IndexPage />} />
+        <Route path='/' index element={<IndexPage />} />
+        <Route path='/index' element={<HeroPage />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
         <Route path='/developer' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />
@@ -83,7 +83,10 @@ function App() {
 
         <Route path='/portfolio-item/:itemName' element={<PortfolioItem />} />
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
-        <Route path='users/:userId/update-password' element={<UpdatePassword />} />
+        <Route
+          path='users/:userId/update-password'
+          element={<UpdatePassword />}
+        />
         <Route
           path='users/reset-lost-password/:userId/:uniqueString'
           element={<EnterNewPassword />}
@@ -93,20 +96,14 @@ function App() {
           path='user/:userId/messages/:messageId'
           element={<MessageOpen />}
         />
-        <Route
-          path='user/messages/create-new'
-          element={<SendNewMessage />}
-        />
+        <Route path='user/messages/create-new' element={<SendNewMessage />} />
 
         {/* Projects */}
         <Route
           path='user/:userId/projects/:projectId'
           element={<ProjectContainer />}
         />
-        <Route
-          path='new-project'
-          element={<NewProject />}
-        />
+        <Route path='new-project' element={<NewProject />} />
 
         {/* Util Routes */}
         <Route path='/user-cookie-policy' element={<UserAgreement />} />
