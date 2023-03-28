@@ -16,6 +16,10 @@ const heroLinks = [
     link: '/design',
   },
   {
+    title: `Store`,
+    link: '/store',
+  },
+  {
     title: `Portfolio`,
     link: '/portfolio',
   },

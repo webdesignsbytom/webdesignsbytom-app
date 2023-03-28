@@ -1,4 +1,5 @@
 import React from 'react';
+// Icons
 
 function WhyChooseUs() {
   return (

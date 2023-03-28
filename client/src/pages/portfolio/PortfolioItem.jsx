@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
+// Data
 import { portfolioData, initialData } from '../../utils/portfolioData';
 
 function PortfolioItem() {
@@ -17,9 +18,10 @@ function PortfolioItem() {
     } else {
       setPortfolioItem(portfolioData[0]);
     }
-  }, []);
+  }, [location]);
 
   const returnHome = () => {
+    console.log('xx')
     navigate('../', { replace: false });
   };
 
@@ -48,36 +50,48 @@ function PortfolioItem() {
   return (
     <>
       <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
-        <div className='bg-nav-colour dark:bg-black w-full flex items-center h-16 px-2 sm:px-6 lg:px-4'>
+        {/* Nav */}
+        <section className='bg-nav-colour dark:bg-black w-full flex items-center h-16 px-2 sm:px-6 lg:px-4'>
           <nav className='flex justify-between w-full'>
-            <div className='flex'>
+            <div className='flex items-center'>
               <Link
-                className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
                 onClick={returnHome}
+                className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
-                Return
+                <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+                <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+                <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
+                <span className='relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+                  Return
+                </span>
               </Link>
             </div>
-            <div className='flex'>
-              <div className=''>
-                <Link
-                  className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
-                  onClick={prevPage}
-                >
-                  Prev
-                </Link>
-              </div>
-              <div className=''>
-                <Link
-                  className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
-                  onClick={nextPage}
-                >
+            <section className='flex items-center gap-4'>
+              <Link
+                onClick={prevPage}
+                className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
+              >
+                <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-yellow-500 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+                <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+                <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-yellow-500 rounded-md opacity-0 group-hover:opacity-100 '></span>
+                <span className='relative text-yellow-500 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+                  Back
+                </span>
+              </Link>
+              <Link
+                onClick={nextPage}
+                className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
+              >
+                <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-green-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+                <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+                <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-green-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
+                <span className='relative text-green-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
                   Next
-                </Link>
-              </div>
-            </div>
+                </span>
+              </Link>
+            </section>
           </nav>
-        </div>
+        </section>
         {/* MAIN PAGE */}
         <main className='grid lg:grid-cols-xo gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] overflow-hidden'>
           <div className=''>
@@ -85,25 +99,28 @@ function PortfolioItem() {
               <h1>{portfolioItem.title}</h1>
             </div>
 
-            <div className='mb-2'><span className='font-bold'>App Purpose:</span> {portfolioItem.headline}</div>
+            <div className='mb-2'>
+              <span className='font-bold'>App Purpose:</span>{' '}
+              {portfolioItem.headline}
+            </div>
 
             <article className=''>{portfolioItem.desc}</article>
 
-            <div className=''>
+            <section className='outline-2 outline-black outline rounded p-1 w-fit'>
               <div className=''>
-                <div className=''>
+                <div className='text-center text-xl font-semibold mb-2'>
                   <h3>Skills Used</h3>
                 </div>
 
-                <div className=''>
-                  <ul>
+                <article className='outline-2 outline-black outline rounded p-1 w-fit'>
+                  <ul className='p-1'>
                     {portfolioItem.skills.map((skill, index) => {
                       return <li key={index}>{skill}</li>;
                     })}
                   </ul>
-                </div>
+                </article>
               </div>
-            </div>
+            </section>
           </div>
 
           <div className='grid grid-rows-a1a bg-green-400'>
@@ -179,7 +196,8 @@ function PortfolioItem() {
               <div className=''>
                 <h6 className='flex'>
                   PHONE - <span className='flex text-active-text'>TABLET</span>{' '}
-                  - LAPTOP - <span className='flex text-active-text'>MONITOR</span>
+                  - LAPTOP -{' '}
+                  <span className='flex text-active-text'>MONITOR</span>
                 </h6>
                 <h3>Fully Responsive Design</h3>
               </div>

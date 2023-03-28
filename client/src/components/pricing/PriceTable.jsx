@@ -13,9 +13,7 @@ function PriceTable() {
         <h3 className='font-semibold'>Basic Options</h3>
         <h4>Of Hundreds Available!</h4>
       </section>
-      <table
-        className='bg-slate-500 border-2 shadow-2xl border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'
-      >
+      <table className='bg-slate-500 border-2 shadow-2xl border-black border-solid w-full text-xs lg:text-base leading-3 lg:leading-4'>
         <thead>
           <tr className='grid grid-cols-4'>
             <th className='border-2 flex items-center justify-center border-black border-solid p-2'>
@@ -70,23 +68,33 @@ function PriceTable() {
             );
           })}
         </tbody>
-        {/* <tfoot>
-          <tr className='grid grid-cols-4 p-2'>
-            <td className='border-2 border-black border-solid p-2'>
-              Starting From:
-            </td>
-            <td className='border-2 border-black border-solid p-2 flex justify-center'>
-              £450
-            </td>
-            <td className='border-2 border-black border-solid p-2 flex justify-center'>
-              £750
-            </td>
-            <td className='border-2 border-black border-solid p-2 flex justify-center'>
-              £1450
-            </td>
-          </tr>
-        </tfoot> */}
       </table>
+      <section className='grid md:grid-cols-3 p-2'>
+        <div className='p-2'>
+          <h5 className='flex justify-center items-center'>
+            <span className='h-full mt-1 mr-3'>
+              <FiCheckCircle size={20} />
+            </span>{' '}
+            <span>= Included</span>
+          </h5>
+        </div>
+        <div className='p-2'>
+          <h5 className='flex justify-center items-center'>
+            <span className='h-full mt-1 mr-3'>
+              <IoMdInfinite size={20} />
+            </span>{' '}
+            <span>= Infinite Amount</span>
+          </h5>
+        </div>
+        <div className='p-2'>
+          <h5 className='flex justify-center items-center'>
+            <span className='h-full mt-1 mr-3'>
+              <RxCross2 size={20} />
+            </span>{' '}
+            <span>= Not Included</span>
+          </h5>
+        </div>
+      </section>
     </section>
   );
 }
