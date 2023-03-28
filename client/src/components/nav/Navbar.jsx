@@ -8,7 +8,7 @@ import { sampleUserData } from '../../users/utils/utils';
 // Icons
 import Home from '../../assets/svg/homeIcon-white.svg';
 import Account from '../../assets/svg/accountIcon-white.svg';
-import Admin from '../../assets/svg/adminIcon-white.svg'
+import Admin from '../../assets/svg/adminIcon-white.svg';
 import Contact from '../../assets/svg/contactIcon-white.svg';
 import Design from '../../assets/svg/designIcon-white.svg';
 import Developer from '../../assets/svg/developerIcon-white.svg';
@@ -300,7 +300,7 @@ function Navbar() {
           </section>
           <div className='hidden md:flex'>
             <SocialBar
-              borders={'border-white dark:border-colour-dark'}
+              background={'bg-gray-900'}
               icons={'text-white dark:text-colour-dark'}
             />
           </div>
@@ -459,7 +459,11 @@ function Navbar() {
                     className='phone__nav__link'
                     onClick={toggleNavbar}
                   >
-                    <img src={Developer} className='w-8 ml-1' alt='development' />
+                    <img
+                      src={Developer}
+                      className='w-8 ml-1'
+                      alt='development'
+                    />
                     <div className='flex items-center text-xl ml-1'>
                       <h3>Development</h3>
                     </div>
@@ -493,7 +497,11 @@ function Navbar() {
                       displayTest();
                     }}
                   >
-                    <img src={TestIcon} className='w-8 ml-1' alt='notNotification' />
+                    <img
+                      src={TestIcon}
+                      className='w-8 ml-1'
+                      alt='notNotification'
+                    />
                     <div className='flex items-center text-xl ml-1'>
                       <h3>Test Page</h3>
                     </div>
@@ -556,7 +564,7 @@ function Navbar() {
             {/* Social links */}
             <div className='my-2 flex justify-center'>
               <SocialBar
-                borders={'border-white border-4 dark:border-colour-dark'}
+                background={'bg-black'}
                 icons={'text-white dark:text-colour-dark text-3xl'}
               />
             </div>

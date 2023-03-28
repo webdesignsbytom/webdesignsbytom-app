@@ -13,7 +13,7 @@ function Footer() {
       </section>
       <section className='flex justify-center my-4'>
         <SocialBar
-          borders={'border-white dark:border-colour-dark'}
+          background={'bg-footer-colour'}
           icons={'text-white dark:text-colour-dark'}
         />
       </section>

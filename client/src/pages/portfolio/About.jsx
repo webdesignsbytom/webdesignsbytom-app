@@ -11,11 +11,11 @@ function About() {
   return (
     <section
       id='about'
-      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4'
+      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4 bg-gray-50'
     >
       <section className='text-center mt-8 mb-4'>
-        <h5>Get To Know Me</h5>
-        <h2 className='text-2xl'>About Me</h2>
+        <h5 className='font-semibold'>Get To Know Me</h5>
+        <h2 className='text-2xl font-bold'>About Me</h2>
       </section>
 
       {/* Main */}
@@ -69,7 +69,7 @@ function About() {
           <section className='grid gap-6'>
             <article className='grid gap-10'>
               <p>
-                After years of electrical engineering and renewable energy
+                <span className='font-semibold'>After</span> years of electrical engineering and renewable energy
                 installation, I have started developing websites for you! I have
                 always worked in a design and engineering capacity, I even built
                 the desk I work from. <br /> Completing jobs that have logic
@@ -78,21 +78,34 @@ function About() {
                 products I hope to achieve success with.
               </p>
               <p>
-                I am also an artist, carpenter, master scuba diver, syrup maker
-                and entrepreneur.
+                I am also an <span className='font-semibold'>artist</span>, <span className='font-semibold'>carpenter</span>, <span className='font-semibold'>master scuba diver</span>, <span className='font-semibold'>syrup maker</span>, <span className='font-semibold'>inventor </span>
+                and <span className='font-semibold'>entrepreneur</span>.
               </p>
             </article>
-            <div className='flex gap-6'>
+            <section className='flex gap-4 my-2'>
               <Link
                 to='/contact'
-                className='bg-main-colour grid justify-center py-2 text-white font-medium text-sm leading-snug uppercase rounded items-center shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'
+                className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
-                Lets talk!
+                <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+                <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+                <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-purple-600 rounded-md opacity-0 group-hover:opacity-100 '></span>
+                <span className='relative text-purple-600 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+                  Lets talk!
+                </span>
               </Link>
-              <button className='bg-white outline outline-2 outline-main-colour grid justify-center py-2 text-main-colour font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
-                Show Me Some Skills!
-              </button>
-            </div>
+              <Link
+                to=''
+                className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
+              >
+                <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-yellow-500 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
+                <span className='absolute inset-0 w-full h-full bg-gray-900 rounded-md '></span>
+                <span className='absolute inset-0 w-full h-full transition-all duration-200 ease-in-out delay-100 bg-yellow-500 rounded-md opacity-0 group-hover:opacity-100 '></span>
+                <span className='relative text-yellow-500 transition-colors duration-200 ease-in-out delay-100 group-hover:text-white'>
+                  Show Me Some Skills!
+                </span>
+              </Link>
+            </section>
           </section>
         </section>
       </main>

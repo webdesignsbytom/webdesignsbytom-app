@@ -5,13 +5,13 @@ import { BsGithub } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 
-function SocialBar({ borders, icons }) {
+function SocialBar({ background, icons }) {
   return (
     <>
       <section
-        className={`flex bg-gradient-to-r from-purple-700 via-yellow-500 to-green-600 border-solid p-1 space-x-2 w-fit rounded`}
+        className={`flex bg-gradient-to-r from-purple-700 via-yellow-500 to-green-600 border-solid p-1 space-x-2 w-fit rounded-md`}
       >
-        <div className='bg-gray-900 rounded flex gap-2 w-full h-full py-2 px-4'>
+        <div className={`${background} rounded flex gap-2 w-full h-full py-2 px-4`}>
           <div>
             <a
               href='https://github.com/webdesignbytom'

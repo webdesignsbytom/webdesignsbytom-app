@@ -4,8 +4,8 @@ function ReviewItem({ review }) {
   const { value, content, image, createdAt, url } = review;
 
   return (
-    <article className='grid bg-white dark:bg-black dark:text-white border-2 text-sm lg:text-base shadow-lg border-black border-solid p-1 rounded'>
-      <div className='grid justify-center md:flex md:justify-between'>
+    <article className='grid bg-white dark:bg-black dark:text-white border-2 text-sm lg:text-base shadow-lg border-black border-solid p-1 rounded w-full'>
+      <div className='grid justify-center md:flex md:justify-between w-full'>
         <ul className='flex gap-1 justify-center'>
           {[...Array(value)].map((index) => {
             return (
@@ -24,13 +24,13 @@ function ReviewItem({ review }) {
           alt='Componay logo for review'
         />
       </article>
-      <article className='grid text-center justify-center'>
-        <h4 className='text-hyperlink-blue'>
+      <article className='grid text-center justify-center '>
+        <h4 className='text-hyperlink-blue text-ss md:text-base'>
           <a href={url} rel='noreferrer' target='_blank'>
             {url}
           </a>
         </h4>
-        <p>{content}</p>
+        <p className='text-xs md:text-base'>{content}</p>
       </article>
     </article>
   );

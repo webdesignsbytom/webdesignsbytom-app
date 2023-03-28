@@ -46,13 +46,17 @@ function Design() {
     }
   }, [user.id]);
 
-  console.log('toggleMessages', toggleMessages)
-  console.log('toggleNotifications', toggleNotifications)
+  console.log('toggleMessages', toggleMessages);
+  console.log('toggleNotifications', toggleNotifications);
 
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>
       <Navbar />
-      {(toggleNavigation === false || toggleMessages === false) && (
+      {(!toggleNavigation ||
+        !toggleNotifications ||
+        !toggleMessages ||
+        !toggleEvents ||
+        !toggleContacts) && (
         <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black '>
           {/* Side bar */}
           <OptionsNav

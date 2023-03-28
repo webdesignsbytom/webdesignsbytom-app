@@ -208,13 +208,13 @@ function Account() {
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
                     Favorites
                   </h3>
-                  <ul className='bg-main-colour grid h-full'>
+                  <ul className='bg-gray-300 grid h-full'>
                     {listOfFavorites > 0 ? (
                       listOfFavorites.map((favorite, index) => {
                         return <li key={index}>{favorite.name}</li>;
                       })
                     ) : (
-                      <div className='grid justify-center'>
+                      <div className='grid items-center mb-8 justify-center'>
                         <p>Nothing to display</p>
                       </div>
                     )}
