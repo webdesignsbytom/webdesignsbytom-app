@@ -25,14 +25,14 @@ const heroLinks = [
   },
 ];
 
-function PlanetHero() {
+function PlanetHero({ increasePageNumber, decreasePageNumber }) {
   return (
-    <div className='grid relative bg-black h-[100vh] w-full'>
+    <div className='grid relative bg-black h-[100vh] overflow-hidden w-full'>
       {/* nav */}
-      <header className='flex z-10 max-h-12 font-outfit text-white justify-between px-4 py-4'>
+      <header className='flex absolute w-full z-20 max-h-12 font-outfit text-white justify-between px-4 py-4'>
         <div>
           <Link to='/'>
-            <h1>GLXY DESIGN</h1>
+            <h3 className='text-xl'>GLXY DESIGN CLSS</h3>
           </Link>
         </div>
         {/* Large nav */}
@@ -42,7 +42,7 @@ function PlanetHero() {
               return (
                 <li key={index}>
                   <Link
-                    className='font-medium hover:text-gray-300'
+                    className='text-xl font-medium cursor-pointer hover:text-gray-300'
                     to={link.link}
                   >
                     {link.title}
@@ -52,6 +52,7 @@ function PlanetHero() {
             })}
           </ul>
         </nav>
+
         {/* Phone nav */}
         <nav onClick={() => {}} className='md:hidden'>
           <span className='cursor-pointer text-white hover:text-hover-grey'>
@@ -76,28 +77,33 @@ function PlanetHero() {
 
       {/* Video component */}
       <section className='grid absolute z-0 w-full h-full overflow-hidden lg:bg-cover object-cover'>
-        <video className='grid w-full h-full object-contain' autoPlay loop muted id='video'>
+        <video className='grid' autoPlay loop muted id='video'>
           <source src={EarthVideo} type='video/mp4' />
         </video>
+      </section>
 
-        <section className='text-white grid z-10 absolute h-full w-full justify-center items-center'>
+      <section className='text-white grid z-10 absolute h-full w-full justify-center items-center'>
+        <section>
           <article>
             <section>
-              <h1 className='grid text-6xl font-semibold font-outfit'>
+              <h1 className='grid text-6xl  font-semibold font-outfit'>
                 <span className='text-left -ml-8'>Web Designs</span> <br />{' '}
                 <span className='text-right -mr-8'>By Tom</span>
               </h1>
+              <h2 className='font-semibold text-center mt-2'>
+                Spacious Web Designs
+              </h2>
             </section>
 
             <section className='my-4'>
               <div className='grid w-full md:flex my-2 gap-2 justify-center font-outfit'>
                 <Link to='/developer'>
-                  <button className='py-2 px-4 uppercase border-white hover:bg-transparent-white cursor-pointer border-2 border-solid'>
+                  <button className='py-2 px-4 uppercase border-white hover:bg-transparent-white cursor-pointer border-3 border-solid font-medium'>
                     Hire Personal
                   </button>
                 </Link>
                 <Link to='/portfolio'>
-                  <button className='py-2 px-4 hover:bg-transparent-white uppercase border-white cursor-pointer border-2 border-solid'>
+                  <button className='py-2 px-4 hover:bg-transparent-white uppercase border-white cursor-pointer border-3 border-solid font-medium'>
                     Hire Corporate
                   </button>
                 </Link>
@@ -108,16 +114,22 @@ function PlanetHero() {
 
         <section className='absolute flex bottom-0 w-full justify-center'>
           <section className='grid justify-center'>
-            <article className='flex justify-center font-outfit text-white font-semibold'>
+            <article className='grid text-center justify-center font-outfit text-white font-semibold'>
               <p>This is one of many landing pages i have designed.</p>
               <p>Use the controls below to move through the options.</p>
             </article>
             <section className='flex items-center justify-center gap-4 py-4'>
-              <section className='bg-black rounded-full p-2 cursor-pointer text-white hover:animate-pulse'>
+              <section
+                onClick={decreasePageNumber}
+                className='bg-black rounded-full p-2 cursor-pointer text-white hover:animate-pulse'
+              >
                 <HiArrowSmLeft size={50} />
               </section>
               <section>Current</section>
-              <section className='bg-black rounded-full p-2 cursor-pointer text-white hover:animate-pulse'>
+              <section
+                onClick={increasePageNumber}
+                className='bg-black rounded-full p-2 cursor-pointer text-white hover:animate-pulse'
+              >
                 <HiArrowSmRight size={50} />
               </section>
             </section>

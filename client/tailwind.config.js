@@ -12,6 +12,9 @@ module.exports = {
       backgroundImage: {
         'afternoon': "url('https://i.ibb.co/3mThcXc/afternoon.jpg')",
       },
+      borderWidth: {
+        '3': '3px',
+      },
       colors: {
         'main-colour': '#1F2937',
         'nav-colour': '#1F2937',
