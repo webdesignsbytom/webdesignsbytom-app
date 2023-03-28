@@ -245,19 +245,6 @@ async function seed() {
   })
 
   // REVIEWS
-  for (let i = 0; i <= 2; i++) {
-    const review = await dbClient.review.create({
-      data: {
-        email: `email${i}@gmail${i}.com`,
-        value: 5,
-        url: `www.webdesignsbytom.com`,
-        content:
-          'Great work building my website and very reasonably priced. Will hire again anytime and recommend to everyone.',
-        image:
-          'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
-      },
-    });
-  }
   const wervingsReview = await dbClient.review.create({
     data: {
       email: `sales@wervings.com`,
@@ -280,12 +267,22 @@ async function seed() {
   });
   const musicReview = await dbClient.review.create({
     data: {
-      email: `andy@rapidvansolutions.com`,
+      email: `stu@stuartturnbull.com`,
       value: 5,
       url: `www.stuartturnbull.net`,
       content:
         'A hard working man and a pleasure to work with. Said yes to everything i asked and didnt over complicate the job.',
-      image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/RVS-logo.jpg?raw=true',
+      image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/turnbull-review.jpeg?raw=true',
+    },
+  });
+  const ecoReview = await dbClient.review.create({
+    data: {
+      email: `info@myecoapp.org`,
+      value: 5,
+      url: `www.myecoapp.org`,
+      content:
+        'Tom built a beautiful site for us and brings most of the ideas about improvements and modernisations.',
+      image: 'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/turnbull-review.jpeg?raw=true',
     },
   });
 
