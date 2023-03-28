@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // Pages
 import PlanetHero from '../../pages/heros/PlanetHero';
+import TimeOfDay from '../../pages/heros/TimeOfDay';
 
 function IndexPage() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -18,6 +19,7 @@ function IndexPage() {
   return (
     <>
       {(pageNumber === 1) && <PlanetHero increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
+      {(pageNumber === 2) && <TimeOfDay increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
     </>
   );
 }
