@@ -1,11 +1,6 @@
 import dbClient from '../utils/dbClient.js';
 
-export const findAllReviews = () =>
-  dbClient.review.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
+export const findAllReviews = () => dbClient.review.findMany({});
 
 export const findReviewByName = (name) =>
   dbClient.review.findFirst({
