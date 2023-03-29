@@ -136,17 +136,19 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
           <section className='text-white grid z-10 px-2 absolute h-full w-full justify-center items-center'>
             <section>
               <article>
-                <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
-                  <h1 className='grid text-5xl font-semibold font-outfit'>
-                    <span className='text-left -ml-4 md:-ml-8'>
-                      Web Designs
-                    </span>{' '}
-                    <span className='text-right -mr-4 md:-mr-8'>By Tom</span>
-                  </h1>
-                  <h2 className='font-semibold text-center mt-2'>
-                    Spacious Web Designs
-                  </h2>
-                </section>
+                <div className='border-transparent-black border-solid border-[6px] p-2 rounded-tr-2xl rounded-bl-2xl'>
+                  <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
+                    <h1 className='grid text-5xl font-semibold font-outfit'>
+                      <span className='text-left -ml-4 md:-ml-8'>
+                        Web Designs
+                      </span>{' '}
+                      <span className='text-right -mr-4 md:-mr-8'>By Tom</span>
+                    </h1>
+                    <h2 className='font-semibold text-center mt-2'>
+                      Spacious Web Designs
+                    </h2>
+                  </section>
+                </div>
 
                 <section className='my-4'>
                   <div className='grid w-full md:flex my-2 gap-2 justify-center font-outfit'>
