@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'news-bg': "url('../assets/img/newsletter-bg.jpg')",
-        'maps-bg': "url('../assets/img/earth-bg.png')",
+        'news-bg': "url('../assets/img/backgrounds/newsletter-bg.jpg')",
+        'maps-bg': "url('../assets/img/backgrounds/earth-bg.png')",
       },
       fontFamily: {
         'outfit': 'Outfit',

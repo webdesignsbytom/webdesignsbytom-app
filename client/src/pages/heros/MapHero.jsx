@@ -7,7 +7,7 @@ import { ToggleContext } from '../../context/ToggleContext';
 import { UserContext } from '../../context/UserContext';
 // Components
 import SocialBar from '../../components/social/SocialBar';
-// Icons
+// SVG Icons
 import Home from '../../assets/svg/homeIcon-white.svg';
 import Contact from '../../assets/svg/contactIcon-white.svg';
 import Design from '../../assets/svg/designIcon-white.svg';
