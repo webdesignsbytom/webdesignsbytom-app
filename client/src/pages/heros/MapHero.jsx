@@ -9,17 +9,15 @@ import { UserContext } from '../../context/UserContext';
 import SocialBar from '../../components/social/SocialBar';
 // Icons
 import Home from '../../assets/svg/homeIcon-white.svg';
-
 import Contact from '../../assets/svg/contactIcon-white.svg';
 import Design from '../../assets/svg/designIcon-white.svg';
 import Login from '../../assets/svg/loginIcon-white.svg';
 import Logout from '../../assets/svg/logoutIcon-white.svg';
-
 import Portfolio from '../../assets/svg/portfolioIcon-white.svg';
 import Register from '../../assets/svg/registerIcon-white.svg';
-
 import Search from '../../assets/svg/searchIcon-white.svg';
 import StoreIcon from '../../assets/svg/storeIcon-white.svg';
+// Utils
 import { sampleUserData } from '../../users/utils/utils';
 
 function MapHero({ increasePageNumber, decreasePageNumber }) {

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+// Context
+import { ToggleContext } from '../../context/ToggleContext';
 // Icons
 import { HiArrowSmLeft } from 'react-icons/hi';
 import { HiArrowSmRight } from 'react-icons/hi';
@@ -7,11 +9,34 @@ import { BsInstagram } from 'react-icons/bs';
 import { BsGithub } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
+// Components
+import SocialBar from '../../components/social/SocialBar';
+// Icons
+import Home from '../../assets/svg/homeIcon-white.svg';
+import Contact from '../../assets/svg/contactIcon-white.svg';
+import Design from '../../assets/svg/designIcon-white.svg';
+import Login from '../../assets/svg/loginIcon-white.svg';
+import Logout from '../../assets/svg/logoutIcon-white.svg';
+import Portfolio from '../../assets/svg/portfolioIcon-white.svg';
+import Register from '../../assets/svg/registerIcon-white.svg';
+import Search from '../../assets/svg/searchIcon-white.svg';
+import StoreIcon from '../../assets/svg/storeIcon-white.svg';
+import { sampleUserData } from '../../users/utils/utils';
+import { UserContext } from '../../context/UserContext';
 
 function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
+  const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
+  const { user, setUser } = useContext(UserContext)
+  // Colours
+  const [currentBg, setCurrentBg] = useState('black');
+  const [currentTransBg, setCurrentTransBg] = useState('transparent-black');
+  const [currentText, setCurrentText] = useState('white');
+  // Buttons
   const [buttonOneStyle, setButtonOneStyle] = useState('day__button__one');
   const [buttonTwoStyle, setButtonTwoStyle] = useState('day__button__two');
   const [blurSetting, setBlurSetting] = useState('blur-none');
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const container = document.getElementById('time__container');
@@ -118,150 +143,337 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
     setBlurSetting('blur-none');
   };
 
+  const toggleNavbar = () => {
+    setToggleNavigation(!toggleNavigation);
+  };
+
+  const signOut = (event) => {
+    event.preventDefault();
+
+    setToggleNavigation(false);
+    setUser(sampleUserData);
+    localStorage.removeItem(process.env.REACT_APP_USER_TOKEN);
+
+    navigate('/', { replace: true });
+  };
+
   return (
-    <div className='grid h-[100vh] w-full'>
-      <div
-        id='time__container'
-        style={{
-          backgroundImage: 'url("https://i.ibb.co/3mThcXc/afternoon.jpg")',
-        }}
-        className='grid relative object-contain bg-cover'
-      >
-        <section
-          className={`grid items-center w-full ${blurSetting} transition duration-500 ease-in`}
-        >
-          <section className='absolute px-2 pt-2 md:px-4 md:pt-4 top-0 left-0 w-full flex justify-between'>
-            <article>
-              <h1 className='font-bold uppercase text-lg md:text-3xl md:text-center'>
-                Web Designs By Tom
-              </h1>
-              <h2 className='text-left text-sm md:text-xl font-semibold'>
-                Professional{' '}
-                <span className='font-extrabold italic text-white'>modern</span>{' '}
-                web design
-              </h2>
-            </article>
+    <>
+      {!toggleNavigation ? (
+        <div className='grid h-[100vh] w-full'>
+          <div
+            id='time__container'
+            style={{
+              backgroundImage: 'url("https://i.ibb.co/3mThcXc/afternoon.jpg")',
+            }}
+            className='grid relative object-contain bg-cover'
+          >
+            <section
+              className={`grid items-center w-full ${blurSetting} transition duration-500 ease-in`}
+            >
+              <section className='absolute px-2 pt-2 md:px-4 md:pt-4 top-0 left-0 w-full flex justify-between'>
+                <article>
+                  <h1 className='font-bold uppercase text-lg md:text-3xl md:text-center'>
+                    Web Designs By Tom
+                  </h1>
+                  <h2 className='text-left text-sm md:text-xl font-semibold'>
+                    Professional{' '}
+                    <span className='font-extrabold italic text-white'>
+                      modern
+                    </span>{' '}
+                    web design
+                  </h2>
+                </article>
 
-            {/* SOCIAL */}
-            <section className='hidden md:flex items-center'>
-              <section
-                className={`flex outline-white outline-4 outline p-1 space-x-2 w-fit rounded-md`}
-              >
-                <div
-                  className={`rounded flex gap-2 text-white w-full h-full p-1 md:py-2 md:px-2`}
-                >
-                  <div>
-                    <a
-                      href='https://github.com/webdesignbytom'
-                      target='_blank'
-                      rel='noreferrer'
-                      className={`hover:text-active-text`}
+                {/* SOCIAL */}
+                <section className='hidden md:flex items-center'>
+                  <section
+                    className={`flex outline-white outline-4 outline p-1 space-x-2 w-fit rounded-md`}
+                  >
+                    <div
+                      className={`rounded flex gap-2 text-white w-full h-full p-1 md:py-2 md:px-2`}
                     >
-                      <BsGithub size={25} />
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href='https://twitter.com/webdesignsbytom'
-                      target='_blank'
-                      rel='noreferrer'
-                      className={`hover:text-active-text`}
+                      <div>
+                        <a
+                          href='https://github.com/webdesignbytom'
+                          target='_blank'
+                          rel='noreferrer'
+                          className={`hover:text-active-text`}
+                        >
+                          <BsGithub size={25} />
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          href='https://twitter.com/webdesignsbytom'
+                          target='_blank'
+                          rel='noreferrer'
+                          className={`hover:text-active-text`}
+                        >
+                          <BsTwitter size={25} />
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          href='https://www.linkedin.com/in/tom-brockington-b011b8230/'
+                          target='_blank'
+                          rel='noreferrer'
+                          className={`hover:text-active-text`}
+                        >
+                          <BsLinkedin size={25} />
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          href='https://www.instagram.com/webdesignsbytom/'
+                          target='_blank'
+                          rel='noreferrer'
+                          className={`hover:text-active-text`}
+                        >
+                          <BsInstagram size={25} />
+                        </a>
+                      </div>
+                    </div>
+                  </section>
+                </section>
+              </section>
+
+              {/* TIME */}
+              <article className='grid w-full justify-center text-center'>
+                <time
+                  id='time'
+                  className='text-4xl md:text-6xl my-2 font-bold'
+                ></time>
+                <h1 className='text-2xl'>
+                  <span id='greeting'></span>
+                  <span id='name' contenteditable='true'></span>
+                </h1>
+
+                {/* BUTTONS */}
+                <div className='grid py-2 font-poppins w-full md:flex my-2 gap-2 justify-center'>
+                  <Link className='' to='/store'>
+                    <button
+                      onMouseEnter={blurEffectStart}
+                      onMouseLeave={blurEffectEnd}
+                      className={`${buttonOneStyle}`}
                     >
-                      <BsTwitter size={25} />
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href='https://www.linkedin.com/in/tom-brockington-b011b8230/'
-                      target='_blank'
-                      rel='noreferrer'
-                      className={`hover:text-active-text`}
+                      Hire Private
+                    </button>
+                  </Link>
+                  <Link to='/portfolio'>
+                    <button
+                      onMouseEnter={blurEffectStart}
+                      onMouseLeave={blurEffectEnd}
+                      className={`${buttonTwoStyle}`}
                     >
-                      <BsLinkedin size={25} />
-                    </a>
-                  </div>
-                  <div>
-                    <a
-                      href='https://www.instagram.com/webdesignsbytom/'
-                      target='_blank'
-                      rel='noreferrer'
-                      className={`hover:text-active-text`}
-                    >
-                      <BsInstagram size={25} />
-                    </a>
-                  </div>
+                      Hire Dev
+                    </button>
+                  </Link>
                 </div>
-              </section>
-            </section>
-          </section>
-
-          {/* TIME */}
-          <article className='grid w-full justify-center text-center'>
-            <time id='time' className='text-4xl md:text-6xl my-2 font-bold'></time>
-            <h1 className='text-2xl'>
-              <span id='greeting'></span>
-              <span id='name' contenteditable='true'></span>
-            </h1>
-
-            {/* BUTTONS */}
-            <div className='grid py-2 font-poppins w-full md:flex my-2 gap-2 justify-center'>
-              <Link className='' to='/store'>
-                <button
-                  onMouseEnter={blurEffectStart}
-                  onMouseLeave={blurEffectEnd}
-                  className={`${buttonOneStyle}`}
-                >
-                  Hire Private
-                </button>
-              </Link>
-              <Link to='/portfolio'>
-                <button
-                  onMouseEnter={blurEffectStart}
-                  onMouseLeave={blurEffectEnd}
-                  className={`${buttonTwoStyle}`}
-                >
-                  Hire Dev
-                </button>
-              </Link>
-            </div>
-            <section className='font-semibold w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
-              <p>Available to build high quality web products.</p>
-              <p>
-                My website boasts{' '}
-                <Link to='/design' className='text-hyperlink-blue'>
-                  design tools
-                </Link>{' '}
-                and programming skills to create the perfect website to suit
-                your needs.
-              </p>
-            </section>
-          </article>
-
-          <section className='absolute flex bottom-0 w-full justify-center'>
-            <section className='grid w-full'>
-              <article className='text-xs bg-transparent-black w-full text-white sm:text-base grid text-center justify-center font-outfit font-semibold leading-5 py-2'>
-                <p>This is one of many landing pages i have designed.</p>
-                <p>Use the controls below to move through the options.</p>
+                <section className='font-semibold w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
+                  <p>Available to build high quality web products.</p>
+                  <p>
+                    My website boasts{' '}
+                    <Link to='/design' className='text-hyperlink-blue'>
+                      design tools
+                    </Link>{' '}
+                    and programming skills to create the perfect website to suit
+                    your needs.
+                  </p>
+                </section>
               </article>
-              <section className='flex items-center justify-center gap-8 py-4'>
-                <section
-                  onClick={decreasePageNumber}
-                  className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
-                >
-                  <HiArrowSmLeft className='' size={50} />
-                </section>
-                <section
-                  onClick={increasePageNumber}
-                  className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
-                >
-                  <HiArrowSmRight className='' size={50} />
+
+              <section className='absolute flex bottom-0 w-full justify-center'>
+                <section className='grid w-full'>
+                  <article className='text-xs bg-transparent-black w-full text-white sm:text-base grid text-center justify-center font-outfit font-semibold leading-5 py-2'>
+                    <p>This is one of many landing pages i have designed.</p>
+                    <p>Use the controls below to move through the options.</p>
+                  </article>
+                  <section className='flex items-center justify-center gap-8 py-4'>
+                    <section
+                      onClick={decreasePageNumber}
+                      className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
+                    >
+                      <HiArrowSmLeft className='' size={50} />
+                    </section>
+                    <section
+                      onClick={increasePageNumber}
+                      className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
+                    >
+                      <HiArrowSmRight className='' size={50} />
+                    </section>
+                  </section>
                 </section>
               </section>
             </section>
+          </div>
+        </div>
+      ) : (
+        <div
+          className={`relative h-screen max-h-screen bg-${currentBg} w-full`}
+        >
+          {/* Phone Nav Open */}
+          <header className='absolute md:hidden top-2 right-3 flex w-full justify-end'>
+            <nav
+              onClick={() => {
+                toggleNavbar();
+              }}
+              className=''
+            >
+              <span
+                className={`cursor-pointer text-${currentText} hover:text-hover-grey`}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth='1.5'
+                  stroke='currentColor'
+                  className='w-12 h-12 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  data-te-animation-init
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
+                  />
+                </svg>
+              </span>
+            </nav>
+          </header>
+          {/* List */}
+          <section className='pt-16'>
+            <ul className='grid gap-2'>
+              {/* Home */}
+              <li className='phone__nav__li'>
+                <Link
+                  className='phone__nav__link'
+                  to='/'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Home} className='w-8 ml-1' alt='home' />
+                  <div className='flex items-center text-xl ml-1'>
+                    <h3>Home</h3>
+                  </div>
+                </Link>
+              </li>
+              {/* Design */}
+              <li className='phone__nav__li'>
+                <Link
+                  to='/design'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Design} className='w-8 ml-1' alt='design' />
+                  <div className='flex items-center text-xl ml-1'>
+                    <h3>Design</h3>
+                  </div>
+                </Link>
+              </li>
+              {/* Store */}
+              <li className='phone__nav__li'>
+                <Link
+                  to='/store'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={StoreIcon} className='w-8 ml-1' alt='store' />
+                  <div className='flex items-center text-xl ml-1'>
+                    <h3>Store</h3>
+                  </div>
+                </Link>
+              </li>
+              {/* Contact */}
+              <li className='phone__nav__li'>
+                <Link
+                  to='/contact'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Contact} className='w-8 ml-1' alt='contact' />
+                  <div className='flex items-center text-xl ml-1'>
+                    <h3>Contact</h3>
+                  </div>
+                </Link>
+              </li>
+              {/* Portfolio */}
+              <li className='phone__nav__li'>
+                <Link
+                  to='/portfolio'
+                  className='phone__nav__link'
+                  onClick={toggleNavbar}
+                >
+                  <img src={Portfolio} className='w-8 ml-1' alt='portfolio' />
+                  <div className='flex items-center text-xl ml-1'>
+                    <h3>Portfolio</h3>
+                  </div>
+                </Link>
+              </li>
+
+              {!user.email && (
+                <>
+                  {/* Login */}
+                  <li className='phone__nav__li'>
+                    <Link
+                      to='/login'
+                      className='phone__nav__link'
+                      onClick={toggleNavbar}
+                    >
+                      <img src={Login} className='w-8 ml-1' alt='login' />
+                      <div className='flex items-center text-xl ml-1'>
+                        <h3>Login</h3>
+                      </div>
+                    </Link>
+                  </li>
+                  {/* Register */}
+                  <li className='phone__nav__li'>
+                    <Link
+                      to='/register'
+                      className='phone__nav__link'
+                      onClick={toggleNavbar}
+                    >
+                      <img src={Register} className='w-8 ml-1' alt='register' />
+                      <div className='flex items-center text-xl ml-1'>
+                        <h3>Register</h3>
+                      </div>
+                    </Link>
+                  </li>
+                </>
+              )}
+              {user.email && (
+                // Logout
+                <li className='phone__nav__li'>
+                  <Link onClick={signOut} className='phone__nav__link'>
+                    <img src={Logout} className='w-8 ml-1' alt='logout' />
+                    <div className='flex items-center text-xl ml-1'>
+                      <h3>Log out</h3>
+                    </div>
+                  </Link>
+                </li>
+              )}
+              {/* Search */}
+              <li className='phone__nav__li'>
+                <div className='flex'>
+                  <img src={Search} className='w-8 ml-1' alt='search' />
+                  <input
+                    type='text'
+                    placeholder='Search...'
+                    className='w-full ml-2 pl-2 rounded text-black'
+                  />
+                </div>
+              </li>
+              {/* Social links */}
+              <div className='my-2 flex justify-center'>
+                <SocialBar
+                  background={`bg-${currentBg}`}
+                  icons={`text-${currentText} dark:text-colour-dark text-3xl`}
+                />
+              </div>
+            </ul>
           </section>
-        </section>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 
