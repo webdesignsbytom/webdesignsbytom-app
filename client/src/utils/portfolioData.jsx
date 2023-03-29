@@ -8,14 +8,13 @@ import Prisma from '../assets/svg/file_type_light_prisma.svg';
 import Javascript from '../assets/svg/javascript.svg';
 // Photos
 import TavyEpoxy from '../assets/img/projects/tavyepoxyfull.png';
-import BioClicker from '../assets/img/projects/bioclickerMonitor.png';
-import Myecoapp from '../assets/img/projects/myecoapp.png';
+import BioClicker from '../assets/img/projects/bioclickerMd.png';
+import Myecoapp from '../assets/img/projects/myeaMd.png';
 import LuxuryPoker from '../assets/img/projects/luxury-poker.png';
-import MyecoappMonitor from '../assets/img/projects/myecoappMonitor.png';
 import Calculator from '../assets/img/projects/calculator.png';
 // Photos - Phone
-import BioCLickerPhone from '../assets/img/projects/bioclickerPhone.jpg';
-import MyecoappPhone from '../assets/img/projects/myecoappPhone.jpg';
+import BioCLickerPhone from '../assets/img/projects/bioclickerSm.png';
+import MyecoappPhone from '../assets/img/projects/myeaSm.jpg';
 import TavyepoxyPhone from '../assets/img/projects/tavyepoxyPhone.jpg';
 import MatchedbettingPhone from '../assets/img/projects/matchedbettingPhone.jpg';
 
@@ -108,7 +107,7 @@ export const portfolioData = [
     github: 'https://github.com/webdesignbytom/myecoapp',
     demo: 'https://gorgeous-dusk-add814.netlify.app/',
     icons: [Javascript, ReactIcon, TailwindIcon, Expressjs, Prisma],
-    images: [MyecoappPhone, MyecoappMonitor, MyecoappMonitor],
+    images: [MyecoappPhone, Myecoapp, Myecoapp],
     skills: [
       'Phone first design',
       'User Authentication',
