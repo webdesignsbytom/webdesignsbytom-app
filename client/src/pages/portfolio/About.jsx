@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Images
-import Avatar from '../../assets/img/TomAvatar.jpg';
+import Avatar from '../../assets/img/portfolio/TomAvatar.jpg';
 // Icons
 import { TbReportAnalytics } from 'react-icons/tb';
 import { MdOutlineLocalOffer } from 'react-icons/md';
