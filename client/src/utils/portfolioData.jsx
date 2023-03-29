@@ -7,11 +7,11 @@ import Expressjs from '../assets/svg/expressjs.svg';
 import Prisma from '../assets/svg/file_type_light_prisma.svg';
 import Javascript from '../assets/svg/javascript.svg';
 // Photos
-import TavyEpoxy from '../assets/img/projects/tavyepoxyfull.png';
+import TavyEpoxy from '../assets/img/projects/tavyepoxyMd.png';
 import BioClicker from '../assets/img/projects/bioclickerMd.png';
 import Myecoapp from '../assets/img/projects/myeaMd.png';
-import LuxuryPoker from '../assets/img/projects/luxury-poker.png';
-import Calculator from '../assets/img/projects/calculator.png';
+import LuxuryPoker from '../assets/img/projects/pokerMd.png';
+import Calculator from '../assets/img/projects/calculatorMd.png';
 // Photos - Phone
 import BioCLickerPhone from '../assets/img/projects/bioclickerSm.png';
 import MyecoappPhone from '../assets/img/projects/myeaSm.jpg';
