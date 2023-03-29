@@ -128,7 +128,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         className='grid relative object-contain bg-cover'
       >
         <section
-          className={`grid items-center justify-center w-full ${blurSetting} transition duration-500 ease-in`}
+          className={`grid items-center w-full ${blurSetting} transition duration-500 ease-in`}
         >
           <section className='absolute px-2 pt-2 md:px-4 md:pt-4 top-0 left-0 w-full flex justify-between'>
             <article>
@@ -196,7 +196,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
           </section>
 
           {/* TIME */}
-          <article className='grid p-1 text-center'>
+          <article className='grid w-full justify-center text-center'>
             <time id='time' className='text-4xl md:text-6xl my-2 font-bold'></time>
             <h1 className='text-2xl'>
               <span id='greeting'></span>
@@ -224,7 +224,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 </button>
               </Link>
             </div>
-            <section className='font-semibold px-2 text-sm md:text-base'>
+            <section className='font-semibold w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
               <p>Available to build high quality web products.</p>
               <p>
                 My website boasts{' '}
@@ -238,8 +238,8 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
           </article>
 
           <section className='absolute flex bottom-0 w-full justify-center'>
-            <section className='grid justify-center'>
-              <article className='text-sm sm:text-base grid text-center justify-center font-outfit font-semibold leading-5'>
+            <section className='grid w-full'>
+              <article className='text-xs bg-transparent-black w-full text-white sm:text-base grid text-center justify-center font-outfit font-semibold leading-5 py-2'>
                 <p>This is one of many landing pages i have designed.</p>
                 <p>Use the controls below to move through the options.</p>
               </article>
