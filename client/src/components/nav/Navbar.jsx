@@ -22,7 +22,8 @@ import TestIcon from '../../assets/svg/testIcon-white.svg';
 import EventsIcon from '../../assets/svg/eventsIcon-white.svg';
 import Search from '../../assets/svg/searchIcon-white.svg';
 import StoreIcon from '../../assets/svg/storeIcon-white.svg';
-
+// Images
+import WDBT from '../../assets/img/logos/wdbt-white.svg'
 // Components
 import NotificationsPhone from '../notifications/NotificationsPhone';
 import MessagesPhone from '../messages/MessagesPhone';
@@ -163,7 +164,7 @@ function Navbar() {
             }}
             className='inset-y-0 left-0 flex items-center cursor-pointer'
           >
-            Logo
+            <img src={WDBT} className='w-10' alt="Web design by Tom company logo" />
           </div>
           <section className='md:hidden'>
             <h3 className='text-sm capitalize text-colour-dark font-bold'>

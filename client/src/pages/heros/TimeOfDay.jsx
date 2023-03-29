@@ -103,6 +103,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         setButtonOneStyle('day__button__one');
         setButtonTwoStyle('day__button__two');
       } else if (hour < 18) {
+        
         // Afternoon
         if (container.scrollWidth < 600) {
           container.style.backgroundImage =
@@ -318,7 +319,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                     ></time>
                   </div>
                 </section>
-                <h1 className='text-base md:text-2xl my-2'>
+                <h1 className='text-base md:text-2xl my-2 font-semibold'>
                   <span id='greeting'></span>
                   <span id='name' contenteditable='true'></span>
                 </h1>

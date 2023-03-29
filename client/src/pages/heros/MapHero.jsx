@@ -65,7 +65,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
     <>
       {!toggleNavigation ? (
         <div
-          className={`relative h-screen max-h-screen bg-${currentBg} bg-no-repeat w-full bg-cover bg-[center_right_45%] bg-maps-bg md:bg-center h-full md:bg-contain font-pops`}
+          className={`relative h-screen max-h-screen bg-${currentBg} bg-no-repeat w-full bg-cover bg-[center_right_45%] bg-maps-bg-phone lg:bg-maps-bg md:bg-center h-full md:bg-contain font-pops`}
         >
           {/* Colour select */}
           <section

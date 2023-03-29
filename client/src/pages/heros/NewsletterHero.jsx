@@ -22,7 +22,7 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
   };
 
   return (
-    <div className='relative min-h-screen flex flex-col bg-news-bg bg-cover text-white'>
+    <div className='relative min-h-screen flex flex-col bg-news-bg-phone bg-center lg:bg-news-bg bg-cover text-white'>
       <main className='container mx-auto px-6 pt-6 md:pt-16 flex-1 text-center'>
         <section className='flex md:hidden justify-center pb-6 md:pb-0'>
           <Link to='/store' className='mx-3 hover:opacity-80 duration-150'>
@@ -53,13 +53,7 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
           943,245 imaginary members
         </div>
 
-        <form
-          action='https://www.getrevue.co/profile/tyler_potts_/add_subscriber'
-          method='post'
-          id='revue-form'
-          name='revue-form'
-          target='_blank'
-        >
+        <form>
           <div className='flex flex-col md:flex-row justify-center mb-4'>
             <input
               onChange={handleChange}

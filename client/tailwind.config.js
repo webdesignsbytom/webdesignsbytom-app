@@ -7,7 +7,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'news-bg': "url('../assets/img/backgrounds/newsletter-bg.jpg')",
+        'news-bg-phone': "url('../assets/img/backgrounds/newsletter-bg-phone.jpg')",
         'maps-bg': "url('../assets/img/backgrounds/earth-bg.png')",
+        'maps-bg-phone': "url('../assets/img/backgrounds/earth-bg-phone.png')",
       },
       fontFamily: {
         'outfit': 'Outfit',

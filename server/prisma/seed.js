@@ -142,28 +142,28 @@ async function seed() {
   });
 
   // COMPONENTS
-  const component1 = await dbClient.page.create({
+  const component1 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Social Media`,
       desc: 'Social media links in a stylish container.',
     },
   });
-  const component2 = await dbClient.page.create({
+  const component2 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Hero Section`,
       desc: 'A header to the home page. A stylish spash component that shows off your whole website and company in one screen.',
     },
   });
-  const component3 = await dbClient.page.create({
+  const component3 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Map API`,
       desc: 'Usually found on a contact page. A map can be used to represent your location or your customers current location.',
     },
   });
-  const component4 = await dbClient.page.create({
+  const component4 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `User Profile`,
@@ -177,28 +177,28 @@ async function seed() {
       desc: 'Either as a pop out page or a component to fill the page. Each product can have its own description and images.',
     },
   });
-  const component6 = await dbClient.page.create({
+  const component6 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Custom animations`,
       desc: 'Using canvas and enough time and money you can create most animations for your site. With the realism of a PS2 cut sceen.',
     },
   });
-  const component7 = await dbClient.page.create({
+  const component7 = await dbClient.component.create({
     data: {
       type: 'SHOP',
       name: `Reviews`,
       desc: 'Reviews are hugely important to business and website SEO, a smart review container is used to present the best.',
     },
   });
-  const component8 = await dbClient.page.create({
+  const component8 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Chat room`,
       desc: 'Chat rooms take all forms, either in game chat or customer service.',
     },
   });
-  const component9 = await dbClient.page.create({
+  const component9 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Gallery`,
@@ -212,42 +212,42 @@ async function seed() {
       desc: 'Add video, audio, PDF or youtube videos to your website.',
     },
   });
-  const component11 = await dbClient.page.create({
+  const component11 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Website Analytics`,
       desc: 'An admin or developer will want to check the website stats. Vistors, location, login, errors and page ranking stats can be compiled as graphs.',
     },
   });
-  const component12 = await dbClient.page.create({
+  const component12 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Blog, Posts, Comments`,
       desc: 'You might want user comments or interactions. Maybe you publish articles and want to collect comments, likes, reviews or data from readers. ',
     },
   });
-  const component13 = await dbClient.page.create({
+  const component13 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Loading Animations`,
       desc: 'Websites need a little animation so people can tell they are working. A loading spinner is commonly found on buttons that require waiting for a database response.',
     },
   });
-  const component14 = await dbClient.page.create({
+  const component14 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Donations`,
       desc: 'Add payment connections to parts of your page where you can take donations from visitors.',
     },
   });
-  const component15 = await dbClient.page.create({
+  const component15 = await dbClient.component.create({
     data: {
       type: 'BASIC',
       name: `Cookies and privacy`,
       desc: 'These bars pop up when you visit a new site and are part of any major project.',
     },
   });
-  const component16 = await dbClient.page.create({
+  const component16 = await dbClient.component.create({
     data: {
       type: 'FULLSTACK',
       name: `Search Bar`,
