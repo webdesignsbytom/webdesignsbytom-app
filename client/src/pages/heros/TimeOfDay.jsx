@@ -8,7 +8,6 @@ import { BsGithub } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 
-
 function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   const [buttonOneStyle, setButtonOneStyle] = useState('day__button__one');
   const [buttonTwoStyle, setButtonTwoStyle] = useState('day__button__two');
@@ -131,23 +130,26 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         <section
           className={`grid items-center justify-center w-full ${blurSetting} transition duration-500 ease-in`}
         >
-          <section className='absolute px-2 pt-2 md:px-6 md:pt-6 top-0 left-0 w-full flex justify-between'>
+          <section className='absolute px-2 pt-2 md:px-4 md:pt-4 top-0 left-0 w-full flex justify-between'>
             <article>
               <h1 className='font-bold uppercase text-lg md:text-3xl md:text-center'>
                 Web Designs By Tom
               </h1>
-              <h2 className='text-left text-sm md:text-xl'>
+              <h2 className='text-left text-sm md:text-xl font-semibold'>
                 Professional{' '}
-                <span className='font-extrabold italic'>modern</span> web design
+                <span className='font-extrabold italic text-white'>modern</span>{' '}
+                web design
               </h2>
             </article>
 
             {/* SOCIAL */}
             <section className='flex items-center'>
               <section
-                className={`flex border-black border-2 border-solid p-1 space-x-2 w-fit rounded-md`}
+                className={`flex outline-white outline-4 outline p-1 space-x-2 w-fit rounded-md`}
               >
-                <div className={`rounded flex gap-2 w-full h-full p-1 md:py-2 md:px-4`}>
+                <div
+                  className={`rounded flex gap-2 text-white w-full h-full p-1 md:py-2 md:px-2`}
+                >
                   <div>
                     <a
                       href='https://github.com/webdesignbytom'
@@ -155,7 +157,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       rel='noreferrer'
                       className={`hover:text-active-text`}
                     >
-                      <BsGithub />
+                      <BsGithub size={25} />
                     </a>
                   </div>
                   <div>
@@ -165,7 +167,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       rel='noreferrer'
                       className={`hover:text-active-text`}
                     >
-                      <BsTwitter />
+                      <BsTwitter size={25} />
                     </a>
                   </div>
                   <div>
@@ -175,7 +177,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       rel='noreferrer'
                       className={`hover:text-active-text`}
                     >
-                      <BsLinkedin />
+                      <BsLinkedin size={25} />
                     </a>
                   </div>
                   <div>
@@ -185,7 +187,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       rel='noreferrer'
                       className={`hover:text-active-text`}
                     >
-                      <BsInstagram />
+                      <BsInstagram size={25} />
                     </a>
                   </div>
                 </div>
@@ -222,32 +224,35 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 </button>
               </Link>
             </div>
-            <section className='font-semibold px-2 text-sm md:text-base leading-5'>
+            <section className='font-semibold px-2 text-sm md:text-base'>
+              <p>Available to build high quality web products.</p>
               <p>
-                Available to build high quality web products. My website boasts
-                design tools and modern web features to create the perfect
-                website to suit your needs.
+                My website boasts{' '}
+                <Link to='/design' className='text-hyperlink-blue'>
+                  design tools
+                </Link>{' '}
+                and programming skills to create the perfect website to suit
+                your needs.
               </p>
             </section>
           </article>
 
           <section className='absolute flex bottom-0 w-full justify-center'>
             <section className='grid justify-center'>
-              <article className='text-sm sm:text-base grid text-center justify-center font-outfit text-white font-semibold leading-5'>
+              <article className='text-sm sm:text-base grid text-center justify-center font-outfit font-semibold leading-5'>
                 <p>This is one of many landing pages i have designed.</p>
                 <p>Use the controls below to move through the options.</p>
               </article>
-              <section className='flex items-center justify-center gap-4 py-4'>
+              <section className='flex items-center justify-center gap-8 py-4'>
                 <section
                   onClick={decreasePageNumber}
-                  className='bg-black rounded-full p-1 lg:p-2 cursor-pointer text-white hover:animate-pulse'
+                  className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
                 >
-                  <HiArrowSmLeft className='animate-bounce' size={50} />
+                  <HiArrowSmLeft className='' size={50} />
                 </section>
-                <section>Current</section>
                 <section
                   onClick={increasePageNumber}
-                  className='bg-black rounded-full p-1 lg:p-2 cursor-pointer text-white hover:animate-pulse'
+                  className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
                 >
                   <HiArrowSmRight className='' size={50} />
                 </section>
