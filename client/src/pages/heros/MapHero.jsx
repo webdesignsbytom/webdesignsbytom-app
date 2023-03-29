@@ -65,7 +65,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
     <>
       {!toggleNavigation ? (
         <div
-          className={`relative h-screen max-h-screen bg-${currentBg} bg-no-repeat w-full bg-cover bg-[center_right_45%] bg-maps-bg md:bg-center h-full md:bg-contain`}
+          className={`relative h-screen max-h-screen bg-${currentBg} bg-no-repeat w-full bg-cover bg-[center_right_45%] bg-maps-bg md:bg-center h-full md:bg-contain font-pops`}
         >
           {/* Colour select */}
           <section
@@ -121,18 +121,39 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
           <main
             className={`grid h-full w-full justify-center items-center text-${currentText}`}
           >
-            <section
-              className={`outline outline-4 outline-${currentText} bg-${currentTransBg} text-center font-semibold rounded-xl p-4`}
-            >
-              <h2 className='text-lg'>WELCOME TO</h2>
-              <h1 className='text-xl'>WEBDESIGNSBYTOM</h1>
+            <section>
+              <section
+                className={`outline outline-4 outline-${currentText} bg-${currentTransBg} text-center  rounded-xl p-4`}
+              >
+                <h2 className='text-lg font-semibold'>WELCOME TO</h2>
+                <h1 className='text-xl font-bold'>WEB DESIGNS BY TOM</h1>
+              </section>
+
+              <section className='my-4'>
+                <div className='flex my-2 gap-2 justify-center font-outfit'>
+                  <Link to='/store'>
+                    <button
+                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium w-full`}
+                    >
+                      Build Website
+                    </button>
+                  </Link>
+                  <Link to='/portfolio'>
+                    <button
+                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium w-full`}
+                    >
+                      View Portfolio
+                    </button>
+                  </Link>
+                </div>
+              </section>
             </section>
           </main>
 
           <footer
             className={`grid justify-center text-${currentText} absolute bottom-0 w-full`}
           >
-            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
+            <article className='text-xs md:text-sm grid text-center justify-center font-semibold'>
               <p>This is one of many landing pages i have designed.</p>
               <p>Use the controls below to move through the options.</p>
             </article>

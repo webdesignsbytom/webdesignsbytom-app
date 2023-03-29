@@ -28,26 +28,26 @@ function IndexPage() {
 
   return (
     <>
-      {pageNumber === 3 && (
-        <NewsletterHero
+      {pageNumber === 1 && (
+        <MapHero
           increasePageNumber={increasePageNumber}
           decreasePageNumber={decreasePageNumber}
         />
       )}
       {pageNumber === 2 && (
+        <NewsletterHero
+          increasePageNumber={increasePageNumber}
+          decreasePageNumber={decreasePageNumber}
+        />
+      )}
+      {pageNumber === 3 && (
         <PlanetHero
           increasePageNumber={increasePageNumber}
           decreasePageNumber={decreasePageNumber}
         />
       )}
-      {pageNumber === 1 && (
-        <TimeOfDay
-          increasePageNumber={increasePageNumber}
-          decreasePageNumber={decreasePageNumber}
-        />
-      )}
       {pageNumber === 4 && (
-        <MapHero
+        <TimeOfDay
           increasePageNumber={increasePageNumber}
           decreasePageNumber={decreasePageNumber}
         />

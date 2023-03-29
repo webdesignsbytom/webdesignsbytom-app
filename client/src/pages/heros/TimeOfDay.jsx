@@ -173,7 +173,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   return (
     <>
       {!toggleNavigation ? (
-        <div className='relative grid h-[100vh] w-full'>
+        <div className='relative grid h-[100vh] w-full font-pops'>
           {/* Nav */}
           {/* Phone Nav */}
           <header className='absolute z-20 md:hidden top-3 right-4 flex w-full justify-end'>
@@ -319,11 +319,11 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                     </button>
                   </Link>
                 </div>
-                <section className='font-semibold px-4 py-2 my-2 w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
-                  <p>Available to build high quality web products.</p>
-                  <p>
+                <section className='font-semibold px-4 py-2 my-2 w-full bg-transparent-white lg:bg-transparent text-sm md:text-base leading-5'>
+                  <p className='leading-4'>Available to build high quality web products.</p>
+                  <p className='leading-4'>
                     My website boasts{' '}
-                    <Link to='/design' className='text-hyperlink-blue'>
+                    <Link to='/design' className='text-hyperlink-blue leading-4'>
                       design tools
                     </Link>{' '}
                     and programming skills to create the perfect website to suit
