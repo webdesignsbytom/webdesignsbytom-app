@@ -86,9 +86,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       if (hour < 12) {
         // Morning
         container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/morning-bg.jpg?raw=true')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')";
         setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/morning-bg.jpg?raw=true')"
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')"
         );
         greeting.textContent = 'Good Morning, ';
         setButtonOneStyle('day__button__one');
@@ -96,9 +96,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       } else if (hour < 18) {
         // Afternoon
         container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/afternoon-bg.jpg?raw=true')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')";
         setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/afternoon-bg.jpg?raw=true')"
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')"
         );
         greeting.textContent = 'Good Afternoon, ';
         setButtonOneStyle('afternoon__button__one');
@@ -106,9 +106,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       } else {
         // Evening
         container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/night-bg.jpg?raw=true')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')";
         setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/night-bg.jpg?raw=true')"
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')"
         );
         greeting.textContent = 'Good Evening, ';
         container.style.color = 'white';
