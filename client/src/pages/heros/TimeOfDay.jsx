@@ -336,10 +336,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
           <footer
             className={`grid justify-center text-${currentText} absolute bottom-0 w-full`}
           >
-            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
-              <p>This is one of many landing pages i have designed.</p>
-              <p>Use the controls below to move through the options.</p>
-            </article>
+            
             <section className='flex items-center justify-center gap-8 py-1'>
               <section
                 onClick={decreasePageNumber}
@@ -354,6 +351,10 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 <HiArrowSmRight className='' size={50} />
               </section>
             </section>
+            <article className='text-xs mb-2 md:text-sm grid text-center justify-center font-outfit font-semibold'>
+              <p>This is one of many landing pages i have designed.</p>
+              <p>Use the controls below to move through the options.</p>
+            </article>
           </footer>
         </div>
       ) : (

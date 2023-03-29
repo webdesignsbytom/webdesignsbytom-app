@@ -103,7 +103,6 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
 
       <footer className='container w-full md:mx-auto'>
         <div className='grid md:grid-cols-3 items-center w-full justify-center md:justify-between'>
-
           <section className='hidden md:flex items-center'>
             <p className='mb-4 md:mb-0 md:text-xl'>
               Built with 💖 by <Link to='/store'>webdesignsbytom.com</Link>
@@ -111,10 +110,6 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
           </section>
 
           <section className='grid justify-center'>
-            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
-              <p>This is one of many landing pages i have designed.</p>
-              <p>Use the controls below to move through the options.</p>
-            </article>
             <section className='flex items-center justify-center gap-8 py-1'>
               <section
                 onClick={decreasePageNumber}
@@ -129,6 +124,10 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
                 <HiArrowSmRight className='' size={50} />
               </section>
             </section>
+            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
+              <p>This is one of many landing pages i have designed.</p>
+              <p>Use the controls below to move through the options.</p>
+            </article>
           </section>
 
           <section className='flex md:hidden mb-2 text-center justify-center w-full'>
