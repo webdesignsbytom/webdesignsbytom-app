@@ -2,5 +2,9 @@
 export const projectInitialData = {
     type: ``,
     name: ``,
+    domain: ``,
     startDate: new Date(),
+    numPages: ``,
+    owner: ``,
+    dueDate: ``
 }
