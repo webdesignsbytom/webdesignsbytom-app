@@ -143,7 +143,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
             </article>
 
             {/* SOCIAL */}
-            <section className='flex items-center'>
+            <section className='hidden md:flex items-center'>
               <section
                 className={`flex outline-white outline-4 outline p-1 space-x-2 w-fit rounded-md`}
               >
@@ -197,7 +197,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
 
           {/* TIME */}
           <article className='grid p-1 text-center'>
-            <time id='time' className='text-6xl my-2 font-bold'></time>
+            <time id='time' className='text-4xl md:text-6xl my-2 font-bold'></time>
             <h1 className='text-2xl'>
               <span id='greeting'></span>
               <span id='name' contenteditable='true'></span>

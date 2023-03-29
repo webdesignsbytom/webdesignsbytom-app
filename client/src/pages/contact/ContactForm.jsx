@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
@@ -14,6 +15,18 @@ function ContactForm() {
   const [loadingAnimation, setLoadingAnimation] = useState(false);
   const [mainButtonContent, setMainButtonContent] = useState(true);
   const [formData, setFormData] = useState(contactFormTemplate);
+
+  let location = useLocation()
+
+  useEffect(() => {
+    if (location.state) {
+      console.log('location.state', location.state)
+      setFormData({
+        ...formData,
+        email: location.state
+      })
+    }
+  }, [])
 
   const handleChange = (event) => {
     const { name, value } = event.target;

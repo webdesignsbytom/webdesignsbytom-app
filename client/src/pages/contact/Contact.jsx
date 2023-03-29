@@ -1,16 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
+// Context
+import { ToggleContext } from '../../context/ToggleContext';
 // Forms
 import ContactForm from './ContactForm';
 // React icons
 import { GiRaven } from 'react-icons/gi';
 import { MdEmail } from 'react-icons/md';
 import { ImWhatsapp } from 'react-icons/im';
-import { ToggleContext } from '../../context/ToggleContext';
 
 function Contact() {
   const { toggleNavigation } = useContext(ToggleContext);
+
 
   return (
     <>
