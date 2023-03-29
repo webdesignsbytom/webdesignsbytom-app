@@ -72,7 +72,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       } else {
         // Evening
         container.style.backgroundImage =
-          "url('https://i.ibb.co/924T2Wv/night.jpg')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/night-bg.jpg?raw=true')";
         greeting.textContent = 'Good Evening, ';
         container.style.color = 'white';
         setButtonOneStyle('night__button__one');
