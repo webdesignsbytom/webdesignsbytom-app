@@ -109,8 +109,8 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
             </p>
           </section>
 
-          <section className='grid justify-center'>
-            <section className='flex items-center justify-center gap-8 py-1'>
+          <section className='grid justify-center mb-4'>
+            <section className='flex items-center  justify-center gap-8 py-1'>
               <section
                 onClick={decreasePageNumber}
                 className='rounded-full p-1 lg:p-[2px] cursor-pointer text-white'

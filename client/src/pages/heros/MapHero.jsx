@@ -167,7 +167,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
                 <HiArrowSmRight className='' size={50} />
               </section>
             </section>
-            <article className='text-xs md:text-sm mb-2 grid text-center justify-center font-semibold'>
+            <article className='text-xs md:text-sm mb-10 grid text-center justify-center font-semibold'>
               <p>This is one of many landing pages i have designed.</p>
               <p>Use the controls below to move through the options.</p>
             </article>

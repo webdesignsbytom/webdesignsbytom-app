@@ -170,7 +170,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
             </section>
 
             <footer
-              className={`grid justify-center text-white absolute bottom-0 w-full`}
+              className={`grid justify-center mb-10 text-white absolute bottom-0 w-full`}
             >
               <section className='flex items-center justify-center gap-8 py-1'>
                 <section
