@@ -22,46 +22,46 @@ function PortfolioItem() {
     }
   }, [location.state]);
 
-  const nextPage = () => {
-    const currentId = portfolioItem.id;
-    const newPageItem = portfolioData[0];
-
-    if (currentId === portfolioData.length) {
-      let newItem = portfolioData[0];
-      console.log('1newitem', newItem);
-
-      let str = newItem.title.replace(/\s/g, '-');
-      str = str.toLowerCase();
-      console.log('str', str);
-      navigate(`/portfolio-item/${str}`, {
-        state: newItem, pathname: str
-      });
-
-    } else {
-      let newItem = newPageItem;
-      console.log('2newitem', newItem);
-
-      let str = newItem.title.replace(/\s/g, '-');
-      str = str.toLowerCase();
-      console.log('str', str);
-
-      navigate(`/portfolio-item/${str}`, {
-        state: newItem, pathname: str
-      });
-    }
-  };
-
   // const nextPage = () => {
   //   const currentId = portfolioItem.id;
-  //   const newPageItem = portfolioData[currentId];
+  //   const newPageItem = portfolioData[0];
 
   //   if (currentId === portfolioData.length) {
-  //     setPortfolioItem(portfolioData[0]);
-      
+  //     let newItem = portfolioData[0];
+  //     console.log('1newitem', newItem);
+
+  //     let str = newItem.title.replace(/\s/g, '-');
+  //     str = str.toLowerCase();
+  //     console.log('str', str);
+  //     navigate(`/portfolio-item/${str}`, {
+  //       state: newItem, pathname: str
+  //     });
+
   //   } else {
-  //     setPortfolioItem(newPageItem);
+  //     let newItem = newPageItem;
+  //     console.log('2newitem', newItem);
+
+  //     let str = newItem.title.replace(/\s/g, '-');
+  //     str = str.toLowerCase();
+  //     console.log('str', str);
+
+  //     navigate(`/portfolio-item/${str}`, {
+  //       state: newItem, pathname: str
+  //     });
   //   }
   // };
+
+  const nextPage = () => {
+    const currentId = portfolioItem.id;
+    const newPageItem = portfolioData[currentId];
+
+    if (currentId === portfolioData.length) {
+      setPortfolioItem(portfolioData[0]);
+      
+    } else {
+      setPortfolioItem(newPageItem);
+    }
+  };
 
   const prevPage = () => {
     const currentId = portfolioItem.id;
