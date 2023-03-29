@@ -19,9 +19,9 @@ function IndexPage() {
 
   return (
     <>
-      {(pageNumber === 1) && <PlanetHero increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
-      {(pageNumber === 2) && <TimeOfDay increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
       {(pageNumber === 3) && <NewsletterHero increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
+      {(pageNumber === 2) && <PlanetHero increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
+      {(pageNumber === 1) && <TimeOfDay increasePageNumber={increasePageNumber} decreasePageNumber={decreasePageNumber} />}
     </>
   );
 }
