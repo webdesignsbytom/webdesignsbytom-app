@@ -249,7 +249,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                   onClick={increasePageNumber}
                   className='bg-black rounded-full p-1 lg:p-2 cursor-pointer text-white hover:animate-pulse'
                 >
-                  <HiArrowSmRight className='animate-bounce' size={50} />
+                  <HiArrowSmRight className='' size={50} />
                 </section>
               </section>
             </section>
