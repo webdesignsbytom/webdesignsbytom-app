@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// Components
-import SocialBar from '../../components/social/SocialBar';
 // Icons
 import { HiArrowSmLeft } from 'react-icons/hi';
 import { HiArrowSmRight } from 'react-icons/hi';
@@ -9,6 +7,7 @@ import { BsInstagram } from 'react-icons/bs';
 import { BsGithub } from 'react-icons/bs';
 import { BsLinkedin } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
+
 
 function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   const [buttonOneStyle, setButtonOneStyle] = useState('day__button__one');
@@ -59,7 +58,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       if (hour < 12) {
         // Morning
         container.style.backgroundImage =
-          "url('https://i.ibb.co/7vDLJFb/morning.jpg')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/morning-bg.jpg?raw=true')";
         greeting.textContent = 'Good Morning, ';
         setButtonOneStyle('day__button__one');
         setButtonTwoStyle('day__button__two');
@@ -133,7 +132,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
           className={`grid items-center justify-center w-full ${blurSetting} transition duration-500 ease-in`}
         >
           <section className='absolute px-2 pt-2 md:px-6 md:pt-6 top-0 left-0 w-full flex justify-between'>
-            <div>
+            <article>
               <h1 className='font-bold uppercase text-lg md:text-3xl md:text-center'>
                 Web Designs By Tom
               </h1>
@@ -141,7 +140,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 Professional{' '}
                 <span className='font-extrabold italic'>modern</span> web design
               </h2>
-            </div>
+            </article>
 
             {/* SOCIAL */}
             <section className='flex items-center'>
