@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Icons
 import { HiArrowSmLeft } from 'react-icons/hi';
@@ -21,14 +21,20 @@ import StoreIcon from '../../assets/svg/storeIcon-white.svg';
 import { sampleUserData } from '../../users/utils/utils';
 
 function MapHero({ increasePageNumber, decreasePageNumber }) {
-  const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
   const { user, setUser } = useContext(UserContext);
+  const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
+
   const [settingSelect, setSettingSelect] = useState('Light Mode');
   const [currentBg, setCurrentBg] = useState('black');
   const [currentTransBg, setCurrentTransBg] = useState('transparent-black');
   const [currentText, setCurrentText] = useState('white');
+  const [activeNav, setActiveNav] = useState('#');
 
   let navigate = useNavigate();
+
+  useEffect(() => {
+    setActiveNav(window.location.pathname);
+  }, []);
 
   const swapColourMode = () => {
     if (currentBg === 'white') {
@@ -121,6 +127,53 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
           <main
             className={`grid h-full w-full justify-center items-center text-${currentText}`}
           >
+            <header className='absolute hidden md:flex top-0 right-0 w-fit'>
+              <nav>
+                <ul className='flex text-xl gap-4 py-2 px-4'>
+                  <li
+                    className={
+                      activeNav === '#' ? 'text-[#88daf7]' : 'text-[#31a7d1] hover:text-[#0e5870]'
+                    }
+                  >
+                    <Link to='/'>Home</Link>
+                  </li>
+                  <li
+                    className={
+                      activeNav === '/contact' ? 'text-[#31a7d1]' : 'text-[#31a7d1] hover:text-[#0e5870]'
+                    }
+                  >
+                    <Link to='/store'>Store</Link>
+                  </li>
+                  <li
+                    className={
+                      activeNav === '/portfolio' ? 'text-[#31a7d1]' : 'text-[#31a7d1] hover:text-[#0e5870]'
+                    }
+                  >
+                    <Link to='/portfolio'>Portfolio</Link>
+                  </li>
+                  <li
+                    className={
+                      activeNav === '/contact' ? 'text-[#31a7d1]' : 'text-[#31a7d1] hover:text-[#0e5870]'
+                    }
+                  >
+                    <Link to='/contact'>Contact</Link>
+                  </li>
+                  <li
+                    className={
+                      activeNav === '/login' ? 'text-[#31a7d1]' : 'text-[#31a7d1] hover:text-[#0e5870]'
+                    }
+                  >
+                    <Link to='/login'>Login</Link>
+                  </li>
+                  {user.email && (
+                    // Sign out
+                    <li className='text-[#31a7d1]'>
+                      <Link onClick={signOut}>Sign out</Link>
+                    </li>
+                  )}
+                </ul>
+              </nav>
+            </header>
             <section>
               <section
                 className={`outline outline-4 outline-${currentText} bg-${currentTransBg} text-center  rounded-xl p-4`}
