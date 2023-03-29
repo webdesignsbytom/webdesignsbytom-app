@@ -65,7 +65,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
       } else if (hour < 18) {
         // Afternoon
         container.style.backgroundImage =
-          "url('https://i.ibb.co/3mThcXc/afternoon.jpg')";
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/afternoon-bg.jpg?raw=true')";
         greeting.textContent = 'Good Afternoon, ';
         setButtonOneStyle('afternoon__button__one');
         setButtonTwoStyle('afternoon__button__two');
