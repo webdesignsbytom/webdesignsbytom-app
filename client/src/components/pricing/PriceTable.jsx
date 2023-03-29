@@ -72,7 +72,7 @@ function PriceTable() {
       <section className='grid md:grid-cols-3 p-2'>
         <div className='p-2'>
           <h5 className='flex justify-center items-center'>
-            <span className='h-full mt-1 mr-3'>
+            <span className='h-full mt-[2px] lg:mt-1 mr-3'>
               <FiCheckCircle size={20} />
             </span>{' '}
             <span>= Included</span>
@@ -80,7 +80,7 @@ function PriceTable() {
         </div>
         <div className='p-2'>
           <h5 className='flex justify-center items-center'>
-            <span className='h-full mt-1 mr-3'>
+            <span className='h-full mt-[2px] lg:mt-1 mr-3'>
               <IoMdInfinite size={20} />
             </span>{' '}
             <span>= Infinite Amount</span>
@@ -88,7 +88,7 @@ function PriceTable() {
         </div>
         <div className='p-2'>
           <h5 className='flex justify-center items-center'>
-            <span className='h-full mt-1 mr-3'>
+            <span className='h-full mt-[2px] lg:mt-1 mr-3'>
               <RxCross2 size={20} />
             </span>{' '}
             <span>= Not Included</span>

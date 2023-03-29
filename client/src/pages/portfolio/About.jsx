@@ -30,7 +30,6 @@ function About() {
               <div className='flex justify-center mb-4'>
                 <TbReportAnalytics size={35} />
               </div>
-              {/* <FaAward className='about__icon' /> */}
               <h5 className='text-xl mb-2'>Experience</h5>
               <small>Junior Developer</small>
               <br />
@@ -43,7 +42,6 @@ function About() {
               <div className='flex justify-center mb-4'>
                 <MdOutlineLocalOffer size={35} />
               </div>
-              {/* <FaAward className='about__icon' /> */}
               <h5 className='text-xl mb-2'>Services</h5>
               <small>Experienced Product Designer</small>
               <br />
@@ -56,7 +54,6 @@ function About() {
               <div className='flex justify-center mb-4'>
                 <AiOutlineProject size={35} />
               </div>
-              {/* <FaAward className='about__icon' /> */}
               <h5 className='text-xl mb-2'>Projects</h5>
               <small>My Personal Projects</small>
               <br />

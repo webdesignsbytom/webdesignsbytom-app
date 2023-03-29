@@ -5,12 +5,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'news-bg': "url('../assets/img/newsletter-bg.jpg')",
+      },
       fontFamily: {
         'outfit': 'Outfit',
-        'poppins': 'Poppins'
-      },
-      backgroundImage: {
-        'afternoon': "url('https://i.ibb.co/3mThcXc/afternoon.jpg')",
+        'poppins': 'Poppins',
+        'pops': ['Poppins', 'sans-serif'],
+        'monts': ['Montserrat', 'sans-serif'],
       },
       borderWidth: {
         '3': '3px',
