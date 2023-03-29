@@ -52,6 +52,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
     // Options
     const showAmPm = true;
 
+    console.log('container', container.scrollWidth);
     // Show Time
     function showTime() {
       let today = new Date(),
@@ -85,31 +86,55 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
 
       if (hour < 12) {
         // Morning
-        container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')";
-        setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')"
-        );
+        if (container.scrollWidth < 600) {
+          container.style.backgroundImage =
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')";
+          setCurrentImage(
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')"
+          );
+        } else {
+          container.style.backgroundImage =
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')";
+          setCurrentImage(
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')"
+          );
+        }
         greeting.textContent = 'Good Morning, ';
         setButtonOneStyle('day__button__one');
         setButtonTwoStyle('day__button__two');
       } else if (hour < 18) {
         // Afternoon
-        container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')";
-        setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')"
-        );
+        if (container.scrollWidth < 600) {
+          container.style.backgroundImage =
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')";
+          setCurrentImage(
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')"
+          );
+        } else {
+          container.style.backgroundImage =
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')";
+          setCurrentImage(
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')"
+          );
+        }
         greeting.textContent = 'Good Afternoon, ';
         setButtonOneStyle('afternoon__button__one');
         setButtonTwoStyle('afternoon__button__two');
       } else {
         // Evening
-        container.style.backgroundImage =
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')";
-        setCurrentImage(
-          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')"
-        );
+        if (container.scrollWidth < 600) {
+          container.style.backgroundImage =
+            "https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')";
+          setCurrentImage(
+            "https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')"
+          );
+        } else {
+          container.style.backgroundImage =
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')";
+          setCurrentImage(
+            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')"
+          );
+        }
         greeting.textContent = 'Good Evening, ';
         container.style.color = 'white';
         setButtonOneStyle('night__button__one');
@@ -320,10 +345,15 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                   </Link>
                 </div>
                 <section className='font-semibold px-4 py-2 my-2 w-full bg-transparent-white lg:bg-transparent text-sm md:text-base leading-5'>
-                  <p className='leading-4'>Available to build high quality web products.</p>
+                  <p className='leading-4'>
+                    Available to build high quality web products.
+                  </p>
                   <p className='leading-4'>
                     My website boasts{' '}
-                    <Link to='/design' className='text-hyperlink-blue leading-4'>
+                    <Link
+                      to='/design'
+                      className='text-hyperlink-blue leading-4'
+                    >
                       design tools
                     </Link>{' '}
                     and programming skills to create the perfect website to suit
@@ -336,7 +366,6 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
           <footer
             className={`grid justify-center text-${currentText} absolute bottom-0 w-full`}
           >
-            
             <section className='flex items-center justify-center gap-8 py-1'>
               <section
                 onClick={decreasePageNumber}
@@ -351,7 +380,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 <HiArrowSmRight className='' size={50} />
               </section>
             </section>
-            <article className='text-xs mb-2 md:text-sm grid text-center justify-center font-outfit font-semibold'>
+            <article className='text-xs mb-16 md:text-sm grid text-center justify-center font-outfit font-semibold'>
               <p>This is one of many landing pages i have designed.</p>
               <p>Use the controls below to move through the options.</p>
             </article>
