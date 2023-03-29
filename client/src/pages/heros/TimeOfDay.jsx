@@ -26,17 +26,21 @@ import { UserContext } from '../../context/UserContext';
 
 function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
-  const { user, setUser } = useContext(UserContext)
-  // Colours
+  const { user, setUser } = useContext(UserContext);
+  // Nav Colours
   const [currentBg, setCurrentBg] = useState('black');
   const [currentTransBg, setCurrentTransBg] = useState('transparent-black');
   const [currentText, setCurrentText] = useState('white');
+  // Colours
+  const [currentTextColour, setCurrentTextColour] = useState('black');
   // Buttons
   const [buttonOneStyle, setButtonOneStyle] = useState('day__button__one');
   const [buttonTwoStyle, setButtonTwoStyle] = useState('day__button__two');
   const [blurSetting, setBlurSetting] = useState('blur-none');
+  // Image
+  const [currentImage, setCurrentImage] = useState('');
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const container = document.getElementById('time__container');
@@ -83,6 +87,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Morning
         container.style.backgroundImage =
           "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/morning-bg.jpg?raw=true')";
+        setCurrentImage(
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/morning-bg.jpg?raw=true')"
+        );
         greeting.textContent = 'Good Morning, ';
         setButtonOneStyle('day__button__one');
         setButtonTwoStyle('day__button__two');
@@ -90,6 +97,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Afternoon
         container.style.backgroundImage =
           "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/afternoon-bg.jpg?raw=true')";
+        setCurrentImage(
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/afternoon-bg.jpg?raw=true')"
+        );
         greeting.textContent = 'Good Afternoon, ';
         setButtonOneStyle('afternoon__button__one');
         setButtonTwoStyle('afternoon__button__two');
@@ -97,6 +107,9 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Evening
         container.style.backgroundImage =
           "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/night-bg.jpg?raw=true')";
+        setCurrentImage(
+          "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/night-bg.jpg?raw=true')"
+        );
         greeting.textContent = 'Good Evening, ';
         container.style.color = 'white';
         setButtonOneStyle('night__button__one');
@@ -160,11 +173,41 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   return (
     <>
       {!toggleNavigation ? (
-        <div className='grid h-[100vh] w-full'>
+        <div className='relative grid h-[100vh] w-full'>
+          {/* Nav */}
+          {/* Phone Nav */}
+          <header className='absolute z-20 md:hidden top-3 right-4 flex w-full justify-end'>
+            <nav
+              onClick={() => {
+                toggleNavbar();
+              }}
+              className=''
+            >
+              <span
+                className={`cursor-pointer text-${currentText} hover:text-hover-grey`}
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth='1.5'
+                  stroke='currentColor'
+                  className='w-8 h-8 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  data-te-animation-init
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
+                  />
+                </svg>
+              </span>
+            </nav>
+          </header>
           <div
             id='time__container'
             style={{
-              backgroundImage: 'url("https://i.ibb.co/3mThcXc/afternoon.jpg")',
+              backgroundImage: currentImage,
             }}
             className='grid relative object-contain bg-cover'
           >
@@ -173,10 +216,10 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
             >
               <section className='absolute px-2 pt-2 md:px-4 md:pt-4 top-0 left-0 w-full flex justify-between'>
                 <article>
-                  <h1 className='font-bold uppercase text-lg md:text-3xl md:text-center'>
+                  <h1 className='font-bold uppercase text-sm md:text-3xl md:text-center'>
                     Web Designs By Tom
                   </h1>
-                  <h2 className='text-left text-sm md:text-xl font-semibold'>
+                  <h2 className='text-left text-xs md:text-xl font-semibold'>
                     Professional{' '}
                     <span className='font-extrabold italic text-white'>
                       modern
@@ -239,12 +282,18 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
               </section>
 
               {/* TIME */}
-              <article className='grid w-full justify-center text-center'>
-                <time
-                  id='time'
-                  className='text-4xl md:text-6xl my-2 font-bold'
-                ></time>
-                <h1 className='text-2xl'>
+              <article className='grid w-full px-2 justify-center items-center text-center'>
+                <section className='w-full flex items-center justify-center'>
+                  <div
+                    className={`outline outline-4 outline-${currentTextColour} bg-transparent-white w-fit p-2 rounded`}
+                  >
+                    <time
+                      id='time'
+                      className='text-4xl md:text-6xl my-2 font-bold'
+                    ></time>
+                  </div>
+                </section>
+                <h1 className='text-base md:text-2xl my-2'>
                   <span id='greeting'></span>
                   <span id='name' contenteditable='true'></span>
                 </h1>
@@ -257,7 +306,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       onMouseLeave={blurEffectEnd}
                       className={`${buttonOneStyle}`}
                     >
-                      Hire Private
+                      Build Website
                     </button>
                   </Link>
                   <Link to='/portfolio'>
@@ -266,11 +315,11 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                       onMouseLeave={blurEffectEnd}
                       className={`${buttonTwoStyle}`}
                     >
-                      Hire Dev
+                      View Portfolio
                     </button>
                   </Link>
                 </div>
-                <section className='font-semibold w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
+                <section className='font-semibold px-4 py-2 my-2 w-full bg-transparent-white lg:bg-transparent text-sm md:text-base'>
                   <p>Available to build high quality web products.</p>
                   <p>
                     My website boasts{' '}
@@ -282,31 +331,30 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                   </p>
                 </section>
               </article>
-
-              <section className='absolute flex bottom-0 w-full justify-center'>
-                <section className='grid w-full'>
-                  <article className='text-xs bg-transparent-black w-full text-white sm:text-base grid text-center justify-center font-outfit font-semibold leading-5 py-2'>
-                    <p>This is one of many landing pages i have designed.</p>
-                    <p>Use the controls below to move through the options.</p>
-                  </article>
-                  <section className='flex items-center justify-center gap-8 py-4'>
-                    <section
-                      onClick={decreasePageNumber}
-                      className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
-                    >
-                      <HiArrowSmLeft className='' size={50} />
-                    </section>
-                    <section
-                      onClick={increasePageNumber}
-                      className='bg-transparent-black rounded-full p-1 lg:p-[2px] cursor-pointer text-white hover:animate-pulse'
-                    >
-                      <HiArrowSmRight className='' size={50} />
-                    </section>
-                  </section>
-                </section>
-              </section>
             </section>
           </div>
+          <footer
+            className={`grid justify-center text-${currentText} absolute bottom-0 w-full`}
+          >
+            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
+              <p>This is one of many landing pages i have designed.</p>
+              <p>Use the controls below to move through the options.</p>
+            </article>
+            <section className='flex items-center justify-center gap-8 py-1'>
+              <section
+                onClick={decreasePageNumber}
+                className='rounded-full p-1 lg:p-[2px] cursor-pointer'
+              >
+                <HiArrowSmLeft className='' size={50} />
+              </section>
+              <section
+                onClick={increasePageNumber}
+                className='rounded-full p-1 lg:p-[2px] cursor-pointer'
+              >
+                <HiArrowSmRight className='' size={50} />
+              </section>
+            </section>
+          </footer>
         </div>
       ) : (
         <div
