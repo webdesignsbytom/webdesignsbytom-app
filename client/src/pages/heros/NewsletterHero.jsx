@@ -22,7 +22,7 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
   };
 
   return (
-    <div className='relative min-h-screen flex flex-col bg-news-bg-phone bg-center lg:bg-news-bg bg-cover text-white'>
+    <div className='relative min-h-screen max-h-screen overflow-hidden flex flex-col bg-news-bg-phone bg-center lg:bg-news-bg bg-cover text-white'>
       <main className='container mx-auto px-6 pt-6 md:pt-16 flex-1 text-center'>
         <section className='flex md:hidden justify-center pb-6 md:pb-0'>
           <Link to='/store' className='mx-3 hover:opacity-80 duration-150'>
