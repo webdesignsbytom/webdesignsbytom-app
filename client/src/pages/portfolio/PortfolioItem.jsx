@@ -114,11 +114,8 @@ function PortfolioItem() {
                 <article className='outline-2 outline-black outline rounded p-1 w-full lg:w-fit'>
                   <ul className='p-1'>
                     {portfolioItem.skills.map((skill, index) => {
-                      console.log('skills', skill)
-                      return <li key={index}>
-                        <h4>{skill}</h4>
-                        <h4>{skill.icon}</h4>
-                      </li>;
+                      console.log('skills', skill);
+                      return <li key={index}></li>;
                     })}
                   </ul>
                 </article>
