@@ -10,7 +10,7 @@ function PortfolioItem() {
 
   const [portfolioItem, setPortfolioItem] = useState(initialData);
 
-  console.log('navigate', navigate)
+  console.log('navigate', navigate);
   console.log('location: ', location);
 
   // Set the item to be displayed
@@ -22,42 +22,12 @@ function PortfolioItem() {
     }
   }, [location.state]);
 
-  // const nextPage = () => {
-  //   const currentId = portfolioItem.id;
-  //   const newPageItem = portfolioData[0];
-
-  //   if (currentId === portfolioData.length) {
-  //     let newItem = portfolioData[0];
-  //     console.log('1newitem', newItem);
-
-  //     let str = newItem.title.replace(/\s/g, '-');
-  //     str = str.toLowerCase();
-  //     console.log('str', str);
-  //     navigate(`/portfolio-item/${str}`, {
-  //       state: newItem, pathname: str
-  //     });
-
-  //   } else {
-  //     let newItem = newPageItem;
-  //     console.log('2newitem', newItem);
-
-  //     let str = newItem.title.replace(/\s/g, '-');
-  //     str = str.toLowerCase();
-  //     console.log('str', str);
-
-  //     navigate(`/portfolio-item/${str}`, {
-  //       state: newItem, pathname: str
-  //     });
-  //   }
-  // };
-
   const nextPage = () => {
     const currentId = portfolioItem.id;
     const newPageItem = portfolioData[currentId];
 
     if (currentId === portfolioData.length) {
       setPortfolioItem(portfolioData[0]);
-      
     } else {
       setPortfolioItem(newPageItem);
     }
@@ -150,7 +120,8 @@ function PortfolioItem() {
             </section>
           </div>
 
-          <div className='grid grid-rows-a1a bg-green-400'>
+          {/* Right side - image container */}
+          <section className='grid relative grid-rows-a1a bg-green-400'>
             <div className='flex justify-end h-fit'>
               <ul className='flex bg-main-colour rounded-full w-fit items-center m-1 py-1 px-4'>
                 {portfolioItem.icons.map((icon, index) => {
@@ -163,57 +134,68 @@ function PortfolioItem() {
               </ul>
             </div>
 
+            {/* PHONE */}
             <section className='grid bg-red-400'>
-              <section className=''>
-                <div className=''>
-                  <div className=''>
+              {/* <section className='grid absolute items-center justify-center'>
+                <div className='relative bg-white grid h-[160px] w-[88px] rounded-lg p-1 border-2 border-solid border-black'>
+                  <div className='bg-white overflow-hidden rounded-lg border-2 border-solid border-black'>
                     <img
-                      className='w-10'
+                      className='h-full'
                       src={portfolioItem.images[0]}
                       alt='phone display'
                     />
                   </div>
-                  <div className=''>
-                    <div className=''></div>
+                  <div className='grid items-center justify-center absolute w-full bottom-0 pb-2'>
+                    <div className='h-[15px] w-[15px] border-2 border-solid border-black rounded-full'></div>
                   </div>
                 </div>
-              </section>
+              </section> */}
 
-              <section className=''>
-                <div className=''>
-                  <div className=''>
-                    <div className=''>
+              {/* LAPTOP */}
+              {/* <section className='grid grid-rows-ten-one h-fit justify-center items-center absolute'>
+                <div className='grid items-center justify-center'>
+                  <div className='grid p-1 pt-3 bg-black rounded-tr-lg rounded-tl-lg border-2 border-solid border-gray-600 h-[180px] w-[300px] '>
+                    <div className='border-2 border-solid border-gray-600 overflow-hidden bg-black'>
                       <img
-                        className='w-10'
+                        className='h-full w-full'
                         src={portfolioItem.images[1]}
                         alt='laptop display'
                       />
                     </div>
                   </div>
                 </div>
-                <div className=''>
-                  <div className=''>
-                    <div className=''></div>
-                    <div className=''></div>
+                <div className='grid min-h-[15px] items-center grid-cols-reg pl-8 rounded-tl-sm rounded-tr-sm rounded-bl-lg rounded-br-lg bg-black w-[330px] border-2 border-solid border-gray-600'>
+                  <div className='grid grid-flow-col gap-2'>
+                    <div className='h-[10px] w-[10px] border-2 border-solid border-gray-600 rounded-full bg-black'></div>
+                    <div className='h-[10px] w-[10px] border-2 border-solid border-gray-600 rounded-full bg-black'></div>
                   </div>
-                  <div className=''></div>
                 </div>
-              </section>
+              </section> */}
 
-              <section className=''>
-                <div className=''>
-                  <div className=''>
+              
+{/* .monitor__container {
+
+
+
+.responsive__images__container {
+  display: grid;
+  padding: 1rem;
+} */}
+              {/* MONITOR */}
+              <section className='grid grid-rows-aa absolute'>
+                <div className='grid w-[400px] h-[290px] pt-2 pr-2 pl-2 grid-rows-rev bg-black rounded-lg border-2 border-solid border-gray-600'>
+                  <div className='bg-black rounded border-2 overflow-hidden border-solid border-gray-600'>
                     <img
-                      className='w-10'
+                      className='w-full h-full'
                       src={portfolioItem.images[2]}
                       alt='phone display'
                     />
                   </div>
-                  <div className=''>
-                    <div className=''></div>
-                    <div className=''></div>
-                    <div className=''></div>
-                    <div className=''></div>
+                  <div className='grid grid-flow-col items-center py-1 pr-4 gap-2 justify-end'>
+                    <div className='border-2 border-solid border-gray-600 rounded-full bg-white h-[10px] w-[10px]'></div>
+                    <div className='border-2 border-solid border-gray-600 rounded-full bg-white h-[10px] w-[10px]'></div>
+                    <div className='border-2 border-solid border-gray-600 rounded-full bg-white h-[10px] w-[10px]'></div>
+                    <div className='border-2 border-solid border-gray-600 rounded-full bg-white h-[10px] w-[10px]'></div>
                   </div>
                 </div>
               </section>
@@ -239,7 +221,7 @@ function PortfolioItem() {
                 </a>
               </div>
             </div>
-          </div>
+          </section>
         </main>
       </div>
     </>

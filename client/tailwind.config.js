@@ -56,6 +56,7 @@ module.exports = {
         'aa': 'auto auto',
         '3x': '3fr 1fr',
         'item': '50px 1fr',
+        'ten-one': '10fr 1fr',
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
