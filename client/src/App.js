@@ -37,7 +37,7 @@ import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
 
-const TRACKING_ID = 'G-VVFZNH6PB7';
+const TRACKING_ID = 'G-GMSD5FT9H9';
 ReactGA.initialize(TRACKING_ID);
 
 function App() {
