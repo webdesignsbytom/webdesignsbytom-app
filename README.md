@@ -1,7 +1,6 @@
 # Webdesignsbytom
 
-This app is deployed at [https://gorgeous-squirrel-497851.netlify.app/](https://gorgeous-squirrel-497851.netlify.app/)
-This app is deployed at [https://cute-pudding-2b5aa1.netlify.app/](https://cute-pudding-2b5aa1.netlify.app/)
+This app is deployed at [https://sprightly-fudge-16a82b.netlify.app/](https://sprightly-fudge-16a82b.netlify.app/)
 
 
 New design for portfolio site including new features for private sales.
