@@ -34,9 +34,15 @@ import SendNewMessage from './pages/messages/SendNewMessage';
 import NewProject from './pages/project/NewProject';
 import UpdatePassword from './pages/account/UpdatePassword';
 import IndexPage from './pages/heros/IndexPage';
+// Analytics
+import ReactGA from 'react-ga';
+
+const TRACKING_ID = 'G-VVFZNH6PB7';
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
+  ReactGA.pageview('/');
 
   return (
     <>
