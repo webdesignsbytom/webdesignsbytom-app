@@ -105,17 +105,20 @@ function PortfolioItem() {
               <p>{portfolioItem.desc}</p>
             </article>
 
-            <section className='outline-2 mt-5 lg:mt-0 outline-black outline rounded p-1 w-full lg:w-fit'>
+            <section className='outline-2 mt-5 lg:mt-1 outline-black outline rounded p-1 w-full'>
               <div className=''>
                 <div className='text-center text-xl font-semibold mb-2'>
                   <h3>Skills Used</h3>
                 </div>
 
-                <article className='outline-2 outline-black outline rounded p-1 w-full lg:w-fit'>
-                  <ul className='p-1'>
+                <article className='outline-2 outline-black outline rounded p-1'>
+                  <ul className='p-1 grid gap-1'>
                     {portfolioItem.skills.map((skill, index) => {
                       console.log('skills', skill);
-                      return <li key={index}></li>;
+                      return <li className='flex gap-2 items-center' key={index}>
+                        <h4>{skill.icon}</h4>
+                        <h4>{skill.name}</h4>
+                      </li>;
                     })}
                   </ul>
                 </article>
