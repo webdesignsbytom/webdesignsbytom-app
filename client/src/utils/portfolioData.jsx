@@ -89,7 +89,7 @@ export const portfolioData = [
     icons: [Javascript, ReactIcon, TailwindIcon, Expressjs, Prisma],
     images: [MatchedbettingPhone, Calculator, Calculator],
     skills: [
-      { name: 'Advanced Algorithms', icon: <GrUserAdmin size={20} /> },
+      { name: 'Advanced Algorithms', icon: <TbMathFunction size={20} /> },
       { name: 'Interactive Tutorial', icon: <HiBookOpen size={20} /> },
       { name: 'Forum/media functions', icon: <MdForum size={20} /> },
       { name: 'User Authentication', icon: <GrUserAdmin size={20} /> },
