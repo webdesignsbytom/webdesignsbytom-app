@@ -46,7 +46,7 @@ function PortfolioItem() {
 
   return (
     <>
-      <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
+      <div className='bg-white dark:bg-black h-screen grid grid-rows-reg lg:max-h-screen lg:overflow-hidden'>
         {/* Nav */}
         <section className='bg-nav-colour dark:bg-black w-full flex items-center h-16 px-2 sm:px-6 lg:px-4'>
           <nav className='flex justify-between w-full'>
@@ -90,8 +90,8 @@ function PortfolioItem() {
           </nav>
         </section>
         {/* MAIN PAGE */}
-        <main className='grid lg:grid-cols-xo gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] overflow-hidden'>
-          <div className=''>
+        <main className='grid lg:grid-cols-xo lg:gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:overflow-hidden'>
+          <div className='h-full'>
             <div className='text-3xl mb-4 font-bold'>
               <h1>{portfolioItem.title}</h1>
             </div>
@@ -121,9 +121,9 @@ function PortfolioItem() {
           </div>
 
           {/* Right side - image container */}
-          <section className='grid relative grid-rows-a1a bg-green-400'>
-            <div className='flex justify-end h-fit'>
-              <ul className='flex bg-main-colour rounded-full w-fit items-center m-1 py-1 px-4'>
+          <section className='grid h-screen mt-10 lg:mt-0 lg:h-full grid-rows-a1a outline outline-2 outline-black rounded'>
+            <div className='flex justify-end h-fit p-1 lg:p-0'>
+              <ul className='flex bg-gray-50 outline outline-2 outline-black rounded-full w-fit items-center m-1 py-1 px-4'>
                 {portfolioItem.icons.map((icon, index) => {
                   return (
                     <li key={index} className=''>
@@ -133,10 +133,10 @@ function PortfolioItem() {
                 })}
               </ul>
             </div>
-
-            {/* PHONE */}
-            <section className='grid bg-red-400'>
-              {/* <section className='grid absolute items-center justify-center'>
+            {/* Display container */}
+            <section className='grid relative'>
+              {/* PHONE */}
+              <section className='grid z-30 absolute bottom-2 left-4 items-center justify-center'>
                 <div className='relative bg-white grid h-[160px] w-[88px] rounded-lg p-1 border-2 border-solid border-black'>
                   <div className='bg-white overflow-hidden rounded-lg border-2 border-solid border-black'>
                     <img
@@ -149,12 +149,12 @@ function PortfolioItem() {
                     <div className='h-[15px] w-[15px] border-2 border-solid border-black rounded-full'></div>
                   </div>
                 </div>
-              </section> */}
+              </section>
 
               {/* LAPTOP */}
-              {/* <section className='grid grid-rows-ten-one h-fit justify-center items-center absolute'>
+              <section className='grid grid-rows-ten-one h-fit justify-center items-center absolute z-20 translate-y-2/4 lg:mt-20 ml-20'>
                 <div className='grid items-center justify-center'>
-                  <div className='grid p-1 pt-3 bg-black rounded-tr-lg rounded-tl-lg border-2 border-solid border-gray-600 h-[180px] w-[300px] '>
+                  <div className='grid p-1 pt-3 bg-black rounded-tr-lg rounded-tl-lg border-2 border-solid border-gray-600 lg:h-[180px] lg:w-[300px] '>
                     <div className='border-2 border-solid border-gray-600 overflow-hidden bg-black'>
                       <img
                         className='h-full w-full'
@@ -164,26 +164,17 @@ function PortfolioItem() {
                     </div>
                   </div>
                 </div>
-                <div className='grid min-h-[15px] items-center grid-cols-reg pl-8 rounded-tl-sm rounded-tr-sm rounded-bl-lg rounded-br-lg bg-black w-[330px] border-2 border-solid border-gray-600'>
+                <div className='grid min-h-[15px] items-center grid-cols-reg pl-8 rounded-tl-sm rounded-tr-sm rounded-bl-lg rounded-br-lg bg-black lg:w-[330px] border-2 border-solid border-gray-600'>
                   <div className='grid grid-flow-col gap-2'>
                     <div className='h-[10px] w-[10px] border-2 border-solid border-gray-600 rounded-full bg-black'></div>
                     <div className='h-[10px] w-[10px] border-2 border-solid border-gray-600 rounded-full bg-black'></div>
                   </div>
                 </div>
-              </section> */}
+              </section>
 
-              
-{/* .monitor__container {
-
-
-
-.responsive__images__container {
-  display: grid;
-  padding: 1rem;
-} */}
               {/* MONITOR */}
-              <section className='grid grid-rows-aa absolute'>
-                <div className='grid w-[400px] h-[290px] pt-2 pr-2 pl-2 grid-rows-rev bg-black rounded-lg border-2 border-solid border-gray-600'>
+              <section className='grid grid-rows-aa absolute top-1 right-1'>
+                <div className='grid w-[300px] h-[220px] lg:w-[400px] lg:h-[290px] pt-2 pr-2 pl-2 grid-rows-rev bg-black rounded-lg border-2 border-solid border-gray-600'>
                   <div className='bg-black rounded border-2 overflow-hidden border-solid border-gray-600'>
                     <img
                       className='w-full h-full'
@@ -201,16 +192,16 @@ function PortfolioItem() {
               </section>
             </section>
 
-            <div className='flex justify-between items-end'>
-              <div className=''>
+            <section className='flex justify-between items-end py-2 px-1 border-t-2 border-solid border-black'>
+              <article className=''>
                 <h6 className='flex'>
                   PHONE - <span className='flex text-active-text'>TABLET</span>{' '}
                   - LAPTOP -{' '}
                   <span className='flex text-active-text'>MONITOR</span>
                 </h6>
                 <h3>Fully Responsive Design</h3>
-              </div>
-              <div className='flex'>
+              </article>
+              <div className='flex items-center h-full pr-2'>
                 <a
                   target='_blank'
                   className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
@@ -220,7 +211,7 @@ function PortfolioItem() {
                   LIVE SITE
                 </a>
               </div>
-            </div>
+            </section>
           </section>
         </main>
       </div>
