@@ -44,7 +44,12 @@ function App() {
   ReactGA.initialize('G-B2XXL65L29');
   ReactGA.pageview(window.location.pathname + window.location.search);
   ReactGA.pageview('/');
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+      ReactGA.initialize('G-B2XXL65L29');
+      ReactGA.pageview('Init page view');
+      ReactGA.pageview('test');
+  }, []);
 
   return (
     <>
