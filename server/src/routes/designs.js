@@ -5,20 +5,21 @@ import {
   deleteDesign,
   getDesignsFromUser,
   getDesignById,
-  saveDesign
+  saveDesign,
 } from '../controllers/designs.js';
 import {
   validateAuthentication,
+  validateAdminRole,
   validateDeveloperRole,
 } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', getAllDesigns);
-router.get('/user-designs/:userId', getDesignsFromUser);
-router.get('/:designId', getDesignById);
-router.put('/user/:designId', saveDesign);
-router.post('/create', createNewDesign);
-router.delete('/delete/:designId', deleteDesign);
+router.get('/', validateAuthentication, validateAdminRole, getAllDesigns);
+router.get('/user-designs/:userId', validateAuthentication, getDesignsFromUser);
+router.get('/:designId', validateAuthentication, getDesignById);
+router.put('/user/:designId', validateAuthentication, saveDesign);
+router.post('/create', validateAuthentication, createNewDesign);
+router.delete('/delete/:designId', validateAuthentication, deleteDesign);
 
 export default router;

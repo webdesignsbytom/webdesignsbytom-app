@@ -14,7 +14,7 @@ const router = Router();
 
 router.get('/', getAllComponents);
 router.get('/find/:query', getComponentsByQuery);
-router.post('/create', createNewComponent);
-router.delete('/delete/:componentId', deleteComponent);
+router.post('/create', validateAuthentication, validateDeveloperRole, createNewComponent);
+router.delete('/delete/:componentId', validateAuthentication, validateDeveloperRole, deleteComponent);
 
 export default router;

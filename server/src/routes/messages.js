@@ -5,19 +5,20 @@ import {
   deleteMessage,
   getMessagesFromUser,
   getMessageById,
-  setMessageToViewed
+  setMessageToViewed,
 } from '../controllers/messages.js';
 import {
   validateAuthentication,
+  validateAdminRole,
   validateDeveloperRole,
 } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', getAllMessages);
-router.get('/user-messages/:userId', getMessagesFromUser);
+router.get('/', validateAuthentication, validateAdminRole, getAllMessages);
+router.get('/user-messages/:userId', validateAuthentication, getMessagesFromUser);
 router.get('/:messageId', getMessageById);
-router.post('/create', createNewMessage);
+router.post('/create', validateAuthentication, createNewMessage);
 // router.post('/group-message', createGroupMessage);
 router.put('/viewed/:messageId', setMessageToViewed);
 router.delete('/delete/:messageId', deleteMessage);

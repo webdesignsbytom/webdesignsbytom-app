@@ -6,6 +6,6 @@ import { validateAuthentication, validateDeveloperRole } from '../middleware/aut
 
 const router = Router();
 
-router.get('/', getAllEvents);
+router.get('/', validateAuthentication, validateDeveloperRole, getAllEvents);
 
 export default router;

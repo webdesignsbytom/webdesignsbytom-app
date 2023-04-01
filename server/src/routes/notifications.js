@@ -8,17 +8,18 @@ import {
   getViewedNotificationsByUserId
 } from '../controllers/notifications.js';
 import {
+  validateAdminRole,
   validateAuthentication,
   validateDeveloperRole,
 } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', getAllNotifications);
+router.get('/', validateAuthentication, validateAdminRole, getAllNotifications);
 router.get('/user-notifications/:userId', getNotificationsByUserId);
 router.get('/:userId/:viewed', getViewedNotificationsByUserId);
 router.post('/create', createNotification);
-router.put('/viewed/:notificationId', setNotificationToViewed);
-router.delete('/delete/:notificationId', deleteNotification);
+router.put('/viewed/:notificationId', validateAuthentication, setNotificationToViewed);
+router.delete('/delete/:notificationId', validateAuthentication, deleteNotification);
 
 export default router;
