@@ -41,17 +41,9 @@ import ReactGA from 'react-ga';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
-  ReactGA.initialize('GT-TWQRTRX');
   ReactGA.initialize('G-B2XXL65L29');
-
-  ReactGA.pageview('GT-TWQRTRX');
-  ReactGA.pageview('G-B2XXL65L29');
-  ReactGA.pageview(window.location.pathname + window.location.search);
   ReactGA.pageview('/');
-  ReactGA.pageview('/test');
-  ReactGA.pageview('test');
-  ReactGA.pageview('https://sprightly-fudge-16a82b.netlify.app/');
-  ReactGA.pageview('sprightly-fudge-16a82b.netlify.app/');
+  ReactGA.pageview('/contact');
 
   return (
     <>
