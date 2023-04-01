@@ -41,12 +41,16 @@ import ReactGA from 'react-ga';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
+  
   ReactGA.initialize('G-B2XXL65L29');
   ReactGA.pageview('/');
   ReactGA.pageview('/contact');
   ReactGA.pageview('/design');
   ReactGA.pageview('/portfolio');
+  ReactGA.pageview('/login');
+  ReactGA.pageview('/logout');
   ReactGA.pageview('/store');
+  ReactGA.pageview('/new-project');
 
   return (
     <>
