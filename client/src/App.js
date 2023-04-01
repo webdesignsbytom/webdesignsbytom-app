@@ -45,10 +45,8 @@ function App() {
   ReactGA.pageview('/');
   ReactGA.pageview('/contact');
   ReactGA.pageview('/design');
-  ReactGA.event({
-    category: 'Test',
-    action: 'Test me please'
-  });
+  ReactGA.pageview('/portfolio');
+  ReactGA.pageview('/store');
 
   return (
     <>
