@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 // Context
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 // Pages
 import PortfolioHome from './pages/portfolio/PortfolioHome';
 import SalesHome from './pages/sales/SalesHome';
@@ -37,12 +37,16 @@ import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
 
-const TRACKING_ID = 'G-GMSD5FT9H9';
-ReactGA.initialize(TRACKING_ID);
+const TRACKING_ID = 'G-B2XXL65L29';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
-  ReactGA.pageview('/');
+  
+  useEffect(() => {
+    ReactGA.initialize(TRACKING_ID);
+
+    ReactGA.pageview('/')
+  }, [])
 
   return (
     <>
