@@ -44,6 +44,7 @@ function App() {
   ReactGA.initialize('G-B2XXL65L29');
   ReactGA.pageview('/');
   ReactGA.pageview('/contact');
+  ReactGA.pageview('/design');
 
   return (
     <>
