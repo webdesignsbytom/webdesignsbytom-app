@@ -37,13 +37,13 @@ import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
 
-const TRACKING_ID = 'G-B2XXL65L29';
+// const TRACKING_ID = ;
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
   
   useEffect(() => {
-    ReactGA.initialize(TRACKING_ID);
+    ReactGA.initialize('G-B2XXL65L29');
 
     ReactGA.pageview('/')
   }, [])
