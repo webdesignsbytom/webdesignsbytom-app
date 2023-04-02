@@ -10,8 +10,6 @@ function ContactsPhone() {
   const [displayContacts, setDisplayContacts] = useState('all-contacts');
 
   const [deletedContact, setDeletedContact] = useState({});
-
-  console.log('display contacts', displayContacts);
   
   useEffect(() => {
     client

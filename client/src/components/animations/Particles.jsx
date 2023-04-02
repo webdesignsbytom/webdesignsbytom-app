@@ -22,7 +22,6 @@ function Particles() {
       };
 
       container.addEventListener('mousemove', function (e) {
-        console.log(e);
         mouse.x = e.x;
         mouse.y = e.y;
       });

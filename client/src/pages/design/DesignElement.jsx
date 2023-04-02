@@ -35,7 +35,6 @@ function DesignElement({
   const [colourPaletteObject, setColourPaletteObject] =
     useState(paletteTemplate);
   // Nav Options
-  console.log('WWW', colourPaletteObject)
   const [navigationStyleOptions, setNavigationStyleOptions] = useState({
     position: false,
     positionType: '',
@@ -50,7 +49,6 @@ function DesignElement({
 
   const handleChange = (event) => {
     const { value } = event.target;
-    console.log('XXX change', value);
     setFileSaveName(value);
   };
 
@@ -76,7 +74,6 @@ function DesignElement({
   };
 
   const saveUpdateDesign = () => {
-    console.log('SAve', openDesign);
     if (user.email.length < 1) {
       return setDisplayElement('register');
     }

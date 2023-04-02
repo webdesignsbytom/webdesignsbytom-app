@@ -44,7 +44,6 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
 
   useEffect(() => {
     const container = document.getElementById('time__container');
-    console.log('container', container);
     // DOM Elements
     const time = document.getElementById('time'),
       greeting = document.getElementById('greeting'),
@@ -52,7 +51,6 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
     // Options
     const showAmPm = true;
 
-    console.log('container', container.scrollWidth);
     // Show Time
     function showTime() {
       let today = new Date(),

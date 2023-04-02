@@ -19,7 +19,6 @@ function PortfolioHome() {
     toggleEvents,
     toggleContacts,
   } = useContext(ToggleContext);
-  console.log('toggleNavigation', toggleNavigation);
 
   return (
     <div>

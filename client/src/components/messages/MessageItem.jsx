@@ -12,8 +12,6 @@ function MessageItem({ message }) {
   const navigate = useNavigate();
 
   const openMessage = () => {
-    console.log('open message');
-
     navigate(`/user/${user.id}/messages/${message.id}`, {
       state: message,
     });

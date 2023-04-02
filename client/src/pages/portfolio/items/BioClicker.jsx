@@ -81,7 +81,6 @@ function BioClicker() {
                 <article className='outline-2 outline-black outline rounded p-1'>
                   <ul className='p-1 grid gap-1'>
                     {portfolioItem.skills.map((skill, index) => {
-                      console.log('skills', skill);
                       return (
                         <li className='flex gap-2 items-center' key={index}>
                           <h4>{skill.icon}</h4>
