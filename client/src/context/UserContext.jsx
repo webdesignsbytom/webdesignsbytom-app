@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { sampleUserData } from '../users/utils/utils';
 import LoggedInUser from '../users/utils/LoggedInUser';
 // Fetch
-import { getUserById } from '../utils/Fetch';
 import client from '../utils/client';
 // Context
 export const UserContext = React.createContext();

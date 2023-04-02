@@ -45,7 +45,7 @@ import LuxuryCasino from './pages/portfolio/items/LuxuryCasino';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
-  
+
   ReactGA.initialize('G-B2XXL65L29');
   ReactGA.pageview('/');
   ReactGA.pageview('/contact');
@@ -97,12 +97,7 @@ function App() {
         />
         <Route path='/design' element={<Design />} />
 
-        <Route path='/portfolio-item/tavyepoxy' element={<Tavyepoxy />} />
-        <Route path='/portfolio-item/matched-betting' element={<MatchedBetting />} />
-        <Route path='/portfolio-item/bio-clicker' element={<BioClicker />} />
-        <Route path='/portfolio-item/myecoapp' element={<Myecoapp />} />
-        <Route path='/portfolio-item/luxury-casino' element={<LuxuryCasino />} />
-
+        {/* User data */}
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
         <Route
           path='users/:userId/update-password'
@@ -112,6 +107,20 @@ function App() {
           path='users/reset-lost-password/:userId/:uniqueString'
           element={<EnterNewPassword />}
         />
+
+        {/* Protfolio Items */}
+        <Route path='/portfolio-item/tavyepoxy' element={<Tavyepoxy />} />
+        <Route
+          path='/portfolio-item/matched-betting'
+          element={<MatchedBetting />}
+        />
+        <Route path='/portfolio-item/bio-clicker' element={<BioClicker />} />
+        <Route path='/portfolio-item/myecoapp' element={<Myecoapp />} />
+        <Route
+          path='/portfolio-item/luxury-casino'
+          element={<LuxuryCasino />}
+        />
+
         {/* Messages */}
         <Route
           path='user/:userId/messages/:messageId'
