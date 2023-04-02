@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function AboutSection() {
   return (
-    <section className='grid overflow-hidden mt-6 md:mt-0 mb-12 mx-4'>
+    <section className='grid overflow-hidden dark:text-gray-100 mt-6 md:mt-0 mb-12 mx-4'>
       <div className='container mx-auto'>
         <section className='-mx-4 flex flex-wrap items-center justify-between'>
           {/* Images */}

@@ -49,7 +49,7 @@ function LoginForm({ setUser }) {
         onSubmit={handleLogin}
         className='pb-2 lg:mt-10 lg:w-full lg:my-auto lg:px-8'
       >
-        <h2 className='text-xl py-2'>Login here</h2>
+        <h2 className='text-xl py-2 dark:text-white'>Login here</h2>
 
         {/* <!-- Email input --> */}
         <div className='mb-6'>
@@ -128,7 +128,7 @@ function LoginForm({ setUser }) {
 
         <div className='mb-6 text-center'>
           <Link to='/register'>
-            <p>
+            <p className='dark:text-white'>
               Not a member? Click{' '}
               <span className='text-hyperlink-blue'>here</span> to register
             </p>

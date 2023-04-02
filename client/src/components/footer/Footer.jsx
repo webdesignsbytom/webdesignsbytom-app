@@ -17,8 +17,8 @@ function Footer() {
       </section>
       <section className='flex justify-center my-4'>
         <SocialBar
-          background={'bg-footer-colour'}
-          icons={'text-white dark:text-colour-dark'}
+          background={'bg-footer-colour dark:bg-main-colour'}
+              icons={'text-white dark:text-gray-300'}
         />
       </section>
       <section>
@@ -43,7 +43,7 @@ function Footer() {
           </ul>
         </section>
       </section>
-      <section className='flex w-full justify-center'>
+      <section className='flex w-full lg:hidden justify-center'>
         <img src={Logo} className='w-10' alt="footer logo for web design by tom" />
       </section>
       <section className='my-4'>

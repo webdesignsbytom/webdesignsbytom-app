@@ -150,7 +150,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black lg:w-full overflow-hidden'>
+      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour lg:w-full overflow-hidden'>
         <section className='flex relative h-16 items-center justify-between px-4'>
           {/* Logo */}
           <div
@@ -310,8 +310,8 @@ function Navbar() {
           </section>
           <div className='hidden md:flex'>
             <SocialBar
-              background={'bg-gray-900'}
-              icons={'text-white dark:text-colour-dark'}
+              background={'bg-gray-900 dark:bg-main-colour'}
+              icons={'text-white dark:text-gray-300'}
             />
           </div>
         </section>

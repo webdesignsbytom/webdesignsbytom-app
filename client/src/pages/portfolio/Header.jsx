@@ -1,19 +1,13 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // Components
 import SocialBar from '../../components/social/SocialBar';
 // PDF
 import CV from '../../assets/pdf/TomBrockingtonResume2023.pdf';
 
 function Header() {
-  let navigate = useNavigate();
-
-  const contactPage = () => {
-    navigate('/contact', { replace: true });
-  };
-
   return (
-    <header className='grid relative h-[calc(100vh-32px)] lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center'>
+    <header className='grid relative h-[calc(100vh-32px)] lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] justify-center items-center dark:text-white'>
       <section className='text-center mb-10 md:mb-0'>
         <article className='mb-4'>
           <h4 className='font-semibold'>Hello I am</h4>
@@ -54,8 +48,8 @@ function Header() {
       <section className='absolute bottom-10 flex justify-between w-full px-10'>
         <div>
           <SocialBar
-            background={'bg-white'}
-            icons={'text-main-colour dark:text-colour-dark'}
+            background={'bg-white dark:bg-black'}
+            icons={'text-main-colour dark:text-gray-300'}
           />
         </div>
         <div>

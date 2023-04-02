@@ -4,10 +4,8 @@ import client from '../../../utils/client';
 import LoadingSpinner from '../../utils/LoadingSpinner';
 import PageItem from './PageItem';
 
-function PageOptions() {
+function PageOptions({ savedPages, setSavedPages }) {
   const [allPages, setAllPages] = useState([]);
-
-  console.log('allPages', allPages);
 
   useEffect(() => {
     client
@@ -21,6 +19,17 @@ function PageOptions() {
 
   return (
     <section>
+      <section className='flex gap-2 p-1 border-b-2 border-solid border-main-colour'>
+        <button className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+          All
+        </button>
+        <button className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+          Added
+        </button>
+        <button className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full'>
+          Favourites
+        </button>
+      </section>
       <ul className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-2 gap-2'>
         {allPages.length < 1 ? (
           <div className='grid grid-rows-1'>

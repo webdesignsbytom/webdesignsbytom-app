@@ -15,7 +15,7 @@ function SalesHome() {
   const { toggleNavigation } = useContext(ToggleContext);
 
   return (
-    <div className='w-full'>
+    <div className='w-full dark:bg-black'>
       <Navbar />
       {!toggleNavigation && (
         <>

@@ -8,7 +8,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
 
   return (
     <>
-      <div className='bg-colour-pale grid lg:min-w-[200px] lg:h-[calc(100vh-64px)] lg:fixed lg:left-0 lg:border-r-2 lg:border-solid lg:border-black'>
+      <div className='bg-colour-pale dark:bg-gray-400 grid lg:min-w-[200px] lg:h-[calc(100vh-64px)] lg:fixed lg:left-0 lg:border-r-2 lg:border-solid lg:border-black'>
         <div className='m-2 grid lg:grid-rows-special'>
           <div className='hidden md:grid text-main-text text-center m-2'>
             <h2>Design Options</h2>

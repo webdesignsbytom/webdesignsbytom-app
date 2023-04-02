@@ -40,6 +40,13 @@ function DesignElement({
     positionType: '',
     menuOptions: [],
   });
+  const [savedPages, setSavedPages] = useState([]);
+  const [savedComponents, setSavedComponents] = useState([]);
+
+  console.log('fileSaveName', fileSaveName);
+  console.log('userStoriesArray', userStoriesArr);
+  console.log('colourPaletteObject', colourPaletteObject);
+  console.log('navigationStyleOptions', navigationStyleOptions);
 
   useEffect(() => {
     if (openDesign) {
@@ -93,10 +100,10 @@ function DesignElement({
     <>
       <main className='lg:grid lg:grid-flow-col lg:w-full lg:pl-[200px]'>
         <div>
-          <section className='bg-colour-pale p-2 flex justify-between gap-4 border-t-2 border-b-2 border-solid border-black lg:border-b-2 lg:border-t-0 lg:border-solid lg:border-black'>
+          <section className='bg-colour-pale dark:bg-gray-400 p-2 flex justify-between gap-4 border-t-2 border-b-2 border-solid border-black lg:border-b-2 lg:border-t-0 lg:border-solid lg:border-black'>
             <div className='flex ml-1'>
               <input
-                className='max-w-[150px] md:max-w-[200px] lg:max-w-[250px] px-1 font-normal text-placeholder-text bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none'
+                className='max-w-[150px] md:max-w-[200px] lg:max-w-[250px] px-1 font-normal text-placeholder-text bg-white dark:bg-black bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none'
                 type='text'
                 name='fileName'
                 id='fileName'
@@ -140,8 +147,8 @@ function DesignElement({
               </ul>
             </nav>
           </section>
-          <section className='grid grid-rows-one min-h-[calc(100vh-104px)] max-h-[calc(100vh-104px)] p-2'>
-            <div className='grid grid-rows-one h-auto border-2 border-solid border-black rounded overflow-y-scroll'>
+          <section className='grid dark:bg-gray-300 grid-rows-one min-h-[calc(100vh-104px)] max-h-[calc(100vh-104px)] p-2'>
+            <div className='grid grid-rows-one dark:bg-black h-auto border-2 border-solid border-black rounded overflow-y-scroll'>
               {/* Register form */}
               {displayElement === 'register' && (
                 <section>
@@ -169,12 +176,16 @@ function DesignElement({
               )}
               {displayElement === 'pages' && (
                 <PageOptions
+                  savedPages={savedPages}
+                  setSavedPages={setSavedPages}
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                 />
               )}
               {displayElement === 'components' && (
                 <CompenentOptions
+                  savedComponents={savedComponents}
+                  setSavedComponents={setSavedComponents}
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                 />

@@ -27,7 +27,6 @@ function Design() {
   const [openDesign, setOpenDesign] = useState(designTemplate);
 
   useEffect(() => {
-    console.log('get designs');
     if (user.id) {
       client
         .get(`/designs/user-designs/${user.id}`)
@@ -42,9 +41,6 @@ function Design() {
         .catch((err) => console.error('Unable to get designs', err.response));
     }
   }, [user.id]);
-
-  console.log('toggleMessages', toggleMessages);
-  console.log('toggleNotifications', toggleNotifications);
 
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>

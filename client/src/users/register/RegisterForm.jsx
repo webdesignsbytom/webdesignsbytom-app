@@ -18,8 +18,6 @@ import CountrySelect from '../utils/CountrySelect';
 import { validPassword } from '../../users/utils/Validation';
 import { postRegister } from '../../utils/Fetch';
 import { SubmitButton } from '../../components/utils/SubmitButtons';
-// React icons
-import { BsFolderPlus } from 'react-icons/bs';
 
 function RegisterForm() {
   const [registerResponseMessage, setRegisterResponseMessage] =
@@ -151,9 +149,9 @@ function RegisterForm() {
     <>
       <form
         onSubmit={handleRegister}
-        className='pb-4 lg:w-full lg:my-auto lg:px-8'
+        className='pb-4 lg:w-full dark:bg-black lg:my-auto lg:px-8'
       >
-        <h2 className='text-xl py-2'>Register here</h2>
+        <h2 className='text-xl py-2 dark:text-white'>Register here</h2>
 
         {/* <!-- Email input --> */}
         <div>
@@ -311,7 +309,7 @@ function RegisterForm() {
           </div>
         </div>
 
-        <div className='text-center'>
+        <div className='text-center dark:text-white'>
           <Link to='/login'>
             <p>
               Already a member? Click{' '}

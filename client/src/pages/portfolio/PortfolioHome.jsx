@@ -21,7 +21,7 @@ function PortfolioHome() {
   } = useContext(ToggleContext);
 
   return (
-    <div>
+    <div className='dark:bg-black'>
       <Navbar />
       {(!toggleNavigation ||
         !toggleNotifications ||
