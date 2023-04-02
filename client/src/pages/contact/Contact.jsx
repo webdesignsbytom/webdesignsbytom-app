@@ -13,6 +13,9 @@ import { ImWhatsapp } from 'react-icons/im';
 function Contact() {
   const { toggleNavigation } = useContext(ToggleContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <>
