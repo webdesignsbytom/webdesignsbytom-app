@@ -32,12 +32,9 @@ function Design() {
       client
         .get(`/designs/user-designs/${user.id}`)
         .then((res) => {
-          console.log('AAAA');
           if (res.data.data.designs.length === 0) {
-            console.log('BBBB');
             return;
           } else {
-            console.log('XXXX');
             setSavedDesigns(res.data.data.designs);
             setOpenDesign(res.data.data.designs[0]);
           }

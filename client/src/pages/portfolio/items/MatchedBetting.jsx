@@ -1,48 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
 // Data
-import { portfolioData, initialData } from '../../utils/portfolioData';
+import { portfolioData, initialData } from '../../../utils/portfolioData';
 
-function PortfolioItem() {
-  const navigate = useNavigate();
-  const location = useLocation();
-
+function MatchedBetting() {
   const [portfolioItem, setPortfolioItem] = useState(initialData);
-
-  console.log('navigate', navigate);
-  console.log('location: ', location);
 
   // Set the item to be displayed
   useEffect(() => {
-    if (location.state) {
-      setPortfolioItem(location.state);
-    } else {
-      setPortfolioItem(portfolioData[0]);
-    }
-  }, [location.state]);
-
-  const nextPage = () => {
-    const currentId = portfolioItem.id;
-    const newPageItem = portfolioData[currentId];
-
-    if (currentId === portfolioData.length) {
-      setPortfolioItem(portfolioData[0]);
-    } else {
-      setPortfolioItem(newPageItem);
-    }
-  };
-
-  const prevPage = () => {
-    const currentId = portfolioItem.id;
-    const newPageItem = portfolioData[currentId];
-
-    if (currentId === portfolioData.length) {
-      setPortfolioItem(portfolioData[0]);
-    } else {
-      setPortfolioItem(newPageItem);
-    }
-  };
+    setPortfolioItem(portfolioData[1]);
+  }, []);
 
   return (
     <>
@@ -65,7 +32,7 @@ function PortfolioItem() {
             </div>
             <section className='flex items-center gap-4'>
               <Link
-                onClick={prevPage}
+                to={`/portfolio-item/${portfolioItem.prevUrl}`}
                 className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
                 <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-yellow-500 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
@@ -76,7 +43,7 @@ function PortfolioItem() {
                 </span>
               </Link>
               <Link
-                onClick={nextPage}
+                to={`/portfolio-item/${portfolioItem.nextUrl}`}
                 className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
                 <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-green-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
@@ -115,10 +82,12 @@ function PortfolioItem() {
                   <ul className='p-1 grid gap-1'>
                     {portfolioItem.skills.map((skill, index) => {
                       console.log('skills', skill);
-                      return <li className='flex gap-2 items-center' key={index}>
-                        <h4>{skill.icon}</h4>
-                        <h4>{skill.name}</h4>
-                      </li>;
+                      return (
+                        <li className='flex gap-2 items-center' key={index}>
+                          <h4>{skill.icon}</h4>
+                          <h4>{skill.name}</h4>
+                        </li>
+                      );
                     })}
                   </ul>
                 </article>
@@ -284,4 +253,4 @@ function PortfolioItem() {
   );
 }
 
-export default PortfolioItem;
+export default MatchedBetting;

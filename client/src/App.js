@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 // Context
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 // Pages
 import PortfolioHome from './pages/portfolio/PortfolioHome';
 import SalesHome from './pages/sales/SalesHome';
@@ -28,7 +28,7 @@ import ConfirmPolicies from './components/popups/ConfirmPolicies';
 // Context
 import { UserContext } from './context/UserContext';
 import ProjectContainer from './pages/project/ProjectContainer';
-import PortfolioItem from './pages/portfolio/PortfolioItem';
+import Tavyepoxy from './pages/portfolio/items/Tavyepoxy';
 import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
 import NewProject from './pages/project/NewProject';
@@ -36,6 +36,10 @@ import UpdatePassword from './pages/account/UpdatePassword';
 import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
+import MatchedBetting from './pages/portfolio/items/MatchedBetting';
+import BioClicker from './pages/portfolio/items/BioClicker';
+import Myecoapp from './pages/portfolio/items/Myecoapp';
+import LuxuryCasino from './pages/portfolio/items/LuxuryCasino';
 
 // const TRACKING_ID = ;
 
@@ -93,7 +97,12 @@ function App() {
         />
         <Route path='/design' element={<Design />} />
 
-        <Route path='/portfolio-item/:itemName' element={<PortfolioItem />} />
+        <Route path='/portfolio-item/tavyepoxy' element={<Tavyepoxy />} />
+        <Route path='/portfolio-item/matched-betting' element={<MatchedBetting />} />
+        <Route path='/portfolio-item/bio-clicker' element={<BioClicker />} />
+        <Route path='/portfolio-item/myecoapp' element={<Myecoapp />} />
+        <Route path='/portfolio-item/luxury-casino' element={<LuxuryCasino />} />
+
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
         <Route
           path='users/:userId/update-password'

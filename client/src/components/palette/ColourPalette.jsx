@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // Icons
 import changeIcon from '../../assets/svg/changeIcon.svg';
 import { RxCross2 } from 'react-icons/rx';
@@ -33,10 +33,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [hexCardFour, setHexCardFour] = useState('#0099ff');
   const [hlsCardFour, setHlsCardFour] = useState('#0099ff');
   // Card five
-  const [cardFiveBg, setCardFiveBg] = useState('bg-[#ffff00]');
+  const [cardFiveBg, setCardFiveBg] = useState('0000ff');
   const [rgbCardFive, setRgbCardFive] = useState('#0099ff');
   const [hexCardFive, setHexCardFive] = useState('#0099ff');
   const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
+
+  useEffect(() => {
+    setCardFiveBg(hexCardFive)
+  }, [hexCardFive])
 
   const closeColourPicker = () => {
     setDisplayPicker(false);
@@ -49,7 +53,8 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const setNewColour = (event) => {
     const str = String(currentColour.background);
     console.log(`bg-[${str}]`);
-    setCardFiveBg(`bg-[${str}]`);
+    let newStr = str.slice(1); // "ello World!";
+    setHexCardFive(`${newStr}`);
     console.log('e.t',event.target)
   };
 
@@ -279,7 +284,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             </div>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
               <div
-                className={`${cardFiveBg} cursor-pointer`}
+                className={`bg-[#${cardFiveBg}] cursor-pointer`}
                 id='cardFiveBg'
                 onClick={openPicker}
               ></div>

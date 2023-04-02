@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+// Components
 import Navbar from '../../components/nav/Navbar';
+import PortfolioCta from '../portfolio/PortfolioCta';
 import { SubmitButton } from '../../components/utils/SubmitButtons';
 // Context
 import { ToggleContext } from '../../context/ToggleContext';
-import { statusResults } from '../../users/utils/utils';
 // Data
 import { projectInitialData } from '../../utils/DataUtils';
-import PortfolioCta from '../portfolio/PortfolioCta';
+import { statusResults } from '../../users/utils/utils';
+
 
 function NewProject() {
   const { toggleNavigation } = useContext(ToggleContext);
@@ -19,11 +21,7 @@ function NewProject() {
   // Form
   const [newProjectForm, setNewProjectForm] = useState({});
 
-  const navigate = useNavigate();
   const location = useLocation();
-
-  console.log('navigate', navigate);
-  console.log('location', location);
 
   useEffect(() => {
     setNewProjectForm({

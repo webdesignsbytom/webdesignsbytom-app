@@ -7,10 +7,8 @@ function PortfolioDisplay() {
   const navigate = useNavigate();
 
   const displayInfo = (item) => {
-    let str = item.title.replace(/\s/g, "-");
-    str = str.toLowerCase();
-    navigate(`/portfolio-item/${str}`, {
-      replace: true, state: item,
+    navigate(`/portfolio-item/${item.url}`, {
+      replace: false,
     });
   };
 
@@ -56,7 +54,8 @@ function PortfolioDisplay() {
                 </div>
                 <section className='text-left mx-1'>
                   <p className='leading-5 group-hover:text-white'>
-                    <span className='font-semibold'>Purpose:</span> {item.headline}
+                    <span className='font-semibold'>Purpose:</span>{' '}
+                    {item.headline}
                   </p>
                 </section>
                 <div className='flex gap-4 mt-2'>
