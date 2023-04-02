@@ -35,6 +35,7 @@ function DesignElement({
   const [colourPaletteObject, setColourPaletteObject] =
     useState(paletteTemplate);
   // Nav Options
+  console.log('WWW', colourPaletteObject)
   const [navigationStyleOptions, setNavigationStyleOptions] = useState({
     position: false,
     positionType: '',
