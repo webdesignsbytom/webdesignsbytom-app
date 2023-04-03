@@ -5,7 +5,7 @@ import {
   basicListItems,
   shopListItems,
   fullstackListItems,
-} from '../../../utils/utils';
+} from '../../../utils/DataUtils';
 // Icons
 import { BsCheck2Circle } from 'react-icons/bs';
 

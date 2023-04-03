@@ -9,7 +9,7 @@ import { ToggleContext } from '../../context/ToggleContext';
 // Data
 import client from '../../utils/axios/client';
 // Utils
-import { designTemplate } from '../../utils/utils';
+import { designTemplate } from '../../utils/TemplateUtils';
 
 function Design() {
   const { user } = useContext(UserContext);

@@ -4,7 +4,7 @@ import { FiCheckCircle } from 'react-icons/fi';
 import { RxCross2 } from 'react-icons/rx';
 import { IoMdInfinite } from 'react-icons/io';
 // Utils
-import { pricingTableData } from '../../utils/utils';
+import { pricingTableData } from '../../utils/DataUtils';
 
 function PriceTable() {
   return (

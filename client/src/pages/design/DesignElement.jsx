@@ -14,7 +14,7 @@ import client from '../../utils/axios/client';
 // Icons
 import QuestionMark from '../../assets/svg/questionMark.svg';
 // Utils
-import { designTemplate, paletteTemplate } from '../../utils/utils';
+import { designTemplate, paletteTemplate } from '../../utils/TemplateUtils';
 // React icons
 import { BsFolderPlus } from 'react-icons/bs';
 import { VscSaveAs } from 'react-icons/vsc';
