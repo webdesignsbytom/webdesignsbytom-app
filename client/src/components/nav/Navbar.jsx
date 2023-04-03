@@ -76,7 +76,6 @@ function Navbar() {
   const displayEvents = () => {
     setToggleEvents(true);
     setToggleNotifications(false);
-    setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
     setToggleContacts(false);
@@ -84,7 +83,6 @@ function Navbar() {
 
   const displayNotifications = () => {
     setToggleNotifications(true);
-    setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
@@ -93,7 +91,6 @@ function Navbar() {
 
   const displayMessages = () => {
     setToggleMessages(true);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleTests(false);
     setToggleEvents(false);
@@ -103,7 +100,6 @@ function Navbar() {
   const displayTest = () => {
     setToggleTests(true);
     setToggleMessages(false);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleEvents(false);
     setToggleContacts(false);
@@ -113,7 +109,6 @@ function Navbar() {
     setToggleContacts(true);
     setToggleTests(false);
     setToggleMessages(false);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleEvents(false);
   };

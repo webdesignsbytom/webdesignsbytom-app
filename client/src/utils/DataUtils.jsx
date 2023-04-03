@@ -8,3 +8,10 @@ export const projectInitialData = {
     owner: ``,
     dueDate: ``
 }
+
+export const profileUpdateInit = {
+    email: ``,
+    firstName: ``,
+    lastName: ``,
+    country: ``,
+}
