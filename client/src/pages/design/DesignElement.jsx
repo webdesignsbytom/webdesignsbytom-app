@@ -10,7 +10,7 @@ import Buttons from '../../components/options/Buttons';
 import SavedDesigns from './SavedDesigns';
 import UserStories from './UserStories';
 import RegisterForm from '../../users/register/RegisterForm';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Icons
 import QuestionMark from '../../assets/svg/questionMark.svg';
 // Utils

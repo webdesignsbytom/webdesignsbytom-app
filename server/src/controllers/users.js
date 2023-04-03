@@ -463,7 +463,9 @@ export const resetPassword = async (req, res) => {
 export const updateUser = async (req, res) => {
   console.log('update user');
   const userId = req.params.userId;
+  console.log('userId: ', userId);
   const { email, firstName, lastName, country } = req.body;
+  console.log('reqbody: ', req.body);
 
   try {
     const foundUser = await findUserById(userId);
@@ -478,19 +480,19 @@ export const updateUser = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
-    const updatedUser = await updateUserById(
-      userId,
-      email,
-      firstName,
-      lastName,
-      country
-    );
+    // const updatedUser = await updateUserById(
+    //   userId,
+    //   email,
+    //   firstName,
+    //   lastName,
+    //   country
+    // );
 
-    delete updatedUser.password;
-    delete updatedUser.agreedToTerms;
+    // delete updatedUser.password;
+    // delete updatedUser.agreedToTerms;
 
-    // myEmitterUsers.emit('update-user', req.user);
-    return sendDataResponse(res, 200, { user: updatedUser });
+    // // myEmitterUsers.emit('update-user', req.user);
+    // return sendDataResponse(res, 200, { user: updatedUser });
   } catch (err) {
     // Error
     const serverError = new ServerErrorEvent(`Verify New User Server error`);

@@ -7,12 +7,12 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import { statusResults } from '../../users/utils/utils';
 import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
 function Profile() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   // Form data
   const [userUpdateForm, setUserUpdateForm] = useState({
     email: `${user.email}`,
@@ -37,6 +37,15 @@ function Profile() {
     setUpdateAnimation(true);
 
     // Update user in db
+    // client
+    // .put(`/users/account/update/${user.id}`, userUpdateForm, false)
+    // .then((res) => {
+    //   console.log('data update', res.data);
+    //   setUser(res.data.data.user);
+    // })
+    // .catch((err) => {
+    //   console.error('Unable to update user', err);
+    // });
   };
 
   const handleChange = (event) => {

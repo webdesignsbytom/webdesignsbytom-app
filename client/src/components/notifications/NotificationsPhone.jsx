@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+// Components
+import NotificationsContainer from './NotificationsContainer';
 // Context
 import { UserContext } from '../../context/UserContext';
 // Fetch
@@ -9,8 +11,7 @@ import {
 } from '../../utils/Fetch';
 // Components
 import Selector from './Selector';
-import client from '../../utils/client';
-import NotificationsContainer from './NotificationsContainer';
+import client from '../../utils/axios/client';
 
 function NotificationsPhone() {
   const { user } = useContext(UserContext);

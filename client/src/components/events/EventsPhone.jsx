@@ -7,7 +7,7 @@ import {
 } from '../../utils/Fetch';
 // Components
 import Selector from './Selector';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import EventsContainer from './EventsContainer';
 
 function EventsPhone() {

@@ -4,7 +4,7 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import { statusResults } from '../../users/utils/utils';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Utils
 import { contactFormTemplate } from '../../utils/utils';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import client from '../../../utils/client';
+import client from '../../../utils/axios/client';
 // Components
 import LoadingSpinner from '../../utils/LoadingSpinner';
 import ComponentItem from './ComponentItem';

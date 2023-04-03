@@ -6,7 +6,7 @@ import { ToggleContext } from '../../context/ToggleContext';
 // Components
 import MessageItem from './MessageItem';
 
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 
 function MessagesPhone() {
   const { user } = useContext(UserContext);
