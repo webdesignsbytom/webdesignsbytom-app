@@ -137,7 +137,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
             <section>
               <article>
                 <div className='border-transparent-black border-solid border-[6px] p-2 rounded-tr-2xl rounded-bl-2xl'>
-                  <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
+                  <section className='bg-transparent-black p-2 rounded-tr-2xl rounded-bl-2xl'>
                     <h1 className='grid text-5xl font-semibold font-outfit'>
                       <span className='text-left -ml-4 md:-ml-8'>
                         Web Designs

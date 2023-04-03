@@ -157,7 +157,7 @@ function Navbar() {
               closeEvents();
               closeContacts();
             }}
-            className='inset-y-0 left-0 flex items-center cursor-pointer'
+            className='inset-y-0 left-0 flex items-center cursor-pointer select-none'
           >
             <img src={WDBT} className='w-10' alt="Web design by Tom company logo" />
           </div>

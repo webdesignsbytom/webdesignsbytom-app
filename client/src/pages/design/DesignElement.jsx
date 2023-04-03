@@ -17,7 +17,7 @@ import QuestionMark from '../../assets/svg/questionMark.svg';
 import { designTemplate, paletteTemplate } from '../../utils/utils';
 // React icons
 import { BsFolderPlus } from 'react-icons/bs';
-import { BsSave } from 'react-icons/bs';
+import { VscSaveAs } from 'react-icons/vsc';
 import { BsFolderMinus } from 'react-icons/bs';
 
 function DesignElement({
@@ -134,7 +134,7 @@ function DesignElement({
                 </li>
                 <li onClick={saveUpdateDesign} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
-                    <BsSave className='mr-1 mt-1' />
+                    <VscSaveAs className='mr-1 mt-1' />
                   </div>
                   <p>Save</p>
                 </li>
