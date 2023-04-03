@@ -17,7 +17,7 @@ function ColourItem({
   openBigPicker
 }) {
   return (
-    <li className='grid mx-6'>
+    <li className='grid mx-6 dark:text-gray-100'>
       <section className='flex justify-between gap-2 mx-[3px] mb-[2px]'>
         <h4 className='text-sm mt-1'>{colour.title}</h4>
         <div className='relative group flex align-middle h-full pl-1 pt-1'>

@@ -80,7 +80,7 @@ export const getAllUsers = async (req, res) => {
 export const getUserById = async (req, res) => {
   console.log('getUserById');
   const userId = req.params.id;
-
+  console.log('xxx');
   try {
     const foundUser = await findUserById(userId);
     if (!foundUser) {
@@ -92,7 +92,7 @@ export const getUserById = async (req, res) => {
       myEmitterErrors.emit('error', notFound);
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
-console.log('found', foundUser)
+    console.log('found', foundUser);
     delete foundUser.password;
     delete foundUser.agreedToTerms;
 
@@ -216,7 +216,7 @@ export const registerNewUser = async (req, res) => {
         return sendMessageResponse(res, notCreated.code, notCreated.message);
       }
     });
-    
+
     return sendDataResponse(res, 201, { createdUser });
   } catch (err) {
     // Error
@@ -230,7 +230,7 @@ export const registerNewUser = async (req, res) => {
 };
 
 export const verifyUser = async (req, res) => {
-  console.log('Verifying user')
+  console.log('Verifying user');
   const { userId, uniqueString } = req.params;
 
   try {
@@ -253,11 +253,7 @@ export const verifyUser = async (req, res) => {
     if (expiresAt < Date.now()) {
       await dbClient.userVerification.delete({ where: { userId } });
       await dbClient.user.delete({ where: { userId } });
-      return sendMessageResponse(
-        res,
-        401,
-        EVENT_MESSAGES.expiredLinkMessage
-      );
+      return sendMessageResponse(res, 401, EVENT_MESSAGES.expiredLinkMessage);
     }
 
     const isValidString = await bcrypt.compare(
@@ -298,11 +294,13 @@ export const verifyUser = async (req, res) => {
 };
 
 export const resendVerificationEmail = async (req, res) => {
-  console.log('resendVerificationEmail')
+  console.log('resendVerificationEmail');
   const { email } = req.params;
 
   if (!email) {
-    const badRequest = new BadRequestEvent(EVENT_MESSAGES.missingUserIdentifier);
+    const badRequest = new BadRequestEvent(
+      EVENT_MESSAGES.missingUserIdentifier
+    );
     return sendMessageResponse(res, badRequest.code, badRequest.message);
   }
 
@@ -408,22 +406,14 @@ export const resetPassword = async (req, res) => {
         EVENT_MESSAGES.verificationNotFound
       );
       myEmitterErrors.emit('error', missingRequest);
-      return sendMessageResponse(
-        res,
-        404,
-        EVENT_MESSAGES.passwordResetError
-      );
+      return sendMessageResponse(res, 404, EVENT_MESSAGES.passwordResetError);
     }
 
     const { expiresAt } = foundResetRequest;
     if (expiresAt < Date.now()) {
       await dbClient.passwordReset.delete({ where: { userId } });
       await dbClient.user.delete({ where: { userId } });
-      return sendMessageResponse(
-        res,
-        401,
-        EVENT_MESSAGES.expiredLinkMessage
-      );
+      return sendMessageResponse(res, 401, EVENT_MESSAGES.expiredLinkMessage);
     }
 
     const isValidString = await bcrypt.compare(
@@ -503,7 +493,7 @@ export const updateUser = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
-  console.log('deleteUser')
+  console.log('deleteUser');
   const userId = req.params.userId;
 
   try {

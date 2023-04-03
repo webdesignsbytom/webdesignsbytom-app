@@ -5,17 +5,17 @@ import AddFavBar from '../utils/AddFavBar';
 function Buttons() {
   return (
     <section className='mt-6'>
-      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full'>
+      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full dark:text-gray-100'>
         {/* Classic Button */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
             <AddFavBar />
             <div className='mx-auto'>
-              <button className='w-[120px] mx-auto outline outline-1 outline-gray-400 py-2 px-4'>
+              <button className='w-[120px] mx-auto outline outline-1 outline-gray-400  py-2 px-4'>
                 Click
               </button>
             </div>
-            <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black rounded p-1'>
+            <div className='w-[300px] lg:w-[200px] grid gap-1 border-2 border-solid border-black dark:border-gray-400 rounded p-1'>
               <h3 className='pl-2'>Classic</h3>
               <p className='text-sm text-center'>
                 Standard button with no effect - lets move on..

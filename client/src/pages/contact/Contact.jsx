@@ -19,14 +19,14 @@ function Contact() {
 
   return (
     <>
-      <div className='bg-white dark:bg-black h-screen lg:grid lg:w-full lg:grid-rows-a1a lg:overflow-hidden'>
+      <div className='bg-white dark:bg-black lg:h-screen lg:grid lg:w-full lg:grid-rows-a1a lg:overflow-hidden'>
         <Navbar />
         {/* Main */}
         {!toggleNavigation && (
           <main className='grid mx-4 md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
             {/* Info */}
             <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
-              <article className='m-1 bg-gray-50 dark:bg-gray-400 h-min mb-4 p-4 rounded'>
+              <article className='m-1 bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-min mb-4 p-4 rounded'>
                 <div className='text-center mt-4'>
                   <h1 className='text-2xl font-bold'>Contact Me!</h1>
                 </div>

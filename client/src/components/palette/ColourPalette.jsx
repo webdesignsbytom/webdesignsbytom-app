@@ -276,7 +276,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             className='w-5 ml-4 mt-3 cursor-pointer select-none no__highlights focus:animate-spin active:animate-spin'
             alt='randomize all colours'
           />
-          <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:left-0 lg:top-0 z-10 ml-8 mt-8'>
+          <div className='hidden dark:text-gray-100 absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:left-0 lg:top-0 z-10 ml-8 mt-8'>
             Randomize all colours.
           </div>
         </div>
@@ -324,7 +324,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             </div>
           </div>
         )}
-        <section className='grid lg:grid-cols-xo'>
+        <section className='grid lg:grid-cols-xo dark:text-gray-100'>
           {/* Swatches */}
           <div className='grid grid-cols-5 lg:ml-2 my-3'>
             <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>

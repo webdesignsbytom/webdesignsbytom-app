@@ -16,7 +16,7 @@ import { statusResults } from '../../users/utils/utils';
 
 function Account() {
   const { user } = useContext(UserContext);
-  
+
   const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
@@ -39,19 +39,21 @@ function Account() {
   const [projectResponse, setProjectResponse] = useState(statusResults);
 
   useEffect(() => {
-    client
-      .get(`/users/${user.id}`)
-      .then((res) => {
-        setUpdateUserForm(res.data.data.user);
-        setUserMessages(res.data.data.user.messages);
-        setAllNotifications(res.data.data.user.notifications);
-        setListOfFavorites(res.data.data.user.favorites);
-        setUserProjects(res.data.data.user.projects);
-        setUserDesigns(res.data.data.user.designs);
-      })
-      .catch((err) => {
-        console.error('Unable to get user by id', err);
-      });
+    if (!user.id) {
+      client
+        .get(`/users/${user.id}`)
+        .then((res) => {
+          setUpdateUserForm(res.data.data.user);
+          setUserMessages(res.data.data.user.messages);
+          setAllNotifications(res.data.data.user.notifications);
+          setListOfFavorites(res.data.data.user.favorites);
+          setUserProjects(res.data.data.user.projects);
+          setUserDesigns(res.data.data.user.designs);
+        })
+        .catch((err) => {
+          console.error('Unable to get user by id', err);
+        });
+    }
   }, [user.id]);
 
   useEffect(() => {

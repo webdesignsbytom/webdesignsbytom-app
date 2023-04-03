@@ -5,7 +5,7 @@ import AddFavBar from '../../utils/AddFavBar';
 function ComponentItem({ component }) {
   const { type, name, desc, image } = component;
   return (
-    <li className='border-2 border-black border-solid p-1 rounded'>
+    <li className='border-2 dark:text-gray-100 border-black dark:border-gray-400 border-solid p-1 rounded'>
       <article>
         <div className='flex justify-between'>
           <div>

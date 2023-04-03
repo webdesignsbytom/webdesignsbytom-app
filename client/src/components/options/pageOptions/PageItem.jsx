@@ -6,7 +6,7 @@ function PageItem({ page }) {
   const { type, name, desc, image } = page;
 
   return (
-    <li className='border-2 border-black border-solid p-1 rounded'>
+    <li className='border-2 dark:text-gray-100 border-black border-solid p-1 rounded'>
       <article>
         <div className='flex justify-between'>
           <div>
