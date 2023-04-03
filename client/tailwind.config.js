@@ -10,6 +10,7 @@ module.exports = {
         'news-bg-phone': "url('../assets/img/backgrounds/newsletter-bg-phone.jpg')",
         'maps-bg': "url('../assets/img/backgrounds/earth-bg.png')",
         'maps-bg-phone': "url('../assets/img/backgrounds/earth-bg-phone.png')",
+        '404-cat': "url('../assets/img/404cat.png')",
       },
       fontFamily: {
         'outfit': 'Outfit',
