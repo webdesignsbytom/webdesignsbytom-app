@@ -6,7 +6,9 @@ export const projectInitialData = {
     startDate: new Date(),
     numPages: ``,
     owner: ``,
-    dueDate: ``
+    dueDate: ``,
+    budget: ``,
+    missionStatement: ``
 }
 
 export const initAlert = { status: '', content: '' };
