@@ -1,6 +1,9 @@
 import React from 'react';
+// Components
 import Navbar from '../../components/nav/Navbar';
+// Images
 import Cat from '../../assets/img/404cat.png';
+
 function Error404() {
   return (
     <>
