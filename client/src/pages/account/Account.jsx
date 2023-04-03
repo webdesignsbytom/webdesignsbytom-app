@@ -10,7 +10,7 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
 // Fetch
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Utils
 import { statusResults } from '../../users/utils/utils';
 

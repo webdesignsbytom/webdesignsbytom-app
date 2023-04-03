@@ -11,7 +11,7 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
 // Data
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import AdminUpdate from '../../components/admin/AdminUpdate';
 
 function AdminPanel() {

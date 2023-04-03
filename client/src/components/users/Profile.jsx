@@ -7,7 +7,7 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import { statusResults } from '../../users/utils/utils';
 import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
@@ -37,6 +37,7 @@ function Profile() {
     setUpdateAnimation(true);
 
     // Update user in db
+
   };
 
   const handleChange = (event) => {

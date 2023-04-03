@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Selector from './Selector';
 import ContactsContainer from './ContactsContainer';
 
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 
 function ContactsPhone() {
   const [allContacts, setAllContacts] = useState([]);

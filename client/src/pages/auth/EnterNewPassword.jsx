@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../../components/nav/Navbar';
 // Axios
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 
 function EnterNewPassword() {
   const { userId, uniqueString } = useParams();

@@ -7,7 +7,7 @@ import OptionsNav from './OptionsNav';
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
 // Data
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Utils
 import { designTemplate } from '../../utils/utils';
 
