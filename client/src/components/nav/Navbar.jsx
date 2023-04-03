@@ -310,7 +310,7 @@ function Navbar() {
           </section>
           <div className='hidden md:flex'>
             <SocialBar
-              background={'bg-gray-900 dark:bg-main-colour'}
+              background={'bg-nav-colour dark:bg-main-colour'}
               icons={'text-white dark:text-gray-300'}
             />
           </div>

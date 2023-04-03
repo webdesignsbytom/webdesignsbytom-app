@@ -65,6 +65,7 @@ module.exports = {
         'one': '1fr',
         'xo': '1fr 0.6fr',
         'a1a': 'auto 1fr auto',
+        '1a1': '1fr auto 1fr',
         'aa': 'auto auto',
         'faf': '1fr 0.5fr 1fr',
         '1p1': '1fr 30px 1fr',
