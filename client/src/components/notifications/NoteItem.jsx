@@ -22,13 +22,13 @@ function NoteItem({ notification, markSeen, deleteNotification }) {
               <img
                 onClick={() => markSeen(id)}
                 src={EyeIcon}
-                className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none focus:scale-125 hover:scale-125 active:scale-125'
+                className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none no__highlights focus:scale-125 hover:scale-125 active:scale-125'
                 alt='seen button'
               />
               <img
                 onClick={() => deleteNotification(id)}
                 src={BinIcon}
-                className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none focus:scale-125 hover:scale-125 active:scale-125'
+                className='w-6 h-6 cursor-pointer transition duration-200 ease-in-out select-none no__highlights focus:scale-125 hover:scale-125 active:scale-125'
                 alt='delete button'
               />
             </div>

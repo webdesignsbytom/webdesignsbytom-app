@@ -10,6 +10,7 @@ module.exports = {
         'news-bg-phone': "url('../assets/img/backgrounds/newsletter-bg-phone.jpg')",
         'maps-bg': "url('../assets/img/backgrounds/earth-bg.png')",
         'maps-bg-phone': "url('../assets/img/backgrounds/earth-bg-phone.png')",
+        '404-cat': "url('../assets/img/404cat.png')",
       },
       fontFamily: {
         'outfit': 'Outfit',
@@ -56,6 +57,7 @@ module.exports = {
         'aa': 'auto auto',
         '3x': '3fr 1fr',
         'item': '50px 1fr',
+        'ten-one': '10fr 1fr',
       },
       gridTemplateColumns: {
         'reg': 'auto 1fr',
@@ -64,6 +66,7 @@ module.exports = {
         'one': '1fr',
         'xo': '1fr 0.6fr',
         'a1a': 'auto 1fr auto',
+        '1a1': '1fr auto 1fr',
         'aa': 'auto auto',
         'faf': '1fr 0.5fr 1fr',
         '1p1': '1fr 30px 1fr',

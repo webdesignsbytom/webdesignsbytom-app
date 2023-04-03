@@ -7,14 +7,19 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import { statusResults } from '../../users/utils/utils';
 import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
 function Profile() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   // Form data
-  const [userUpdateForm, setUserUpdateForm] = useState({});
+  const [userUpdateForm, setUserUpdateForm] = useState({
+    email: `${user.email}`,
+    firstName: `${user.firstName}`,
+    lastName: `${user.lastName}`,
+    country: `${user.country}`,
+  });
   // Response and animation
   const [updateAnimation, setUpdateAnimation] = useState(false);
   const [deleteLoadingAnimation, setDeleteLoadingAnimation] = useState(false);
@@ -24,10 +29,24 @@ function Profile() {
 
   let navigate = useNavigate();
 
+  console.log('user', user);
+  console.log('userUpdateForm', userUpdateForm)
+
   const handleUpdateUser = (event) => {
     event.preventDefault();
     setUpdateAnimation(true);
-  };
+
+    // Update user in db
+    // client
+    // .put(`/users/account/update/${user.id}`, userUpdateForm, false)
+    // .then((res) => {
+    //   console.log('data update', res.data);
+    //   setUser(res.data.data.user);
+    // })
+    // .catch((err) => {
+    //   console.error('Unable to update user', err);
+    // });
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -118,15 +137,15 @@ function Profile() {
 
         {/* <!-- Change password button --> */}
         <div className='mb-2'>
-          <SubmitButton
-            loadingAnimation={updateAnimation}
-            mainButtonContent={mainButtonContent}
-            responseMessage={updateResponseMessage}
-            buttonMessage='Change Password'
-            spinnerHeight='h-5'
-            spinnerWidth='w-5'
-            action={openPasswordUpdate}
-          />
+          <button
+            onClick={openPasswordUpdate}
+            type='submit'
+            className='submit__button'
+            data-mdb-ripple='true'
+            data-mdb-ripple-color='light'
+          >
+            Change Password
+          </button>
         </div>
 
         {/* <!-- Submit button --> */}

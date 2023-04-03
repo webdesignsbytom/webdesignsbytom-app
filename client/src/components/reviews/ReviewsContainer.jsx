@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Components
 import ReviewItem from './ReviewItem';
 // Utils

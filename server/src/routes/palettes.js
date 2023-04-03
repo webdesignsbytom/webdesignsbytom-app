@@ -8,12 +8,13 @@ import {
 } from '../controllers/palettes.js';
 import {
   validateAuthentication,
+  validateAdminRole,
   validateDeveloperRole,
 } from '../middleware/auth.js';
 
 const router = Router();
 
-router.get('/', getAllPalettes);
+router.get('/', validateAuthentication, validateAdminRole, getAllPalettes);
 router.get('/user-palettes/:userId', getPalettesFromUser);
 router.get('/:paletteId', getPaletteById);
 router.post('/create', createNewPalette);

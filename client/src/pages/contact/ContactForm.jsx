@@ -4,9 +4,9 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 // Components
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import { statusResults } from '../../users/utils/utils';
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Utils
-import { contactFormTemplate } from '../../utils/utils';
+import { contactFormTemplate } from '../../utils/TemplateUtils';
 
 function ContactForm() {
   const [contactSuccessMessage, setContactSuccessMessage] =
@@ -20,7 +20,6 @@ function ContactForm() {
 
   useEffect(() => {
     if (location.state) {
-      console.log('location.state', location.state)
       setFormData({
         ...formData,
         email: location.state
@@ -30,7 +29,6 @@ function ContactForm() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log('VALUE', value);
 
     if (name === 'email') {
       setContactErrorMessage({
@@ -76,7 +74,7 @@ function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className='lg:w-full lg:my-auto lg:px-2'>
+      <form onSubmit={handleSubmit} className='lg:w-full lg:my-auto dark:text-gray-100 lg:px-2'>
         {/* <!-- Email input --> */}
         <div className='mb-1'>
           <label htmlFor='email'>Email:</label>

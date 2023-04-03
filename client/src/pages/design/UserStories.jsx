@@ -5,7 +5,7 @@ import { UserContext } from '../../context/UserContext';
 import QuestionMark from '../../assets/svg/questionMark.svg';
 import BinIcon from '../../assets/svg/bin.svg';
 // Utils
-import { userStoryTemplate } from '../../utils/utils';
+import { userStoryTemplate } from '../../utils/TemplateUtils';
 import { statusResults } from '../../users/utils/utils';
 
 function UserStories({

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import { SubmitButton } from '../../components/utils/SubmitButtons';
@@ -7,8 +7,12 @@ import { ToggleContext } from '../../context/ToggleContext';
 import { statusResults } from '../../users/utils/utils';
 // Icons
 import OpenEye from '../../assets/svg/eye.svg';
+import { TiArrowBack } from 'react-icons/ti';
 // Functions
-import { showPassword, showConfirmPassword } from '../../users/utils/PasswordReveal';
+import {
+  showPassword,
+  showConfirmPassword,
+} from '../../users/utils/PasswordReveal';
 
 function UpdatePassword() {
   const { toggleNavigation } = useContext(ToggleContext);
@@ -64,6 +68,13 @@ function UpdatePassword() {
       <Navbar />
       {!toggleNavigation && (
         <main className='mx-2'>
+          <section className='my-4'>
+            <Link to='/account'>
+              <div className='p-1 bg-main-colour rounded-xl text-white w-fit'>
+                <TiArrowBack size={30} />
+              </div>
+            </Link>
+          </section>
           <div className='my-4'>
             <h1>Password update</h1>
           </div>

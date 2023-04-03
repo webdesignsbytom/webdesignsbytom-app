@@ -7,15 +7,13 @@ function PortfolioDisplay() {
   const navigate = useNavigate();
 
   const displayInfo = (item) => {
-    let str = item.title.replace(/\s/g, "-");
-    str = str.toLowerCase();
-    navigate(`/portfolio-item/${str}`, {
-      replace: true, state: item,
+    navigate(`/portfolio-item/${item.url}`, {
+      replace: false,
     });
   };
 
   return (
-    <section id='portfolio' className='grid lg:grid-rows-reg mb-4'>
+    <section id='portfolio' className='grid lg:grid-rows-reg my-10 py-10 dark:text-gray-400'>
       <section className='text-center mt-8 mb-4'>
         <h5 className='font-semibold'>My Recent Work</h5>
         <h2 className='text-2xl font-bold'>Portfolio</h2>
@@ -25,7 +23,7 @@ function PortfolioDisplay() {
         {portfolioData.map((item, index) => {
           return (
             <article
-              className='bg-gray-200 group rounded-xl text-center p-4 grid gap-2 hover:outline hover:outline-4 hover:outline-black hover:bg-gray-900 cursor-pointer'
+              className='bg-gray-200 dark:text-gray-700 group rounded-xl text-center p-4 grid gap-2 hover:outline hover:outline-4 hover:outline-black dark:hover:outline-white hover:bg-gray-900 cursor-pointer'
               key={index}
             >
               <h3 className='mb-2 group-hover:text-white text-xl font-semibold'>
@@ -56,7 +54,8 @@ function PortfolioDisplay() {
                 </div>
                 <section className='text-left mx-1'>
                   <p className='leading-5 group-hover:text-white'>
-                    <span className='font-semibold'>Purpose:</span> {item.headline}
+                    <span className='font-semibold'>Purpose:</span>{' '}
+                    {item.headline}
                   </p>
                 </section>
                 <div className='flex gap-4 mt-2'>

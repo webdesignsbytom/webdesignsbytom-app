@@ -110,7 +110,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-12 h-12 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-12 h-12 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path
@@ -127,7 +127,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
           <main
             className={`grid h-full w-full justify-center items-center text-${currentText}`}
           >
-            <header className='absolute hidden md:flex top-0 right-0 w-fit'>
+            <header className='absolute hidden md:flex top-1 right-1 w-fit'>
               <nav>
                 <ul className='flex text-xl gap-4 py-2 px-4'>
                   <li
@@ -247,7 +247,7 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-12 h-12 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-12 h-12 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path

@@ -107,7 +107,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-6 h-6 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-6 h-6 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path
@@ -137,7 +137,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
             <section>
               <article>
                 <div className='border-transparent-black border-solid border-[6px] p-2 rounded-tr-2xl rounded-bl-2xl'>
-                  <section className='bg-transparent-black p-2 md:bg-none md:bg-transparent rounded-tr-2xl rounded-bl-2xl'>
+                  <section className='bg-transparent-black p-2 rounded-tr-2xl rounded-bl-2xl'>
                     <h1 className='grid text-5xl font-semibold font-outfit'>
                       <span className='text-left -ml-4 md:-ml-8'>
                         Web Designs
@@ -214,7 +214,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-12 h-12 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-12 h-12 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path

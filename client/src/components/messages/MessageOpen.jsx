@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { statusResults } from '../../users/utils/utils';
-import client from '../../utils/client';
-import { messageTemplate } from '../../utils/utils';
+import client from '../../utils/axios/client';
+import { messageTemplate } from '../../utils/TemplateUtils';
 import Navbar from '../nav/Navbar';
 import { SubmitButton } from '../utils/SubmitButtons';
 

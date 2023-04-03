@@ -1,4 +1,4 @@
-import client from './client';
+import client from '../utils/axios/client'
 
 export function getUserById(userId, setUser) {
   client

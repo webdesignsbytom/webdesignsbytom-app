@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 function SalesCta() {
   return (
-    <section className='relative w-full h-full mt-6 md:my-28'>
-      <div className='absolute hidden w-full bg-gray-50 lg:block h-96' />
-      <div className='relative px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>
+    <section className='relative w-full py-10 bg-gray-100 h-full md:my-28'>
+      <div className='relative px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10'>
         {/* Titles */}
         <div className='max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12'>
           <h2 className='max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto'>
@@ -35,7 +34,7 @@ function SalesCta() {
               <span className='relative'>Design Tool Available</span>
             </span>{' '}
           </h2>
-          <article>
+          <article className='mb-4'>
             <p className='text-base text-gray-700 md:text-lg'>
               You can create a basic design for your website using my custom
               build tool. Pick from navigation and footer options. Choose from
@@ -53,7 +52,7 @@ function SalesCta() {
           </article>
         </div>
 
-        <section className='flex gap-4'>
+        <section className='flex gap-4 mt-10'>
           <Link
             to='/design'
             className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'

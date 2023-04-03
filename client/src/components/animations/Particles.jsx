@@ -3,6 +3,17 @@ import React, { useEffect } from 'react';
 function Particles() {
   const useScript = (url) => {
     useEffect(() => {
+      let bgColour = `#000000`
+      let particleColour = `#000000`
+
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        bgColour = `#ffffff`
+        particleColour = `#ffffff`
+      }
+
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       const container = document.querySelector('#particles');
@@ -22,7 +33,6 @@ function Particles() {
       };
 
       container.addEventListener('mousemove', function (e) {
-        console.log(e);
         mouse.x = e.x;
         mouse.y = e.y;
       });
@@ -42,7 +52,7 @@ function Particles() {
         draw() {
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-          ctx.fillStyle = `#000000`;
+          ctx.fillStyle = bgColour;
           ctx.fill();
         }
         // check particle position
@@ -95,7 +105,7 @@ function Particles() {
               Math.random() * (rect.height - size * 2 - size * 2) + size * 2;
             let directionX = Math.random() * 5 - 2.5;
             let directionY = Math.random() * 5 - 2.5;
-            let colour = '#000000';
+            let colour = particleColour;
 
             particlesArray.push(
               new Particle(x, y, directionX, directionY, size, colour)
@@ -111,7 +121,7 @@ function Particles() {
               Math.random() * (rect.height - size * 2 - size * 2) + size * 2;
             let directionX = Math.random() * 5 - 2.5;
             let directionY = Math.random() * 5 - 2.5;
-            let colour = '#000000';
+            let colour = particleColour;
 
             particlesArray.push(
               new Particle(x, y, directionX, directionY, size, colour)
@@ -138,7 +148,14 @@ function Particles() {
                 opacityValue = 1 - distance / 5000;
               }
 
-              ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
+              if (
+                window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+              ) {
+                ctx.strokeStyle = 'rgba(255,255,255,' + opacityValue + ')';
+              } else {
+                ctx.strokeStyle = 'rgba(0,0,0,' + opacityValue + ')';
+              }
               ctx.beginPath();
               ctx.beginPath();
               ctx.moveTo(particlesArray[a].x, particlesArray[a].y);

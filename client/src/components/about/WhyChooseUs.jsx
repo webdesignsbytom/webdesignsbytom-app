@@ -4,7 +4,7 @@ import React from 'react';
 function WhyChooseUs() {
   return (
     <div className='container mb-6 px-6 mx-auto md:my-20'>
-      <section className='text-gray-800'>
+      <section className='text-gray-800 dark:text-gray-400'>
         <h2 className='text-3xl font-bold mb-12 text-center'>
           Why WebDesignsByTom is so great
         </h2>

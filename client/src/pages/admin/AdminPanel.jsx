@@ -11,15 +11,13 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
 // Data
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 import AdminUpdate from '../../components/admin/AdminUpdate';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
   const { toggleNavigation } = useContext(ToggleContext);
 
-  const [updateUserForm, setUpdateUserForm] = useState(user);
-  const [resendVerification, setResendVerification] = useState(true);
   // Users
   const [allUsers, setAllUsers] = useState([]);
   // Contact form messages
@@ -69,13 +67,6 @@ function AdminPanel() {
       });
   }, [user.id]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (!user.isVerified) {
-        setResendVerification(false);
-      }
-    }, 2000);
-  }, [user.isVerified]);
 
   return (
     <>

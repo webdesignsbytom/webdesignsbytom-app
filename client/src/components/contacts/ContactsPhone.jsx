@@ -3,15 +3,13 @@ import React, { useEffect, useState } from 'react';
 import Selector from './Selector';
 import ContactsContainer from './ContactsContainer';
 
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 
 function ContactsPhone() {
   const [allContacts, setAllContacts] = useState([]);
   const [displayContacts, setDisplayContacts] = useState('all-contacts');
 
   const [deletedContact, setDeletedContact] = useState({});
-
-  console.log('display contacts', displayContacts);
   
   useEffect(() => {
     client

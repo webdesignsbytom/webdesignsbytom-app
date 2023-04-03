@@ -19,10 +19,9 @@ function PortfolioHome() {
     toggleEvents,
     toggleContacts,
   } = useContext(ToggleContext);
-  console.log('toggleNavigation', toggleNavigation);
 
   return (
-    <div>
+    <div className='dark:bg-black'>
       <Navbar />
       {(!toggleNavigation ||
         !toggleNotifications ||

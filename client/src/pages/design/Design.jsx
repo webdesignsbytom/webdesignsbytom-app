@@ -7,9 +7,9 @@ import OptionsNav from './OptionsNav';
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
 // Data
-import client from '../../utils/client';
+import client from '../../utils/axios/client';
 // Utils
-import { designTemplate } from '../../utils/utils';
+import { designTemplate } from '../../utils/TemplateUtils';
 
 function Design() {
   const { user } = useContext(UserContext);
@@ -27,17 +27,13 @@ function Design() {
   const [openDesign, setOpenDesign] = useState(designTemplate);
 
   useEffect(() => {
-    console.log('get designs');
     if (user.id) {
       client
         .get(`/designs/user-designs/${user.id}`)
         .then((res) => {
-          console.log('AAAA');
           if (res.data.data.designs.length === 0) {
-            console.log('BBBB');
             return;
           } else {
-            console.log('XXXX');
             setSavedDesigns(res.data.data.designs);
             setOpenDesign(res.data.data.designs[0]);
           }
@@ -45,9 +41,6 @@ function Design() {
         .catch((err) => console.error('Unable to get designs', err.response));
     }
   }, [user.id]);
-
-  console.log('toggleMessages', toggleMessages);
-  console.log('toggleNotifications', toggleNotifications);
 
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>

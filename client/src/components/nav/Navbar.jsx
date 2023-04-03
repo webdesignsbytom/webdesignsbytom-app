@@ -76,7 +76,6 @@ function Navbar() {
   const displayEvents = () => {
     setToggleEvents(true);
     setToggleNotifications(false);
-    setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
     setToggleContacts(false);
@@ -84,7 +83,6 @@ function Navbar() {
 
   const displayNotifications = () => {
     setToggleNotifications(true);
-    setToggleNavigation(false);
     setToggleMessages(false);
     setToggleTests(false);
     setToggleEvents(false);
@@ -93,7 +91,6 @@ function Navbar() {
 
   const displayMessages = () => {
     setToggleMessages(true);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleTests(false);
     setToggleEvents(false);
@@ -103,7 +100,6 @@ function Navbar() {
   const displayTest = () => {
     setToggleTests(true);
     setToggleMessages(false);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleEvents(false);
     setToggleContacts(false);
@@ -113,7 +109,6 @@ function Navbar() {
     setToggleContacts(true);
     setToggleTests(false);
     setToggleMessages(false);
-    setToggleNavigation(false);
     setToggleNotifications(false);
     setToggleEvents(false);
   };
@@ -150,7 +145,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour dark:bg-black lg:w-full overflow-hidden'>
+      <div className='h-16 mx-auto px-2 sm:px-6 lg:px-4 bg-nav-colour lg:w-full overflow-hidden'>
         <section className='flex relative h-16 items-center justify-between px-4'>
           {/* Logo */}
           <div
@@ -162,7 +157,7 @@ function Navbar() {
               closeEvents();
               closeContacts();
             }}
-            className='inset-y-0 left-0 flex items-center cursor-pointer'
+            className='inset-y-0 no__highlights left-0 flex items-center cursor-pointer select-none no__highlights'
           >
             <img src={WDBT} className='w-10' alt="Web design by Tom company logo" />
           </div>
@@ -181,7 +176,7 @@ function Navbar() {
                 closeEvents();
                 closeContacts();
               }}
-              className='md:hidden'
+              className='md:hidden no__highlights'
             >
               <span className='cursor-pointer text-white hover:text-hover-grey'>
                 <svg
@@ -190,7 +185,7 @@ function Navbar() {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-6 h-6 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-6 h-6 transition no__highlights duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path
@@ -310,8 +305,8 @@ function Navbar() {
           </section>
           <div className='hidden md:flex'>
             <SocialBar
-              background={'bg-gray-900'}
-              icons={'text-white dark:text-colour-dark'}
+              background={'bg-nav-colour dark:bg-main-colour'}
+              icons={'text-white dark:text-gray-300'}
             />
           </div>
         </section>
@@ -322,7 +317,7 @@ function Navbar() {
         <div className='absolute bg-black w-full min-h-[calc(100%_-_4rem)] overflow-hidden z-20 md:hidden'>
           <ul className='grid gap-2 mt-2'>
             {/* Home */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <Link className='phone__nav__link' to='/' onClick={toggleNavbar}>
                 <img src={Home} className='w-8 ml-1' alt='home' />
                 <div className='flex items-center text-xl ml-1'>
@@ -333,7 +328,7 @@ function Navbar() {
             {user.email && (
               <>
                 {/* Account */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     to='/account'
                     className='phone__nav__link'
@@ -346,7 +341,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Notifications */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     className='phone__nav__link'
                     onClick={() => {
@@ -365,7 +360,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Messages */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     className='phone__nav__link'
                     onClick={() => {
@@ -386,7 +381,7 @@ function Navbar() {
               </>
             )}
             {/* Design */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <Link
                 to='/design'
                 className='phone__nav__link'
@@ -399,7 +394,7 @@ function Navbar() {
               </Link>
             </li>
             {/* Store */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <Link
                 to='/store'
                 className='phone__nav__link'
@@ -412,7 +407,7 @@ function Navbar() {
               </Link>
             </li>
             {/* Contact */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <Link
                 to='/contact'
                 className='phone__nav__link'
@@ -425,7 +420,7 @@ function Navbar() {
               </Link>
             </li>
             {/* Portfolio */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <Link
                 to='/portfolio'
                 className='phone__nav__link'
@@ -440,7 +435,7 @@ function Navbar() {
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
               <>
                 {/* Admin */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     to='/admin'
                     className='phone__nav__link'
@@ -453,7 +448,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Contacts */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     className='phone__nav__link'
                     onClick={() => {
@@ -476,7 +471,7 @@ function Navbar() {
             {user.role === 'DEVELOPER' && (
               // Developer
               <>
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     to='/development'
                     className='phone__nav__link'
@@ -493,7 +488,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Events */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     className='phone__nav__link'
                     onClick={() => {
@@ -512,7 +507,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Test Page */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     className='phone__nav__link'
                     onClick={() => {
@@ -535,7 +530,7 @@ function Navbar() {
             {!user.email && (
               <>
                 {/* Login */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     to='/login'
                     className='phone__nav__link'
@@ -548,7 +543,7 @@ function Navbar() {
                   </Link>
                 </li>
                 {/* Register */}
-                <li className='phone__nav__li'>
+                <li className='phone__nav__li no__highlights'>
                   <Link
                     to='/register'
                     className='phone__nav__link'
@@ -564,7 +559,7 @@ function Navbar() {
             )}
             {user.email && (
               // Logout
-              <li className='phone__nav__li'>
+              <li className='phone__nav__li no__highlights'>
                 <Link onClick={signOut} className='phone__nav__link'>
                   <img src={Logout} className='w-8 ml-1' alt='logout' />
                   <div className='flex items-center text-xl ml-1'>
@@ -574,7 +569,7 @@ function Navbar() {
               </li>
             )}
             {/* Search */}
-            <li className='phone__nav__li'>
+            <li className='phone__nav__li no__highlights'>
               <div className='flex'>
                 <img src={Search} className='w-8 ml-1' alt='search' />
                 <input
@@ -585,7 +580,7 @@ function Navbar() {
               </div>
             </li>
             {/* Social links */}
-            <div className='my-2 flex justify-center'>
+            <div className='my-2 flex justify-center no__highlights'>
               <SocialBar
                 background={'bg-black'}
                 icons={'text-white dark:text-colour-dark text-3xl'}
