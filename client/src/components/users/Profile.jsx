@@ -10,7 +10,6 @@ import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
 import client from '../../utils/client';
 import { statusResults } from '../../users/utils/utils';
 import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
-import { profileUpdateInit } from '../../utils/DataUtils';
 
 function Profile() {
   const { user } = useContext(UserContext);
@@ -29,8 +28,10 @@ function Profile() {
     useState(statusResults);
 
   let navigate = useNavigate();
+
   console.log('user', user);
   console.log('userUpdateForm', userUpdateForm)
+
   const handleUpdateUser = (event) => {
     event.preventDefault();
     setUpdateAnimation(true);
