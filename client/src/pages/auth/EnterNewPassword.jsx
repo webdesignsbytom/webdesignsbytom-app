@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+// Components
 import Navbar from '../../components/nav/Navbar';
 // Axios
 import client from '../../utils/axios/client';
 
 function EnterNewPassword() {
   const { userId, uniqueString } = useParams();
-  console.log('userId', userId);
-  console.log('uniqueString', uniqueString);
+
   const [successPasswordReset, setSuccessPasswordReset] = useState('');
   const [newPassword, setNewPassword] = useState({
     password: '',
@@ -59,45 +59,51 @@ function EnterNewPassword() {
   };
   return (
     <>
-      <Navbar />
-      <div>EnterNewPassword</div>
-      <form onSubmit={handleSubmit}>
-        {/* <!-- Password input --> */}
-        <div className='mb-6'>
-          <input
-            type='password'
-            name='password'
-            className='standard__inputs'
-            placeholder='Password'
-            onChange={handleChange}
-          />
-        </div>
+      <div className='w-full dark:bg-black'>
+        <Navbar />
+        <main>
+          <article className='dark:text-white text-center my-4'>
+            <h1>Enter New Password</h1>
+          </article>
 
-        {/* <!-- Confirm Password input --> */}
-        <div className='mb-6'>
-          <input
-            type='password'
-            name='confirmPassword'
-            className='standard__inputs'
-            placeholder='Confirm Password'
-            onChange={handleChange}
-          />
-        </div>
+          <form onSubmit={handleSubmit}>
+            {/* <!-- Password input --> */}
+            <div className='mb-6'>
+              <input
+                type='password'
+                name='password'
+                className='standard__inputs'
+                placeholder='Password'
+                onChange={handleChange}
+              />
+            </div>
 
-        {/* <!-- Submit button --> */}
-        <div className='mb-2'>
-          <button
-            type='submit'
-            className='submit__button'
-            data-mdb-ripple='true'
-            data-mdb-ripple-color='light'
-          >
-            Submit New Password
-          </button>
-        </div>
-      </form>
+            {/* <!-- Confirm Password input --> */}
+            <div className='mb-6'>
+              <input
+                type='password'
+                name='confirmPassword'
+                className='standard__inputs'
+                placeholder='Confirm Password'
+                onChange={handleChange}
+              />
+            </div>
 
-      {successPasswordReset && <h3>SUCCESS {page.title}</h3>}
+            {/* <!-- Submit button --> */}
+            <div className='mb-2'>
+              <button
+                type='submit'
+                className='submit__button'
+                data-mdb-ripple='true'
+                data-mdb-ripple-color='light'
+              >
+                Submit New Password
+              </button>
+            </div>
+          </form>
+        </main>
+        {successPasswordReset && <h3>SUCCESS {page.title}</h3>}
+      </div>
     </>
   );
 }
