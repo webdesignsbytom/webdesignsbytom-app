@@ -10,14 +10,13 @@ import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
 // Fetch
-import client from '../../utils/axios/client';
 // Utils
 import { statusResults } from '../../users/utils/utils';
+import client from '../../utils/axios/client';
 
 function Account() {
   const { user } = useContext(UserContext);
 
-  const [updateUserForm, setUpdateUserForm] = useState(user);
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
@@ -43,16 +42,22 @@ function Account() {
       client
         .get(`/users/${user.id}`)
         .then((res) => {
-          setUpdateUserForm(res.data.data.user);
-          setUserMessages(res.data.data.user.messages);
-          setAllNotifications(res.data.data.user.notifications);
-          setListOfFavorites(res.data.data.user.favorites);
-          setUserProjects(res.data.data.user.projects);
-          setUserDesigns(res.data.data.user.designs);
+          console.log('response xxx', res.data);
+          // setUserMessages(res.data.data.user.messages);
+          // setAllNotifications(res.data.data.user.notifications);
+          // setListOfFavorites(res.data.data.user.favorites);
+          // setUserProjects(res.data.data.user.projects);
+          // setUserDesigns(res.data.data.user.designs);
         })
         .catch((err) => {
           console.error('Unable to get user by id', err);
         });
+    } else {
+      setUserMessages(user.messages);
+      setAllNotifications(user.notifications);
+      setListOfFavorites(user.favorites);
+      setUserProjects(user.projects);
+      setUserDesigns(user.designs);
     }
   }, [user.id]);
 
