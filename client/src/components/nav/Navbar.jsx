@@ -157,7 +157,7 @@ function Navbar() {
               closeEvents();
               closeContacts();
             }}
-            className='inset-y-0 left-0 flex items-center cursor-pointer select-none'
+            className='inset-y-0 left-0 flex items-center cursor-pointer select-none no__highlights'
           >
             <img src={WDBT} className='w-10' alt="Web design by Tom company logo" />
           </div>
@@ -185,7 +185,7 @@ function Navbar() {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-6 h-6 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-6 h-6 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path

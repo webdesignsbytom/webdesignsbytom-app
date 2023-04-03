@@ -273,7 +273,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
         <div className='relative group flex align-middle h-full'>
           <img
             src={changeIcon}
-            className='w-5 ml-4 mt-3 cursor-pointer select-none focus:animate-spin active:animate-spin'
+            className='w-5 ml-4 mt-3 cursor-pointer select-none no__highlights focus:animate-spin active:animate-spin'
             alt='randomize all colours'
           />
           <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:left-0 lg:top-0 z-10 ml-8 mt-8'>
@@ -375,7 +375,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 id='cardOneBg'
                 title='card'
                 src={changeIcon}
-                className='w-5 absolute right-1 select-none top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                className='w-5 absolute right-1 select-none no__highlights top-1 cursor-pointer focus:animate-spin active:animate-spin'
                 alt='change to new random colour'
               />
             </div>
@@ -427,7 +427,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 id='cardTwoBg'
                 title='card'
                 src={changeIcon}
-                className='w-5 absolute select-none right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                className='w-5 absolute select-none no__highlights right-1 top-1 cursor-pointer focus:animate-spin active:animate-spin'
                 alt='change to new random colour'
               />
             </div>
@@ -479,7 +479,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 id='cardThreeBg'
                 title='card'
                 src={changeIcon}
-                className='w-5 absolute right-1 select-none top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                className='w-5 absolute right-1 no__highlights top-1 cursor-pointer focus:animate-spin active:animate-spin'
                 alt='change to new random colour'
               />
             </div>
@@ -531,7 +531,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 id='cardFourBg'
                 title='card'
                 src={changeIcon}
-                className='w-5 absolute right-1 select-none top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                className='w-5 absolute right-1 no__highlights select-none top-1 cursor-pointer focus:animate-spin active:animate-spin'
                 alt='change to new random colour'
               />
             </div>
@@ -583,7 +583,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 id='cardFiveBg'
                 title='card'
                 src={changeIcon}
-                className='w-5 absolute right-1 select-none top-1 cursor-pointer focus:animate-spin active:animate-spin'
+                className='w-5 absolute right-1 select-none no__highlights top-1 cursor-pointer focus:animate-spin active:animate-spin'
                 alt='change to new random colour'
               />
             </div>

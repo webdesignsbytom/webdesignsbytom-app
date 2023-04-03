@@ -23,7 +23,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayEvents }) {
               }
             >
               <div className='block'>
-                <div className='w-full select-none'>All</div>
+                <div className='w-full select-none no__highlights'>All</div>
               </div>
             </label>
           </li>
@@ -45,7 +45,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayEvents }) {
               }
             >
               <div className='block'>
-                <div className='w-full select-none'>Error</div>
+                <div className='w-full select-none no__highlights'>Error</div>
               </div>
             </label>
           </li>
@@ -67,7 +67,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayEvents }) {
               }
             >
               <div className='block'>
-                <div className='w-full select-none'>200</div>
+                <div className='w-full select-none no__highlights'>200</div>
               </div>
             </label>
           </li>

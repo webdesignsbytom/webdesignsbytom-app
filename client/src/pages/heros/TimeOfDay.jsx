@@ -216,7 +216,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-8 h-8 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-8 h-8 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path
@@ -406,7 +406,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                   viewBox='0 0 24 24'
                   strokeWidth='1.5'
                   stroke='currentColor'
-                  className='w-12 h-12 transition duration-200 ease-in-out select-none focus:scale-125 active:scale-125'
+                  className='w-12 h-12 transition duration-200 ease-in-out select-none no__highlights focus:scale-125 active:scale-125'
                   data-te-animation-init
                 >
                   <path

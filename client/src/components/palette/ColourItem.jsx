@@ -47,16 +47,16 @@ function ColourItem({
             id={colour.id}
             style={{ backgroundColor: `${colour.css}` }}
             onClick={() => openSmallPicker(colour)}
-            className='select-none'
+            className='no__highlights'
           ></div>
         </div>
         {/* Monitor */}
-        <div className='hidden lg:grid border-2 cursor-pointer border-black border-solid rounded w-[30px] grid-rows-1 overflow-hidden select-none'>
+        <div className='hidden lg:grid border-2 cursor-pointer border-black border-solid rounded w-[30px] grid-rows-1 overflow-hidden select-none no__highlights'>
           <div
             id={colour.id}
             style={{ backgroundColor: `${colour.css}` }}
             onClick={() => openBigPicker(colour)}
-            className='select-none'
+            className='select-none no__highlights'
           ></div>
         </div>
       </section>

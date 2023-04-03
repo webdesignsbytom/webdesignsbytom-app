@@ -20,7 +20,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayNotifications }) 
               className={displayNotifications === 'all-notifications' ? 'active__select' : 'inactive__select'}
             >
               <div className='block'>
-                <div className='w-full select-none'>All</div>
+                <div className='w-full select-none no__highlights'>All</div>
               </div>
             </label>
           </li>
@@ -38,7 +38,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayNotifications }) 
               className={displayNotifications === 'seen-notifications' ? 'active__select' : 'inactive__select'}
             >
               <div className='block'>
-                <div className='w-full select-none'>Seen</div>
+                <div className='w-full select-none no__highlights'>Seen</div>
               </div>
             </label>
           </li>
@@ -57,7 +57,7 @@ function Selector({ selectViewed, selectAll, selectNew, displayNotifications }) 
 
             >
               <div className='block'>
-                <div className='w-full select-none'>New</div>
+                <div className='w-full select-none no__highlights'>New</div>
               </div>
             </label>
           </li>

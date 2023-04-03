@@ -39,7 +39,7 @@ function UserItem({ user }) {
               <img
                 src={BinIcon}
                 alt='delete user account'
-                className='w-4 cursor-pointer transition duration-200 ease-in-out select-none focus:scale-125 hover:scale-125 active:scale-125'
+                className='w-4 cursor-pointer transition duration-200 ease-in-out no__highlights select-none focus:scale-125 hover:scale-125 active:scale-125'
               />
             </div>
           </section>
