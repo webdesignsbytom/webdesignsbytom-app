@@ -7,7 +7,7 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 import UserCard from './UserCard';
 // Utils
 import SmallCountrySelect from '../../users/utils/SmallCountrySelect';
-import client from '../../utils/axios/client';
+import client from '../../utils/client';
 import { statusResults } from '../../users/utils/utils';
 import { SubmitButton, DeleteButton } from '../utils/SubmitButtons';
 
@@ -46,7 +46,7 @@ function Profile() {
     // .catch((err) => {
     //   console.error('Unable to update user', err);
     // });
-  };
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
