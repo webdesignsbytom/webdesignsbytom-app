@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// Images
+import DevicesImage from '../../assets/img/sales/devices.jpg'
+import CodeImage from '../../assets/img/sales/code3.jpg'
+import Heroes from '../../assets/img/sales/heros-expanding.png'
 
 function AboutSection() {
   return (
@@ -12,15 +16,15 @@ function AboutSection() {
               <div className='w-full px-3 sm:px-4 xl:w-1/2'>
                 <div className='py-3 sm:py-4'>
                   <img
-                    src='https://cdn.tailgrids.com/2.0/image/marketing/images/about/about-01/image-1.jpg'
-                    alt=''
-                    className='w-full rounded-2xl'
+                    src={Heroes}
+                    alt='heroes expanding out of screen'
+                    className='w-full bg-gray-300 rounded-2xl mt-4'
                   />
                 </div>
                 <div className='py-3 sm:py-4'>
                   <img
-                    src='https://cdn.tailgrids.com/2.0/image/marketing/images/about/about-01/image-2.jpg'
-                    alt=''
+                    src={CodeImage}
+                    alt='code on screen'
                     className='w-full rounded-2xl'
                   />
                 </div>
@@ -28,8 +32,8 @@ function AboutSection() {
               <div className='w-full px-3 sm:px-4 xl:w-1/2'>
                 <div className='relative z-10 my-4'>
                   <img
-                    src='https://cdn.tailgrids.com/2.0/image/marketing/images/about/about-01/image-3.jpg'
-                    alt=''
+                    src={DevicesImage}
+                    alt='mutliple devices on table'
                     className='w-full rounded-2xl'
                   />
                   <span className='absolute -right-7 -bottom-7 z-[-1]'>
