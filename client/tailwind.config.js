@@ -11,6 +11,7 @@ module.exports = {
         'maps-bg': "url('../assets/img/backgrounds/earth-bg.png')",
         'maps-bg-phone': "url('../assets/img/backgrounds/earth-bg-phone.png')",
         '404-cat': "url('../assets/img/404cat.png')",
+        'building-img': "url('../assets/img/backgrounds/building-image1.png')",
       },
       fontFamily: {
         'outfit': 'Outfit',
@@ -30,7 +31,9 @@ module.exports = {
         'colour-med': '#94a3b8',
         'colour-dark': '#1e293b',
         'transparent-black': 'rgba(0, 0, 0, 0.65)',
+        'transparent-black-2': 'rgba(0, 0, 0, 0.85)',
         'transparent-white': 'rgba(255, 255, 255, 0.65)',
+        'transparent-white-2': 'rgba(255, 255, 255, 0.45)',
         'transparent-purple': 'rgba(147, 51, 234, 0.65)',
         'transparent-green': 'rgba(22, 163, 74, 0.65)',
         'transparent-yellow': 'rgba(234, 179, 8, 0.65)',
