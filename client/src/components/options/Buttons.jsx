@@ -5,7 +5,7 @@ import AddFavBar from '../utils/AddFavBar';
 function Buttons() {
   return (
     <section className='mt-6'>
-      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full dark:text-gray-100'>
+      <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full dark:text-gray-100'>
         {/* Classic Button */}
         <li className='mb-10'>
           <article className='grid gap-4 justify-center'>
