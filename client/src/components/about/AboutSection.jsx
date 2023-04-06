@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 // Images
 import DevicesImage from '../../assets/img/sales/devices.jpg'
 import CodeImage from '../../assets/img/sales/code3.jpg'
 import Heroes from '../../assets/img/sales/heros-expanding.png'
 
-function AboutSection() {
+function AboutSection({ myRef }) {
+
+  const executeScroll = () => myRef.current.scrollIntoView()  
+
   return (
     <section className='grid overflow-hidden dark:text-gray-100 mt-6 md:mt-0 mb-12 mx-4'>
       <div className='container mx-auto'>
@@ -660,7 +663,7 @@ function AboutSection() {
                   </span>
                 </Link>
                 <Link
-                  href='#pricing'
+                  onClick={executeScroll}
                   className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
                 >
                   <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-green-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
