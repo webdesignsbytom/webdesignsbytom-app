@@ -17,18 +17,17 @@ function PageItem({
   };
 
   const addRemovePageToDesign = (page) => {
-    console.log('DESIGN', page);
-    console.log('savedPages', savedPages);
     let foundPage = savedPages.find((e) => e.name === page.name);
 
     if (foundPage) {
-      let newSaves = savedPages
-      let pageIndex = newSaves.indexOf((e) => e.name === foundPage.name);
-      console.log('pageIndex', pageIndex);
-      console.log('newArray', newSaves)
+      let newArray = savedPages
+      let pageName = foundPage.name
+      let index = newArray.findIndex((e) => e.name === pageName)
+      newArray.splice(index, 1);
+      setSavedPages(newArray);
+      return 
     }
 
-    console.log('foundPage', foundPage);
     setSavedPages([...savedPages, page]);
   };
 
@@ -41,9 +40,9 @@ function PageItem({
             <h4 className='text-sm'>Type: {type}</h4>
           </div>
           <AddFavBar
-            page={page}
-            addRemovePageToFavorites={addRemovePageToFavorites}
-            addRemovePageToDesign={addRemovePageToDesign}
+            object={page}
+            addRemoveFavorites={addRemovePageToFavorites}
+            addRemoveDesign={addRemovePageToDesign}
           />
         </div>
 
