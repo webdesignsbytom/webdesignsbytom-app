@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
+  const [activeNav, setActiveNav] = useState('nav');
+
   const setDisplay = (event) => {
     const { id } = event.target;
+    setActiveNav(id);
     setDisplayElement(id);
   };
 
@@ -17,26 +20,54 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
             <ul className='mb-2 mt-2'>
               <section className='grid gap-2 grid-cols-3 lg:grid-cols-none'>
                 {/* Nav */}
-                <li className='account__link' id='nav' onClick={setDisplay}>
+                <li
+                  className={
+                    activeNav === 'nav'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
+                  id='nav'
+                  onClick={setDisplay}
+                >
                   <button className='lg:pl-2' id='nav'>
                     Nav/Footer
                   </button>
                 </li>
                 {/* Colour theme */}
-                <li className='account__link' id='palette' onClick={setDisplay}>
+                <li
+                  className={
+                    activeNav === 'palette'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
+                  id='palette'
+                  onClick={setDisplay}
+                >
                   <button className='lg:pl-2' id='palette'>
                     Colour Theme
                   </button>
                 </li>
                 {/* Pages */}
-                <li className='account__link' id='pages' onClick={setDisplay}>
+                <li
+                  className={
+                    activeNav === 'pages'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
+                  id='pages'
+                  onClick={setDisplay}
+                >
                   <button className='lg:pl-2' id='pages'>
                     Pages
                   </button>
                 </li>
                 {/* Components */}
                 <li
-                  className='account__link'
+                  className={
+                    activeNav === 'components'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
                   id='components'
                   onClick={setDisplay}
                 >
@@ -45,14 +76,26 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                   </button>
                 </li>
                 {/* Buttons */}
-                <li className='account__link' id='buttons' onClick={setDisplay}>
+                <li
+                  className={
+                    activeNav === 'buttons'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
+                  id='buttons'
+                  onClick={setDisplay}
+                >
                   <button className='lg:pl-2' id='buttons'>
                     Buttons
                   </button>
                 </li>
                 {/* Stories */}
                 <li
-                  className='account__link'
+                  className={
+                    activeNav === 'user-stories'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
                   id='user-stories'
                   onClick={setDisplay}
                 >

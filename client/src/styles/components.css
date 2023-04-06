@@ -8,7 +8,12 @@
 }
 
 .selected__link {
-  @apply cursor-pointer transition ease-in-out duration-200 text-colour-med hover:text-hover-text active:text-active-text dark:text-white
+  @apply cursor-pointer transition ease-in-out duration-200 text-colour-med hover:text-hover-text active:text-active-text dark:text-white bg-main-colour
+}
+
+.selected__option__link {
+  @apply cursor-pointer text-xs bg-main-colour text-gray-100 lg:text-base transition ease-in-out duration-200 hover:text-hover-text active:text-active-text border-2 border-solid border-black rounded text-center 
+  lg:text-left hover:bg-white active:bg-main-colour dark:text-main-text py-2
 }
 
 .menu__link {
