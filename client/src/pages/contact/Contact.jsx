@@ -25,16 +25,16 @@ function Contact() {
         {!toggleNavigation && (
           <main className='grid mx-4 md:mx-8 lg:h-full lg:grid-cols-2 lg:gap-6 p-2'>
             {/* Info */}
-            <section className='grid h-min items-center my-4 lg:my-auto lg:mx-20'>
+            <section className='grid h-min items-center my-4 lg:my-auto lg:mx-16'>
               <article className='m-1 bg-gray-100 dark:bg-gray-700 dark:text-gray-100 h-min mb-4 p-4 rounded'>
                 <div className='text-center mt-4'>
                   <h1 className='text-2xl font-bold'>Contact Me!</h1>
                 </div>
-                <div className='sm:px-6'>
+                <div className='sm:px-6 md:px-2'>
                   <p className='p-2 md:mx-6 text-center lg:mx-4 leading-5 font-semibold'>
                     If you need anything at all, just get in touch!
                   </p>
-                  <p className='p-2 pb-6 md:mx-6 lg:mx-4 leading-5'>
+                  <p className='p-2 pb-6 md:mx-6 lg:mx-2 leading-5'>
                     If you need quotes or just to talk through some ideas. I am
                     available to help. Either contact me throught the form
                     provided, or use one the email address or phone number

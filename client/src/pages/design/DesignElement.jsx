@@ -41,12 +41,9 @@ function DesignElement({
     menuOptions: [],
   });
   const [savedPages, setSavedPages] = useState([]);
+  const [favoritePages, setFavoritePages] = useState([]);
+  const [favoriteComponents, setFavoriteComponents] = useState([]);
   const [savedComponents, setSavedComponents] = useState([]);
-
-  console.log('fileSaveName', fileSaveName);
-  console.log('userStoriesArray', userStoriesArr);
-  console.log('colourPaletteObject', colourPaletteObject);
-  console.log('navigationStyleOptions', navigationStyleOptions);
 
   useEffect(() => {
     if (openDesign) {
@@ -177,7 +174,9 @@ function DesignElement({
               {displayElement === 'pages' && (
                 <PageOptions
                   savedPages={savedPages}
+                  favoritePages={favoritePages}
                   setSavedPages={setSavedPages}
+                  setFavoritePages={setFavoritePages}
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                 />
@@ -185,7 +184,9 @@ function DesignElement({
               {displayElement === 'components' && (
                 <CompenentOptions
                   savedComponents={savedComponents}
+                  favoriteComponents={favoriteComponents}
                   setSavedComponents={setSavedComponents}
+                  setFavoriteComponents={setFavoriteComponents}
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                 />

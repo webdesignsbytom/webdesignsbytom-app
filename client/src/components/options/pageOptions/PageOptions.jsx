@@ -4,7 +4,7 @@ import client from '../../../utils/axios/client';
 import LoadingSpinner from '../../utils/LoadingSpinner';
 import PageItem from './PageItem';
 
-function PageOptions({ savedPages, setSavedPages }) {
+function PageOptions({ savedPages, setSavedPages, favoritePages, setFavoritePages }) {
   const [allPages, setAllPages] = useState([]);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function PageOptions({ savedPages, setSavedPages }) {
           </div>
         ) : (
           allPages.map((page, index) => {
-            return <PageItem page={page} key={index} />;
+            return <PageItem savedPages={savedPages} setSavedPages={setSavedPages} favoritePages={favoritePages} setFavoritePages={setFavoritePages} page={page} key={index} />;
           })
         )}
       </ul>
