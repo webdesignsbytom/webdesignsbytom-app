@@ -75,10 +75,10 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
         >
           {/* Colour select */}
           <section
-            className={`absolute top-2 z-40 left-2 text-${currentText} outline outline-2 outline-${currentText} rounded-lg p-1`}
+            className={`absolute select-none top-2 z-40 left-2 text-${currentText} outline outline-2 outline-${currentText} rounded-lg p-1`}
           >
             <div className='md:p-1'>
-              <h3 className='text-xs md:text-sm font-semibold'>
+              <h3 className='select-none text-xs md:text-sm font-semibold'>
                 Switch Colour Mode
               </h3>
             </div>
@@ -178,22 +178,22 @@ function MapHero({ increasePageNumber, decreasePageNumber }) {
               <section
                 className={`outline outline-4 outline-${currentText} bg-${currentTransBg} text-center  rounded-xl p-4`}
               >
-                <h2 className='text-lg font-semibold'>WELCOME TO</h2>
-                <h1 className='text-xl font-bold'>WEB DESIGNS BY TOM</h1>
+                <h2 className='text-lg font-semibold select-none'>WELCOME TO</h2>
+                <h1 className='text-xl font-bold select-none'>WEB DESIGNS BY TOM</h1>
               </section>
 
               <section className='my-4'>
                 <div className='flex my-2 gap-2 justify-center font-outfit'>
                   <Link to='/store'>
                     <button
-                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium w-full`}
+                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium select-none w-full`}
                     >
                       Build Website
                     </button>
                   </Link>
                   <Link to='/portfolio'>
                     <button
-                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium w-full`}
+                      className={`py-2 bg-${currentTransBg} px-4 text-sm md:text-base uppercase border-${currentText} rounded-lg hover:bg-${currentTransBg} cursor-pointer border-4 border-solid font-medium select-none w-full`}
                     >
                       View Portfolio
                     </button>

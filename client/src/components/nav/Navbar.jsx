@@ -159,7 +159,7 @@ function Navbar() {
             }}
             className='inset-y-0 no__highlights left-0 flex items-center cursor-pointer select-none no__highlights'
           >
-            <img src={WDBT} className='w-10' alt="Web design by Tom company logo" />
+            <img src={WDBT} className='w-10 select-none' alt="Web design by Tom company logo" />
           </div>
           <section className='md:hidden'>
             <h3 className='text-sm capitalize text-colour-dark font-bold'>
