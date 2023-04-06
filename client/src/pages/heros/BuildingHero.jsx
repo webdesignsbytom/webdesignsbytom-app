@@ -17,10 +17,14 @@ import Register from '../../assets/svg/registerIcon-white.svg';
 import Search from '../../assets/svg/searchIcon-white.svg';
 import StoreIcon from '../../assets/svg/storeIcon-white.svg';
 // React icons
+import { HiArrowSmLeft } from 'react-icons/hi';
+import { HiArrowSmRight } from 'react-icons/hi';
 import { MdRoofing } from 'react-icons/md';
 import { TbCircuitGround } from 'react-icons/tb';
 import { GiBrickWall } from 'react-icons/gi';
 import { GiTrowel } from 'react-icons/gi';
+// Images
+import WhiteLogo from '../../assets/img/logos/wdbt-white.svg';
 // Utils
 import { sampleUserData } from '../../users/utils/utils';
 
@@ -48,12 +52,20 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
   return (
     <>
       {!toggleNavigation ? (
-        <div className='bg-transparent-black w-full relative min-h-screen lg:h-screen lg:overflow-hidden'>
+        <div className='bg-transparent-black w-full relative h-screen min-h-screen lg:h-screen lg:overflow-hidden'>
           {/* Navigation */}
 
           {/* Phone Nav */}
-          <header className='flex p-2 items-center bg-blue-400 relative z-10 md:hidden w-full justify-between'>
-            <section className='text-white pl-1'>Logo</section>
+          <header className='flex px-2 mb-10 pt-4 items-center no__highlights relative z-10 md:hidden w-full justify-between'>
+            <section className='text-white pl-1 object-cover'>
+              <Link to='/store' className='cursor-pointer'>
+                <img
+                  src={WhiteLogo}
+                  className='w-12'
+                  alt='web designs by tom logo'
+                />
+              </Link>
+            </section>
 
             <nav
               onClick={() => {
@@ -84,14 +96,23 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
           </header>
           {/* Large nav */}
           <header className='relative hidden md:flex justify-center p-2 lg:py-4 px-10 z-20'>
+          <section className='text-white absolute top-0 left-0 h-full flex items-center pl-8 object-cover'>
+              <Link to='/store' className='cursor-pointer'>
+                <img
+                  src={WhiteLogo}
+                  className='w-12'
+                  alt='web designs by tom logo'
+                />
+              </Link>
+            </section>
             <section>
               <nav>
-                <ul className='flex text-xl gap-4 py-2 px-4'>
+                <ul className='flex font-semibold text-2xl gap-4 py-2 px-4'>
                   <li
                     className={
                       activeNav === '#'
                         ? 'text-[#540d1f]'
-                        : 'text-[#004E5D] hover:text-[#003847]'
+                        : 'text-[#003847] hover:text-[#002833]'
                     }
                   >
                     <Link to='/'>Home</Link>
@@ -100,7 +121,7 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
                     className={
                       activeNav === '/contact'
                         ? 'text-[#540d1f]'
-                        : 'text-[#004E5D] hover:text-[#003847]'
+                        : 'text-[#003847] hover:text-[#002833]'
                     }
                   >
                     <Link to='/store'>Store</Link>
@@ -109,7 +130,7 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
                     className={
                       activeNav === '/portfolio'
                         ? 'text-[#540d1f]'
-                        : 'text-[#004E5D] hover:text-[#003847]'
+                        : 'text-[#003847] hover:text-[#002833]'
                     }
                   >
                     <Link to='/portfolio'>Portfolio</Link>
@@ -118,7 +139,7 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
                     className={
                       activeNav === '/contact'
                         ? 'text-[#540d1f]'
-                        : 'text-[#004E5D] hover:text-[#003847]'
+                        : 'text-[#003847] hover:text-[#002833]'
                     }
                   >
                     <Link to='/contact'>Contact</Link>
@@ -126,87 +147,105 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
                 </ul>
               </nav>
             </section>
-            <section className='absolute top-0 right-0 h-full flex items-center'>
-                <article className='mr-10 bg-[#004E5D] py-2 px-4 rounded-full outline outline-[#800020] outline-2'>
-                    <h4 className='font-semibold'>Contact: 07563 456 934</h4>
-                </article>
+            <section className='absolute hidden top-0 right-0 h-full xl:flex items-center'>
+              <article className='mr-10 bg-[#004E5D] py-2 px-4 rounded-full outline outline-[#800020] outline-2'>
+                <h5 className='grid font-semibold leading-4'>
+                  <span>Phone: 07541 576 148</span>
+                  <span>Email: tom@webdesignsbytom.com</span>
+                </h5>
+              </article>
             </section>
           </header>
 
           {/* Main */}
           <main className='bg-transparent-black absolute top-0 w-full h-full'>
-            <section className='w-full h-full pt-[64px]'>
+            <section className='w-full h-full pt-[68px]'>
               <section className='h-full w-full p-4'>
                 <div className='h-full w-full outline outline-[#003847] outline-8 p-3'>
                   <div className='relative h-full w-full outline outline-[#800020] outline-4 p-4 flex gap-4'>
                     {/* Section Left */}
                     <section className='text-white bg-[#004E5D] h-full w-full grid grid-rows-reg'>
                       <section className='grid'>
-                        <section className='flex justify-center gap-4 p-4'>
-                          <article className='bg-transparent-white outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
+
+                        <section className='grid grid-cols-2 gap-4 xl:flex lg:justify-center p-2 lg:gap-4 lg:p-4'>
+                          <article className='bg-transparent-white w-full outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
                             <div className='outline bg-transparent-white-2 outline-[#800020] outline-[3px] rounded-full p-1'>
                               <MdRoofing className='text-[#002833]' size={25} />
                             </div>
-                            <h3 className='flex mb-[1px] px-1 font-semibold uppercase text-[#002833]'>
+                            <h3 className='flex text-xs md:text-base mb-[1px] px-1 font-semibold uppercase text-[#002833]'>
                               Roofing
                             </h3>
                           </article>
-                          <article className='bg-transparent-white outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
+                          <article className='bg-transparent-white w-full outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
                             <div className='outline bg-transparent-white-2 outline-[#800020] outline-[3px] rounded-full p-1'>
-                              <TbCircuitGround className='text-[#002833]' size={25} />
+                              <TbCircuitGround
+                                className='text-[#002833]'
+                                size={25}
+                              />
                             </div>
-                            <h3 className='flex mb-[1px] px-1 font-semibold uppercase text-[#002833]'>
+                            <h3 className='flex mb-[1px] px-1 text-xs md:text-base font-semibold uppercase text-[#002833]'>
                               Ground
                             </h3>
                           </article>
-                          <article className='bg-transparent-white outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
+                          <article className='bg-transparent-white w-full outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
                             <div className='outline bg-transparent-white-2 outline-[#800020] outline-[3px] rounded-full p-1'>
-                              <GiBrickWall className='text-[#002833]' size={25} />
+                              <GiBrickWall
+                                className='text-[#002833]'
+                                size={25}
+                              />
                             </div>
-                            <h3 className='flex mb-[1px] px-1 font-semibold uppercase text-[#002833]'>
+                            <h3 className='flex mb-[1px] px-1 text-xs md:text-base font-semibold uppercase text-[#002833]'>
                               Masonary
                             </h3>
                           </article>
-                          <article className='bg-transparent-white outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
+                          <article className='bg-transparent-white w-full outline outline-[#002833] outline-4 cursor-pointer py-2 px-2 rounded-full flex items-center gap-1'>
                             <div className='outline bg-transparent-white-2 outline-[#800020] outline-[3px] rounded-full p-1'>
                               <GiTrowel className='text-[#002833]' size={25} />
                             </div>
-                            <h3 className='flex mb-[1px] px-1 font-semibold uppercase text-[#002833]'>
+                            <h3 className='flex mb-[1px] px-1 text-xs md:text-base font-semibold uppercase text-[#002833]'>
                               Plastering
                             </h3>
                           </article>
                         </section>
                         <section className='px-4 flex justify-center'>
-                          <article>
+                          <article className='text-center md:text-start'>
                             <p>
-                              Quality building work with 4 generations of
-                              expertise with J. Moore Builders.
+                              Quality web designer with partners around the
+                              world to solve all you web needs.
                             </p>
-                            <p>Tavistock based servicing Devon and Cornwall.</p>
-                            <p>Excellent customer service.</p>
+                            <p>Based in Tavistock, United Kingdom.</p>
+                            <p className='hidden md:block'>Excellent customer service.</p>
                           </article>
                         </section>
                       </section>
                       {/* Bottom - left */}
-                      <section className='w-full'>
-                        <div className='object-cover rotate-45 h-2/3'>
+                      <section className='w-full pt-20 md:pt-4'>
+                        <div className='object-cover overflow-hidden rotate-45 h-2/3'>
                           <img src={ArtItem} alt='architecture' />
                         </div>
                       </section>
                     </section>
-                    <section className='relative text-white h-full w-full'>
+                    {/* Right side */}
+                    <section className='hidden md:block relative text-white h-full w-full'>
                       <section className='absolute z-0 h-full w-full bg-[#003847] triangular__shape'></section>
                       <section className='absolute z-10 h-full w-full bg-building-img bg-left-bottom bg-cover'></section>
                     </section>
-                    {/* Center text */}
-                    <section className='absolute z-20 text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-                      <article className='outline bg-transparent-black-2 outline-[#800020] outline-4 p-2'>
+                    {/* Center text */} 
+                    <section className='absolute z-20 w-full md:w-fit text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                      <article className='outline mx-2 md:mx-0 bg-transparent-black-2 outline-[#800020] outline-4 p-2'>
                         <section className='h-full text-center w-full outline outline-[#003847] outline-2 py-4 px-6'>
-                          <h1 className='text-5xl font-bold mb-2'>
-                            J. Moore Builders
+                          <h1 className='text-2xl md:text-5xl font-bold mb-4'>
+                            T. Brockington
                           </h1>
-                          <h2 className='font-semibold'>Licenced and bonded tradesmen</h2>
-                          <h3 className='font-semibold uppercase'>Tavistock - Plymouth - Devon</h3>
+                          <h2 className='text-xs md:text-base font-semibold uppercase'>
+                            www.webdesignsbytom.com
+                          </h2>
+                          <h3 className='text-xs md:text-base font-semibold uppercase'>
+                            Web developer || Inventor || Engineer
+                          </h3>
+                          <h4 className='text-xs md:text-base font-semibold'>
+                            Available world wide
+                          </h4>
                         </section>
                       </article>
                     </section>
@@ -215,6 +254,29 @@ function BuildingHero({ increasePageNumber, decreasePageNumber }) {
               </section>
             </section>
           </main>
+          {/* Change page */}
+          <section className='absolute text-white z-30 bottom-0 w-full grid justify-center mb-4'>
+            <section className='flex items-center  justify-center gap-8 py-1'>
+              <section
+                onClick={decreasePageNumber}
+                className='rounded-full p-1 lg:p-[2px] cursor-pointer text-white'
+              >
+                <HiArrowSmLeft className='' size={50} />
+              </section>
+              <section
+                onClick={increasePageNumber}
+                className='rounded-full p-1 lg:p-[2px] cursor-pointer text-white'
+              >
+                <HiArrowSmRight className='' size={50} />
+              </section>
+            </section>
+            <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
+              <p>
+                <span>This is one of many landing pages i have designed.</span>
+                <span>Use the controls below to move through the options.</span>
+              </p>
+            </article>
+          </section>
         </div>
       ) : (
         <div className={`relative h-screen max-h-screen bg-black w-full`}>

@@ -119,8 +119,10 @@ function NewsletterHero({ increasePageNumber, decreasePageNumber }) {
               </section>
             </section>
             <article className='text-xs md:text-sm grid text-center justify-center font-outfit font-semibold'>
-              <p>This is one of many landing pages i have designed.</p>
-              <p>Use the controls below to move through the options.</p>
+              <p>
+                <span>This is one of many landing pages i have designed.</span>
+                <span>Use the controls below to move through the options.</span>
+              </p>
             </article>
           </section>
 

@@ -319,7 +319,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 </section>
                 <h1 className='text-base md:text-2xl my-2 font-semibold'>
                   <span id='greeting'></span>
-                  <span id='name' contenteditable='true'></span>
+                  <span id='name' contentEditable='true'></span>
                 </h1>
 
                 {/* BUTTONS */}
