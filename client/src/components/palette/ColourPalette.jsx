@@ -59,6 +59,29 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [hexCardFive, setHexCardFive] = useState('#0099ff');
   const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
 
+  const setRandomColourItem = (colour) => {
+    console.log('colour', colour);
+    setCardOrSwatch(colour.type);
+    setSelectedCard(colour.id);
+    setCurrentSwatch(colour);
+
+    let num1 = Math.floor(Math.random() * 255) + 1;
+    let num2 = Math.floor(Math.random() * 255) + 1;
+    let num3 = Math.floor(Math.random() * 255) + 1;
+
+    function valueToHex(c) {
+      var hex = c.toString(16);
+      return hex;
+    }
+
+    let news = valueToHex(num1) + valueToHex(num2) + valueToHex(num3);
+    console.log('news', news);
+
+    let update = currentSwatch;
+    update.css = `#${news}`;
+    update.colour = `#${news}`;
+  };
+
   const setRandomCard = (event) => {
     const { id, title } = event.target;
     console.log('ID', id, title);
@@ -600,13 +623,13 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                   key={index}
                   openBigPicker={openBigPicker}
                   colour={colour}
-                  openPicker={openPicker}
                   openSmallPicker={openSmallPicker}
                   currentColour={currentColour}
                   closeSmallColourPicker={closeSmallColourPicker}
                   handleChangeComplete={handleChangeComplete}
                   setNewColour={setNewColour}
                   displaySmallPicker={displaySmallPicker}
+                  setRandomColourItem={setRandomColourItem}
                 />
               );
             })}

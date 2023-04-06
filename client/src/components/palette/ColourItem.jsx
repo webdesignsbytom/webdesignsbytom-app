@@ -7,14 +7,14 @@ import { SketchPicker } from 'react-color';
 
 function ColourItem({
   colour,
-  openPicker,
   openSmallPicker,
   displaySmallPicker,
   closeSmallColourPicker,
   currentColour,
   handleChangeComplete,
   setNewColour,
-  openBigPicker
+  openBigPicker,
+  setRandomColourItem,
 }) {
   return (
     <li className='grid mx-6 dark:text-gray-100'>
@@ -23,7 +23,7 @@ function ColourItem({
         <div className='relative group flex align-middle h-full pl-1 pt-1'>
           <img
             src={QuestionMark}
-            className='w-5 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
+            className='w-5 no__highlights cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
             alt='information'
             data-te-animation-init
           />
@@ -36,7 +36,9 @@ function ColourItem({
         <article className='flex justify-between bg-white border-2 border-black border-solid rounded w-full px-2'>
           <h5 className='align-middle'>{colour.colour}</h5>
           <img
-            className='w-4 cursor-pointer focus:animate-spin active:animate-spin'
+            id={colour.id}
+            onClick={() => setRandomColourItem(colour)}
+            className='w-4 no__highlights cursor-pointer focus:animate-spin active:animate-spin'
             src={changeIcon}
             alt='switch colour format'
           />

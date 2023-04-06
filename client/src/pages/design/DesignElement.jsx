@@ -110,7 +110,7 @@ function DesignElement({
               <div className='group flex align-middle h-full pl-1'>
                 <img
                   src={QuestionMark}
-                  className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
+                  className='w-6 cursor-pointer no__highlights group transition duration-200 ease-in-out hover:scale-125'
                   alt='information'
                   data-te-animation-init
                 />

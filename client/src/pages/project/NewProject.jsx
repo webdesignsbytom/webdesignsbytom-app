@@ -39,7 +39,7 @@ function NewProject() {
   };
 
   return (
-    <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
+    <div className='bg-white dark:bg-black dark:text-gray-100 lg:max-h-screen lg:overflow-hidden'>
       <Navbar />
       {!toggleNavigation && (
         <>
@@ -56,37 +56,37 @@ function NewProject() {
             <section>
               <form className='grid md:grid-cols-2 mx-2 md:mx-8'>
                 <article className='my-2'>
-                  <div className='text-left font-semibold text-2xl mb-2'>
+                  <div className='text-center md:text-left font-semibold text-2xl mb-2'>
                     <h2>Website Data</h2>
                   </div>
                   <section className='grid gap-2'>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Type of site:</span>
                       <span> {newProjectForm.type}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Domain Name:</span>
                       <span> {newProjectForm.domain}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Owner Name:</span>
                       <span> {newProjectForm.owner}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Number of Pages:</span>
                       <span> {newProjectForm.numPages}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Budget:</span>
                       <span> £ {newProjectForm.budget}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Due Date:</span>
                       <span> {newProjectForm.dueDate}</span>
                     </h3>
-                    <h3 className='text-xl capitalize'>
+                    <h3 className='text-base md:text-xl grid capitalize w-full max-w-full'>
                       <span>Mission Statement:</span>
-                      <span> {newProjectForm.missionStatement}</span>
+                      <span className='max-w-full break-words overflow-x-hidden'>{newProjectForm.missionStatement}</span>
                     </h3>
                   </section>
                 </article>
@@ -103,7 +103,7 @@ function NewProject() {
                     <p className='h-4'></p>
                   </div>
                   {/* <!-- Domain input --> */}
-                  <section className='flex w-full'>
+                  <section className='md:flex w-full'>
                     <div className='w-full'>
                       <input
                         type='text'
@@ -126,7 +126,7 @@ function NewProject() {
                       <p className='h-4'></p>
                     </div>
                   </section>
-                  <section className='flex'>
+                  <section className='grid lg:flex'>
                     {/* <!-- Num Pages input --> */}
                     <div className=''>
                       <input
@@ -162,12 +162,12 @@ function NewProject() {
                     </div>
                   </section>
                   {/* Message input */}
-                  <div className='mb-1'>
+                  <div className='mb-1 w-full max-w-full'>
                     <textarea
                       name='missionStatement'
                       id='missionStatement'
                       placeholder='Mission Statement - define the goals of your website.'
-                      className='overflow-y-scroll resize-none scroll-smooth text-xl textbox__inputs'
+                      className='overflow-y-scroll max-w-full break-words overflow-x-hidden text resize-none scroll-smooth text-xl textbox__inputs'
                       rows='4'
                       onChange={handleChange}
                     ></textarea>
