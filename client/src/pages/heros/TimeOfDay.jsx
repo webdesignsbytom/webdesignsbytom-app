@@ -154,7 +154,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
     function setName(e) {
       if (e.type === 'keypress') {
         // Make sure enter is pressed
-        if (e.which == 13 || e.keyCode == 13) {
+        if (e.which === 13 || e.keyCode === 13) {
           localStorage.setItem('heroName', e.target.innerText);
           name.blur();
         }
