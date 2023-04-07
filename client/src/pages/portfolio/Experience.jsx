@@ -11,14 +11,14 @@ function Experience() {
       id='experience'
       className='lg:h-[90vh] lg:max-h-screen lg:overflow-hidden grid lg:grid-rows-reg mb-4 mx-2'
     >
-      <section className='text-center mt-12 mb-4'>
+      <section className='text-center mt-12 mb-4 dark:text-gray-100'>
         <h5 className='font-semibold'>What skills I have</h5>
         <h2 className='text-2xl font-bold'>My Experience and Skills</h2>
       </section>
 
       <section className='my-auto overflow-hidden grid md:grid-cols-faf gap-4 lg:mx-8 lg:gap-6'>
-        <section className='bg-main-colour rounded-xl text-center text-white p-4 w-full h-min'>
-          <div className='px-4 py-8 outline-4 outline outline-purple-600 rounded-lg'>
+        <section className='bg-main-colour rounded-xl text-center text-white p-4 w-full h-full'>
+          <div className='px-4 py-8 outline-4 outline outline-purple-600 rounded-lg h-full'>
             <div className='mb-6 text-2xl font-semibold'>
               <h3>Frontend Development</h3>
             </div>
@@ -115,14 +115,14 @@ function Experience() {
           </div>
         </section>
 
-        <section className='bg-main-colour grid rounded-xl text-center p-4 min-h-[130px] w-full z-0'>
-          <div className='outline-4 outline grid outline-yellow-500 rounded-lg w-full f-full'>
+        <section className='bg-main-colour grid rounded-xl text-center p-4 min-h-[130px] w-full z-0 h-full'>
+          <div className='outline-4 outline grid outline-yellow-500 rounded-lg w-full h-full'>
             <OrbitAnimation />
           </div>
         </section>
 
-        <section className='bg-main-colour rounded-xl text-center text-white p-4 w-full h-min'>
-          <div className='px-4 py-8 outline-4 outline outline-green-600 rounded-lg'>
+        <section className='bg-main-colour rounded-xl text-center text-white p-4 w-full h-full'>
+          <div className='px-4 py-8 outline-4 outline outline-green-600 rounded-lg h-full'>
             <div className='mb-6 text-2xl font-semibold'>
               <h3>Backend Development</h3>
             </div>

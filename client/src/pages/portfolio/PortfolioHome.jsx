@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import About from './About';
@@ -20,6 +20,9 @@ function PortfolioHome() {
     toggleContacts,
   } = useContext(ToggleContext);
 
+  const myRef = useRef(null)
+
+
   return (
     <div className='dark:bg-black'>
       <Navbar />
@@ -30,8 +33,8 @@ function PortfolioHome() {
         !toggleContacts) && (
         <>
           <Header />
-          <About />
-          <PortfolioDisplay />
+          <About myRef={myRef} />
+          <PortfolioDisplay myRef={myRef} />
           <Experience />
           <Services />
           <ReviewsContainer />
