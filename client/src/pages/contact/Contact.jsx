@@ -47,12 +47,12 @@ function Contact() {
                 </div>
               </article>
 
-              <div className='grid grid-cols-3 mx-1 gap-2'>
+              <div className='grid grid-cols-3 items-center mx-1 gap-2'>
                 <a
                   href='mailto:tom@webdesignsbytom.com'
                   rel='noreferrer'
                   target='_blank'
-                  className='text-xs md:text-base'
+                  className='text-xs h-full md:text-base'
                 >
                   <article className='grid bg-main-colour border-4 text-white border-purple-700 border-solid rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 h-full hover:outline-transparent-purple'>
                     <div className='grid justify-center'>
@@ -74,7 +74,7 @@ function Contact() {
                   href='http:facebook-subdomain'
                   rel='noreferrer'
                   target='_blank'
-                  className='text-xs md:text-base'
+                  className='text-xs h-full md:text-base'
                 >
                   <article className='bg-main-colour rounded-xl border-4 text-white border-yellow-500 border-solid text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 h-full hover:outline-transparent-yellow'>
                     <div className='grid justify-center'>
@@ -94,7 +94,7 @@ function Contact() {
                   href='https://api.whatsapp.com/send?phone+447541576148'
                   rel='noreferrer'
                   target='_blank'
-                  className='text-xs md:text-base'
+                  className='text-xs h-full md:text-base'
                 >
                   <article className='bg-main-colour border-4 text-white border-green-700 border-solid rounded-xl text-center px-2 md:px-4 py-4 md:py-8 w-full group cursor-pointer hover:scale-105 hover:text-white hover:outline hover:outline-2 h-full hover:outline-transparent-green'>
                     <div className='grid justify-center'>

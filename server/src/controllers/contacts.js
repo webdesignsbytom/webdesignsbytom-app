@@ -100,7 +100,7 @@ export const createNewContact = async (req, res) => {
   const { email, phone, firstName, lastName, country, message } = req.body;
 
   try {
-    if (!email || !phone || !firstName || !lastName || !country || !message) {
+    if (!email || !firstName || !lastName || !country || !message) {
       //
       const missingField = new MissingFieldEvent(
         'Visitor contact form',
