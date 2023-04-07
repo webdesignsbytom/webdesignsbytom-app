@@ -5,7 +5,7 @@ import { portfolioData, initialData } from '../../../utils/portfolioData';
 
 function Tavyepoxy() {
   const [portfolioItem, setPortfolioItem] = useState(initialData);
-  
+
   // Set the item to be displayed
   useEffect(() => {
     setPortfolioItem(portfolioData[0]);
@@ -57,7 +57,7 @@ function Tavyepoxy() {
           </nav>
         </section>
         {/* MAIN PAGE */}
-        <main className='grid lg:grid-cols-xo mt-5 lg:mt-0 lg:gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:overflow-hidden'>
+        <main className='grid dark:bg-black dark:text-gray-100 lg:grid-cols-xo mt-5 lg:mt-0 lg:gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:overflow-hidden'>
           <div className='h-full'>
             <div className='text-3xl mb-4 font-bold'>
               <h1>{portfolioItem.title}</h1>
@@ -68,18 +68,18 @@ function Tavyepoxy() {
               {portfolioItem.headline}
             </div>
 
-            <article className='bg-gray-100 my-2 py-2 lg:my-0'>
+            <article className='bg-gray-100 dark:bg-gray-800 px-2 my-2 py-2 lg:my-0'>
               <p>{portfolioItem.desc}</p>
             </article>
 
-            <section className='outline-2 mt-5 lg:mt-1 outline-black outline rounded p-1 w-full'>
+            <section className='outline-2 mt-5 lg:mt-1 outline-black dark:outline-gray-400 outline rounded p-1 w-full'>
               <div className=''>
                 <div className='text-center text-xl font-semibold mb-2'>
                   <h3>Skills Used</h3>
                 </div>
 
-                <article className='outline-2 outline-black outline rounded p-1'>
-                  <ul className='p-1 grid gap-1'>
+                <article className='outline-2 outline-black dark:outline-gray-400 outline rounded p-1'>
+                  <ul className='p-1 grid gap-1 dark:bg-gray-800'>
                     {portfolioItem.skills.map((skill, index) => {
                       return (
                         <li className='flex gap-2 items-center' key={index}>
@@ -95,9 +95,9 @@ function Tavyepoxy() {
           </div>
 
           {/* Right side - image container */}
-          <section className='grid h-screen mt-10 lg:mt-0 lg:h-full grid-rows-a1a outline outline-2 outline-black rounded'>
-            <div className='flex justify-end h-fit p-1 lg:p-0'>
-              <ul className='flex bg-gray-50 outline outline-2 outline-black rounded-full w-fit items-center m-1 py-1 px-4'>
+          <section className='grid h-screen mt-10 lg:mt-0 lg:h-full grid-rows-a1a outline outline-2 outline-black rounded dark:outline-gray-800'>
+            <div className='flex justify-end h-fit p-1 lg:p-1'>
+              <ul className='flex bg-gray-50 dark:bg-gray-800 outline outline-2 outline-black dark:outline-gray-400 rounded-full w-fit items-center m-1 py-1 px-4'>
                 {portfolioItem.icons.map((icon, index) => {
                   return (
                     <li key={index} className=''>
@@ -225,8 +225,8 @@ function Tavyepoxy() {
               </section>
             </section>
 
-            <section className='flex justify-between items-end py-2 px-1 border-t-2 border-solid border-black'>
-              <article className=''>
+            <section className='flex justify-between items-end py-2 border-t-2 border-solid border-black'>
+              <article className='pl-3'>
                 <h6 className='flex'>
                   PHONE - <span className='flex text-active-text'>TABLET</span>{' '}
                   - LAPTOP -{' '}
@@ -234,7 +234,7 @@ function Tavyepoxy() {
                 </h6>
                 <h3>Fully Responsive Design</h3>
               </article>
-              <div className='flex items-center h-full pr-2'>
+              <div className='flex items-center h-full pr-3'>
                 <a
                   target='_blank'
                   className='bg-main-colour grid justify-center p-2 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-colour-light hover:shadow-lg focus:bg-colour-med focus:shadow-lg focus:outline-none focus:ring-0 active:bg-colour-dark active:shadow-lg transition duration-150 ease-in-out w-full items-center'
