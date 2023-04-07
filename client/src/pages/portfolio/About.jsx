@@ -11,7 +11,7 @@ function About() {
   return (
     <section
       id='about'
-      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4 pb-20 bg-gray-100 dark:bg-gray-900 dark:text-gray-400'
+      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4 pb-20 bg-gray-100 dark:bg-black dark:text-gray-400'
     >
       <section className='text-center mt-8 mb-4'>
         <h5 className='font-semibold'>Get To Know Me</h5>

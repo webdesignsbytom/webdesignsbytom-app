@@ -32,7 +32,7 @@ function PageItem({
   };
 
   return (
-    <li className='border-2 dark:text-gray-100 border-black border-solid p-1 rounded'>
+    <li className='border-2 dark:text-gray-100 border-black dark:border-gray-400 border-solid p-1 rounded'>
       <article>
         <div className='flex justify-between'>
           <div>
@@ -46,9 +46,9 @@ function PageItem({
           />
         </div>
 
-        <img src={image} alt={`Page ${name} display`} />
+        <img className='border-2 border-solid border-black dark:border-gray-400' src={image} alt={`Page ${name} display`} />
 
-        <p>{desc}</p>
+        <p className='p-1'>{desc}</p>
       </article>
     </li>
   );
