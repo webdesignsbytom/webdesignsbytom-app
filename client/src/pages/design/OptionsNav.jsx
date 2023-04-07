@@ -106,9 +106,13 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
               </section>
 
               {/* Saves on phone */}
-              <section className='mt-2'>
+              <section className='mt-2 lg:hidden'>
                 <li
-                  className='account__link lg:hidden'
+                  className={
+                    activeNav === 'saves'
+                      ? 'selected__option__link'
+                      : 'account__link'
+                  }
                   id='saves'
                   onClick={setDisplay}
                 >
