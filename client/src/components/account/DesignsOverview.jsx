@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { statusResults } from '../../users/utils/utils';
 // Items
-import LoadingSpinner from '../utils/LoadingSpinner';
 import { SubmitButton } from '../utils/SubmitButtons';
 
-function DesignsOverview({ userDesigns, designResponse }) {
-  const [updateAnimation, setUpdateAnimation] = useState(false);
-  const [mainButtonContent, setMainButtonContent] = useState(true);
-  const [updateResponseMessage, setUpdateResponseMessage] =
-    useState(statusResults);
-
+function DesignsOverview({ userDesigns }) {
   let navigate = useNavigate();
 
   const startNewDesign = () => {
@@ -23,22 +17,20 @@ function DesignsOverview({ userDesigns, designResponse }) {
         <h2>Current Website Designs</h2>
       </div>
       <section className='mb-2'>
-        <SubmitButton
-          loadingAnimation={updateAnimation}
-          mainButtonContent={mainButtonContent}
-          responseMessage={updateResponseMessage}
-          buttonMessage='Start New Design'
-          spinnerHeight='h-5'
-          spinnerWidth='w-5'
-          action={startNewDesign}
-        />
+        <button
+          onClick={startNewDesign}
+          type='submit'
+          className='submit__button'
+          data-mdb-ripple='true'
+          data-mdb-ripple-color='light'
+        >New Design</button>
       </section>
 
-      {designResponse.status === false && userDesigns.length === 0 && (
+      {userDesigns.length === 0 && (
         <article>Nothing to display - No Saved Designs</article>
       )}
 
-      {designResponse.status === true && userDesigns.length > 0 && (
+      {userDesigns.length > 0 && (
         <ul className='w-full'>
           {userDesigns.map((design, index) => {
             return <li key={index}>{design.name}</li>;

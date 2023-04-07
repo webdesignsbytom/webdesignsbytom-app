@@ -9,10 +9,7 @@ import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
-// Fetch
-// Utils
-import { statusResults } from '../../users/utils/utils';
-import client from '../../utils/axios/client';
+import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
 
 function Account() {
   const { user } = useContext(UserContext);
@@ -32,34 +29,18 @@ function Account() {
   const [listOfFavorites, setListOfFavorites] = useState([]);
   // Design overview
   const [userDesigns, setUserDesigns] = useState([]);
-  const [designResponse, setDesignResponse] = useState(statusResults);
   // Project overview
   const [userProjects, setUserProjects] = useState([]);
-  const [projectResponse, setProjectResponse] = useState(statusResults);
 
   useEffect(() => {
-    if (!user.id) {
-      client
-        .get(`/users/${user.id}`)
-        .then((res) => {
-          console.log('response xxx', res.data);
-          // setUserMessages(res.data.data.user.messages);
-          // setAllNotifications(res.data.data.user.notifications);
-          // setListOfFavorites(res.data.data.user.favorites);
-          // setUserProjects(res.data.data.user.projects);
-          // setUserDesigns(res.data.data.user.designs);
-        })
-        .catch((err) => {
-          console.error('Unable to get user by id', err);
-        });
-    } else {
-      setUserMessages(user.messages);
+    if (user.email) {
       setAllNotifications(user.notifications);
+      setUserMessages(user.messages);
       setListOfFavorites(user.favorites);
       setUserProjects(user.projects);
       setUserDesigns(user.designs);
     }
-  }, [user.id]);
+  }, [user.email]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,6 +49,10 @@ function Account() {
       }
     }, 2000);
   }, [user.isVerified]);
+
+  const handleResend = () => {
+    console.log('resending')
+  }
 
   return (
     <>
@@ -137,32 +122,20 @@ function Account() {
               <section className='grid lg:mr-4'>
                 {displayOverview && <AccountOverview />}
                 {displayDesigns && (
-                  <DesignsOverview
-                    userDesigns={userDesigns}
-                    designResponse={designResponse}
-                  />
+                  <DesignsOverview userDesigns={userDesigns} />
                 )}
                 {displayProjects && (
-                  <ProjectsOverview
-                    userProjects={userProjects}
-                    projectResponse={projectResponse}
-                  />
+                  <ProjectsOverview userProjects={userProjects} />
                 )}
 
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AccountOverview />
                 )}
                 {selectedNavElement === 'designs' && displayFixed === true && (
-                  <DesignsOverview
-                    userDesigns={userDesigns}
-                    designResponse={designResponse}
-                  />
+                  <DesignsOverview userDesigns={userDesigns} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <ProjectsOverview
-                    userProjects={userProjects}
-                    projectResponse={projectResponse}
-                  />
+                  <ProjectsOverview userProjects={userProjects} />
                 )}
               </section>
             </section>
@@ -230,9 +203,9 @@ function Account() {
               </section>
             </section>
           </section>
-          {/* {!resendVerification && (
+          {!resendVerification && (
             <ResendConfirmEmail handleResend={handleResend} />
-          )} */}
+          )}
         </section>
       </div>
     </>

@@ -16,6 +16,13 @@ async function seed() {
     },
   });
 
+  const complaint = await dbClient.complaint.create({
+    data: {
+      email: `email${i}@gmail${i}.com`,
+      content: 'Crap',
+    },
+  });
+
   for (let i = 0; i <= 9; i++) {
     const user = await dbClient.user.create({
       data: {
@@ -313,31 +320,6 @@ async function seed() {
       agreedToTerms: true,
     },
   });
-  const adminUser = await dbClient.user.create({
-    data: {
-      email: 'admin@admin.com',
-      password,
-      role: 'ADMIN',
-      isVerified: true,
-      firstName: 'Craig',
-      lastName: 'Peloton',
-      country: 'USA',
-      agreedToTerms: true,
-    },
-  });
-  const adminUserTwo = await dbClient.user.create({
-    data: {
-      email: 'admin2@admin.com',
-      password,
-      role: 'ADMIN',
-      isVerified: true,
-      firstName: 'Raymond',
-      lastName: 'Holt',
-      country: 'USA',
-      agreedToTerms: true,
-    },
-  });
-
   const devUser = await dbClient.user.create({
     data: {
       email: 'dev@dev.com',
@@ -346,19 +328,6 @@ async function seed() {
       isVerified: true,
       firstName: 'Tom',
       lastName: 'Hats',
-      country: 'UK',
-      agreedToTerms: true,
-    },
-  });
-
-  const devUserTwo = await dbClient.user.create({
-    data: {
-      email: 'dev2@dev.com',
-      password,
-      role: 'DEVELOPER',
-      isVerified: true,
-      firstName: 'Mean',
-      lastName: 'Girl',
       country: 'UK',
       agreedToTerms: true,
     },

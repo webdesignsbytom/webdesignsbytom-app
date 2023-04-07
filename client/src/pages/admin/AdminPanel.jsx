@@ -226,30 +226,17 @@ function AdminPanel() {
                     </div>
                   </section>
                 </section>
-                {/* Favorites */}
+                {/* Todo */}
                 <section className='hidden lg:grid border-2 border-black border-solid rounded-sm p-1'>
                   <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
                     <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
-                      Favorites
+                      TODO
                     </h3>
-                    <ul className='bg-main-colour grid h-full'>
-                      {listOfFavorites > 0 ? (
-                        listOfFavorites.map((favorite, index) => {
-                          return <li key={index}>{favorite.name}</li>;
-                        })
-                      ) : (
-                        <div className='grid justify-center'>
-                          <p>Nothing to display</p>
-                        </div>
-                      )}
-                    </ul>
+                    
                   </div>
                 </section>
               </section>
             </section>
-            {/* {!resendVerification && (
-            <ResendConfirmEmail handleResend={handleResend} />
-          )} */}
           </section>
         )}
       </div>
