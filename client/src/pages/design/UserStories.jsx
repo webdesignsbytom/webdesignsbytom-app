@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-// Context
-import { UserContext } from '../../context/UserContext';
+import React, { useEffect, useState } from 'react';
 // Icons
 import { HiOutlineQuestionMarkCircle } from 'react-icons/hi';
 import { TiDelete } from 'react-icons/ti';
@@ -14,7 +12,6 @@ function UserStories({
   userStoriesArr,
   setUserStoriesArr,
 }) {
-  const { user } = useContext(UserContext);
   const [newUserStoryForm, setNewUserStoryForm] = useState(userStoryTemplate);
   const [errorDisplay, setErrorDisplay] = useState(statusResults);
 

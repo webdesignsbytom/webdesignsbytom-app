@@ -5,7 +5,7 @@ function UserCard({ user }) {
 
   return (
     <>
-      <section className='grid border-2 border-black border-solid rounded-md sm:grid-cols-reg sm:w-[500px] sm:mx-auto lg:w-full'>
+      <section className='grid border-2 border-black dark:border-gray-400 dark:text-gray-100 border-solid rounded-md sm:grid-cols-reg sm:w-[500px] sm:mx-auto lg:w-full'>
         <section className='flex justify-center p-4 sm:items-center mx-12'>
           <img
             className='rounded-full h-32 w-32 shadow-xl border-2 border-slate-200 border-solid object-fill'

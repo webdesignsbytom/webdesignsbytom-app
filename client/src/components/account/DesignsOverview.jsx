@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { statusResults } from '../../users/utils/utils';
-// Items
-import { SubmitButton } from '../utils/SubmitButtons';
 
 function DesignsOverview({ userDesigns }) {
   let navigate = useNavigate();
@@ -13,7 +10,7 @@ function DesignsOverview({ userDesigns }) {
 
   return (
     <section>
-      <div className='mb-2'>
+      <div className='mb-2 dark:text-gray-100'>
         <h2>Current Website Designs</h2>
       </div>
       <section className='mb-2'>
@@ -27,11 +24,11 @@ function DesignsOverview({ userDesigns }) {
       </section>
 
       {userDesigns.length === 0 && (
-        <article>Nothing to display - No Saved Designs</article>
+        <article className='dark:text-gray-100'>Nothing to display - No Saved Designs</article>
       )}
 
       {userDesigns.length > 0 && (
-        <ul className='w-full'>
+        <ul className='w-full dark:text-gray-100'>
           {userDesigns.map((design, index) => {
             return <li key={index}>{design.name}</li>;
           })}

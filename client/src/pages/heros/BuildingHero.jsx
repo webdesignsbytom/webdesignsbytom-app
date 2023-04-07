@@ -31,7 +31,7 @@ import { sampleUserData } from '../../users/utils/utils';
 function BuildingHero({ increasePageNumber, decreasePageNumber }) {
   const { user, setUser } = useContext(UserContext);
   const { toggleNavigation, setToggleNavigation } = useContext(ToggleContext);
-  const [activeNav, setActiveNav] = useState('#');
+  let activeNav = '#'
 
   let navigate = useNavigate();
 

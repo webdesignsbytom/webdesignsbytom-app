@@ -10,9 +10,9 @@ import ContactsContainer from '../../components/contacts/ContactsContainer';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
+import AdminUpdate from '../../components/admin/AdminUpdate';
 // Data
 import client from '../../utils/axios/client';
-import AdminUpdate from '../../components/admin/AdminUpdate';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
@@ -32,8 +32,6 @@ function AdminPanel() {
   const [displayUpdate, setDisplayUpdate] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
   const [selectedNavElement, setSelectedNavElement] = useState('overview');
-  // Favorites
-  const [listOfFavorites, setListOfFavorites] = useState([]);
 
   useEffect(() => {
     client

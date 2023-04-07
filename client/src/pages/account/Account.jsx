@@ -62,7 +62,7 @@ function Account() {
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
           <div className='text-left ml-2 mt-4 mb-1 lg:mx-6'>
-            <h1 className='font-bold text-xl'>
+            <h1 className='font-bold text-xl dark:text-gray-100'>
               Account: {user.firstName} {user.lastName}
             </h1>
           </div>
@@ -143,7 +143,7 @@ function Account() {
             {/* Right */}
             <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
-              <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
+              <section className='grid lg:grid-rows-2 gap-1 border-2 dark:border-gray-400 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
@@ -183,9 +183,9 @@ function Account() {
                 </section>
               </section>
               {/* Favorites */}
-              <section className='hidden lg:grid border-2 border-black border-solid rounded-sm p-1'>
+              <section className='hidden lg:grid border-2 dark:border-gray-400 border-black border-solid rounded-sm p-1'>
                 <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
+                  <h3 className='border-b-2 dark:bg-gray-100 border-black border-solid pl-2 py-1'>
                     Favorites
                   </h3>
                   <ul className='bg-gray-300 grid h-full'>

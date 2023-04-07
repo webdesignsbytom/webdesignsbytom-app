@@ -10,7 +10,7 @@ function ProjectsOverview({ userProjects }) {
 
   return (
     <section>
-      <div className='mb-2'>
+      <div className='mb-2 dark:text-gray-100'>
         <h2>Open Projects</h2>
       </div>
       <section className='mb-2'>
@@ -26,11 +26,11 @@ function ProjectsOverview({ userProjects }) {
       </section>
 
       {userProjects.length === 0 && (
-        <article>Nothing to display - No Saved Projects</article>
+        <article className='dark:text-gray-100'>Nothing to display - No Saved Projects</article>
       )}
 
       {userProjects.length > 0 && (
-        <ul className='w-full'>
+        <ul className='w-full dark:text-gray-100'>
           {userProjects.map((project, index) => {
             return <li key={index}>{project.name}</li>;
           })}

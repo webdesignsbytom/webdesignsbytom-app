@@ -337,7 +337,7 @@ async function seed() {
         userId: createdUser.id,
         subject: 'TEST',
         content: 'message rest unseen',
-        sentFromId: adminUser.id,
+        sentFromId: devUser.id,
       },
     });
 

@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-// Context
 import { useContext } from 'react';
 // Pages
 import PortfolioHome from './pages/portfolio/PortfolioHome';
@@ -23,11 +22,11 @@ import {
   AuthenticateAdmin,
   AuthenticateDeveloper,
 } from './users/utils/AuthenticateUser';
-// Components
-import ConfirmPolicies from './components/popups/ConfirmPolicies';
 // Context
 import { UserContext } from './context/UserContext';
-import ProjectContainer from './pages/project/ProjectContainer';
+// Components
+import ConfirmPolicies from './components/popups/ConfirmPolicies';
+import ProjectOverview from './pages/project/ProjectOverview';
 import Tavyepoxy from './pages/portfolio/items/Tavyepoxy';
 import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
@@ -132,10 +131,10 @@ function App() {
 
         {/* Projects */}
         <Route
-          path='user/:userId/projects/:projectId'
+          path='user/projects/:projectName'
           element={
             <AuthenticateUser>
-              <ProjectContainer />
+              <ProjectOverview />
             </AuthenticateUser>
           }
         />

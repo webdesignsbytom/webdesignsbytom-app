@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function PortfolioCta() {
-  let navigate = useNavigate();
-
 
   return (
     <section className='mx-4 mb-10 lg:mx-auto lg:my-10'>

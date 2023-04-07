@@ -1,31 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 // Components
 import Navbar from '../../components/nav/Navbar';
 import PortfolioCta from '../portfolio/PortfolioCta';
-import { SubmitButton } from '../../components/utils/SubmitButtons';
 // Context
 import { ToggleContext } from '../../context/ToggleContext';
 // Data
 import { projectInitialData } from '../../utils/DataUtils';
-import { statusResults } from '../../users/utils/utils';
+import client from '../../utils/axios/client';
+import { UserContext } from '../../context/UserContext';
 
 function NewProject() {
   const { toggleNavigation } = useContext(ToggleContext);
-
-  const [newProjectResponseMessage, setNewProjectResponseMessage] =
-    useState(statusResults);
-  const [loadingAnimation, setLoadingAnimation] = useState(false);
-  const [mainButtonContent, setMainButtonContent] = useState(true);
+  const { user } = useContext(UserContext);
   // Form
   const [newProjectForm, setNewProjectForm] = useState({});
 
-  const location = useLocation();
+  let navigate = useNavigate();
+  let location = useLocation();
 
   useEffect(() => {
     setNewProjectForm({
       ...projectInitialData,
       type: location.state,
+      userId: user.id,
     });
   }, [location.state]);
 
@@ -38,8 +36,27 @@ function NewProject() {
     });
   };
 
+  const projectOverviewPage = () => {
+    navigate(`/user/projects/${newProjectForm.name}`, { replace: true });
+  }
+
+  const startNewProject = (event) => {
+    event.preventDefault();
+    console.log('start');
+
+    client
+      .post(`/projects/create/${newProjectForm.name}`, newProjectForm, false)
+      .then((res) => {
+        console.log('res', res);
+      })
+      .then(() => projectOverviewPage())
+      .catch((err) => {
+        console.error('Unable to start new project', err);
+      });
+  };
+
   return (
-    <div className='bg-white dark:bg-black dark:text-gray-100 lg:max-h-screen lg:overflow-hidden'>
+    <div className='bg-white dark:bg-black min-h-screen dark:text-gray-100 lg:max-h-screen lg:overflow-hidden'>
       <Navbar />
       {!toggleNavigation && (
         <>
@@ -65,6 +82,10 @@ function NewProject() {
                       <span> {newProjectForm.type}</span>
                     </h3>
                     <h3 className='text-base md:text-xl capitalize'>
+                      <span>Project Name:</span>
+                      <span> {newProjectForm.name}</span>
+                    </h3>
+                    <h3 className='text-base md:text-xl capitalize'>
                       <span>Domain Name:</span>
                       <span> {newProjectForm.domain}</span>
                     </h3>
@@ -86,22 +107,39 @@ function NewProject() {
                     </h3>
                     <h3 className='text-base md:text-xl grid capitalize w-full max-w-full'>
                       <span>Mission Statement:</span>
-                      <span className='max-w-full break-words overflow-x-hidden'>{newProjectForm.missionStatement}</span>
+                      <span className='max-w-full break-words overflow-x-hidden'>
+                        {newProjectForm.missionStatement}
+                      </span>
                     </h3>
                   </section>
                 </article>
                 {/* <!-- Project Name input --> */}
                 <section>
-                  <div className=''>
-                    <input
-                      type='text'
-                      name='name'
-                      className='standard__inputs'
-                      placeholder='Project Name'
-                      onChange={handleChange}
-                    />
-                    <p className='h-4'></p>
-                  </div>
+                  <section className='grid md:flex'>
+                    <div className='w-full'>
+                      <input
+                        type='text'
+                        name='name'
+                        className='standard__inputs'
+                        placeholder='Project Name'
+                        onChange={handleChange}
+                        required
+                      />
+                      <p className='h-4'></p>
+                    </div>
+                    <div className='w-full'>
+                      <select id='type' name='type' onChange={handleChange} className='standard__inputs'>
+                        <option defaultValue>Choose a type</option>
+                        <option value='BASIC'>BASIC</option>
+                        <option value='SHOP'>SHOP</option>
+                        <option value='FULLSTACK'>FULLSTACK</option>
+                        <option value='OTHER'>OTHER</option>
+                        <option value='CUSTOM'>CUSTOM</option>
+                        <option value='PAGE'>PAGE</option>
+                      </select>
+                      <p className='h-4'></p>
+                    </div>
+                  </section>
                   {/* <!-- Domain input --> */}
                   <section className='md:flex w-full'>
                     <div className='w-full'>
@@ -175,14 +213,15 @@ function NewProject() {
                   {/* <!-- Submit button --> */}
                   <div className='mt-2'>
                     <div className='mb-2'>
-                      <SubmitButton
-                        loadingAnimation={loadingAnimation}
-                        mainButtonContent={mainButtonContent}
-                        responseMessage={newProjectResponseMessage}
-                        buttonMessage='Submit Project'
-                        spinnerHeight='h-5'
-                        spinnerWidth='w-5'
-                      />
+                      <button
+                        onClick={startNewProject}
+                        type='submit'
+                        className='submit__button'
+                        data-mdb-ripple='true'
+                        data-mdb-ripple-color='light'
+                      >
+                        Submit Project
+                      </button>
                     </div>
                   </div>
                 </section>

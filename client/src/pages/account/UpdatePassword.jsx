@@ -75,11 +75,11 @@ function UpdatePassword() {
               </div>
             </Link>
           </section>
-          <div className='my-4'>
+          <div className='my-4 dark:text-gray-100'>
             <h1>Password update</h1>
           </div>
           <section>
-            <form>
+            <form className='px-4'>
               {/* <!-- Password input --> */}
               <div>
                 <div className='relative flex z-0'>

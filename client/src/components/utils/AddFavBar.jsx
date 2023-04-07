@@ -1,7 +1,5 @@
 import React from 'react';
 // Icons
-import PlusIconReg from '../../assets/svg/plusIconReg.svg';
-import HeartIcon from '../../assets/svg/heart.svg';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { BsHeartFill } from 'react-icons/bs';
 
