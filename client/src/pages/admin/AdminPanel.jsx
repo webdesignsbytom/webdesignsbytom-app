@@ -10,9 +10,9 @@ import ContactsContainer from '../../components/contacts/ContactsContainer';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import AdminSearch from '../../components/admin/AdminSearch';
 import AdminProjects from '../../components/admin/AdminProjects';
+import AdminUpdate from '../../components/admin/AdminUpdate';
 // Data
 import client from '../../utils/axios/client';
-import AdminUpdate from '../../components/admin/AdminUpdate';
 
 function AdminPanel() {
   const { user } = useContext(UserContext);
@@ -32,8 +32,6 @@ function AdminPanel() {
   const [displayUpdate, setDisplayUpdate] = useState(false);
   const [displayFixed, setDisplayFixed] = useState(true);
   const [selectedNavElement, setSelectedNavElement] = useState('overview');
-  // Favorites
-  const [listOfFavorites, setListOfFavorites] = useState([]);
 
   useEffect(() => {
     client
@@ -188,10 +186,10 @@ function AdminPanel() {
                 </section>
               </main>
               {/* Right */}
-              <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
+              <section className='hidden w-full lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
                 {/* Messages */}
-                <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
-                  <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
+                <section className='grid w-full lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
+                  <section className='grid w-full lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
                     <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                       Notifications
                     </h3>
@@ -226,30 +224,17 @@ function AdminPanel() {
                     </div>
                   </section>
                 </section>
-                {/* Favorites */}
+                {/* Todo */}
                 <section className='hidden lg:grid border-2 border-black border-solid rounded-sm p-1'>
                   <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
                     <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
-                      Favorites
+                      TODO
                     </h3>
-                    <ul className='bg-main-colour grid h-full'>
-                      {listOfFavorites > 0 ? (
-                        listOfFavorites.map((favorite, index) => {
-                          return <li key={index}>{favorite.name}</li>;
-                        })
-                      ) : (
-                        <div className='grid justify-center'>
-                          <p>Nothing to display</p>
-                        </div>
-                      )}
-                    </ul>
+                    
                   </div>
                 </section>
               </section>
             </section>
-            {/* {!resendVerification && (
-            <ResendConfirmEmail handleResend={handleResend} />
-          )} */}
           </section>
         )}
       </div>

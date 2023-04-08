@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function PortfolioCta() {
-  let navigate = useNavigate();
-
 
   return (
     <section className='mx-4 mb-10 lg:mx-auto lg:my-10'>
-      <h4 className='text-center my-2 font-semibold text-xl'>Any Questions?</h4>
+      <h4 className='text-center my-2 font-semibold text-xl dark:text-gray-100'>Any Questions?</h4>
       <div className='flex justify-center my-2'>
         <Link
           to='/contact'

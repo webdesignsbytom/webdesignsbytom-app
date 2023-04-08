@@ -220,10 +220,10 @@ model Project {
   name          String
   userId        String
   user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  ownerName     String
+  ownerName     String?
   pagesTotal    Int?
   domainName    String?
-  price         Int
+  price         Int?
   userStories   UserStory[]
   colourPalette colourPalette[]
   navDesign     NavDesign?

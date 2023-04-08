@@ -17,7 +17,7 @@ const router = Router();
 
 router.get('/', validateAuthentication, validateAdminRole, getAllUsers);
 router.post('/register', registerNewUser);
-router.get('/:id', validateAuthentication, getUserById);
+router.get('/:id', getUserById); // Get
 router.get('/verify/:userId/:uniqueString', verifyUser);
 router.post('/verify/resend-email/:email', resendVerificationEmail)
 router.post('/test/:email', sendTestyEmail)

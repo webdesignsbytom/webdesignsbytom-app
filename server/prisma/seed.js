@@ -16,37 +16,23 @@ async function seed() {
     },
   });
 
-  for (let i = 0; i <= 9; i++) {
-    const user = await dbClient.user.create({
-      data: {
-        email: `email${i}@gmail${i}.com`,
-        password,
-        isVerified: true,
-        firstName: `Max${i}`,
-        lastName: 'Power',
-        country: 'UK',
-        agreedToTerms: true,
-      },
-    });
+  const complaint = await dbClient.complaint.create({
+    data: {
+      email: `email@gmail.com`,
+      content: 'Crap',
+    },
+  });
 
-    const complaint = await dbClient.complaint.create({
-      data: {
-        email: `email${i}@gmail${i}.com`,
-        content: 'Crap',
-      },
-    });
-
-    const project = await dbClient.project.create({
-      data: {
-        type: 'TEST',
-        domainName: `www.${i}.com`,
-        ownerName: `${user.firstName} ${user.lastName}`,
-        name: 'New fun',
-        userId: user.id,
-        price: 1000,
-      },
-    });
-  }
+  const project = await dbClient.project.create({
+    data: {
+      type: 'TEST',
+      domainName: `www.magic.com`,
+      ownerName: `${testUser.firstName} ${testUser.lastName}`,
+      name: 'New fun',
+      userId: testUser.id,
+      price: 1000,
+    },
+  });
 
   // PAGES
   const page1 = await dbClient.page.create({
@@ -313,31 +299,6 @@ async function seed() {
       agreedToTerms: true,
     },
   });
-  const adminUser = await dbClient.user.create({
-    data: {
-      email: 'admin@admin.com',
-      password,
-      role: 'ADMIN',
-      isVerified: true,
-      firstName: 'Craig',
-      lastName: 'Peloton',
-      country: 'USA',
-      agreedToTerms: true,
-    },
-  });
-  const adminUserTwo = await dbClient.user.create({
-    data: {
-      email: 'admin2@admin.com',
-      password,
-      role: 'ADMIN',
-      isVerified: true,
-      firstName: 'Raymond',
-      lastName: 'Holt',
-      country: 'USA',
-      agreedToTerms: true,
-    },
-  });
-
   const devUser = await dbClient.user.create({
     data: {
       email: 'dev@dev.com',
@@ -345,20 +306,7 @@ async function seed() {
       role: 'DEVELOPER',
       isVerified: true,
       firstName: 'Tom',
-      lastName: 'Hats',
-      country: 'UK',
-      agreedToTerms: true,
-    },
-  });
-
-  const devUserTwo = await dbClient.user.create({
-    data: {
-      email: 'dev2@dev.com',
-      password,
-      role: 'DEVELOPER',
-      isVerified: true,
-      firstName: 'Mean',
-      lastName: 'Girl',
+      lastName: 'Brockington',
       country: 'UK',
       agreedToTerms: true,
     },
@@ -375,7 +323,7 @@ async function seed() {
     },
   });
 
-  for (let i = 0; i <= 9; i++) {
+  for (let i = 0; i <= 3; i++) {
     const userNote = await dbClient.notification.create({
       data: {
         userId: createdUser.id,
@@ -388,23 +336,6 @@ async function seed() {
       data: {
         userId: createdUser.id,
         subject: 'TEST',
-        content: 'message rest unseen',
-        sentFromId: adminUser.id,
-      },
-    });
-
-    const adminNote = await dbClient.notification.create({
-      data: {
-        userId: adminUser.id,
-        type: 'TEST',
-        content: 'message rest',
-      },
-    });
-
-    const adminMessage = await dbClient.message.create({
-      data: {
-        userId: createdUser.id,
-        subject: 'MESSAGE',
         content: 'message rest unseen',
         sentFromId: devUser.id,
       },
@@ -423,7 +354,7 @@ async function seed() {
         userId: devUser.id,
         subject: 'TEST',
         content: `Ahh i needed to say ${i}`,
-        sentFromId: adminUser.id,
+        sentFromId: createdUser.id,
       },
     });
 

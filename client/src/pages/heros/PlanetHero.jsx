@@ -74,7 +74,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
           <header className='flex absolute w-full z-20 max-h-12 font-outfit text-white justify-between px-4 py-4'>
             <div>
               <Link to='/'>
-                <h3 className='md:text-xl'>GLXY DESIGN CLSS</h3>
+                <h3 className='md:text-xl select-none'>GLXY DESIGN CLSS</h3>
               </Link>
             </div>
             {/* Large nav */}
@@ -138,7 +138,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
               <article>
                 <div className='border-transparent-black border-solid border-[6px] p-2 rounded-tr-2xl rounded-bl-2xl'>
                   <section className='bg-transparent-black p-2 rounded-tr-2xl rounded-bl-2xl'>
-                    <h1 className='grid text-5xl font-semibold font-outfit'>
+                    <h1 className='grid text-5xl font-semibold font-outfit select-none'>
                       <span className='text-left -ml-4 md:-ml-8'>
                         Web Designs
                       </span>{' '}
@@ -188,7 +188,7 @@ function PlanetHero({ increasePageNumber, decreasePageNumber }) {
                   <HiArrowSmRight className='' size={50} />
                 </section>
               </section>
-              <article className='text-xs mb-2 md:text-sm grid text-center justify-center font-outfit font-semibold'>
+              <article className='text-xs mb-2 md:text-sm grid text-center justify-center font-outfit font-semibold select-none'>
                 <p>This is one of many landing pages i have designed.</p>
                 <p>Use the controls below to move through the options.</p>
               </article>

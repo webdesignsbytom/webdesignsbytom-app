@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
+// Axios
 import client from '../../../utils/axios/client';
 // Components
 import LoadingSpinner from '../../utils/LoadingSpinner';
 import ComponentItem from './ComponentItem';
 
-function CompenentOptions({ savedComponents, setSavedComponents }) {
+function CompenentOptions({
+  savedComponents,
+  setSavedComponents,
+  favoriteComponents,
+  setFavoriteComponents,
+}) {
   const [allComponents, setAllComponents] = useState([]);
-
-  console.log('allComponents', allComponents);
 
   useEffect(() => {
     client
@@ -39,7 +43,16 @@ function CompenentOptions({ savedComponents, setSavedComponents }) {
           </div>
         ) : (
           allComponents.map((component, index) => {
-            return <ComponentItem component={component} key={index} />;
+            return (
+              <ComponentItem
+                savedComponents={savedComponents}
+                setSavedComponents={setSavedComponents}
+                favoriteComponents={favoriteComponents}
+                setFavoriteComponents={setFavoriteComponents}
+                component={component}
+                key={index}
+              />
+            );
           })
         )}
       </ul>

@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-// Context
-import { UserContext } from '../../context/UserContext';
+import React, { useEffect, useState } from 'react';
 // Icons
-import QuestionMark from '../../assets/svg/questionMark.svg';
-import BinIcon from '../../assets/svg/bin.svg';
+import { HiOutlineQuestionMarkCircle } from 'react-icons/hi';
+import { TiDelete } from 'react-icons/ti';
 // Utils
 import { userStoryTemplate } from '../../utils/TemplateUtils';
 import { statusResults } from '../../users/utils/utils';
@@ -14,7 +12,6 @@ function UserStories({
   userStoriesArr,
   setUserStoriesArr,
 }) {
-  const { user } = useContext(UserContext);
   const [newUserStoryForm, setNewUserStoryForm] = useState(userStoryTemplate);
   const [errorDisplay, setErrorDisplay] = useState(statusResults);
 
@@ -77,16 +74,15 @@ function UserStories({
   return (
     <>
       <main>
-        <div className='text-center py-2'>
+        <div className='text-center py-2 dark:text-gray-100'>
           <h1>UserStories</h1>
         </div>
         <section className='mx-2'>
-          <div className='flex justify-between mb-2'>
+          <div className='flex justify-between mb-2 dark:text-gray-100'>
             <h2>Create New Story:</h2>
             <div className='group flex align-middle h-full pl-1'>
-              <img
-                src={QuestionMark}
-                className='w-6 cursor-pointer group transition duration-200 ease-in-out hover:scale-125'
+              <HiOutlineQuestionMarkCircle size={20}
+                className='cursor-pointer dark:text-gray-100 no__highlights group transition duration-200 ease-in-out hover:scale-125'
                 alt='information'
                 data-te-animation-init
               />
@@ -107,7 +103,7 @@ function UserStories({
           <form onSubmit={handleCreate}>
             <div className='mb-2'>
               <textarea
-                className='w-full rounded border-2 border-slate-400 border-solid'
+                className='w-full rounded border-2 dark:text-gray-100 dark:bg-black dark:focus:bg-black border-slate-400 border-solid'
                 name='content'
                 id='user-story'
                 rows='2'
@@ -137,13 +133,12 @@ function UserStories({
           <ul>
             {openDesign.userStories && openDesign.userStories.map((story, index) => {
               return (
-                <li key={index} className='flex justify-between'>
+                <li key={index} className='flex justify-between items-center dark:text-gray-100'>
                   <h3>{story.content}</h3>
                   <span>
-                    <img
+                    <TiDelete size={20}
                       onClick={() => deleteUserStory(story, index)}
-                      className='w-5 cursor-pointer'
-                      src={BinIcon}
+                      className='w-5 cursor-pointer dark:text-gray-100'
                       alt='delete user story'
                     />
                   </span>

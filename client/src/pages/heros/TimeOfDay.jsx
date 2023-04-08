@@ -29,7 +29,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
   const { user, setUser } = useContext(UserContext);
   // Nav Colours
   const [currentBg, setCurrentBg] = useState('black');
-  const [currentTransBg, setCurrentTransBg] = useState('transparent-black');
+  const [currentTransBg, setCurrentTransBg] = useState('transparent-white');
   const [currentText, setCurrentText] = useState('white');
   // Colours
   const [currentTextColour, setCurrentTextColour] = useState('black');
@@ -120,6 +120,8 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         setButtonOneStyle('afternoon__button__one');
         setButtonTwoStyle('afternoon__button__two');
       } else {
+        setCurrentTransBg('transparent-black')
+        setCurrentText('white')
         // Evening
         if (container.scrollWidth < 600) {
           container.style.backgroundImage =
@@ -154,7 +156,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
     function setName(e) {
       if (e.type === 'keypress') {
         // Make sure enter is pressed
-        if (e.which == 13 || e.keyCode == 13) {
+        if (e.which === 13 || e.keyCode === 13) {
           localStorage.setItem('heroName', e.target.innerText);
           name.blur();
         }
@@ -309,7 +311,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
               <article className='grid w-full px-2 justify-center items-center text-center'>
                 <section className='w-full flex items-center justify-center'>
                   <div
-                    className={`outline outline-4 outline-${currentTextColour} bg-transparent-white w-fit p-2 rounded`}
+                    className={`outline outline-4 outline-${currentTextColour} bg-${currentTransBg} w-fit p-2 rounded`}
                   >
                     <time
                       id='time'
@@ -319,7 +321,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                 </section>
                 <h1 className='text-base md:text-2xl my-2 font-semibold'>
                   <span id='greeting'></span>
-                  <span id='name' contenteditable='true'></span>
+                  <span id='name' contentEditable='true'></span>
                 </h1>
 
                 {/* BUTTONS */}

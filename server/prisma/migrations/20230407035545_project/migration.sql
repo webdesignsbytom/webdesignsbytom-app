@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Project" ALTER COLUMN "ownerName" DROP NOT NULL,
+ALTER COLUMN "price" DROP NOT NULL;

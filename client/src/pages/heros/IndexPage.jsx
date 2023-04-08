@@ -4,8 +4,9 @@ import PlanetHero from '../../pages/heros/PlanetHero';
 import TimeOfDay from '../../pages/heros/TimeOfDay';
 import MapHero from './MapHero';
 import NewsletterHero from './NewsletterHero';
+import BuildingHero from './BuildingHero';
 
-const pageList = ['NewsletterHero', 'PlanetHero', 'TimeOfDay', 'MapHero'];
+const pageList = ['NewsletterHero', 'PlanetHero', 'TimeOfDay', 'MapHero', 'BuildingHero'];
 
 function IndexPage() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -48,6 +49,12 @@ function IndexPage() {
       )}
       {pageNumber === 4 && (
         <TimeOfDay
+          increasePageNumber={increasePageNumber}
+          decreasePageNumber={decreasePageNumber}
+        />
+      )}
+      {pageNumber === 5 && (
+        <BuildingHero
           increasePageNumber={increasePageNumber}
           decreasePageNumber={decreasePageNumber}
         />

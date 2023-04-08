@@ -1,3 +1,12 @@
+@keyframes slowspin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+.animate-slowspin {
+  animation: slowspin 10s linear infinite;
+}
+
 .reveal__component {
   position: absolute;
   height: 100%;

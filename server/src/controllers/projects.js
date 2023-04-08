@@ -118,10 +118,13 @@ export const getProjectsFromUser = async (req, res) => {
 
 export const createNewProject = async (req, res) => {
   console.log('createNewProject');
+  const { projectName } = req.params
   const { type, name, userId, domainName } = req.body;
-
+  console.log('projectName', projectName);
+  console.log('userId', userId);
+ 
   try {
-    if (!type || !name || !userId) {
+    if (!type || !userId || !name) {
       const missingField = new MissingFieldEvent(
         null,
         'Project creation: Missing Field/s event'

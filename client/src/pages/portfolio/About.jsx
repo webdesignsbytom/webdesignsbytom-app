@@ -7,11 +7,14 @@ import { TbReportAnalytics } from 'react-icons/tb';
 import { MdOutlineLocalOffer } from 'react-icons/md';
 import { AiOutlineProject } from 'react-icons/ai';
 
-function About() {
+function About({ myRef }) {
+
+  const executeScroll = () => myRef.current.scrollIntoView()  
+
   return (
     <section
       id='about'
-      className='lg:h-screen lg:max-h-screen grid lg:grid-rows-reg mb-4 pb-20 bg-gray-100 dark:bg-gray-900 dark:text-gray-400'
+      className='lg:min-h-screen grid lg:grid-rows-reg mb-4 pb-20 bg-gray-100 dark:bg-black dark:text-gray-400'
     >
       <section className='text-center mt-8 mb-4'>
         <h5 className='font-semibold'>Get To Know Me</h5>
@@ -66,16 +69,21 @@ function About() {
           <section className='grid gap-6'>
             <article className='grid gap-10'>
               <p>
-                <span className='font-semibold'>After</span> years of electrical engineering and renewable energy
-                installation, I have started developing websites for you! I have
-                always worked in a design and engineering capacity, I even built
-                the desk I work from. <br /> Completing jobs that have logic
-                puzzles or require solving problems has always made me happy. My
-                personal projects combine circuits and web design for developing
-                products I hope to achieve success with.
+                <span className='font-semibold'>After</span> years of electrical
+                engineering and renewable energy installation, I have started
+                developing websites for you! I have always worked in a design
+                and engineering capacity, I even built the desk I work from.{' '}
+                <br /> Completing jobs that have logic puzzles or require
+                solving problems has always made me happy. My personal projects
+                combine circuits and web design for developing products I hope
+                to achieve success with.
               </p>
               <p>
-                I am also an <span className='font-semibold'>artist</span>, <span className='font-semibold'>carpenter</span>, <span className='font-semibold'>master scuba diver</span>, <span className='font-semibold'>syrup maker</span>, <span className='font-semibold'>inventor </span>
+                I am also an <span className='font-semibold'>artist</span>,{' '}
+                <span className='font-semibold'>carpenter</span>,{' '}
+                <span className='font-semibold'>master scuba diver</span>,{' '}
+                <span className='font-semibold'>syrup maker</span>,{' '}
+                <span className='font-semibold'>inventor </span>
                 and <span className='font-semibold'>entrepreneur</span>.
               </p>
             </article>
@@ -92,7 +100,7 @@ function About() {
                 </span>
               </Link>
               <Link
-                to=''
+                onClick={executeScroll}
                 className='w-full relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
                 <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-yellow-500 rounded-md group-hover:mt-0 group-hover:ml-0'></span>

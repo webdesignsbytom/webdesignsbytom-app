@@ -9,7 +9,7 @@ import {
 // Icons
 import { BsCheck2Circle } from 'react-icons/bs';
 
-function PurchaseOptions() {
+function PurchaseOptions({ myRef }) {
   let navigate = useNavigate();
 
   const startNewProject = (event) => {
@@ -18,7 +18,7 @@ function PurchaseOptions() {
   };
 
   return (
-    <section className='relative w-full h-full'>
+    <section ref={myRef} className='relative w-full h-full'>
       <div className='absolute hidden w-full bg-gray-100 lg:block h-96' />
       <div className='relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>
         {/* Titles */}

@@ -10,14 +10,21 @@ export const findAllUsers = () =>
 export const findUserByEmail = (email) =>
   dbClient.user.findUnique({
     where: { email: email },
+    include: {
+      messages: true,
+      notifications: true,
+      favorites: true,
+      designs: true,
+      projects: true,
+    },
   });
 
 export const findUsersByRole = (role) =>
   dbClient.user.findMany({
     where: {
-      role: role
-    }
-  })
+      role: role,
+    },
+  });
 export const createUser = (
   email,
   password,
@@ -64,7 +71,7 @@ export const findUserById = (userId) =>
       favorites: true,
       designs: true,
       projects: true,
-    }
+    },
   });
 
 export const resetUserPassword = (userId, password) =>

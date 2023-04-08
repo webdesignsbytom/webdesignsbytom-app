@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// Utils
-import { statusResults } from '../../users/utils/utils';
-import LoadingSpinner from '../utils/LoadingSpinner';
-import { SubmitButton } from '../utils/SubmitButtons';
 
-function ProjectsOverview({ userProjects, projectResponse }) {
-  const [updateAnimation, setUpdateAnimation] = useState(false);
-  const [mainButtonContent, setMainButtonContent] = useState(true);
-  const [updateResponseMessage, setUpdateResponseMessage] =
-    useState(statusResults);
-
+function ProjectsOverview({ userProjects }) {
   let navigate = useNavigate();
 
   const buyProject = () => {
@@ -19,27 +10,27 @@ function ProjectsOverview({ userProjects, projectResponse }) {
 
   return (
     <section>
-      <div className='mb-2'>
+      <div className='mb-2 dark:text-gray-100'>
         <h2>Open Projects</h2>
       </div>
       <section className='mb-2'>
-        <SubmitButton
-          loadingAnimation={updateAnimation}
-          mainButtonContent={mainButtonContent}
-          responseMessage={updateResponseMessage}
-          buttonMessage='Buy New Website'
-          spinnerHeight='h-5'
-          spinnerWidth='w-5'
-          action={buyProject}
-        />
+        <button
+          onClick={buyProject}
+          type='submit'
+          className='submit__button'
+          data-mdb-ripple='true'
+          data-mdb-ripple-color='light'
+        >
+          Start New Project
+        </button>
       </section>
 
-      {projectResponse.status === false && userProjects.length === 0 && (
-        <article>Nothing to display - No Saved Projects</article>
+      {userProjects.length === 0 && (
+        <article className='dark:text-gray-100'>Nothing to display - No Saved Projects</article>
       )}
 
-      {projectResponse.status === true && userProjects.length > 0 && (
-        <ul className='w-full'>
+      {userProjects.length > 0 && (
+        <ul className='w-full dark:text-gray-100'>
           {userProjects.map((project, index) => {
             return <li key={index}>{project.name}</li>;
           })}

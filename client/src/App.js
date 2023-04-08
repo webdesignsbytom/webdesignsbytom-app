@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-// Context
 import { useContext } from 'react';
 // Pages
 import PortfolioHome from './pages/portfolio/PortfolioHome';
@@ -23,11 +22,11 @@ import {
   AuthenticateAdmin,
   AuthenticateDeveloper,
 } from './users/utils/AuthenticateUser';
-// Components
-import ConfirmPolicies from './components/popups/ConfirmPolicies';
 // Context
 import { UserContext } from './context/UserContext';
-import ProjectContainer from './pages/project/ProjectContainer';
+// Components
+import ConfirmPolicies from './components/popups/ConfirmPolicies';
+import ProjectOverview from './pages/project/ProjectOverview';
 import Tavyepoxy from './pages/portfolio/items/Tavyepoxy';
 import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
@@ -41,18 +40,15 @@ import BioClicker from './pages/portfolio/items/BioClicker';
 import Myecoapp from './pages/portfolio/items/Myecoapp';
 import LuxuryCasino from './pages/portfolio/items/LuxuryCasino';
 
-// const TRACKING_ID = ;
-
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
 
-  ReactGA.initialize('G-B2XXL65L29');
+  ReactGA.initialize('G-2DWCKVD9WK');
   ReactGA.pageview('/');
   ReactGA.pageview('/contact');
   ReactGA.pageview('/design');
   ReactGA.pageview('/portfolio');
   ReactGA.pageview('/login');
-  ReactGA.pageview('/logout');
   ReactGA.pageview('/store');
   ReactGA.pageview('/new-project');
 
@@ -99,6 +95,7 @@ function App() {
 
         {/* User data */}
         <Route path='users/verify/:userId/:uniqueString' element={<Verify />} />
+
         <Route
           path='users/:userId/update-password'
           element={<UpdatePassword />}
@@ -124,14 +121,22 @@ function App() {
         {/* Messages */}
         <Route
           path='user/:userId/messages/:messageId'
-          element={<MessageOpen />}
+          element={
+            <AuthenticateUser>
+              <MessageOpen />
+            </AuthenticateUser>
+          }
         />
         <Route path='user/messages/create-new' element={<SendNewMessage />} />
 
         {/* Projects */}
         <Route
-          path='user/:userId/projects/:projectId'
-          element={<ProjectContainer />}
+          path='user/projects/:projectName'
+          element={
+            <AuthenticateUser>
+              <ProjectOverview />
+            </AuthenticateUser>
+          }
         />
         <Route path='new-project' element={<NewProject />} />
 

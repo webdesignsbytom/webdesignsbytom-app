@@ -160,10 +160,10 @@ function DeveloperPanel() {
                       </div>
                     ) : (
                       <ul className='grid grid-rows-one lg:max-h-[500px] h-fit'>
-                      {allEvents.map((event, index) => {
-                        return <EventItem event={event} key={index} />;
-                      })}
-                    </ul>
+                        {allEvents.map((event, index) => {
+                          return <EventItem event={event} key={index} />;
+                        })}
+                      </ul>
                     )}
                   </div>
                   <div className='max-h-[300px] lg:max-h-none overflow-scroll overflow-x-hidden bg-main-colour'></div>
@@ -173,18 +173,12 @@ function DeveloperPanel() {
               <section className='lg:grid border-2 border-black border-solid rounded-sm p-1'>
                 <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
-                    Favorites
+                    TODO
                   </h3>
-                  <ul className='bg-main-colour grid h-full'>
-                   todos
-                  </ul>
                 </div>
               </section>
             </section>
           </section>
-          {/* {!resendVerification && (
-            <ResendConfirmEmail handleResend={handleResend} />
-          )} */}
         </section>
       </div>
     </>

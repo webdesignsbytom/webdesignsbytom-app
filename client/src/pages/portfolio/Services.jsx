@@ -15,7 +15,7 @@ function Services() {
 
       <section className='my-auto grid lg:grid-cols-3 gap-8 mx-4 lg:mx-8'>
         {/* Articles */}
-        <article className='bg-black dark:bg-white text-white rounded-xl text-center p-1 w-full h-min'>
+        <article className='bg-black dark:bg-gray-500 text-white rounded-xl text-center p-1 w-full h-min'>
           <div className='mb-1 border-4 border-purple-600 bg-main-colour border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>UI/UX Design</h3>
           </div>
@@ -70,7 +70,7 @@ function Services() {
         </article>
 
         {/* END OF UI/UX */}
-        <article className='bg-black dark:bg-white rounded-xl text-center p-1 w-full h-min text-white'>
+        <article className='bg-black dark:bg-gray-500 rounded-xl text-center p-1 w-full h-min text-white'>
           <div className='mb-1 border-4 border-yellow-500 bg-main-colour border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>Web Development</h3>
           </div>
@@ -128,8 +128,8 @@ function Services() {
         </article>
 
         {/* Other skills */}
-        <article className='bg-black dark:bg-white rounded-xl text-center p-1 w-full h-min text-white'>
-        <div className='mb-1 border-4 border-green-600 bg-main-colour border-solid rounded-lg'>
+        <article className='bg-black dark:bg-gray-500 rounded-xl text-center p-1 w-full h-min text-white'>
+          <div className='mb-1 border-4 border-green-600 bg-main-colour border-solid rounded-lg'>
             <h3 className='p-2 font-semibold text-lg'>Other Skills</h3>
           </div>
 

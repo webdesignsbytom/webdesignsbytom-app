@@ -22,18 +22,19 @@ const UserContextProvider = ({ children }) => {
 
     if (decodedUserData) {
       const userId = decodedUserData.id;
+
       client
         .get(`/users/${userId}`)
         .then((res) => {
-          console.log('res', res.data);
           setUser(res.data.data.user);
         })
         .catch((err) => {
-          console.error('Unable to get user by id', err.response);
+          console.error('Unable to retrieve user data', err);
         });
     }
 
     const cookie = localStorage.getItem('CookiePolicy');
+
     if (cookie) {
       setToggleCookiePolicy(true);
     }

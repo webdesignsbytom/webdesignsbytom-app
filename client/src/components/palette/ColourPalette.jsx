@@ -59,6 +59,29 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
   const [hexCardFive, setHexCardFive] = useState('#0099ff');
   const [hlsCardFive, setHlsCardFive] = useState('#0099ff');
 
+  const setRandomColourItem = (colour) => {
+    console.log('colour', colour);
+    setCardOrSwatch(colour.type);
+    setSelectedCard(colour.id);
+    setCurrentSwatch(colour);
+
+    let num1 = Math.floor(Math.random() * 255) + 1;
+    let num2 = Math.floor(Math.random() * 255) + 1;
+    let num3 = Math.floor(Math.random() * 255) + 1;
+
+    function valueToHex(c) {
+      var hex = c.toString(16);
+      return hex;
+    }
+
+    let news = valueToHex(num1) + valueToHex(num2) + valueToHex(num3);
+    console.log('news', news);
+
+    let update = currentSwatch;
+    update.css = `#${news}`;
+    update.colour = `#${news}`;
+  };
+
   const setRandomCard = (event) => {
     const { id, title } = event.target;
     console.log('ID', id, title);
@@ -269,25 +292,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
 
   return (
     <section className='grid grid-rows-reg'>
-      <div className='text-center flex justify-between'>
-        <div className='relative group flex align-middle h-full'>
-          <img
-            src={changeIcon}
-            className='w-5 ml-4 mt-3 cursor-pointer select-none no__highlights focus:animate-spin active:animate-spin'
-            alt='randomize all colours'
-          />
-          <div className='hidden absolute group-hover:grid border-2 border-black border-solid rounded bg-colour-pale p-1 text-sm align-middle w-[160px] cursor-pointer lg:left-0 lg:top-0 z-10 ml-8 mt-8'>
-            Randomize all colours.
-          </div>
-        </div>
+      <div className='text-center flex justify-between dark:text-gray-100 pl-4'>
         <h2>Create the theme and style for your website</h2>
-        <div></div>
       </div>
       {/* Main */}
       <section className='relative grid grid-rows-aa lg:grid-rows-2 gap-8 lg:gap-0'>
         {/* Colour Picker */}
         {displayPicker && (
-          <div className='z-10 bg-white border-2 border-black border-solid dark:border-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer'>
+          <div className='z-10 bg-white border-2 border-black border-solid dark:border-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer dark:text-gray-100'>
             <div className='flex justify-end my-1'>
               <RxCross2 onClick={closeColourPicker} />
             </div>
@@ -298,7 +310,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             <div className='flex justify-center my-2'>
               <button
                 onClick={setNewColour}
-                className={`py-1 px-3 outline outine-black outline-1 rounded-lg hover:bg-red-500`}
+                className={`py-1 px-3 dark:outline-gray-100 dark:text-gray-100 outline outline-black outline-1 rounded-lg hover:bg-red-500`}
               >
                 SET COLOUR
               </button>
@@ -307,7 +319,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
         )}
         {displayBigPicker && (
           <div className='z-10 bg-white border-2 border-black border-solid dark:border-white dark:bg-black rounded p-1 absolute top-0 cursor-pointer'>
-            <div className='flex justify-end my-1'>
+            <div className='flex justify-end my-1 dark:text-gray-100'>
               <RxCross2 onClick={closeBigColourPicker} />
             </div>
             <SketchPicker
@@ -317,17 +329,17 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
             <div className='flex justify-center my-2'>
               <button
                 onClick={setNewColour}
-                className={`py-1 px-3 outline outine-black outline-1 rounded-lg hover:bg-red-500`}
+                className={`py-1 px-3 outline outline-black outline-1 dark:outline-gray-100 dark:text-gray-100 rounded-lg hover:bg-red-500`}
               >
                 SET COLOUR
               </button>
             </div>
           </div>
         )}
-        <section className='grid lg:grid-cols-xo'>
+        <section className='grid lg:grid-cols-xo dark:text-gray-100'>
           {/* Swatches */}
-          <div className='grid grid-cols-5 lg:ml-2 my-3'>
-            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+          <div className='grid grid-cols-5 gap-2 lg:ml-2 my-3'>
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev outline-2 outline-black dark:outline-gray-100 outline rounded'>
               <div
                 className={`cursor-pointer`}
                 style={{ backgroundColor: `${cardOneBg}` }}
@@ -336,14 +348,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 onClick={openPicker}
               ></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black dark:border-gray-100 border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
                       value={rgbCardOne}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -354,7 +366,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hexCardOne}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -365,7 +377,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hlsCardOne}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -379,7 +391,8 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            {/* TWO */}
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev outline-2 outline-black dark:outline-gray-100 outline rounded'>
               <div
                 className={`cursor-pointer`}
                 style={{ backgroundColor: `${cardTwoBg}` }}
@@ -388,14 +401,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 onClick={openPicker}
               ></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 dark:border-gray-100 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
                       value={rgbCardTwo}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -406,7 +419,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hexCardTwo}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -417,7 +430,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hlsCardTwo}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -431,7 +444,8 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            {/* THREE */}
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev outline-2 outline-black dark:outline-gray-100 outline rounded'>
               <div
                 className={`cursor-pointer`}
                 style={{ backgroundColor: `${cardThreeBg}` }}
@@ -440,14 +454,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 onClick={openPicker}
               ></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black dark:border-gray-100 border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
                       value={rgbCardThree}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -458,7 +472,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hexCardThree}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -469,7 +483,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hlsCardThree}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -483,7 +497,8 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            {/* FOUR */}
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev outline-2 outline-black dark:outline-gray-100 outline rounded'>
               <div
                 className={`cursor-pointer`}
                 style={{ backgroundColor: `${cardFourBg}` }}
@@ -492,14 +507,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 onClick={openPicker}
               ></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 border-black dark:border-gray-100 border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
                       value={rgbCardFour}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -510,7 +525,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hexCardFour}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -521,7 +536,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hlsCardFour}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -535,7 +550,8 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 alt='change to new random colour'
               />
             </div>
-            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev border-2 border-black border-solid rounded'>
+            {/* FIVE */}
+            <div className='relative overflow-hidden grid min-h-[225px] grid-rows-rev outline-2 outline-black dark:outline-gray-100 outline rounded'>
               <div
                 className={`cursor-pointer`}
                 style={{ backgroundColor: `${cardFiveBg}` }}
@@ -544,14 +560,14 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                 onClick={openPicker}
               ></div>
               <article className='h-min text-xs'>
-                <div className='lg:flex gap-2 justify-between border-t-2 border-black border-solid lg:px-2 py-1 overflow-hidden '>
+                <div className='lg:flex gap-2 justify-between border-t-2 dark:border-gray-100 border-black border-solid lg:px-2 py-1 overflow-hidden '>
                   <h5 className='pl-2 lg:pl-0'>RGB</h5>
                   <div className='px-1 sm:px-2 lg:px-0'>
                     <input
                       type='text'
                       value={rgbCardFive}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -562,7 +578,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hexCardFive}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -573,7 +589,7 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                       type='text'
                       value={hlsCardFive}
                       onChange={newBreak}
-                      className='text-placeholder-text text-xs bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-placeholder-text focus:bg-white focus:border-main-colour focus:outline-none w-full pl-1'
+                      className='text-placeholder-text text-xs bg-white bg-clip-padding outline-1 outline outline-gray-300 rounded transition ease-in-out m-0 focus:text-gray-100 dark:bg-black dark:focus:bg-black dark:active:bg-black dark:text-gray-100 focus:bg-white focus:outline-gray-800 focus:outline-none w-full pl-1'
                     />
                   </div>
                 </div>
@@ -600,13 +616,13 @@ function ColourPalette({ colourPaletteObject, setColourPaletteObject }) {
                   key={index}
                   openBigPicker={openBigPicker}
                   colour={colour}
-                  openPicker={openPicker}
                   openSmallPicker={openSmallPicker}
                   currentColour={currentColour}
                   closeSmallColourPicker={closeSmallColourPicker}
                   handleChangeComplete={handleChangeComplete}
                   setNewColour={setNewColour}
                   displaySmallPicker={displaySmallPicker}
+                  setRandomColourItem={setRandomColourItem}
                 />
               );
             })}

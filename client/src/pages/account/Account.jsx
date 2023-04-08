@@ -9,15 +9,11 @@ import AccountOverview from '../../components/account/AccountOverview';
 import LoadingSpinner from '../../components/utils/LoadingSpinner';
 import DesignsOverview from '../../components/account/DesignsOverview';
 import ProjectsOverview from '../../components/account/ProjectsOverview';
-// Fetch
-import client from '../../utils/axios/client';
-// Utils
-import { statusResults } from '../../users/utils/utils';
+import ResendConfirmEmail from '../../components/popups/ResendConfirmEmail';
 
 function Account() {
   const { user } = useContext(UserContext);
-  
-  const [updateUserForm, setUpdateUserForm] = useState(user);
+
   const [resendVerification, setResendVerification] = useState(true);
   // Notifications
   const [allNotifications, setAllNotifications] = useState([]);
@@ -33,26 +29,18 @@ function Account() {
   const [listOfFavorites, setListOfFavorites] = useState([]);
   // Design overview
   const [userDesigns, setUserDesigns] = useState([]);
-  const [designResponse, setDesignResponse] = useState(statusResults);
   // Project overview
   const [userProjects, setUserProjects] = useState([]);
-  const [projectResponse, setProjectResponse] = useState(statusResults);
 
   useEffect(() => {
-    client
-      .get(`/users/${user.id}`)
-      .then((res) => {
-        setUpdateUserForm(res.data.data.user);
-        setUserMessages(res.data.data.user.messages);
-        setAllNotifications(res.data.data.user.notifications);
-        setListOfFavorites(res.data.data.user.favorites);
-        setUserProjects(res.data.data.user.projects);
-        setUserDesigns(res.data.data.user.designs);
-      })
-      .catch((err) => {
-        console.error('Unable to get user by id', err);
-      });
-  }, [user.id]);
+    if (user.email) {
+      setAllNotifications(user.notifications);
+      setUserMessages(user.messages);
+      setListOfFavorites(user.favorites);
+      setUserProjects(user.projects);
+      setUserDesigns(user.designs);
+    }
+  }, [user.email]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,6 +50,10 @@ function Account() {
     }, 2000);
   }, [user.isVerified]);
 
+  const handleResend = () => {
+    console.log('resending')
+  }
+
   return (
     <>
       <div className='bg-white dark:bg-black lg:max-h-screen lg:overflow-hidden'>
@@ -70,7 +62,7 @@ function Account() {
         <section className='grid lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:grid-rows-reg overflow-hidden'>
           {/* Titles */}
           <div className='text-left ml-2 mt-4 mb-1 lg:mx-6'>
-            <h1 className='font-bold text-xl'>
+            <h1 className='font-bold text-xl dark:text-gray-100'>
               Account: {user.firstName} {user.lastName}
             </h1>
           </div>
@@ -130,32 +122,20 @@ function Account() {
               <section className='grid lg:mr-4'>
                 {displayOverview && <AccountOverview />}
                 {displayDesigns && (
-                  <DesignsOverview
-                    userDesigns={userDesigns}
-                    designResponse={designResponse}
-                  />
+                  <DesignsOverview userDesigns={userDesigns} />
                 )}
                 {displayProjects && (
-                  <ProjectsOverview
-                    userProjects={userProjects}
-                    projectResponse={projectResponse}
-                  />
+                  <ProjectsOverview userProjects={userProjects} />
                 )}
 
                 {selectedNavElement === 'overview' && displayFixed === true && (
                   <AccountOverview />
                 )}
                 {selectedNavElement === 'designs' && displayFixed === true && (
-                  <DesignsOverview
-                    userDesigns={userDesigns}
-                    designResponse={designResponse}
-                  />
+                  <DesignsOverview userDesigns={userDesigns} />
                 )}
                 {selectedNavElement === 'projects' && displayFixed === true && (
-                  <ProjectsOverview
-                    userProjects={userProjects}
-                    projectResponse={projectResponse}
-                  />
+                  <ProjectsOverview userProjects={userProjects} />
                 )}
               </section>
             </section>
@@ -163,7 +143,7 @@ function Account() {
             {/* Right */}
             <section className='hidden lg:grid lg:grid-rows-ls gap-2 overflow-hidden'>
               {/* Messages */}
-              <section className='grid lg:grid-rows-2 gap-1 border-2 border-black border-solid rounded-sm overflow-hidden p-1'>
+              <section className='grid lg:grid-rows-2 gap-1 border-2 dark:border-gray-400 border-black border-solid rounded-sm overflow-hidden p-1'>
                 <section className='grid lg:grid-rows-reg border-2 border-black border-solid rounded-sm overflow-hidden'>
                   <h3 className='border-b-2 h-min border-black border-solid pl-2 py-1 bg-main-colour lg:bg-white'>
                     Notifications
@@ -203,9 +183,9 @@ function Account() {
                 </section>
               </section>
               {/* Favorites */}
-              <section className='hidden lg:grid border-2 border-black border-solid rounded-sm p-1'>
+              <section className='hidden lg:grid border-2 dark:border-gray-400 border-black border-solid rounded-sm p-1'>
                 <div className='border-2 border-black border-solid rounded-sm overflow-hidden'>
-                  <h3 className='border-b-2 border-black border-solid pl-2 py-1'>
+                  <h3 className='border-b-2 dark:bg-gray-100 border-black border-solid pl-2 py-1'>
                     Favorites
                   </h3>
                   <ul className='bg-gray-300 grid h-full'>
@@ -223,9 +203,9 @@ function Account() {
               </section>
             </section>
           </section>
-          {/* {!resendVerification && (
+          {!resendVerification && (
             <ResendConfirmEmail handleResend={handleResend} />
-          )} */}
+          )}
         </section>
       </div>
     </>
