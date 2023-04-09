@@ -20,6 +20,6 @@ router.get('/user-designs/:userId', validateAuthentication, getDesignsFromUser);
 router.get('/:designId', validateAuthentication, getDesignById);
 router.put('/user/:designId', validateAuthentication, saveDesign);
 router.post('/create', validateAuthentication, createNewDesign);
-router.delete('/delete/:designId', validateAuthentication, deleteDesign);
+router.delete('/:userId/delete/:designId', validateAuthentication, deleteDesign);
 
 export default router;

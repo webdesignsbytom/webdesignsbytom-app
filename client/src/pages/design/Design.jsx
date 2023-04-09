@@ -40,14 +40,15 @@ function Design() {
   
   const deleteSavedDesign = (design) => {
     console.log('delte design', design.id);
-    // client
-    //   .delete(`/users/delete-user/${user.id}`)
-    //   .then((res) => {
-    //     alert(`Deleted design ${user.id}`);
-    //   })
-    //   .catch((err) => {
-    //     console.error('Unable to delete account', err);
-    //   });
+    client
+      .delete(`/designs/${user.id}/delete/${design.id}`)
+      .then((res) => {
+        setSavedDesigns(res.data.data.newDesigns)
+        alert(`Deleted design ${design.name}`);
+      })
+      .catch((err) => {
+        console.error('Unable to delete design', err);
+      });
   };
 
   const deleteOpenDesign = (openDesign) => {

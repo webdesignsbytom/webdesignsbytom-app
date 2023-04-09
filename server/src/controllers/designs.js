@@ -21,6 +21,7 @@ import {
   ServerErrorEvent,
   MissingFieldEvent,
   BadRequestEvent,
+  NoPermissionEvent,
 } from '../event/utils/errorUtils.js';
 import { EVENT_MESSAGES } from '../utils/responses.js';
 import { createEmptyPalette } from '../domain/palettes.js';
@@ -279,6 +280,7 @@ export const saveDesign = async (req, res) => {
 export const deleteDesign = async (req, res) => {
   console.log('deleteDesign');
   const designId = req.params.designId;
+  const userId = req.params.userId;
 
   try {
     const foundDesign = await findDesignById(designId);
@@ -293,10 +295,23 @@ export const deleteDesign = async (req, res) => {
       return sendMessageResponse(res, notFound.code, notFound.message);
     }
 
+    if (userId !== foundDesign.userId) {
+      const notAuthorised = new NoPermissionEvent(
+        req.user,
+        'Id does not match userId on design',
+        'Event database'
+      );
+      myEmitterErrors.emit('error', notAuthorised);
+      return sendMessageResponse(res, notAuthorised.code, notAuthorised.message);
+    }
+
     await deleteDesignById(designId);
-    myEmitterDesigns.emit('deleted-design', req.user);
+    // myEmitterDesigns.emit('deleted-design', req.user);
+    const newDesigns = await findUserDesignsById(userId)
+
     return sendDataResponse(res, 200, {
       design: foundDesign,
+      newDesigns: newDesigns,
       message: `Design ${foundDesign.name} deleted`,
     });
   } catch (err) {
