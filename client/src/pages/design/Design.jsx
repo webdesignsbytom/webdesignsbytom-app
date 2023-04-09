@@ -31,7 +31,7 @@ function Design() {
             setOpenDesign(res.data.data.designs[0]);
           }
         })
-        .catch((err) => console.error('Unable to get designs', err.response));
+        .catch((err) => console.error('Unable to get designs x', err.response));
     }
   }, [user.id]);
 

@@ -309,6 +309,11 @@ async function seed() {
       lastName: 'Brockington',
       country: 'UK',
       agreedToTerms: true,
+      designs: {
+        create: {
+          name: 'Best ever',
+        }
+      }
     },
   });
 
