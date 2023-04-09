@@ -178,10 +178,7 @@ export const saveDesign = async (req, res) => {
   const { id, name, userId, userStories, navDesign, colourPalette } = req.body;
   console.log(id);
   console.log(name);
-  console.log(userStories);
-  console.log(userId);
-  console.log(navDesign);
-  console.log(colourPalette);
+
 
   try {
 

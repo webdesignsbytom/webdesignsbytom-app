@@ -25,10 +25,10 @@ function DesignElement({
   setDisplayElement,
   savedDesigns,
   openDesign,
-  setOpenDesign, 
+  setOpenDesign,
   setSavedDesigns,
   deleteSavedDesign,
-  deleteOpenDesign
+  deleteOpenDesign,
 }) {
   const { user } = useContext(UserContext);
   const [fileSaveName, setFileSaveName] = useState('untitled');
@@ -59,6 +59,7 @@ function DesignElement({
     setFileSaveName(value);
   };
 
+
   const createNewDesign = (event) => {
     event.preventDefault();
     if (user.email.length < 1) {
@@ -66,6 +67,7 @@ function DesignElement({
     } else {
       let newDesign = designTemplate;
       newDesign.userId = user.id;
+      newDesign.name = fileSaveName;
 
       client
         .post(`/designs/create`, newDesign)
@@ -85,15 +87,13 @@ function DesignElement({
     if (user.email.length < 1) {
       return setDisplayElement('register');
     }
-
     client
-      .put(`/designs/user/${openDesign.id}`, openDesign, false)
+      .patch(`/designs/user-designs/${openDesign.id}`, openDesign, true)
       .then((res) => {
         console.log('SAVE res', res.data);
       })
       .catch((err) => {
-        console.error('Unable to save designs', err.response);
-        console.error('Unable to save designs', err.response.data.message);
+        console.error('Unable to save designs', err);
       });
   };
 
@@ -139,7 +139,10 @@ function DesignElement({
                   </div>
                   <p>Save</p>
                 </li>
-                <li onClick={() => deleteOpenDesign(openDesign)} className='menu__link'>
+                <li
+                  onClick={() => deleteOpenDesign(openDesign)}
+                  className='menu__link'
+                >
                   <div className='grid w-full items-center justify-center'>
                     <BsFolderMinus className='mr-1 mt-1' />
                   </div>

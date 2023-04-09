@@ -13,9 +13,7 @@ import { designTemplate } from '../../utils/TemplateUtils';
 
 function Design() {
   const { user } = useContext(UserContext);
-  const {
-    toggleNavigation,
-  } = useContext(ToggleContext);
+  const { toggleNavigation } = useContext(ToggleContext);
 
   const [displayElement, setDisplayElement] = useState('nav');
   const [savedDesigns, setSavedDesigns] = useState([]);
@@ -37,13 +35,12 @@ function Design() {
     }
   }, [user.id]);
 
-  
   const deleteSavedDesign = (design) => {
     console.log('delte design', design.id);
     client
       .delete(`/designs/${user.id}/delete/${design.id}`)
       .then((res) => {
-        setSavedDesigns(res.data.data.newDesigns)
+        setSavedDesigns(res.data.data.newDesigns);
         alert(`Deleted design ${design.name}`);
       })
       .catch((err) => {
@@ -52,20 +49,22 @@ function Design() {
   };
 
   const deleteOpenDesign = (openDesign) => {
-    // client
-    // .delete(`/users/delete-user/${user.id}`)
-    // .then((res) => {
-    //   alert(`Deleted design ${user.id}`);
-    // })
-    // .catch((err) => {
-    //   console.error('Unable to delete account', err);
-    // });
-  }
+    console.log('delte design', openDesign.id);
+    client
+      .delete(`/designs/${user.id}/delete/${openDesign.id}`)
+      .then((res) => {
+        setSavedDesigns(res.data.data.newDesigns);
+        alert(`Deleted design ${openDesign.name}`);
+      })
+      .catch((err) => {
+        console.error('Unable to delete design', err);
+      });
+  };
 
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>
       <Navbar />
-      {(!toggleNavigation) && (
+      {!toggleNavigation && (
         <section className='grid grid-rows-reg lg:grid-rows-none lg:grid-cols-one min-h-[calc(100vh-64px)] lg:border-t-2 lg:border-solid lg:border-black'>
           {/* Side bar */}
           <OptionsNav
@@ -75,7 +74,7 @@ function Design() {
             openDesign={openDesign}
             setOpenDesign={setOpenDesign}
             deleteSavedDesign={deleteSavedDesign}
-            />
+          />
           {/* Preview section */}
           <DesignElement
             displayElement={displayElement}

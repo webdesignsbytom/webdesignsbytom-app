@@ -18,7 +18,7 @@ const router = Router();
 router.get('/', validateAuthentication, validateAdminRole, getAllDesigns);
 router.get('/user-designs/:userId', validateAuthentication, getDesignsFromUser);
 router.get('/:designId', validateAuthentication, getDesignById);
-router.put('/user/:designId', validateAuthentication, saveDesign);
+router.patch('/user-designs/:designId', validateAuthentication, saveDesign);
 router.post('/create', validateAuthentication, createNewDesign);
 router.delete('/:userId/delete/:designId', validateAuthentication, deleteDesign);
 
