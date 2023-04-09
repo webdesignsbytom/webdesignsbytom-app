@@ -159,8 +159,10 @@ export const createNewDesign = async (req, res) => {
       return sendMessageResponse(res, notCreated.code, notCreated.message);
     }
 
+    const allDesigns = await findUserDesignsById(userId)
+
     // myEmitterDesigns.emit('create-design', createdDesign);
-    return sendDataResponse(res, 201, { createdDesign });
+    return sendDataResponse(res, 201, { createdDesign, allDesigns });
   } catch (err) {
     //
     const serverError = new ServerErrorEvent(req.user, `Create new design`);

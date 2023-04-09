@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+// Icons
+import BinIcon from '../../assets/svg/bin.svg';
 
-function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
+function OptionsNav({ setDisplayElement, savedDesigns, deleteSavedDesign }) {
   const [activeNav, setActiveNav] = useState('nav');
 
   const setDisplay = (event) => {
@@ -9,15 +11,19 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
     setDisplayElement(id);
   };
 
+  const setNewOpenDesign = (design) => {
+    console.log('xx');
+  };
+
   return (
     <>
       <div className='bg-colour-pale dark:bg-gray-400 grid lg:min-w-[200px] lg:h-[calc(100vh-64px)] lg:fixed lg:left-0 lg:border-r-2 lg:border-solid lg:border-black'>
         <div className='m-2 grid lg:grid-rows-special'>
-          <div className='hidden md:grid text-main-text text-center m-2'>
+          <div className='hidden md:grid no__highlights text-main-text text-center m-2'>
             <h2>Design Options</h2>
           </div>
           <nav>
-            <ul className='mb-2 mt-2'>
+            <ul className='mb-2 no__highlights mt-2'>
               <section className='grid gap-2 grid-cols-3 lg:grid-cols-none'>
                 {/* Nav */}
                 <li
@@ -116,7 +122,7 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
                   id='saves'
                   onClick={setDisplay}
                 >
-                  <button id='saves' className='lg:pl-2'>
+                  <button id='saves' className='lg:pl-2 no__highlights'>
                     Saved Designs
                   </button>
                 </li>
@@ -125,19 +131,34 @@ function OptionsNav({ displayElement, setDisplayElement, savedDesigns }) {
           </nav>
 
           <section className='border-2 border-solid border-black rounded hidden lg:grid'>
-            <div className='text-main-text text-center m-2'>
+            <div className='text-main-text text-center m-2 no__highlights'>
               <h2>Saves</h2>
             </div>
-            {savedDesigns > 0 &&
-              savedDesigns.map((design, index) => {
-                return (
-                  <>
-                    <div key={index} className='text-black'>
-                      {design.name}
-                    </div>
-                  </>
-                );
-              })}
+            <ul className='p-1'>
+              {savedDesigns.length > 0 &&
+                savedDesigns.map((design, index) => {
+                  console.log('design: ', design);
+                  return (
+                    <li
+                      key={index}
+                      onClick={() => setNewOpenDesign(design)}
+                      className='text-black no__highlights flex justify-between cursor-pointer hover:text-gray-400'
+                    >
+                      <article>
+                        <h5>{design.name}</h5>
+                      </article>
+                      <div className='flex'>
+                        <img
+                          src={BinIcon}
+                          onClick={() => deleteSavedDesign(design)}
+                          className='w-5 h-5 cursor-pointer transition duration-200 ease-in-out select-none no__highlights focus:scale-125 hover:scale-125 active:scale-125'
+                          alt='delete button'
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+            </ul>
           </section>
         </div>
       </div>

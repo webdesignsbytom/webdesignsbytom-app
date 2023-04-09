@@ -15,11 +15,6 @@ function Design() {
   const { user } = useContext(UserContext);
   const {
     toggleNavigation,
-    toggleNotifications,
-    toggleMessages,
-    toggleEvents,
-    toggleContacts,
-    toggleTests,
   } = useContext(ToggleContext);
 
   const [displayElement, setDisplayElement] = useState('nav');
@@ -42,6 +37,30 @@ function Design() {
     }
   }, [user.id]);
 
+  
+  const deleteSavedDesign = (design) => {
+    console.log('delte design', design.id);
+    // client
+    //   .delete(`/users/delete-user/${user.id}`)
+    //   .then((res) => {
+    //     alert(`Deleted design ${user.id}`);
+    //   })
+    //   .catch((err) => {
+    //     console.error('Unable to delete account', err);
+    //   });
+  };
+
+  const deleteOpenDesign = (openDesign) => {
+    // client
+    // .delete(`/users/delete-user/${user.id}`)
+    // .then((res) => {
+    //   alert(`Deleted design ${user.id}`);
+    // })
+    // .catch((err) => {
+    //   console.error('Unable to delete account', err);
+    // });
+  }
+
   return (
     <div className='min-h-screen lg:left-0 overflow-hidden lg:overflow-hidden lg:max-h-screen'>
       <Navbar />
@@ -54,14 +73,18 @@ function Design() {
             savedDesigns={savedDesigns}
             openDesign={openDesign}
             setOpenDesign={setOpenDesign}
-          />
+            deleteSavedDesign={deleteSavedDesign}
+            />
           {/* Preview section */}
           <DesignElement
             displayElement={displayElement}
             setDisplayElement={setDisplayElement}
             savedDesigns={savedDesigns}
             openDesign={openDesign}
+            setSavedDesigns={setSavedDesigns}
             setOpenDesign={setOpenDesign}
+            deleteSavedDesign={deleteSavedDesign}
+            deleteOpenDesign={deleteOpenDesign}
           />
         </section>
       )}

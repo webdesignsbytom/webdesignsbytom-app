@@ -25,7 +25,10 @@ function DesignElement({
   setDisplayElement,
   savedDesigns,
   openDesign,
-  setOpenDesign,
+  setOpenDesign, 
+  setSavedDesigns,
+  deleteSavedDesign,
+  deleteOpenDesign
 }) {
   const { user } = useContext(UserContext);
   const [fileSaveName, setFileSaveName] = useState('untitled');
@@ -69,6 +72,7 @@ function DesignElement({
         .then((res) => {
           console.log('NEW D res', res.data);
           // setOpenDesign(res.data.data.design);
+          setSavedDesigns(res.data.data.allDesigns);
         })
         .catch((err) => {
           console.error('Unable to create designs', err.response);
@@ -135,7 +139,7 @@ function DesignElement({
                   </div>
                   <p>Save</p>
                 </li>
-                <li className='menu__link'>
+                <li onClick={() => deleteOpenDesign(openDesign)} className='menu__link'>
                   <div className='grid w-full items-center justify-center'>
                     <BsFolderMinus className='mr-1 mt-1' />
                   </div>
@@ -210,6 +214,7 @@ function DesignElement({
                   openDesign={openDesign}
                   setOpenDesign={setOpenDesign}
                   savedDesigns={savedDesigns}
+                  deleteSavedDesign={deleteSavedDesign}
                 />
               )}
             </div>
