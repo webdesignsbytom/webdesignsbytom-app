@@ -37,5 +37,5 @@ Backend: Express, Prisma, JavaScript, express-handlebars
 
 ## Design Information
 
-1. Link to ERD [ERD...](https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/assets/ERD-webdesignsbytom.png)
-2. Original Design sketches [Sketch](https://github.com/webdesignbytom/webdesignsbytom-app/tree/main/assets/design-sketches)
+1. Link to ERD [ERD...](https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/assets/ERD-webdesignsbytom.png)
+2. Original Design sketches [Sketch](https://github.com/webdesignsbytom/webdesignsbytom-app/tree/main/assets/design-sketches)

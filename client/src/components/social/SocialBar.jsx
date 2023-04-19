@@ -14,7 +14,7 @@ function SocialBar({ background, icons }) {
         <div className={`${background} rounded flex gap-2 w-full h-full py-2 px-4`}>
           <div>
             <a
-              href='https://github.com/webdesignbytom'
+              href='https://github.com/webdesignsbytom'
               target='_blank'
               rel='noreferrer'
               className={`${icons} hover:text-active-text`}

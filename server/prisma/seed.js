@@ -250,7 +250,7 @@ async function seed() {
       content:
         'Tom has run our business ecommerce website for years now and has always done splendid work! Very easy to work with.',
       image:
-        'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/wervings.png?raw=true',
+        'https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/wervings.png?raw=true',
     },
   });
   const rvsReview = await dbClient.review.create({
@@ -261,7 +261,7 @@ async function seed() {
       content:
         'Thank you for designing and building our website. I understand nothing about the internet and Tom worked with that.',
       image:
-        'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/RVS-logo.jpg?raw=true',
+        'https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/RVS-logo.jpg?raw=true',
     },
   });
   const musicReview = await dbClient.review.create({
@@ -272,7 +272,7 @@ async function seed() {
       content:
         'A hard working man and a pleasure to work with. Said yes to everything i asked and didnt over complicate the job.',
       image:
-        'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/turnbull-review.jpeg?raw=true',
+        'https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/turnbull-review.jpeg?raw=true',
     },
   });
   const ecoReview = await dbClient.review.create({
@@ -283,7 +283,7 @@ async function seed() {
       content:
         'Tom built a beautiful site for us and brings most of the ideas about improvements and modernisations.',
       image:
-        'https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/myea-logo.jpg?raw=true',
+        'https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/logos/myea-logo.jpg?raw=true',
     },
   });
 

@@ -86,15 +86,15 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Morning
         if (container.scrollWidth < 600) {
           container.style.backgroundImage =
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')";
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')";
           setCurrentImage(
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')"
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg-phone.jpg?raw=true')"
           );
         } else {
           container.style.backgroundImage =
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')";
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')";
           setCurrentImage(
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')"
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/morning-bg.jpg?raw=true')"
           );
         }
         greeting.textContent = 'Good Morning, ';
@@ -105,15 +105,15 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Afternoon
         if (container.scrollWidth < 600) {
           container.style.backgroundImage =
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')";
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')";
           setCurrentImage(
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')"
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg-phone.jpg?raw=true')"
           );
         } else {
           container.style.backgroundImage =
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')";
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')";
           setCurrentImage(
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')"
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/afternoon-bg.jpg?raw=true')"
           );
         }
         greeting.textContent = 'Good Afternoon, ';
@@ -125,15 +125,15 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
         // Evening
         if (container.scrollWidth < 600) {
           container.style.backgroundImage =
-            "https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')";
+            "https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')";
           setCurrentImage(
-            "https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')"
+            "https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg-phone.jpg?raw=true')"
           );
         } else {
           container.style.backgroundImage =
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')";
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')";
           setCurrentImage(
-            "url('https://github.com/webdesignbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')"
+            "url('https://github.com/webdesignsbytom/webdesignsbytom-app/blob/main/client/src/assets/img/backgrounds/night-bg.jpg?raw=true')"
           );
         }
         greeting.textContent = 'Good Evening, ';
@@ -264,7 +264,7 @@ function TimeOfDay({ increasePageNumber, decreasePageNumber }) {
                     >
                       <div>
                         <a
-                          href='https://github.com/webdesignbytom'
+                          href='https://github.com/webdesignsbytom'
                           target='_blank'
                           rel='noreferrer'
                           className={`hover:text-active-text`}
