@@ -15,8 +15,7 @@ module.exports = {
       },
       fontFamily: {
         'outfit': 'Outfit',
-        'poppins': 'Poppins',
-        'pops': ['Poppins', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
         'monts': ['Montserrat', 'sans-serif'],
       },
       borderWidth: {
@@ -45,6 +44,7 @@ module.exports = {
         'error-red': '',
         'success-green': '',
         'event-red': '',
+        'twitter-blue': '#1da1f2',
         'hyperlink-blue': '#2563eb',
         'secleted': '#2563eb',
         'non-selected': '#cbd5e1',
