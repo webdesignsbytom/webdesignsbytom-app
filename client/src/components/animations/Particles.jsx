@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 function Particles() {
+
   const useScript = (url) => {
     useEffect(() => {
       let bgColour = `#000000`
@@ -194,6 +195,7 @@ function Particles() {
       };
     }, [url]);
   };
+  
   return (
     <div id='particles' className='grid w-full h-full'>
       {useScript()}
