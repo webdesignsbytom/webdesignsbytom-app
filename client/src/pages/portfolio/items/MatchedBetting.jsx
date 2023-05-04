@@ -19,7 +19,7 @@ function MatchedBetting() {
           <nav className='flex justify-between w-full'>
             <div className='flex items-center'>
               <Link
-                to='/portfolio'
+                to={`/portfolio`}
                 className='w-full relative inline-flex items-center justify-center px-2 h-fit py-1 text-lg font-medium tracking-tighter text-white bg-gray-800 rounded-md group'
               >
                 <span className='absolute inset-0 w-full h-full mt-1 ml-1 transition-all duration-300 ease-in-out bg-purple-600 rounded-md group-hover:mt-0 group-hover:ml-0'></span>
@@ -57,9 +57,9 @@ function MatchedBetting() {
           </nav>
         </section>
         {/* MAIN PAGE */}
-        <main className='grid dark:bg-black dark:text-gray-100 lg:grid-cols-xo mt-5 lg:mt-0 lg:gap-6 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:overflow-hidden'>
+        <main className='grid dark:bg-black dark:text-gray-100 lg:grid-cols-xo mt-5 lg:mt-0 lg:gap-10 p-4 lg:h-[calc(100vh-64px)] lg:max-h-[calc(100vh-64px)] lg:overflow-hidden lg:py-10 lg:px-8'>
           <div className='h-full'>
-            <div className='text-3xl mb-4 font-bold'>
+            <div className='text-3xl my-4 font-bold'>
               <h1>{portfolioItem.title}</h1>
             </div>
 
@@ -68,23 +68,27 @@ function MatchedBetting() {
               {portfolioItem.headline}
             </div>
 
-            <article className='bg-gray-100 dark:bg-gray-800 px-2 my-2 py-2 lg:my-0'>
-              <p>{portfolioItem.desc}</p>
+            <article className='bg-gray-100 grid dark:bg-gray-800 px-2 my-2 py-2 lg:my-6 shadow-[5px_5px_0px_0px_rgba(109,40,217)]'>
+              <div className='p-2'>
+                <p>{portfolioItem.desc}</p>
+              </div>
             </article>
 
-            <section className='outline-2 mt-5 lg:mt-1 outline-black dark:outline-gray-400 outline rounded p-1 w-full'>
+            <section className='outline-2 bg-main-colour mt-5 lg:mt-1 outline-black dark:outline-gray-400 outline rounded p-1 w-full'>
               <div className=''>
                 <div className='text-center text-xl font-semibold mb-2'>
-                  <h3>Skills Used</h3>
+                  <h3 className='text-gray-100'>Skills Used</h3>
                 </div>
 
-                <article className='outline-2 outline-black dark:outline-gray-400 outline rounded p-1'>
-                  <ul className='p-1 grid gap-1 dark:bg-gray-800'>
+                <article className='outline-2 outline-black bg-gray-50 dark:outline-gray-400 outline rounded p-1 shadow-[inset_-12px_-8px_40px_#46464620]'>
+                  <ul className='p-1 grid gap-1 dark:bg-gray-800 justify-center'>
                     {portfolioItem.skills.map((skill, index) => {
                       return (
-                        <li className='flex gap-2 items-center' key={index}>
-                          <h4>{skill.icon}</h4>
-                          <h4>{skill.name}</h4>
+                        <li className='grid' key={index}>
+                          <div className='flex gap-2 lg:gap-6 items-center'>
+                            <h4>{skill.icon}</h4>
+                            <h4>{skill.name}</h4>
+                          </div>
                         </li>
                       );
                     })}
@@ -95,7 +99,7 @@ function MatchedBetting() {
           </div>
 
           {/* Right side - image container */}
-          <section className='grid h-screen mt-10 lg:mt-0 lg:h-full grid-rows-a1a outline outline-2 outline-black rounded dark:outline-gray-800'>
+          <section className='grid h-screen shadow-[inset_-12px_-8px_40px_#46464620] mt-10 lg:mt-0 lg:h-full grid-rows-a1a outline outline-2 outline-black rounded dark:outline-gray-800'>
             <div className='flex justify-end h-fit p-1 lg:p-1'>
               <ul className='flex bg-gray-50 dark:bg-gray-800 outline outline-2 outline-black dark:outline-gray-400 rounded-full w-fit items-center m-1 py-1 px-4'>
                 {portfolioItem.icons.map((icon, index) => {
@@ -169,11 +173,11 @@ function MatchedBetting() {
             {/* Display container large */}
             <section className='hidden lg:grid relative'>
               {/* PHONE */}
-              <section className='grid z-30 absolute bottom-2 left-4 items-center justify-center'>
+              <section className='grid z-30 absolute bottom-2 left-4 lg:mb-10 lg:ml-10 items-center justify-center'>
                 <div className='relative bg-white grid h-[160px] w-[88px] rounded-lg p-1 border-2 border-solid border-black'>
                   <div className='bg-white overflow-hidden rounded-lg border-2 border-solid border-black'>
                     <img
-                      className='h-full'
+                      className='h-full w-full'
                       src={portfolioItem.images[0]}
                       alt='phone display'
                     />
@@ -185,7 +189,7 @@ function MatchedBetting() {
               </section>
 
               {/* LAPTOP */}
-              <section className='grid grid-rows-ten-one h-fit justify-center items-center absolute z-20 translate-y-2/4 lg:mt-20 ml-20'>
+              <section className='grid grid-rows-ten-one h-fit justify-center items-center absolute z-20 translate-y-2/4 lg:mt-24 ml-20'>
                 <div className='grid items-center justify-center'>
                   <div className='grid p-1 pt-3 bg-black rounded-tr-lg rounded-tl-lg border-2 border-solid border-gray-600 lg:h-[180px] lg:w-[300px] '>
                     <div className='border-2 border-solid border-gray-600 overflow-hidden bg-black'>
@@ -228,9 +232,8 @@ function MatchedBetting() {
             <section className='flex justify-between items-end py-2 border-t-2 border-solid border-black'>
               <article className='pl-3'>
                 <h6 className='flex'>
-                  PHONE - <span className='flex text-active-text'>TABLET</span>{' '}
-                  - LAPTOP -{' '}
-                  <span className='flex text-active-text'>MONITOR</span>
+                  PHONE - <span className='flex text-gray-800'>TABLET</span> -
+                  LAPTOP - <span className='flex text-gray-800'>MONITOR</span>
                 </h6>
                 <h3>Fully Responsive Design</h3>
               </article>

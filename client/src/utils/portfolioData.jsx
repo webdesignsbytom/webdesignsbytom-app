@@ -37,17 +37,19 @@ import { FaUserAlt } from 'react-icons/fa';
 import TavyEpoxy from '../assets/img/projects/tavyepoxyMd.png';
 import BioClicker from '../assets/img/projects/bioclickerMd.png';
 import Myecoapp from '../assets/img/projects/myeaMd.png';
-import LuxuryPoker from '../assets/img/projects/pokerMd.png';
 import Calculator from '../assets/img/projects/calculatorMd.png';
 import MBSHome from '../assets/img/projects/mbs-home-md.png';
 import WSHome from '../assets/img/projects/ws-home-md.png';
 import WSOverview from '../assets/img/projects/ws-overview-md.png';
+import WDBTMain from '../assets/img/projects/wdbt-main-md.png';
+import WDBTPortfolio from '../assets/img/projects/wdbt-portfolio-md.png';
 // Images - Phone
 import BioCLickerPhone from '../assets/img/projects/bioclickerSm.png';
 import MyecoappPhone from '../assets/img/projects/myeaSm.jpg';
 import TavyepoxyPhone from '../assets/img/projects/tavyepoxyPhone.jpg';
 import MatchedbettingPhone from '../assets/img/projects/matchedbettingPhone.jpg';
 import WSHomeSm from '../assets/img/projects/ws-home-sm.png';
+import WDBTNav from '../assets/img/projects/wdbt-nav-sm.png';
 
 export const initialData = {
   id: 1,
@@ -117,8 +119,8 @@ export const portfolioData = [
     image: Myecoapp,
     title: 'Myecoapp',
     url: 'myecoapp', 
-    prevUrl: 'bio-clicker',
-    nextUrl: 'worlds-smartest-quiz',
+    prevUrl: 'worlds-smartest-quiz', 
+    nextUrl: 'bio-clicker',
     github: 'https://github.com/webdesignsbytom/myecoapp-deploy',
     demo: 'https://dazzling-biscuit-b01617.netlify.app/',
     icons: [Javascript, ReactIcon, TailwindIcon, Expressjs, Prisma],
@@ -142,7 +144,7 @@ export const portfolioData = [
     image: BioClicker,
     url: 'bio-clicker', 
     prevUrl: 'myecoapp',
-    nextUrl: 'tavyepoxy',
+    nextUrl: 'webdesignsbytom',
     title: 'Idle-Clicker game',
     github: 'https://github.com/webdesignsbytom/react-idle-clicker',
     demo: 'https://rococo-kleicha-53fa88.netlify.app/',
@@ -167,15 +169,15 @@ export const portfolioData = [
   },
   {
     id: 5,
-    image: TavyEpoxy,
+    image: WDBTMain,
     title: 'Web Designs By Tom',
     url: 'webdesignsbytom', 
     prevUrl: 'bio-clicker',
     nextUrl: 'tavyepoxy',
     github: 'https://github.com/webdesignsbytom/webdesignsbytom-app',
     demo: 'https://webdesignsbytom.com',
-    icons: [Javascript, ReactIcon, CSS3icon, Expressjs, Prisma],
-    images: [TavyepoxyPhone, TavyEpoxy, TavyEpoxy],
+    icons: [Javascript, ReactIcon, TailwindIcon, Expressjs, Prisma],
+    images: [WDBTNav, WDBTMain, WDBTPortfolio],
     skills: [
       { name: 'Responsive Design', icon: <FaTabletAlt size={20} /> },
       { name: 'Web Design Tool', icon: <FaTools size={20} /> },

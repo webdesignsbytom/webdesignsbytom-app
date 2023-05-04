@@ -32,7 +32,6 @@ import MessageOpen from './components/messages/MessageOpen';
 import SendNewMessage from './pages/messages/SendNewMessage';
 import NewProject from './pages/project/NewProject';
 import UpdatePassword from './pages/account/UpdatePassword';
-import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
 // Project Pages
@@ -57,7 +56,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' index element={<IndexPage />} />
+        <Route path='/' index element={<PortfolioHome />} />
         <Route path='/portfolio' element={<PortfolioHome />} />
         <Route path='/store' element={<SalesHome />} />
         <Route path='/contact' element={<Contact />} />

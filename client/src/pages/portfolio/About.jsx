@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // Images
-import Avatar from '../../assets/img/portfolio/TomAvatar.jpg';
+import Avatar from '../../assets/img/portfolio/Tom2.jpg';
 // Icons
 import { TbReportAnalytics } from 'react-icons/tb';
 import { MdOutlineLocalOffer } from 'react-icons/md';
 import { AiOutlineProject } from 'react-icons/ai';
 
 function About({ myRef }) {
-
-  const executeScroll = () => myRef.current.scrollIntoView()  
+  const executeScroll = () => myRef.current.scrollIntoView();
 
   return (
     <section
@@ -34,11 +33,11 @@ function About({ myRef }) {
                 <TbReportAnalytics size={35} />
               </div>
               <h5 className='text-xl mb-2'>Experience</h5>
-              <small>Junior Developer</small>
+              <small>Software Development</small>
               <br />
               <small>Electrical Engineer</small>
               <br />
-              <small>Renewable Energy Installer</small>
+              <small>Product Design</small>
             </article>
 
             <article className='bg-gray-900 rounded-xl border-4 border-solid border-yellow-500 cursor-pointer hover:bg-black hover:text-white text-white hover:outline-4 hover:outline-transparent-yellow hover:outline text-center px-4 py-8 w-full select-none no__highlights'>
@@ -46,14 +45,14 @@ function About({ myRef }) {
                 <MdOutlineLocalOffer size={35} />
               </div>
               <h5 className='text-xl mb-2'>Services</h5>
-              <small>Experienced Product Designer</small>
+              <small>Multi Stack Design</small>
               <br />
-              <small>MERN Stack Design</small>
+              <small>Experienced Product Designer</small>
               <br />
               <small>Advice and Information</small>
             </article>
 
-            <article className='bg-gray-900 text-white rounded-xl border-4 border-solid border-green-600 cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-transparent-green hover:outline text-center px-4 py-8 w-full select-none no__highlights'>
+            <article onClick={executeScroll} className='bg-gray-900 text-white rounded-xl border-4 border-solid border-green-600 cursor-pointer hover:bg-black hover:text-white hover:outline-4 hover:outline-transparent-green hover:outline text-center px-4 py-8 w-full select-none no__highlights'>
               <div className='flex justify-center mb-4'>
                 <AiOutlineProject size={35} />
               </div>
@@ -69,14 +68,16 @@ function About({ myRef }) {
           <section className='grid gap-6'>
             <article className='grid gap-10'>
               <p>
-                <span className='font-semibold'>After</span> years of electrical
-                engineering and renewable energy installation, I have started
-                developing websites for you! I have always worked in a design
-                and engineering capacity, I even built the desk I work from.{' '}
-                <br /> Completing jobs that have logic puzzles or require
-                solving problems has always made me happy. My personal projects
-                combine circuits and web design for developing products I hope
-                to achieve success with.
+                <span className='font-semibold'>Tom Brockington</span> is a
+                Software Developer and Electrical Engineer based in Devon. I
+                have designed a number of products and websites over many years.
+                I have a large skill stack and specialise in Javascript and
+                React programming.
+                <br /> <br />I enjoy solving computing or electrical problems
+                and have a detailed and practical approach to design and error
+                testing. I work on A number of projects every year and have
+                experience developing and designing applications with different
+                skill requirements and commercial goals.
               </p>
               <p>
                 I am also an <span className='font-semibold'>artist</span>,{' '}

@@ -1,9 +1,11 @@
 # Webdesignsbytom
 
-This app is deployed at [https://sprightly-fudge-16a82b.netlify.app/](https://sprightly-fudge-16a82b.netlify.app/)
+A person portfolio and sales website for software development.
+Also to trial new components, features and data collection in a live web application.
 
+This app is deployed at [WebDesignsByTom](https://webdesignsbytom.com)
 
-New design for portfolio site including new features for private sales.
+<img src='./assets/img/wdbt-main-md.png' alt='main' />
 
 ## Table of contents
 
@@ -16,7 +18,7 @@ New design for portfolio site including new features for private sales.
 
 ## General info
 
-A new design for my website as a professional portfolio. Coupled with an attempt to sell freelance work through a sale page. 
+A new design for my website as a professional portfolio. Coupled with an attempt to sell freelance work through a sale page.
 
 Server deployment with Vercel @ [https://webdesignsbytom-app.vercel.app/](https://webdesignsbytom-app.vercel.app/)
 
