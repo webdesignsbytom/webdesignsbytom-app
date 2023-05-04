@@ -8,7 +8,7 @@ function BioClicker() {
   
   // Set the item to be displayed
   useEffect(() => {
-    setPortfolioItem(portfolioData[2]);
+    setPortfolioItem(portfolioData[3]);
   }, []);
 
   return (

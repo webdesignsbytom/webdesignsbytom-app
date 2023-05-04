@@ -8,7 +8,7 @@ function MatchedBetting() {
 
   // Set the item to be displayed
   useEffect(() => {
-    setPortfolioItem(portfolioData[1]);
+    setPortfolioItem(portfolioData[0]);
   }, []);
 
   return (

@@ -8,7 +8,7 @@ function Myecoapp() {
 
   // Set the item to be displayed
   useEffect(() => {
-    setPortfolioItem(portfolioData[3]);
+    setPortfolioItem(portfolioData[2]);
   }, []);
 
   return (

@@ -35,10 +35,12 @@ import UpdatePassword from './pages/account/UpdatePassword';
 import IndexPage from './pages/heros/IndexPage';
 // Analytics
 import ReactGA from 'react-ga';
+// Project Pages
 import MatchedBetting from './pages/portfolio/items/MatchedBetting';
 import BioClicker from './pages/portfolio/items/BioClicker';
 import Myecoapp from './pages/portfolio/items/Myecoapp';
-import LuxuryCasino from './pages/portfolio/items/LuxuryCasino';
+import WorldsSmartestPage from './pages/portfolio/items/WorldsSmartestPage';
+import MyWebsitePage from './pages/portfolio/items/MyWebsitePage';
 
 function App() {
   const { toggleCookiePolicy } = useContext(UserContext);
@@ -108,14 +110,15 @@ function App() {
         {/* Protfolio Items */}
         <Route path='/portfolio-item/tavyepoxy' element={<Tavyepoxy />} />
         <Route
-          path='/portfolio-item/matched-betting'
+          path='/portfolio-item/matched-betting-simulator'
           element={<MatchedBetting />}
         />
         <Route path='/portfolio-item/bio-clicker' element={<BioClicker />} />
         <Route path='/portfolio-item/myecoapp' element={<Myecoapp />} />
+        <Route path='/portfolio-item/webdesignsbytom' element={<MyWebsitePage />} />
         <Route
-          path='/portfolio-item/luxury-casino'
-          element={<LuxuryCasino />}
+          path='/portfolio-item/worlds-smartest-quiz'
+          element={<WorldsSmartestPage />}
         />
 
         {/* Messages */}

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 // Data
 import { portfolioData, initialData } from '../../../utils/portfolioData';
 
-function LuxuryCasino() {
+function WorldsSmartestPage() {
   const [portfolioItem, setPortfolioItem] = useState(initialData);
 
   // Set the item to be displayed
   useEffect(() => {
-    setPortfolioItem(portfolioData[4]);
+    setPortfolioItem(portfolioData[1]);
   }, []);
 
   return (
@@ -252,4 +252,4 @@ function LuxuryCasino() {
   );
 }
 
-export default LuxuryCasino;
+export default WorldsSmartestPage;
