@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Data
 import { portfolioData, initialData } from '../../../utils/portfolioData';
 
-function Tavyepoxy() {
+function MyWebsitePage() {
   const [portfolioItem, setPortfolioItem] = useState(initialData);
 
   // Set the item to be displayed
@@ -252,4 +252,4 @@ function Tavyepoxy() {
   );
 }
 
-export default Tavyepoxy;
+export default MyWebsitePage;
